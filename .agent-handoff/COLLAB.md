@@ -7,12 +7,12 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (optional E2-008 second critique of E2-007 revision)
+Sami (Experiment 3 authorization decision)
 
 ## Current Phase
 
-E2-007 revision filed (2026-05-15) addressing all three E2-006 blockers.
-Forward interpretation:
+E2-008 Codex acceptance filed (2026-05-15). Codex accepts E2-007 as
+adequately addressing all three E2-006 blockers. Forward interpretation:
 - File-based Tier 0 (manual handoff) and Tier 1 (inbox/outbox) restored as
   the binding canonical reference transport. Cron, webhooks, AgentBridge,
   CCB, tmux variants, official Codex plugin, and `codex mcp-server` are
@@ -24,10 +24,10 @@ Forward interpretation:
   followed by E3-D Sami adapter selection.
 - The LLM Council adoption moved out of Experiment 3 entirely; becomes a
   separate future council experiment.
-Codex may file an optional E2-008 acceptance turn or push back with further
-revisions required. After Codex acceptance (or Sami override), Sami can
-authorize Experiment 3 work. `COLLAB.md` remains transitional pending the
-new state model.
+No E2-006 critique blockers remain. Experiment 3 is not authorized by this
+acceptance; Sami must explicitly authorize E3-A or any later E3 work under
+the active Stopgate Rule. `COLLAB.md` remains transitional pending the new
+state model.
 
 ## Tool Observations
 
@@ -147,6 +147,11 @@ new state model.
   + exploratory adapters, reorders Experiment 3 with E3-A schema spec
   before E3-B trust bootstrap. Locally uncommitted at filing;
   awaiting Sami's commit/push authorization.
+- E2-008 Codex rescope acceptance added at
+  `.agent-handoff/turns/E2-008-codex-rescope-acceptance.md`. Accepts
+  E2-007 as adequately resolving all three E2-006 blockers. Hands off
+  to Sami for the Experiment 3 authorization decision. Locally
+  uncommitted at filing; awaiting Sami's commit/push authorization.
 
 ## Latest Claude Response
 
@@ -186,19 +191,19 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E2-006 critique written at
-`.agent-handoff/turns/E2-006-codex-rescope-critique.md`. Codex accepts the
-governance-first and compose-don't-replace direction, and agrees that council
-automation should be deferred. Codex does not accept E2-005 as ready for Sami's
-Experiment 3 authorization without revision. Required revisions: restore
-manual handoff and inbox/outbox file exchange as the binding default/reference
-transport while treating cron, webhooks, AgentBridge, CCB, tmux, and plugin/MCP
-bridges as optional adapters; add an event-envelope schema/spec gate before
-trust-bootstrap implementation; include official Codex plugin /
-`codex mcp-server` in the transport-choice matrix alongside AgentBridge, CCB,
-tmux-style bridges, and the file-based default. No code, installs, bridge
-enablement, git operations, global config changes, protocol edits, trust files,
-keys, directories, or automation were created.
+E2-008 acceptance written at
+`.agent-handoff/turns/E2-008-codex-rescope-acceptance.md`. Codex accepts
+E2-007 as adequately resolving all three E2-006 blockers: Tier 0 manual
+handoff and Tier 1 inbox/outbox are restored as the binding canonical
+reference transport; E3-A event-envelope schema/spec now precedes E3-B
+trust-bootstrap implementation; and the transport matrix now includes the
+official Codex plugin in Claude Code and `codex mcp-server` as a
+project-scoped Claude MCP path alongside file-based, cron, webhook,
+AgentBridge, CCB, and tmux-style options. No E2-006 blockers remain. This
+does not authorize Experiment 3 work; Sami must explicitly authorize E3-A or
+any later E3 step. No code, installs, bridge enablement, git operations,
+global config changes, protocol edits, trust files, keys, directories, or
+automation were created.
 
 ## Earlier Codex Response
 
@@ -214,30 +219,33 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Should we install the official OpenAI Codex plugin in Claude Code?
-- Should we register `codex mcp-server` as a project-scoped Claude MCP server?
-- Should we register `claude mcp serve` inside Codex for the reverse-direction
-  experiment?
-- Should we install the official OpenAI Codex plugin in Claude Code for the
-  stronger Claude-hosted Codex loop?
-- After Experiment 1, should we run Experiment 2 with Claude-hosted Codex via
-  MCP/plugin?
+- Do you authorize E3-A as a design-only event-envelope schema/spec turn, with
+  no implementation, installs, bridge enablement, commits, pushes, or protocol
+  approval implied?
+- Should the official Codex plugin and `codex mcp-server` paths receive the
+  same read-only license/security inspection as CCB and Claude Squad before
+  any adapter selection or configuration change is considered?
+- Later only, if separately authorized: should we install the official OpenAI
+  Codex plugin in Claude Code?
+- Later only, if separately authorized: should we register `codex mcp-server`
+  as a project-scoped Claude MCP server?
+- Later only, if separately authorized: should we register `claude mcp serve`
+  inside Codex for the reverse-direction experiment?
 
 ## Next Request To Claude
 
-None active. E2-007 revision is filed. Claude consultant waits for
-optional Codex E2-008 acceptance turn or further critique.
+None active. E2-007 revision is accepted by Codex in E2-008.
 
 ## Next Request To Codex
 
-Optional E2-008 second critique of E2-007 revision. If E2-007
-adequately addresses the three E2-006 blockers (binding reference vs
-exploratory adapters; event-envelope schema/spec gate before
-trust-bootstrap implementation; official Codex plugin /
-`codex mcp-server` in transport-choice matrix), file a brief
-acceptance turn note at
-`.agent-handoff/turns/E2-008-codex-rescope-acceptance.md` so Sami can
-move to Experiment 3 authorization. If gaps remain, file E2-008 with
-specific revisions required. Per the active Stopgate Rule, do not
-implement, install, enable bridges, edit global config, commit, push,
-open a PR, or treat any proposal as approved.
+None active. Hard stop after E2-008 unless Sami explicitly authorizes
+the next turn.
+
+## Next Request To Sami
+
+Decide whether to authorize Experiment 3 E3-A as a design-only
+event-envelope schema/spec turn. Also decide whether official Codex
+plugin / `codex mcp-server` paths should receive the same read-only
+license/security inspection standard as CCB and Claude Squad before
+adapter selection. Do not treat Codex's E2-008 acceptance as
+Experiment 3 authorization.
