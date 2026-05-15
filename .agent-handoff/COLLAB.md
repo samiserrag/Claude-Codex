@@ -7,23 +7,27 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E2 design retrospective and Experiment 3 authorization decision)
+Codex (optional E2-008 second critique of E2-007 revision)
 
 ## Current Phase
 
-Experiment 2 re-scoped after round-3 prior-art consultation. Four-turn design
-rhythm (E2-001 through E2-004) remains valid as filed. E2-005 re-scope
-(2026-05-15) narrows binding E2 to the governance layer only: state model,
-security model, trust bootstrap, fork tiebreaker, recovery channel, sync
-primitives, token/friction budget, portability, open-source packaging.
-E2-001 §3 async tier model is reclassified as exploratory (transport
-choice deferred to Experiment 3 scoping). The "compose, don't replace"
-architecture is the working model: users pick a transport (file-based
-default, AgentBridge for live MCP, CCB for tmux) and a council layer
-(manual paste default, The LLM Council for automated). Our protocol is
-the governance contract under both. Sami's authorization is pending on
-five Experiment 3 sub-decisions enumerated in E2-005 §Decisions.
-`COLLAB.md` remains transitional pending the new state model.
+E2-007 revision filed (2026-05-15) addressing all three E2-006 blockers.
+Forward interpretation:
+- File-based Tier 0 (manual handoff) and Tier 1 (inbox/outbox) restored as
+  the binding canonical reference transport. Cron, webhooks, AgentBridge,
+  CCB, tmux variants, official Codex plugin, and `codex mcp-server` are
+  exploratory opt-in adapters that must satisfy the same governance
+  contract.
+- Experiment 3 reordered: E3-A event-envelope schema/spec (design only),
+  then E3-B trust-bootstrap implementation against the binding reference
+  path only, with E3-C adapter evaluation (read-only) running in parallel,
+  followed by E3-D Sami adapter selection.
+- The LLM Council adoption moved out of Experiment 3 entirely; becomes a
+  separate future council experiment.
+Codex may file an optional E2-008 acceptance turn or push back with further
+revisions required. After Codex acceptance (or Sami override), Sami can
+authorize Experiment 3 work. `COLLAB.md` remains transitional pending the
+new state model.
 
 ## Tool Observations
 
@@ -129,69 +133,72 @@ five Experiment 3 sub-decisions enumerated in E2-005 §Decisions.
 - E2-005 re-scope turn added at
   `.agent-handoff/turns/E2-005-claude-rescope.md`. Locally
   uncommitted at filing; awaiting Sami's commit/push authorization.
+- E2-006 Codex re-scope critique added at
+  `.agent-handoff/turns/E2-006-codex-rescope-critique.md`. Locally
+  uncommitted at filing; requests Claude consultant revision before
+  Experiment 3 authorization.
+- Round-4 consultation: GPT 5.5 Pro response 004 at
+  `.agent-handoff/consultants/gpt-5.5-pro-response-004.md` (trifecta
+  vs gstack skill catalog framing; council skill pack as future
+  Experiment 4 scope). Pushed to `origin/main` in commit `75eeb5a`.
+- E2-007 Claude rescope revision added at
+  `.agent-handoff/turns/E2-007-claude-rescope-revision.md`. Accepts
+  all three E2-006 blockers, splits E2-001 §3 into binding reference
+  + exploratory adapters, reorders Experiment 3 with E3-A schema spec
+  before E3-B trust bootstrap. Locally uncommitted at filing;
+  awaiting Sami's commit/push authorization.
 
 ## Latest Claude Response
 
-E2-005 re-scope written at `.agent-handoff/turns/E2-005-claude-rescope.md`
-after round-3 prior-art consultation surfaced significant overlap with
-existing open-source projects (AgentBridge for Claude↔Codex MCP transport;
-The LLM Council for multi-model adversarial council; CCB for tmux-based
-multi-agent CLI teams). Forward, binding E2 architecture is narrowed to
-the governance layer only: append-only signed event log, derived COLLAB.md,
-seven-section security model, Sami-controlled Ed25519 trust bootstrap with
-root-signed registry and coordinator possession proofs, lowest-event-hash
-benign-fork tiebreaker with Sami-mandatory exception list, gitignored
-recovery.txt channel, sync primitives, token/friction budget, portability,
-open-source packaging. E2-001 §3 async tier model (inbox/outbox, cron,
-webhooks) is reclassified exploratory and deferred to Experiment 3
-transport selection. Council layer (manual paste vs The LLM Council)
-also deferred. Experiment 3 is now scoped to: (1) license inspection on
-CCB and Claude Squad, (2) transport choice between file-based default and
-a live transport, (3) trust-bootstrap-only implementation spike. None of
-the audited candidates implement signed events, the Stopgate Rule, or
-append-only auditable governance — that is genuinely our unique value.
-Five Experiment 3 sub-decisions await Sami's authorization.
+E2-007 rescope revision written at
+`.agent-handoff/turns/E2-007-claude-rescope-revision.md` accepting all
+three E2-006 blockers. (1) E2-001 §3 split into binding reference path
+(Tier 0 manual handoff + Tier 1 inbox/outbox file exchange) and
+exploratory opt-in adapters (Tier 2 cron, Tier 3 webhooks, AgentBridge,
+CCB, tmux variants, official Codex plugin, `codex mcp-server`). External
+transports replace delivery mechanics but not the durable signed
+envelope, import validation, quarantine, audit log, or human-readable
+fallback. (2) Experiment 3 reordered: E3-A event-envelope schema/spec
+(design only — canonical envelope fields, JSON serialization, signature
+coverage, registry snapshot shape, file naming, fixtures, acceptance
+checks), then E3-B trust-bootstrap implementation against the binding
+reference path only, with E3-C adapter evaluation (read-only license
+inspection on CCB and Claude Squad, plus read-only evaluation of
+AgentBridge, CCB, tmux variants, official Codex plugin and
+`codex mcp-server`) running in parallel, followed by E3-D Sami adapter
+selection per scoped sub-experiment. (3) Transport-choice matrix now
+includes official Codex plugin in Claude Code and `codex mcp-server`
+project-scoped MCP entry alongside AgentBridge, CCB, tmux variants, and
+the file-based default. The LLM Council adoption moved out of
+Experiment 3 to a separate future council experiment. All five E2-006
+nits addressed in writing (deferred housekeeping for Phase enum,
+sub-decision count alignment, council API-key tradeoff, Codex Mate /
+Ruflo control-plane read, stale "Original Hard-Stop Note" cleanup).
 
 ## Earlier Claude Response
 
-E2-004 second critique written at
-`.agent-handoff/turns/E2-004-claude-second-critique.md`. The Claude
-architecture consultant cleared all three E2-002 blockers as resolved
-by E2-003 and closed the four-turn E2 design rhythm. Architecture
-stack stood as proposed protocol pending Sami's approval — superseded
-in scope by E2-005 re-scope after round-3 prior-art findings.
+E2-005 re-scope written at `.agent-handoff/turns/E2-005-claude-rescope.md`
+after round-3 prior-art consultation. Narrowed E2 to governance-only
+and deferred transport+council to Experiment 3. Codex E2-006 critique
+identified three blockers: §3 over-demoted, missing schema gate before
+trust bootstrap, missing Codex-plugin/mcp-server in transport matrix.
+All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E2-003 design-only revision written at
-`.agent-handoff/turns/E2-003-codex-revision.md`. Codex revised E2-001 in
-response to the three E2-002 blockers. The proposed trust root is a
-Sami-controlled Ed25519 root signing key; the first accepted event is a
-root-signed `trust.registry.initialized` genesis event; first coordinator key
-registrations are root-signed and coordinator-counter-signed; normal rotation
-requires old key, new key, and root signatures; emergency rotation requires
-the out-of-band recovery channel plus root-signed revocation and replacement.
-
-The proposed branch/fork default tiebreaker is lowest event hash wins, limited
-to benign same-coordinator forks that do not touch trust, stopgates, security,
-secrets, bridge enablement, global config, git operations, deletion, or
-human-only approvals. Sami intervention remains mandatory for trust/key
-changes, proposed-to-approved transitions, stopgate changes, security
-incidents, suspected compromise, prompt injection, hash collision, repo
-identity mismatch, non-ancestor branch lineage, repeated fork storms, and all
-Stopgate Rule actions.
-
-The proposed quarantine recovery channel is
-`.agent-handoff/local/recovery/recovery.txt`: gitignored, human-writable,
-low-trust, strict `RECOVERY v1` key/value format, and non-authorizing. Abuse
-of the recovery channel is itself quarantined or paused for Sami inspection.
-All E2-002 nit bullets were addressed in writing, including JSONL ledgers with
-generated Markdown views, configurable idle-token cap rationale, signed
-`COLLAB.md` regeneration events, signed quarantine mutations, downstream kit
-update rules, section naming cleanup, and E1 historical labels in this
-`COLLAB.md` update. No code, installs, bridge enablement, git operations,
-global config changes, trust files, keys, directories, or automation were
-created.
+E2-006 critique written at
+`.agent-handoff/turns/E2-006-codex-rescope-critique.md`. Codex accepts the
+governance-first and compose-don't-replace direction, and agrees that council
+automation should be deferred. Codex does not accept E2-005 as ready for Sami's
+Experiment 3 authorization without revision. Required revisions: restore
+manual handoff and inbox/outbox file exchange as the binding default/reference
+transport while treating cron, webhooks, AgentBridge, CCB, tmux, and plugin/MCP
+bridges as optional adapters; add an event-envelope schema/spec gate before
+trust-bootstrap implementation; include official Codex plugin /
+`codex mcp-server` in the transport-choice matrix alongside AgentBridge, CCB,
+tmux-style bridges, and the file-based default. No code, installs, bridge
+enablement, git operations, global config changes, protocol edits, trust files,
+keys, directories, or automation were created.
 
 ## Earlier Codex Response
 
@@ -218,16 +225,19 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. The four-turn E2 design rhythm is complete. Claude waits
-for Sami's authorization decision before any further turn.
+None active. E2-007 revision is filed. Claude consultant waits for
+optional Codex E2-008 acceptance turn or further critique.
 
 ## Next Request To Codex
 
-None active. The four-turn E2 design rhythm is complete. Codex waits
-for Sami's authorization decision before any further turn.
-
-## Original Hard-Stop Note
-
-(Preserved from E2-003 handoff for traceability.) Hard stop after E2-003;
-wait for Claude's E2-004 second critique
-before any further Codex work.
+Optional E2-008 second critique of E2-007 revision. If E2-007
+adequately addresses the three E2-006 blockers (binding reference vs
+exploratory adapters; event-envelope schema/spec gate before
+trust-bootstrap implementation; official Codex plugin /
+`codex mcp-server` in transport-choice matrix), file a brief
+acceptance turn note at
+`.agent-handoff/turns/E2-008-codex-rescope-acceptance.md` so Sami can
+move to Experiment 3 authorization. If gaps remain, file E2-008 with
+specific revisions required. Per the active Stopgate Rule, do not
+implement, install, enable bridges, edit global config, commit, push,
+open a PR, or treat any proposal as approved.
