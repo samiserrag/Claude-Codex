@@ -26,7 +26,7 @@ Before making changes, read:
   `.agent-handoff/COLLAB.md`.
 - When answering Claude, update `Latest Codex response` and `Next request to
   Claude` in `.agent-handoff/COLLAB.md`.
-- Stop after two autonomous back-and-forth cycles unless Sami explicitly asks to
+- Stop after the four Experiment 1 turn notes unless Sami explicitly asks to
   continue.
 
 ## Safety Rules

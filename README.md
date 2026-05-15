@@ -41,11 +41,11 @@ Expected app files once the loop starts:
 1. Open a new Claude Code thread in this repo.
 2. Paste the contents of
    [.agent-handoff/prompts/claude-start.md](.agent-handoff/prompts/claude-start.md).
-3. Let Claude try the full-loop path if a Codex bridge is available.
-4. If Claude cannot call Codex directly, use the file-based fallback:
-   Claude writes the next request into `.agent-handoff/COLLAB.md`, then you paste
+3. Run Experiment 1 file-based only. Claude writes the next request into
+   `.agent-handoff/COLLAB.md`, then you paste
    [.agent-handoff/prompts/codex-response.md](.agent-handoff/prompts/codex-response.md)
    into Codex.
+4. Stop after turn note 004 and write a retrospective before testing bridges.
 
 ## Optional Bridge Setup
 
@@ -54,15 +54,16 @@ Local checks showed both CLIs are installed:
 - `codex-cli 0.130.0`
 - `claude 2.1.58`
 
-The repo-side scaffold works without extra setup. For a stronger full-loop test,
-register Codex inside Claude Code:
+The repo-side scaffold works without extra setup. After Experiment 1 proves the
+file-based contract, a later bridge experiment can register Codex inside Claude
+Code:
 
 ```bash
 claude mcp add --scope project --transport stdio codex -- codex mcp-server
 ```
 
-The reverse direction is possible but should be treated as experimental until
-the one-way bridge is working:
+The reverse direction is possible but should stay out of scope until the
+file-based and Claude-hosted Codex experiments both show clear value:
 
 ```bash
 codex mcp add claude-code -- claude mcp serve

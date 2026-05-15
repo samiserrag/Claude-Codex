@@ -20,5 +20,5 @@ Claude Code <-> Codex workflow.
 ## Next
 
 Claude should start with `.agent-handoff/prompts/claude-start.md`, write the
-first architecture turn, and attempt to call Codex directly if a Codex bridge is
-available. If not, Claude should stop with a repo-visible request for Codex.
+first architecture turn, and stop with a repo-visible request for Codex.
+Experiment 1 is file-based only.

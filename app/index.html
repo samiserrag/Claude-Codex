@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Decision Ledger</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Decision Ledger</h1>
+      <p class="page-subtitle">
+        Record decisions made during a collaborative coding session. Data is
+        stored locally in your browser.
+      </p>
+    </header>
+
+    <main class="page-main">
+      <section class="card" aria-labelledby="add-decision-heading">
+        <h2 id="add-decision-heading">Add a decision</h2>
+
+        <form id="add-decision-form" novalidate>
+          <div class="field">
+            <label for="decision-title">Title</label>
+            <input
+              id="decision-title"
+              name="title"
+              type="text"
+              required
+              maxlength="120"
+              autocomplete="off"
+              aria-describedby="decision-form-error"
+            />
+          </div>
+
+          <div class="field">
+            <label for="decision-rationale">Rationale</label>
+            <textarea
+              id="decision-rationale"
+              name="rationale"
+              required
+              maxlength="2000"
+              rows="4"
+              aria-describedby="decision-form-error"
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="decision-owner">Owner</label>
+            <input
+              id="decision-owner"
+              name="owner"
+              type="text"
+              required
+              maxlength="60"
+              autocomplete="off"
+              aria-describedby="decision-form-error"
+            />
+          </div>
+
+          <div class="form-actions">
+            <button id="decision-submit" type="submit">Add decision</button>
+          </div>
+
+          <p
+            id="decision-form-error"
+            class="form-error"
+            role="alert"
+            aria-live="polite"
+          ></p>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="decisions-heading">
+        <h2 id="decisions-heading">Decisions</h2>
+        <ul id="decision-list" aria-label="Decisions"></ul>
+        <p id="decision-empty-state" class="empty-state">No decisions yet.</p>
+      </section>
+    </main>
+  </body>
+</html>
