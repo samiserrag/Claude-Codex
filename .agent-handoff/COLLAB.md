@@ -7,34 +7,56 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-D adapter selection scope decision; optional
-refusal-to-overwrite test-hardening turn decision)
+Codex (E3-D adapter-selection design-only turn, authorized by Sami
+on 2026-05-15)
 
 ## Current Phase
 
-E3-B-FIX-001 Claude consultant critique filed (2026-05-15). Zero
-blockers. Independent verification by the consultant passed every
-check: `.gitignore` contains the three correct lines; `verify` exits
-0 with top-level `ok: true` on real artifacts; constructed scratch
-invalid case exits 1 with `filename_sequence_mismatch` and clean
-top-level `ok: false`. Real signed-event filenames untouched
-throughout the negative test. Three cosmetic nits (Fix-Turn section
-ordering, duplicate Files-touched section, document verifier output
-key surface).
+E3-D authorized by Sami on 2026-05-15 as adapter-selection design
+only. Explicit authorization text recorded here and in the
+consultation thread:
 
-E3 status: E3-A spec accepted (seven nits addressed in E3-B), E3-B
-trust-bootstrap implementation accepted as successful spike, E3-C
+  "Approved: run E3-D as adapter-selection design only.
+
+  Scope:
+  - No installs, no plugin setup, no MCP registration, no .mcp.json,
+    no bridge enablement, no global config changes, no commits,
+    pushes, PRs, or branches.
+  - Compare: file-based default, official Codex plugin wrapper,
+    direct codex mcp-server wrapper, CCB pattern-only, Claude Squad
+    pattern-only.
+  - Select the first future enabled adapter experiment, but do not
+    enable it.
+  - Define exact preconditions, method/command allow-list,
+    signed-event import/export boundary, approval-surfacing
+    requirements, rollback/disable path, and verification evidence.
+  - Treat CCB and Claude Squad as pattern-only unless Sami
+    separately approves AGPL-compatible use.
+  - Hard stop after E3-D and hand off for critique."
+
+Sami's framing recommendation (E3-D may engage with or push back on
+either point):
+- First future adapter: direct codex mcp-server wrapper, only after
+  E3-D defines the method allow-list and approval surfacing.
+  Reasoning: riskier than plugin but cleaner primitive to wrap
+  because the boundary is explicit.
+- Second future adapter: official Codex plugin. Stop-hook behavior
+  isolated as a separate sub-experiment.
+
+Optional refusal-to-overwrite test-hardening turn DEFERRED per Sami
+("useful, but not worth inserting before E3-D unless you want a
+test-hardening cleanup pass").
+
+Codex authors E3-D (mirrors E3-A architecture, E3-B implementation,
+E3-C inspection authorship). Claude consultant is the next critique
+agent.
+
+E3 status: E3-A spec accepted, E3-B trust-bootstrap accepted, E3-C
 adapter inspection accepted, E3-B-FIX-001 verifier hardening
-accepted. Sami's full decision queue is now:
-- E3-D adapter selection scope decision (transport choice between
-  file-based default, official Codex plugin wrap, direct
-  codex mcp-server wrap, with CCB/Claude Squad as pattern-only).
-- Optional small refusal-to-overwrite test-hardening turn (or defer).
-- Optional kit-extraction toward colorado-songwriters-collective
-  (per Sami's prior queue, this waits until E3-B lands — which it
-  has).
-- Future Experiment 4: council skill pack design (per GPT 5.5 Pro
-  round-4 framing).
+accepted. E3-D adapter-selection design pending. E3 enablement (any
+actual adapter setup, install, MCP registration, plugin install) is
+NOT authorized by this turn and remains a separate per-adapter
+sub-experiment requiring Sami's explicit approval.
 
 E3-B-FIX-001 critique pending.
 
