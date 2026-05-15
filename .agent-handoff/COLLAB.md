@@ -7,23 +7,40 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-A design-only event-envelope schema/spec turn, authorized by Sami
-on 2026-05-15)
+Sami (E3-B authorization decision after E3-A critique)
 
 ## Current Phase
 
-Experiment 3 E3-A authorized by Sami on 2026-05-15. Explicit authorization
-text recorded in this COLLAB.md entry and the consultation thread:
+E3-A Claude consultant critique filed (2026-05-15). Zero blockers.
+Seven nits flagged for E3-B consideration: time skew window default,
+integer-only-numbers rule scope for payloads, `recipient_coordinator_ids`
+broadcast semantics, `possession_proof_hash` byte format,
+replay-vs-import nonce semantics, branch/force-push policy,
+prompt-injection minimum baseline. E3-A is acceptable to proceed to
+E3-B implementation once Sami authorizes.
+
+E3-A schema is endorsed: JCS-narrowed canonical JSON, Ed25519
+signatures, SHA-256 hashing, UUIDv7 opaque event ids, integer-only
+envelope numbers, hybrid sequence+hash filenames, domain-separation
+prefix `agent-event-envelope:v1\n` for signing. Strengths called out
+in the critique: domain-separation prefix prevents cross-protocol
+signature reuse; `previous_accepted_event_hash` separated from
+`parent_event_ids`; quarantine refuses to store hash of suspected
+secret value alone; UUIDv7 treated as opaque (no timestamp trust);
+fixtures cite real base commit `4543fc44...`.
+
+E3-A was authorized by Sami on 2026-05-15. Explicit authorization text
+recorded in this COLLAB.md entry and the consultation thread:
 
   "Run E3-A as a design-only event-envelope schema/spec turn. No
   implementation, installs, bridge enablement, commits, pushes, or
-  protocol approval implied. Also include official Codex plugin and
-  codex mcp-server in the read-only adapter/security inspection queue."
+  protocol approval implied."
 
-E3-A scope: define canonical event envelope, serialization rules, signature
-coverage, trust-registry snapshot shape, file naming convention, quarantine
-rules, minimal fixtures, and pass/fail acceptance checks. Design only — no
-code, no installs, no bridge enablement, no commits, no protocol approval.
+E3-A proposed canonical event envelope fields, deterministic JSON
+serialization rules, signature coverage, trust-registry snapshot shape, file
+naming conventions, quarantine rules, minimal fixture requirements, and
+pass/fail acceptance checks. Design only: no code, no installs, no bridge
+enablement, no commits, no protocol approval.
 
 Concurrent decision: official Codex plugin and `codex mcp-server` paths
 added to the E3-C read-only adapter/security inspection queue alongside
@@ -35,13 +52,17 @@ differs from third-party adapters.
 Deferred per Sami: council skill pack work waits until E3-A lands;
 porting to `colorado-songwriters-collective` waits until E3-B lands.
 AgentBridge / CCB / plugin implementation work waits until they are
-judged against E3-A's schema and governance contract — they may not
+judged against E3-A's schema and governance contract; they may not
 define the contract.
 
 (E2 four-turn re-scope rhythm previously closed cleanly; all E2-006
 critique blockers resolved by E2-007 and accepted by E2-008.)
 
 `COLLAB.md` remains transitional pending the new state model.
+
+Hard stop: wait for Sami's explicit E3-B authorization before any E3-B
+implementation, adapter evaluation, protocol approval, or further E3 work.
+Per the active Stopgate Rule, no agent moves to E3-B without it.
 
 ## Tool Observations
 
@@ -166,6 +187,12 @@ critique blockers resolved by E2-007 and accepted by E2-008.)
   E2-007 as adequately resolving all three E2-006 blockers. Hands off
   to Sami for the Experiment 3 authorization decision. Locally
   uncommitted at filing; awaiting Sami's commit/push authorization.
+- E3-A Codex envelope schema/spec added at
+  `.agent-handoff/turns/E3-A-codex-envelope-schema.md`. Proposes the
+  event envelope, canonical serialization, signature coverage, trust
+  snapshot shape, file naming, quarantine rules, fixture contract, and
+  pass/fail checks. Locally uncommitted at filing; awaiting Claude
+  consultant critique before further E3 work.
 
 ## Latest Claude Response
 
@@ -178,7 +205,7 @@ CCB, tmux variants, official Codex plugin, `codex mcp-server`). External
 transports replace delivery mechanics but not the durable signed
 envelope, import validation, quarantine, audit log, or human-readable
 fallback. (2) Experiment 3 reordered: E3-A event-envelope schema/spec
-(design only — canonical envelope fields, JSON serialization, signature
+(design only: canonical envelope fields, JSON serialization, signature
 coverage, registry snapshot shape, file naming, fixtures, acceptance
 checks), then E3-B trust-bootstrap implementation against the binding
 reference path only, with E3-C adapter evaluation (read-only license
@@ -205,19 +232,22 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E2-008 acceptance written at
-`.agent-handoff/turns/E2-008-codex-rescope-acceptance.md`. Codex accepts
-E2-007 as adequately resolving all three E2-006 blockers: Tier 0 manual
-handoff and Tier 1 inbox/outbox are restored as the binding canonical
-reference transport; E3-A event-envelope schema/spec now precedes E3-B
-trust-bootstrap implementation; and the transport matrix now includes the
-official Codex plugin in Claude Code and `codex mcp-server` as a
-project-scoped Claude MCP path alongside file-based, cron, webhook,
-AgentBridge, CCB, and tmux-style options. No E2-006 blockers remain. This
-does not authorize Experiment 3 work; Sami must explicitly authorize E3-A or
-any later E3 step. No code, installs, bridge enablement, git operations,
-global config changes, protocol edits, trust files, keys, directories, or
-automation were created.
+E3-A schema/spec written at
+`.agent-handoff/turns/E3-A-codex-envelope-schema.md`. Codex proposes a strict
+`agent-event-envelope.v1` JSON envelope with required fields for repo identity,
+branch, base commit, experiment namespace, event id, coordinator id, author
+role, parent event ids, per-coordinator sequence, timestamp, nonce, payload
+hash, previous accepted event hash, signing key id, Ed25519 algorithm,
+payload, and signature. Canonical bytes are proposed as an RFC 8785
+JCS-compatible deterministic subset; signatures cover a domain-separation
+prefix plus canonical JSON with only the `signature` field omitted. The turn
+also proposes the signed `agents.json` trust-registry snapshot shape,
+sequence-plus-hash file naming for events/inbox/outbox/trust/quarantine/local
+state, quarantine triggers and redaction rules, minimal fixture requirements,
+and import/replay/quarantine pass/fail checks. The schema is not approved
+protocol. No code, installs, bridge enablement, git operations, global config
+changes, protocol edits, trust files, keys, event directories, or automation
+were created.
 
 ## Earlier Codex Response
 
@@ -233,12 +263,9 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Do you authorize E3-A as a design-only event-envelope schema/spec turn, with
-  no implementation, installs, bridge enablement, commits, pushes, or protocol
-  approval implied?
-- Should the official Codex plugin and `codex mcp-server` paths receive the
-  same read-only license/security inspection as CCB and Claude Squad before
-  any adapter selection or configuration change is considered?
+- None active for E3-A until Claude's critique returns. Any move from the
+  proposed schema to approved protocol still requires Sami's explicit
+  approval.
 - Later only, if separately authorized: should we install the official OpenAI
   Codex plugin in Claude Code?
 - Later only, if separately authorized: should we register `codex mcp-server`
@@ -248,18 +275,21 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. E2-007 revision is accepted by Codex in E2-008.
+Perform the E3-A architecture-consultant critique of
+`.agent-handoff/turns/E3-A-codex-envelope-schema.md`. Focus on deterministic
+serialization, signature coverage, trust-registry snapshot shape,
+replay/quarantine behavior, filename conventions, and whether the minimal
+fixture contract is concrete enough for E3-B implementation. Do not implement,
+install dependencies, enable bridges, edit global config, commit, push, open a
+PR, create event directories, create keys, or treat any proposed schema item
+as approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E2-008 unless Sami explicitly authorizes
-the next turn.
+None active. Hard stop after E3-A until Claude's critique is filed and Sami
+explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
-Decide whether to authorize Experiment 3 E3-A as a design-only
-event-envelope schema/spec turn. Also decide whether official Codex
-plugin / `codex mcp-server` paths should receive the same read-only
-license/security inspection standard as CCB and Claude Squad before
-adapter selection. Do not treat Codex's E2-008 acceptance as
-Experiment 3 authorization.
+None immediate unless you want to redirect the experiment. The next expected
+action is Claude's E3-A critique.
