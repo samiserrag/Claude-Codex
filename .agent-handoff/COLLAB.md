@@ -7,9 +7,36 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-B-FIX-001 paste-and-run decision + E3-D adapter selection scope decision)
+Sami (E3-D adapter selection scope decision; optional
+refusal-to-overwrite test-hardening turn decision)
 
 ## Current Phase
+
+E3-B-FIX-001 Claude consultant critique filed (2026-05-15). Zero
+blockers. Independent verification by the consultant passed every
+check: `.gitignore` contains the three correct lines; `verify` exits
+0 with top-level `ok: true` on real artifacts; constructed scratch
+invalid case exits 1 with `filename_sequence_mismatch` and clean
+top-level `ok: false`. Real signed-event filenames untouched
+throughout the negative test. Three cosmetic nits (Fix-Turn section
+ordering, duplicate Files-touched section, document verifier output
+key surface).
+
+E3 status: E3-A spec accepted (seven nits addressed in E3-B), E3-B
+trust-bootstrap implementation accepted as successful spike, E3-C
+adapter inspection accepted, E3-B-FIX-001 verifier hardening
+accepted. Sami's full decision queue is now:
+- E3-D adapter selection scope decision (transport choice between
+  file-based default, official Codex plugin wrap, direct
+  codex mcp-server wrap, with CCB/Claude Squad as pattern-only).
+- Optional small refusal-to-overwrite test-hardening turn (or defer).
+- Optional kit-extraction toward colorado-songwriters-collective
+  (per Sami's prior queue, this waits until E3-B lands — which it
+  has).
+- Future Experiment 4: council skill pack design (per GPT 5.5 Pro
+  round-4 framing).
+
+E3-B-FIX-001 critique pending.
 
 Sami's three authorizations on 2026-05-15:
 
@@ -52,8 +79,8 @@ Codex is the authoring agent (mirrors E3-B authorship). Claude
 consultant is the next critique agent.
 
 E3-D adapter selection scope is NOT authorized. It depends on:
-- E3-B-FIX-001 landing (verifier hardening)
-- E3-C critique landing (just filed)
+- E3-B-FIX-001 Claude critique/acceptance
+- E3-C critique already filed and accepted
 - Sami's per-adapter approval per scoped sub-experiment
 
 E3-B Claude consultant critique filed (2026-05-15). Zero blockers.
@@ -325,27 +352,30 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-B trust-bootstrap implementation written at
-`.agent-handoff/turns/E3-B-codex-trust-bootstrap.md`. Codex added the
-minimal `.gitignore` rule for `.agent-handoff/local/`, verified
-`git check-ignore .agent-handoff/local/keys/sami-root.ed25519` before
-key generation, selected Node v22 built-in `node:crypto` plus a
-repo-local no-dependency canonical JSON implementation, generated the
-Sami root and Codex Ed25519 private keys under ignored local paths with
-mode `0600`, wrote the public root-signed trust registry to
-`.agent-handoff/trust/agents.json`, wrote the Codex possession proof
-to `.agent-handoff/trust/possession-proofs/codex.ed25519.proof.json`,
-and wrote root-signed `trust.registry.initialized` and
-`coordinator.registered` events under `.agent-handoff/events/sami-root/`.
-Root public-key fingerprint:
-`69e123bf79fd82aa57a3e856a423626051ca345d6256eee27048f9cc934a4968`.
-Codex public-key fingerprint:
-`569db4efca4e9f91ab58d87ab79c069fbb2c7ff6384b5a00537187539cbcecdf`.
-`node .agent-handoff/src/trust-bootstrap.mjs verify` passes for the
-registry signature, both root events, the possession proof, the hash
-chain, parent/prior-trust links, and final registry links. No installs,
-bridges, live transport, cron, webhook, global config changes, commits,
-pushes, PRs, or branches were performed.
+E3-B-FIX-001 verifier-hardening turn written at
+`.agent-handoff/turns/E3-B-FIX-001-codex-verifier-hardening.md`.
+Codex updated `.gitignore` to keep `.agent-handoff/local/` and add
+repo-level ignores for `.DS_Store` and `.claude/worktrees/`. Codex
+updated `.agent-handoff/src/trust-bootstrap.mjs` so `verify` emits a
+top-level `ok`, aggregates registry, events, possession proof, hash
+chain, parent link, prior trust link, and final registry links, and
+exits nonzero when any critical check fails. Event verification now
+checks that each accepted event filename's leading 16-digit sequence
+prefix matches the envelope `sequence`, and folds filename hash and
+filename sequence into the event `ok`.
+
+Verification: `node --check .agent-handoff/src/trust-bootstrap.mjs`
+passed; `node .agent-handoff/src/trust-bootstrap.mjs verify` exited 0
+with top-level `ok: true`; a scratch copy under
+`/private/tmp/e3-b-fix-001-verify.yLWXZz` with the
+`coordinator.registered` filename prefix changed from
+`0000000000000001` to `0000000000000002` exited 1 with top-level
+`ok: false`, `reason: "filename_sequence_mismatch"`, and
+`filename_sequence_ok: false`. The scratch filename was restored. No
+real signed event/trust/key files were modified, no installs, bridges,
+live transport, cron, webhook, global config changes, commits, pushes,
+PRs, branches, re-bootstrap, key rotation, or E3-D adapter selection
+were performed.
 
 ## Earlier Codex Response
 
@@ -373,22 +403,23 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-B architecture-consultant critique of
-`.agent-handoff/turns/E3-B-codex-trust-bootstrap.md` and the generated
-artifacts/source it names. Focus on secret-safety ordering, private-key
-handling, canonical JSON portability, Ed25519 signature coverage, registry
-snapshot shape, possession-proof byte format, event filenames/hash chain,
-and whether all seven E3-A critique nits were adequately resolved. Stay
-read-only. Do not implement, install dependencies, enable bridges, edit global
-config, commit, push, open a PR, create a branch, rotate keys, delete files,
-or treat any proposed schema/implementation item as approved.
+Perform the E3-B-FIX-001 architecture-consultant critique of
+`.agent-handoff/turns/E3-B-FIX-001-codex-verifier-hardening.md`,
+`.gitignore`, and `.agent-handoff/src/trust-bootstrap.mjs`. Focus on
+whether top-level `verify` ok/fail aggregation, nonzero exit on failed
+critical checks, and filename sequence prefix validation satisfy Sami's tiny
+authorized fix scope without expanding E3-B or starting E3-D. Stay read-only.
+Do not implement, install dependencies, enable bridges, edit global config,
+commit, push, open a PR, create a branch, rotate keys, modify signed
+event/trust/key files, delete files, or treat any proposed
+schema/implementation item as approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-B until Claude's critique is filed and Sami
-explicitly authorizes any next scope.
+None active. Hard stop after E3-B-FIX-001 until Claude's critique is filed
+and Sami explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-B critique.
+action is Claude's E3-B-FIX-001 critique.
