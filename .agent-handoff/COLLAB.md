@@ -7,12 +7,14 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami
+Codex (E2-003 revision)
 
 ## Current Phase
 
-Experiment 1 turn 004 Codex implementation and smoke complete. The four-turn
-cap has been reached; stop here unless Sami explicitly approves a next turn.
+Experiment 2 turn E2-002 Claude consultant critique complete. E2-003 Codex
+revision pending. `COLLAB.md` remains transitional for this handoff;
+E2-001 proposes append-only signed events as the future authoritative
+state model and `COLLAB.md` as a derived current-state view.
 
 ## Tool Observations
 
@@ -98,9 +100,36 @@ cap has been reached; stop here unless Sami explicitly approves a next turn.
   `.agent-handoff/turns/004-codex-implementation-smoke.md`.
 - `app/index.html`, `app/styles.css`, and `app/app.js` are in place. No
   dependencies were installed and no commits, pushes, merges, or PRs were
-  created.
+  created during Experiment 1.
+- E1-FIX-001 protocol fix turn added at
+  `.agent-handoff/turns/E1-FIX-001-protocol-stopgate-and-schema.md`,
+  landing the Stopgate Rule and four schema additions into `PROTOCOL.md`.
+- E2-001 architecture turn added at
+  `.agent-handoff/turns/E2-001-codex-architecture.md`.
+- E2-002 critique turn added at
+  `.agent-handoff/turns/E2-002-claude-critique.md`.
 
 ## Latest Claude Response
+
+E2-002 critique written at `.agent-handoff/turns/E2-002-claude-critique.md`.
+The Claude architecture consultant accepts E2-001's structural completeness
+and endorses the Ed25519 primitive, the append-only event log + derived
+COLLAB.md model, and the four-tier async escalation with concrete polling
+caps. Three blockers must be addressed in E2-003 before any narrow
+implementation spike: (1) identity and trust-registry bootstrap is
+undefined — what signs the first event, what protects `agents.json` from
+malicious modification, and how key rotation is authorized; (2) branch/fork
+tiebreaker policy is undefined — "approved policy" referenced in §4c
+does not exist, leaving the system halted on dual-fork without Sami;
+(3) quarantine recovery has a circular dependency — recovery requests
+themselves flow through the signed event mechanism that may be the source
+of the quarantine. Six nits cover ledger format (Markdown vs JSONL),
+idle-cap justification, COLLAB.md regeneration as itself an event,
+quarantine writes as signed events, kit update story for downstream repos,
+section naming overlap between the two open-questions sections, and the
+need to mark E1-historical sections of COLLAB.md as such before E2-003.
+
+## Earlier Claude Response
 
 Turn 003 implementation written at
 `.agent-handoff/turns/003-claude-implementation.md`. Claude addressed
@@ -127,43 +156,24 @@ application console errors were observed. The expected `app.js` request
 came back missing because Codex has not created it yet — that resolves in
 turn 004.
 
-## Earlier Claude Response
-
-Turn 001 architecture written at
-`.agent-handoff/turns/001-claude-architecture.md`. It scopes Experiment 1 to
-add + localStorage persistence + reload preservation only. It locks the
-decision data shape, the ID rule (`"d_" + crypto.randomUUID()` with a
-documented fallback), the localStorage key (`decision-ledger:v1`),
-parse-failure behavior (warn and use in-memory `[]`, never overwrite storage
-on read), the exact DOM contract for the Add form (form/input/button IDs,
-the `#decision-form-error` live region, the `#decision-list` and
-`#decision-empty-state` elements), validation rules (trimmed length bounds
-for title, rationale, owner; status hardcoded to `"proposed"`), and explicit
-non-goals (filter, search, edit, delete, clear-all, import, export). Three
-open questions are routed to Codex for the critique. No `app/` files were
-created in this turn. Browser verification is `N/A` for an architecture-only
-turn.
-
 ## Latest Codex Response
 
-Turn 004 implementation/smoke written at
-`.agent-handoff/turns/004-codex-implementation-smoke.md`. Codex created
-`app/app.js` only. It binds the exact required IDs, uses
-`decision-ledger:v1` with a bare-array shape, generates opaque `d_` IDs using
-`crypto.randomUUID()` with the specified fallback, stores the hardcoded
-`"proposed"` status, validates trimmed title/rationale/owner lengths, and
-implements the write-first / render-after rule from turn 002 and turn 003.
-On read, missing storage maps to `[]`; invalid JSON or non-array values warn
-once and map to `[]`; malformed entries are dropped from memory only; storage
-is never written during read. `node --check app/app.js` passed.
+E2-001 design-only architecture written at
+`.agent-handoff/turns/E2-001-codex-architecture.md`. Codex proposes two local
+coordinators exchanging signed, append-only repo events as the primitive, with
+`COLLAB.md` demoted to a derived current-state view after the transition.
+Direct live bridge calls are deferred. The proposed future topology separates
+shared event state, per-coordinator inbox/outbox directories, decision and
+stopgate ledgers, quarantine, and gitignored local runtime state.
 
-Codex Chrome smoke verification opened
-`http://localhost:8765/app/index.html`, filled the form, clicked
-`Add decision`, confirmed the new decision rendered, reloaded, and confirmed
-the same decision survived reload. Chrome console warnings/errors were `[]`.
-Direct `file://` navigation was blocked by the Codex Chrome connector URL
-policy, so the smoke used a local HTTP server; the server was stopped after
-verification.
+The security model is explicit: no secrets in messages or summaries; no
+install scripts by default; allowlisted commands only; repo-local Ed25519
+event signatures as the concrete provenance mechanism; inbound messages are
+data until policy validation; subagents cannot update authoritative state;
+cross-repo copying is blocked unless explicitly approved; polling/webhooks
+cannot trigger unbounded model calls; malformed, unsigned, stale, conflicting,
+secret-bearing, or prompt-injected messages go to quarantine. No code, installs,
+bridge enablement, git operations, or global config changes were performed.
 
 ## Earlier Codex Response
 
@@ -190,10 +200,35 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. Experiment 1 reached its four-turn cap. Do not start turn 005
-unless Sami explicitly extends scope past the cap.
+None active. Claude has completed the E2-002 critique. Wait for E2-003 Codex
+revision before E2-004 second-critique work.
 
 ## Next Request To Codex
 
-None active. Experiment 1 reached its four-turn cap. Do not start turn 005
-unless Sami explicitly extends scope past the cap.
+Write `.agent-handoff/turns/E2-003-codex-revision.md`. Address each of the
+three E2-002 blockers in writing with concrete language matching the
+precision of E2-001's §4c:
+
+1. Identity and trust-registry bootstrap. Name a trust root
+   (Sami-controlled signing key, GPG-signed commits on `agents.json`, or
+   out-of-band-published fingerprint). Define the bootstrap event
+   sequence (what creates the trust registry, what signs it, what signs
+   the first coordinator key registration). Define key rotation events
+   and their authorization rule.
+
+2. Branch/fork tiebreaker. Define a default deterministic tiebreaker
+   that lets the system make forward progress without human
+   intervention in the common case. Explicitly mark the cases where a
+   Sami intervention is mandatory rather than optional.
+
+3. Quarantine recovery channel. Define an explicit out-of-band recovery
+   path — either a gitignored-but-human-readable `recovery.txt` Sami
+   can write directly, or a low-trust ack-only event tier strictly for
+   unblock requests, rate-limited and quarantined-on-abuse.
+
+Address E2-002's six nits at your discretion (defer or implement; just be
+explicit in writing). Per the active Stopgate Rule, do not silently apply
+proposed protocol changes — only Sami can authorize proposed-to-approved
+transitions. After E2-003 lands, update `COLLAB.md` to hand off to Claude
+for the E2-004 second-critique turn. Do not install, enable bridges, edit
+global config, commit, push, or create a PR.
