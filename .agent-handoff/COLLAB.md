@@ -11,12 +11,19 @@ Sami (E2 design retrospective and Experiment 3 authorization decision)
 
 ## Current Phase
 
-Experiment 2 four-turn design rhythm complete: E2-001 architecture, E2-002
-critique, E2-003 revision, E2-004 second critique. All three E2-002 blockers
-were cleared by E2-003. The architecture stack stands as proposed protocol
-pending Sami's approval. `COLLAB.md` remains transitional; E2-001 and E2-003
-propose append-only signed events as the future authoritative state model and
-`COLLAB.md` as a derived current-state view.
+Experiment 2 re-scoped after round-3 prior-art consultation. Four-turn design
+rhythm (E2-001 through E2-004) remains valid as filed. E2-005 re-scope
+(2026-05-15) narrows binding E2 to the governance layer only: state model,
+security model, trust bootstrap, fork tiebreaker, recovery channel, sync
+primitives, token/friction budget, portability, open-source packaging.
+E2-001 §3 async tier model is reclassified as exploratory (transport
+choice deferred to Experiment 3 scoping). The "compose, don't replace"
+architecture is the working model: users pick a transport (file-based
+default, AgentBridge for live MCP, CCB for tmux) and a council layer
+(manual paste default, The LLM Council for automated). Our protocol is
+the governance contract under both. Sami's authorization is pending on
+five Experiment 3 sub-decisions enumerated in E2-005 §Decisions.
+`COLLAB.md` remains transitional pending the new state model.
 
 ## Tool Observations
 
@@ -114,37 +121,45 @@ propose append-only signed events as the future authoritative state model and
   `.agent-handoff/turns/E2-003-codex-revision.md`.
 - E2-004 second critique turn added at
   `.agent-handoff/turns/E2-004-claude-second-critique.md`.
+- Round-3 consultation: GPT 5.5 Pro response 003 at
+  `.agent-handoff/consultants/gpt-5.5-pro-response-003.md` and
+  Claude consultant prior-art deeper audit at
+  `.agent-handoff/digests/002-prior-art-audit.md`. Both pushed to
+  `origin/main` in commit `b6e6999`.
+- E2-005 re-scope turn added at
+  `.agent-handoff/turns/E2-005-claude-rescope.md`. Locally
+  uncommitted at filing; awaiting Sami's commit/push authorization.
 
 ## Latest Claude Response
 
-E2-004 second critique written at
-`.agent-handoff/turns/E2-004-claude-second-critique.md`. The Claude
-architecture consultant clears all three E2-002 blockers as resolved by
-E2-003: trust-bootstrap sequence, deterministic fork tiebreaker, and
-out-of-band recovery channel are each defined to the precision required
-for a later narrow implementation spike. The four-turn E2 design rhythm
-is closed. The architecture stack stands as proposed protocol pending
-Sami's approval. Recommendations for Sami's decision: add a Sami root
-public-key fingerprint pin to PROTOCOL.md (or sibling TRUST.md) for
-human-visible defense in depth; if Experiment 3 is authorized, scope it
-to trust bootstrap only (root key import, signed
-`trust.registry.initialized` event, single coordinator registration with
-possession proof); decide where Sami's root private key lives and how
-it is backed up before Experiment 3 begins; resolve the open-source
-audience question (single-developer per-repo Sami key vs organization
-signing key). Six small nits remain, all suitable for Experiment 3
-scoping. No blockers.
+E2-005 re-scope written at `.agent-handoff/turns/E2-005-claude-rescope.md`
+after round-3 prior-art consultation surfaced significant overlap with
+existing open-source projects (AgentBridge for Claude↔Codex MCP transport;
+The LLM Council for multi-model adversarial council; CCB for tmux-based
+multi-agent CLI teams). Forward, binding E2 architecture is narrowed to
+the governance layer only: append-only signed event log, derived COLLAB.md,
+seven-section security model, Sami-controlled Ed25519 trust bootstrap with
+root-signed registry and coordinator possession proofs, lowest-event-hash
+benign-fork tiebreaker with Sami-mandatory exception list, gitignored
+recovery.txt channel, sync primitives, token/friction budget, portability,
+open-source packaging. E2-001 §3 async tier model (inbox/outbox, cron,
+webhooks) is reclassified exploratory and deferred to Experiment 3
+transport selection. Council layer (manual paste vs The LLM Council)
+also deferred. Experiment 3 is now scoped to: (1) license inspection on
+CCB and Claude Squad, (2) transport choice between file-based default and
+a live transport, (3) trust-bootstrap-only implementation spike. None of
+the audited candidates implement signed events, the Stopgate Rule, or
+append-only auditable governance — that is genuinely our unique value.
+Five Experiment 3 sub-decisions await Sami's authorization.
 
 ## Earlier Claude Response
 
-E2-002 critique written at `.agent-handoff/turns/E2-002-claude-critique.md`.
-The Claude architecture consultant accepted E2-001's structural completeness
-and endorsed the Ed25519 primitive, the append-only event log + derived
-COLLAB.md model, and the four-tier async escalation with concrete polling
-caps. Three blockers required E2-003 revision: (1) identity and
-trust-registry bootstrap was undefined; (2) branch/fork tiebreaker policy
-was undefined; (3) quarantine recovery had a circular dependency. All three
-were resolved in E2-003.
+E2-004 second critique written at
+`.agent-handoff/turns/E2-004-claude-second-critique.md`. The Claude
+architecture consultant cleared all three E2-002 blockers as resolved
+by E2-003 and closed the four-turn E2 design rhythm. Architecture
+stack stood as proposed protocol pending Sami's approval — superseded
+in scope by E2-005 re-scope after round-3 prior-art findings.
 
 ## Latest Codex Response
 
