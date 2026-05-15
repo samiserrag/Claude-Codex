@@ -7,27 +7,41 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (Experiment 3 authorization decision)
+Codex (E3-A design-only event-envelope schema/spec turn, authorized by Sami
+on 2026-05-15)
 
 ## Current Phase
 
-E2-008 Codex acceptance filed (2026-05-15). Codex accepts E2-007 as
-adequately addressing all three E2-006 blockers. Forward interpretation:
-- File-based Tier 0 (manual handoff) and Tier 1 (inbox/outbox) restored as
-  the binding canonical reference transport. Cron, webhooks, AgentBridge,
-  CCB, tmux variants, official Codex plugin, and `codex mcp-server` are
-  exploratory opt-in adapters that must satisfy the same governance
-  contract.
-- Experiment 3 reordered: E3-A event-envelope schema/spec (design only),
-  then E3-B trust-bootstrap implementation against the binding reference
-  path only, with E3-C adapter evaluation (read-only) running in parallel,
-  followed by E3-D Sami adapter selection.
-- The LLM Council adoption moved out of Experiment 3 entirely; becomes a
-  separate future council experiment.
-No E2-006 critique blockers remain. Experiment 3 is not authorized by this
-acceptance; Sami must explicitly authorize E3-A or any later E3 work under
-the active Stopgate Rule. `COLLAB.md` remains transitional pending the new
-state model.
+Experiment 3 E3-A authorized by Sami on 2026-05-15. Explicit authorization
+text recorded in this COLLAB.md entry and the consultation thread:
+
+  "Run E3-A as a design-only event-envelope schema/spec turn. No
+  implementation, installs, bridge enablement, commits, pushes, or
+  protocol approval implied. Also include official Codex plugin and
+  codex mcp-server in the read-only adapter/security inspection queue."
+
+E3-A scope: define canonical event envelope, serialization rules, signature
+coverage, trust-registry snapshot shape, file naming convention, quarantine
+rules, minimal fixtures, and pass/fail acceptance checks. Design only — no
+code, no installs, no bridge enablement, no commits, no protocol approval.
+
+Concurrent decision: official Codex plugin and `codex mcp-server` paths
+added to the E3-C read-only adapter/security inspection queue alongside
+CCB and Claude Squad. Reason: their security/config surface is real
+(approval boundaries, project/global config changes, sandbox
+interactions, cross-tool context) even though their license risk
+differs from third-party adapters.
+
+Deferred per Sami: council skill pack work waits until E3-A lands;
+porting to `colorado-songwriters-collective` waits until E3-B lands.
+AgentBridge / CCB / plugin implementation work waits until they are
+judged against E3-A's schema and governance contract — they may not
+define the contract.
+
+(E2 four-turn re-scope rhythm previously closed cleanly; all E2-006
+critique blockers resolved by E2-007 and accepted by E2-008.)
+
+`COLLAB.md` remains transitional pending the new state model.
 
 ## Tool Observations
 
