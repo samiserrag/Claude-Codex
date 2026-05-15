@@ -1,1 +1,3 @@
 .agent-handoff/local/
+.DS_Store
+.claude/worktrees/

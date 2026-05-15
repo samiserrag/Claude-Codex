@@ -33,6 +33,7 @@ const CONFIG = {
   codexPrivateKeyPath: repoPath('.agent-handoff/local/keys/codex.ed25519'),
   registryPath: repoPath('.agent-handoff/trust/agents.json'),
   possessionProofPath: repoPath('.agent-handoff/trust/possession-proofs/codex.ed25519.proof.json'),
+  eventsDir: repoPath('.agent-handoff/events'),
   rootEventsDir: repoPath('.agent-handoff/events/sami-root'),
 };
 
@@ -731,19 +732,68 @@ function bootstrap() {
   };
 }
 
-function listRootEventFiles() {
-  if (!fs.existsSync(CONFIG.rootEventsDir)) {
-    throw new Error(`Missing root events dir: ${repoRel(CONFIG.rootEventsDir)}`);
+function listEventFiles() {
+  if (!fs.existsSync(CONFIG.eventsDir)) {
+    throw new Error(`Missing events dir: ${repoRel(CONFIG.eventsDir)}`);
   }
-  return fs.readdirSync(CONFIG.rootEventsDir)
-    .filter((name) => name.endsWith('.json'))
-    .sort()
-    .map((name) => path.join(CONFIG.rootEventsDir, name));
+  const eventFiles = [];
+  for (const coordinatorDir of fs.readdirSync(CONFIG.eventsDir, { withFileTypes: true })) {
+    if (!coordinatorDir.isDirectory()) {
+      continue;
+    }
+    const coordinatorPath = path.join(CONFIG.eventsDir, coordinatorDir.name);
+    const coordinatorEventFiles = fs.readdirSync(coordinatorPath)
+      .filter((name) => name.endsWith('.json'))
+      .map((name) => path.join(coordinatorPath, name));
+    eventFiles.push(...coordinatorEventFiles);
+  }
+  return eventFiles.sort((left, right) => repoRel(left).localeCompare(repoRel(right)));
 }
 
 function verifyFilenameHash(filePath, computedHash) {
   const fileName = path.basename(filePath);
   return fileName.endsWith(`-${computedHash}.json`);
+}
+
+function verifyFilenameSequence(filePath, envelopeSequence) {
+  const fileName = path.basename(filePath);
+  const match = /^([0-9]{16})-[0-9a-f]{64}\.json$/u.exec(fileName);
+  const expectedPrefix = Number.isSafeInteger(envelopeSequence) && envelopeSequence >= 0
+    ? String(envelopeSequence).padStart(16, '0')
+    : null;
+  return {
+    ok: match !== null && expectedPrefix !== null && BigInt(match[1]) === BigInt(envelopeSequence),
+    filename_sequence_prefix: match?.[1] ?? null,
+    expected_sequence_prefix: expectedPrefix,
+    envelope_sequence: envelopeSequence,
+  };
+}
+
+function publicKeyForEvent(event, registry, rootRawPublicKey) {
+  if (event.signing_key_id === registry.root_key_id || event.author_role === 'root') {
+    return { ok: true, rawPublicKey: rootRawPublicKey };
+  }
+  const coordinatorRecord = registry.active_coordinators.find((record) => (
+    record.coordinator_id === event.coordinator_id
+    && record.public_key_id === event.signing_key_id
+  ));
+  if (!coordinatorRecord) {
+    return { ok: false, reason: 'unknown_signing_key' };
+  }
+  return { ok: true, rawPublicKey: base64urlDecode(coordinatorRecord.public_key) };
+}
+
+function eventResultReason(signatureResult, filenameHashOk, filenameSequenceOk) {
+  if (!signatureResult.ok) {
+    return signatureResult.reason;
+  }
+  if (!filenameHashOk) {
+    return 'filename_hash_mismatch';
+  }
+  if (!filenameSequenceOk) {
+    return 'filename_sequence_mismatch';
+  }
+  return 'ok';
 }
 
 function verifyChain() {
@@ -758,20 +808,30 @@ function verifyChain() {
   const proof = readJsonStrict(CONFIG.possessionProofPath);
   const proofResult = verifyPossessionProof(proof);
   const eventResults = {};
-  const eventFiles = listRootEventFiles();
+  const eventFiles = listEventFiles();
   let initEvent;
   let initEventFile;
   let registeredEvent;
   let registeredEventFile;
   for (const filePath of eventFiles) {
     const event = readJsonStrict(filePath);
-    const result = verifyEvent(event, rootRawPublicKey);
+    const signer = publicKeyForEvent(event, registry, rootRawPublicKey);
+    const result = signer.ok
+      ? verifyEvent(event, signer.rawPublicKey)
+      : { ok: false, reason: signer.reason, eventHash: eventHash(event) };
     const filenameHashOk = result.ok && verifyFilenameHash(filePath, result.eventHash);
+    const filenameSequence = verifyFilenameSequence(filePath, event.sequence);
+    const eventOk = result.ok && filenameHashOk && filenameSequence.ok;
     eventResults[event.event_kind] = {
-      ok: result.ok,
-      reason: result.reason,
+      ok: eventOk,
+      reason: eventResultReason(result, filenameHashOk, filenameSequence.ok),
+      signature_ok: result.ok,
       event_hash: result.eventHash,
       filename_hash_ok: filenameHashOk,
+      filename_sequence_ok: filenameSequence.ok,
+      filename_sequence_prefix: filenameSequence.filename_sequence_prefix,
+      expected_sequence_prefix: filenameSequence.expected_sequence_prefix,
+      envelope_sequence: filenameSequence.envelope_sequence,
       path: repoRel(filePath),
     };
     if (event.event_kind === 'trust.registry.initialized') {
@@ -795,11 +855,27 @@ function verifyChain() {
   const priorTrustOk = registeredEvent.payload.prior_trust_event_hash === initHash;
   const registryAcceptedTrustOk = registry.accepted_trust_event_hash === registeredHash;
   const registryCoordinatorEventOk = codexRecord.registered_event_hash === registeredHash;
+  const possessionProofOk = proofResult.ok
+    && proofHashMatchesEvent
+    && proofPublicKeyMatchesRegistry
+    && proofHashMatchesVerification;
+  const finalRegistryLinksOk = registryAcceptedTrustOk && registryCoordinatorEventOk;
+  const eventsOk = Object.values(eventResults).every((result) => result.ok);
+  const verificationOk = registryResult.ok
+    && eventsOk
+    && possessionProofOk
+    && hashChainOk
+    && parentOk
+    && priorTrustOk
+    && finalRegistryLinksOk;
   return {
+    ok: verificationOk,
     registry: registryResult,
     events: eventResults,
     possession_proof: {
       ...proofResult,
+      ok: possessionProofOk,
+      signature_ok: proofResult.ok,
       proof_hash_matches_event: proofHashMatchesEvent,
       proof_public_key_matches_registry: proofPublicKeyMatchesRegistry,
       proof_hash_matches_verification: proofHashMatchesVerification,
@@ -820,6 +896,7 @@ function verifyChain() {
       expected_prior_trust_event_hash: initHash,
     },
     final_registry_links: {
+      ok: finalRegistryLinksOk,
       accepted_trust_event_hash_ok: registryAcceptedTrustOk,
       registered_event_hash_ok: registryCoordinatorEventOk,
     },
@@ -876,7 +953,11 @@ function main() {
     return;
   }
   if (command === 'verify') {
-    printResult({ command: 'verify', verification: verifyChain() });
+    const verification = verifyChain();
+    printResult({ command: 'verify', ok: verification.ok, verification });
+    if (!verification.ok) {
+      process.exit(1);
+    }
     return;
   }
   throw new Error(`Unknown command: ${command}`);
