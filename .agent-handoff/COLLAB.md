@@ -7,17 +7,54 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-B authorization decision after E3-A critique)
+Codex (E3-B trust-bootstrap implementation spike, authorized by Sami
+on 2026-05-15; concurrently authorized: E3-C read-only adapter
+inspection)
 
 ## Current Phase
 
-E3-A Claude consultant critique filed (2026-05-15). Zero blockers.
-Seven nits flagged for E3-B consideration: time skew window default,
-integer-only-numbers rule scope for payloads, `recipient_coordinator_ids`
-broadcast semantics, `possession_proof_hash` byte format,
-replay-vs-import nonce semantics, branch/force-push policy,
-prompt-injection minimum baseline. E3-A is acceptable to proceed to
-E3-B implementation once Sami authorizes.
+E3-B authorized by Sami on 2026-05-15 as a trust-bootstrap-only
+implementation spike. Explicit authorization text recorded in this
+COLLAB.md entry and the consultation thread:
+
+  "Approved: run E3-B as a trust-bootstrap-only implementation spike.
+  Scope:
+  - File-based reference path only.
+  - No live transport, cron, webhook, plugin, MCP bridge, installs,
+    global config changes, commits, pushes, PRs, or branches.
+  - First add/verify secret-safety protection: create or update
+    .gitignore only as needed so .agent-handoff/local/ is ignored.
+  - Before creating/importing any private key, verify:
+    git check-ignore .agent-handoff/local/keys/sami-root.ed25519
+  - Use a single-developer per-repo Sami root key for this prototype.
+  - Private key path: .agent-handoff/local/keys/sami-root.ed25519,
+    untracked and ignored.
+  - Public trust material may be written under .agent-handoff/trust/
+    and signed events under .agent-handoff/events/.
+  - Address all seven E3-A critique nits in the E3-B turn note.
+  - Hard stop after E3-B and hand off to Claude for critique."
+
+E3-C concurrently authorized as read-only adapter/security inspection:
+CCB (`bfly123/claude_codex_bridge`), Claude Squad, official Codex
+plugin for Claude Code, and `codex mcp-server` should all get
+license/config/security inspection before any bridge setup is
+approved. E3-C must stay read-only and must not block E3-B.
+
+Critical local finding noted by Sami: this repo currently has no
+`.gitignore`. Step zero of E3-B is creating/updating `.gitignore` and
+verifying via `git check-ignore` before any private key is generated.
+
+Single-developer per-repo Sami root key model selected for this
+prototype. Org/team signing path deferred to a later design.
+
+Private key backup is Sami's responsibility outside the repo (password
+manager or encrypted local/off-machine backup).
+
+Seven E3-A critique nits to address in E3-B's turn note: time skew
+window default, integer-only-numbers rule scope for payloads,
+`recipient_coordinator_ids` broadcast semantics, `possession_proof_hash`
+byte format, replay-vs-import nonce semantics, branch/force-push
+policy, prompt-injection minimum baseline.
 
 E3-A schema is endorsed: JCS-narrowed canonical JSON, Ed25519
 signatures, SHA-256 hashing, UUIDv7 opaque event ids, integer-only
@@ -60,9 +97,13 @@ critique blockers resolved by E2-007 and accepted by E2-008.)
 
 `COLLAB.md` remains transitional pending the new state model.
 
-Hard stop: wait for Sami's explicit E3-B authorization before any E3-B
-implementation, adapter evaluation, protocol approval, or further E3 work.
-Per the active Stopgate Rule, no agent moves to E3-B without it.
+Hard stop: E3-B and E3-C are authorized as scoped above. Codex is the
+authoring agent for both (mirroring E2-001/E2-003/E3-A). Claude
+consultant is the next critique agent for both. No bridge enablement,
+installs, commits, pushes, PRs, branches, global config changes, or
+proposed-to-approved transitions in either turn — E3-B writes
+implementation files within scope; E3-C writes a read-only inspection
+turn note only.
 
 ## Tool Observations
 
