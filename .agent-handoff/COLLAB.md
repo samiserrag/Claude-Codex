@@ -7,9 +7,54 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-B acceptance + E3-C critique authorization decision)
+Sami (E3-B-FIX-001 paste-and-run decision + E3-D adapter selection scope decision)
 
 ## Current Phase
+
+Sami's three authorizations on 2026-05-15:
+
+  "Approved:
+  - Accept E3-B as a successful trust-bootstrap implementation spike,
+    without approving broader protocol or adapter work.
+  - Authorize Claude consultant E3-C critique as read-only critique
+    only.
+  - Authorize a tiny E3-B-FIX-001 housekeeping/verifier-hardening
+    turn: update .gitignore for .DS_Store and .claude/worktrees/,
+    add top-level verify ok/fail semantics with nonzero exit on
+    failed critical checks, and check event filename sequence
+    prefixes. No installs, bridges, global config changes, commits,
+    pushes, PRs, or E3-D adapter selection unless separately
+    approved."
+
+E3-B accepted as successful spike (not protocol-wide approval).
+
+E3-C Claude consultant critique filed (2026-05-15) per Sami's
+authorization. Zero blockers. E3-C verdicts endorsed: AGPL on CCB and
+Claude Squad → "borrow pattern only"; Apache on the official Codex
+plugin and `codex mcp-server` → "wrap" with concrete wrapper
+requirements. Codex's three blockers correctly framed as E3-D
+preconditions, not E3-C blockers. Five small nits (license pinning,
+Stop-hook isolation, NOTICE handling, wrap-verdict-type
+disambiguation, CCB ownership-transfer follow-up).
+
+Codex's open question on first transport experiment answered: when
+E3-D becomes scope, recommend a tightly bounded direct-MCP allow-list
+(thread.start, thread.continue, turn.start, turn.read, turn.cancel,
+status.read only — block all filesystem/command/config/account/process
+methods until proven necessary).
+
+E3-B-FIX-001 housekeeping/verifier-hardening turn authorized by Sami.
+Scope: expand .gitignore (.DS_Store, .claude/worktrees/), add
+top-level verify ok/fail aggregation with nonzero exit on failed
+critical checks, check event filename sequence prefix matches
+envelope sequence, optional refusal-to-overwrite self-test fixture.
+Codex is the authoring agent (mirrors E3-B authorship). Claude
+consultant is the next critique agent.
+
+E3-D adapter selection scope is NOT authorized. It depends on:
+- E3-B-FIX-001 landing (verifier hardening)
+- E3-C critique landing (just filed)
+- Sami's per-adapter approval per scoped sub-experiment
 
 E3-B Claude consultant critique filed (2026-05-15). Zero blockers.
 Independent verification by the consultant passed across all checks:
