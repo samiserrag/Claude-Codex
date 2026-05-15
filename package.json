@@ -1,0 +1,9 @@
+{
+  "name": "claude-codex-collab-test",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Two-way Claude Code and Codex collaboration workflow testbed.",
+  "scripts": {
+    "test": "node scripts/check-collab.mjs"
+  }
+}
