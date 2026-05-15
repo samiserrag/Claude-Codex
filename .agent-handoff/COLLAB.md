@@ -7,14 +7,16 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E2-003 revision)
+Sami (E2 design retrospective and Experiment 3 authorization decision)
 
 ## Current Phase
 
-Experiment 2 turn E2-002 Claude consultant critique complete. E2-003 Codex
-revision pending. `COLLAB.md` remains transitional for this handoff;
-E2-001 proposes append-only signed events as the future authoritative
-state model and `COLLAB.md` as a derived current-state view.
+Experiment 2 four-turn design rhythm complete: E2-001 architecture, E2-002
+critique, E2-003 revision, E2-004 second critique. All three E2-002 blockers
+were cleared by E2-003. The architecture stack stands as proposed protocol
+pending Sami's approval. `COLLAB.md` remains transitional; E2-001 and E2-003
+propose append-only signed events as the future authoritative state model and
+`COLLAB.md` as a derived current-state view.
 
 ## Tool Observations
 
@@ -42,7 +44,7 @@ state model and `COLLAB.md` as a derived current-state view.
 - GitHub repository verified as `samiserrag/Claude-Codex`, private, default
   branch `main`.
 
-## Hard Constraints / Approval Stopgates
+## E1 Historical Constraints / Still-Active Approval Stopgates
 
 - Do not install dependencies without Sami's explicit approval.
 - Do not commit, push, merge, or create a PR without Sami's explicit approval.
@@ -50,7 +52,7 @@ state model and `COLLAB.md` as a derived current-state view.
 - Do not modify global Claude/Codex config without Sami's explicit approval.
 - Stop after the four Experiment 1 turn notes unless Sami says to continue.
 
-## Decisions Made
+## E1 Historical Decisions Made
 
 - Use repo files as the source of truth for collaboration state.
 - Use a no-dependency static web app as the sample project.
@@ -65,7 +67,7 @@ state model and `COLLAB.md` as a derived current-state view.
   Codex and Claude in Chrome MCP for Claude Code.
 - Use Ubicloud for GitHub Actions CI via `runs-on: ubicloud-standard-2`.
 
-## Considered And Rejected
+## E1 Historical Considered And Rejected
 
 - Rejected a dependency-heavy app because setup noise would obscure the workflow
   test.
@@ -76,7 +78,7 @@ state model and `COLLAB.md` as a derived current-state view.
 - Rejected implementing the full Decision Ledger feature list in Experiment 1
   because scope noise would obscure whether the collaboration loop works.
 
-## Proposed File Ownership
+## E1 Historical Proposed File Ownership
 
 - Claude owns turn 001 architecture, `app/index.html`, and first-pass
   `app/styles.css`.
@@ -108,72 +110,73 @@ state model and `COLLAB.md` as a derived current-state view.
   `.agent-handoff/turns/E2-001-codex-architecture.md`.
 - E2-002 critique turn added at
   `.agent-handoff/turns/E2-002-claude-critique.md`.
+- E2-003 revision turn added at
+  `.agent-handoff/turns/E2-003-codex-revision.md`.
+- E2-004 second critique turn added at
+  `.agent-handoff/turns/E2-004-claude-second-critique.md`.
 
 ## Latest Claude Response
 
-E2-002 critique written at `.agent-handoff/turns/E2-002-claude-critique.md`.
-The Claude architecture consultant accepts E2-001's structural completeness
-and endorses the Ed25519 primitive, the append-only event log + derived
-COLLAB.md model, and the four-tier async escalation with concrete polling
-caps. Three blockers must be addressed in E2-003 before any narrow
-implementation spike: (1) identity and trust-registry bootstrap is
-undefined — what signs the first event, what protects `agents.json` from
-malicious modification, and how key rotation is authorized; (2) branch/fork
-tiebreaker policy is undefined — "approved policy" referenced in §4c
-does not exist, leaving the system halted on dual-fork without Sami;
-(3) quarantine recovery has a circular dependency — recovery requests
-themselves flow through the signed event mechanism that may be the source
-of the quarantine. Six nits cover ledger format (Markdown vs JSONL),
-idle-cap justification, COLLAB.md regeneration as itself an event,
-quarantine writes as signed events, kit update story for downstream repos,
-section naming overlap between the two open-questions sections, and the
-need to mark E1-historical sections of COLLAB.md as such before E2-003.
+E2-004 second critique written at
+`.agent-handoff/turns/E2-004-claude-second-critique.md`. The Claude
+architecture consultant clears all three E2-002 blockers as resolved by
+E2-003: trust-bootstrap sequence, deterministic fork tiebreaker, and
+out-of-band recovery channel are each defined to the precision required
+for a later narrow implementation spike. The four-turn E2 design rhythm
+is closed. The architecture stack stands as proposed protocol pending
+Sami's approval. Recommendations for Sami's decision: add a Sami root
+public-key fingerprint pin to PROTOCOL.md (or sibling TRUST.md) for
+human-visible defense in depth; if Experiment 3 is authorized, scope it
+to trust bootstrap only (root key import, signed
+`trust.registry.initialized` event, single coordinator registration with
+possession proof); decide where Sami's root private key lives and how
+it is backed up before Experiment 3 begins; resolve the open-source
+audience question (single-developer per-repo Sami key vs organization
+signing key). Six small nits remain, all suitable for Experiment 3
+scoping. No blockers.
 
 ## Earlier Claude Response
 
-Turn 003 implementation written at
-`.agent-handoff/turns/003-claude-implementation.md`. Claude addressed
-Codex's single blocker on write-failure semantics with a binding rule for
-turn 004: build a candidate decision and candidate list in memory, attempt
-`localStorage.setItem` first, and only render/clear/focus after a
-successful write. On `setItem` failure: keep the previous in-memory list
-untouched, leave the form values in place, and show a visible message in
-`#decision-form-error`. Created `app/index.html` and `app/styles.css` with
-the exact turn 001 DOM IDs and attributes, real `<label for>` elements for
-each of `#decision-title`, `#decision-rationale`, `#decision-owner`,
-`aria-describedby="decision-form-error"` on all three inputs, an empty-by-
-default `#decision-form-error` that switches to a red error panel as soon
-as text is set, an empty-by-default `#decision-list`, an
-`#decision-empty-state` that hides via a CSS sibling fallback the instant
-a list item is appended, and `<script src="app.js" defer></script>` so
-Codex can land turn 004 without editing `index.html`. Browser verification
-was done with Claude in Chrome MCP against
-`http://localhost:8765/app/index.html` (Python http.server was used because
-the Chrome MCP refuses `file://` URLs; the server was stopped at the end
-of the turn). All eight required IDs verified present, all required
-attributes verified, error panel and empty-state toggles verified, and no
-application console errors were observed. The expected `app.js` request
-came back missing because Codex has not created it yet — that resolves in
-turn 004.
+E2-002 critique written at `.agent-handoff/turns/E2-002-claude-critique.md`.
+The Claude architecture consultant accepted E2-001's structural completeness
+and endorsed the Ed25519 primitive, the append-only event log + derived
+COLLAB.md model, and the four-tier async escalation with concrete polling
+caps. Three blockers required E2-003 revision: (1) identity and
+trust-registry bootstrap was undefined; (2) branch/fork tiebreaker policy
+was undefined; (3) quarantine recovery had a circular dependency. All three
+were resolved in E2-003.
 
 ## Latest Codex Response
 
-E2-001 design-only architecture written at
-`.agent-handoff/turns/E2-001-codex-architecture.md`. Codex proposes two local
-coordinators exchanging signed, append-only repo events as the primitive, with
-`COLLAB.md` demoted to a derived current-state view after the transition.
-Direct live bridge calls are deferred. The proposed future topology separates
-shared event state, per-coordinator inbox/outbox directories, decision and
-stopgate ledgers, quarantine, and gitignored local runtime state.
+E2-003 design-only revision written at
+`.agent-handoff/turns/E2-003-codex-revision.md`. Codex revised E2-001 in
+response to the three E2-002 blockers. The proposed trust root is a
+Sami-controlled Ed25519 root signing key; the first accepted event is a
+root-signed `trust.registry.initialized` genesis event; first coordinator key
+registrations are root-signed and coordinator-counter-signed; normal rotation
+requires old key, new key, and root signatures; emergency rotation requires
+the out-of-band recovery channel plus root-signed revocation and replacement.
 
-The security model is explicit: no secrets in messages or summaries; no
-install scripts by default; allowlisted commands only; repo-local Ed25519
-event signatures as the concrete provenance mechanism; inbound messages are
-data until policy validation; subagents cannot update authoritative state;
-cross-repo copying is blocked unless explicitly approved; polling/webhooks
-cannot trigger unbounded model calls; malformed, unsigned, stale, conflicting,
-secret-bearing, or prompt-injected messages go to quarantine. No code, installs,
-bridge enablement, git operations, or global config changes were performed.
+The proposed branch/fork default tiebreaker is lowest event hash wins, limited
+to benign same-coordinator forks that do not touch trust, stopgates, security,
+secrets, bridge enablement, global config, git operations, deletion, or
+human-only approvals. Sami intervention remains mandatory for trust/key
+changes, proposed-to-approved transitions, stopgate changes, security
+incidents, suspected compromise, prompt injection, hash collision, repo
+identity mismatch, non-ancestor branch lineage, repeated fork storms, and all
+Stopgate Rule actions.
+
+The proposed quarantine recovery channel is
+`.agent-handoff/local/recovery/recovery.txt`: gitignored, human-writable,
+low-trust, strict `RECOVERY v1` key/value format, and non-authorizing. Abuse
+of the recovery channel is itself quarantined or paused for Sami inspection.
+All E2-002 nit bullets were addressed in writing, including JSONL ledgers with
+generated Markdown views, configurable idle-token cap rationale, signed
+`COLLAB.md` regeneration events, signed quarantine mutations, downstream kit
+update rules, section naming cleanup, and E1 historical labels in this
+`COLLAB.md` update. No code, installs, bridge enablement, git operations,
+global config changes, trust files, keys, directories, or automation were
+created.
 
 ## Earlier Codex Response
 
@@ -200,35 +203,16 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. Claude has completed the E2-002 critique. Wait for E2-003 Codex
-revision before E2-004 second-critique work.
+None active. The four-turn E2 design rhythm is complete. Claude waits
+for Sami's authorization decision before any further turn.
 
 ## Next Request To Codex
 
-Write `.agent-handoff/turns/E2-003-codex-revision.md`. Address each of the
-three E2-002 blockers in writing with concrete language matching the
-precision of E2-001's §4c:
+None active. The four-turn E2 design rhythm is complete. Codex waits
+for Sami's authorization decision before any further turn.
 
-1. Identity and trust-registry bootstrap. Name a trust root
-   (Sami-controlled signing key, GPG-signed commits on `agents.json`, or
-   out-of-band-published fingerprint). Define the bootstrap event
-   sequence (what creates the trust registry, what signs it, what signs
-   the first coordinator key registration). Define key rotation events
-   and their authorization rule.
+## Original Hard-Stop Note
 
-2. Branch/fork tiebreaker. Define a default deterministic tiebreaker
-   that lets the system make forward progress without human
-   intervention in the common case. Explicitly mark the cases where a
-   Sami intervention is mandatory rather than optional.
-
-3. Quarantine recovery channel. Define an explicit out-of-band recovery
-   path — either a gitignored-but-human-readable `recovery.txt` Sami
-   can write directly, or a low-trust ack-only event tier strictly for
-   unblock requests, rate-limited and quarantined-on-abuse.
-
-Address E2-002's six nits at your discretion (defer or implement; just be
-explicit in writing). Per the active Stopgate Rule, do not silently apply
-proposed protocol changes — only Sami can authorize proposed-to-approved
-transitions. After E2-003 lands, update `COLLAB.md` to hand off to Claude
-for the E2-004 second-critique turn. Do not install, enable bridges, edit
-global config, commit, push, or create a PR.
+(Preserved from E2-003 handoff for traceability.) Hard stop after E2-003;
+wait for Claude's E2-004 second critique
+before any further Codex work.
