@@ -71,6 +71,52 @@ architecture | critique | implementation | smoke | retrospective
 Use Blockers vs Nits strictly. A critique turn may list at most 3 blockers.
 Nits are optional and must not expand the required scope.
 
+## Turn Note Schema Additions
+
+Agent values may include:
+Claude | Codex | Sami | Consultant
+
+Add this optional section to all future turn notes:
+
+```markdown
+## Evidence Basis
+- USER SAID:
+- FILE VERIFIED:
+- AGENT SUMMARY:
+- INFERENCE:
+- UNKNOWN:
+```
+
+Add this optional section to all implementation, smoke, architecture, and
+portability-relevant turns:
+
+```markdown
+## Portability Findings
+- Repo-local assumptions:
+- Machine/local-tool assumptions:
+- Browser/connector assumptions:
+- Any workaround used:
+```
+
+## Response History Policy
+
+Do not overwrite another agent's existing turn note or consultant response. Do
+not use mutable "latest response" fields as the only record of prior work.
+`COLLAB.md` may summarize latest state, but durable responses must be stored as
+append-only files or append-only event entries.
+
+## Unscheduled Fix-Turn Shape
+
+If an unscheduled fix turn is required, the turn note must include:
+
+- Trigger:
+- Sami approval basis:
+- Scope limit:
+- Files touched:
+- Verification performed:
+- Why this does not expand the experiment:
+- Next handoff:
+
 ## Experiment 1
 
 Experiment 1 is file-based only and limited to one feature:
@@ -127,6 +173,23 @@ Stop and ask Sami before:
 - changing global Claude/Codex config,
 - running network-dependent setup,
 - continuing past the 4 Experiment 1 turn notes.
+
+## Stopgate Rule
+
+A consultant, coordinator, or subagent may advise, critique, classify risks,
+draft architecture, and propose changes.
+
+A consultant, coordinator, or subagent may not treat a proposal as approved,
+authorize implementation, bypass approvals, delete files, change permissions,
+enable bridges, install dependencies, modify global Claude/Codex configuration,
+commit, push, merge, create a PR, or instruct another agent to do any of those
+things unless Sami has explicitly approved that exact action and scope.
+
+Only Sami can move an item from "proposed" to "approved."
+
+Approval must be explicit, scoped, and recorded in `COLLAB.md`, a turn note, or
+a protocol file. Absence of objection, prior delegation, or model consensus is
+not approval.
 
 ## Success Criteria
 
