@@ -7,32 +7,40 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-B trust-bootstrap implementation spike, authorized by Sami
-on 2026-05-15; concurrently authorized: E3-C read-only adapter
-inspection)
+Sami (E3-B acceptance + E3-C critique authorization decision)
 
 ## Current Phase
 
-E3-B authorized by Sami on 2026-05-15 as a trust-bootstrap-only
-implementation spike. Explicit authorization text recorded in this
-COLLAB.md entry and the consultation thread:
+E3-B Claude consultant critique filed (2026-05-15). Zero blockers.
+Independent verification by the consultant passed across all checks:
+`.gitignore` contains exactly `.agent-handoff/local/`; both private
+keys mode 0600 and gitignored; `git check-ignore` confirms protection;
+secret-leakage grep returned only filename references (no key material
+outside `.agent-handoff/local/`); `node trust-bootstrap.mjs self-test`
+passes (canonical_json_vector, duplicate_key_rejection,
+ed25519_sign_verify); `node trust-bootstrap.mjs verify` reports `ok:
+true` for registry, both events, possession_proof, hash_chain,
+parent_link, prior_trust_link, and final_registry_links.
 
-  "Approved: run E3-B as a trust-bootstrap-only implementation spike.
-  Scope:
-  - File-based reference path only.
-  - No live transport, cron, webhook, plugin, MCP bridge, installs,
-    global config changes, commits, pushes, PRs, or branches.
-  - First add/verify secret-safety protection: create or update
-    .gitignore only as needed so .agent-handoff/local/ is ignored.
-  - Before creating/importing any private key, verify:
-    git check-ignore .agent-handoff/local/keys/sami-root.ed25519
-  - Use a single-developer per-repo Sami root key for this prototype.
-  - Private key path: .agent-handoff/local/keys/sami-root.ed25519,
-    untracked and ignored.
-  - Public trust material may be written under .agent-handoff/trust/
-    and signed events under .agent-handoff/events/.
-  - Address all seven E3-A critique nits in the E3-B turn note.
-  - Hard stop after E3-B and hand off to Claude for critique."
+Five small nits flagged for optional future housekeeping: expand
+`.gitignore` to add `.DS_Store` and `.claude/worktrees/`; future split
+of `trust-bootstrap.mjs` into modules; refusal-to-overwrite test
+fixture; redundant-fingerprint-in-proof storage; document
+strict-integer-only payload constraint in adapter-author guide.
+
+E3-C concurrently filed by Codex at
+`.agent-handoff/turns/E3-C-codex-adapter-inspection.md` per Sami's
+parallel authorization. E3-C critique by the Claude consultant is a
+separate authorization decision still pending Sami's go-ahead.
+
+E3-B trust-bootstrap implementation completed on 2026-05-15 and handed
+to Claude for architecture-consultant critique. Codex created the
+secret-safety `.gitignore` rule for `.agent-handoff/local/`, verified
+`git check-ignore` before key generation, generated the Sami root and
+Codex coordinator Ed25519 keypairs into ignored local paths, wrote the
+root-signed trust registry and two root-signed bootstrap events, wrote
+the Codex possession proof, and verified the registry/event/proof/hash
+chain with `.agent-handoff/src/trust-bootstrap.mjs`.
 
 E3-C concurrently authorized as read-only adapter/security inspection:
 CCB (`bfly123/claude_codex_bridge`), Claude Squad, official Codex
@@ -40,9 +48,10 @@ plugin for Claude Code, and `codex mcp-server` should all get
 license/config/security inspection before any bridge setup is
 approved. E3-C must stay read-only and must not block E3-B.
 
-Critical local finding noted by Sami: this repo currently has no
-`.gitignore`. Step zero of E3-B is creating/updating `.gitignore` and
-verifying via `git check-ignore` before any private key is generated.
+Secret safety status: `.gitignore` now contains `.agent-handoff/local/`.
+The private key paths `.agent-handoff/local/keys/sami-root.ed25519` and
+`.agent-handoff/local/keys/codex.ed25519` are ignored, untracked, and
+mode `0600`.
 
 Single-developer per-repo Sami root key model selected for this
 prototype. Org/team signing path deferred to a later design.
@@ -50,7 +59,7 @@ prototype. Org/team signing path deferred to a later design.
 Private key backup is Sami's responsibility outside the repo (password
 manager or encrypted local/off-machine backup).
 
-Seven E3-A critique nits to address in E3-B's turn note: time skew
+Seven E3-A critique nits addressed in E3-B's turn note: time skew
 window default, integer-only-numbers rule scope for payloads,
 `recipient_coordinator_ids` broadcast semantics, `possession_proof_hash`
 byte format, replay-vs-import nonce semantics, branch/force-push
@@ -97,13 +106,11 @@ critique blockers resolved by E2-007 and accepted by E2-008.)
 
 `COLLAB.md` remains transitional pending the new state model.
 
-Hard stop: E3-B and E3-C are authorized as scoped above. Codex is the
-authoring agent for both (mirroring E2-001/E2-003/E3-A). Claude
-consultant is the next critique agent for both. No bridge enablement,
-installs, commits, pushes, PRs, branches, global config changes, or
-proposed-to-approved transitions in either turn — E3-B writes
-implementation files within scope; E3-C writes a read-only inspection
-turn note only.
+Hard stop: E3-B implementation is complete and no further E3-B work
+continues until Claude critiques it. E3-C remains separately authorized
+as read-only adapter/security inspection and must not block E3-B. No
+bridge enablement, installs, commits, pushes, PRs, branches, global
+config changes, or proposed-to-approved transitions are authorized.
 
 ## Tool Observations
 
@@ -273,22 +280,27 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-A schema/spec written at
-`.agent-handoff/turns/E3-A-codex-envelope-schema.md`. Codex proposes a strict
-`agent-event-envelope.v1` JSON envelope with required fields for repo identity,
-branch, base commit, experiment namespace, event id, coordinator id, author
-role, parent event ids, per-coordinator sequence, timestamp, nonce, payload
-hash, previous accepted event hash, signing key id, Ed25519 algorithm,
-payload, and signature. Canonical bytes are proposed as an RFC 8785
-JCS-compatible deterministic subset; signatures cover a domain-separation
-prefix plus canonical JSON with only the `signature` field omitted. The turn
-also proposes the signed `agents.json` trust-registry snapshot shape,
-sequence-plus-hash file naming for events/inbox/outbox/trust/quarantine/local
-state, quarantine triggers and redaction rules, minimal fixture requirements,
-and import/replay/quarantine pass/fail checks. The schema is not approved
-protocol. No code, installs, bridge enablement, git operations, global config
-changes, protocol edits, trust files, keys, event directories, or automation
-were created.
+E3-B trust-bootstrap implementation written at
+`.agent-handoff/turns/E3-B-codex-trust-bootstrap.md`. Codex added the
+minimal `.gitignore` rule for `.agent-handoff/local/`, verified
+`git check-ignore .agent-handoff/local/keys/sami-root.ed25519` before
+key generation, selected Node v22 built-in `node:crypto` plus a
+repo-local no-dependency canonical JSON implementation, generated the
+Sami root and Codex Ed25519 private keys under ignored local paths with
+mode `0600`, wrote the public root-signed trust registry to
+`.agent-handoff/trust/agents.json`, wrote the Codex possession proof
+to `.agent-handoff/trust/possession-proofs/codex.ed25519.proof.json`,
+and wrote root-signed `trust.registry.initialized` and
+`coordinator.registered` events under `.agent-handoff/events/sami-root/`.
+Root public-key fingerprint:
+`69e123bf79fd82aa57a3e856a423626051ca345d6256eee27048f9cc934a4968`.
+Codex public-key fingerprint:
+`569db4efca4e9f91ab58d87ab79c069fbb2c7ff6384b5a00537187539cbcecdf`.
+`node .agent-handoff/src/trust-bootstrap.mjs verify` passes for the
+registry signature, both root events, the possession proof, the hash
+chain, parent/prior-trust links, and final registry links. No installs,
+bridges, live transport, cron, webhook, global config changes, commits,
+pushes, PRs, or branches were performed.
 
 ## Earlier Codex Response
 
@@ -304,9 +316,9 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None active for E3-A until Claude's critique returns. Any move from the
-  proposed schema to approved protocol still requires Sami's explicit
-  approval.
+- None active for E3-B until Claude's critique returns. Any move from the
+  proposed schema or implementation spike to approved protocol still requires
+  Sami's explicit approval.
 - Later only, if separately authorized: should we install the official OpenAI
   Codex plugin in Claude Code?
 - Later only, if separately authorized: should we register `codex mcp-server`
@@ -316,21 +328,22 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-A architecture-consultant critique of
-`.agent-handoff/turns/E3-A-codex-envelope-schema.md`. Focus on deterministic
-serialization, signature coverage, trust-registry snapshot shape,
-replay/quarantine behavior, filename conventions, and whether the minimal
-fixture contract is concrete enough for E3-B implementation. Do not implement,
-install dependencies, enable bridges, edit global config, commit, push, open a
-PR, create event directories, create keys, or treat any proposed schema item
-as approved.
+Perform the E3-B architecture-consultant critique of
+`.agent-handoff/turns/E3-B-codex-trust-bootstrap.md` and the generated
+artifacts/source it names. Focus on secret-safety ordering, private-key
+handling, canonical JSON portability, Ed25519 signature coverage, registry
+snapshot shape, possession-proof byte format, event filenames/hash chain,
+and whether all seven E3-A critique nits were adequately resolved. Stay
+read-only. Do not implement, install dependencies, enable bridges, edit global
+config, commit, push, open a PR, create a branch, rotate keys, delete files,
+or treat any proposed schema/implementation item as approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-A until Claude's critique is filed and Sami
+None active. Hard stop after E3-B until Claude's critique is filed and Sami
 explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-A critique.
+action is Claude's E3-B critique.
