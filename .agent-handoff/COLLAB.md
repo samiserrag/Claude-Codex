@@ -7,121 +7,30 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-E kit-extraction + harness-control design-only turn,
-authorized by Sami on 2026-05-15)
+Claude (architecture consultant role for E3-E critique turn)
 
 ## Current Phase
 
-E3-D-FIX-001 accepted. E3-E authorized by Sami on 2026-05-15 as
-design-only kit-extraction + harness-control turn. Explicit
-authorization text recorded here and in the consultation thread:
+Experiment 3 E3-E critique pending. Codex filed
+`.agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md`
+as the authorized kit-extraction + harness-control design-only turn.
+The note proposes a minimal repo-local, no-install kit; separates
+optional signed governance, prompts, adapter docs, and scaffold checks;
+lists local/generated/secret files that must not travel; maps
+repo-specific placeholders toward `colorado-songwriters-collective`;
+and extracts the control-loop pattern: state preservation, repeated
+gap-finding, revisable planning, independent verification, adaptive
+orchestration, and stopping discipline.
 
-  "Approved:
-  1. Accept E3-D-FIX-001 as a successful design/prose-only fix
-     turn.
-  2. Authorize the next turn as E3-E kit-extraction +
-     harness-control design only.
+II Zenith was cited only as article/report prior art. Codex read the
+public Intelligent Internet blog/report landing pages, did not install,
+clone, vendor, enable, or run Zenith, and did not rely on Zenith source
+or implementation details.
 
-  Scope:
-  - Design a minimal portable kit for applying the proven
-    Claude-Codex handoff protocol to
-    colorado-songwriters-collective.
-  - Also extract the control-loop pattern: state preservation,
-    repeated gap-finding, revisable planning, independent
-    verification, adaptive orchestration, and stopping discipline.
-  - Treat II Zenith as prior art for long-running-agent harness
-    design.
-  - Do not install, clone, vendor, enable, or run Zenith.
-  - Do not claim Zenith source is available unless verified; cite
-    it as article/report prior art only.
-
-  Required sections:
-  1. Minimal kit files
-  2. Optional files
-  3. Local/generated/secret files
-  4. Repo-specific placeholders
-  5. Harness-control loop
-  6. Gap-finding triggers
-  7. Independent verifier/tester requirements
-  8. Replanning triggers
-  9. Council-skill triggers
-  10. Stopping discipline / token budget
-  11. What NOT to extract
-  12. Open questions for Sami
-
-  Constraints:
-  - Design only.
-  - No installs.
-  - No MCP registration.
-  - No plugin setup.
-  - No global config changes.
-  - No bridge enablement.
-  - No commits, pushes, PRs, branches, or file edits outside the
-    current Claude-Codex repo unless separately approved.
-  - Hard stop after the design note and COLLAB.md handoff update.
-
-  Output:
-  - .agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md
-  - COLLAB.md handoff update only"
-
-Codex authors E3-E (mirrors prior architecture authorship pattern).
-Claude consultant is the next critique agent.
-
-E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter inspection,
-E3-B-FIX-001 verifier hardening, E3-D adapter-selection design,
-and E3-D-FIX-001 wrapper preconditions all accepted with zero
-blockers. E3-E is the kit/harness pivot — combines the original
-portability goal (toward colorado-songwriters-collective) with a
-new control-loop extraction (state preservation, gap-finding,
-replanning, verification, orchestration, stopping discipline).
-
-E3-D-FIX-001 Claude consultant critique filed (2026-05-15). Zero
-blockers. All five wrapper-precondition nits resolved with the
-precision required for future enablement scoping. Notable
-strengths called out: honest acknowledgment of self-measurement
-limits in Nit 5; the "may not attest to" enumeration in Nit 2;
-fsync ordering specified explicitly in Nit 4; complete escalation
-ladder with no silent-failure mode; correct discipline in flagging
-`coordinator_purpose` and `allowed_attestation_modes` as future
-schema work rather than silent application.
-
-Codex's five open questions answered: yes to separate prior trust
-turn for wrapper coordinator registration; `wrapper-codex-mcp` id
-acceptable for prototype with future per-transport convention to
-follow when second adapter is scoped; yes to payload-only
-`attested_by_observer` (no top-level schema expansion); yes to the
-three approval-durability tests (with consultant recommending a
-fourth concurrent-approval test for future enablement); yes to
-signed identity manifest + startup measurement for first prototype
-with explicit limitation correctly documented.
-
-Five small nits flagged for future direct-MCP enablement
-sub-experiment (NOT for E3-D-FIX-001 acceptance):
-1. Add concurrent-approval test alongside the three Codex named.
-2. Coordinator-id taxonomy question (per-transport vs single
-   wrapper-codex with payload distinction) — defer to second
-   adapter selection or new naming-convention turn.
-3. Read-only/status-only fallback requires architectural
-   separation of duties between approval-emission and observation.
-4. Diagnostic events overload `message.created`; future event-kind
-   choice deferred but real.
-5. Identity manifest rotation/refresh mechanism unspecified; same
-   path as initial registration (separate trust turn) implied but
-   should be stated.
-
-E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter inspection,
-E3-B-FIX-001 verifier hardening, E3-D adapter-selection design,
-and E3-D-FIX-001 wrapper preconditions all accepted. E3 enablement
-(actual adapter setup, install, MCP registration, plugin install)
-remains a separate per-adapter sub-experiment requiring Sami's
-explicit approval recorded in COLLAB.md.
-
-Sami's decision queue:
-- Accept E3-D-FIX-001 as filed, then choose between: authorize the
-  next concrete E3 step (separate prior wrapper-codex-mcp trust
-  turn); OR pivot to a queued item (Experiment 4 council skill
-  pack, kit extraction toward colorado-songwriters-collective); OR
-  defer further E3 work.
+Hard stop remains active after E3-E. No kit files were created outside
+this repo, no protocol change was applied, no signed governance
+packaging was performed, no adapter was enabled, and no proposed item
+was moved to approved. Claude consultant is the next critique agent.
 
 E3-D accepted. E3-D-FIX-001 was authorized by Sami on 2026-05-15 as
 design/prose only. Explicit authorization text recorded here and in
@@ -506,24 +415,25 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-D-FIX-001 wrapper-preconditions fix turn written at
-`.agent-handoff/turns/E3-D-FIX-001-codex-wrapper-preconditions.md`.
-Codex accepted the five E3-D critique nits as real preconditions for
-any future direct-MCP enablement. The fix recommends a separate prior
-trust turn for `wrapper-codex-mcp` registration, chooses
-wrapper-as-own-coordinator with its own Sami-rooted keypair, defines
-inbound Codex MCP output as wrapper-signed `attested_by_observer`
-payloads rather than Codex-signed claims, specifies durable accepted
-approval event before MCP `allow`, and requires wrapper source/binary
-identity verification before approval-related event emission.
+E3-E kit-extraction + harness-control design turn written at
+`.agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md`.
+Codex proposed a minimal portable kit consisting of repo-local
+PROTOCOL/COLLAB/AGENTS/CLAUDE templates, a turn-log directory, and a
+gitignore rule for `.agent-handoff/local/`; classified signed
+trust-bootstrap, prompts, adapter docs, council directories, schemas,
+and scaffold checks as optional; listed local/generated/secret files
+that must not travel; and mapped adopter placeholders toward
+`colorado-songwriters-collective`.
 
-Codex did not edit PROTOCOL.md. Any wrapper-observed payload fields,
-identity-manifest payload contract, or future event-kind cleanup remain
-proposed for later Sami-approved scope. No adapter was enabled. No
-install, MCP registration, plugin setup, `.mcp.json` edit, bridge
-enablement, live transport, global config change, code, wrapper
-implementation, git operation, or proposed-to-approved transition was
-performed.
+The design also extracts the harness-control loop: preserve repo state,
+reopen gaps through critique, keep plans revisable, require independent
+verification, use council consultation only when it buys signal, and
+stop at explicit turn caps, token budgets, and Sami approval gates. II
+Zenith was cited only as public article/report prior art; no Zenith
+source was cloned, installed, enabled, run, or used. No kit extraction
+action, protocol edit, signed-governance packaging, adapter enablement,
+install, MCP registration, plugin setup, global config change, git
+operation, or proposed-to-approved transition was performed.
 
 ## Earlier Codex Response
 
@@ -539,36 +449,40 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-D-FIX-001 critique is pending.
-- Later only, if separately authorized: should
-  `wrapper-codex-mcp` be registered in a separate trust turn?
-- Later only, if separately authorized: should direct `codex mcp-server`
-  wrapper be approved as the first adapter enablement sub-experiment?
-- Later only, if separately authorized: should we register `codex mcp-server`
-  as a project-scoped Claude MCP server?
-- Later only, if separately authorized: should we install the official OpenAI
-  Codex plugin in Claude Code as the second adapter candidate?
-- Later only, if separately authorized: should we register `claude mcp serve`
-  inside Codex for the reverse-direction experiment?
+- None immediate while Claude's E3-E critique is pending.
+- Later only, if separately authorized: which files become the v1
+  minimal kit?
+- Later only, if separately authorized: should the kit include the
+  trust-bootstrap verifier or only the file-based reference protocol?
+- Later only, if separately authorized: should a
+  `colorado-songwriters-collective`-specific bootstrap turn template
+  be drafted?
+- Later only, if separately authorized: what distribution mechanism
+  and open-source license should the kit use?
+- Later only, if separately authorized: should direct
+  `codex mcp-server`, official Codex plugin, council runtime, or any
+  other adapter/council path be scoped separately?
 
 ## Next Request To Claude
 
-Perform the E3-D-FIX-001 architecture-consultant critique of
-`.agent-handoff/turns/E3-D-FIX-001-codex-wrapper-preconditions.md`.
-Focus on whether the fix adequately resolves the five E3-D nits:
-separate wrapper coordinator registration, wrapper-owned identity/keypair,
-inbound `attested_by_observer` semantics, durable approval-event-before-allow
-ordering, and wrapper source/binary identity verification. Stay read-only.
-Do not implement, install dependencies, enable bridges, register MCP, edit
-`.mcp.json`, modify global config, commit, push, open a PR, create a branch,
-delete files, or treat any proposal as approved.
+Perform the E3-E architecture-consultant critique of
+`.agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md`.
+Focus on whether the minimal/optional file split is correct, whether
+signed governance is properly optional, whether the harness-control
+loop preserves the proven Claude-Codex pattern, whether II Zenith is
+cited only as article/report prior art, and whether the stopping
+discipline is strong enough before any extraction action. Stay
+read-only. Do not implement, install dependencies, enable bridges,
+register MCP, edit `.mcp.json`, modify global config, commit, push,
+open a PR, create a branch, delete files, copy kit files into another
+repo, or treat any proposal as approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-D-FIX-001 until Claude's critique is filed and
+None active. Hard stop after E3-E until Claude's critique is filed and
 Sami explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-D-FIX-001 critique.
+action is Claude's E3-E critique.
