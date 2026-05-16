@@ -7,10 +7,73 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-E-FIX-001 acceptance + first kit-extraction action OR
-pivot decision)
+Codex (E3-F docs-alignment turn, authorized by Sami on
+2026-05-15)
 
 ## Current Phase
+
+E3-E-FIX-001 accepted. E3-F authorized by Sami on 2026-05-15 as a
+docs-alignment turn before any kit extraction. Explicit
+authorization text recorded here and in the consultation thread:
+
+  "Approved:
+  1. Accept E3-E-FIX-001 as a successful design/prose-only
+     housekeeping turn.
+  2. Authorize E3-F as a docs-alignment turn before any kit
+     extraction.
+
+  Scope:
+  - Update existing docs only to align the repo with the accepted
+    E3 state.
+  - No kit extraction into colorado-songwriters-collective.
+  - No new adapter setup.
+  - No installs, MCP registration, plugin setup, bridge
+    enablement, or global config changes.
+  - No branches, PRs, or pushes unless separately approved.
+  - Do not move any proposal to approved except by recording this
+    exact E3-F authorization.
+  - Hard stop after E3-F and hand off for critique.
+
+  Allowed files:
+  - README.md
+  - AGENTS.md
+  - CLAUDE.md
+  - .agent-handoff/PROTOCOL.md
+  - .agent-handoff/COLLAB.md
+  - optionally docs/chrome-runners.md only if stale browser-runner
+    language needs alignment
+  - new turn note:
+    .agent-handoff/turns/E3-F-codex-docs-alignment.md
+
+  Required alignment points:
+  1. Local-first, not local-only.
+  2. File-based handoff is the minimal binding reference path.
+  3. Signed event governance is optional add-on, not required v1
+     kit.
+  4. Live bridge/adapters remain disabled until separately
+     approved.
+  5. Turn caps are per-experiment authorization values.
+  6. Browser runner can be named or explicit N/A with reason.
+  7. Automation budget is N/A unless polling/cron/webhook/
+     heartbeat is approved.
+  8. Council/GPT/Claude/Codex consultation is optional and
+     file-based by default.
+  9. Prior art such as gstack, AgentBridge, tmux bridge, LLM
+     Council, Zenith is cited as prior art only, not dependency.
+  10. Kit extraction remains a separate action after docs
+      alignment."
+
+Codex authors E3-F. Claude consultant critiques after the docs
+alignment lands.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, and E3-E-FIX-001
+kit housekeeping all accepted. E3-F docs-alignment pending.
+Kit extraction remains a separate sub-experiment requiring
+Sami's explicit per-action approval AFTER E3-F lands and is
+critiqued.
 
 E3-E-FIX-001 Claude consultant critique filed (2026-05-15) at
 HEAD `10227c5`. Zero blockers. All five authorized nits resolved
