@@ -7,13 +7,34 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (will author E3-H read-only discovery turn for
-colorado-songwriters-collective)
+Claude (architecture consultant role for E3-H critique)
 
 ## Current Phase
 
-Experiment 3 E3-H read-only discovery authorized. E3-G-FIX-001
-accepted as a successful kit-template housekeeping turn.
+Experiment 3 E3-H discovery filed; Claude critique pending.
+
+Codex filed `.agent-handoff/turns/E3-H-codex-colorado-discovery.md`
+on 2026-05-16 as the read-only discovery turn for
+`colorado-songwriters-collective`. Target path exists. Target repo
+identity from local Git metadata: branch `main`, remote
+`https://github.com/samiserrag/colorado-songwriters-collective.git`,
+local remote HEAD `origin/main`, target HEAD
+`cadd9f69474ccb46ee21d83d56626532e0d01c90`.
+
+Discovery headline: the target repo already has active
+`AGENTS.md`, `CLAUDE.md`, README, governance docs, multi-lane
+agent docs, Symphony prototype boundaries, Next.js/Supabase app
+surfaces, GitHub Actions quality gates, and Chrome-first browser
+validation rules, but no `.agent-handoff/` scaffold. The target
+was dirty before discovery and remained dirty after discovery
+with the same `git status --short` output. No tests were run
+because no target command was justified as no-write under E3-H.
+
+Claude critiques E3-H next. Hard stop remains active. No kit
+extraction, no target-repo write, no install, no MCP registration,
+no plugin setup, no bridge enablement, no global config change,
+no signed trust/event/private-key edit, no commit/push/branch/PR,
+and no proposed-to-approved transition is authorized.
 
 E3-H was authorized by Sami on 2026-05-16 as a read-only
 discovery turn for `colorado-songwriters-collective`. Precondition
@@ -1285,41 +1306,35 @@ preserved in their append-only turn notes under
 
 ## Latest Codex Response
 
-E3-G-FIX-001 kit-template housekeeping written at
-`.agent-handoff/turns/E3-G-FIX-001-codex-kit-template-housekeeping.md`.
+E3-H read-only discovery filed at
+`.agent-handoff/turns/E3-H-codex-colorado-discovery.md`.
 
-Addressed the five E3-G critique nits only:
+Summary:
+- Verified Claude-Codex is on `main` at
+  `605f6e7ef6be2da441dfe1fc2f9ea83fc09b1ae6`, where E3-H authorization is
+  recorded.
+- Verified target path exists:
+  `/Users/samiserrag/Documents/GitHub/colorado-songwriters-collective`.
+- Verified target identity from local Git metadata: branch `main`, remote
+  `https://github.com/samiserrag/colorado-songwriters-collective.git`,
+  local remote HEAD `origin/main`, target HEAD
+  `cadd9f69474ccb46ee21d83d56626532e0d01c90`.
+- Target had no `.agent-handoff/` scaffold.
+- Target `AGENTS.md`, `CLAUDE.md`, README, governance docs, agent docs,
+  workflows, package scripts, `.gitignore`, and web UI surfaces were inspected
+  read-only.
+- Target was dirty before discovery and after discovery with matching
+  `git status --short` output; no target writes occurred.
+- No target tests were run because no no-write-safe command was identified.
+- Main extraction risk: existing target `AGENTS.md` / `CLAUDE.md` are active
+  operational documents and must be treated as merge surfaces, not overwrite
+  targets. `.gitignore` is also dirty and missing `.agent-handoff/local/` and
+  `.claude/worktrees/` ignore coverage.
 
-- Added the Response History Policy disclaimer beside latest-response fields in
-  `kit/v1/.agent-handoff/COLLAB.md.template`.
-- Updated `AGENTS.md.template` and `CLAUDE.md.template` to call latest-response
-  fields summary-only.
-- Chose nit 2 approach (a): literal phase enum addition of `fix | rescope` in
-  `PROTOCOL.md.template`, also reflected in the starter turn-note phase prompt.
-- Added starter turn-note instructions to replace every `{{placeholder}}`
-  before filing and use `N/A` with a brief reason for empty fields.
-- Chose nit 4 approach (b): marked the Experiment Authorization Convention as
-  the recommended convention for kit adopters and the kit's forward-looking
-  standard, not a retroactive rewrite requirement for older source-repo prose
-  authorizations.
-- Updated README Quick Start step 1 to say to preserve directory structure,
-  especially `.agent-handoff/` and subdirectories.
-
-Verification:
-
-- `git diff --check`: no output, exit 0.
-- `npm test`: exit 0 with "Collaboration scaffold check passed."
-- Leak/portability greps over `kit/v1/`: zero colorado/songwriters/denver
-  matches, zero `decision.ledger` matches, zero
-  `sami-root|wrapper-codex-mcp|agent-event-envelope` matches. The four
-  `claude.?codex` matches are product/config references only. The nine
-  `install` matches are negative/anti-installer or explicit-approval framing.
-
-No kit extraction into another repo, adapter setup, install, MCP registration,
-plugin setup, bridge enablement, global config change, git operation, signed
-trust/event edit, private-key edit, prior-turn-note edit, or
-proposed-to-approved transition was performed. Hard stop now waits for Claude's
-read-only E3-G-FIX-001 critique.
+Candidate next shape recorded for critique: scaffold-only first extraction
+after separate approval, likely 2 turns (Codex extraction plus Claude critique),
+with signed governance remaining optional and all web/Supabase/CI/Symphony/
+Claude-local surfaces no-touch unless explicitly scoped.
 
 ## Earlier Codex Response
 
@@ -1335,7 +1350,7 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Codex authors E3-H read-only discovery.
+- None immediate while Claude critiques E3-H read-only discovery.
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -1351,36 +1366,29 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. Hard stop continues until Codex files E3-H and Sami
-authorizes a next scope. Claude consultant's next role is to critique
-E3-H read-only after Codex pushes it.
+Critique E3-H read-only discovery in
+`.agent-handoff/turns/E3-H-codex-colorado-discovery.md`. Verify the
+twelve discovery items, especially the dirty target state, absence of
+`.agent-handoff/`, existing agent-doc collision, `.gitignore` gaps,
+deferred test execution, Chrome-first runner finding, candidate no-touch
+list, candidate first-experiment scope/cap, optional signed-governance
+recommendation, placeholder table, and risks before first extraction.
+Stay read-only; do not edit files, install tools, enable bridges, register
+MCP, set up plugins, change global config, touch
+`colorado-songwriters-collective`, or move any proposal to approved.
 
 ## Next Request To Codex
 
-Author E3-H as a read-only discovery turn for
-`colorado-songwriters-collective` per Sami's verbatim authorization
-above. Output only `.agent-handoff/turns/E3-H-codex-colorado-discovery.md`
-in this Claude-Codex repo plus a handoff update to this COLLAB.md.
-Re-verify the precondition (target-repo path exists) as your own first
-step before any inspection. Run `git status --short` in BOTH repos
-before and after the turn and include both pairs in the turn note's
-Verification section, proving no target-repo writes occurred. Cover
-all twelve "Discover and report" items; mark UNKNOWN cleanly for any
-item that cannot be answered read-only. Do not run tests unless you
-can justify they are read-only; otherwise mark test execution
-deferred. Bounded advisory subagents (repo-structure, docs/agent,
-test/CI, portability/no-touch) are authorized for inspect-and-report
-only. Hard stop after the turn note and COLLAB.md handoff update — no
-commits, pushes, branches, or staging in either repo.
+None active. Hard stop while Claude critiques E3-H and Sami decides the
+next scope.
 
 ## Next Request To Sami
 
-None immediate while Codex authors E3-H. After Codex files E3-H and
-pushes it (with your separate per-push authorization), Claude
-consultant critiques it and you decide on next scope. Per the active
-Stopgate Rule, no write into `colorado-songwriters-collective`, no
-install, no MCP registration, no plugin install, no bridge enablement,
-no global config change, no signed trust/event/private-key edit, no
-commit or push in either repo, no branch creation, no PR, and no
-proposed-to-approved transition occurs without your explicit
-per-action approval.
+None immediate until Claude critique of E3-H lands. After critique, decide
+whether to authorize a first extraction/scaffold turn, request a fix to E3-H,
+pivot to another queued item, or defer. Per the active Stopgate Rule, no
+write into `colorado-songwriters-collective`, no install, no MCP
+registration, no plugin install, no bridge enablement, no global config
+change, no signed trust/event/private-key edit, no commit or push in either
+repo, no branch creation, no PR, and no proposed-to-approved transition
+occurs without your explicit per-action approval.
