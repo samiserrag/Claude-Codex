@@ -7,24 +7,78 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude (architecture consultant role for E3-F-FIX-001 critique turn)
+Sami (E3-F-FIX-001 acceptance + first kit-extraction action OR
+pivot decision)
 
 ## Current Phase
 
-Experiment 3 E3-F-FIX-001 critique pending. Codex filed
-`.agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md`, edited
-`scripts/check-collab.mjs`, and updated this COLLAB handoff. The scaffold
-check now validates the current `COLLAB.md` headings (`## Current Phase` and
-`## Questions Requiring Sami Approval`) instead of old E1-era headings, and it
-checks actual level-2 headings rather than raw substring presence.
+E3-F-FIX-001 Claude consultant critique filed (2026-05-15) at
+HEAD `2ce3cbf`. Zero blockers. Independent `npm test` run by
+consultant: exit 0, "Collaboration scaffold check passed."
 
-`npm test` passes after the fix, and `git diff --check` passes after all edits.
-Historical pre-fix failure remains documented in E3-F and E3-F-claude-critique:
-the stale script expected `## Hard Constraints / Approval Stopgates` and
-`## Decisions Made`. One current-state nuance is recorded in the new turn note:
-the pre-edit test passed in this working tree only because Sami's authorization
-quote contained those stale strings as text, which masked the underlying stale
-expectation.
+Headline finding: Codex caught and resolved an "accidental pass"
+bug. Before this fix, in the current working tree, `npm test`
+actually passed — but for the wrong reason. The pre-edit check
+used substring matching, and Sami's verbatim authorization quote
+text in COLLAB.md happened to contain the stale E1 heading
+strings as substrings. So the check was matching quoted text,
+not real headings. Codex did NOT silently accept the accidental
+pass: diagnosed the bug, refused to ratify the pass, and fixed
+both the wrong heading names AND the wrong matching method. The
+new check validates real `^## .+$` level-2 headings via regex
+and pins to current load-bearing heading names (`## Current
+Phase`, `## Questions Requiring Sami Approval`, plus the
+existing four).
+
+Fix shape A endorsed (update scaffold check to current shape vs
+B accepting both eras). Codex's defense: "encoding two eras of
+heading names into a tiny scaffold check would be more confusing
+for kit adopters than just pinning to the current load-bearing
+names."
+
+Three small consultant nits-of-the-fix (NOT for E3-F-FIX-001
+acceptance):
+1. Heading-rename brittleness preserved (still pins to six
+   specific names). Future scaffold/schema cleanup correctly
+   proposed by Codex as separate work.
+2. Heading-set check doesn't validate order or uniqueness;
+   duplicates collapse. Low-probability bug; same future
+   cleanup.
+3. Scaffold check should be wired into adopter CI in the
+   kit-extraction turn so silent regressions are caught.
+
+Codex's two open questions answered: yes, shape A is cleaner
+than dual-era acceptance; yes, heading-aware validation is
+within authorized scope (implementation of the alignment, not
+schema expansion).
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
+housekeeping, E3-F docs alignment, and E3-F-FIX-001
+scaffold-check fix all accepted. Kit extraction remains a
+separate sub-experiment requiring Sami's explicit per-action
+approval.
+
+Sami's decision queue:
+- Accept E3-F-FIX-001 as filed, then choose between:
+  (a) authorize the first kit-extraction action sub-experiment
+      (likely portable folder inside this repo OR a discovery
+      turn reading colorado-songwriters-collective's actual
+      state);
+  (b) pivot to a queued item (Experiment 4 council skill pack,
+      separate wrapper-codex-mcp trust turn);
+  (c) defer further E3 work.
+
+Hard stop remains active. No kit files were created outside
+this repo, no signed governance packaging was performed, no
+adapter was enabled, and no proposed item was moved to
+approved.
+
+E3-F-FIX-001 was authored by Codex with the substring → heading
+match correctness improvement. `scripts/check-collab.mjs` updated
+to validate real level-2 headings; `npm test` passes.
 
 E3-F accepted. E3-F-FIX-001 authorized by Sami on 2026-05-15 as a tiny
 scaffold-check/docs-consistency fix. Explicit authorization text recorded here
