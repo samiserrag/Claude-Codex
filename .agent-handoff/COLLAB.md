@@ -7,103 +7,81 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-D adapter-selection design-only turn, authorized by Sami
-on 2026-05-15)
+Sami (E3-D acceptance + per-adapter authorization-or-pivot decision)
 
 ## Current Phase
 
-E3-D authorized by Sami on 2026-05-15 as adapter-selection design
-only. Explicit authorization text recorded here and in the
-consultation thread:
+E3-D Claude consultant critique filed (2026-05-15). Zero blockers.
+Independent review endorsed: direct codex mcp-server first selection
+(with Codex's correction that direct MCP is "not a risk downgrade,
+just the cleaner first wrapper target"); the six-method allow-list
+verbatim; the blocked-by-default surface enumeration; the
+signed-event boundary; the 9-step rollback procedure (especially the
+plugin-install-during-direct-MCP-rollback defensive rule); the
+10-item verification evidence list; the Stop-hook isolation as a
+separate sub-experiment.
 
-  "Approved: run E3-D as adapter-selection design only.
+Five nits flagged for future direct-MCP enablement sub-experiment
+(NOT for E3-D acceptance):
+1. Make Claude/wrapper coordinator registration step explicit in
+   preconditions (recommend separate prior trust turn, not a
+   sub-step of direct-MCP enablement).
+2. Pick wrapper-coordinator identity design: transport-only using
+   Claude's keys vs the wrapper as its own coordinator with
+   Sami-rooted keypair. Recommend the latter for trust separation.
+3. Sharpen inbound signature semantics: wrapper-observed envelopes
+   must mark themselves `attested_by_observer`, not as
+   Codex-signed events.
+4. Document approval-timing ordering: signed approval event
+   durably persisted BEFORE wrapper sends allow response BEFORE
+   Codex acts.
+5. Add wrapper binary identity verification (committed source hash
+   or build artifact signature) before granting approval-event-
+   emission capability.
 
-  Scope:
-  - No installs, no plugin setup, no MCP registration, no .mcp.json,
-    no bridge enablement, no global config changes, no commits,
-    pushes, PRs, or branches.
-  - Compare: file-based default, official Codex plugin wrapper,
-    direct codex mcp-server wrapper, CCB pattern-only, Claude Squad
-    pattern-only.
-  - Select the first future enabled adapter experiment, but do not
-    enable it.
-  - Define exact preconditions, method/command allow-list,
-    signed-event import/export boundary, approval-surfacing
-    requirements, rollback/disable path, and verification evidence.
-  - Treat CCB and Claude Squad as pattern-only unless Sami
-    separately approves AGPL-compatible use.
-  - Hard stop after E3-D and hand off for critique."
-
-Sami's framing recommendation (E3-D may engage with or push back on
-either point):
-- First future adapter: direct codex mcp-server wrapper, only after
-  E3-D defines the method allow-list and approval surfacing.
-  Reasoning: riskier than plugin but cleaner primitive to wrap
-  because the boundary is explicit.
-- Second future adapter: official Codex plugin. Stop-hook behavior
-  isolated as a separate sub-experiment.
-
-Optional refusal-to-overwrite test-hardening turn DEFERRED per Sami
-("useful, but not worth inserting before E3-D unless you want a
-test-hardening cleanup pass").
-
-Codex authors E3-D (mirrors E3-A architecture, E3-B implementation,
-E3-C inspection authorship). Claude consultant is the next critique
-agent.
+Plus consultant-side answers to Codex's two structural open questions
+(yes to direct-MCP first; additional blocked-method categories
+enumerated for the deny list: server-initiated push, session
+lifecycle, telemetry/logging).
 
 E3 status: E3-A spec accepted, E3-B trust-bootstrap accepted, E3-C
 adapter inspection accepted, E3-B-FIX-001 verifier hardening
-accepted. E3-D adapter-selection design pending. E3 enablement (any
-actual adapter setup, install, MCP registration, plugin install) is
-NOT authorized by this turn and remains a separate per-adapter
-sub-experiment requiring Sami's explicit approval.
+accepted, E3-D adapter-selection design accepted. E3 enablement
+(actual adapter setup, install, MCP registration, plugin install)
+remains a separate per-adapter sub-experiment requiring Sami's
+explicit approval recorded in COLLAB.md.
 
-E3-B-FIX-001 critique pending.
+Sami's decision queue:
+- Accept E3-D as filed and move to per-adapter authorization
+  decisions on your own clock; OR
+- Authorize a small E3-D-FIX-001 housekeeping turn to address the
+  five nits in-place before any future direct-MCP enablement
+  sub-experiment is scoped; OR
+- Defer further E3 work and pivot to a queued item (Experiment 4
+  council skill pack, or kit extraction toward
+  colorado-songwriters-collective).
 
-Sami's three authorizations on 2026-05-15:
+Codex filed `.agent-handoff/turns/E3-D-codex-adapter-selection.md`
+as the authorized adapter-selection design-only turn. E3-D selects
+direct `codex mcp-server` wrapper as the first future enablement
+candidate, official Codex plugin wrapper as the second future
+candidate, and keeps CCB and Claude Squad pattern-only under the
+current AGPL posture. File-based handoff remains the binding
+reference path.
 
-  "Approved:
-  - Accept E3-B as a successful trust-bootstrap implementation spike,
-    without approving broader protocol or adapter work.
-  - Authorize Claude consultant E3-C critique as read-only critique
-    only.
-  - Authorize a tiny E3-B-FIX-001 housekeeping/verifier-hardening
-    turn: update .gitignore for .DS_Store and .claude/worktrees/,
-    add top-level verify ok/fail semantics with nonzero exit on
-    failed critical checks, and check event filename sequence
-    prefixes. No installs, bridges, global config changes, commits,
-    pushes, PRs, or E3-D adapter selection unless separately
-    approved."
+Sami's verbatim E3-D authorization is preserved in the E3-D turn note;
+it was also recorded in prior `COLLAB.md` state at commit `0a1f326`.
 
-E3-B accepted as successful spike (not protocol-wide approval).
+E3-D does not authorize any install, plugin setup, MCP registration,
+`.mcp.json` edit, bridge enablement, live transport, global config
+change, commit, push, PR, branch, wrapper code, or proposed-to-approved
+transition. Any actual adapter enablement remains a separate
+per-adapter sub-experiment requiring Sami's explicit approval recorded
+in `COLLAB.md`.
 
-E3-C Claude consultant critique filed (2026-05-15) per Sami's
-authorization. Zero blockers. E3-C verdicts endorsed: AGPL on CCB and
-Claude Squad → "borrow pattern only"; Apache on the official Codex
-plugin and `codex mcp-server` → "wrap" with concrete wrapper
-requirements. Codex's three blockers correctly framed as E3-D
-preconditions, not E3-C blockers. Five small nits (license pinning,
-Stop-hook isolation, NOTICE handling, wrap-verdict-type
-disambiguation, CCB ownership-transfer follow-up).
-
-Codex's open question on first transport experiment answered: when
-E3-D becomes scope, recommend a tightly bounded direct-MCP allow-list
-(thread.start, thread.continue, turn.start, turn.read, turn.cancel,
-status.read only — block all filesystem/command/config/account/process
-methods until proven necessary).
-
-E3-B-FIX-001 housekeeping/verifier-hardening turn authorized by Sami.
-Scope: expand .gitignore (.DS_Store, .claude/worktrees/), add
-top-level verify ok/fail aggregation with nonzero exit on failed
-critical checks, check event filename sequence prefix matches
-envelope sequence, optional refusal-to-overwrite self-test fixture.
-Codex is the authoring agent (mirrors E3-B authorship). Claude
-consultant is the next critique agent.
-
-E3-D adapter selection scope is NOT authorized. It depends on:
-- E3-B-FIX-001 Claude critique/acceptance
-- E3-C critique already filed and accepted
-- Sami's per-adapter approval per scoped sub-experiment
+E3 status: E3-A spec accepted, E3-B trust-bootstrap accepted, E3-C
+adapter inspection accepted, E3-B-FIX-001 verifier hardening accepted,
+and E3-D design filed for Claude critique.
 
 E3-B Claude consultant critique filed (2026-05-15). Zero blockers.
 Independent verification by the consultant passed across all checks:
@@ -124,8 +102,8 @@ strict-integer-only payload constraint in adapter-author guide.
 
 E3-C concurrently filed by Codex at
 `.agent-handoff/turns/E3-C-codex-adapter-inspection.md` per Sami's
-parallel authorization. E3-C critique by the Claude consultant is a
-separate authorization decision still pending Sami's go-ahead.
+parallel authorization. E3-C critique by the Claude consultant was
+filed and accepted with zero blockers.
 
 E3-B trust-bootstrap implementation completed on 2026-05-15 and handed
 to Claude for architecture-consultant critique. Codex created the
@@ -142,7 +120,8 @@ plugin for Claude Code, and `codex mcp-server` should all get
 license/config/security inspection before any bridge setup is
 approved. E3-C must stay read-only and must not block E3-B.
 
-Secret safety status: `.gitignore` now contains `.agent-handoff/local/`.
+Secret safety status: `.gitignore` contains `.agent-handoff/local/`,
+`.DS_Store`, and `.claude/worktrees/`.
 The private key paths `.agent-handoff/local/keys/sami-root.ed25519` and
 `.agent-handoff/local/keys/codex.ed25519` are ignored, untracked, and
 mode `0600`.
@@ -374,30 +353,29 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-B-FIX-001 verifier-hardening turn written at
-`.agent-handoff/turns/E3-B-FIX-001-codex-verifier-hardening.md`.
-Codex updated `.gitignore` to keep `.agent-handoff/local/` and add
-repo-level ignores for `.DS_Store` and `.claude/worktrees/`. Codex
-updated `.agent-handoff/src/trust-bootstrap.mjs` so `verify` emits a
-top-level `ok`, aggregates registry, events, possession proof, hash
-chain, parent link, prior trust link, and final registry links, and
-exits nonzero when any critical check fails. Event verification now
-checks that each accepted event filename's leading 16-digit sequence
-prefix matches the envelope `sequence`, and folds filename hash and
-filename sequence into the event `ok`.
+E3-D adapter-selection design written at
+`.agent-handoff/turns/E3-D-codex-adapter-selection.md`. Codex compared
+the five E3-C candidates: file-based default remains the binding
+reference; direct `codex mcp-server` wrapper is selected as the first
+future enablement candidate; official Codex plugin wrapper is second;
+CCB and Claude Squad remain pattern-only unless Sami separately
+approves AGPL-compatible use.
 
-Verification: `node --check .agent-handoff/src/trust-bootstrap.mjs`
-passed; `node .agent-handoff/src/trust-bootstrap.mjs verify` exited 0
-with top-level `ok: true`; a scratch copy under
-`/private/tmp/e3-b-fix-001-verify.yLWXZz` with the
-`coordinator.registered` filename prefix changed from
-`0000000000000001` to `0000000000000002` exited 1 with top-level
-`ok: false`, `reason: "filename_sequence_mismatch"`, and
-`filename_sequence_ok: false`. The scratch filename was restored. No
-real signed event/trust/key files were modified, no installs, bridges,
-live transport, cron, webhook, global config changes, commits, pushes,
-PRs, branches, re-bootstrap, key rotation, or E3-D adapter selection
-were performed.
+The proposed first direct-MCP wrapper exposes only `thread.start`,
+`thread.continue`, `turn.start`, `turn.read`, `turn.cancel`, and
+`status.read`, with filesystem, command, config, account/auth, process,
+model, app, skill, hook, plugin, and unknown methods blocked by
+default. The design requires signed E3-A envelopes before outbound
+delivery, schema/signature verification before inbound input becomes
+actionable, Codex approval requests surfaced as Sami-visible stopgate
+events, a tested rollback/disable path, and verification evidence
+covering signed-event round trip, allow-list enforcement,
+approval-mapping, quarantine, and rollback dry-run.
+
+No adapter was enabled. No install, plugin setup, MCP registration,
+`.mcp.json` edit, bridge enablement, live transport, global config
+change, wrapper code, git operation, or proposed-to-approved transition
+was performed.
 
 ## Earlier Codex Response
 
@@ -413,35 +391,34 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None active for E3-B until Claude's critique returns. Any move from the
-  proposed schema or implementation spike to approved protocol still requires
-  Sami's explicit approval.
-- Later only, if separately authorized: should we install the official OpenAI
-  Codex plugin in Claude Code?
+- None immediate while Claude's E3-D critique is pending.
+- Later only, if separately authorized: should direct `codex mcp-server`
+  wrapper be approved as the first adapter enablement sub-experiment?
 - Later only, if separately authorized: should we register `codex mcp-server`
   as a project-scoped Claude MCP server?
+- Later only, if separately authorized: should we install the official OpenAI
+  Codex plugin in Claude Code as the second adapter candidate?
 - Later only, if separately authorized: should we register `claude mcp serve`
   inside Codex for the reverse-direction experiment?
 
 ## Next Request To Claude
 
-Perform the E3-B-FIX-001 architecture-consultant critique of
-`.agent-handoff/turns/E3-B-FIX-001-codex-verifier-hardening.md`,
-`.gitignore`, and `.agent-handoff/src/trust-bootstrap.mjs`. Focus on
-whether top-level `verify` ok/fail aggregation, nonzero exit on failed
-critical checks, and filename sequence prefix validation satisfy Sami's tiny
-authorized fix scope without expanding E3-B or starting E3-D. Stay read-only.
-Do not implement, install dependencies, enable bridges, edit global config,
-commit, push, open a PR, create a branch, rotate keys, modify signed
-event/trust/key files, delete files, or treat any proposed
-schema/implementation item as approved.
+Perform the E3-D architecture-consultant critique of
+`.agent-handoff/turns/E3-D-codex-adapter-selection.md`. Focus on whether the
+comparison matrix, direct-MCP first selection, six-method allow-list,
+signed-event import/export boundary, approval-surfacing requirements,
+rollback/disable path, verification evidence, and Stop-hook isolation are
+sufficient and correctly scoped. Stay read-only. Do not implement, install
+dependencies, enable bridges, register MCP, edit `.mcp.json`, modify global
+config, commit, push, open a PR, create a branch, delete files, or treat any
+adapter proposal as approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-B-FIX-001 until Claude's critique is filed
-and Sami explicitly authorizes any next scope.
+None active. Hard stop after E3-D until Claude's critique is filed and Sami
+explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-B-FIX-001 critique.
+action is Claude's E3-D critique.
