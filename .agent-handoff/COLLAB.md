@@ -7,9 +7,192 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude, architecture consultant role for E3-L critique.
+Sami (decision: accept E3-K and choose target-commit shape,
+follow-up, or pivot)
 
 ## Current Phase
+
+Experiment 3 E3-L Claude consultant critique of E3-K
+scaffold extraction filed. Hard stop active per Sami's
+instruction; awaiting Sami decision on target-side
+commit/follow-up.
+
+E3-L Claude consultant critique filed (2026-05-16) at
+HEAD `c080052`. Zero blockers. All fourteen Sami focus
+areas pass. Independent verification by consultant
+matches every E3-K claim tested:
+- Target `.agent-handoff/` tree contains EXACTLY the
+  six authorized files (PROTOCOL.md 7727 bytes,
+  COLLAB.md 3087 bytes, prompts/starter-turn-note.md
+  1338 bytes, plus three 0-byte .gitkeep files). No
+  extras. Verified via independent `find -maxdepth 3`.
+- `cmp` proves target starter-turn-note.md is
+  BYTE-IDENTICAL to kit/v1 source (no drift from kit).
+- Independent `grep '{{'` over rendered PROTOCOL.md
+  and COLLAB.md returns ZERO matches — no unfilled
+  placeholders.
+- Independent `find -name .DS_Store` against target
+  scaffold tree returns no output — no accidental
+  `.DS_Store` created.
+- Rendered PROTOCOL.md lines 15-16 contain the
+  multi-doc PROJECT_BRIEF statement exactly as
+  recommended in E3-J nit #1 (option a: inline
+  multi-doc sentence rather than single-anchor
+  fiction).
+- Rendered PROTOCOL.md adds TWO target-specific
+  protections beyond the kit template: AGENTS/CLAUDE
+  merge-surface protection (lines 17-18) and
+  Chrome-first repository statement (lines 39-40).
+- Rendered COLLAB.md has all six required level-2
+  headings + target-specific Current Phase recording
+  authorization basis, exact no-touch list, browser
+  runner, automation budget, summary-only disclaimer.
+- Target `git diff --name-only` after E3-K lists ONLY
+  the 12 pre-existing tracked dirty files. No tracked
+  target file was modified by E3-K.
+- `git show --stat c080052` confirms E3-K commit
+  touched ONLY two Claude-Codex files. Target writes
+  remain uncommitted per the authorized scope.
+
+Per-focus-area verdict (all PASS):
+1. Six authorized target scaffold files only — PASS
+   (independent `find` confirms exactly 6 files).
+2. Rendered correctly from kit/v1 — PASS (all
+   placeholders filled, byte-identical starter prompt,
+   target-specific additions enhance protection).
+3. Avoided all named no-touch surfaces and dirty
+   targets — PASS (`git diff --name-only` shows only
+   pre-existing dirty surface).
+4. Signed governance kept optional — PASS (no
+   .agent-handoff/local/, no keys, no trust/event/
+   verifier files).
+5. Automation budget N/A — PASS (no automation
+   surface introduced).
+6. Browser runner Chrome-first — PASS, with
+   target-specific anchoring.
+7. Per-experiment turn-cap wording preserved — PASS
+   (at template AND instance level).
+8. PROJECT_BRIEF_PATH as multi-doc statement — PASS,
+   EXEMPLARY (exactly option a from E3-J open
+   questions).
+9. `--untracked-files=all` consistency — PASS (all
+   pre/post target blocks use same granularity;
+   addresses E3-J nit #2).
+10. No scaffold .DS_Store — PASS (explicit check ran
+    by Codex and re-verified by consultant; addresses
+    E3-J nit #3).
+11. Avoided tests/installs/staging/commits/branches/
+    PRs/bridges/MCP/plugins/global config/signed
+    governance — PASS (test execution explicitly
+    deferred with reason; no surface introduced).
+12. Target post-write status showed exactly six new
+    `?? .agent-handoff/...` entries — PASS
+    (independently re-verified).
+13. Unrelated `web/public/images/` drift
+    classification — **TARGET-STATE DRIFT OUTSIDE
+    E3-K SCOPE FROM CONCURRENT ACTOR CHANGE**.
+    Evidence: drift sits entirely in
+    `web/public/images/` (in no-touch surface); a 7th
+    drift entry appeared AFTER Codex's final sanity
+    check (concurrent target activity); paths cannot
+    overlap with E3-K's `.agent-handoff/` write
+    surface. NOT an E3-K defect, NOT a blocker. IS a
+    constraint for any later target-side commit:
+    precise staging required.
+14. Safe to accept / commit later / or fix needed?
+    **SAFE TO ACCEPT, SAFE TO COMMIT LATER IN TARGET
+    WITH PRECISE STAGING, NO FIX TURN NEEDED.**
+
+Notable strengths called out:
+- **Stage-in-tmp-then-exact-copy write pattern.**
+  Codex staged rendered files in
+  `/private/tmp/e3k-colorado-scaffold/` before atomic
+  copy to target. Safest possible cross-repo write
+  pattern.
+- All three E3-J cosmetic nits addressed inline
+  rather than deferred (multi-doc PROJECT_BRIEF,
+  `--untracked-files=all` consistency, `.DS_Store`
+  check).
+- Extra target-specific protections in rendered
+  PROTOCOL.md beyond kit baseline (AGENTS/CLAUDE
+  merge-surface protection + Chrome-first
+  repository statement).
+- Cross-validation of starter-prompt parity via
+  `cmp` (byte-level proof).
+- Pre/post `git diff --name-only` check rules out
+  accidental in-place edits masquerading as
+  new-file creation.
+- Honest drift disclosure (Codex did not silently
+  absorb or omit the image-file drift).
+- Honest write-pattern disclosure (Codex did not
+  hide the scoped escalated write command).
+- Tight 2-file Claude-Codex commit; subagents
+  intentionally not used — consistent discipline.
+
+Three tiny cosmetic nits-of-the-implementation (NOT
+blocking; deferrable):
+1. Rendered target COLLAB.md uses double-hyphen
+   (`--`) where the kit template may use em-dash
+   (`—`) in the summary-only disclaimer line. Pure
+   style; doesn't affect machine validation.
+2. Target COLLAB.md Current Phase rendered as a
+   single bulleted block rather than separate
+   sub-sections. Acceptable interpretation of the
+   kit template.
+3. Drift surveillance windowing: a 7th image
+   appeared AFTER Codex's final drift check. Future
+   cross-repo turns could include a brief "drift
+   watch window" re-check to catch concurrent
+   activity arriving just after primary
+   verification. Not blocking.
+
+Sami's decision queue:
+- Accept E3-K as filed, then choose between:
+  (a) target-side commit of the scaffold using
+      precise staging (`git add .agent-handoff/`)
+      followed by a separate per-push authorization
+      (consultant recommendation if you want the
+      scaffold persisted in target — this critique
+      does NOT authorize the commit);
+  (b) resolve the `web/public/images/` drift first
+      via your own target-side cleanup, then commit
+      the scaffold in a clean tree;
+  (c) defer target-side commit indefinitely while
+      keeping the scaffold as a local unstaged
+      proof-of-concept;
+  (d) authorize a follow-up E3-M turn that adds a
+      target AGENTS.md or CLAUDE.md merge-pointer
+      (small append-only edit pointing existing
+      target docs at `.agent-handoff/PROTOCOL.md`)
+      before any commit;
+  (e) pivot to a queued item (Experiment 4 council
+      skill pack, separate wrapper-codex-mcp trust
+      turn, kit polish for the E3-G-FIX-001 + E3-L
+      cosmetic nits, kit polish to port the
+      placeholder confidence column from E3-H);
+  (f) defer further E3 work.
+
+Open question for Sami: Codex's drift report missed
+one new image (`?? web/public/images/hero/Hero
+1920-W.png`) that appeared AFTER its final sanity
+check. Almost certainly your own concurrent target
+work; worth confirming you were working on the image
+surface in parallel during E3-K (rather than
+something unexpected touching the target).
+
+Hard stop remains active. Per the active Stopgate
+Rule, no target-repo commit, no kit extension, no
+install, no MCP registration, no plugin install, no
+bridge enablement, no global config change, no
+signed trust/event/private-key edit, no commit or
+push in either repo, no branch creation, no PR, and
+no proposed-to-approved transition occurs without
+Sami's explicit per-action approval.
+
+— Historical phase content below is preserved per
+the Response History Policy (durable detail lives in
+append-only turn notes under
+`.agent-handoff/turns/`). —
 
 Experiment 3 E3-K scaffold-only extraction filed; E3-L
 Claude critique pending.
@@ -1483,79 +1666,122 @@ config changes, or proposed-to-approved transitions are authorized.
   absence, all kit/v1 source files exist, all four
   `{{PROJECT_BRIEF_PATH}}` candidate docs exist,
   AGENTS/CLAUDE template overwrite hazard confirmed
-  real). Locally uncommitted at filing; awaiting Sami's
-  per-push authorization.
+  real). Committed and pushed in `66eae60` per Sami's
+  per-push authorization on 2026-05-16.
+- E3-K Codex colorado scaffold extraction added at
+  `.agent-handoff/turns/E3-K-codex-colorado-scaffold-extraction.md`.
+  First scaffold-only extraction implementation: 6
+  target files created in
+  `colorado-songwriters-collective/.agent-handoff/`,
+  stage-in-tmp-then-exact-copy write pattern, all three
+  E3-J cosmetic nits addressed inline. Target writes
+  remain uncommitted per the authorized scope. Committed
+  and pushed in `c080052` per Sami's per-push
+  authorization on 2026-05-16.
+- E3-L Claude consultant critique of E3-K scaffold
+  extraction added at
+  `.agent-handoff/turns/E3-L-claude-colorado-scaffold-extraction-critique.md`.
+  Zero blockers, three tiny cosmetic nits, all fourteen
+  Sami focus areas pass. Independent verification by
+  consultant: target `.agent-handoff/` tree contains
+  exactly 6 authorized files; `cmp` proves
+  starter-turn-note byte-identical to kit source; no
+  unfilled placeholders; no accidental `.DS_Store`;
+  unrelated `web/public/images/` drift correctly
+  classified as target-side concurrent actor change
+  outside E3-K scope. Locally uncommitted at filing;
+  awaiting Sami's per-push authorization.
 
 ## Latest Claude Response
+
+E3-L architecture-consultant critique of E3-K scaffold
+extraction filed at
+`.agent-handoff/turns/E3-L-claude-colorado-scaffold-extraction-critique.md`.
+Verdict: zero blockers, accept E3-K as a successful first
+scaffold-only extraction implementation. **SAFE TO ACCEPT,
+SAFE TO COMMIT LATER IN TARGET WITH PRECISE STAGING, NO
+FIX TURN NEEDED.** All fourteen Sami focus areas pass on
+independent verification:
+- Target `.agent-handoff/` tree contains EXACTLY the
+  six authorized files (PROTOCOL.md, COLLAB.md,
+  prompts/starter-turn-note.md, 3x .gitkeep) — verified
+  via independent `find -maxdepth 3`.
+- `cmp` proves starter-turn-note.md is BYTE-IDENTICAL
+  to kit/v1 source (no drift from kit).
+- Independent `grep '{{'` returns zero matches — no
+  unfilled placeholders in rendered PROTOCOL/COLLAB.
+- Independent `find -name .DS_Store` returns no output
+  — no accidental .DS_Store in scaffold tree.
+- Rendered PROTOCOL.md uses the multi-doc PROJECT_BRIEF
+  statement exactly as E3-J nit #1 recommended (option
+  a: inline multi-doc sentence rather than
+  single-anchor fiction).
+- Rendered PROTOCOL.md adds TWO target-specific
+  protections beyond the kit template: AGENTS/CLAUDE
+  merge-surface protection (lines 17-18) and
+  Chrome-first repository statement (lines 39-40).
+- Target `git diff --name-only` after E3-K lists ONLY
+  the 12 pre-existing tracked dirty files — no
+  E3-K-caused tracked-file modification.
+- `git show --stat c080052` confirms only 2 Claude-Codex
+  files touched; target writes remain uncommitted.
+
+All three E3-J cosmetic nits addressed inline:
+multi-doc PROJECT_BRIEF, `--untracked-files=all`
+consistency throughout, explicit `.DS_Store` check.
+Strongest single-strength: **stage-in-tmp-then-exact-copy
+write pattern** (Codex staged rendered files in
+`/private/tmp/e3k-colorado-scaffold/` before atomic copy
+to target — safest possible cross-repo write).
+
+Unrelated `web/public/images/` drift classified as
+**target-state drift outside E3-K scope from
+concurrent actor change**. Evidence: drift sits
+entirely in `web/public/images/` (in E3-I no-touch
+surface); a 7th drift entry appeared AFTER Codex's
+final sanity check (concurrent target activity);
+paths cannot overlap with E3-K's `.agent-handoff/`
+write surface. NOT a blocker. IS a constraint for
+any later target-side commit: precise staging
+(`git add .agent-handoff/`) required to avoid
+bundling unrelated drift.
+
+Three tiny cosmetic nits-of-the-implementation (NOT
+blocking; deferrable): (1) target COLLAB.md uses
+double-hyphen (`--`) where kit template may use
+em-dash (`—`); (2) Current Phase rendered as single
+bulleted block rather than separate sub-sections;
+(3) future cross-repo turns could include a brief
+"drift watch window" re-check to surface concurrent
+activity arriving just after primary verification.
+
+Open question for Sami: Codex's drift report missed
+one new image (`?? web/public/images/hero/Hero
+1920-W.png`) that appeared AFTER its final sanity
+check — almost certainly your own concurrent target
+work, worth confirming.
+
+Subagents intentionally not used. Hard stop active
+per Sami's instruction; standing by for Sami's
+per-push authorization.
+
+## Earlier Claude Response
 
 E3-J architecture-consultant critique of E3-I extraction
 design filed at
 `.agent-handoff/turns/E3-J-claude-colorado-extraction-design-critique.md`.
 Verdict: zero blockers, accept E3-I as a successful
 first-extraction design-only turn. All fifteen Sami focus
-areas pass on independent verification. E3-K is SAFE TO
-AUTHORIZE as a single Codex implementation turn under
-Codex's proposed shape (6 target files + 2 Claude-Codex
-files write set, comprehensive no-touch surface,
-pre-write re-verification gate, post-write expected
-delta check, three-scenario rollback plan). Independent
-verification: target status re-run byte-identical to
-pre/post blocks (still 32 lines = 12 M + 20 ??);
-target `.agent-handoff/` still ABSENT; all six kit/v1
-source files exist for the proposed scaffold; all four
-`{{PROJECT_BRIEF_PATH}}` candidate docs exist in target;
-`kit/v1/AGENTS.md.template` and CLAUDE.md.template both
-exist (confirming the "main design hazard" of accidental
-template overwrite is real and correctly named). `git
-show --stat a70bb41` confirms only two Claude-Codex
-files touched. Codex's three open questions answered:
-YES to six-scaffold-files-only (minimum viable); YES to
-.gitignore deferred (target .gitignore dirty + E3-K
-creates no paths needing those rules); YES-strongly to
-AGENTS/CLAUDE no-touch in E3-K (both in current dirty
-surface; merge needs separate design+critique cycle).
-Three tiny cosmetic nits-of-the-design (NOT blocking;
-can be addressed inline in E3-K authorization wording):
-(1) `{{PROJECT_BRIEF_PATH}}` multi-doc value may not
-slot syntactically into a single-placeholder slot; E3-K
-should verify rendered PROTOCOL.md reads naturally; (2)
-§11 pre-write mixes `git status --short` and
-`--untracked-files=all` granularity; suggest
-`--untracked-files=all` throughout for apples-to-apples
-comparison; (3) post-write empty-directory check could
-explicitly confirm no accidental `.DS_Store` (already
-ignored, so redundant; flag only for full byte rigor).
-Strengths called out: compound dirty-surface protection
-(3 layers); "main design hazard" naming; multi-doc
-PROJECT_BRIEF phrasing; three-scenario rollback plan;
-literal expected post-write target delta; sandbox
-blocking flagged honestly; empty-target-turns called
-out. Subagents intentionally not used. Hard stop active
-per Sami's instruction; standing by for Sami's per-push
-authorization.
-
-## Earlier Claude Response
-
-E3-H architecture-consultant critique filed at
-`.agent-handoff/turns/E3-H-claude-critique.md`. Verdict:
-zero blockers, accept E3-H as a successful read-only
-discovery of `colorado-songwriters-collective`. All nine
-Sami focus areas pass on independent verification.
-Strongest evidence: target `git status --short` re-run by
-consultant is byte-identical to BOTH the pre-discovery
-and post-discovery blocks Codex recorded — strongest
-possible proof zero target writes occurred. Codex's three
-open questions answered: yes-strongly (treat target
-AGENTS/CLAUDE as merge surfaces, not overwrite targets);
-partial-reframe (target dirty state is explicit-awareness
-constraint rather than blocker); acceptable-with-caveat
-(2-turn extraction+critique is safe IF authorization
-names files precisely; consultant prefers 4-turn shape).
-Three tiny nits surfaced but NOT blocking. Further-back
-Claude responses (E3-G-FIX-001 critique, E2-007 rescope
-revision, and earlier) preserved in their append-only
-turn notes under `.agent-handoff/turns/` per the Response
-History Policy in `.agent-handoff/PROTOCOL.md`.
+areas passed. E3-K was identified as SAFE TO AUTHORIZE
+with three tiny cosmetic nits (PROJECT_BRIEF multi-doc
+phrasing, `--untracked-files=all` consistency, .DS_Store
+check) — all of which Codex subsequently addressed
+inline in E3-K rather than deferring to a fix turn.
+Further-back Claude responses (E3-H critique,
+E3-G-FIX-001 critique, E2-007 rescope revision, and
+earlier) preserved in their append-only turn notes
+under `.agent-handoff/turns/` per the Response History
+Policy in `.agent-handoff/PROTOCOL.md`.
 
 (Below is residual prose from earlier turn-note consolidation
 that should have been removed; preserved here verbatim until
@@ -1591,34 +1817,40 @@ preserved in their append-only turn notes under
 
 ## Latest Codex Response
 
-E3-I extraction design filed at
-`.agent-handoff/turns/E3-I-codex-colorado-extraction-design.md`.
+E3-K Colorado scaffold extraction filed at
+`.agent-handoff/turns/E3-K-codex-colorado-scaffold-extraction.md`.
 
 Summary:
-- Accepted E3-H as successful per Sami's authorization and recorded exact E3-I
-  authorization in `COLLAB.md`.
-- Kept E3-I design-only: no target writes, no target directories, no installs,
-  no target tests, no MCP/plugin/bridge/global config, no signed trust/event/
-  private-key edits, no git mutations.
-- Proposed scaffold-only E3-K target write set, if later authorized:
-  `.agent-handoff/PROTOCOL.md`, `.agent-handoff/COLLAB.md`,
-  `.agent-handoff/turns/.gitkeep`, `.agent-handoff/digests/.gitkeep`,
-  `.agent-handoff/consultants/.gitkeep`,
-  `.agent-handoff/prompts/starter-turn-note.md`.
-- Decided target dirty state is an explicit-awareness constraint, not an
-  automatic blocker, only if E3-K avoids every named dirty surface and
-  re-verifies pre/post status.
-- Treated target `AGENTS.md` and `CLAUDE.md` as eventual merge surfaces but
-  no-touch/reference-only for first extraction; do not copy their kit templates
-  in E3-K.
-- Deferred `.gitignore` from first extraction because it is already dirty,
-  while documenting the safe future patch:
-  `.agent-handoff/local/` and `.claude/worktrees/`.
-- Kept signed governance optional, browser runner Chrome-first, automation
-  budget N/A, and proposed E3-K cap as one Codex implementation turn followed
-  by E3-L Claude critique.
-- Verification plan and rollback plan included. Target `git status --short`
-  before and after E3-I is byte-identical; target tests were not run.
+- Created EXACTLY the six authorized target scaffold files under
+  `colorado-songwriters-collective/.agent-handoff/`: PROTOCOL.md, COLLAB.md,
+  prompts/starter-turn-note.md, plus three 0-byte .gitkeep files (turns,
+  digests, consultants).
+- Used stage-in-tmp-then-exact-copy write pattern: rendered files staged in
+  `/private/tmp/e3k-colorado-scaffold/` before scoped escalated atomic copy
+  to target. Single authorized write path, not a broad workaround.
+- Addressed all three E3-J cosmetic nits inline rather than via a fix turn:
+  (1) PROJECT_BRIEF_PATH rendered as multi-doc statement
+  ("Project brief sources: README.md, docs/PRODUCT_NORTH_STAR.md,
+  docs/CONTRACTS.md, and docs/GOVERNANCE.md."); (2) all pre/post target
+  status checks use `git status --short --untracked-files=all` for
+  apples-to-apples granularity; (3) explicit `find .agent-handoff -name
+  .DS_Store` check confirms no accidental .DS_Store created.
+- Added two target-specific protections in rendered PROTOCOL.md beyond the
+  kit template: AGENTS/CLAUDE merge-surface protection and Chrome-first
+  repository statement.
+- Verification: target `git diff --name-only` shows no E3-K-caused tracked
+  file modification; `cmp` proves starter-turn-note.md byte-identical to
+  kit/v1 source; `rg '{{'` returns no unfilled placeholders. No target
+  tests run (deferred with reason: scaffold-only, tests not proven
+  read-only).
+- Honest drift disclosure: a final sanity check observed unrelated
+  `web/public/images/` drift (5 deletions + 1 untracked image) outside
+  E3-K scope. Codex correctly did not attempt cleanup. (E3-L consultant
+  re-verification found one ADDITIONAL untracked image that appeared
+  after Codex's final check — concurrent target-side actor activity.)
+- Target writes remain uncommitted in target repo per the authorized
+  read-only-target-commit scope. Claude-Codex commit `c080052` is only
+  the two-file note + COLLAB.md update.
 
 ## Earlier Codex Response
 
@@ -1634,19 +1866,19 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E3-I as filed?
-- Authorize E3-K as a single Codex implementation turn with
-  the exact 6 + 2 file write list and the no-touch surface
-  from E3-I, plus pre-write re-verification gate, post-write
-  expected delta check, optional pre-grant of sandbox
-  writable-root, and rollback plan from E3-I §12?
-- Choose how to handle the three tiny cosmetic nits-of-the-
-  design: (i) inline into E3-K authorization wording, (ii)
-  authorize a tiny E3-I-FIX-001 polish turn first, or (iii)
-  defer indefinitely.
-- Sandbox writable-root: pre-grant in E3-K authorization
-  itself, or let E3-K hit boundary, stop, and ask
-  separately?
+- Accept E3-K as filed?
+- Choose target-side commit shape: (a) precise-stage
+  `.agent-handoff/` and commit the scaffold in target via
+  separate per-push authorization, (b) resolve the
+  `web/public/images/` drift first then commit, (c) defer
+  target commit indefinitely while keeping scaffold as
+  local proof-of-concept.
+- Authorize a follow-up E3-M turn that adds a target
+  AGENTS.md or CLAUDE.md merge-pointer (small append-only
+  edit pointing existing target docs at
+  `.agent-handoff/PROTOCOL.md`) before any commit?
+- Confirm the `web/public/images/` drift is your own
+  concurrent target work (vs. unexpected actor)?
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -1662,33 +1894,39 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. E3-J critique filed; hard stop after critique per Sami's
+None active. E3-L critique filed; hard stop after critique per Sami's
 instruction. Standing by for Sami's per-push authorization (the two
 uncommitted files are
-`.agent-handoff/turns/E3-J-claude-colorado-extraction-design-critique.md`
-and this COLLAB.md edit) or any redirect. After E3-K is filed and
-critiqued, Claude's role continues as the architecture consultant for
-E3-L (Claude critique of E3-K extraction implementation).
+`.agent-handoff/turns/E3-L-claude-colorado-scaffold-extraction-critique.md`
+and this COLLAB.md edit) or any redirect. Claude's next consultant role
+depends on Sami's chosen direction (target-side commit critique,
+follow-up E3-M merge-pointer turn, kit-polish turn, or pivot).
 
 ## Next Request To Codex
 
-None active. Hard stop continues until Sami accepts E3-I and explicitly
-authorizes E3-K with the exact target write set, sandbox writable-root
-decision, and any inline polish for the three cosmetic nits.
+None active. Hard stop continues until Sami accepts E3-K and explicitly
+authorizes a next scope (target-side commit, follow-up E3-M, kit polish,
+or pivot).
 
 ## Next Request To Sami
 
-None immediate until Claude critique of E3-I lands. After E3-J, decide whether
-to authorize E3-K implementation with the exact 6 + 2 file write list and
-no-touch surface from E3-I (and optional inline polish for the three
-cosmetic nits), authorize a tiny E3-I-FIX-001 polish turn first, pivot
-to a queued item (Experiment 4 council skill pack, separate
-wrapper-codex-mcp trust turn, kit polish for the two E3-G-FIX-001
-cosmetic nits, kit polish to port the placeholder confidence column from
-E3-H), or defer further E3 work. Per the active Stopgate Rule, no
-kit-extraction implementation, no write into
-`colorado-songwriters-collective`, no install, no MCP registration, no
-plugin install, no bridge enablement, no global config change, no signed
+Decide whether to (a) accept E3-K as filed and authorize a target-side
+commit of the scaffold using precise staging
+(`git -C colorado-songwriters-collective add .agent-handoff/`) followed
+by a separate per-push authorization in target — this critique does NOT
+authorize that commit; (b) resolve the `web/public/images/` drift first
+via your own target-side cleanup, then commit the scaffold in a clean
+tree; (c) defer the target-side commit indefinitely while keeping the
+scaffold as a local unstaged proof-of-concept; (d) authorize a follow-up
+E3-M turn that adds a target AGENTS.md or CLAUDE.md merge-pointer
+(small append-only edit pointing existing target docs at
+`.agent-handoff/PROTOCOL.md`) before any commit; (e) pivot to a queued
+item (Experiment 4 council skill pack, separate wrapper-codex-mcp trust
+turn, kit polish for the E3-G-FIX-001 + E3-L cosmetic nits, kit polish
+to port the placeholder confidence column from E3-H); or (f) defer
+further E3 work. Per the active Stopgate Rule, no target-repo commit,
+no kit extension, no install, no MCP registration, no plugin install,
+no bridge enablement, no global config change, no signed
 trust/event/private-key edit, no commit or push in either repo, no
 branch creation, no PR, no staging, and no proposed-to-approved
 transition occurs without your explicit per-action approval.
