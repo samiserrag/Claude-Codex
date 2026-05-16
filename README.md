@@ -36,6 +36,33 @@ Expected app files once the loop starts:
 - [docs/chrome-runners.md](docs/chrome-runners.md) - Chrome-first browser runner setup.
 - [docs/ubicloud-runners.md](docs/ubicloud-runners.md) - Ubicloud GitHub Actions runner setup.
 
+## Accepted E3 Alignment
+
+- The workflow is local-first, not local-only. The default path works in a
+  single repo on one machine, but approved bridges or adapters can be layered on
+  later.
+- File-based handoff is the minimal binding reference path: Tier 0 manual
+  paste plus `COLLAB.md` and append-only turn notes, and Tier 1 inbox/outbox
+  file exchange when an experiment scopes it.
+- Signed event governance is an optional add-on for adopters that need
+  cryptographic verification. It is not required for the v1 file-based kit.
+- Live bridges and adapters stay disabled until Sami separately approves the
+  exact MCP registration, plugin setup, bridge enablement, or global config
+  change.
+- Turn caps are set by each experiment's authorizing approval, not by a static
+  repo-wide default.
+- Browser QA must name the runner or explicitly say `N/A` with a reason. This
+  repo's named runner is Chrome-first.
+- Automation budget is `N/A` unless polling, cron, webhook, or heartbeat
+  automation is explicitly approved.
+- Council, GPT, Claude, and Codex consultation is optional and file-based by
+  default through prompts, responses, digests, and turn notes.
+- Prior art such as gstack, AgentBridge, tmux bridges, LLM Council, Zenith,
+  CCB, and Claude Squad is cited as prior art only unless a later approval
+  explicitly scopes dependency use.
+- Kit extraction is a separate action after docs alignment. This README does
+  not copy, install, register, or enable any kit.
+
 ## First Run
 
 1. Open a new Claude Code thread in this repo.
@@ -45,25 +72,30 @@ Expected app files once the loop starts:
    `.agent-handoff/COLLAB.md`, then you paste
    [.agent-handoff/prompts/codex-response.md](.agent-handoff/prompts/codex-response.md)
    into Codex.
-4. Stop after turn note 004 and write a retrospective before testing bridges.
+4. Stop after Experiment 1's authorized cap, turn note 004, and write a
+   retrospective before testing bridges.
 
-## Optional Bridge Setup
+## Bridge And Adapter Status
 
 Local checks showed both CLIs are installed:
 
 - `codex-cli 0.130.0`
 - `claude 2.1.58`
 
-The repo-side scaffold works without extra setup. After Experiment 1 proves the
-file-based contract, a later bridge experiment can register Codex inside Claude
-Code:
+The repo-side scaffold works without extra setup. No live bridge, adapter,
+plugin, or MCP registration is enabled by this README. The examples below are
+historical setup surfaces for a separately approved future experiment, not
+commands to run during ordinary docs or file-based turns.
+
+A future approved bridge experiment could evaluate registering Codex inside
+Claude Code:
 
 ```bash
 claude mcp add --scope project --transport stdio codex -- codex mcp-server
 ```
 
-The reverse direction is possible but should stay out of scope until the
-file-based and Claude-hosted Codex experiments both show clear value:
+The reverse direction remains out of scope until the file-based reference path
+and any separately approved Claude-hosted Codex experiment show clear value:
 
 ```bash
 codex mcp add claude-code -- claude mcp serve

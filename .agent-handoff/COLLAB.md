@@ -7,14 +7,15 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-F docs-alignment turn, authorized by Sami on
-2026-05-15)
+Claude (architecture consultant role for E3-F critique turn)
 
 ## Current Phase
 
-E3-E-FIX-001 accepted. E3-F authorized by Sami on 2026-05-15 as a
-docs-alignment turn before any kit extraction. Explicit
-authorization text recorded here and in the consultation thread:
+E3-F docs-alignment filed by Codex. Current phase: Experiment 3
+E3-F critique pending. E3-E-FIX-001 was accepted, and E3-F was
+authorized by Sami on 2026-05-15 as a docs-alignment turn before
+any kit extraction. Explicit authorization text recorded here and
+in the consultation thread:
 
   "Approved:
   1. Accept E3-E-FIX-001 as a successful design/prose-only
@@ -63,14 +64,15 @@ authorization text recorded here and in the consultation thread:
   10. Kit extraction remains a separate action after docs
       alignment."
 
-Codex authors E3-F. Claude consultant critiques after the docs
+Codex authored E3-F. Claude consultant critiques after this docs
 alignment lands.
 
 E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
 inspection, E3-B-FIX-001 verifier hardening, E3-D
 adapter-selection design, E3-D-FIX-001 wrapper preconditions,
 E3-E kit-extraction + harness-control design, and E3-E-FIX-001
-kit housekeeping all accepted. E3-F docs-alignment pending.
+kit housekeeping all accepted. E3-F docs-alignment is filed and
+awaiting Claude critique.
 Kit extraction remains a separate sub-experiment requiring
 Sami's explicit per-action approval AFTER E3-F lands and is
 critiqued.
@@ -114,19 +116,19 @@ into another repo) remains a separate per-action sub-experiment
 requiring Sami's explicit approval recorded in COLLAB.md.
 
 Sami's decision queue:
-- Accept E3-E-FIX-001 as filed, then choose between:
-  (a) authorize the first kit-extraction action sub-experiment
-      (likely portable folder inside this repo or discovery turn
-      reading colorado-songwriters-collective's actual state);
-  (b) pivot to a queued item (Experiment 4 council skill pack,
-      separate wrapper-codex-mcp trust turn for future direct-MCP
-      enablement);
-  (c) defer further E3 work.
+- None immediate while Claude's E3-F critique is pending.
+- Later only, if separately authorized: choose whether the next E3
+  step is a first kit-extraction action, a portable kit folder
+  inside this repo, a discovery turn reading
+  `colorado-songwriters-collective` current state, Experiment 4
+  council skill pack work, separate `wrapper-codex-mcp` trust work,
+  or deferral.
 
-Hard stop remains active. No kit files were created outside this
-repo, no protocol change was applied, no signed governance
-packaging was performed, no adapter was enabled, and no proposed
-item was moved to approved.
+Hard stop remains active. E3-F aligned existing docs only and
+created the append-only E3-F turn note. No kit files were created
+outside this repo, no signed governance packaging was performed,
+no adapter was enabled, and no proposed item was moved to
+approved.
 
 E3-E accepted. E3-E-FIX-001 was authorized by Sami on 2026-05-15 as
 a design/prose-only housekeeping turn. Explicit authorization text
@@ -607,23 +609,24 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-E-FIX-001 tiny kit-housekeeping turn written at
-`.agent-handoff/turns/E3-E-FIX-001-codex-kit-housekeeping.md`.
-Codex left E3-E as-filed and addressed only the five authorized
-consultant nits in a new append-only note:
-`{{IDLE_AUTOMATION_BUDGET}}` is N/A by default unless polling, cron,
-webhook, or heartbeat automation is scoped; `{{TURN_CAP}}` is
-per-experiment and named by the authorizing approval, not a repo-wide
-default; `{{BROWSER_RUNNER_CHOICE}}` must be either a named runner or
-explicit N/A with reason; the optional kit files should include a
-starter turn-note template; and URL prior-art citations should include
-read dates, with E3-E's Zenith references treated as read 2026-05-15.
+E3-F docs-alignment turn written at
+`.agent-handoff/turns/E3-F-codex-docs-alignment.md`. Codex audited
+`README.md`, `AGENTS.md`, `CLAUDE.md`, `.agent-handoff/PROTOCOL.md`,
+`.agent-handoff/COLLAB.md`, and `docs/chrome-runners.md` against the
+ten required E3 alignment points. Existing docs were aligned to state
+that the workflow is local-first, file-based handoff is the minimal
+binding reference, signed event governance is optional for the v1 kit,
+bridges/adapters remain disabled until separately approved, turn caps
+are per-experiment authorization values, browser runners must be named
+or explicit `N/A`, automation budget is `N/A` unless automation is
+approved, council consultation is optional and file-based by default,
+prior art is not a dependency, and kit extraction remains separate.
 
-No E3-E edit, PROTOCOL.md edit, kit extraction, file creation outside
-this repo, install, MCP registration, plugin setup, bridge enablement,
-global config change, git operation, or proposed-to-approved transition
-was performed. Hard stop now waits for Claude's read-only
-E3-E-FIX-001 critique.
+No kit extraction into `colorado-songwriters-collective`, adapter
+setup, install, MCP registration, plugin setup, bridge enablement,
+global config change, git operation, signed trust/event edit, private
+key edit, or proposed-to-approved transition was performed. Hard stop
+now waits for Claude's read-only E3-F critique.
 
 ## Earlier Codex Response
 
@@ -639,7 +642,7 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-E-FIX-001 critique is pending.
+- None immediate while Claude's E3-F critique is pending.
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -655,24 +658,23 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-E-FIX-001 architecture-consultant critique of
-`.agent-handoff/turns/E3-E-FIX-001-codex-kit-housekeeping.md` and
-this COLLAB handoff update. Confirm whether the fix note addresses
-only the five authorized nits: automation-budget N/A path,
-per-experiment turn cap framing, browser-runner N/A path, starter
-turn-note template, and Zenith citation read dates. Verify that E3-E
-was not edited in place and that no protocol change, kit extraction,
-file creation outside this repo, install, MCP registration, plugin
-setup, bridge enablement, global config change, git operation, or
-proposed-to-approved transition occurred. Stay read-only and return
-findings, blockers, and nits for Sami.
+Perform the E3-F architecture-consultant critique of
+`.agent-handoff/turns/E3-F-codex-docs-alignment.md` and this COLLAB
+handoff update. Verify that the allowed docs were audited and aligned
+against all ten required points, that `docs/test-project.md` and prior
+turn notes were not edited, and that `docs/chrome-runners.md` was left
+unchanged because its repo-specific Chrome runner language already
+aligns. Check that PROTOCOL.md edits are language alignment only and
+do not add new schema fields, event kinds, payload schemas, or approval
+mechanics. Stay read-only and report findings, blockers, and nits for
+Sami.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-E-FIX-001 until Claude's critique is
-filed and Sami explicitly authorizes any next scope.
+None active. Hard stop after E3-F until Claude's critique is filed
+and Sami explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-E-FIX-001 critique.
+action is Claude's E3-F critique.

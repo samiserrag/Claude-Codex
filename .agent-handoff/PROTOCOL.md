@@ -3,9 +3,11 @@
 ## Purpose
 
 This protocol tests practical two-way collaboration between Claude Code and
-Codex in the same repo. The reliable baseline is repo-file coordination.
-Experiment 1 is file-based only. Live MCP/plugin bridges are later experiments,
-not the first run.
+Codex in the same repo. The reliable baseline is repo-file coordination. The
+protocol is local-first, not local-only: it works with manual repo files by
+default, and separately approved bridges or adapters may be layered on later.
+Experiment 1 was file-based only. Live MCP/plugin bridges are later
+experiments, not the first run and not enabled by default.
 
 ## Source Of Truth
 
@@ -15,6 +17,32 @@ not the first run.
 - Hidden chat context is not authoritative unless it is summarized into these
   files.
 
+## Baseline And Optional Layers
+
+- File-based handoff is the minimal binding reference path: Tier 0 manual
+  paste plus `COLLAB.md` and append-only turn notes, and Tier 1 inbox/outbox
+  file exchange only when an experiment scopes it.
+- Signed event governance is an optional add-on for adopters that need
+  cryptographic event verification. It is not required for the v1 file-based
+  kit.
+- Live bridges and adapters remain disabled until Sami separately approves the
+  exact MCP registration, plugin setup, bridge enablement, `.mcp.json`, or
+  global config change.
+- Turn caps are per-experiment authorization values. Experiment 1 used a
+  four-turn cap; later experiments use the cap recorded in their own
+  authorizing approval.
+- Browser verification must name the runner or explicitly mark browser QA
+  `N/A` with a reason. Silent omission is not acceptable.
+- Automation budget is `N/A` unless polling, cron, webhook, or heartbeat
+  automation is explicitly approved for the experiment.
+- Council, GPT, Claude, and Codex consultation is optional and file-based by
+  default through prompts, filed responses, digests, and turn notes.
+- Prior art such as gstack, AgentBridge, tmux bridges, LLM Council, Zenith,
+  CCB, and Claude Squad is prior art only unless a later approval explicitly
+  scopes dependency use, vendoring, installation, or runtime setup.
+- Kit extraction is a separate action after docs alignment. This protocol does
+  not authorize copying kit files into another repo.
+
 ## Turn Loop
 
 1. Read `COLLAB.md`, `PROTOCOL.md`, `docs/test-project.md`, and the latest turn
@@ -22,9 +50,10 @@ not the first run.
 2. Decide whether you are architecting, implementing, reviewing, or handing off.
 3. Before editing `COLLAB.md`, re-read it so stale state is not overwritten.
 4. Update `COLLAB.md` before delegating to the other agent.
-5. For Experiment 1, do not call the other agent through a bridge. Write the
-   next request into `COLLAB.md`, add a turn note, and stop so Sami can paste
-   the matching prompt into the other agent.
+5. Use file-based handoff unless the current experiment explicitly approves a
+   bridge or adapter. Write the next request into `COLLAB.md`, add a turn note,
+   and stop so Sami can paste the matching prompt into the other agent when the
+   active mode is manual.
 6. Add a new turn note named with the next sequence number, for example
    `001-claude-architecture.md` or `002-codex-review.md`.
 
@@ -126,7 +155,7 @@ Experiment 1 is file-based only and limited to one feature:
 Do not design or implement filter, edit, delete, import, export, or clear-all
 during Experiment 1.
 
-The turn cap is 4 experiment turn notes:
+Experiment 1's authorizing turn cap was 4 experiment turn notes:
 
 1. `001-claude-architecture.md`
 2. `002-codex-critique.md`
@@ -136,15 +165,21 @@ The turn cap is 4 experiment turn notes:
 After turn 004, stop and hand off to Sami for retrospective. Do not create turn
 005 without explicit approval.
 
-## Later Bridge Experiments
+## Later Bridge Or Adapter Experiments
 
-After Experiment 1 proves the file-based contract, a later experiment may test
-Claude-hosted Codex through the official Codex plugin or `codex mcp-server`.
-This requires Sami's explicit approval because it changes tool configuration and
-the failure mode under test.
+After the file-based contract is proven, a later experiment may test
+Claude-hosted Codex through the official Codex plugin, a direct
+`codex mcp-server` wrapper, or another adapter. This requires Sami's explicit
+approval for the exact adapter and setup because it changes tool configuration
+and the failure mode under test.
 
 Codex-hosted Claude is out of scope until the file-based and Claude-hosted Codex
 experiments both show clear value.
+
+Adapter, council, and harness prior art may be cited for design patterns, but
+gstack, AgentBridge, tmux bridges, LLM Council, Zenith, CCB, Claude Squad, and
+similar projects are not dependencies of this protocol unless a later approval
+explicitly scopes that dependency.
 
 ## Ownership
 
@@ -172,7 +207,7 @@ Stop and ask Sami before:
 - using dangerous sandbox or approval-bypass modes,
 - changing global Claude/Codex config,
 - running network-dependent setup,
-- continuing past the 4 Experiment 1 turn notes.
+- continuing past the current experiment's authorized turn cap.
 
 ## Stopgate Rule
 
@@ -205,4 +240,4 @@ The test is successful when:
 - no installs, commits, pushes, PRs, global config changes, or bridge calls
   happen during the experiment,
 - a retrospective identifies the most expensive friction point before any
-  bridge experiment begins.
+  bridge or adapter experiment begins.
