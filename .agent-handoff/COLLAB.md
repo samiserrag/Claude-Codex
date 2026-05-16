@@ -7,9 +7,128 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (decision: accept E3-G-FIX-001 and choose next E3 step)
+Codex (will author E3-H read-only discovery turn for
+colorado-songwriters-collective)
 
 ## Current Phase
+
+Experiment 3 E3-H read-only discovery authorized. E3-G-FIX-001
+accepted as a successful kit-template housekeeping turn.
+
+E3-H was authorized by Sami on 2026-05-16 as a read-only
+discovery turn for `colorado-songwriters-collective`. Precondition
+sanity check (read-only by consultant; Codex will re-verify when
+running the turn): the target directory
+`/Users/samiserrag/Documents/GitHub/colorado-songwriters-collective/`
+exists. Explicit authorization text recorded here and in the
+consultation thread:
+
+  "Approved:
+
+  1. Accept E3-G-FIX-001 as a successful kit-template housekeeping
+     turn.
+
+  2. Authorize E3-H as a read-only discovery turn for
+     colorado-songwriters-collective.
+
+  Purpose:
+  - Discover the actual target-repo values needed before applying
+    kit/v1.
+  - Do not copy, create, edit, delete, install, configure,
+    register, or enable anything in colorado-songwriters-collective.
+
+  Precondition:
+  - Verify that
+    /Users/samiserrag/Documents/GitHub/colorado-songwriters-collective/
+    exists.
+  - If it does not exist, stop gracefully and report that discovery
+    cannot proceed.
+
+  Scope:
+  - Read-only inspection of colorado-songwriters-collective.
+  - Output only a turn note in this Claude-Codex repo:
+    .agent-handoff/turns/E3-H-codex-colorado-discovery.md
+  - Update only this repo's .agent-handoff/COLLAB.md handoff fields.
+  - No writes to colorado-songwriters-collective at all.
+  - No creating directories there.
+  - No commands that write logs, caches, lockfiles, generated files,
+    or config inside colorado-songwriters-collective.
+  - No installs.
+  - No npm install / bun install / pip install.
+  - No MCP registration.
+  - No plugin setup.
+  - No bridge enablement.
+  - No global config changes.
+  - No commits, pushes, PRs, branches, or staging in either repo.
+  - No signed trust/event/private-key edits.
+  - Do not move any proposal to approved except by recording this
+    exact E3-H authorization in COLLAB.md.
+
+  Discover and report:
+  1. Target repo identity and default branch.
+  2. Existing AGENTS.md / CLAUDE.md / README.md status.
+  3. Existing .agent-handoff/ status, if any.
+  4. Existing .gitignore rules relevant to .agent-handoff/local/,
+     .DS_Store, .claude/worktrees/, generated files, and secrets.
+  5. Existing package/test commands and whether a safe read-only
+     test command is identifiable. Do not run commands that may
+     write.
+  6. Existing CI/workflow runner conventions.
+  7. Existing browser/UI surface and likely browser-runner choice,
+     or explicit N/A if no browser surface.
+  8. Candidate no-touch files/directories.
+  9. Candidate first experiment scope and per-experiment turn cap.
+  10. Whether signed governance should stay optional for first
+      adoption.
+  11. Which kit/v1 placeholders can be filled confidently and which
+      remain UNKNOWN.
+  12. Any risks before first extraction.
+
+  Subagents:
+  - Codex may use bounded advisory subagents where helpful:
+    1. repo-structure discovery reviewer
+    2. docs/agent-instruction reviewer
+    3. test/CI discovery reviewer
+    4. portability/no-touch reviewer
+  - Subagents inspect and report only.
+  - Subagents may not edit files, install tools, run write-producing
+    commands, expand scope, approve actions, or touch any repo
+    outside read-only inspection.
+
+  Verification required:
+  - git status --short in Claude-Codex before and after the turn.
+  - git status --short in colorado-songwriters-collective before
+    and after the turn, proving no target-repo writes occurred.
+  - If target repo status is not clean before discovery, report
+    that fact and do not modify it.
+  - No test command should be run unless Codex can justify it is
+    read-only. Otherwise mark test execution as deferred.
+
+  Next agent:
+  - Codex authors E3-H.
+  - Claude critiques E3-H after it is pushed.
+
+  Hard stop after E3-H."
+
+E3-G-FIX-001 acceptance recap (consultant critique commit
+`266bc82`): zero blockers, all eight Sami focus areas pass, two
+cosmetic nits-of-the-fix surfaced and explicitly NOT blocking
+(Phase enum now in two places; `COLLAB.md.template` disclaimer is
+bullet sibling rather than sub-bullet). Sami chose option (a):
+accept and proceed to E3-H read-only discovery rather than a
+tiny additional kit-polish turn for the cosmetic nits.
+
+Hard stop remains active. Per the active Stopgate Rule, no
+write into `colorado-songwriters-collective`, no install, no MCP
+registration, no plugin install, no bridge enablement, no global
+config change, no signed trust/event/private-key edit, no commit
+or push in either repo, no branch creation, no PR, and no
+proposed-to-approved transition occurs without Sami's explicit
+per-action approval.
+
+— Historical phase content below is preserved per the
+Response History Policy (durable detail lives in the
+append-only turn notes under `.agent-handoff/turns/`). —
 
 Experiment 3 E3-G-FIX-001 critique filed. Hard stop active per
 Sami's instruction; awaiting Sami decision on next step.
@@ -92,26 +211,23 @@ Two tiny cosmetic nits-of-the-fix (NOT blocking; deferrable):
    future template-polish pass.
 
 Sami's decision queue:
-- Accept E3-G-FIX-001 as filed, then choose between:
-  (a) authorize E3-H as a read-only discovery of
-      colorado-songwriters-collective per Sami's prior
-      stated sequencing (consultant recommendation per
-      prior critique — natural next step now that
-      kit/v1 housekeeping is clean);
-  (b) authorize a tiny additional kit polish turn for
-      one or both of the cosmetic nits above before E3-H
-      (only if strict single-source-of-truth or
-      visual-grouping discipline is wanted now);
-  (c) pivot to a queued item (Experiment 4 council skill
-      pack, separate wrapper-codex-mcp trust turn);
-  (d) defer further E3 work.
+- None immediate while Codex authors E3-H read-only discovery.
+- After Codex files E3-H and Claude critiques it, decide on next
+  scope: first kit-extraction action into
+  colorado-songwriters-collective (separately authorized
+  per-action), a tiny additional kit-polish turn for the two
+  cosmetic E3-G-FIX-001 nits, Experiment 4 council skill pack,
+  separate wrapper-codex-mcp trust turn, or deferral of further
+  E3 work.
 
-Hard stop remains active. No kit-extraction action, no file
-creation outside this Claude-Codex repo, no installs, no MCP
-registration, no plugin install, no bridge enablement, no
-global config change, no signed trust/event/private-key edit,
-and no proposed-to-approved transition occurs without Sami's
-explicit per-action approval.
+Hard stop remains active. No kit-extraction action, no write
+into `colorado-songwriters-collective`, no file creation outside
+this Claude-Codex repo, no installs, no MCP registration, no
+plugin install, no bridge enablement, no global config change,
+no signed trust/event/private-key edit, no commit or push in
+either repo, no branch creation, no PR, and no
+proposed-to-approved transition occurs without Sami's explicit
+per-action approval.
 
 E3-G accepted. E3-G-FIX-001 was authorized by Sami on 2026-05-16
 as a tiny kit-template housekeeping turn addressing the five E3-G
@@ -1098,8 +1214,12 @@ config changes, or proposed-to-approved transitions are authorized.
   blockers, two cosmetic nits, all eight Sami focus areas pass.
   Independent verification by consultant: `npm test` exit 0,
   `git diff --check` exit 0, leak greps over `kit/v1/` match
-  Codex's self-check. Locally uncommitted at filing; awaiting
-  Sami's per-push authorization.
+  Codex's self-check. Committed and pushed in `266bc82` per
+  Sami's per-push authorization on 2026-05-16.
+- E3-H read-only discovery authorization recorded in
+  `.agent-handoff/COLLAB.md` per Sami's verbatim authorization
+  on 2026-05-16. Locally uncommitted at filing; awaiting Sami's
+  per-push authorization.
 
 ## Latest Claude Response
 
@@ -1215,7 +1335,7 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-G-FIX-001 critique is pending.
+- None immediate while Codex authors E3-H read-only discovery.
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -1231,30 +1351,36 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. E3-G-FIX-001 critique filed; hard stop after critique per Sami's
-instruction. Standing by for Sami's per-push authorization (the two
-uncommitted files are
-`.agent-handoff/turns/E3-G-FIX-001-claude-critique.md` and this COLLAB.md
-edit) or any redirect.
+None active. Hard stop continues until Codex files E3-H and Sami
+authorizes a next scope. Claude consultant's next role is to critique
+E3-H read-only after Codex pushes it.
 
 ## Next Request To Codex
 
-None active. Hard stop continues until Sami accepts E3-G-FIX-001 and
-explicitly authorizes any next scope.
+Author E3-H as a read-only discovery turn for
+`colorado-songwriters-collective` per Sami's verbatim authorization
+above. Output only `.agent-handoff/turns/E3-H-codex-colorado-discovery.md`
+in this Claude-Codex repo plus a handoff update to this COLLAB.md.
+Re-verify the precondition (target-repo path exists) as your own first
+step before any inspection. Run `git status --short` in BOTH repos
+before and after the turn and include both pairs in the turn note's
+Verification section, proving no target-repo writes occurred. Cover
+all twelve "Discover and report" items; mark UNKNOWN cleanly for any
+item that cannot be answered read-only. Do not run tests unless you
+can justify they are read-only; otherwise mark test execution
+deferred. Bounded advisory subagents (repo-structure, docs/agent,
+test/CI, portability/no-touch) are authorized for inspect-and-report
+only. Hard stop after the turn note and COLLAB.md handoff update — no
+commits, pushes, branches, or staging in either repo.
 
 ## Next Request To Sami
 
-Decide whether to (a) accept E3-G-FIX-001 as filed and authorize E3-H
-read-only discovery against `colorado-songwriters-collective` per your
-prior stated sequencing (consultant recommendation per prior critique:
-this is the natural next step), (b) authorize a tiny additional kit
-polish turn for one or both of the two cosmetic nits-of-the-fix above
-before E3-H (only if you want strict single-source-of-truth on the
-Phase enum, or visual-grouping cleanup on the disclaimer line), (c)
-pivot to a queued item (Experiment 4 council skill pack, separate
-wrapper-codex-mcp trust turn), or (d) defer further E3 work. Per the
-active Stopgate Rule, no kit-extraction action, no file creation
-outside this Claude-Codex repo, no installs, no MCP registration, no
-plugin install, no bridge enablement, no global config change, no
-signed trust/event/private-key edit, and no proposed-to-approved
-transition occurs without your explicit per-action approval.
+None immediate while Codex authors E3-H. After Codex files E3-H and
+pushes it (with your separate per-push authorization), Claude
+consultant critiques it and you decide on next scope. Per the active
+Stopgate Rule, no write into `colorado-songwriters-collective`, no
+install, no MCP registration, no plugin install, no bridge enablement,
+no global config change, no signed trust/event/private-key edit, no
+commit or push in either repo, no branch creation, no PR, and no
+proposed-to-approved transition occurs without your explicit
+per-action approval.
