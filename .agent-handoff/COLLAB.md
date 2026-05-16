@@ -7,14 +7,28 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-F-FIX-001 tiny scaffold-check/docs-consistency fix turn,
-authorized by Sami on 2026-05-15)
+Claude (architecture consultant role for E3-F-FIX-001 critique turn)
 
 ## Current Phase
 
-E3-F accepted. E3-F-FIX-001 authorized by Sami on 2026-05-15 as a
-tiny scaffold-check/docs-consistency fix. Explicit authorization
-text recorded here and in the consultation thread:
+Experiment 3 E3-F-FIX-001 critique pending. Codex filed
+`.agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md`, edited
+`scripts/check-collab.mjs`, and updated this COLLAB handoff. The scaffold
+check now validates the current `COLLAB.md` headings (`## Current Phase` and
+`## Questions Requiring Sami Approval`) instead of old E1-era headings, and it
+checks actual level-2 headings rather than raw substring presence.
+
+`npm test` passes after the fix, and `git diff --check` passes after all edits.
+Historical pre-fix failure remains documented in E3-F and E3-F-claude-critique:
+the stale script expected `## Hard Constraints / Approval Stopgates` and
+`## Decisions Made`. One current-state nuance is recorded in the new turn note:
+the pre-edit test passed in this working tree only because Sami's authorization
+quote contained those stale strings as text, which masked the underlying stale
+expectation.
+
+E3-F accepted. E3-F-FIX-001 authorized by Sami on 2026-05-15 as a tiny
+scaffold-check/docs-consistency fix. Explicit authorization text recorded here
+and in the consultation thread:
 
   "Approved:
   1. Accept E3-F as a successful docs-alignment turn.
@@ -65,17 +79,16 @@ text recorded here and in the consultation thread:
     expand scope, install tools, edit unrelated files, or approve
     anything."
 
-Codex authors E3-F-FIX-001. Claude consultant critiques after the
-fix lands.
+Codex authored E3-F-FIX-001. Claude consultant critiques next.
 
 E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
 inspection, E3-B-FIX-001 verifier hardening, E3-D
 adapter-selection design, E3-D-FIX-001 wrapper preconditions,
 E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
 housekeeping, and E3-F docs alignment all accepted. E3-F-FIX-001
-scaffold-check fix pending. Kit extraction remains a separate
-sub-experiment requiring Sami's explicit per-action approval
-AFTER E3-F-FIX-001 lands and is critiqued.
+scaffold-check fix filed and awaiting Claude critique. Kit extraction remains
+a separate sub-experiment requiring Sami's explicit per-action approval AFTER
+E3-F-FIX-001 is critiqued and accepted.
 
 E3-F Claude consultant critique filed (2026-05-15) at HEAD
 `fbe8bf5`. Zero blockers. All six Sami focus areas pass:
@@ -738,24 +751,57 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-F docs-alignment turn written at
-`.agent-handoff/turns/E3-F-codex-docs-alignment.md`. Codex audited
-`README.md`, `AGENTS.md`, `CLAUDE.md`, `.agent-handoff/PROTOCOL.md`,
-`.agent-handoff/COLLAB.md`, and `docs/chrome-runners.md` against the
-ten required E3 alignment points. Existing docs were aligned to state
-that the workflow is local-first, file-based handoff is the minimal
-binding reference, signed event governance is optional for the v1 kit,
-bridges/adapters remain disabled until separately approved, turn caps
-are per-experiment authorization values, browser runners must be named
-or explicit `N/A`, automation budget is `N/A` unless automation is
-approved, council consultation is optional and file-based by default,
-prior art is not a dependency, and kit extraction remains separate.
+E3-F-FIX-001 scaffold-check/docs consistency fix written at
+`.agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md`.
 
-No kit extraction into `colorado-songwriters-collective`, adapter
-setup, install, MCP registration, plugin setup, bridge enablement,
-global config change, git operation, signed trust/event edit, private
-key edit, or proposed-to-approved transition was performed. Hard stop
-now waits for Claude's read-only E3-F critique.
+Diagnosis: `npm test` runs `node scripts/check-collab.mjs`. The stale scaffold
+check expected old E1-era `COLLAB.md` headings:
+
+```text
+## Hard Constraints / Approval Stopgates
+## Decisions Made
+```
+
+Current E3 `COLLAB.md` has equivalent governance and state in different
+places: the Stopgate Rule lives in `PROTOCOL.md`, decisions live primarily in
+append-only turn notes and running phase state, and `COLLAB.md` carries current
+state through headings such as `## Current Phase` and `## Questions Requiring
+Sami Approval`.
+
+Chosen fix shape: A, update the scaffold check to current `COLLAB.md` shape.
+`scripts/check-collab.mjs` now requires `## Current Phase` and `## Questions
+Requiring Sami Approval` instead of the two stale E1 headings. It also validates
+actual level-2 headings instead of raw substring presence, so quoted
+authorization text cannot accidentally satisfy a structural heading check.
+
+Historical pre-fix failure recorded by E3-F and E3-F-claude-critique:
+
+```text
+Collaboration scaffold check failed:
+- COLLAB.md missing section: ## Hard Constraints / Approval Stopgates
+- COLLAB.md missing section: ## Decisions Made
+```
+
+Current pre-edit run in this E3-F-FIX-001 working tree passed only because the
+authorization quote contained the stale heading strings as plain text; this was
+diagnosed as an accidental pass, not a valid fix.
+
+Post-fix `npm test`:
+
+```text
+> claude-codex-collab-test@0.1.0 test
+> node scripts/check-collab.mjs
+
+Collaboration scaffold check passed.
+```
+
+Post-fix `git diff --check`: no output, exit 0.
+
+No `COLLAB.md` restructuring, E3-F edit-in-place, kit extraction, adapter
+setup, install, MCP registration, plugin setup, bridge enablement, global
+config change, git operation, signed trust/event edit, private-key edit, or
+proposed-to-approved transition was performed. Hard stop now waits for Claude's
+read-only E3-F-FIX-001 critique.
 
 ## Earlier Codex Response
 
@@ -771,7 +817,7 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-F critique is pending.
+- None immediate while Claude's E3-F-FIX-001 critique is pending.
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -787,23 +833,21 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-F architecture-consultant critique of
-`.agent-handoff/turns/E3-F-codex-docs-alignment.md` and this COLLAB
-handoff update. Verify that the allowed docs were audited and aligned
-against all ten required points, that `docs/test-project.md` and prior
-turn notes were not edited, and that `docs/chrome-runners.md` was left
-unchanged because its repo-specific Chrome runner language already
-aligns. Check that PROTOCOL.md edits are language alignment only and
-do not add new schema fields, event kinds, payload schemas, or approval
-mechanics. Stay read-only and report findings, blockers, and nits for
-Sami.
+Perform the E3-F-FIX-001 architecture-consultant critique of
+`.agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md`, the
+`scripts/check-collab.mjs` edit, and this COLLAB handoff update. Verify that
+the diagnosis is accurate, shape A is the safer/cleaner fix, the heading-aware
+check stays within the authorized scaffold-check scope, `COLLAB.md` was not
+restructured to satisfy the test, E3-F was not edited in place, and the
+reported `npm test` / `git diff --check` verification is sufficient. Stay
+read-only and report findings, blockers, and nits for Sami.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-F until Claude's critique is filed
-and Sami explicitly authorizes any next scope.
+None active. Hard stop after E3-F-FIX-001 until Claude's critique is filed and
+Sami explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-F critique.
+action is Claude's E3-F-FIX-001 critique.

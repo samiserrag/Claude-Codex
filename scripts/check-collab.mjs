@@ -21,8 +21,8 @@ const requiredFiles = [
 const requiredSections = [
   "## Goal",
   "## Current Owner",
-  "## Hard Constraints / Approval Stopgates",
-  "## Decisions Made",
+  "## Current Phase",
+  "## Questions Requiring Sami Approval",
   "## Next Request To Claude",
   "## Next Request To Codex"
 ];
@@ -37,8 +37,9 @@ for (const file of requiredFiles) {
 
 if (existsSync(".agent-handoff/COLLAB.md")) {
   const collab = readFileSync(".agent-handoff/COLLAB.md", "utf8");
+  const collabHeadings = new Set(collab.match(/^## .+$/gm) ?? []);
   for (const section of requiredSections) {
-    if (!collab.includes(section)) {
+    if (!collabHeadings.has(section)) {
       failures.push(`COLLAB.md missing section: ${section}`);
     }
   }
