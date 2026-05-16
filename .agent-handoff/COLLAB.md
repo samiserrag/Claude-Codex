@@ -7,9 +7,54 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-D acceptance + per-adapter authorization-or-pivot decision)
+Codex (E3-D-FIX-001 design-only wrapper-preconditions fix turn,
+authorized by Sami on 2026-05-15)
 
 ## Current Phase
+
+E3-D accepted. E3-D-FIX-001 authorized by Sami on 2026-05-15 as
+design/prose only. Explicit authorization text recorded here and in
+the consultation thread:
+
+  "Approved:
+  - Accept E3-D as a successful adapter-selection design turn.
+  - Authorize E3-D-FIX-001 as design/prose only.
+  Scope:
+  - Edit only COLLAB.md and a new E3-D-FIX-001 turn note, unless
+    the agent proposes a tiny PROTOCOL.md note and stops for
+    approval.
+  - Address only the five E3-D critique nits:
+    1. make Claude/wrapper coordinator registration explicit;
+    2. choose wrapper-as-own-coordinator vs Claude-key signing;
+    3. define inbound attested_by_observer semantics;
+    4. define durable approval-event-before-allow ordering;
+    5. define wrapper binary/source identity verification.
+  - No installs, MCP registration, plugin setup, .mcp.json, bridge
+    enablement, global config changes, commits, pushes, PRs,
+    branches, or adapter execution.
+  - Hard stop after E3-D-FIX-001 and hand off for critique."
+
+Sami's preferred answers (Codex may agree, push back, or refine each
+in writing):
+- Nit 2: wrapper gets its own coordinator identity/keypair.
+- Nit 3: inbound MCP responses are `attested_by_observer`, not
+  Codex-signed.
+- Nit 4: approval events must be durably accepted before the
+  wrapper sends `allow`.
+- Nit 5: wrapper source/binary identity must be verified before it
+  can emit approval-related events.
+
+Codex authors E3-D-FIX-001 (mirrors E3-B-FIX-001 authorship pattern).
+Claude consultant is the next critique agent.
+
+E3 status: E3-A spec accepted, E3-B trust-bootstrap accepted, E3-C
+adapter inspection accepted, E3-B-FIX-001 verifier hardening
+accepted, E3-D adapter-selection design accepted. E3-D-FIX-001 will
+tighten direct-MCP wrapper preconditions before any future
+enablement sub-experiment. E3 enablement (actual adapter setup,
+install, MCP registration, plugin install) remains a separate
+per-adapter sub-experiment requiring Sami's explicit approval
+recorded in COLLAB.md.
 
 E3-D Claude consultant critique filed (2026-05-15). Zero blockers.
 Independent review endorsed: direct codex mcp-server first selection
