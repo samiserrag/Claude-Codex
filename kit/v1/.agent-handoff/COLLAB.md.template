@@ -1,0 +1,34 @@
+# Collaboration State
+
+## Goal
+
+{{GOAL}}
+
+## Current Owner
+
+{{CURRENT_OWNER}}
+
+## Current Phase
+
+{{CURRENT_PHASE}}
+
+- Current experiment: {{CURRENT_EXPERIMENT}}
+- Authorization basis: {{AUTHORIZATION_BASIS}}
+- Turn cap: {{CURRENT_EXPERIMENT_TURN_CAP}}
+- Browser runner: {{BROWSER_RUNNER_CHOICE_OR_NA_WITH_REASON}}
+- Automation budget: {{AUTOMATION_BUDGET_OR_NA}}
+- Latest Claude response: {{LATEST_CLAUDE_RESPONSE}}
+- Latest Codex response: {{LATEST_CODEX_RESPONSE}}
+- No-touch files: {{NO_TOUCH_FILES}}
+
+## Questions Requiring Sami Approval
+
+- {{QUESTION_OR_NONE}}
+
+## Next Request To Claude
+
+{{NEXT_REQUEST_TO_CLAUDE}}
+
+## Next Request To Codex
+
+{{NEXT_REQUEST_TO_CODEX}}

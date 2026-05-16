@@ -1,0 +1,9 @@
+# Append these lines to the adopter repo's existing .gitignore.
+# Do not overwrite existing ignore rules.
+
+# Required: local secrets, keys, scratch state, and machine-only handoff files.
+.agent-handoff/local/
+
+# Recommended: common local artifacts.
+.DS_Store
+.claude/worktrees/

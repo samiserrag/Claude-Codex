@@ -1,0 +1,105 @@
+# Claude Code Instructions For {{REPO_NAME}}
+
+This repository uses a file-based Claude Code and Codex collaboration protocol.
+The workflow is part of the product: preserve shared state in repo files, keep
+handoffs cold-readable, and stop at explicit approval gates.
+
+## Required Reading
+
+Before making changes, read:
+
+- `{{PROTOCOL_PATH}}`
+- `{{COLLAB_PATH}}`
+- `{{PROJECT_BRIEF_PATH}}`
+- `{{BROWSER_RUNNER_DOC_PATH_OR_NA}}`
+- the latest file in `{{TURN_LOG_DIR}}`
+
+If a listed path is `N/A`, record why in the turn note Evidence Basis.
+
+## Accepted Operating Defaults
+
+- Work local-first, not local-only: repo-file coordination is the default, and
+  bridges/adapters are opt-in later layers only when Sami approves exact setup.
+- Treat file-based handoff as the minimal binding reference: manual paste plus
+  `COLLAB.md` and turn notes now, inbox/outbox files only if scoped.
+- Treat signed event governance as an optional add-on unless the current
+  authorization names it; do not edit trust/event files or create keys outside
+  scope.
+- Keep live bridges/adapters disabled: no MCP registration, plugin setup,
+  `.mcp.json`, bridge enablement, or global config changes without approval.
+- Respect the current experiment's authorized turn cap. Turn caps are
+  per-experiment authorization values, not static repo-wide defaults.
+- Browser QA must name the runner or explicitly say `N/A` with a reason.
+- Automation budget is `N/A` unless polling, cron, webhook, or heartbeat work
+  is explicitly approved.
+- Council, GPT, Claude, and Codex consultation is optional and file-based by
+  default through prompts, responses, digests, and turn notes.
+- Treat gstack, AgentBridge, tmux bridges, LLM Council, Zenith, CCB, Claude
+  Squad, and related projects as prior art only unless a separate scope
+  approves dependency use.
+- Kit extraction into another repository is a separate action; do not copy
+  kit files into another repo without explicit approval.
+
+## Collaboration Rules
+
+- Treat `{{COLLAB_PATH}}` as the shared source of truth for current state.
+- Add one append-only turn note under `{{TURN_LOG_DIR}}` for meaningful
+  architecture, implementation, critique, smoke, portability, or handoff turns.
+- Do not edit another agent's existing turn note except to fix a typo you made
+  in the same turn.
+- Do not assume Codex has seen hidden Claude context. Write decisions and
+  constraints into repo files.
+- When handing work to Codex, update `Next Request To Codex` in
+  `{{COLLAB_PATH}}`. If the template includes a latest-response field, update
+  `Latest Claude Response` as well.
+- When answering Codex, update `Next Request To Codex` and, if present,
+  `Latest Claude Response` in `{{COLLAB_PATH}}`.
+- Stop at the turn cap named by the current experiment authorization unless
+  Sami explicitly approves continuation.
+
+## Safety Rules
+
+- Do not install dependencies unless Sami explicitly approves it.
+- Do not commit, push, merge, open a PR, or create a branch unless Sami
+  explicitly asks.
+- Do not use dangerous sandbox or approval-bypass modes.
+- Do not delete files outside this repo.
+- Do not modify global Claude/Codex config.
+- Do not register MCP, set up plugins, enable bridges, or edit `.mcp.json`
+  without exact approval.
+- Do not edit signed trust/event/private-key files unless the current
+  authorization names those files.
+- Keep edits inside the authorized file list and record any blocker before
+  expanding scope.
+
+## Suggested Claude Role
+
+Default to the product/architecture counterparty role:
+
+- propose thin architecture,
+- keep the user-facing app or workflow usable,
+- ask Codex for critique before broad implementation,
+- incorporate Codex feedback into repo-visible decisions.
+
+## Browser Runner
+
+Configured runner: `{{BROWSER_RUNNER_CHOICE}}`
+
+Use the named runner for browser validation. If browser QA is not applicable,
+write:
+
+```text
+Tool used: N/A
+Reason: {{BROWSER_RUNNER_NA_REASON}}
+```
+
+If the named runner cannot communicate with the browser or target, stop and
+report the connector/tool state instead of silently switching to another
+browser automation stack.
+
+When browser QA is needed, record concrete evidence in the turn note:
+
+- URL or file path opened,
+- action performed,
+- visible outcome,
+- console/network failure observed through the named runner.

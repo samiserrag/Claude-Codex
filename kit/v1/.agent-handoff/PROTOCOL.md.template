@@ -1,0 +1,208 @@
+# {{REPO_NAME}} Collaboration Protocol
+
+## Purpose
+
+This protocol runs a practical Claude Code and Codex collaboration loop in
+`{{REPO_NAME}}`. The reliable baseline is repo-file coordination. The protocol
+is local-first, not local-only: it works with manual repo files by default, and
+separately approved bridges or adapters may be layered on later.
+
+## Source Of Truth
+
+- `{{COLLAB_PATH}}` holds current shared state.
+- `{{TURN_LOG_DIR}}` holds append-only turn notes.
+- `{{PROJECT_BRIEF_PATH}}` defines the project or work surface.
+- Hidden chat context is not authoritative unless it is summarized into these
+  files.
+
+## Baseline And Optional Layers
+
+- Work local-first, not local-only. Repo-file coordination is the default, and
+  separately approved bridges or adapters can be layered on later.
+- File-based handoff is the minimal binding reference path: manual paste plus
+  `COLLAB.md` and append-only turn notes, with inbox/outbox file exchange only
+  when an experiment scopes it.
+- Signed event governance is an optional add-on for adopters that need
+  cryptographic event verification. It is not required for the v1 file-based
+  kit.
+- Live bridges and adapters remain disabled until Sami separately approves the
+  exact MCP registration, plugin setup, bridge enablement, `.mcp.json`, or
+  global config change.
+- Turn caps are per-experiment authorization values. A previous experiment's
+  turn cap is not a static repo-wide default.
+- Browser verification must name the runner or explicitly mark browser QA
+  `N/A` with a reason. Silent omission is not acceptable.
+- Automation budget is `N/A` unless polling, cron, webhook, or heartbeat
+  automation is explicitly approved for the experiment.
+- Council, GPT, Claude, and Codex consultation is optional and file-based by
+  default through prompts, filed responses, digests, and turn notes.
+- Prior art such as gstack, AgentBridge, tmux bridges, LLM Council, Zenith,
+  CCB, and Claude Squad is prior art only unless a later approval explicitly
+  scopes dependency use, vendoring, installation, or runtime setup.
+- Kit extraction into another repository is a separate action. This protocol
+  does not authorize copying files into another repo.
+
+## Turn Loop
+
+1. Read `{{COLLAB_PATH}}`, this protocol, `{{PROJECT_BRIEF_PATH}}`, and the
+   latest turn note.
+2. Decide whether you are architecting, implementing, critiquing, smoking, or
+   handing off.
+3. Before editing `{{COLLAB_PATH}}`, re-read it so stale state is not
+   overwritten.
+4. Update `{{COLLAB_PATH}}` before delegating to the other agent.
+5. Use file-based handoff unless the current experiment explicitly approves a
+   bridge or adapter.
+6. Add a new append-only turn note under `{{TURN_LOG_DIR}}`.
+7. Stop at the current experiment's authorized turn cap unless Sami explicitly
+   approves continuation.
+
+## Experiment Authorization Convention
+
+Each experiment authorization should state:
+
+- Scope:
+- Allowed files:
+- No-touch files:
+- Browser runner: named runner or explicit `N/A` with reason
+- Automation budget: approved value or `N/A`
+- Turn cap: `{{TURN_CAP_EXAMPLE}}`
+- Hard stop:
+
+## Turn Note Schema
+
+This kit starts from the Experiment 1 turn-note schema. Every turn note must
+use this schema unless Sami explicitly approves a schema change:
+
+```markdown
+# NNN - <agent> <phase>
+
+## Agent
+Claude | Codex
+
+## Phase
+architecture | critique | implementation | smoke | retrospective
+
+## Files touched this turn
+- path (created | edited | deleted)
+
+## Decisions (binding)
+- short bullets, each is a commitment the next agent must respect
+
+## Open questions for the other agent
+- specific, answerable
+
+## Blockers (must-fix before continuing)
+- empty or numbered
+
+## Nits (suggested, not required)
+- empty or bullets
+
+## Browser verification
+- Tool used: Claude in Chrome MCP | Codex Chrome plugin | N/A
+- URL or file path opened:
+- Action:
+- Visible outcome:
+- Console/network issues:
+
+## Handoff
+- Next agent: Claude | Codex | Sami
+- Specific ask:
+```
+
+Use Blockers vs Nits strictly. A critique turn may list at most 3 blockers.
+Nits are optional and must not expand the required scope.
+
+Agent values may include:
+Claude | Codex | Sami | Consultant
+
+## Evidence Basis
+
+Add this optional section to all future turn notes:
+
+```markdown
+## Evidence Basis
+- USER SAID:
+- FILE VERIFIED:
+- AGENT SUMMARY:
+- INFERENCE:
+- UNKNOWN:
+```
+
+## Portability Findings
+
+Add this optional section to all implementation, smoke, architecture, and
+portability-relevant turns:
+
+```markdown
+## Portability Findings
+- Repo-local assumptions:
+- Machine/local-tool assumptions:
+- Browser/connector assumptions:
+- Any workaround used:
+```
+
+## Response History Policy
+
+Do not overwrite another agent's existing turn note or consultant response. Do
+not use mutable "latest response" fields as the only record of prior work.
+`COLLAB.md` may summarize latest state, but durable responses must be stored as
+append-only files or append-only event entries.
+
+## Unscheduled Fix-Turn Shape
+
+If an unscheduled fix turn is required, the turn note must include:
+
+- Trigger:
+- Sami approval basis:
+- Scope limit:
+- Files touched:
+- Verification performed:
+- Why this does not expand the experiment:
+- Next handoff:
+
+## Ownership
+
+Use explicit ownership in `{{COLLAB_PATH}}` before editing:
+
+- Claude-owned files
+- Codex-owned files
+- Shared files
+- No-touch files
+
+## Stopgates
+
+Stop and ask Sami before:
+
+- installing dependencies,
+- committing, pushing, merging, creating a branch, or creating a PR,
+- using dangerous sandbox or approval-bypass modes,
+- changing global Claude/Codex config,
+- running network-dependent setup,
+- registering MCP, setting up plugins, enabling bridges, or editing `.mcp.json`,
+- editing signed trust/event/private-key files,
+- continuing past the current experiment's authorized turn cap.
+
+## Stopgate Rule
+
+A consultant, coordinator, or subagent may advise, critique, classify risks,
+draft architecture, and propose changes.
+
+A consultant, coordinator, or subagent may not treat a proposal as approved,
+authorize implementation, bypass approvals, delete files, change permissions,
+enable bridges, install dependencies, modify global Claude/Codex configuration,
+commit, push, merge, create a PR, or instruct another agent to do any of those
+things unless Sami has explicitly approved that exact action and scope.
+
+Only Sami can move an item from "proposed" to "approved."
+
+Approval must be explicit, scoped, and recorded in `COLLAB.md`, a turn note, or
+a protocol file. Absence of objection, prior delegation, or model consensus is
+not approval.
+
+## Prior-Art Citation Policy
+
+Prior-art citations must include what was verified and when it was read or
+observed. URL citations should include `(read YYYY-MM-DD)`. Non-URL prior art
+should identify the medium and observation date. Prior art is not a dependency
+unless a separate approval explicitly scopes dependency use.

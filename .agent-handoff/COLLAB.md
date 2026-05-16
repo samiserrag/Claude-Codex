@@ -7,17 +7,22 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-G first kit-bootstrap implementation turn, authorized
-by Sami on 2026-05-16)
+Claude (architecture consultant role for E3-G critique turn)
 
 ## Current Phase
 
-E3-F-FIX-001 accepted. E3-G authorized by Sami on 2026-05-16 as
-the first kit-bootstrap implementation turn — creating a
-reviewable portable kit folder inside THIS Claude-Codex repo
-only (no extraction into colorado-songwriters-collective).
-Explicit authorization text recorded here and in the
-consultation thread:
+Experiment 3 E3-G critique pending. Codex created the reviewable
+portable `kit/v1/` folder inside this repo only, filed
+`.agent-handoff/turns/E3-G-codex-kit-v1-bootstrap.md`, and
+updated this handoff. No files were copied into another repo, no
+installs or setup were run, no bridges/adapters were enabled, no
+MCP/plugin/global config changes were made, no signed
+trust/event/private-key files were touched, and no proposal was
+moved to approved.
+
+E3-G was authorized by Sami on 2026-05-16 as the first
+kit-bootstrap implementation turn. Explicit authorization text
+recorded here and in the consultation thread:
 
   "Approved:
   1. Accept E3-F-FIX-001 as a successful scaffold-check/docs-
@@ -78,18 +83,17 @@ consultation thread:
   - Subagents may not edit files, install tools, expand scope,
     approve actions, or touch other repos."
 
-Codex authors E3-G. Claude consultant critiques after E3-G is
-pushed.
+Codex authored E3-G. Claude consultant critiques next.
 
 E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
 inspection, E3-B-FIX-001 verifier hardening, E3-D
 adapter-selection design, E3-D-FIX-001 wrapper preconditions,
 E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
 housekeeping, E3-F docs alignment, and E3-F-FIX-001
-scaffold-check fix all accepted. E3-G first kit-bootstrap
-pending. Kit extraction INTO another repo remains a separate
-sub-experiment requiring Sami's explicit per-action approval
-AFTER E3-G lands and is critiqued.
+scaffold-check fix all accepted. E3-G first kit-bootstrap is
+filed and awaiting Claude critique. Kit extraction INTO another
+repo remains a separate sub-experiment requiring Sami's explicit
+per-action approval AFTER E3-G is critiqued.
 
 E3-F-FIX-001 Claude consultant critique filed (2026-05-15) at
 HEAD `2ce3cbf`. Zero blockers. Independent `npm test` run by
@@ -884,42 +888,33 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-F-FIX-001 scaffold-check/docs consistency fix written at
-`.agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md`.
+E3-G kit v1 bootstrap written at
+`.agent-handoff/turns/E3-G-codex-kit-v1-bootstrap.md`.
 
-Diagnosis: `npm test` runs `node scripts/check-collab.mjs`. The stale scaffold
-check expected old E1-era `COLLAB.md` headings:
+Created reviewable portable kit files inside this repo only:
 
-```text
-## Hard Constraints / Approval Stopgates
-## Decisions Made
-```
+- `kit/v1/README.md`
+- `kit/v1/.gitignore.snippet`
+- `kit/v1/AGENTS.md.template`
+- `kit/v1/CLAUDE.md.template`
+- `kit/v1/.agent-handoff/PROTOCOL.md.template`
+- `kit/v1/.agent-handoff/COLLAB.md.template`
+- `kit/v1/.agent-handoff/turns/.gitkeep`
+- `kit/v1/.agent-handoff/digests/.gitkeep`
+- `kit/v1/.agent-handoff/consultants/.gitkeep`
+- `kit/v1/.agent-handoff/prompts/starter-turn-note.md`
 
-Current E3 `COLLAB.md` has equivalent governance and state in different
-places: the Stopgate Rule lives in `PROTOCOL.md`, decisions live primarily in
-append-only turn notes and running phase state, and `COLLAB.md` carries current
-state through headings such as `## Current Phase` and `## Questions Requiring
-Sami Approval`.
+The kit is a no-install, file-based protocol scaffold: not an installer, not a
+bridge, not a framework, not MCP/plugin setup, and not signed-governance
+implementation. Templates use placeholders, keep signed governance optional,
+keep bridges/adapters disabled until separately approved, require named
+browser runner or explicit `N/A`, set automation budget to `N/A` unless
+approved, and frame turn caps as per-experiment authorization values.
 
-Chosen fix shape: A, update the scaffold check to current `COLLAB.md` shape.
-`scripts/check-collab.mjs` now requires `## Current Phase` and `## Questions
-Requiring Sami Approval` instead of the two stale E1 headings. It also validates
-actual level-2 headings instead of raw substring presence, so quoted
-authorization text cannot accidentally satisfy a structural heading check.
+Verification:
 
-Historical pre-fix failure recorded by E3-F and E3-F-claude-critique:
-
-```text
-Collaboration scaffold check failed:
-- COLLAB.md missing section: ## Hard Constraints / Approval Stopgates
-- COLLAB.md missing section: ## Decisions Made
-```
-
-Current pre-edit run in this E3-F-FIX-001 working tree passed only because the
-authorization quote contained the stale heading strings as plain text; this was
-diagnosed as an accidental pass, not a valid fix.
-
-Post-fix `npm test`:
+- `git diff --check`: no output, exit 0.
+- `npm test`: exit 0 with:
 
 ```text
 > claude-codex-collab-test@0.1.0 test
@@ -928,13 +923,16 @@ Post-fix `npm test`:
 Collaboration scaffold check passed.
 ```
 
-Post-fix `git diff --check`: no output, exit 0.
+Portability self-check recorded in the turn note: no kit repo-name leaks, no
+other repo touched, no default global install/config instructions, optional
+signed governance, disabled bridges/adapters until approval, named-runner-or-N/A
+browser QA, automation N/A unless approved, and per-experiment turn caps.
 
-No `COLLAB.md` restructuring, E3-F edit-in-place, kit extraction, adapter
-setup, install, MCP registration, plugin setup, bridge enablement, global
-config change, git operation, signed trust/event edit, private-key edit, or
-proposed-to-approved transition was performed. Hard stop now waits for Claude's
-read-only E3-F-FIX-001 critique.
+No `COLLAB.md` restructuring, kit extraction into another repo, adapter setup,
+install, MCP registration, plugin setup, bridge enablement, global config
+change, git operation, signed trust/event edit, private-key edit,
+scaffold-script edit, or proposed-to-approved transition was performed. Hard
+stop now waits for Claude's read-only E3-G critique.
 
 ## Earlier Codex Response
 
@@ -950,7 +948,7 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-F-FIX-001 critique is pending.
+- None immediate while Claude's E3-G critique is pending.
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -966,21 +964,21 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-F-FIX-001 architecture-consultant critique of
-`.agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md`, the
-`scripts/check-collab.mjs` edit, and this COLLAB handoff update. Verify that
-the diagnosis is accurate, shape A is the safer/cleaner fix, the heading-aware
-check stays within the authorized scaffold-check scope, `COLLAB.md` was not
-restructured to satisfy the test, E3-F was not edited in place, and the
-reported `npm test` / `git diff --check` verification is sufficient. Stay
-read-only and report findings, blockers, and nits for Sami.
+Perform the E3-G architecture-consultant critique of the created `kit/v1/`
+files, `.agent-handoff/turns/E3-G-codex-kit-v1-bootstrap.md`, and this COLLAB
+handoff update. Verify template minimalism, portability/leak discipline,
+stopgate/security boundaries, scaffold/test evidence, and the eight portability
+self-check criteria. Stay read-only and report findings, blockers, and nits for
+Sami. Do not edit files, install tools, enable bridges, register MCP, set up
+plugins, change global config, touch another repo, or move any proposal to
+approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-F-FIX-001 until Claude's critique is filed and
-Sami explicitly authorizes any next scope.
+None active. Hard stop after E3-G until Claude's critique is filed and Sami
+explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-F-FIX-001 critique.
+action is Claude's E3-G critique.
