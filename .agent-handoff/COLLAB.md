@@ -7,14 +7,15 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-E-FIX-001 design/prose-only housekeeping turn,
-authorized by Sami on 2026-05-15)
+Claude (architecture consultant role for E3-E-FIX-001 critique turn)
 
 ## Current Phase
 
-E3-E accepted. E3-E-FIX-001 authorized by Sami on 2026-05-15 as
-design/prose-only housekeeping turn. Explicit authorization text
-recorded here and in the consultation thread:
+Experiment 3 E3-E-FIX-001 critique pending.
+
+E3-E accepted. E3-E-FIX-001 was authorized by Sami on 2026-05-15 as
+a design/prose-only housekeeping turn. Explicit authorization text
+is recorded here and in the consultation thread:
 
   "Approved:
   1. Accept E3-E as a successful kit-extraction + harness-control
@@ -48,17 +49,24 @@ recorded here and in the consultation thread:
     approved.
   - Hard stop after the fix note and COLLAB.md handoff update."
 
-Codex authors E3-E-FIX-001. Claude consultant critiques after
-the fix lands.
+Codex filed `.agent-handoff/turns/E3-E-FIX-001-codex-kit-housekeeping.md`
+as the authorized tiny housekeeping turn. It addresses only the five
+E3-E critique nits: automation budget N/A path, per-experiment turn
+cap framing, browser-runner N/A path, starter turn-note template, and
+Zenith citation read dates. E3-E itself remains unedited.
+
+Claude consultant critiques E3-E-FIX-001 next. No further E3 work or
+kit-extraction action is authorized while that critique is pending.
 
 E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
 inspection, E3-B-FIX-001 verifier hardening, E3-D
 adapter-selection design, E3-D-FIX-001 wrapper preconditions,
 and E3-E kit-extraction + harness-control design all accepted.
-E3-E-FIX-001 housekeeping pending. E3 enablement (actual adapter
-setup, install, MCP registration, plugin install, kit extraction
-into another repo) remains a separate per-action sub-experiment
-requiring Sami's explicit approval recorded in COLLAB.md.
+E3-E-FIX-001 housekeeping is filed and awaiting Claude critique.
+E3 enablement (actual adapter setup, install, MCP registration,
+plugin install, kit extraction into another repo) remains a separate
+per-action sub-experiment requiring Sami's explicit approval recorded
+in COLLAB.md.
 
 E3-E Claude consultant critique filed (2026-05-15) at HEAD
 `a77860b`. Zero blockers. All six focus areas endorsed:
@@ -90,12 +98,11 @@ Five small consultant nits (NOT for E3-E acceptance):
    improve reproducibility of the prior-art claim).
 
 Sami's decision queue:
-- Accept E3-E as filed, then choose between: (a) authorize the
-  first kit-extraction action sub-experiment toward
-  colorado-songwriters-collective; (b) authorize a small
-  E3-E-FIX-001 housekeeping turn to address the five consultant
-  nits in-place before any extraction action; (c) defer further E3
-  work and let the design sit.
+- None immediate while Claude's E3-E-FIX-001 critique is pending.
+- Later only, if separately authorized: choose whether the next E3
+  step is kit extraction toward `colorado-songwriters-collective`, a
+  portable kit folder inside this repo, a protocol/template update, or
+  deferral of further E3 work.
 
 Hard stop remains active. No kit files were created outside this
 repo, no protocol change was applied, no signed governance
@@ -485,25 +492,23 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-E kit-extraction + harness-control design turn written at
-`.agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md`.
-Codex proposed a minimal portable kit consisting of repo-local
-PROTOCOL/COLLAB/AGENTS/CLAUDE templates, a turn-log directory, and a
-gitignore rule for `.agent-handoff/local/`; classified signed
-trust-bootstrap, prompts, adapter docs, council directories, schemas,
-and scaffold checks as optional; listed local/generated/secret files
-that must not travel; and mapped adopter placeholders toward
-`colorado-songwriters-collective`.
+E3-E-FIX-001 tiny kit-housekeeping turn written at
+`.agent-handoff/turns/E3-E-FIX-001-codex-kit-housekeeping.md`.
+Codex left E3-E as-filed and addressed only the five authorized
+consultant nits in a new append-only note:
+`{{IDLE_AUTOMATION_BUDGET}}` is N/A by default unless polling, cron,
+webhook, or heartbeat automation is scoped; `{{TURN_CAP}}` is
+per-experiment and named by the authorizing approval, not a repo-wide
+default; `{{BROWSER_RUNNER_CHOICE}}` must be either a named runner or
+explicit N/A with reason; the optional kit files should include a
+starter turn-note template; and URL prior-art citations should include
+read dates, with E3-E's Zenith references treated as read 2026-05-15.
 
-The design also extracts the harness-control loop: preserve repo state,
-reopen gaps through critique, keep plans revisable, require independent
-verification, use council consultation only when it buys signal, and
-stop at explicit turn caps, token budgets, and Sami approval gates. II
-Zenith was cited only as public article/report prior art; no Zenith
-source was cloned, installed, enabled, run, or used. No kit extraction
-action, protocol edit, signed-governance packaging, adapter enablement,
-install, MCP registration, plugin setup, global config change, git
-operation, or proposed-to-approved transition was performed.
+No E3-E edit, PROTOCOL.md edit, kit extraction, file creation outside
+this repo, install, MCP registration, plugin setup, bridge enablement,
+global config change, git operation, or proposed-to-approved transition
+was performed. Hard stop now waits for Claude's read-only
+E3-E-FIX-001 critique.
 
 ## Earlier Codex Response
 
@@ -519,7 +524,7 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-E critique is pending.
+- None immediate while Claude's E3-E-FIX-001 critique is pending.
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -535,24 +540,24 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-E architecture-consultant critique of
-`.agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md`.
-Focus on whether the minimal/optional file split is correct, whether
-signed governance is properly optional, whether the harness-control
-loop preserves the proven Claude-Codex pattern, whether II Zenith is
-cited only as article/report prior art, and whether the stopping
-discipline is strong enough before any extraction action. Stay
-read-only. Do not implement, install dependencies, enable bridges,
-register MCP, edit `.mcp.json`, modify global config, commit, push,
-open a PR, create a branch, delete files, copy kit files into another
-repo, or treat any proposal as approved.
+Perform the E3-E-FIX-001 architecture-consultant critique of
+`.agent-handoff/turns/E3-E-FIX-001-codex-kit-housekeeping.md` and
+this COLLAB handoff update. Confirm whether the fix note addresses
+only the five authorized nits: automation-budget N/A path,
+per-experiment turn cap framing, browser-runner N/A path, starter
+turn-note template, and Zenith citation read dates. Verify that E3-E
+was not edited in place and that no protocol change, kit extraction,
+file creation outside this repo, install, MCP registration, plugin
+setup, bridge enablement, global config change, git operation, or
+proposed-to-approved transition occurred. Stay read-only and return
+findings, blockers, and nits for Sami.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-E until Claude's critique is filed and
-Sami explicitly authorizes any next scope.
+None active. Hard stop after E3-E-FIX-001 until Claude's critique is
+filed and Sami explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-E critique.
+action is Claude's E3-E-FIX-001 critique.
