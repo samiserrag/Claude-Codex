@@ -7,18 +7,79 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude (architecture consultant role for E3-G critique turn)
+Sami (E3-G acceptance + E3-G-FIX-001 small housekeeping OR
+first kit-extraction action decision)
 
 ## Current Phase
 
-Experiment 3 E3-G critique pending. Codex created the reviewable
-portable `kit/v1/` folder inside this repo only, filed
-`.agent-handoff/turns/E3-G-codex-kit-v1-bootstrap.md`, and
-updated this handoff. No files were copied into another repo, no
-installs or setup were run, no bridges/adapters were enabled, no
-MCP/plugin/global config changes were made, no signed
-trust/event/private-key files were touched, and no proposal was
-moved to approved.
+E3-G Claude consultant critique filed (2026-05-16) at HEAD
+`a612ddf`. Zero blockers. All 12 Sami focus areas pass.
+Independent verification by consultant confirms every claim in
+Codex's 8-criterion portability self-check:
+- `npm test` exit 0, "Collaboration scaffold check passed."
+- `git diff --check` exit 0.
+- Leak greps across `kit/v1/`: zero matches for `colorado`,
+  `songwriters`, `denver`, `decision.ledger`, `sami-root`,
+  `wrapper-codex-mcp`, `agent-event-envelope`. The four
+  `Claude/Codex` matches refer to the two products'
+  configurations, not the repo name `Claude-Codex`. All 9
+  `install` matches are negative framings.
+
+Notable strengths: `.gitignore.snippet` framing prevents
+common overwrite footgun; "What This Kit Is Not" section in
+README satisfies E3-E nit; PROTOCOL.md.template §Prior-Art
+Citation Policy generalizes read-date convention to non-URL
+prior art per E3-E-FIX-001 nit 3; Experiment Authorization
+Convention names Turn cap as a per-experiment field per
+E3-E-FIX-001 nit 2; AGENTS.md.template and CLAUDE.md.template
+are perfect mirrors.
+
+Five small consultant nits (NOT for E3-G acceptance):
+1. COLLAB.md.template includes mutable latest-response fields
+   without disclaimer about Response History Policy.
+2. PROTOCOL.md.template Phase enum doesn't include `fix` or
+   `rescope` despite our actual practice and the Agent values
+   list being extended.
+3. `starter-turn-note.md` placeholder syntax needs a one-line
+   "replace each {{placeholder}} before filing" instruction.
+4. Experiment Authorization Convention introduces a 7-field
+   shape that doesn't exactly match our actual repo practice;
+   either align repo practice or note convention is
+   recommended-not-required.
+5. README §Quick Start step 1 should say "preserving the
+   directory structure."
+
+Codex's three open questions answered: yes to kit minimalism
+preserving discipline; no portability leaks (independent grep
+matches self-check on every criterion); yes COLLAB handoff
+updated without restructuring.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
+housekeeping, E3-F docs alignment, E3-F-FIX-001 scaffold-check
+fix, and E3-G first kit-bootstrap all accepted. Kit extraction
+INTO another repo remains a separate sub-experiment requiring
+Sami's explicit per-action approval.
+
+Sami's decision queue:
+- Accept E3-G as filed, then choose between:
+  (a) authorize a small E3-G-FIX-001 housekeeping turn for the
+      five consultant nits (consultant recommended — small and
+      prevents friction at first adoption);
+  (b) authorize the first kit-extraction action sub-experiment
+      (likely a discovery turn reading colorado-songwriters-
+      collective's actual state before any files are copied);
+  (c) pivot to a queued item (Experiment 4 council skill pack,
+      separate wrapper-codex-mcp trust turn);
+  (d) defer further E3 work.
+
+Hard stop remains active. No files were copied into another
+repo, no installs or setup were run, no bridges/adapters were
+enabled, no MCP/plugin/global config changes were made, no
+signed trust/event/private-key files were touched, and no
+proposal was moved to approved.
 
 E3-G was authorized by Sami on 2026-05-16 as the first
 kit-bootstrap implementation turn. Explicit authorization text
