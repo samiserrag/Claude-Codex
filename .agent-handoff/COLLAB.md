@@ -7,11 +7,111 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude (architecture consultant role for E3-G-FIX-001 critique turn)
+Sami (decision: accept E3-G-FIX-001 and choose next E3 step)
 
 ## Current Phase
 
-Experiment 3 E3-G-FIX-001 critique pending.
+Experiment 3 E3-G-FIX-001 critique filed. Hard stop active per
+Sami's instruction; awaiting Sami decision on next step.
+
+E3-G-FIX-001 Claude consultant critique filed (2026-05-16) at
+HEAD `2a09c02`. Zero blockers. All eight Sami focus areas pass.
+Independent verification by consultant matches every claim in
+Codex's self-check:
+- `npm test` exit 0, "Collaboration scaffold check passed."
+- `git diff --check` exit 0.
+- Leak greps across `kit/v1/`: zero matches for `colorado`,
+  `songwriters`, `denver`, `decision.ledger`, `sami-root`,
+  `wrapper-codex-mcp`, `agent-event-envelope`. The four
+  `claude.?codex` matches are product/config references only;
+  the nine `install` matches are negative/anti-installer
+  framing only.
+
+Per-focus-area verdict:
+1. Addressed only the five E3-G critique nits — PASS (295/68
+   diff across exactly the eight authorized files; no scope
+   creep).
+2. Response History Policy disclaimer clear enough — PASS
+   (inline summary-only qualifier in `COLLAB.md.template`
+   beside latest-response fields, plus mirrored summary-only
+   language in `AGENTS.md.template` and `CLAUDE.md.template`
+   collaboration rules).
+3. `fix` and `rescope` reconciled without schema drift — PASS
+   (literal enum addition `architecture | critique |
+   implementation | smoke | retrospective | fix | rescope`
+   updated in BOTH `PROTOCOL.md.template §Turn Note Schema`
+   AND `starter-turn-note.md` placeholder syntax; Codex's
+   defense of literal-over-prose accepted).
+4. Starter-turn-note placeholder instructions clear — PASS
+   (top-of-file two-sentence directive: replace every
+   `{{placeholder}}` before filing; empty fields → `N/A` with
+   brief reason).
+5. Experiment Authorization Convention marked as kit standard
+   — PASS (`PROTOCOL.md.template §Experiment Authorization
+   Convention` opens with "Recommended convention for kit
+   adopters. This is the kit's forward-looking standard, not
+   a requirement to retroactively rewrite older source-repo
+   prose authorizations." — Codex's defense of marking-over-
+   aligning accepted).
+6. README Quick Start step 1 says "preserving the directory
+   structure" — PASS (also adds useful specificity: "especially
+   `.agent-handoff/` and its subdirectories").
+7. Verification passed — PASS (consultant re-ran independently).
+8. colorado-songwriters-collective, global config, bridges,
+   MCP, plugins, signed trust/events, private keys, and
+   installs untouched — PASS (`git log --oneline -- 'kit/v1/**'`
+   shows only E3-G and E3-G-FIX-001 commits touching the kit).
+
+Codex's three open questions answered: yes to addressing only
+the authorized nits without scope expansion; yes to nit 2 and
+nit 4 choices being defensible and consistent with the
+Stopgate Rule; no new portability leak (the Response History
+Policy disclaimer actually IMPROVES mutable-history clarity).
+
+Notable strengths called out: two-place Phase enum consistency
+(both `PROTOCOL.md.template` and `starter-turn-note.md`
+updated); summary-only disclaimer at point of use across three
+surfaces (`COLLAB.md.template`, `AGENTS.md.template`,
+`CLAUDE.md.template`); "forward-looking standard, not
+retroactive requirement" framing for nit 4 preserves repo's
+existing authorization habits while giving adopters a cleaner
+convention; tight 295/68 diff stat across exactly the
+authorized files; subagents intentionally not used given small
+scope.
+
+Two tiny cosmetic nits-of-the-fix (NOT blocking; deferrable):
+1. Phase enum now lives in two places (`PROTOCOL.md.template`
+   and `starter-turn-note.md`). Future changes must update
+   both. Acceptable for prose templates of this size; flag
+   only if strict single-source-of-truth discipline is wanted
+   as future kit hardening.
+2. The `COLLAB.md.template` Response-History-Policy disclaimer
+   line is a bullet sibling of the latest-response fields
+   rather than a sub-bullet underneath them. Visually it reads
+   as another Current Phase field. Could be tightened in a
+   future template-polish pass.
+
+Sami's decision queue:
+- Accept E3-G-FIX-001 as filed, then choose between:
+  (a) authorize E3-H as a read-only discovery of
+      colorado-songwriters-collective per Sami's prior
+      stated sequencing (consultant recommendation per
+      prior critique — natural next step now that
+      kit/v1 housekeeping is clean);
+  (b) authorize a tiny additional kit polish turn for
+      one or both of the cosmetic nits above before E3-H
+      (only if strict single-source-of-truth or
+      visual-grouping discipline is wanted now);
+  (c) pivot to a queued item (Experiment 4 council skill
+      pack, separate wrapper-codex-mcp trust turn);
+  (d) defer further E3 work.
+
+Hard stop remains active. No kit-extraction action, no file
+creation outside this Claude-Codex repo, no installs, no MCP
+registration, no plugin install, no bridge enablement, no
+global config change, no signed trust/event/private-key edit,
+and no proposed-to-approved transition occurs without Sami's
+explicit per-action approval.
 
 E3-G accepted. E3-G-FIX-001 was authorized by Sami on 2026-05-16
 as a tiny kit-template housekeeping turn addressing the five E3-G
@@ -80,7 +180,8 @@ the consultation thread:
   - Subagents may not edit files, install tools, expand scope,
     approve actions, or touch other repos."
 
-Codex authored E3-G-FIX-001. Claude consultant critiques next.
+Codex authored E3-G-FIX-001. Claude consultant filed the critique
+(zero blockers, two cosmetic nits — see above).
 
 E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
 inspection, E3-B-FIX-001 verifier hardening, E3-D
@@ -88,10 +189,11 @@ adapter-selection design, E3-D-FIX-001 wrapper preconditions,
 E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
 housekeeping, E3-F docs alignment, E3-F-FIX-001 scaffold-check
 fix, and E3-G first kit-bootstrap all accepted. E3-G-FIX-001
-kit-template housekeeping is filed and awaiting Claude critique. After
-E3-G-FIX-001 is critiqued, Sami expects to authorize E3-H as a read-only
-discovery of colorado-songwriters-collective (per Sami's stated
-sequencing).
+kit-template housekeeping critique filed; awaiting Sami's
+accept-or-redirect decision. After Sami accepts E3-G-FIX-001,
+the consultant-recommended next step is E3-H read-only
+discovery of colorado-songwriters-collective per Sami's prior
+stated sequencing.
 
 E3-G Claude consultant critique filed (2026-05-16) at HEAD
 `a612ddf`. Zero blockers. All 12 Sami focus areas pass.
@@ -991,8 +1093,46 @@ config changes, or proposed-to-approved transitions are authorized.
   snapshot shape, file naming, quarantine rules, fixture contract, and
   pass/fail checks. Locally uncommitted at filing; awaiting Claude
   consultant critique before further E3 work.
+- E3-G-FIX-001 Claude consultant critique added at
+  `.agent-handoff/turns/E3-G-FIX-001-claude-critique.md`. Zero
+  blockers, two cosmetic nits, all eight Sami focus areas pass.
+  Independent verification by consultant: `npm test` exit 0,
+  `git diff --check` exit 0, leak greps over `kit/v1/` match
+  Codex's self-check. Locally uncommitted at filing; awaiting
+  Sami's per-push authorization.
 
 ## Latest Claude Response
+
+E3-G-FIX-001 architecture-consultant critique filed at
+`.agent-handoff/turns/E3-G-FIX-001-claude-critique.md`. Verdict:
+zero blockers, accept the kit-template housekeeping fix. All
+eight Sami focus areas pass on independent verification — five
+nits cleanly addressed, two-place Phase enum consistency
+preserved (`PROTOCOL.md.template` + `starter-turn-note.md`),
+summary-only disclaimer mirrored across three surfaces
+(`COLLAB.md.template`, `AGENTS.md.template`,
+`CLAUDE.md.template`), Experiment Authorization Convention
+correctly marked as forward-looking kit standard rather than
+retroactive requirement, README Quick Start step 1 adds
+directory-structure preservation language with useful
+`.agent-handoff/` specificity. Tight 295/68 diff across
+exactly the eight authorized files; no scope creep. Codex's
+three open questions answered yes/yes/no (no new portability
+leak; disclaimer actually improves mutable-history clarity).
+Two tiny cosmetic nits-of-the-fix surfaced but explicitly
+NOT blocking: (1) Phase enum now lives in two places, future
+changes must touch both — acceptable for prose templates of
+this size, flag only if strict single-source-of-truth is
+desired as future kit hardening; (2) `COLLAB.md.template`
+disclaimer is a bullet sibling rather than sub-bullet,
+visually reads as another field — could tighten in a future
+polish pass. Independent verification commands re-run by
+consultant matched Codex's self-check on every criterion.
+Subagents intentionally not used given small scope. Hard
+stop active per Sami's instruction; standing by for Sami's
+per-push authorization.
+
+## Earlier Claude Response
 
 E2-007 rescope revision written at
 `.agent-handoff/turns/E2-007-claude-rescope-revision.md` accepting all
@@ -1018,15 +1158,10 @@ Experiment 3 to a separate future council experiment. All five E2-006
 nits addressed in writing (deferred housekeeping for Phase enum,
 sub-decision count alignment, council API-key tradeoff, Codex Mate /
 Ruflo control-plane read, stale "Original Hard-Stop Note" cleanup).
-
-## Earlier Claude Response
-
-E2-005 re-scope written at `.agent-handoff/turns/E2-005-claude-rescope.md`
-after round-3 prior-art consultation. Narrowed E2 to governance-only
-and deferred transport+council to Experiment 3. Codex E2-006 critique
-identified three blockers: §3 over-demoted, missing schema gate before
-trust bootstrap, missing Codex-plugin/mcp-server in transport matrix.
-All three accepted and addressed by E2-007.
+Further-back Claude responses (E2-005 rescope and earlier) are
+preserved in their append-only turn notes under
+`.agent-handoff/turns/` per the Response History Policy in
+`.agent-handoff/PROTOCOL.md`.
 
 ## Latest Codex Response
 
@@ -1096,21 +1231,30 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-G-FIX-001 architecture-consultant critique of the edited
-`kit/v1/` files, `.agent-handoff/turns/E3-G-FIX-001-codex-kit-template-housekeeping.md`,
-and this COLLAB handoff update. Verify the five nits were addressed without
-expanding scope, especially the literal `fix | rescope` phase enum choice and
-the "recommended convention for kit adopters" authorization choice. Stay
-read-only and report findings, blockers, and nits for Sami. Do not edit files,
-install tools, enable bridges, register MCP, set up plugins, change global
-config, touch another repo, or move any proposal to approved.
+None active. E3-G-FIX-001 critique filed; hard stop after critique per Sami's
+instruction. Standing by for Sami's per-push authorization (the two
+uncommitted files are
+`.agent-handoff/turns/E3-G-FIX-001-claude-critique.md` and this COLLAB.md
+edit) or any redirect.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-G-FIX-001 until Claude's critique is filed and
-Sami explicitly authorizes any next scope.
+None active. Hard stop continues until Sami accepts E3-G-FIX-001 and
+explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
-None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-G-FIX-001 critique.
+Decide whether to (a) accept E3-G-FIX-001 as filed and authorize E3-H
+read-only discovery against `colorado-songwriters-collective` per your
+prior stated sequencing (consultant recommendation per prior critique:
+this is the natural next step), (b) authorize a tiny additional kit
+polish turn for one or both of the two cosmetic nits-of-the-fix above
+before E3-H (only if you want strict single-source-of-truth on the
+Phase enum, or visual-grouping cleanup on the disclaimer line), (c)
+pivot to a queued item (Experiment 4 council skill pack, separate
+wrapper-codex-mcp trust turn), or (d) defer further E3 work. Per the
+active Stopgate Rule, no kit-extraction action, no file creation
+outside this Claude-Codex repo, no installs, no MCP registration, no
+plugin install, no bridge enablement, no global config change, no
+signed trust/event/private-key edit, and no proposed-to-approved
+transition occurs without your explicit per-action approval.
