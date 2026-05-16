@@ -7,30 +7,52 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude (architecture consultant role for E3-E critique turn)
+Sami (E3-E acceptance + first kit-extraction action OR
+E3-E-FIX-001 housekeeping decision)
 
 ## Current Phase
 
-Experiment 3 E3-E critique pending. Codex filed
-`.agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md`
-as the authorized kit-extraction + harness-control design-only turn.
-The note proposes a minimal repo-local, no-install kit; separates
-optional signed governance, prompts, adapter docs, and scaffold checks;
-lists local/generated/secret files that must not travel; maps
-repo-specific placeholders toward `colorado-songwriters-collective`;
-and extracts the control-loop pattern: state preservation, repeated
-gap-finding, revisable planning, independent verification, adaptive
-orchestration, and stopping discipline.
+E3-E Claude consultant critique filed (2026-05-15) at HEAD
+`a77860b`. Zero blockers. All six focus areas endorsed:
+minimal/optional file split correct; signed governance properly
+optional; harness-control loop preserves the proven pattern with
+six elements + eight gap-finding triggers + six replanning
+triggers; Zenith cited only as article/report prior art with
+exemplary UNKNOWN labeling; stopping discipline / token budget
+strong (concrete numbers + "What NOT to extract" enumeration);
+colorado-songwriters-collective portability concrete enough as
+placeholders (right discipline to not inherit this repo's values
+silently).
 
-II Zenith was cited only as article/report prior art. Codex read the
-public Intelligent Internet blog/report landing pages, did not install,
-clone, vendor, enable, or run Zenith, and did not rely on Zenith source
-or implementation details.
+Codex's four open questions answered: yes to signed-event trust
+bootstrap optional in minimal kit; one minimal-file recommendation
+(starter turn-note template); yes to digests/ and consultants/ as
+cheap empty directories in v1; no Zenith reference overclaims.
 
-Hard stop remains active after E3-E. No kit files were created outside
-this repo, no protocol change was applied, no signed governance
-packaging was performed, no adapter was enabled, and no proposed item
-was moved to approved. Claude consultant is the next critique agent.
+Five small consultant nits (NOT for E3-E acceptance):
+1. `{{IDLE_AUTOMATION_BUDGET}}` placeholder should explicitly say
+   N/A if no automation is enabled.
+2. `{{TURN_CAP}}` is per-experiment in our actual practice, not
+   per-repo; reframe placeholder to match.
+3. `{{BROWSER_RUNNER_CHOICE}}` lacks an explicit "N/A acceptable"
+   path for adopters with no browser surface.
+4. Starter turn-note template missing from optional files (would
+   drop highest-friction part of cold start).
+5. Zenith citation read-date not pinned ("read 2026-05-15" would
+   improve reproducibility of the prior-art claim).
+
+Sami's decision queue:
+- Accept E3-E as filed, then choose between: (a) authorize the
+  first kit-extraction action sub-experiment toward
+  colorado-songwriters-collective; (b) authorize a small
+  E3-E-FIX-001 housekeeping turn to address the five consultant
+  nits in-place before any extraction action; (c) defer further E3
+  work and let the design sit.
+
+Hard stop remains active. No kit files were created outside this
+repo, no protocol change was applied, no signed governance
+packaging was performed, no adapter was enabled, and no proposed
+item was moved to approved.
 
 E3-D accepted. E3-D-FIX-001 was authorized by Sami on 2026-05-15 as
 design/prose only. Explicit authorization text recorded here and in
