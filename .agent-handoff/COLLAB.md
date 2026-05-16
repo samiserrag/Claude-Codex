@@ -7,10 +7,91 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-G acceptance + E3-G-FIX-001 small housekeeping OR
-first kit-extraction action decision)
+Codex (E3-G-FIX-001 tiny kit-template housekeeping turn,
+authorized by Sami on 2026-05-16)
 
 ## Current Phase
+
+E3-G accepted. E3-G-FIX-001 authorized by Sami on 2026-05-16 as
+a tiny kit-template housekeeping turn addressing the five E3-G
+critique nits. Explicit authorization text recorded here and in
+the consultation thread:
+
+  "Approved:
+  1. Accept E3-G as a successful first kit-bootstrap
+     implementation turn.
+  2. Authorize E3-G-FIX-001 as a tiny kit-template housekeeping
+     turn.
+
+  Scope:
+  - Address only the five E3-G critique nits:
+    1. Add a Response History Policy disclaimer around
+       latest-response / current-state fields so users do not
+       treat mutable summary fields as the durable record.
+    2. Add or reconcile phase values so `fix` and `rescope` are
+       not schema drift.
+    3. Add placeholder-replacement instructions to the starter
+       turn-note.
+    4. Align the Experiment Authorization Convention with actual
+       repo practice, or clearly mark it as the new kit standard.
+    5. Update README Quick Start step 1 to say \"preserving the
+       directory structure.\"
+
+  Allowed files:
+  - kit/v1/README.md
+  - kit/v1/AGENTS.md.template
+  - kit/v1/CLAUDE.md.template
+  - kit/v1/.agent-handoff/PROTOCOL.md.template
+  - kit/v1/.agent-handoff/COLLAB.md.template
+  - kit/v1/.agent-handoff/prompts/starter-turn-note.md
+  - .agent-handoff/COLLAB.md
+  - .agent-handoff/turns/E3-G-FIX-001-codex-kit-template-housekeeping.md
+
+  Constraints:
+  - Do not touch colorado-songwriters-collective.
+  - Do not install anything, enable bridges, register MCP, set
+    up plugins, modify global config, or edit signed
+    trust/event/private-key files.
+  - Do not expand the kit beyond the five nits.
+  - Do not move any proposal to approved except by recording
+    this exact E3-G-FIX-001 authorization.
+  - No branches, PRs, or pushes unless separately approved.
+  - Hard stop after the fix note and COLLAB.md handoff update.
+
+  Verification required:
+  - git diff --check
+  - npm test
+  - repeat the E3-G leak/portability grep checks:
+    - no colorado/songwriters/denver leaks
+    - no decision-ledger sample-app leaks
+    - no Sami root / wrapper / signed-event implementation leaks
+    - no global install/config instructions presented as default
+    - any Claude/Codex matches are product references only
+    - any install matches are negative/anti-installer framing only
+
+  Subagents:
+  - Codex may use bounded advisory subagents:
+    1. template-minimalism reviewer
+    2. portability/leak reviewer
+    3. stopgate/security reviewer
+    4. scaffold/test reviewer
+  - Subagents may inspect and report only.
+  - Subagents may not edit files, install tools, expand scope,
+    approve actions, or touch other repos."
+
+Codex authors E3-G-FIX-001. Claude consultant critiques after
+E3-G-FIX-001 is pushed.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
+housekeeping, E3-F docs alignment, E3-F-FIX-001 scaffold-check
+fix, and E3-G first kit-bootstrap all accepted. E3-G-FIX-001
+kit-template housekeeping pending. After E3-G-FIX-001 lands and
+is critiqued, Sami expects to authorize E3-H as a read-only
+discovery of colorado-songwriters-collective (per Sami's stated
+sequencing).
 
 E3-G Claude consultant critique filed (2026-05-16) at HEAD
 `a612ddf`. Zero blockers. All 12 Sami focus areas pass.
