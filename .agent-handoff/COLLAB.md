@@ -7,10 +7,75 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-F acceptance + first kit-extraction action OR
-E3-F-FIX-001 scaffold-check fix decision)
+Codex (E3-F-FIX-001 tiny scaffold-check/docs-consistency fix turn,
+authorized by Sami on 2026-05-15)
 
 ## Current Phase
+
+E3-F accepted. E3-F-FIX-001 authorized by Sami on 2026-05-15 as a
+tiny scaffold-check/docs-consistency fix. Explicit authorization
+text recorded here and in the consultation thread:
+
+  "Approved:
+  1. Accept E3-F as a successful docs-alignment turn.
+  2. Authorize E3-F-FIX-001 as a tiny scaffold-check/docs
+     consistency fix.
+
+  Scope:
+  - Fix the pre-existing npm test scaffold expectation mismatch
+    where the scaffold check expects old COLLAB.md headings:
+    - ## Hard Constraints / Approval Stopgates
+    - ## Decisions Made
+  - Align the scaffold check with the current accepted COLLAB.md
+    shape, or make it accept the current equivalent headings if
+    that is safer.
+  - Do not restructure COLLAB.md just to satisfy an old test.
+  - Do not change E3-F in place.
+  - Create a new fix-turn note:
+    .agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md
+  - Update COLLAB.md handoff only.
+
+  Allowed files:
+  - the scaffold/test file that contains the stale heading
+    expectations
+  - .agent-handoff/COLLAB.md
+  - .agent-handoff/turns/E3-F-FIX-001-codex-scaffold-check.md
+
+  Verification required:
+  - git diff --check
+  - npm test
+  - If npm test still fails, explain exactly why and stop.
+
+  Constraints:
+  - No kit extraction.
+  - No file creation outside this Claude-Codex repo.
+  - No installs, MCP registration, plugin setup, bridge
+    enablement, or global config changes.
+  - No signed trust/event/private-key edits.
+  - No branches, PRs, or pushes unless separately approved.
+  - Do not move any proposal to approved except by recording this
+    exact E3-F-FIX-001 authorization.
+  - Hard stop after the fix note and COLLAB.md handoff update.
+
+  Subagents:
+  - Codex may use a narrow test/scaffold-inspection subagent if
+    available.
+  - Codex may use a narrow docs-consistency subagent if available.
+  - Subagents are advisory only. They may inspect and report, not
+    expand scope, install tools, edit unrelated files, or approve
+    anything."
+
+Codex authors E3-F-FIX-001. Claude consultant critiques after the
+fix lands.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
+housekeeping, and E3-F docs alignment all accepted. E3-F-FIX-001
+scaffold-check fix pending. Kit extraction remains a separate
+sub-experiment requiring Sami's explicit per-action approval
+AFTER E3-F-FIX-001 lands and is critiqued.
 
 E3-F Claude consultant critique filed (2026-05-15) at HEAD
 `fbe8bf5`. Zero blockers. All six Sami focus areas pass:
