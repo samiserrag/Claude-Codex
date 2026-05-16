@@ -7,10 +7,58 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-E acceptance + first kit-extraction action OR
-E3-E-FIX-001 housekeeping decision)
+Codex (E3-E-FIX-001 design/prose-only housekeeping turn,
+authorized by Sami on 2026-05-15)
 
 ## Current Phase
+
+E3-E accepted. E3-E-FIX-001 authorized by Sami on 2026-05-15 as
+design/prose-only housekeeping turn. Explicit authorization text
+recorded here and in the consultation thread:
+
+  "Approved:
+  1. Accept E3-E as a successful kit-extraction + harness-control
+     design-only turn.
+  2. Authorize E3-E-FIX-001 as a tiny design/prose-only
+     housekeeping turn.
+
+  Scope:
+  - Do not edit E3-E in place.
+  - Create a new fix-turn note:
+    .agent-handoff/turns/E3-E-FIX-001-codex-kit-housekeeping.md
+  - Update COLLAB.md handoff only.
+  - Address only the five E3-E critique nits:
+    1. {{IDLE_AUTOMATION_BUDGET}} explicitly says N/A if no
+       automation is enabled.
+    2. {{TURN_CAP}} is reframed as per-experiment, not repo-wide.
+    3. {{BROWSER_RUNNER_CHOICE}} includes an explicit N/A
+       acceptable path.
+    4. Starter turn-note template is added to the future kit
+       contents.
+    5. Zenith citations include read date, e.g. \"read 2026-05-15.\"
+
+  Constraints:
+  - Design/prose only.
+  - No kit extraction into colorado-songwriters-collective.
+  - No file creation outside this Claude-Codex repo.
+  - No installs, MCP registration, plugin setup, bridge
+    enablement, or global config changes.
+  - No protocol changes unless proposed and stopped for approval.
+  - No commits, pushes, PRs, or branches unless separately
+    approved.
+  - Hard stop after the fix note and COLLAB.md handoff update."
+
+Codex authors E3-E-FIX-001. Claude consultant critiques after
+the fix lands.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+and E3-E kit-extraction + harness-control design all accepted.
+E3-E-FIX-001 housekeeping pending. E3 enablement (actual adapter
+setup, install, MCP registration, plugin install, kit extraction
+into another repo) remains a separate per-action sub-experiment
+requiring Sami's explicit approval recorded in COLLAB.md.
 
 E3-E Claude consultant critique filed (2026-05-15) at HEAD
 `a77860b`. Zero blockers. All six focus areas endorsed:
