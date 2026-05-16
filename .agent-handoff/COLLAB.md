@@ -7,12 +7,76 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude (architecture consultant role for E3-F critique turn)
+Sami (E3-F acceptance + first kit-extraction action OR
+E3-F-FIX-001 scaffold-check fix decision)
 
 ## Current Phase
 
-E3-F docs-alignment filed by Codex. Current phase: Experiment 3
-E3-F critique pending. E3-E-FIX-001 was accepted, and E3-F was
+E3-F Claude consultant critique filed (2026-05-15) at HEAD
+`fbe8bf5`. Zero blockers. All six Sami focus areas pass:
+- Docs aligned with accepted E3 state without expanding scope.
+- PROTOCOL.md changed only via conservative language alignment;
+  no new schema fields, event kinds, or approval mechanics; future
+  schema additions correctly proposed (not applied).
+- README/AGENTS/CLAUDE avoided stale local-only and bridge-first
+  framing; "Bridge And Adapter Status" disclaimer in README
+  prevents accidental copy-paste of example bridge command.
+- File-based handoff preserved as minimal binding reference path
+  across all four edited surfaces.
+- Signed governance, adapters, council runtime, and kit
+  extraction kept optional / separately approved.
+- npm test pre-existing failure (E1-era heading names
+  `## Hard Constraints / Approval Stopgates` and `## Decisions
+  Made` no longer present in current COLLAB.md) honestly disclosed
+  in Evidence Basis. Codex did NOT silently rename headings, did
+  NOT silently change scaffold script, did NOT skip the failure.
+  Independent verification by consultant: same failure on `npm
+  test`, exit 1.
+
+Three small consultant nits-of-the-alignment (NOT for E3-F
+acceptance):
+1. Pre-existing scaffold-check failure (`scripts/check-collab.mjs`
+   expects E1-era heading names) should be fixed before any kit
+   extraction so adopters don't inherit a broken check. Most
+   consequential nit. Recommend small E3-F-FIX-001 turn that
+   updates the check, makes it more flexible, or retires it.
+2. README "First Run" §4 has a clunky compound (cap IS turn note
+   004); simplify to "Stop at Experiment 1's authorized cap (turn
+   note 004) and write a retrospective." Cosmetic.
+3. AGENTS/CLAUDE "Browser Runner: Chrome First" section wasn't
+   touched and still reads as repo-binding. Correct for this
+   repo, but future kit-extraction will need to genericize per
+   `{{BROWSER_RUNNER_CHOICE}}` pattern. Forward-flag only.
+
+Codex's three open questions answered: yes, PROTOCOL.md changes
+are conservative language alignment only; mostly clean wording
+with one clunky compound flagged; yes, leaving
+`docs/chrome-runners.md` unchanged is correct for this repo's
+named runner.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
+housekeeping, and E3-F docs alignment all accepted. Kit
+extraction remains a separate sub-experiment requiring Sami's
+explicit per-action approval.
+
+Sami's decision queue:
+- Accept E3-F as filed, then choose between:
+  (a) authorize first kit-extraction action sub-experiment;
+  (b) authorize small E3-F-FIX-001 scaffold-check fix turn first
+      (consultant recommended — broken check would travel into
+      any adopter repo);
+  (c) pivot to a queued item (Experiment 4 council skill pack,
+      separate wrapper-codex-mcp trust turn);
+  (d) defer further E3 work.
+
+Hard stop remains active. E3-F aligned existing docs only and
+created the append-only E3-F turn note. No kit files were created
+outside this repo, no signed governance packaging was performed,
+no adapter was enabled, and no proposed item was moved to
+approved. E3-E-FIX-001 was accepted, and E3-F was
 authorized by Sami on 2026-05-15 as a docs-alignment turn before
 any kit extraction. Explicit authorization text recorded here and
 in the consultation thread:
