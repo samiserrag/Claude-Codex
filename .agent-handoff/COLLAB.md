@@ -7,9 +7,168 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude (architecture consultant role for E3-H critique)
+Sami (decision: accept E3-H and choose first-extraction shape, or
+authorize follow-up)
 
 ## Current Phase
+
+Experiment 3 E3-H discovery filed and critiqued. Hard stop active
+per Sami's instruction; awaiting Sami decision on first
+kit-extraction sub-experiment.
+
+E3-H Claude consultant critique filed (2026-05-16) at HEAD
+`809eb4e`. Zero blockers. All nine Sami focus areas pass.
+Independent verification by consultant matches every Codex
+claim that was tested:
+- Target `git status --short` re-run by consultant is
+  byte-identical to BOTH the pre-discovery and post-discovery
+  blocks Codex recorded (12 modified files + 19 untracked
+  entries; the dirty state is pre-existing target activity,
+  not produced by E3-H).
+- Target branch=`main`, remote URL=
+  `https://github.com/samiserrag/colorado-songwriters-collective.git`,
+  target HEAD=`cadd9f69474ccb46ee21d83d56626532e0d01c90` —
+  match Codex's values exactly.
+- Target `.agent-handoff/` ABSENT — matches.
+- `git check-ignore -v .agent-handoff/local/ .claude/worktrees/`
+  in target exits 1 with no match — confirms neither path is
+  ignored by target `.gitignore`. Matches.
+- Target `AGENTS.md`, `CLAUDE.md`, `README.md`,
+  `docs/GOVERNANCE.md`, `docs/CONTRACTS.md`,
+  `docs/PRODUCT_NORTH_STAR.md`, `docs/SMOKE-PROD.md`, and
+  four `.github/workflows/*.yml` all exist. Matches.
+- `web/package.json` "name" field literally is
+  `"denver-songwriters-collective"` — confirms Codex's
+  legacy-branding nit.
+- Target `CLAUDE.md` lines 5, 7, 15 point to old denver
+  paths — confirms Codex's compatibility-index nit.
+- Codex's commit `809eb4e` touched ONLY the two authorized
+  files (turn note +443 / COLLAB.md +142/-67) — no kit/v1
+  edit, no scripts/, no signed trust/event/private-key
+  edits, no app/ edits.
+
+Per-focus-area verdict:
+1. Read-only discovery only — PASS (byte-identical target
+   pre/post status is the strongest possible proof of zero
+   target writes).
+2. Git status before AND after in BOTH repos recorded —
+   PASS (four blocks in §Verification, target pre/post
+   byte-identical).
+3. Target state unchanged — PASS (re-verified independently).
+4. Tests avoided unless justified read-only — PASS (deferral
+   with five concrete write-side-effect paths cited: Vitest
+   TMPDIR workaround writes `web/.tmp`; build writes
+   `.next/`; tsbuildinfo unless `--incremental false`;
+   Symphony writes state; RLS tripwire writes
+   `web/tripwire.log`).
+5. No writes/installs/staging/commits/branches/PRs/
+   bridge/MCP/plugin/global config/signed-key edits — PASS
+   (`git show --stat 809eb4e` shows only two files; commit
+   filed only after Sami's separate per-push authorization).
+6. All twelve discover-and-report items answered or marked
+   UNKNOWN — PASS (FILE VERIFIED / INFERENCE / UNKNOWN
+   labels used cleanly; UNKNOWN correctly applied to
+   `{{CURRENT_*}}` placeholders that depend on future
+   target-side authorization).
+7. Placeholders filled only where evidence supports them
+   — PASS (placeholder table includes a confidence column
+   High/Medium/Low — improvement worth porting back to
+   kit/v1 as a future polish nit).
+8. Risks before first extraction concrete — PASS (six
+   risks named with paths and mitigations: dirty
+   worktree, AGENTS/CLAUDE collision, `.gitignore` gaps
+   `.agent-handoff/local/`+`.claude/worktrees/`, env/
+   secrets including surprising `.env.test` tracked,
+   `.claude`/`.symphony` orchestration surfaces, test
+   write-side-effects).
+9. Next recommended step safety — PASS for safety; SOME
+   REFINEMENT recommended for shape (consultant prefers
+   4-turn design+critique+extraction+critique over
+   Codex's 2-turn extraction+critique, given target
+   dirty state and active AGENTS.md/CLAUDE.md; not
+   blocking).
+
+Codex's three open questions answered:
+1. Treat existing target `AGENTS.md`/`CLAUDE.md` as merge
+   surfaces, not overwrite targets? YES, strongly.
+2. Is target dirty state a blocker before extraction?
+   PARTIAL — reframe as explicit-awareness constraint:
+   Sami can authorize extraction while dirty IF the
+   authorization names exact files to write, all are
+   outside the named dirty surface, and pre/post status
+   is re-verified in the extraction turn.
+3. Is the 2-turn cap safe? ACCEPTABLE with caveat;
+   4-turn (design+critique+extraction+critique) is
+   safer given target activity.
+
+Notable strengths called out:
+- Byte-identical pre/post target status blocks (strongest
+  possible zero-write proof).
+- Placeholder-table confidence column (improvement on
+  plain UNKNOWN; portable forward as kit polish).
+- Test-execution deferral with five concrete write-path
+  citations (not vague).
+- Risk #2 (AGENTS/CLAUDE overwrite hazard) named first
+  — correct priority.
+- Risk #4 (env/`.env.test` tracked surprise finding) is
+  legitimate target-side red flag worth Sami visibility
+  independent of kit work.
+- Tight commit: 2 files only, no scope creep, no kit
+  edits, no protocol edits, no script edits.
+- Subagents intentionally not used with reasoned
+  justification — consistent discipline with E3-G-FIX-001.
+
+Three tiny nits-of-the-critique (NOT blocking; deferrable):
+1. E3-H used phase value `architecture` while the work is
+   closer to "discovery" (not in current kit enum).
+   Defensible since discovery feeds architecture; future
+   kit-template extension could consider adding
+   `discovery` as a sanctioned phase value.
+2. Placeholder-table confidence column should propagate
+   back into kit/v1 `starter-turn-note.md` as a forward
+   improvement (separately scoped).
+3. Legacy `denver-*` references in target
+   `web/package.json` name and `CLAUDE.md` are
+   surfaced; this is target-side housekeeping, NOT
+   work for the kit extraction.
+
+Sami's decision queue:
+- Accept E3-H as filed, then choose between:
+  (a) authorize first kit-extraction sub-experiment as
+      2-turn shape (Codex extraction + Claude critique),
+      naming exact files to write with confirmation
+      that none collide with the target's named dirty
+      surface (12 modified + 19 untracked, enumerated
+      in E3-H §Verification);
+  (b) authorize first kit-extraction as 4-turn shape
+      (design proposal + critique + extraction +
+      critique) — consultant recommendation given
+      target dirty state and active AGENTS.md/CLAUDE.md;
+  (c) authorize a tiny target-side cleanup turn first
+      to clear the dirty worktree before extraction
+      (touches target repo; OUT of E3-H read-only scope
+      so requires separate authorization);
+  (d) pivot to a queued item (Experiment 4 council
+      skill pack, separate wrapper-codex-mcp trust
+      turn, kit polish for the two E3-G-FIX-001
+      cosmetic nits, kit polish to port placeholder
+      confidence column from E3-H);
+  (e) defer further E3 work.
+
+Hard stop remains active. Per the active Stopgate Rule,
+no kit-extraction action, no write into
+`colorado-songwriters-collective`, no file creation
+outside this Claude-Codex repo, no installs, no MCP
+registration, no plugin install, no bridge enablement,
+no global config change, no signed trust/event/
+private-key edit, no commit or push in either repo, no
+branch creation, no PR, and no proposed-to-approved
+transition occurs without Sami's explicit per-action
+approval.
+
+— Historical phase content below is preserved per the
+Response History Policy (durable detail lives in the
+append-only turn notes under `.agent-handoff/turns/`). —
 
 Experiment 3 E3-H discovery filed; Claude critique pending.
 
@@ -1239,45 +1398,89 @@ config changes, or proposed-to-approved transitions are authorized.
   Sami's per-push authorization on 2026-05-16.
 - E3-H read-only discovery authorization recorded in
   `.agent-handoff/COLLAB.md` per Sami's verbatim authorization
-  on 2026-05-16. Locally uncommitted at filing; awaiting Sami's
-  per-push authorization.
+  on 2026-05-16. Committed and pushed in `605f6e7` per Sami's
+  per-push authorization on 2026-05-16.
+- E3-H Codex colorado discovery added at
+  `.agent-handoff/turns/E3-H-codex-colorado-discovery.md`.
+  Read-only discovery with byte-identical pre/post target
+  status, twelve discover-and-report items addressed,
+  placeholder table with confidence column, six concrete
+  pre-extraction risks named. Committed and pushed in
+  `809eb4e` per Sami's per-push authorization on
+  2026-05-16.
+- E3-H Claude consultant critique added at
+  `.agent-handoff/turns/E3-H-claude-critique.md`. Zero
+  blockers, three tiny nits, all nine Sami focus areas
+  pass. Independent verification by consultant matches
+  every Codex claim tested (byte-identical target status
+  re-run, target identity, `.agent-handoff/` absence,
+  ignore gaps, governance docs presence, legacy denver
+  references). Locally uncommitted at filing; awaiting
+  Sami's per-push authorization.
 
 ## Latest Claude Response
+
+E3-H architecture-consultant critique filed at
+`.agent-handoff/turns/E3-H-claude-critique.md`. Verdict:
+zero blockers, accept E3-H as a successful read-only
+discovery of `colorado-songwriters-collective`. All nine
+Sami focus areas pass on independent verification.
+Strongest evidence: target `git status --short` re-run by
+consultant is byte-identical to BOTH the pre-discovery
+and post-discovery blocks Codex recorded — strongest
+possible proof zero target writes occurred. Independent
+verification of target identity, `.agent-handoff/`
+absence, `.gitignore` gaps for `.agent-handoff/local/`
+and `.claude/worktrees/`, presence of governance docs,
+and Codex's nits about legacy `denver-songwriters-collective`
+references in `web/package.json` name and target
+`CLAUDE.md` memory paths all match Codex's report
+exactly. `git show --stat 809eb4e` confirms only the
+two authorized files touched (no kit/v1, no scripts/,
+no signed trust/event/private-key edits). Codex's three
+open questions answered: yes-strongly (treat target
+AGENTS/CLAUDE as merge surfaces, not overwrite targets);
+partial-reframe (target dirty state is explicit-awareness
+constraint rather than blocker — Sami can authorize
+extraction while dirty if authorization names exact
+files outside the named dirty surface); acceptable-with-
+caveat (2-turn extraction+critique is safe IF
+authorization names files precisely; consultant prefers
+4-turn design+critique+extraction+critique given target
+activity). Three tiny nits-of-the-critique surfaced
+but explicitly NOT blocking: (1) phase value
+`architecture` used while work was closer to "discovery"
+— defensible since discovery feeds architecture; future
+kit could add `discovery` enum value; (2) placeholder-
+table confidence column is an improvement on plain
+UNKNOWN and should propagate back into kit/v1
+`starter-turn-note.md` as a future polish nit; (3)
+legacy `denver-*` references in target are target-side
+housekeeping, NOT kit work. Subagents intentionally
+not used; evidence surface bounded enough for direct
+read-and-grep verification. Hard stop active per
+Sami's instruction; standing by for Sami's per-push
+authorization.
+
+## Earlier Claude Response
 
 E3-G-FIX-001 architecture-consultant critique filed at
 `.agent-handoff/turns/E3-G-FIX-001-claude-critique.md`. Verdict:
 zero blockers, accept the kit-template housekeeping fix. All
 eight Sami focus areas pass on independent verification — five
 nits cleanly addressed, two-place Phase enum consistency
-preserved (`PROTOCOL.md.template` + `starter-turn-note.md`),
-summary-only disclaimer mirrored across three surfaces
-(`COLLAB.md.template`, `AGENTS.md.template`,
-`CLAUDE.md.template`), Experiment Authorization Convention
-correctly marked as forward-looking kit standard rather than
-retroactive requirement, README Quick Start step 1 adds
-directory-structure preservation language with useful
+preserved, summary-only disclaimer mirrored across three
+surfaces, Experiment Authorization Convention correctly
+marked as forward-looking kit standard, README Quick Start
+step 1 adds directory-structure preservation language with
 `.agent-handoff/` specificity. Tight 295/68 diff across
-exactly the eight authorized files; no scope creep. Codex's
-three open questions answered yes/yes/no (no new portability
-leak; disclaimer actually improves mutable-history clarity).
-Two tiny cosmetic nits-of-the-fix surfaced but explicitly
-NOT blocking: (1) Phase enum now lives in two places, future
-changes must touch both — acceptable for prose templates of
-this size, flag only if strict single-source-of-truth is
-desired as future kit hardening; (2) `COLLAB.md.template`
-disclaimer is a bullet sibling rather than sub-bullet,
-visually reads as another field — could tighten in a future
-polish pass. Independent verification commands re-run by
-consultant matched Codex's self-check on every criterion.
-Subagents intentionally not used given small scope. Hard
-stop active per Sami's instruction; standing by for Sami's
-per-push authorization.
-
-## Earlier Claude Response
-
-E2-007 rescope revision written at
-`.agent-handoff/turns/E2-007-claude-rescope-revision.md` accepting all
-three E2-006 blockers. (1) E2-001 §3 split into binding reference path
+exactly the eight authorized files; no scope creep. Two
+cosmetic nits-of-the-fix surfaced but explicitly NOT
+blocking (Phase enum in two places; `COLLAB.md.template`
+disclaimer bullet-sibling). Further-back Claude responses
+(E2-007 rescope revision and earlier) preserved in their
+append-only turn notes under `.agent-handoff/turns/` per
+the Response History Policy in `.agent-handoff/PROTOCOL.md`. (1) E2-001 §3 split into binding reference path
 (Tier 0 manual handoff + Tier 1 inbox/outbox file exchange) and
 exploratory opt-in adapters (Tier 2 cron, Tier 3 webhooks, AgentBridge,
 CCB, tmux variants, official Codex plugin, `codex mcp-server`). External
@@ -1350,7 +1553,12 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude critiques E3-H read-only discovery.
+- Accept E3-H as filed?
+- Choose first-extraction shape: 2-turn (Codex extraction +
+  Claude critique) or 4-turn (design proposal + critique +
+  extraction + critique)?
+- Pre-extraction target cleanup turn first, or proceed with
+  dirty target surface explicitly enumerated as no-touch?
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -1366,29 +1574,37 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Critique E3-H read-only discovery in
-`.agent-handoff/turns/E3-H-codex-colorado-discovery.md`. Verify the
-twelve discovery items, especially the dirty target state, absence of
-`.agent-handoff/`, existing agent-doc collision, `.gitignore` gaps,
-deferred test execution, Chrome-first runner finding, candidate no-touch
-list, candidate first-experiment scope/cap, optional signed-governance
-recommendation, placeholder table, and risks before first extraction.
-Stay read-only; do not edit files, install tools, enable bridges, register
-MCP, set up plugins, change global config, touch
-`colorado-songwriters-collective`, or move any proposal to approved.
+None active. E3-H critique filed; hard stop after critique per Sami's
+instruction. Standing by for Sami's per-push authorization (the two
+uncommitted files are
+`.agent-handoff/turns/E3-H-claude-critique.md` and this COLLAB.md
+edit) or any redirect.
 
 ## Next Request To Codex
 
-None active. Hard stop while Claude critiques E3-H and Sami decides the
-next scope.
+None active. Hard stop continues until Sami accepts E3-H and explicitly
+authorizes a next scope (likely a first kit-extraction sub-experiment
+in 2-turn or 4-turn shape).
 
 ## Next Request To Sami
 
-None immediate until Claude critique of E3-H lands. After critique, decide
-whether to authorize a first extraction/scaffold turn, request a fix to E3-H,
-pivot to another queued item, or defer. Per the active Stopgate Rule, no
-write into `colorado-songwriters-collective`, no install, no MCP
-registration, no plugin install, no bridge enablement, no global config
-change, no signed trust/event/private-key edit, no commit or push in either
-repo, no branch creation, no PR, and no proposed-to-approved transition
-occurs without your explicit per-action approval.
+Decide whether to (a) accept E3-H as filed and authorize a first
+kit-extraction sub-experiment in 2-turn shape (Codex extraction +
+Claude critique) with exact files named in the authorization and
+confirmed outside the named dirty surface; (b) authorize first
+extraction in 4-turn shape (design proposal + critique + extraction
++ critique) — consultant recommendation given target dirty state
+and active AGENTS.md/CLAUDE.md; (c) authorize a tiny target-side
+cleanup turn first (touches target repo; OUT of E3-H read-only
+scope, so requires separate authorization); (d) pivot to a queued
+item (Experiment 4 council skill pack, separate wrapper-codex-mcp
+trust turn, kit polish for the two E3-G-FIX-001 cosmetic nits, kit
+polish to port placeholder confidence column from E3-H); or (e)
+defer further E3 work. Per the active Stopgate Rule, no
+kit-extraction action, no write into
+`colorado-songwriters-collective`, no install, no MCP registration,
+no plugin install, no bridge enablement, no global config change,
+no signed trust/event/private-key edit, no commit or push in
+either repo, no branch creation, no PR, and no
+proposed-to-approved transition occurs without your explicit
+per-action approval.
