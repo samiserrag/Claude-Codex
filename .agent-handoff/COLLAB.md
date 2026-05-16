@@ -7,10 +7,89 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-F-FIX-001 acceptance + first kit-extraction action OR
-pivot decision)
+Codex (E3-G first kit-bootstrap implementation turn, authorized
+by Sami on 2026-05-16)
 
 ## Current Phase
+
+E3-F-FIX-001 accepted. E3-G authorized by Sami on 2026-05-16 as
+the first kit-bootstrap implementation turn — creating a
+reviewable portable kit folder inside THIS Claude-Codex repo
+only (no extraction into colorado-songwriters-collective).
+Explicit authorization text recorded here and in the
+consultation thread:
+
+  "Approved:
+  1. Accept E3-F-FIX-001 as a successful scaffold-check/docs-
+     consistency fix.
+  2. Authorize E3-G as the first kit-bootstrap implementation
+     turn.
+
+  Scope:
+  - Create a reviewable portable kit folder inside this
+    Claude-Codex repo only.
+  - Do not copy anything into colorado-songwriters-collective
+    yet.
+  - Do not install anything.
+  - Do not enable bridges.
+  - Do not register MCP.
+  - Do not set up plugins.
+  - Do not modify global config.
+  - Do not edit signed trust/event/private-key files.
+  - Do not move any proposal to approved except by recording
+    this exact E3-G authorization.
+  - Hard stop after E3-G and hand off for critique.
+
+  Create only:
+  - kit/v1/README.md
+  - kit/v1/.gitignore.snippet
+  - kit/v1/AGENTS.md.template
+  - kit/v1/CLAUDE.md.template
+  - kit/v1/.agent-handoff/PROTOCOL.md.template
+  - kit/v1/.agent-handoff/COLLAB.md.template
+  - kit/v1/.agent-handoff/turns/.gitkeep
+  - kit/v1/.agent-handoff/digests/.gitkeep
+  - kit/v1/.agent-handoff/consultants/.gitkeep
+  - kit/v1/.agent-handoff/prompts/starter-turn-note.md
+  - .agent-handoff/turns/E3-G-codex-kit-v1-bootstrap.md
+  - .agent-handoff/COLLAB.md handoff update
+
+  Verification required:
+  - git diff --check
+  - npm test
+  - a portability self-check in the turn note:
+    - no Claude-Codex-specific repo name leaks except examples
+      clearly labeled
+    - no colorado-songwriters-collective files touched
+    - no global install/config instructions presented as default
+    - signed governance marked optional
+    - adapters/bridges marked disabled until separately approved
+    - browser runner supports named runner or explicit N/A
+    - automation budget is N/A unless automation is approved
+    - turn cap is per-experiment
+
+  Subagents:
+  - Codex may use bounded advisory subagents:
+    1. template-minimalism reviewer
+    2. portability/leak reviewer
+    3. stopgate/security reviewer
+    4. scaffold/test reviewer
+  - Subagents may inspect and report only.
+  - Subagents may not edit files, install tools, expand scope,
+    approve actions, or touch other repos."
+
+Codex authors E3-G. Claude consultant critiques after E3-G is
+pushed.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
+housekeeping, E3-F docs alignment, and E3-F-FIX-001
+scaffold-check fix all accepted. E3-G first kit-bootstrap
+pending. Kit extraction INTO another repo remains a separate
+sub-experiment requiring Sami's explicit per-action approval
+AFTER E3-G lands and is critiqued.
 
 E3-F-FIX-001 Claude consultant critique filed (2026-05-15) at
 HEAD `2ce3cbf`. Zero blockers. Independent `npm test` run by
