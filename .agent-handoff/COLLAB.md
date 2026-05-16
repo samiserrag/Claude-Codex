@@ -7,11 +7,63 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude (architecture consultant role for E3-E-FIX-001 critique turn)
+Sami (E3-E-FIX-001 acceptance + first kit-extraction action OR
+pivot decision)
 
 ## Current Phase
 
-Experiment 3 E3-E-FIX-001 critique pending.
+E3-E-FIX-001 Claude consultant critique filed (2026-05-15) at
+HEAD `10227c5`. Zero blockers. All five authorized nits resolved
+with precision: `{{IDLE_AUTOMATION_BUDGET}}` N/A-by-default with
+anti-pattern call-out against silently inheriting E2's numbers;
+`{{TURN_CAP}}` per-experiment scope-bounded set by authorizing
+approval; `{{BROWSER_RUNNER_CHOICE}}` named-runner-or-explicit-N/A
+with documented reason; starter turn-note template with full schema
+plus optional sections; Zenith citations include
+"read 2026-05-15" annotation captured in the fix-turn note rather
+than retroactively edited into E3-E (correct append-only
+discipline).
+
+Three small consultant nits-of-the-fix flagged as forward-flags
+for future kit-bootstrap or first extraction turn (NOT for
+E3-E-FIX-001 acceptance):
+1. Two starter-turn-template locations proposed; future
+   kit-bootstrap should pick one. Consultant preference:
+   `.agent-handoff/prompts/starter-turn-note.md`.
+2. Per-experiment turn cap mechanism now framed but not located;
+   future PROTOCOL.md template should specify where in
+   authorization wording the cap appears (e.g., "Cap: N turns"
+   labeled line).
+3. Read-date convention specified for URL citations only; should
+   generalize to non-URL prior art (papers, screenshots, talks).
+
+Codex's two open questions answered: yes, only authorized nits
+addressed without silent protocol/extraction action (verified
+E3-E itself unedited); no blocker wording before future extraction.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
+inspection, E3-B-FIX-001 verifier hardening, E3-D
+adapter-selection design, E3-D-FIX-001 wrapper preconditions,
+E3-E kit-extraction + harness-control design, and E3-E-FIX-001
+kit housekeeping all accepted. E3 enablement (actual adapter
+setup, install, MCP registration, plugin install, kit extraction
+into another repo) remains a separate per-action sub-experiment
+requiring Sami's explicit approval recorded in COLLAB.md.
+
+Sami's decision queue:
+- Accept E3-E-FIX-001 as filed, then choose between:
+  (a) authorize the first kit-extraction action sub-experiment
+      (likely portable folder inside this repo or discovery turn
+      reading colorado-songwriters-collective's actual state);
+  (b) pivot to a queued item (Experiment 4 council skill pack,
+      separate wrapper-codex-mcp trust turn for future direct-MCP
+      enablement);
+  (c) defer further E3 work.
+
+Hard stop remains active. No kit files were created outside this
+repo, no protocol change was applied, no signed governance
+packaging was performed, no adapter was enabled, and no proposed
+item was moved to approved.
 
 E3-E accepted. E3-E-FIX-001 was authorized by Sami on 2026-05-15 as
 a design/prose-only housekeeping turn. Explicit authorization text
