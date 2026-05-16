@@ -1,10 +1,13 @@
+Replace each `{{placeholder}}` with concrete content before filing. Empty
+fields should be `N/A` with a brief reason, not left as `{{ }}`.
+
 # {{TURN_ID}} - {{AGENT}} {{PHASE}}
 
 ## Agent
 {{Claude | Codex | Sami | Consultant}}
 
 ## Phase
-{{architecture | critique | implementation | smoke | retrospective}}
+{{architecture | critique | implementation | smoke | retrospective | fix | rescope}}
 
 ## Files touched this turn
 - {{path}} ({{created | edited | deleted}})

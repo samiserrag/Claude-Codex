@@ -59,6 +59,10 @@ separately approved bridges or adapters may be layered on later.
 
 ## Experiment Authorization Convention
 
+Recommended convention for kit adopters. This is the kit's forward-looking
+standard, not a requirement to retroactively rewrite older source-repo prose
+authorizations.
+
 Each experiment authorization should state:
 
 - Scope:
@@ -81,7 +85,7 @@ use this schema unless Sami explicitly approves a schema change:
 Claude | Codex
 
 ## Phase
-architecture | critique | implementation | smoke | retrospective
+architecture | critique | implementation | smoke | retrospective | fix | rescope
 
 ## Files touched this turn
 - path (created | edited | deleted)

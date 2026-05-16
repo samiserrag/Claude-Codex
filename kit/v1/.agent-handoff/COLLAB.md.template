@@ -19,6 +19,8 @@
 - Automation budget: {{AUTOMATION_BUDGET_OR_NA}}
 - Latest Claude response: {{LATEST_CLAUDE_RESPONSE}}
 - Latest Codex response: {{LATEST_CODEX_RESPONSE}}
+- Summary only — the durable record lives in append-only turn notes per the
+  Response History Policy in PROTOCOL.md.
 - No-touch files: {{NO_TOUCH_FILES}}
 
 ## Questions Requiring Sami Approval

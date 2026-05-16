@@ -7,13 +7,14 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-G-FIX-001 tiny kit-template housekeeping turn,
-authorized by Sami on 2026-05-16)
+Claude (architecture consultant role for E3-G-FIX-001 critique turn)
 
 ## Current Phase
 
-E3-G accepted. E3-G-FIX-001 authorized by Sami on 2026-05-16 as
-a tiny kit-template housekeeping turn addressing the five E3-G
+Experiment 3 E3-G-FIX-001 critique pending.
+
+E3-G accepted. E3-G-FIX-001 was authorized by Sami on 2026-05-16
+as a tiny kit-template housekeeping turn addressing the five E3-G
 critique nits. Explicit authorization text recorded here and in
 the consultation thread:
 
@@ -79,8 +80,7 @@ the consultation thread:
   - Subagents may not edit files, install tools, expand scope,
     approve actions, or touch other repos."
 
-Codex authors E3-G-FIX-001. Claude consultant critiques after
-E3-G-FIX-001 is pushed.
+Codex authored E3-G-FIX-001. Claude consultant critiques next.
 
 E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter
 inspection, E3-B-FIX-001 verifier hardening, E3-D
@@ -88,8 +88,8 @@ adapter-selection design, E3-D-FIX-001 wrapper preconditions,
 E3-E kit-extraction + harness-control design, E3-E-FIX-001 kit
 housekeeping, E3-F docs alignment, E3-F-FIX-001 scaffold-check
 fix, and E3-G first kit-bootstrap all accepted. E3-G-FIX-001
-kit-template housekeeping pending. After E3-G-FIX-001 lands and
-is critiqued, Sami expects to authorize E3-H as a read-only
+kit-template housekeeping is filed and awaiting Claude critique. After
+E3-G-FIX-001 is critiqued, Sami expects to authorize E3-H as a read-only
 discovery of colorado-songwriters-collective (per Sami's stated
 sequencing).
 
@@ -1030,51 +1030,41 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-G kit v1 bootstrap written at
-`.agent-handoff/turns/E3-G-codex-kit-v1-bootstrap.md`.
+E3-G-FIX-001 kit-template housekeeping written at
+`.agent-handoff/turns/E3-G-FIX-001-codex-kit-template-housekeeping.md`.
 
-Created reviewable portable kit files inside this repo only:
+Addressed the five E3-G critique nits only:
 
-- `kit/v1/README.md`
-- `kit/v1/.gitignore.snippet`
-- `kit/v1/AGENTS.md.template`
-- `kit/v1/CLAUDE.md.template`
-- `kit/v1/.agent-handoff/PROTOCOL.md.template`
-- `kit/v1/.agent-handoff/COLLAB.md.template`
-- `kit/v1/.agent-handoff/turns/.gitkeep`
-- `kit/v1/.agent-handoff/digests/.gitkeep`
-- `kit/v1/.agent-handoff/consultants/.gitkeep`
-- `kit/v1/.agent-handoff/prompts/starter-turn-note.md`
-
-The kit is a no-install, file-based protocol scaffold: not an installer, not a
-bridge, not a framework, not MCP/plugin setup, and not signed-governance
-implementation. Templates use placeholders, keep signed governance optional,
-keep bridges/adapters disabled until separately approved, require named
-browser runner or explicit `N/A`, set automation budget to `N/A` unless
-approved, and frame turn caps as per-experiment authorization values.
+- Added the Response History Policy disclaimer beside latest-response fields in
+  `kit/v1/.agent-handoff/COLLAB.md.template`.
+- Updated `AGENTS.md.template` and `CLAUDE.md.template` to call latest-response
+  fields summary-only.
+- Chose nit 2 approach (a): literal phase enum addition of `fix | rescope` in
+  `PROTOCOL.md.template`, also reflected in the starter turn-note phase prompt.
+- Added starter turn-note instructions to replace every `{{placeholder}}`
+  before filing and use `N/A` with a brief reason for empty fields.
+- Chose nit 4 approach (b): marked the Experiment Authorization Convention as
+  the recommended convention for kit adopters and the kit's forward-looking
+  standard, not a retroactive rewrite requirement for older source-repo prose
+  authorizations.
+- Updated README Quick Start step 1 to say to preserve directory structure,
+  especially `.agent-handoff/` and subdirectories.
 
 Verification:
 
 - `git diff --check`: no output, exit 0.
-- `npm test`: exit 0 with:
+- `npm test`: exit 0 with "Collaboration scaffold check passed."
+- Leak/portability greps over `kit/v1/`: zero colorado/songwriters/denver
+  matches, zero `decision.ledger` matches, zero
+  `sami-root|wrapper-codex-mcp|agent-event-envelope` matches. The four
+  `claude.?codex` matches are product/config references only. The nine
+  `install` matches are negative/anti-installer or explicit-approval framing.
 
-```text
-> claude-codex-collab-test@0.1.0 test
-> node scripts/check-collab.mjs
-
-Collaboration scaffold check passed.
-```
-
-Portability self-check recorded in the turn note: no kit repo-name leaks, no
-other repo touched, no default global install/config instructions, optional
-signed governance, disabled bridges/adapters until approval, named-runner-or-N/A
-browser QA, automation N/A unless approved, and per-experiment turn caps.
-
-No `COLLAB.md` restructuring, kit extraction into another repo, adapter setup,
-install, MCP registration, plugin setup, bridge enablement, global config
-change, git operation, signed trust/event edit, private-key edit,
-scaffold-script edit, or proposed-to-approved transition was performed. Hard
-stop now waits for Claude's read-only E3-G critique.
+No kit extraction into another repo, adapter setup, install, MCP registration,
+plugin setup, bridge enablement, global config change, git operation, signed
+trust/event edit, private-key edit, prior-turn-note edit, or
+proposed-to-approved transition was performed. Hard stop now waits for Claude's
+read-only E3-G-FIX-001 critique.
 
 ## Earlier Codex Response
 
@@ -1090,7 +1080,7 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-G critique is pending.
+- None immediate while Claude's E3-G-FIX-001 critique is pending.
 - Later only, if separately authorized: which files become the v1
   minimal kit?
 - Later only, if separately authorized: should the kit include the
@@ -1106,21 +1096,21 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-G architecture-consultant critique of the created `kit/v1/`
-files, `.agent-handoff/turns/E3-G-codex-kit-v1-bootstrap.md`, and this COLLAB
-handoff update. Verify template minimalism, portability/leak discipline,
-stopgate/security boundaries, scaffold/test evidence, and the eight portability
-self-check criteria. Stay read-only and report findings, blockers, and nits for
-Sami. Do not edit files, install tools, enable bridges, register MCP, set up
-plugins, change global config, touch another repo, or move any proposal to
-approved.
+Perform the E3-G-FIX-001 architecture-consultant critique of the edited
+`kit/v1/` files, `.agent-handoff/turns/E3-G-FIX-001-codex-kit-template-housekeeping.md`,
+and this COLLAB handoff update. Verify the five nits were addressed without
+expanding scope, especially the literal `fix | rescope` phase enum choice and
+the "recommended convention for kit adopters" authorization choice. Stay
+read-only and report findings, blockers, and nits for Sami. Do not edit files,
+install tools, enable bridges, register MCP, set up plugins, change global
+config, touch another repo, or move any proposal to approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-G until Claude's critique is filed and Sami
-explicitly authorizes any next scope.
+None active. Hard stop after E3-G-FIX-001 until Claude's critique is filed and
+Sami explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-G critique.
+action is Claude's E3-G-FIX-001 critique.

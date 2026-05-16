@@ -11,7 +11,9 @@ plain repository files that humans and agents can review before use.
 
 ## Quick Start
 
-1. Copy the files from this folder into the root of the adopting repository.
+1. Copy the files from this folder into the root of the adopting repository,
+   preserving the directory structure (especially `.agent-handoff/` and its
+   subdirectories).
 2. Append the contents of `.gitignore.snippet` to the adopter repo's existing
    `.gitignore`. Do not overwrite the adopter repo's existing ignore rules.
 3. Rename template files by removing the `.template` suffix:

@@ -51,9 +51,9 @@ If a listed path is `N/A`, record why in the turn note Evidence Basis.
   constraints into repo files.
 - When handing work to Codex, update `Next Request To Codex` in
   `{{COLLAB_PATH}}`. If the template includes a latest-response field, update
-  `Latest Claude Response` as well.
+  the summary-only `Latest Claude Response` as well.
 - When answering Codex, update `Next Request To Codex` and, if present,
-  `Latest Claude Response` in `{{COLLAB_PATH}}`.
+  the summary-only `Latest Claude Response` in `{{COLLAB_PATH}}`.
 - Stop at the turn cap named by the current experiment authorization unless
   Sami explicitly approves continuation.
 
