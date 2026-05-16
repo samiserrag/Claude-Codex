@@ -7,9 +7,73 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami (E3-D-FIX-001 acceptance + next E3 step decision)
+Codex (E3-E kit-extraction + harness-control design-only turn,
+authorized by Sami on 2026-05-15)
 
 ## Current Phase
+
+E3-D-FIX-001 accepted. E3-E authorized by Sami on 2026-05-15 as
+design-only kit-extraction + harness-control turn. Explicit
+authorization text recorded here and in the consultation thread:
+
+  "Approved:
+  1. Accept E3-D-FIX-001 as a successful design/prose-only fix
+     turn.
+  2. Authorize the next turn as E3-E kit-extraction +
+     harness-control design only.
+
+  Scope:
+  - Design a minimal portable kit for applying the proven
+    Claude-Codex handoff protocol to
+    colorado-songwriters-collective.
+  - Also extract the control-loop pattern: state preservation,
+    repeated gap-finding, revisable planning, independent
+    verification, adaptive orchestration, and stopping discipline.
+  - Treat II Zenith as prior art for long-running-agent harness
+    design.
+  - Do not install, clone, vendor, enable, or run Zenith.
+  - Do not claim Zenith source is available unless verified; cite
+    it as article/report prior art only.
+
+  Required sections:
+  1. Minimal kit files
+  2. Optional files
+  3. Local/generated/secret files
+  4. Repo-specific placeholders
+  5. Harness-control loop
+  6. Gap-finding triggers
+  7. Independent verifier/tester requirements
+  8. Replanning triggers
+  9. Council-skill triggers
+  10. Stopping discipline / token budget
+  11. What NOT to extract
+  12. Open questions for Sami
+
+  Constraints:
+  - Design only.
+  - No installs.
+  - No MCP registration.
+  - No plugin setup.
+  - No global config changes.
+  - No bridge enablement.
+  - No commits, pushes, PRs, branches, or file edits outside the
+    current Claude-Codex repo unless separately approved.
+  - Hard stop after the design note and COLLAB.md handoff update.
+
+  Output:
+  - .agent-handoff/turns/E3-E-codex-kit-extraction-harness-design.md
+  - COLLAB.md handoff update only"
+
+Codex authors E3-E (mirrors prior architecture authorship pattern).
+Claude consultant is the next critique agent.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter inspection,
+E3-B-FIX-001 verifier hardening, E3-D adapter-selection design,
+and E3-D-FIX-001 wrapper preconditions all accepted with zero
+blockers. E3-E is the kit/harness pivot — combines the original
+portability goal (toward colorado-songwriters-collective) with a
+new control-loop extraction (state preservation, gap-finding,
+replanning, verification, orchestration, stopping discipline).
 
 E3-D-FIX-001 Claude consultant critique filed (2026-05-15). Zero
 blockers. All five wrapper-precondition nits resolved with the
