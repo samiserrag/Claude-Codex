@@ -7,12 +7,59 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex (E3-D-FIX-001 design-only wrapper-preconditions fix turn,
-authorized by Sami on 2026-05-15)
+Sami (E3-D-FIX-001 acceptance + next E3 step decision)
 
 ## Current Phase
 
-E3-D accepted. E3-D-FIX-001 authorized by Sami on 2026-05-15 as
+E3-D-FIX-001 Claude consultant critique filed (2026-05-15). Zero
+blockers. All five wrapper-precondition nits resolved with the
+precision required for future enablement scoping. Notable
+strengths called out: honest acknowledgment of self-measurement
+limits in Nit 5; the "may not attest to" enumeration in Nit 2;
+fsync ordering specified explicitly in Nit 4; complete escalation
+ladder with no silent-failure mode; correct discipline in flagging
+`coordinator_purpose` and `allowed_attestation_modes` as future
+schema work rather than silent application.
+
+Codex's five open questions answered: yes to separate prior trust
+turn for wrapper coordinator registration; `wrapper-codex-mcp` id
+acceptable for prototype with future per-transport convention to
+follow when second adapter is scoped; yes to payload-only
+`attested_by_observer` (no top-level schema expansion); yes to the
+three approval-durability tests (with consultant recommending a
+fourth concurrent-approval test for future enablement); yes to
+signed identity manifest + startup measurement for first prototype
+with explicit limitation correctly documented.
+
+Five small nits flagged for future direct-MCP enablement
+sub-experiment (NOT for E3-D-FIX-001 acceptance):
+1. Add concurrent-approval test alongside the three Codex named.
+2. Coordinator-id taxonomy question (per-transport vs single
+   wrapper-codex with payload distinction) — defer to second
+   adapter selection or new naming-convention turn.
+3. Read-only/status-only fallback requires architectural
+   separation of duties between approval-emission and observation.
+4. Diagnostic events overload `message.created`; future event-kind
+   choice deferred but real.
+5. Identity manifest rotation/refresh mechanism unspecified; same
+   path as initial registration (separate trust turn) implied but
+   should be stated.
+
+E3 status: E3-A spec, E3-B trust-bootstrap, E3-C adapter inspection,
+E3-B-FIX-001 verifier hardening, E3-D adapter-selection design,
+and E3-D-FIX-001 wrapper preconditions all accepted. E3 enablement
+(actual adapter setup, install, MCP registration, plugin install)
+remains a separate per-adapter sub-experiment requiring Sami's
+explicit approval recorded in COLLAB.md.
+
+Sami's decision queue:
+- Accept E3-D-FIX-001 as filed, then choose between: authorize the
+  next concrete E3 step (separate prior wrapper-codex-mcp trust
+  turn); OR pivot to a queued item (Experiment 4 council skill
+  pack, kit extraction toward colorado-songwriters-collective); OR
+  defer further E3 work.
+
+E3-D accepted. E3-D-FIX-001 was authorized by Sami on 2026-05-15 as
 design/prose only. Explicit authorization text recorded here and in
 the consultation thread:
 
@@ -44,7 +91,7 @@ in writing):
 - Nit 5: wrapper source/binary identity must be verified before it
   can emit approval-related events.
 
-Codex authors E3-D-FIX-001 (mirrors E3-B-FIX-001 authorship pattern).
+Codex authored E3-D-FIX-001 (mirrors E3-B-FIX-001 authorship pattern).
 Claude consultant is the next critique agent.
 
 E3 status: E3-A spec accepted, E3-B trust-bootstrap accepted, E3-C
@@ -96,15 +143,12 @@ accepted, E3-D adapter-selection design accepted. E3 enablement
 remains a separate per-adapter sub-experiment requiring Sami's
 explicit approval recorded in COLLAB.md.
 
-Sami's decision queue:
-- Accept E3-D as filed and move to per-adapter authorization
-  decisions on your own clock; OR
-- Authorize a small E3-D-FIX-001 housekeeping turn to address the
-  five nits in-place before any future direct-MCP enablement
-  sub-experiment is scoped; OR
-- Defer further E3 work and pivot to a queued item (Experiment 4
-  council skill pack, or kit extraction toward
-  colorado-songwriters-collective).
+Sami's immediate decision queue:
+- None while Claude's E3-D-FIX-001 critique is pending.
+- Later only, if separately authorized: decide whether the next E3
+  step is a wrapper-coordinator trust turn, a direct-MCP enablement
+  design, Experiment 4 council skill pack work, or kit extraction
+  toward colorado-songwriters-collective.
 
 Codex filed `.agent-handoff/turns/E3-D-codex-adapter-selection.md`
 as the authorized adapter-selection design-only turn. E3-D selects
@@ -398,29 +442,24 @@ All three accepted and addressed by E2-007.
 
 ## Latest Codex Response
 
-E3-D adapter-selection design written at
-`.agent-handoff/turns/E3-D-codex-adapter-selection.md`. Codex compared
-the five E3-C candidates: file-based default remains the binding
-reference; direct `codex mcp-server` wrapper is selected as the first
-future enablement candidate; official Codex plugin wrapper is second;
-CCB and Claude Squad remain pattern-only unless Sami separately
-approves AGPL-compatible use.
+E3-D-FIX-001 wrapper-preconditions fix turn written at
+`.agent-handoff/turns/E3-D-FIX-001-codex-wrapper-preconditions.md`.
+Codex accepted the five E3-D critique nits as real preconditions for
+any future direct-MCP enablement. The fix recommends a separate prior
+trust turn for `wrapper-codex-mcp` registration, chooses
+wrapper-as-own-coordinator with its own Sami-rooted keypair, defines
+inbound Codex MCP output as wrapper-signed `attested_by_observer`
+payloads rather than Codex-signed claims, specifies durable accepted
+approval event before MCP `allow`, and requires wrapper source/binary
+identity verification before approval-related event emission.
 
-The proposed first direct-MCP wrapper exposes only `thread.start`,
-`thread.continue`, `turn.start`, `turn.read`, `turn.cancel`, and
-`status.read`, with filesystem, command, config, account/auth, process,
-model, app, skill, hook, plugin, and unknown methods blocked by
-default. The design requires signed E3-A envelopes before outbound
-delivery, schema/signature verification before inbound input becomes
-actionable, Codex approval requests surfaced as Sami-visible stopgate
-events, a tested rollback/disable path, and verification evidence
-covering signed-event round trip, allow-list enforcement,
-approval-mapping, quarantine, and rollback dry-run.
-
-No adapter was enabled. No install, plugin setup, MCP registration,
-`.mcp.json` edit, bridge enablement, live transport, global config
-change, wrapper code, git operation, or proposed-to-approved transition
-was performed.
+Codex did not edit PROTOCOL.md. Any wrapper-observed payload fields,
+identity-manifest payload contract, or future event-kind cleanup remain
+proposed for later Sami-approved scope. No adapter was enabled. No
+install, MCP registration, plugin setup, `.mcp.json` edit, bridge
+enablement, live transport, global config change, code, wrapper
+implementation, git operation, or proposed-to-approved transition was
+performed.
 
 ## Earlier Codex Response
 
@@ -436,7 +475,9 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate while Claude's E3-D critique is pending.
+- None immediate while Claude's E3-D-FIX-001 critique is pending.
+- Later only, if separately authorized: should
+  `wrapper-codex-mcp` be registered in a separate trust turn?
 - Later only, if separately authorized: should direct `codex mcp-server`
   wrapper be approved as the first adapter enablement sub-experiment?
 - Later only, if separately authorized: should we register `codex mcp-server`
@@ -448,22 +489,22 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Perform the E3-D architecture-consultant critique of
-`.agent-handoff/turns/E3-D-codex-adapter-selection.md`. Focus on whether the
-comparison matrix, direct-MCP first selection, six-method allow-list,
-signed-event import/export boundary, approval-surfacing requirements,
-rollback/disable path, verification evidence, and Stop-hook isolation are
-sufficient and correctly scoped. Stay read-only. Do not implement, install
-dependencies, enable bridges, register MCP, edit `.mcp.json`, modify global
-config, commit, push, open a PR, create a branch, delete files, or treat any
-adapter proposal as approved.
+Perform the E3-D-FIX-001 architecture-consultant critique of
+`.agent-handoff/turns/E3-D-FIX-001-codex-wrapper-preconditions.md`.
+Focus on whether the fix adequately resolves the five E3-D nits:
+separate wrapper coordinator registration, wrapper-owned identity/keypair,
+inbound `attested_by_observer` semantics, durable approval-event-before-allow
+ordering, and wrapper source/binary identity verification. Stay read-only.
+Do not implement, install dependencies, enable bridges, register MCP, edit
+`.mcp.json`, modify global config, commit, push, open a PR, create a branch,
+delete files, or treat any proposal as approved.
 
 ## Next Request To Codex
 
-None active. Hard stop after E3-D until Claude's critique is filed and Sami
-explicitly authorizes any next scope.
+None active. Hard stop after E3-D-FIX-001 until Claude's critique is filed and
+Sami explicitly authorizes any next scope.
 
 ## Next Request To Sami
 
 None immediate unless you want to redirect the experiment. The next expected
-action is Claude's E3-D critique.
+action is Claude's E3-D-FIX-001 critique.
