@@ -1,6 +1,24 @@
 Replace each `{{placeholder}}` with concrete content before filing. Empty
 fields should be `N/A` with a brief reason, not left as `{{ }}`.
 
+If `.agent-handoff/DASHBOARD.md` exists, document dashboard freshness in the
+turn note: whether it was checked against `COLLAB.md` and latest relevant turn
+notes, whether it was refreshed before use, and whether it was refreshed at
+handoff or left stale because dashboard edits were out of scope.
+
+If a Human Decision Packet is needed, use the protocol's field list and the
+term `Exact approval text`. Include `Technical packet`; when no separate packet
+exists, set it to the proposal path itself. Use only the protocol's Technical
+Review Packet status values.
+
+When local-only artifacts or duplicate/noise files are relevant, record their
+status in the turn note and keep known Finder duplicates such as `* 2.md`
+unstaged unless Sami explicitly authorizes the exact path.
+
+For reflection/self-improvement work, reference the protocol's Reflection
+Safety And Approval rule: proposals are not approval, and mixed proposals must
+be split before implementation.
+
 # {{TURN_ID}} - {{AGENT}} {{PHASE}}
 
 ## Agent

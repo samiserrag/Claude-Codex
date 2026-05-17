@@ -17,11 +17,30 @@
 - Turn cap: {{CURRENT_EXPERIMENT_TURN_CAP}}
 - Browser runner: {{BROWSER_RUNNER_CHOICE_OR_NA_WITH_REASON}}
 - Automation budget: {{AUTOMATION_BUDGET_OR_NA}}
+- Dashboard status: {{DASHBOARD_STATUS_OR_NA_WITH_REASON}}
+- Artifact visibility: {{ARTIFACT_VISIBILITY_STATE_AND_ACTION}}
+- Human attention state: {{HUMAN_ATTENTION_STATE}}
+- Technical packet: {{TECHNICAL_PACKET_OR_NA}}
 - Latest Claude response: {{LATEST_CLAUDE_RESPONSE}}
 - Latest Codex response: {{LATEST_CODEX_RESPONSE}}
 - Summary only — the durable record lives in append-only turn notes per the
   Response History Policy in PROTOCOL.md.
 - No-touch files: {{NO_TOUCH_FILES}}
+
+## Human Decision Packet
+
+- State: {{HUMAN_DECISION_STATE_OR_NA}}
+- Decision needed from Sami: {{DECISION_NEEDED_OR_NA}}
+- Why Sami is needed: {{WHY_SAMI_IS_NEEDED_OR_NA}}
+- Consensus recommendation: {{CONSENSUS_RECOMMENDATION_OR_NA}}
+- Divergent opinions: {{DIVERGENT_OPINIONS_OR_NA}}
+- Options: {{OPTIONS_OR_NA}}
+- Risk / tradeoff: {{RISK_OR_TRADEOFF_OR_NA}}
+- Exact approval text, if approval is required: {{EXACT_APPROVAL_TEXT_OR_NA}}
+- Technical packet: {{TECHNICAL_PACKET_OR_NA}}
+
+When no decision is needed, set fields to `N/A` with a brief reason. Do not
+treat this packet, model consensus, or lack of objection as approval.
 
 ## Questions Requiring Sami Approval
 

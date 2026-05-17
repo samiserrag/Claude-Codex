@@ -57,6 +57,91 @@ experiments, not the first run and not enabled by default.
 6. Add a new turn note named with the next sequence number, for example
    `001-claude-architecture.md` or `002-codex-review.md`.
 
+## Dashboard Freshness Timing
+
+If `.agent-handoff/DASHBOARD.md` exists, start there for orientation, then
+confirm dashboard state against `.agent-handoff/COLLAB.md` and the latest
+relevant turn notes. `COLLAB.md` is authoritative on conflict.
+
+Refresh `DASHBOARD.md` before relying on it when it is stale and dashboard
+edits are in scope. Refresh it again at handoff when any freshness trigger
+changed: next actor, active role, human-attention state, artifact visibility,
+latest artifact, next safe action, or dashboard-vs-COLLAB conflict status.
+
+If `DASHBOARD.md` is stale but dashboard edits are out of scope, do not rely on
+it silently. Record the mismatch in the current turn note and in any Human
+Decision Packet or artifact-visibility fields.
+
+## Packet Field Vocabulary
+
+When a Human Decision Packet is used, use these fields:
+
+- State
+- Decision needed from Sami
+- Why Sami is needed
+- Consensus recommendation
+- Divergent opinions
+- Options
+- Risk / tradeoff
+- Exact approval text, if approval is required
+- Technical packet
+
+When no separate technical packet exists, a proposal file may set
+`Technical packet` to the proposal path itself.
+
+Technical Review Packet statuses are: `not prepared`, `prepared local-only`,
+`sent`, `responded`, `incorporated`, and `summarized`.
+
+## Manual Visibility And Duplicate-Noise Gate
+
+Before staging, committing, or pushing, list local-only artifacts and untracked
+noise. Classify each as approved work, pre-existing duplicate/noise, unrelated
+local artifact, or unknown.
+
+Finder duplicate files such as `* 2.md` must not be staged unless Sami
+explicitly authorizes that exact path. If a non-local reviewer needs local-only
+artifacts, the next safe action is sharing, pushing, or exporting, not further
+implementation.
+
+If duplicate/noise files recur, propose cleanup separately. Do not silently
+delete them, ignore them, or fold cleanup into unrelated work.
+
+## Artifact Visibility
+
+Use these artifact visibility states when visibility affects the next action:
+`local-only`, `pushed`, `visible to web-GPT`, and `action needed`.
+
+When visibility is `action needed`, the next safe action is the visibility
+action itself, such as sharing, pushing, or exporting. It is not further
+implementation.
+
+## Reflection Safety And Approval
+
+Reflection may generate proposals. Reflection may not apply proposals, and
+agents must not autonomously self-modify the harness, project, runtime, or
+backport targets.
+
+Classify reflection proposals as:
+
+- `harness`: changes collaboration scaffolding or agent workflow.
+- `project`: changes the product, runtime, docs, or repo under collaboration.
+- `mixed`: contains both and must be split before any builder turn.
+
+Proposal-only reflection artifacts should include classification, observed
+friction, evidence, proposed change, risk, files that would change, reviewer,
+Human Decision Packet, Technical Review Packet if needed, and exact approval
+text.
+
+No proposal becomes approved without Sami's explicit approval of exact files
+and scope. Prior acceptance, silence, model consensus, or "good idea" language
+is not approval. Unclear proposals must be classified before action.
+
+## Review Routing
+
+Sami reviews vision, priority, risk tolerance, and approval. Claude and Codex
+critique or build only within explicit scope. GPT-5.5 Pro or other third-model
+review may provide useful technical cross-checks, but it is not approval.
+
 ## Turn Note Schema
 
 Every Experiment 1 turn note must use this schema:
@@ -207,6 +292,10 @@ Stop and ask Sami before:
 - using dangerous sandbox or approval-bypass modes,
 - changing global Claude/Codex config,
 - running network-dependent setup,
+- registering MCP, setting up plugins, enabling bridges, adding timers, cron,
+  webhooks, automation, or editing `.mcp.json`,
+- enabling Hermes, Claude Dreams, or other autonomous self-modification paths,
+- editing signed trust/event/private-key files,
 - continuing past the current experiment's authorized turn cap.
 
 ## Stopgate Rule
