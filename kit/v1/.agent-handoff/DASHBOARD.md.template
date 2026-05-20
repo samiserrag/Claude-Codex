@@ -1,0 +1,113 @@
+# {{REPO_NAME}} Agent Dashboard
+
+This optional dashboard is a human-readable operational view for the current
+collaboration state. It is not the durable source of truth and does not grant
+approval.
+
+## Authority / COLLAB.md Wins
+
+- `DASHBOARD.md` summarizes current state for fast human and agent orientation.
+- `.agent-handoff/COLLAB.md` remains authoritative.
+- On conflict, `COLLAB.md` wins.
+- The detecting agent must reconcile this dashboard to `COLLAB.md` before using
+  it for handoff when dashboard edits are in scope.
+- If dashboard edits are out of scope, record the mismatch in the current turn
+  note and in the Human Decision Packet / artifact visibility fields.
+
+## Dashboard Freshness Timing
+
+Start from this dashboard when it exists, then confirm against `COLLAB.md` and
+the latest relevant turn notes before relying on it.
+
+Refresh the dashboard before reliance if it is stale and dashboard edits are in
+scope. Refresh again at handoff when any of these fields changed:
+
+- next actor
+- active role
+- human-attention state
+- artifact visibility
+- latest artifact
+- next safe action
+- dashboard-vs-COLLAB conflict status
+
+## Current Coordination State
+
+| Field | Current value |
+| --- | --- |
+| Current coordinator | `{{CURRENT_COORDINATOR}}` |
+| Current builder | `{{CURRENT_BUILDER}}` |
+| Current advisor | `{{CURRENT_ADVISOR_OR_NONE}}` |
+| Current auditor | `{{CURRENT_AUDITOR_OR_NONE}}` |
+| Current next actor | `{{CURRENT_NEXT_ACTOR}}` |
+| Active role per agent | `{{ACTIVE_ROLE_PER_AGENT}}` |
+| Secondary role / lens | `{{SECONDARY_ROLE_OR_NONE}}` |
+| Subagents active | `{{SUBAGENTS_ACTIVE_OR_NONE}}` |
+
+## Human Attention State
+
+Current state: `{{NONE_FYI_DECISION_NEEDED_APPROVAL_REQUIRED_BLOCKER}}`
+
+Allowed states:
+- `none`: no Sami action needed.
+- `FYI`: human awareness only.
+- `decision needed`: Sami must choose a direction, priority, or tradeoff.
+- `approval required`: exact approval is needed before the next action.
+- `blocker`: work cannot proceed until a missing artifact, decision, or access
+  issue is resolved.
+
+## Human Decision Packet
+
+| Field | Current value |
+| --- | --- |
+| State | `{{HDP_STATE}}` |
+| Decision needed from Sami | `{{DECISION_NEEDED_OR_NONE}}` |
+| Why Sami is needed | `{{WHY_SAMI_IS_NEEDED_OR_NA}}` |
+| Consensus recommendation | `{{CONSENSUS_RECOMMENDATION_OR_NONE}}` |
+| Divergent opinions | `{{DIVERGENT_OPINIONS_OR_NONE}}` |
+| Options | `{{OPTIONS_OR_NA}}` |
+| Risk / tradeoff | `{{RISK_TRADEOFF_OR_NA}}` |
+| Exact approval text, if approval is required | `{{EXACT_APPROVAL_TEXT_OR_NA}}` |
+| Technical packet | `{{TECHNICAL_PACKET_PATH_OR_NA}}` |
+
+## Technical Review Packet
+
+Allowed statuses: `not prepared`, `prepared local-only`, `sent`, `responded`,
+`incorporated`, `summarized`.
+
+| Field | Current value |
+| --- | --- |
+| Needed | `{{TECH_REVIEW_NEEDED_YES_NO}}` |
+| Intended reviewer | `{{INTENDED_REVIEWER_OR_NA}}` |
+| Question | `{{TECH_REVIEW_QUESTION_OR_NA}}` |
+| Evidence paths | `{{EVIDENCE_PATHS_OR_NA}}` |
+| Constraints | `{{CONSTRAINTS_OR_NA}}` |
+| Output requested | `{{OUTPUT_REQUESTED_OR_NA}}` |
+| Status | `{{TECH_REVIEW_STATUS}}` |
+
+## Artifact Visibility
+
+Current visibility: `{{LOCAL_ONLY_PUSHED_VISIBLE_TO_WEB_GPT_ACTION_NEEDED}}`
+
+Allowed states:
+- `local-only`: artifact exists only in this working tree.
+- `pushed`: artifact is committed and pushed to the remote branch.
+- `visible to web-GPT`: non-local reviewers can access it.
+- `action needed`: visibility is insufficient for the next reviewer or actor.
+
+When visibility is `action needed`, the next safe action is the sharing,
+pushing, or exporting action, not implementation.
+
+## Local-Only / Duplicate-Noise Status
+
+- Approved local-only artifacts: `{{APPROVED_LOCAL_ONLY_ARTIFACTS_OR_NONE}}`
+- Pre-existing duplicate/noise files: `{{DUPLICATE_NOISE_FILES_OR_NONE}}`
+- Unrelated local artifacts: `{{UNRELATED_LOCAL_ARTIFACTS_OR_NONE}}`
+- Unknown local artifacts: `{{UNKNOWN_LOCAL_ARTIFACTS_OR_NONE}}`
+
+Duplicate or noise files must not be staged unless explicitly authorized by
+exact path. If recurring duplicate/noise files need cleanup, propose that
+cleanup separately.
+
+## Next Safe Action
+
+`{{ONE_CONCRETE_NEXT_SAFE_ACTION_OR_HARD_STOP_WITH_NEEDED_APPROVAL}}`

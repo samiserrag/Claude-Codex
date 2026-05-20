@@ -21,6 +21,8 @@ plain repository files that humans and agents can review before use.
    - `CLAUDE.md.template` -> `CLAUDE.md`
    - `.agent-handoff/PROTOCOL.md.template` -> `.agent-handoff/PROTOCOL.md`
    - `.agent-handoff/COLLAB.md.template` -> `.agent-handoff/COLLAB.md`
+   - `.agent-handoff/DASHBOARD.md.template` -> `.agent-handoff/DASHBOARD.md`
+     (optional current-state view)
 4. Fill every `{{PLACEHOLDER}}` before the first collaboration turn, or leave
    an explicit `N/A` with a reason where the template allows it.
 5. Write the first turn note under `.agent-handoff/turns/` using
@@ -74,11 +76,20 @@ plain repository files that humans and agents can review before use.
 - `CLAUDE.md.template`: Claude-facing mirror instructions.
 - `.agent-handoff/PROTOCOL.md.template`: shared collaboration protocol.
 - `.agent-handoff/COLLAB.md.template`: current-state handoff template.
+- `.agent-handoff/DASHBOARD.md.template`: optional current-state dashboard.
 - `.agent-handoff/turns/.gitkeep`: tracks the turn-log directory.
 - `.agent-handoff/digests/.gitkeep`: tracks optional digest storage.
 - `.agent-handoff/consultants/.gitkeep`: tracks optional consultant responses.
 - `.agent-handoff/prompts/starter-turn-note.md`: first-turn note skeleton.
 - `.gitignore.snippet`: ignore rules to append to the adopter repo.
+
+## Optional Dashboard
+
+Adopters may copy/render `.agent-handoff/DASHBOARD.md.template` to
+`.agent-handoff/DASHBOARD.md` when they want a human-readable current-state
+surface. `COLLAB.md` remains authoritative; the dashboard is operational only,
+does not grant approval, and should be refreshed when freshness-trigger fields
+change.
 
 ## Prior-Art Citation Convention
 
