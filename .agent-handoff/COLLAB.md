@@ -7,17 +7,20 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude next, for E5-J critique after the E5-J artifacts are visible. Codex
-completed E5-J locally and is hard-stopped. Sami does not need to answer
-anything until critique or a push/follow-up is requested.
+Sami next, for decision on next step from the six-option Human Decision Packet
+below. Codex completed E5-J design and pushed at `6783ba5`. Claude completed
+E5-J critique with zero blockers (the critique turn note and this COLLAB.md
+handoff update are local-only pending Sami's separate per-push authorization).
+Both agents are hard-stopped.
 
 ## Current Phase
 
-Experiment 5 E5-J dashboard template/location design filed by Codex. Sami
-accepted E5-I as a successful Phase 1 backport implementation and authorized
-E5-J as design-only.
+Experiment 5 E5-J design-only dashboard template/location: design filed and
+pushed by Codex at `6783ba5`; Claude critique filed locally with zero blockers
+recommending option B (Phase 2 implementation = kit dashboard template + short
+kit README note, using Codex's pre-drafted Exact Approval Text).
 
-E5-J summary: Codex recommends deferring a live
+E5-J design summary: Codex recommends deferring a live
 `.agent-handoff/DASHBOARD.md` in Claude-Codex and introducing a kit dashboard
 template first. The recommended future Phase 2 implementation shape is:
 - create `kit/v1/.agent-handoff/DASHBOARD.md.template`;
@@ -30,28 +33,70 @@ template first. The recommended future Phase 2 implementation shape is:
   Packet, Technical Review Packet, artifact visibility, local-only /
   duplicate-noise status, and next safe action.
 
-E5-J outputs:
+E5-J design outputs (pushed at `6783ba5`):
 - `.agent-handoff/turns/E5-J-codex-dashboard-template-design.md`
-- this `.agent-handoff/COLLAB.md` handoff update
+- `.agent-handoff/COLLAB.md` (Codex's handoff update)
 
-E5-J did not create `.agent-handoff/DASHBOARD.md`, did not create
+E5-J design did not create `.agent-handoff/DASHBOARD.md`, did not create
 `.agent-handoff/reflections/`, did not edit kit templates, did not edit
 `.agent-handoff/PROTOCOL.md`, did not edit starter-turn-note, did not touch
 root docs, did not touch pilot repo, did not touch live Open Mic Colorado, did
 not touch product/runtime files, and did not enable installs, automation,
 bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron, webhooks, or global
-config. E5-J did not stage, commit, push, branch, or PR.
+config. E5-J design did not branch or PR.
 
-Preflight evidence:
-- Pre-work `git status --short --untracked-files=all` was clean.
-- Required Phase 1 protocol, COLLAB, turn notes, and kit files were read.
-- `.agent-handoff/DASHBOARD.md` does not exist.
-- `.agent-handoff/reflections/` does not exist.
+E5-J critique summary (Claude, local-only at this turn): all 11 focus areas
+PASS. The 2-file commit shape (COLLAB.md + new turn note) matches the proven
+design-only pattern (E3-I, E3-J, E5-H). Independent verification confirmed:
+no DASHBOARD.md anywhere; no kit-template/README/PROTOCOL.md/starter-turn-note
+edits (all at `2ee7879` or older); no prior turn notes / consultants / digests
+touched; pilot clean and HEAD unchanged at `655e75bc`; no live OMC touch.
 
-Current hard stop: Claude critique of E5-J is next after the E5-J artifacts are
-visible. No Phase 2 implementation, dashboard creation, kit-template edit,
-reflection path creation, automation, pilot repo edit, live Open Mic Colorado
-touch, or product/runtime work is approved by E5-J.
+The 4 sub-recommendations are sound: defer live dashboard, template-first kit
+shape, conditional README note, per-action approval for live creation. Anti-
+stale-state guardrails appear 3 times (sections 1, 5, 6). Authority/COLLAB-wins
+is section #1 of the proposed minimal template (stronger than the pilot E4-B
+first-dashboard design). Path proposals match existing kit layout. Codex's 3
+open questions answered YES (template path correct; same-turn README note
+preferred for adopter discoverability; deferring live dashboard remains
+safest).
+
+E5-J critique outputs (local-only):
+- `.agent-handoff/turns/E5-J-claude-critique-dashboard-template-design.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+E5-J critique did not edit PROTOCOL.md, kit templates, kit README, starter-
+turn-note, `.gitignore`, root docs, product/runtime files; did not create
+`.agent-handoff/DASHBOARD.md`, `kit/v1/.agent-handoff/DASHBOARD.md.template`,
+or `.agent-handoff/reflections/`; did not approve any further codification,
+implementation, cleanup, or automation; did not stage, commit, push, branch,
+or PR; did not touch live Open Mic Colorado; did not touch pilot repo.
+
+Pattern: this is the third clean design-only turn in the E5-H → E5-J backport
+arc (E5-H planning, E5-I implementation, E5-J dashboard design). Single-purpose
+commit shape preserved for the 11th time across the E5 arc.
+
+Carried-forward nits (out of E5-J critique scope):
+- E5-J HDP minor vocabulary drift from E5-D: uses "What is being proposed"
+  instead of "Decision needed from Sami"; omits Options as a separate field;
+  omits Technical packet as an HDP field. Same nit as E5-H. Substantive
+  content present; only field names + enumeration differ.
+- Section 4 minimal-section list omits a few sections the pilot dashboard
+  found useful (Reflection safety note, Agent Check-In Rule, Current Blockers,
+  Current Nits). Reasonable v1 minimum; Sami may want one or two added back
+  when authorizing Phase 2.
+- Open question 2 ("README note in same turn or separate?") could have stated
+  Codex's preference more explicitly. Substance is fine.
+
+Current hard stop: Sami decides on next step. No Phase 2 implementation,
+no DASHBOARD.md creation (live or template), no `.agent-handoff/reflections/`
+creation, no kit-template edit (beyond Phase 2's conditional README option),
+no root-doc edit, no live Open Mic Colorado touch, no pilot touch, no install,
+no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/automation/global
+config change, no commit or push (beyond Sami's separate per-push
+authorization), no branch creation, no PR, no staging, no signed
+trust/event/private-key edit, and no proposed-to-approved transition occurs
+without Sami's explicit per-action approval.
 
 — Historical phase content below is preserved per
 the Response History Policy (durable detail lives in
@@ -1730,37 +1775,62 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None while Claude critiques E5-J.
-- After E5-J critique, Sami can decide whether to accept E5-J and authorize a
-  Phase 2 dashboard-template implementation turn.
-- Dashboard implementation, live `.agent-handoff/DASHBOARD.md` creation,
-  reflection paths, automation, notification/wake design, pilot repo edits,
-  live Open Mic Colorado work, product/runtime work, and global config changes
-  remain blocked until Sami approves exact files and scope.
+- Accept E5-J as filed (Phase 2 dashboard template/location design)?
+- Decide next step from the six-option Human Decision Packet in the E5-J
+  critique turn note: (A) Phase 2 implementation = kit dashboard template
+  only; (B) Phase 2 implementation = kit dashboard template + short kit
+  README note — consultant recommendation; (C) live Claude-Codex dashboard
+  now — premature per E5-J §1 unless a concrete operational need exists;
+  (D) Claude-Codex manual harness reflection pilot; (E) notification/wake
+  design — Phase 4, premature; (F) defer/pivot.
+- Authorize Claude's E5-J critique push if accepting (two files: critique
+  turn note + this COLLAB.md handoff update).
+- Optional later: small COLLAB.md polish to update HDP field names to match
+  the E5-D vocabulary codified in PROTOCOL.md ("Decision needed from Sami"
+  instead of "What is being proposed"; add Options + Technical packet as
+  separate fields). Not required since substantive content is present.
+- Optional later: align live `.agent-handoff/COLLAB.md` to adopt the
+  `kit/v1/.agent-handoff/COLLAB.md.template` structured field shape
+  (carried forward from E5-I critique Nit #2).
+- Optional later: small root-doc alignment turn for `AGENTS.md` and
+  `CLAUDE.md` (still say "Accepted E3 Operating Defaults") to reference
+  newly backported rule names (carried forward from E5-I critique).
 
 ## Next Request To Claude
 
-Critique E5-J after the E5-J artifacts are visible. Verify the dashboard
-location/template decision, minimal section list, stale-source prevention,
-implementation-shape recommendation, no-touch compliance, and Phase 2 approval
-text.
+None active. E5-J critique complete and hard-stopped. Wait for Sami's
+per-push authorization for the E5-J critique files (critique turn note +
+this COLLAB.md handoff update) and/or Sami's authorization of the next
+experiment turn (consultant recommendation: option B Phase 2 implementation
+= kit dashboard template + short kit README note, using Codex's pre-drafted
+Exact Approval Text from `.agent-handoff/turns/E5-J-codex-dashboard-template-
+design.md` lines 150-161).
 
 ## Next Request To Codex
 
-None active. Hard stop continues until Sami explicitly authorizes the next
-Codex turn. E5-J does not authorize Phase 2 implementation, live
-`.agent-handoff/DASHBOARD.md` creation, kit-template edits,
-`.agent-handoff/reflections/` creation, automation, project/product
+None active. Hard stop continues until Sami accepts E5-J and explicitly
+authorizes the next Codex turn. E5-J does not authorize Phase 2
+implementation, live `.agent-handoff/DASHBOARD.md` creation, kit-template
+edits, `.agent-handoff/reflections/` creation, automation, project/product
 reflection, root-doc edits, pilot repo edits, live Open Mic Colorado work,
 further codification/polish, or any publish action.
 
 ## Next Request To Sami
 
-None until E5-J critique or a push/follow-up is requested. Per the active
-Stopgate Rule, no Phase 2 implementation, no live DASHBOARD.md creation, no
-`.agent-handoff/reflections/` creation, no kit-template edit, no root-doc edit,
-no pilot touch, no live Open Mic Colorado touch, no install, no Hermes/Claude
-Dreams enablement, no MCP/plugin/bridge/automation/global config change, no
-commit or push, no branch creation, no PR, no staging, no signed
-trust/event/private-key edit, and no proposed-to-approved transition occurs
-without your explicit per-action approval.
+Decide on next step from the six-option Human Decision Packet above.
+Consultant recommendation: option (B) Phase 2 implementation = kit dashboard
+template + short kit README note, using Codex's pre-drafted Exact Approval
+Text verbatim. The conditional README clause in Codex's text ("kit/v1/
+README.md only if needed for a short optional-dashboard note") lets Sami
+choose A or B without re-authorization. B preferred for adopter
+discoverability — kit README's "Included Files" section already enumerates
+every other kit file, so adding one line for `DASHBOARD.md.template` keeps
+parity. Per the active Stopgate Rule, no Phase 2 implementation, no
+DASHBOARD.md creation (live or template), no `.agent-handoff/reflections/`
+creation, no kit-template edit (beyond Phase 2's conditional README option),
+no root-doc edit, no pilot touch, no live Open Mic Colorado touch, no
+install, no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/automation/
+global config change, no commit or push (beyond your separate per-push
+authorization for the E5-J critique files), no branch creation, no PR, no
+staging, no signed trust/event/private-key edit, and no proposed-to-approved
+transition occurs without your explicit per-action approval.
