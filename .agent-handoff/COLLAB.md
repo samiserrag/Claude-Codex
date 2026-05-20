@@ -7,50 +7,120 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude next, for E5-L critique. Sami accepted E5-K as successful and
-authorized E5-L as a design-only reflection proposal paths/template turn.
-Codex completed the E5-L design locally and hard-stopped. No staging, commit,
-push, branch, or PR action occurred in E5-L.
+Sami next, for decision on next step from the six-option Human Decision Packet
+below. Codex completed E5-L Phase 3 reflection paths/template design and
+pushed at `5d60f70`. Claude completed E5-L critique with zero blockers (the
+critique turn note and this COLLAB.md handoff update are local-only pending
+Sami's separate per-push authorization). Both agents are hard-stopped.
 
 ## Current Phase
 
-Experiment 5 E5-L Phase 3 reflection proposal paths/template design:
-design-only artifact filed locally by Codex. E5-L recommends a conservative
-kit-only first implementation after critique: add a reusable reflection
-proposal template under `kit/v1/.agent-handoff/prompts/`, add kit-only
-reflection directory placeholders for `harness/`, `project/`, and
-`mixed-needs-classification/`, and add a short kit README note.
+Experiment 5 E5-L Phase 3 reflection proposal paths/template design: design
+filed and pushed by Codex at `5d60f70`; Claude critique filed locally with
+zero blockers recommending option A (E5-M kit-only reflection proposal
+template + paths + short README note implementation, using Codex's
+pre-drafted Exact Approval Text).
 
-E5-L design outputs (local-only until separately approved for commit/push):
+E5-L design summary: Codex recommends a conservative kit-only first
+implementation after critique. Path model:
+- Live (future, only when first real proposal exists):
+  - `.agent-handoff/reflections/harness/` — collaboration scaffold proposals
+  - `.agent-handoff/reflections/project/` — product/repo proposals
+  - `.agent-handoff/reflections/mixed-needs-classification/` — holding area
+    (directory name encodes the stopgate)
+- E5-M kit-only (next implementation):
+  - `kit/v1/.agent-handoff/prompts/reflection-proposal-template.md`
+  - Three kit `.gitkeep` directories matching the live path model
+  - Short `kit/v1/README.md` note
+- Deferred indefinitely:
+  - `.agent-handoff/improvements/backlog.md` — premature; would create a
+    second planning surface that drifts from COLLAB.md
+  - `.agent-handoff/improvements/proposals/` — too generic; would hide the
+    harness/project boundary the protocol intentionally makes explicit
+
+Template fields (Design Question 4): all 10 required (Improvement
+Classification with 4 values, Observed friction, Evidence, Proposed change,
+Risk, Files that would change, Reviewer, HDP with all 9 E5-D vocabulary
+fields, TRP with all 6 statuses, Exact approval text) + 4 useful extras
+(Title, Out-of-scope/no-touch list, Artifact visibility, Next safe action).
+
+Dashboard integration (Design Question 6): minimal single compact field
+(`Reflection proposals: {{NONE_OR_PENDING_COUNT_AND_LATEST_PATH}}`); routes
+Sami-attention through existing Human attention state; preserves COLLAB.md
+authority with explicit "do not copy proposal details into the dashboard."
+No dashboard change recommended until reflection template/path
+implementation is authorized.
+
+E5-L design outputs (pushed at `5d60f70`):
 - `.agent-handoff/turns/E5-L-codex-reflection-paths-template-design.md`
+- `.agent-handoff/COLLAB.md` (Codex's handoff update)
+
+E5-L design did not create `.agent-handoff/reflections/`, did not create
+`.agent-handoff/improvements/`, did not modify kit templates, did not edit
+`.agent-handoff/PROTOCOL.md`, did not edit starter-turn-note, did not edit
+live `.agent-handoff/DASHBOARD.md`, did not edit root README/AGENTS/CLAUDE,
+did not touch product/runtime files, did not touch live Open Mic Colorado,
+did not touch the pilot repo, and did not enable installs, automation,
+notification/wake, bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron,
+webhooks, or global config. E5-L design did not branch or PR.
+
+E5-L critique summary (Claude, local-only at this turn): all 13 focus areas
+PASS. Independent verification confirmed 2-file commit matches approved set
+exactly; all paths absent (reflections/, improvements/, kit reflections/, kit
+proposal template, live DASHBOARD.md); all no-touch surfaces unchanged
+(PROTOCOL.md + kit templates at `2ee7879` or `6c6db2d`; root docs at
+`fbe8bf5`); pilot clean and HEAD unchanged at `655e75bc`.
+
+**Notable design strength**: `mixed-needs-classification/` directory name
+encodes the stopgate in the file system itself (Codex flagged as self-nit
+L330-331 but it's a structural strength — discipline-by-construction). All
+10 required template fields present + 4 useful extras (Title, Out-of-scope
+list, Artifact visibility, Next safe action). HDP field block continues
+using canonical E5-D vocabulary established in E5-K. Sound reasoning for
+deferring improvements/ (second-planning-surface drift risk + dual-level
+boundary hiding risk).
+
+E5-L critique outputs (local-only):
+- `.agent-handoff/turns/E5-L-claude-critique-reflection-paths-template-design.md`
 - `.agent-handoff/COLLAB.md` (this handoff update)
 
-E5-L recommendation for later implementation:
-- Create `kit/v1/.agent-handoff/prompts/reflection-proposal-template.md`.
-- Create kit-only placeholders:
-  - `kit/v1/.agent-handoff/reflections/harness/.gitkeep`
-  - `kit/v1/.agent-handoff/reflections/project/.gitkeep`
-  - `kit/v1/.agent-handoff/reflections/mixed-needs-classification/.gitkeep`
-- Update `kit/v1/README.md` with a short optional reflection proposal note.
-- Do not create live Claude-Codex `.agent-handoff/reflections/` directories
-  until a specific live reflection proposal is authorized or filed.
-- Defer `.agent-handoff/improvements/backlog.md` and
-  `.agent-handoff/improvements/proposals/` until proposal volume proves a
-  backlog/index is needed.
+E5-L critique did not edit PROTOCOL.md, kit templates, kit README, starter-
+turn-note, `.gitignore`, root docs, product/runtime files; did not create
+`.agent-handoff/DASHBOARD.md`, `.agent-handoff/reflections/`,
+`.agent-handoff/improvements/`, or any kit reflection surfaces; did not
+approve any further codification, implementation, cleanup, or automation;
+did not stage, commit, push, branch, or PR; did not touch live Open Mic
+Colorado; did not touch pilot repo.
 
-E5-L did not create `.agent-handoff/reflections/`, did not create
-`.agent-handoff/improvements/`, did not modify kit templates, did not edit
-`.agent-handoff/PROTOCOL.md`, did not edit starter-turn-note, did not edit live
-`.agent-handoff/DASHBOARD.md`, did not edit root README/AGENTS/CLAUDE, did not
-touch product/runtime files, did not touch live Open Mic Colorado, did not touch
-the pilot repo, and did not enable installs, automation, notification/wake,
-bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron, webhooks, or global
-config. E5-L did not stage, commit, push, branch, or PR.
+Pattern: this is the fifth clean turn-pair in the E5-H → E5-L backport arc
+(E5-H planning + critique, E5-I implementation + critique, E5-J dashboard
+design + critique, E5-K dashboard implementation + critique, E5-L reflection
+design + critique). Single-purpose commit shape stable for the 13th time
+across the E5 arc.
 
-Current hard stop: Claude should critique E5-L before any reflection path,
-reflection template, dashboard pointer, improvement backlog, protocol,
-starter-turn-note, root-doc, pilot repo, live Open Mic Colorado, automation,
-install, or publish action.
+Carried-forward nits (out of E5-L critique scope; folded into E5-M
+implementation guidance):
+- Template field "Improvement Classification" lists 4 values but Design
+  Question 5 only spells out routing for `mixed` and `unclear`. E5-M could
+  add an explicit routing rule (classification value → directory placement).
+- No restated anti-drift wording in the proposal template's exact-approval-
+  text guidance. Inherited authoritatively from PROTOCOL.md §"Reflection
+  Safety And Approval" but a one-line reference in the E5-M template would
+  help proposal authors who skim only the template.
+- HDP `State` field allowed values not enumerated in the template field
+  list. Kit DASHBOARD.md.template lists 5; E5-M template could surface them
+  for proposal-author convenience.
+
+Current hard stop: Sami decides on next step. No E5-M implementation, no
+live `.agent-handoff/DASHBOARD.md` creation, no live `.agent-handoff/
+reflections/` creation, no `.agent-handoff/improvements/` creation, no kit
+reflection surface creation, no protocol/template edit, no root-doc edit,
+no live Open Mic Colorado touch, no pilot touch, no install, no
+Hermes/Claude Dreams enablement, no MCP/plugin/bridge/automation/global
+config change, no commit or push (beyond Sami's separate per-push
+authorization), no branch creation, no PR, no staging, no signed
+trust/event/private-key edit, and no proposed-to-approved transition occurs
+without Sami's explicit per-action approval.
 
 — Historical phase content below is preserved per
 the Response History Policy (durable detail lives in
@@ -1729,37 +1799,69 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None for Codex in E5-L. Codex is hard-stopped after local design.
-- After Claude critique, Sami can decide whether to accept E5-L and authorize
-  E5-M as the recommended kit-only reflection proposal template/path
-  implementation.
-- Optional later: decide whether live Claude-Codex should create
-  `.agent-handoff/reflections/` only when a specific reflection proposal is
-  authorized or filed.
-- Optional later: decide whether `.agent-handoff/improvements/` backlog/index
-  paths are needed after proposal volume exists. E5-L recommends deferring them.
+- Accept E5-L as filed (Phase 3 reflection paths/template design)?
+- Decide next step from the six-option Human Decision Packet in the E5-L
+  critique turn note: (A) E5-M kit-only reflection proposal template + paths
+  + short README note implementation using Codex's pre-drafted Exact
+  Approval Text — consultant recommendation; (B) create live Claude-Codex
+  `.agent-handoff/reflections/` directories now — premature per E5-L Design
+  Question 2 unless a specific reflection proposal exists; (C) first run a
+  Claude-Codex manual harness reflection pilot — valid but informal until
+  E5-M lands the proposal template; (D) notification/wake design — Phase 4,
+  premature; (E) project/product reflection pilot — Phase 5, valid
+  divergent; (F) defer/pivot.
+- Authorize Claude's E5-L critique push if accepting (two files: critique
+  turn note + this COLLAB.md handoff update).
+- Optional later: at E5-M implementation, add an explicit classification →
+  directory routing rule, a verbatim PROTOCOL.md anti-drift wording
+  reference, and an enumerated HDP `State` allowed-values list (carried
+  forward from E5-L critique Nits).
+- Optional later: align live `.agent-handoff/COLLAB.md` to adopt the
+  `kit/v1/.agent-handoff/COLLAB.md.template` structured field shape and
+  rename root docs to reference the newly backported rules (carried
+  forward from E5-I/J/K critiques).
 
 ## Next Request To Claude
 
-Critique E5-L. Focus on whether the recommended first implementation boundary
-is correct: kit-only reflection proposal template plus kit reflection directory
-placeholders, while deferring live Claude-Codex reflection directories and
-`.agent-handoff/improvements/` paths.
+None active. E5-L critique complete and hard-stopped. Wait for Sami's
+per-push authorization for the E5-L critique files (critique turn note +
+this COLLAB.md handoff update) and/or Sami's authorization of the next
+experiment turn (consultant recommendation: option A E5-M kit-only
+reflection proposal template + paths + short README note implementation).
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-L. E5-L does not authorize reflection path
-creation, reflection template implementation, live `.agent-handoff/DASHBOARD.md`
-creation or edits, `.agent-handoff/improvements/` creation, protocol edits,
-starter-turn-note edits, root-doc edits, pilot repo edits, live Open Mic
-Colorado work, product/runtime changes, installs, automation, notification/wake,
-bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron, webhooks, global
-config changes, staging, commit, push, branch, PR, or any proposed-to-approved
+None active. Hard stop after E5-L. E5-L does not authorize E5-M
+implementation, reflection path creation (live or kit), reflection template
+implementation, live `.agent-handoff/DASHBOARD.md` creation or edits,
+`.agent-handoff/improvements/` creation, protocol edits, starter-turn-note
+edits, root-doc edits, pilot repo edits, live Open Mic Colorado work,
+product/runtime changes, installs, automation, notification/wake, bridges,
+MCP/plugins, Hermes, Claude Dreams, timers, cron, webhooks, global config
+changes, staging, commit, push, branch, PR, or any proposed-to-approved
 transition.
 
 ## Next Request To Sami
 
-No immediate decision is required from Sami unless Sami wants to authorize
-staging/commit/push of E5-L artifacts or route them to Claude by another
-visibility path. The next safe action is Claude critique after artifact
-visibility is sufficient.
+Decide on next step from the six-option Human Decision Packet above.
+Consultant recommendation: option (A) E5-M kit-only reflection proposal
+template + paths + short README note implementation using Codex's pre-drafted
+Exact Approval Text verbatim (lines 278-282 of
+`.agent-handoff/turns/E5-L-codex-reflection-paths-template-design.md`).
+E5-M shape: add
+`kit/v1/.agent-handoff/prompts/reflection-proposal-template.md` + three kit
+`.gitkeep` directories under `kit/v1/.agent-handoff/reflections/` matching
+the harness/project/mixed-needs-classification model + short
+`kit/v1/README.md` note + `.agent-handoff/COLLAB.md` handoff +
+`.agent-handoff/turns/E5-M-codex-reflection-template-implementation.md`. Per
+the active Stopgate Rule, no E5-M implementation, no live DASHBOARD.md
+creation, no live `.agent-handoff/reflections/` creation, no
+`.agent-handoff/improvements/` creation, no kit-template edit beyond E5-M's
+authorized surfaces, no kit-README edit beyond E5-M's authorized short
+note, no root-doc edit, no pilot touch, no live Open Mic Colorado touch, no
+install, no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/
+automation/global config change, no commit or push (beyond your separate
+per-push authorization for the E5-L critique files), no branch creation, no
+PR, no staging, no signed trust/event/private-key edit, and no
+proposed-to-approved transition occurs without your explicit per-action
+approval.
