@@ -7,78 +7,101 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude, architecture consultant role for E5-I critique.
+Sami, decision owner for E5-I acceptance and next-phase
+authorization after Claude critique.
 
 ## Current Phase
 
-Experiment 5 E5-I Phase 1 backport implementation filed;
-Claude critique pending.
+Experiment 5 E5-I Claude critique filed; Sami decision
+pending.
 
 Sami accepted E5-H as a successful design-only backport
 planning turn and authorized Phase 1 implementation from
-`open-mic-colorado-agent-pilot` into Claude-Codex and kit
-templates on 2026-05-17.
+the pilot repo into Claude-Codex and kit templates on
+2026-05-17. Codex filed E5-I as Phase 1 implementation in
+commit `2ee7879`. Claude filed E5-I critique on
+2026-05-17 with zero blockers.
 
-Latest Codex response:
-- Backported the stable pilot-proven harness rules into
-  Claude-Codex protocol/template surfaces: dashboard
-  freshness timing, packet field vocabulary, manual
-  visibility and duplicate-noise gate, narrow Finder
-  duplicate handling, reflection safety and approval,
-  dual-level reflection classification, COLLAB-over-
-  DASHBOARD authority, artifact visibility/local-only
-  handling, and human-vs-technical review routing.
-- Edited only allowed Claude-Codex/handoff/kit surfaces:
-  `.agent-handoff/PROTOCOL.md`,
-  `kit/v1/.agent-handoff/PROTOCOL.md.template`,
-  `kit/v1/.agent-handoff/COLLAB.md.template`,
-  `kit/v1/.agent-handoff/prompts/starter-turn-note.md`,
-  `kit/v1/.gitignore.snippet`, this `COLLAB.md`, and
-  `.agent-handoff/turns/E5-I-codex-phase-1-backport-implementation.md`.
-- User-listed top-level kit paths
-  `kit/v1/PROTOCOL.md.template`,
-  `kit/v1/COLLAB.md.template`, and
-  `kit/v1/prompts/starter-turn-note.md` do not exist.
-  The actual kit paths under `kit/v1/.agent-handoff/`
-  were discovered from `kit/v1/README.md` and
-  `rg --files --hidden kit/v1`, matching the kit's
-  current structure.
-- Did not edit root README, AGENTS.md, CLAUDE.md, root
-  `.gitignore`, product/runtime files, prior turn notes,
-  consultant files/digests, trust/event/private-key files,
-  or any pilot or live Open Mic Colorado file.
-- Did not create `.agent-handoff/DASHBOARD.md` because
-  Claude-Codex has no current dashboard file and E5-H says
-  to propose a dashboard/template location before creating
-  one when none exists.
-- Did not create `.agent-handoff/reflections/` paths.
-- Did not install Hermes, enable Claude Dreams, enable
-  bridges/MCP/plugins/timers/cron/webhooks/automation, or
-  change global config.
-
-Next Request To Claude:
-- Critique E5-I as the Phase 1 backport implementation.
-  Verify that the nine requested rules landed in the
-  current protocol/template surfaces without pilot identity
-  leakage, that the actual kit template path choice is
-  acceptable given the discovered repository layout, that
-  dashboard creation/reflection paths were correctly
-  deferred, that the narrow Finder duplicate rule was added
-  only to the kit ignore snippet, and that no no-touch
-  surface or external repo was modified.
-
-Next Request To Codex:
-- None active. Hard stop after E5-I until Claude critique
-  and Sami's next explicit authorization.
+Latest Claude response:
+- Verified `git status` clean, `git diff --check` exit 0,
+  HEAD at or after `2ee7879`, and the E5-I commit's seven
+  changed surfaces match the approved Phase 1 file set.
+- Verified all nine focus-list rules landed in BOTH
+  `.agent-handoff/PROTOCOL.md` AND
+  `kit/v1/.agent-handoff/PROTOCOL.md.template`: Dashboard
+  Freshness Timing, Packet Field Vocabulary, Manual
+  Visibility And Duplicate-Noise Gate, scoped Finder
+  duplicate ignore pattern (kit `.gitignore.snippet` only),
+  Reflection Safety And Approval / anti-self-modification
+  rule, dual-level reflection model with harness/project/
+  mixed classification, COLLAB-over-DASHBOARD authority,
+  artifact visibility / local-only handling, and human vs
+  technical review routing.
+- Verified the kit COLLAB.md.template adopts the structured
+  field shape (Dashboard status, Artifact visibility, Human
+  attention state, Technical packet) and a structured Human
+  Decision Packet using the E5-D vocabulary; the kit
+  starter-turn-note adds concise reminders that reference
+  the protocol rather than duplicating it.
+- Verified `.agent-handoff/DASHBOARD.md` was NOT created
+  (Phase 2 work) and `.agent-handoff/reflections/` was NOT
+  created (Phase 3 work). Both deferrals match the E5-H
+  sequencing plan.
+- Verified no root README/AGENTS/CLAUDE edit, no prior turn
+  note edit, no consultant or digest edit, no product/
+  runtime edit, no trust/event/private-key edit, no
+  `.agent-handoff/local/` or `.claude/worktrees/` change.
+- Verified pilot repo `open-mic-colorado-agent-pilot`
+  unchanged (status clean; HEAD `655e75bc`) and live
+  downstream `colorado-songwriters-collective` unchanged
+  (status clean; HEAD `6fda4b14`).
+- Verified pilot-identity scan over the four kit surfaces
+  and `.agent-handoff/PROTOCOL.md` returned zero matches.
+- Verified no installs, no Hermes, no Claude Dreams, no
+  bridges, no MCP, no plugins, no timers/cron/webhooks/
+  automation, no global config change.
+- Verdict: zero blockers; E5-I is safe to accept.
+  Consultant recommendation is option B — Phase 2 dashboard
+  template/design as a design-only Codex turn next, since
+  the Phase 2 prerequisite (Phase 1 rules in PROTOCOL.md
+  and kit template) is now satisfied.
+- Three small Nits surfaced for Sami's discretion, none of
+  which block acceptance: (1) COLLAB.md L19/L49 still cite
+  the pilot repo by name as coordination/no-touch state;
+  (2) the live Claude-Codex COLLAB.md has not adopted the
+  new kit COLLAB.md.template structured fields; (3) the
+  Codex turn note's "No staging, commit, push, branch, or
+  PR" line could be tightened to attribute commit `2ee7879`
+  to Sami's separate per-push authorization.
 
 Next Request To Sami:
-- None immediate until Claude critique lands.
+- Decide whether to (B) accept E5-I and authorize a Phase 2
+  dashboard template/design turn in Claude-Codex as a
+  design-only Codex turn — consultant recommendation,
+  zero blockers; (A) run a small E5-I-FIX-001 — NOT
+  recommended, no structural defects; (C) first run a
+  manual harness reflection pilot in Claude-Codex without
+  Phase 2 — informal until Phase 3 reflection paths exist;
+  (D) notification/wake design — Phase 4, premature; (E)
+  first project/product reflection pilot — Phase 5, valid
+  divergent opinion per Codex's E5-H plan; or (F) defer/
+  pivot.
 
-Hard stop remains active. No commit or push in either repo,
-no staging, no branch, no PR, no pilot write, no live Open
-Mic Colorado touch, no installs, no automation, no MCP/
-plugin/bridge/global config change, and no
-trust/event/private-key edit is active.
+Next Request To Claude:
+- None active until Sami's next authorization.
+
+Next Request To Codex:
+- None active until Sami's next authorization.
+
+Hard stop remains active. No Phase 2 implementation, no
+DASHBOARD.md creation, no `.agent-handoff/reflections/`
+creation, no protocol/template edit beyond the approved
+E5-I commit, no root-doc edit, no pilot write, no live
+Open Mic Colorado touch, no installs, no automation, no
+MCP/plugin/bridge/global config change, no commit/push/
+branch/PR (beyond Sami's separate per-push authorization),
+no signed trust/event/private-key edit, and no
+proposed-to-approved transition is active.
 
 — Historical phase content below is preserved per
 the Response History Policy (durable detail lives in
@@ -1757,67 +1780,62 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E3-K as filed?
-- Choose target-side commit shape: (a) precise-stage
-  `.agent-handoff/` and commit the scaffold in target via
-  separate per-push authorization, (b) resolve the
-  `web/public/images/` drift first then commit, (c) defer
-  target commit indefinitely while keeping scaffold as
-  local proof-of-concept.
-- Authorize a follow-up E3-M turn that adds a target
-  AGENTS.md or CLAUDE.md merge-pointer (small append-only
-  edit pointing existing target docs at
-  `.agent-handoff/PROTOCOL.md`) before any commit?
-- Confirm the `web/public/images/` drift is your own
-  concurrent target work (vs. unexpected actor)?
-- Later only, if separately authorized: which files become the v1
-  minimal kit?
-- Later only, if separately authorized: should the kit include the
-  trust-bootstrap verifier or only the file-based reference protocol?
-- Later only, if separately authorized: should a
-  `colorado-songwriters-collective`-specific bootstrap turn template
-  be drafted?
-- Later only, if separately authorized: what distribution mechanism
-  and open-source license should the kit use?
-- Later only, if separately authorized: should direct
-  `codex mcp-server`, official Codex plugin, council runtime, or any
-  other adapter/council path be scoped separately?
+- Accept E5-I as filed (Phase 1 backport implementation)?
+- Decide next step from the six-option Human Decision Packet in the
+  E5-I critique turn note: (A) small E5-I-FIX-001 — NOT recommended,
+  no structural defects; (B) Phase 2 dashboard template/design as a
+  design-only Codex turn — consultant recommendation; (C) first
+  Claude-Codex manual harness reflection pilot; (D) notification/wake
+  design — Phase 4, premature; (E) first project/product reflection
+  pilot — Phase 5, valid divergent opinion; (F) defer/pivot.
+- Authorize Claude's E5-I critique push if accepting (two files:
+  critique turn note + COLLAB.md handoff update).
+- Optional later: small COLLAB.md polish to rephrase the two pilot-
+  identity citations (now at L54 and L100) as path-only references —
+  not required since protocol/template surfaces are pilot-identity-
+  clean.
+- Optional later: small root-doc alignment turn for `AGENTS.md` and
+  `CLAUDE.md` (still say "Accepted E3 Operating Defaults") to
+  reference the newly backported rule names.
+- Optional later: align live `.agent-handoff/COLLAB.md` to adopt the
+  new `kit/v1/.agent-handoff/COLLAB.md.template` structured field
+  shape (Dashboard status, Artifact visibility, Human attention
+  state, Technical packet, structured Human Decision Packet).
 
 ## Next Request To Claude
 
-None active. E3-L critique filed; hard stop after critique per Sami's
-instruction. Standing by for Sami's per-push authorization (the two
-uncommitted files are
-`.agent-handoff/turns/E3-L-claude-colorado-scaffold-extraction-critique.md`
-and this COLLAB.md edit) or any redirect. Claude's next consultant role
-depends on Sami's chosen direction (target-side commit critique,
-follow-up E3-M merge-pointer turn, kit-polish turn, or pivot).
+None active. E5-I critique complete and hard-stopped. Wait for Sami's
+per-push authorization for the E5-I critique files (critique turn note
++ COLLAB.md handoff update) and/or Sami's authorization of the next
+experiment turn (consultant recommendation: option B Phase 2 dashboard
+template/design as a design-only Codex turn).
 
 ## Next Request To Codex
 
-None active. Hard stop continues until Sami accepts E3-K and explicitly
-authorizes a next scope (target-side commit, follow-up E3-M, kit polish,
-or pivot).
+None active. Hard stop continues until Sami accepts E5-I and explicitly
+authorizes the next Codex turn. E5-I does not authorize Phase 2/3/4/5
+implementation, DASHBOARD.md creation, `.agent-handoff/reflections/`
+creation, automation, project/product reflection, root-doc edit,
+further codification/polish, or any publish action.
 
 ## Next Request To Sami
 
-Decide whether to (a) accept E3-K as filed and authorize a target-side
-commit of the scaffold using precise staging
-(`git -C colorado-songwriters-collective add .agent-handoff/`) followed
-by a separate per-push authorization in target — this critique does NOT
-authorize that commit; (b) resolve the `web/public/images/` drift first
-via your own target-side cleanup, then commit the scaffold in a clean
-tree; (c) defer the target-side commit indefinitely while keeping the
-scaffold as a local unstaged proof-of-concept; (d) authorize a follow-up
-E3-M turn that adds a target AGENTS.md or CLAUDE.md merge-pointer
-(small append-only edit pointing existing target docs at
-`.agent-handoff/PROTOCOL.md`) before any commit; (e) pivot to a queued
-item (Experiment 4 council skill pack, separate wrapper-codex-mcp trust
-turn, kit polish for the E3-G-FIX-001 + E3-L cosmetic nits, kit polish
-to port the placeholder confidence column from E3-H); or (f) defer
-further E3 work. Per the active Stopgate Rule, no target-repo commit,
-no kit extension, no install, no MCP registration, no plugin install,
-no bridge enablement, no global config change, no signed
-trust/event/private-key edit, no commit or push in either repo, no
-branch creation, no PR, no staging, and no proposed-to-approved
+Decide on next step from the six-option Human Decision Packet above.
+Consultant recommendation: option (B) Phase 2 dashboard template/design
+as a design-only Codex turn that inspects Claude-Codex for existing
+dashboard surfaces (none found in Phase 1 verification), proposes one
+or more concrete locations (e.g., `.agent-handoff/DASHBOARD.md` and/or
+`kit/v1/.agent-handoff/DASHBOARD.md.template`), proposes dashboard
+content shape using the codified six freshness triggers and the
+COLLAB-over-DASHBOARD authority relationship, includes a Human
+Decision Packet using the E5-D vocabulary now codified in PROTOCOL.md,
+and does NOT create dashboard files. Per the active Stopgate Rule, no
+Phase 2 implementation, no DASHBOARD.md creation, no
+`.agent-handoff/reflections/` creation, no protocol/template edit
+beyond the approved E5-I commit, no root-doc edit, no pilot touch, no
+live Open Mic Colorado touch, no install, no Hermes/Claude Dreams
+enablement, no MCP/plugin/bridge/automation/global config change, no
+commit or push (beyond your separate per-push authorization for the
+E5-I critique files), no branch creation, no PR, no staging, no
+signed trust/event/private-key edit, and no proposed-to-approved
 transition occurs without your explicit per-action approval.
