@@ -22,37 +22,38 @@ artifact, next safe action, or dashboard-vs-COLLAB conflict status.
 
 | Field | Current value |
 | --- | --- |
-| Current coordinator | None active; Codex completed E5-R and Claude completed E5-R critique; both hard-stopped |
+| Current coordinator | None active; Codex completed E5-S and Claude completed E5-S critique; both hard-stopped |
 | Current builder | None active |
 | Current advisor | None active |
-| Current auditor | None active; Claude completed E5-R critique |
-| Current next actor | Sami: decide on next step (option A E5-S implementation using Codex's pre-drafted exact approval text is consultant recommendation) |
-| Active role per agent | Codex: completed designer for E5-R; Claude: completed auditor for E5-R critique; Sami: final approver |
-| Secondary role / lens | Node-capability + dashboard polish governance correction captures every convergent point from the multi-round strategic discussion |
+| Current auditor | None active; Claude completed E5-S critique |
+| Current next actor | Sami: decide on next step (option A pause-and-observe with dashboard + alert-state.sh is consultant recommendation; no new turn required) |
+| Active role per agent | Codex: completed implementer for E5-S; Claude: completed auditor for E5-S critique; Sami: final approver |
+| Secondary role / lens | Governance layer complete (4-property node model + scribe rule + dashboard fields + reflection-template attribution + PR-consolidation kit guidance all landed) |
 | Subagents active | None |
 
 ## Human Attention State
 
 Current state: `decision needed`
 
-E5-R critique complete with zero blockers. Sami chooses next step from four
-options (A: E5-S implementation using pre-drafted exact approval text;
-B: E5-R-FIX-001 [not needed]; C: extend pause-and-observe on alert-state.sh;
-D: defer/pivot).
+E5-S critique complete with zero blockers. Two minor Nits (External advisor
+needed field duplication; missing PR-consolidation caveat) — neither blocks
+pause-and-observe. Sami chooses next step from 6 options (A: pause-and-
+observe [recommended]; B: E5-S-FIX-001 [optional, addresses nits]; C-E:
+notification layer options [defer until observation]; F: defer/pivot).
 
 ## Human Decision Packet
 
 | Field | Current value |
 | --- | --- |
 | State | decision needed |
-| Decision needed from Sami | Accept E5-R and choose next step from 4 options |
-| Why Sami is needed | Only Sami can move proposals to approved. E5-R design comprehensive and ready for E5-S implementation |
-| Consensus recommendation | Option (A): accept E5-R + authorize E5-S implementation using Codex's pre-drafted exact approval text from E5-R Section 11 verbatim |
-| Divergent opinions | None recorded for E5-R critique. Option (C) pause-and-observe extension is optional but can run in parallel with E5-S |
-| Options | (A) E5-S implementation [recommended]; (B) E5-R-FIX-001 [not needed; zero structural defects]; (C) extend pause-and-observe on alert-state.sh; (D) defer/pivot |
-| Risk / tradeoff | (A) Forward momentum; comprehensive design ready for narrow implementation. (B) No defects warrant a fix. (C) Optional; can run in parallel with E5-S. (D) Loses momentum |
-| Exact approval text, if approval is required | Use Codex's pre-drafted exact approval text from `.agent-handoff/turns/E5-R-codex-node-capability-dashboard-polish-design.md` Section 11 (lines 397-449) verbatim |
-| Technical packet | `.agent-handoff/turns/E5-R-claude-critique-node-capability-dashboard-polish-design.md` |
+| Decision needed from Sami | Accept E5-S and choose next step from 6 options |
+| Why Sami is needed | Only Sami can move proposals to approved. Governance layer complete; next decision should be informed by observation data, not theoretical projection |
+| Consensus recommendation | Option (A): pause-and-observe with dashboard + alert-state.sh for the next N real handoff cycles. No new turn required to start |
+| Divergent opinions | None recorded for E5-S critique. Option (B) E5-S-FIX-001 is a reasonable alternative if the two Nits become annoying during observation |
+| Options | (A) pause-and-observe [recommended]; (B) E5-S-FIX-001 [optional]; (C) tiny osascript enhancement [queue after observation]; (D) NanoClaw V1 spike [defer until C evaluated]; (E) broader CommonGround/NanoClaw review [premature]; (F) defer/pivot |
+| Risk / tradeoff | (A) Empirical data drives next move; no new infrastructure; reversible. (B) Tiny fix to 2 minor Nits; fold-able later. (C) Direct relay-burden reducer; ~50 lines shell. (D) NanoClaw V2 trunk's design philosophy conflicts with our Git-as-source-of-truth model. (E) Premature without measured pain. (F) Loses momentum |
+| Exact approval text, if approval is required | For option (A): "Begin pause-and-observe with dashboard + alert-state.sh for the next 5+ critique pushes or one week of normal work, whichever first. Apply E5-O §8 kill criteria empirically. After observation window, file small note on whether dashboard reduced relay burden as expected." |
+| Technical packet | `.agent-handoff/turns/E5-S-claude-critique-node-capability-dashboard-polish-implementation.md` |
 
 ## Technical Review Packet
 
@@ -71,11 +72,11 @@ Allowed statuses: `not prepared`, `prepared local-only`, `sent`, `responded`,
 
 ## Artifact Visibility
 
-Current visibility: E5-R design `pushed` at `b46624c`; E5-R critique `local-only`
+Current visibility: E5-S design `pushed` at `02afd2f`; E5-S critique `local-only`
 
-- Latest pushed commit: `b46624c E5-R: design node capability and dashboard polish`
-- Latest local artifacts (E5-R critique, awaiting per-push authorization):
-  - `.agent-handoff/turns/E5-R-claude-critique-node-capability-dashboard-polish-design.md`
+- Latest pushed commit: `02afd2f E5-S: implement node capability and dashboard polish`
+- Latest local artifacts (E5-S critique, awaiting per-push authorization):
+  - `.agent-handoff/turns/E5-S-claude-critique-node-capability-dashboard-polish-implementation.md`
   - `.agent-handoff/COLLAB.md` (this handoff update)
   - `.agent-handoff/DASHBOARD.md` (freshness refresh)
 - If a non-local reviewer needs these local artifacts, the next safe action is
@@ -83,7 +84,7 @@ Current visibility: E5-R design `pushed` at `b46624c`; E5-R critique `local-only
 
 ## Local-Only / Duplicate-Noise Status
 
-- Approved local-only artifacts: E5-R critique outputs (3 files listed above).
+- Approved local-only artifacts: E5-S critique outputs (3 files listed above).
 - Pre-existing duplicate/noise files: none observed in `.agent-handoff/` (no
   `* 2.md` Finder duplicates).
 - Unrelated local artifacts: none observed.
@@ -91,9 +92,17 @@ Current visibility: E5-R design `pushed` at `b46624c`; E5-R critique `local-only
 
 ## Next Safe Action
 
-Sami decides on next step. Consultant recommendation: option (A) accept E5-R
-and authorize E5-S implementation using Codex's pre-drafted exact approval
-text from E5-R Section 11 (L397-449) verbatim. The design is comprehensive
-(all 11 sections present), the Notion/plugin near-miss was correctly handled
-with verified zero side effects, and the pre-drafted exact approval text is
-conservative (7 allowed files, 13-item no-touch list, verification commands).
+Sami decides on next step. Consultant recommendation: option (A) accept E5-S
+and begin pause-and-observe with dashboard + alert-state.sh for the next N
+real handoff cycles (a week of normal work, or 5+ critique pushes, whichever
+first). No new turn required to start. The governance layer is complete; the
+next decision (osascript enhancement vs NanoClaw spike vs defer) should be
+informed by observation data, not theoretical projection.
+
+**Note**: this live DASHBOARD.md does NOT yet incorporate the 3 new template
+sections added to `kit/v1/.agent-handoff/DASHBOARD.md.template` by E5-S
+(Current Operational Nodes, External Advisor Input, What Sami Pastes Next).
+E5-S correctly stayed in scope by only updating the kit template. If Sami
+wants pause-and-observe to use the new fields here, a small refresh turn is
+needed. Pause-and-observe can proceed with the dashboard as currently
+rendered.
