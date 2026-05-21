@@ -142,6 +142,56 @@ Sami reviews vision, priority, risk tolerance, and approval. Claude and Codex
 critique or build only within explicit scope. GPT-5.5 Pro or other third-model
 review may provide useful technical cross-checks, but it is not approval.
 
+## Node Capability And Advisor Rules
+
+Describe each participant by four separate properties:
+
+- Write capability: whether the node can directly create or modify
+  repo-visible artifacts in the current workspace.
+- Operational role: the per-turn assignment, such as builder, auditor, advisor,
+  coordinator, scribe, or handoff writer.
+- Approval capability: the ability to approve scope, files, risk, priority, or
+  movement from proposal to implementation.
+- Tier: the per-turn role-fit class, such as architect-class, worker-class, or
+  external-advisor.
+
+Write capability does not imply operational role. Operational role is assigned
+per turn, and tier is assigned or declared per turn. Operational work must
+produce repo-visible output. Sami alone has approval capability.
+
+External advisor output is non-operational until Sami approves it or a
+repo-visible record captures it. Self-scribed external advisor notes should use
+`.agent-handoff/advisor-notes/`; creating that path still requires explicit
+scope. Operational turn notes that use advisor input must cite the advisor note
+path or quote block.
+
+If Sami or a repo-writing node scribes advisor input, include the advisor name,
+verbatim text in a code block with no length cap, a structured summary, and
+what Sami accepted, rejected, or left undecided. For non-text or unavailable
+transient artifacts, state the gap explicitly. Do not truncate advisor text to
+save storage or tokens.
+
+Use vendor diversity as a spectrum:
+
+- strong: different model families, such as Anthropic, OpenAI, Google, Mistral,
+  or Meta.
+- moderate: different tiers, sizes, versions, or runtimes within one family.
+- weak: same model with different prompts, context, sampling, or role framing.
+
+Stronger diversity often catches more blind spots, but this is a guideline;
+Sami may override.
+
+Architect-tier nodes may delegate scoped subagent work inside an authorized turn
+without separate per-subagent approval when the task fits the parent scope, the
+architect reviews the output, and the turn note attributes the delegation.
+Subagents do not own `COLLAB.md`, `DASHBOARD.md`, turn notes, commits, pushes,
+approvals, or scope expansion. Subagent output is advisory to the architect.
+
+Two architect-tier nodes may be assigned as co-architects for a turn. A
+reconciliation note must include `Convergence Status: converged | synthesized |
+divergent | escalated`. No implementation proceeds while status is `divergent`
+or `escalated` without explicit Sami routing.
+
 ## Experiment Authorization Convention
 
 Recommended convention for kit adopters. This is the kit's forward-looking

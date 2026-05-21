@@ -25,6 +25,10 @@ classified before action.
 
 - {{Path, turn note, command output, user statement, or other concrete evidence}}
 
+If advisor input is used, cite the advisor note path or include a quote block.
+Advisor input may inform this proposal, but it is not approval. Exact approval
+text still requires Sami's explicit approval of exact files and scope.
+
 ## Proposed Change
 
 {{Proposal only. Do not implement in this file.}}

@@ -29,6 +29,10 @@ scope. Refresh again at handoff when any of these fields changed:
 - latest artifact
 - next safe action
 - dashboard-vs-COLLAB conflict status
+- What Sami Pastes Next
+- External Advisor Input
+- Current Operational Nodes
+- Subagent delegations
 
 ## Current Coordination State
 
@@ -42,6 +46,33 @@ scope. Refresh again at handoff when any of these fields changed:
 | Active role per agent | `{{ACTIVE_ROLE_PER_AGENT}}` |
 | Secondary role / lens | `{{SECONDARY_ROLE_OR_NONE}}` |
 | Subagents active | `{{SUBAGENTS_ACTIVE_OR_NONE}}` |
+
+## Current Operational Nodes
+
+Builder: `{{BUILDER_NAME}}` (`{{BUILDER_VENDOR}}`, `{{BUILDER_TIER}}`) |
+Auditor: `{{AUDITOR_NAME}}` (`{{AUDITOR_VENDOR}}`, `{{AUDITOR_TIER}}`) |
+Diversity: `{{strong | moderate | weak | N/A}}`
+
+- Next repo actor: `{{NEXT_REPO_ACTOR}}`
+- External advisor needed: `{{yes | no}}`
+- Subagent delegations this turn: `{{count}}` - `{{brief_summary_or_none}}`
+
+## External Advisor Input
+
+- External advisor needed: `{{yes | no}}`
+- Advisor: `{{advisor_name_or_NA}}`
+- Status: `{{not requested | local chat only | scribed | incorporated | not needed}}`
+- Attribution path or quote block: `{{advisor_note_path_or_quote_or_NA}}`
+
+## What Sami Pastes Next
+
+| Target | Prompt / action |
+| --- | --- |
+| Next repo actor | `{{PASTE_READY_PROMPT_OR_NONE}}` |
+| External advisor | `{{QUESTION_FOR_EXTERNAL_ADVISOR_OR_NA}}` |
+| Approval text | `{{EXACT_APPROVAL_TEXT_OR_NA}}` |
+
+If no paste is needed, say `No paste needed; hard stop until {{condition}}`.
 
 ## Human Attention State
 

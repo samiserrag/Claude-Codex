@@ -106,6 +106,14 @@ the `.agent-handoff/reflections/` subdirectories when they want proposal-only
 reflection artifacts. Reflection may propose improvements, but proposals do not
 grant approval or implement changes.
 
+## PR Consolidation In CI-Heavy Repos
+
+For repos with expensive CI or many GitHub Actions checks, prefer one PR per
+experiment arc rather than one PR per turn. Use a draft PR while the arc is in
+progress. Per-turn `.agent-handoff/` updates may accumulate on one branch. Mark
+the PR ready only at a consolidation point, then squash or batch at the PR
+boundary when appropriate.
+
 ## Prior-Art Citation Convention
 
 When citing prior art, record the source, what was verified, and the date it

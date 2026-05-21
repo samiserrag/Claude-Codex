@@ -7,62 +7,53 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami next, for decision on next step from the four-option Human Decision
-Packet below. Codex completed E5-R design-only node capability and
-dashboard polish turn and pushed at `b46624c`. Claude completed E5-R
-critique with zero blockers (the critique turn note, this COLLAB.md handoff
-update, and a DASHBOARD.md freshness refresh are local-only pending Sami's
-separate per-push authorization). Both agents are hard-stopped.
+Claude next, for E5-S critique after Codex's local implementation. Sami
+accepted E5-R as successful and authorized E5-S as a narrow implementation of
+the E5-R design. Codex implemented the allowed protocol/template/README
+changes, updated this handoff, filed the E5-S turn note, and is hard-stopped.
 
 ## Current Phase
 
+Experiment 5 E5-S node-capability + dashboard polish implementation: Codex
+implemented the E5-R design narrowly across the approved live protocol, kit
+templates, kit README, COLLAB handoff, and E5-S turn note.
+
+E5-S implemented:
+
+- concise node capability and authority rules in live `PROTOCOL.md`
+- matching node capability and authority rules in the kit PROTOCOL template
+- dashboard template fields for Current Operational Nodes, External Advisor
+  Input, What Sami Pastes Next, external advisor needed, and subagent
+  delegations
+- dashboard freshness triggers for What Sami Pastes Next, External Advisor
+  Input, Current Operational Nodes, and Subagent delegations
+- advisor attribution guidance in the reflection proposal template
+- PR-consolidation guidance for CI-heavy repos in `kit/v1/README.md`
+- E5-S turn note and this COLLAB handoff update
+
+E5-S outputs:
+- `.agent-handoff/PROTOCOL.md`
+- `kit/v1/.agent-handoff/PROTOCOL.md.template`
+- `kit/v1/.agent-handoff/DASHBOARD.md.template`
+- `kit/v1/.agent-handoff/prompts/reflection-proposal-template.md`
+- `kit/v1/README.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/turns/E5-S-codex-node-capability-dashboard-polish-implementation.md`
+
+E5-S did not edit live `.agent-handoff/DASHBOARD.md`,
+`.agent-handoff/tools/alert-state.sh`, root README/AGENTS/CLAUDE, docs,
+product/runtime files, live reflection/improvement/advisor-notes paths, pilot
+repo, or live Open Mic Colorado. E5-S did not create `.mcp.json`,
+Notion-related files, plugin/config files, automation, model calls,
+MCP/plugins/bridges, CommonGround artifacts, Hermes/Claude Dreams runtime,
+cron/timers/webhooks/launch agents, notification runtime, global config,
+staging, commit, push, branch, or PR.
+
 Experiment 5 E5-R node-capability + dashboard polish + PR-consolidation +
 tier/subagent governance design: design filed and pushed by Codex at
-`b46624c`; Claude critique filed locally with zero blockers recommending
-option A (E5-S implementation using Codex's pre-drafted exact approval text).
-
-E5-R design covers:
-
-- four-property node model: write capability, operational role, approval
-  capability, and tier
-- external advisor rule and repo-visible attribution boundary
-- scribe rule for advisor output, including verbatim code block with no length
-  cap
-- `.agent-handoff/advisor-notes/` as per-note advisor location; bulk transcript
-  strategy explicitly deferred to future E5-V
-- vendor diversity spectrum: strong, moderate, weak
-- tier property and architect-decided subagent delegation (Sami routes at turn
-  boundary, not within turns)
-- co-architect per-turn role with 4-value Convergence Status
-  (converged/synthesized/divergent/escalated) and hard rule against
-  implementation while divergent or escalated
-- dashboard additions with concrete schemas: What Sami Pastes Next, External
-  Advisor Input, Current Operational Nodes, Subagent Delegations
-- freshness trigger additions for new dashboard fields
-- adopter PR-consolidation guidance for CI-heavy repos (kit README only, not
-  PROTOCOL.md rule)
-- explicit deferrals: COLLAB.md compaction (no hard caps), bulk advisor
-  transcript strategy, alert-state.sh mirroring, CommonGround/MCP/
-  model-calling triage, automation/notifications/launch agents/cron/timers
-- E5-S implementation plan with pre-drafted exact approval text
-
-**Tooling near-miss disclosure**: while preparing E5-R, Codex accidentally
-invoked the Notion/plugin install flow. The flow did NOT complete
-(`completed=false`, `user_confirmed=false`). No Notion plugin was installed.
-No `.mcp.json`, no Notion files, no plugin directory in `.claude/`.
-Independently verified zero repo-side and global-side effects. Codex
-correctly surfaced the near-miss rather than hiding it.
-
-E5-R design outputs (pushed at `b46624c`):
-- `.agent-handoff/turns/E5-R-codex-node-capability-dashboard-polish-design.md`
-- `.agent-handoff/COLLAB.md` (Codex's handoff update)
-
-E5-R design did not edit PROTOCOL.md, kit templates, live DASHBOARD.md,
-alert-state.sh, root README/AGENTS/CLAUDE, docs, product/runtime files, live
-reflection/improvement/advisor-notes paths, pilot repo, or live Open Mic
-Colorado. E5-R did not create automation, model calls, MCP/plugins/bridges,
-CommonGround artifacts, Hermes/Claude Dreams runtime, cron/timers/webhooks/
-launch agents, notification runtime, global config, branch, or PR.
+`b46624c`; Claude critique filed and pushed at `2be6703` with zero blockers
+recommending option A (E5-S implementation using Codex's pre-drafted exact
+approval text).
 
 E5-R critique summary (Claude, local-only at this turn): all 20 focus areas
 PASS with zero blockers. Independent verification confirmed: 2-file commit
@@ -2128,17 +2119,11 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-R as filed (design-only node-capability + dashboard polish +
-  PR-consolidation + tier/subagent governance turn)?
-- Decide next step from the four-option Human Decision Packet in the E5-R
-  critique turn note: (A) E5-S implementation using Codex's pre-drafted
-  exact approval text (E5-R Section 11, L397-449) verbatim — **consultant
-  recommendation**; zero structural defects in design; (B) E5-R-FIX-001
-  design polish — not needed; (C) extend pause-and-observe on alert-state.sh
-  before E5-S — optional; can run in parallel; (D) defer/pivot.
-- Authorize Claude's E5-R critique push if accepting (three files: critique
-  turn note + this COLLAB.md handoff update + DASHBOARD.md freshness
-  refresh).
+- None immediate from Codex during E5-S. E5-S implementation is local-only
+  until Claude critiques it and Sami separately authorizes any staging,
+  commit, and push.
+- After E5-S critique, Sami may decide whether to accept, request a narrow
+  fix, authorize exact E5-S files for push, or defer.
 - Optional later: after E5-S implementation lands new template fields
   ("What Sami Pastes Next", "External Advisor Input", "Current Operational
   Nodes", "Subagent Delegations"), update this live Claude-Codex
@@ -2151,18 +2136,24 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. E5-R critique complete and hard-stopped. Wait for Sami's
-per-push authorization for the E5-R critique files (critique turn note +
-this COLLAB.md handoff update + DASHBOARD.md freshness refresh) and/or
-Sami's authorization of the next experiment turn (consultant
-recommendation: option A E5-S implementation using Codex's pre-drafted
-exact approval text from E5-R Section 11 verbatim).
+Critique E5-S as a narrow implementation. Verify:
+- only the seven approved E5-S files changed
+- `PROTOCOL.md` and kit PROTOCOL template contain concise node capability,
+  advisor, scribe, diversity, subagent, and co-architect rules
+- kit dashboard template contains lean fields for What Sami Pastes Next,
+  External Advisor Input, Current Operational Nodes, external advisor needed,
+  and subagent delegations
+- dashboard freshness triggers include the new fields
+- reflection proposal template includes advisor attribution guidance without
+  making advisor input approval
+- kit README includes short PR-consolidation guidance
+- live `DASHBOARD.md` and `alert-state.sh` were not modified
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-R. E5-R does not authorize E5-S
-implementation, staging, commit, push, branch, PR, dashboard edits, protocol
-edits, kit template edits, starter-turn-note edits, root-doc edits,
+None active. Hard stop after E5-S. E5-S does not authorize E5-T,
+staging, commit, push, branch, PR, live dashboard edits, alert-state edits,
+advisor-notes/reflections/improvements path creation, root-doc edits,
 product/runtime changes, pilot repo edits, live Open Mic Colorado work,
 installs, automation, model calls, watcher/runtime changes, MCP/plugins/
 bridges, CommonGround, Hermes, Claude Dreams, cron/timers/webhooks/launch
@@ -2172,24 +2163,17 @@ transition.
 
 ## Next Request To Sami
 
-Decide on next step from the four-option Human Decision Packet above.
-Consultant recommendation: option (A) E5-S implementation using Codex's
-pre-drafted exact approval text from E5-R Section 11 (L397-449) verbatim.
-The design is comprehensive (all 11 sections present), the Notion/plugin
-near-miss was correctly handled with independent verification of zero side
-effects, and the pre-drafted exact approval text is conservative (7
-allowed files, 13-item no-touch list, verification commands, hard-stop
-discipline). Per the active Stopgate Rule, no E5-S implementation, no
-dashboard edit, no kit template edit, no PROTOCOL.md edit, no
-alert-state.sh edit, no Notion use, no plugin install, no `.mcp.json`
-creation, no automation, no CommonGround install/clone/service/Postgres/
-adapter/prototype, no live `.agent-handoff/reflections/` creation, no
-`.agent-handoff/improvements/` creation, no `.agent-handoff/advisor-notes/`
-creation, no notification/wake runtime, no root-doc edit, no pilot touch,
-no live Open Mic Colorado touch, no install, no Hermes/Claude Dreams
-enablement, no MCP/plugin/bridge/global config change, no commit or push
-(beyond your separate per-push authorization for the E5-R critique files),
-no cron/timer/webhook/launchd setup, no branch creation, no PR, no
-staging, no
-signed trust/event/private-key edit, and no proposed-to-approved transition
-occurs without your explicit per-action approval.
+None immediate until Claude's E5-S critique lands. E5-S artifacts remain
+local-only and uncommitted until Sami separately authorizes exact staging,
+commit, and push files after critique. Per the active Stopgate Rule, no E5-T,
+no live dashboard edit, no alert-state.sh edit, no Notion use, no plugin
+install, no `.mcp.json` creation, no automation, no CommonGround
+install/clone/service/Postgres/adapter/prototype, no live
+`.agent-handoff/reflections/` creation, no `.agent-handoff/improvements/`
+creation, no `.agent-handoff/advisor-notes/` creation, no notification/wake
+runtime, no root-doc edit, no pilot touch, no live Open Mic Colorado touch, no
+install, no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/global
+config change, no commit or push, no cron/timer/webhook/launchd setup, no
+branch creation, no PR, no staging, no signed trust/event/private-key edit, and
+no proposed-to-approved transition occurs without your explicit per-action
+approval.
