@@ -81,6 +81,14 @@ plain repository files that humans and agents can review before use.
 - `.agent-handoff/digests/.gitkeep`: tracks optional digest storage.
 - `.agent-handoff/consultants/.gitkeep`: tracks optional consultant responses.
 - `.agent-handoff/prompts/starter-turn-note.md`: first-turn note skeleton.
+- `.agent-handoff/prompts/reflection-proposal-template.md`: optional
+  proposal-only reflection template.
+- `.agent-handoff/reflections/harness/.gitkeep`: tracks optional harness
+  reflection proposals.
+- `.agent-handoff/reflections/project/.gitkeep`: tracks optional project
+  reflection proposals.
+- `.agent-handoff/reflections/mixed-needs-classification/.gitkeep`: tracks
+  mixed or unclear proposals that must be split or classified before action.
 - `.gitignore.snippet`: ignore rules to append to the adopter repo.
 
 ## Optional Dashboard
@@ -90,6 +98,13 @@ Adopters may copy/render `.agent-handoff/DASHBOARD.md.template` to
 surface. `COLLAB.md` remains authoritative; the dashboard is operational only,
 does not grant approval, and should be refreshed when freshness-trigger fields
 change.
+
+## Optional Reflection Proposals
+
+Adopters may use `.agent-handoff/prompts/reflection-proposal-template.md` and
+the `.agent-handoff/reflections/` subdirectories when they want proposal-only
+reflection artifacts. Reflection may propose improvements, but proposals do not
+grant approval or implement changes.
 
 ## Prior-Art Citation Convention
 
