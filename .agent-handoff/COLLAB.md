@@ -7,17 +7,51 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami next, for decision on next step from the six-option Human Decision Packet
-below. Codex completed E5-P D1 alert-state script implementation and pushed at
-`27ea72a`. Claude completed E5-P critique with zero blockers (the critique
-turn note and this COLLAB.md handoff update are local-only pending Sami's
-separate per-push authorization). Both agents are hard-stopped.
+Claude next, for E5-Q critique after Codex's local live dashboard adoption
+test. Sami accepted E5-P/E5-O and authorized E5-Q as the first live
+`.agent-handoff/DASHBOARD.md` adoption test in Claude-Codex. Codex rendered
+the dashboard from the accepted kit template, updated this handoff, filed the
+E5-Q turn note, and is hard-stopped.
 
 ## Current Phase
 
+Experiment 5 E5-Q live dashboard adoption test: Codex created the first live
+`.agent-handoff/DASHBOARD.md` in Claude-Codex from
+`kit/v1/.agent-handoff/DASHBOARD.md.template`, filled current values from this
+COLLAB.md plus the E5-P Codex/Claude turn notes, updated this handoff, and
+filed `.agent-handoff/turns/E5-Q-codex-live-dashboard-adoption-test.md`.
+
+E5-Q dashboard summary:
+- `DASHBOARD.md` is explicitly operational only and does not grant approval.
+- `COLLAB.md` remains authoritative and wins on conflict.
+- Current coordinator/builder: Codex for E5-Q local implementation.
+- Current auditor/next actor: Claude for E5-Q critique.
+- Human attention state: none until Claude critique lands.
+- Technical Review Packet: prepared local-only for Claude.
+- Artifact visibility: local-only for the E5-Q dashboard, COLLAB update, and
+  turn note.
+- Latest pushed commit before E5-Q local edits: `5c1f79b E5-P Claude
+  critique: accept alert-state helper script`.
+- Next safe action: Claude critiques E5-Q; no further implementation,
+  staging, commit, push, automation, or runtime setup is authorized.
+
+E5-Q outputs:
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/turns/E5-Q-codex-live-dashboard-adoption-test.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+E5-Q did not edit PROTOCOL.md, kit templates, root README/AGENTS/CLAUDE,
+docs, product/runtime files, the alert-state script, live
+`.agent-handoff/reflections/`, live `.agent-handoff/improvements/`, pilot repo,
+or live Open Mic Colorado. E5-Q did not create automation, model calls,
+MCP/plugins/bridges, CommonGround artifacts, Hermes/Claude Dreams runtime,
+cron/timers/webhooks/launch agents, notification runtime, global config,
+staging, commit, push, branch, or PR.
+
 Experiment 5 E5-P D1 alert-state script implementation: design filed and
-pushed by Codex at `27ea72a`; Claude critique filed locally with zero blockers
-recommending option A (pause-and-observe for real handoff cycles).
+pushed by Codex at `27ea72a`; Claude critique filed and pushed at `5c1f79b`
+with zero blockers recommending option A (pause-and-observe for real handoff
+cycles).
 
 E5-P implementation summary: Codex added a single manual read-only shell
 script at `.agent-handoff/tools/alert-state.sh`, updated COLLAB.md handoff,
@@ -1931,21 +1965,12 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-P as filed (D1 alert-state script implementation)?
-- Decide next step from the six-option Human Decision Packet in the E5-P
-  critique turn note: (A) **pause-and-observe** for real handoff cycles
-  using the script — **consultant recommendation**; no new turn required;
-  smallest next step; lets empirical data drive the next move; (B) small
-  E5-P-FIX-001 — not needed for acceptance; two noise patterns observed
-  in test run (broad keyword matches; historical text mixed with current
-  state) are acceptable for v1 and better refined via observation; (C)
-  document usage in kit/README or root docs — defer until D1 proves useful
-  in observation; (D) add macOS notification option — premature; terminal
-  output should prove useful first; (E) move toward model-calling triage
-  / MCP / CommonGround — **explicitly forbidden by E5-O §8 escalation stop
-  rule** until alert-only proves useful; (F) defer/pivot.
-- Authorize Claude's E5-P critique push if accepting (two files: critique
-  turn note + this COLLAB.md handoff update).
+- None immediate from Codex during E5-Q. The dashboard adoption test is
+  local-only until Claude critiques it and Sami separately authorizes any
+  staging/commit/push.
+- After E5-Q critique, Sami may decide whether to accept the live dashboard,
+  request a dashboard fix, authorize exact E5-Q files for push, or delete/defer
+  the live dashboard.
 - Optional later (if D1 proves useful via observation): generalize the
   script as a kit template at
   `kit/v1/.agent-handoff/tools/alert-state.sh.template` for adopters.
@@ -1957,55 +1982,30 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. E5-P critique complete and hard-stopped. Wait for Sami's
-per-push authorization for the E5-P critique files (critique turn note +
-this COLLAB.md handoff update) and/or Sami's decision on next step
-(consultant recommendation: option A pause-and-observe, no new turn
-required).
+Critique E5-Q after reading this local implementation. Verify:
+- `.agent-handoff/DASHBOARD.md` was rendered from the accepted kit dashboard
+  template shape and is concise enough to scan quickly.
+- The dashboard says it is operational only, does not grant approval, and
+  `COLLAB.md` wins on conflict.
+- The dashboard accurately reflects current coordinator/builder/auditor,
+  current next actor, human attention state, Human Decision Packet, Technical
+  Review Packet, artifact visibility, latest artifact, next safe action, and
+  local-only / duplicate-noise status.
+- Only E5-Q allowed files changed.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-P. E5-P does not authorize E5-Q,
-additional watcher scripts, chmod of the existing script, log/history/pipe
-creation, watcher runtime, daemon, cron/timer/webhook setup, launch agent
-setup, model calls, live `.agent-handoff/DASHBOARD.md` creation or edits,
-live `.agent-handoff/reflections/` creation, live
-`.agent-handoff/improvements/` creation, protocol edits, template edits,
-starter-turn-note edits, root-doc edits, kit edits, pilot repo edits, live
-Open Mic Colorado work, product/runtime changes, installs, automation,
-bridges, MCP/plugins, CommonGround install/clone/service/Postgres/adapter/
-prototype, Hermes, Claude Dreams, global config changes, signed
-trust/event/private-key edits, staging, commit, push, branch, PR, or any
-proposed-to-approved transition.
+None active. Hard stop after E5-Q. E5-Q does not authorize E5-R, staging,
+commit, push, branch, PR, further dashboard redesign, protocol edits, kit
+template edits, starter-turn-note edits, root-doc edits, product/runtime
+changes, pilot repo edits, live Open Mic Colorado work, installs, automation,
+model calls, watcher/runtime changes, MCP/plugins/bridges, CommonGround,
+Hermes, Claude Dreams, cron/timers/webhooks/launch agents, global config
+changes, signed trust/event/private-key edits, or any proposed-to-approved
+transition.
 
 ## Next Request To Sami
 
-Decide on next step from the six-option Human Decision Packet above.
-Consultant recommendation: option (A) **pause-and-observe for real handoff
-cycles**. No new turn required to start — just use the script via `sh
-.agent-handoff/tools/alert-state.sh` across the next N real handoff cycles
-(a week of normal work, or 5+ critique pushes, whichever comes first).
-Apply E5-O §8 kill criteria empirically:
-
-- **Useful**: reduces relay decisions; makes "what next?" obvious; flags
-  visibility gaps; less maintenance than copy/paste → keep as-is.
-- **Noisy or stale**: creates false confidence; causes trust in watcher
-  over COLLAB.md; produces stale prompts → file E5-P-FIX-001 to refine
-  patterns, or delete the script in a clean single-file commit.
-
-After the observation window, optionally file a small E5-Q observation
-note describing how often the script was useful, how often it created
-noise, and which (if any) refinement is warranted. Per the active
-Stopgate Rule, no additional watcher scripts, no chmod of the existing
-script, no log/history/pipe creation, no CommonGround install/clone/
-service/Postgres/adapter/prototype, no notification/wake runtime, no
-live DASHBOARD.md creation, no live `.agent-handoff/reflections/`
-creation, no `.agent-handoff/improvements/` creation, no kit-template
-edit, no protocol/starter-turn-note edit, no root-doc edit, no pilot
-touch, no live Open Mic Colorado touch, no install, no Hermes/Claude
-Dreams enablement, no MCP/plugin/bridge/automation/global config change,
-no commit or push (beyond your separate per-push authorization for the
-E5-P critique files), no cron/timer/webhook/launchd setup, no branch
-creation, no PR, no staging, no signed trust/event/private-key edit,
-and no proposed-to-approved transition occurs without your explicit
-per-action approval.
+None immediate until Claude's E5-Q critique lands. E5-Q artifacts remain
+local-only and uncommitted until Sami separately authorizes exact staging,
+commit, and push files after critique.
