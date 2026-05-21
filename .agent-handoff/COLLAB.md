@@ -7,116 +7,50 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami next, for decision on next step from the five-option Human Decision Packet
-below. Codex completed E5-M Phase 3 kit-only reflection proposal template/
-path implementation and pushed at `7158dc7`. Claude completed E5-M critique
-with zero blockers (the critique turn note and this COLLAB.md handoff update
-are local-only pending Sami's separate per-push authorization). Both agents
-are hard-stopped.
+Claude next, for E5-N critique. Sami accepted E5-M as successful and
+authorized E5-N as a read-only CommonGround feasibility review. Codex completed
+E5-N locally and hard-stopped. No staging, commit, push, branch, or PR action
+occurred in E5-N.
 
 ## Current Phase
 
-Experiment 5 E5-M kit-only reflection proposal template/path implementation:
-design filed and pushed by Codex at `7158dc7`; Claude critique filed locally
-with zero blockers recommending option A (E5-N CommonGround feasibility
-review, read-only — per the converged strategic plan Sami + GPT + Codex +
-Claude agreed in the prior discussion).
+Experiment 5 E5-N CommonGround feasibility review: read-only review filed
+locally by Codex. CommonGround was evaluated as prior art / possible future
+substrate only. No install, clone, Postgres, local service, adapter,
+notification/wake, automation, bridge, MCP/plugin, Hermes, Claude Dreams,
+global config, staging, commit, push, branch, or PR occurred.
 
-E5-M implementation summary: Codex created the reusable kit reflection
-proposal template at `kit/v1/.agent-handoff/prompts/reflection-proposal-
-template.md` (85 lines) with all 14 required fields, anti-drift wording
-placed in the intro paragraph (L3-6), classification → directory routing
-block (L12-15), HDP with 9 canonical E5-D fields + State allowed values
-enumerated, TRP with 6 canonical statuses. Added three kit-only `.gitkeep`
-placeholders (harness/, project/, mixed-needs-classification/), all exactly
-0 bytes. Added 15 lines to `kit/v1/README.md` across two sections (Included
-Files entries + Optional Reflection Proposals section), parallel to E5-K's
-Optional Dashboard structure.
-
-E5-M design outputs (pushed at `7158dc7`):
-- `kit/v1/.agent-handoff/prompts/reflection-proposal-template.md` (added, 85 lines)
-- `kit/v1/.agent-handoff/reflections/harness/.gitkeep` (added, 0 bytes)
-- `kit/v1/.agent-handoff/reflections/project/.gitkeep` (added, 0 bytes)
-- `kit/v1/.agent-handoff/reflections/mixed-needs-classification/.gitkeep` (added, 0 bytes)
-- `kit/v1/README.md` (modified, +15 lines / -0 lines)
-- `.agent-handoff/turns/E5-M-codex-reflection-template-implementation.md` (added)
-- `.agent-handoff/COLLAB.md` (Codex's handoff update)
-
-E5-M implementation did not create live `.agent-handoff/reflections/`, did
-not create live `.agent-handoff/improvements/`, did not create or edit live
-`.agent-handoff/DASHBOARD.md`, did not edit `.agent-handoff/PROTOCOL.md`, did
-not edit starter-turn-note, did not edit root README/AGENTS/CLAUDE, did not
-touch product/runtime files, did not touch live Open Mic Colorado, did not
-touch the pilot repo, and did not enable installs, automation, notification/
-wake, bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron, webhooks, or
-global config. E5-M implementation did not branch or PR.
-
-E5-M critique summary (Claude, local-only at this turn): all 13 focus areas
-PASS with zero blockers. Independent verification confirmed: 7-file commit
-matches the authorized set exactly; all three `.gitkeep` files are 0 bytes;
-all 14 required template fields present; all 4 required anti-drift safety
-rules present in 4 independent placements (intro paragraph + classification
-block + Proposed Change field + Decisions binding); classification → directory
-routing explicit (L12-15); README additions 15 lines parity-preserving with
-E5-K Optional Dashboard structure; all no-touch surfaces unchanged
-(PROTOCOL.md + kit templates at `2ee7879` or `6c6db2d`; root docs at
-`fbe8bf5`); pilot clean and HEAD unchanged at `655e75bc`.
-
-**Headline finding**: E5-M addresses ALL three E5-L Claude-critique Nits
-inline without explicit instruction:
-- E5-L Nit 1 (classification → directory routing rule) → L12-15
-- E5-L Nit 2 (anti-drift wording in template guidance) → L3-6 intro paragraph
-  (stronger placement than I recommended)
-- E5-L Nit 3 (HDP State allowed values enumerated) → L46
-
-Best critique-uptake in the E5 arc.
-
-E5-M critique outputs (local-only):
-- `.agent-handoff/turns/E5-M-claude-critique-reflection-template-implementation.md`
+E5-N outputs (local-only until separately approved for commit/push):
+- `.agent-handoff/turns/E5-N-codex-commonground-feasibility-review.md`
 - `.agent-handoff/COLLAB.md` (this handoff update)
 
-E5-M critique did not edit PROTOCOL.md, kit templates, the new kit reflection
-template, kit reflection `.gitkeep`s, kit README, starter-turn-note,
-`.gitignore`, root docs, product/runtime files; did not create live
-`.agent-handoff/DASHBOARD.md`, live `.agent-handoff/reflections/`, or
-`.agent-handoff/improvements/`; did not approve any further codification,
-implementation, cleanup, or automation; did not stage, commit, push, branch,
-or PR; did not touch live Open Mic Colorado; did not touch pilot repo.
+E5-N findings summary:
+- CommonGround maps well to durable turn records, agent identity, work records,
+  claim/lifecycle, causal lineage, ledger/feed, and pull-first inspection.
+- CommonGround does not visibly replace this harness's exact approval text,
+  Human Decision Packet, no-touch scope, artifact visibility, and Git-visible
+  source-of-truth semantics without a custom governance layer.
+- Source inconsistency is the headline risk: accessible CommonGround surfaces
+  conflict between a GitHub-rendered `v3r1` preview story and raw/release
+  `V1R4` / Common Ground Core material. Before any adoption, the exact release
+  line and API horizon must be pinned.
+- Recommendation: do not pivot to CommonGround now and do not build an adapter
+  yet. If immediate relay pain needs relief, prefer D1: tiny external
+  alert-only watcher (zsh/tmux/OS notification, no model calls, no repo writes).
+  If CommonGround is later tested, start with B: one-way mirror from committed
+  `.agent-handoff/turns/*.md` to CommonGround records, audit-only.
 
-Pattern: this is the sixth clean turn-pair in the E5-H → E5-M backport arc
-(E5-H planning + critique, E5-I implementation + critique, E5-J dashboard
-design + critique, E5-K dashboard implementation + critique, E5-L reflection
-design + critique, E5-M reflection implementation + critique). Single-purpose
-commit shape (handoff + new turn note + implementation surfaces) stable for
-the 14th time across the E5 arc. Phase 3 (reflection paths/template) now
-landed cleanly in the kit.
+E5-N did not modify protocol, templates, dashboard, reflection paths, kit
+files, root docs, product/runtime files, live Open Mic Colorado, or the pilot
+repo. No CommonGround install, Postgres setup, adapter/prototype, repo
+migration, automation, notification/wake, bridge, MCP/plugin, Hermes, Claude
+Dreams, timer, cron, webhook, global config, staging, commit, push, branch, or
+PR occurred.
 
-Carried-forward nits (out of E5-M critique scope; all optional):
-- Exact Approval Text section (L69-73) of the new template does not restate
-  the anti-drift wording (intro paragraph covers it). A one-line note in
-  that section would help proposal authors who navigate directly to it.
-- "Reviewer" field (L42) enumeration includes "GPT-5.5 Pro / third model"
-  as a single category — could be split as parallel structure cleanup.
-
-**Strategic context**: per the prior converged strategic discussion (Sami
-sharing II's CommonGround Kernel blog + GPT analysis + Codex analysis +
-Claude analysis), the consensus was: finish E5-M (content/template work, no
-new infrastructure); then hard stop and run E5-N as a read-only CommonGround
-feasibility review BEFORE Phase 4 (notification/wake design) risks
-duplicating CommonGround's claim/lease/heartbeat/ledger infrastructure. E5-M
-critique is the moment to operationalize that pause.
-
-Current hard stop: Sami decides on next step. No E5-N implementation, no
-notification/wake design, no live `.agent-handoff/DASHBOARD.md` creation,
-no live `.agent-handoff/reflections/` creation, no `.agent-handoff/
-improvements/` creation, no kit-template edit beyond E5-M's authorized
-surfaces, no protocol/starter-turn-note edit, no root-doc edit, no live Open
-Mic Colorado touch, no pilot touch, no install, no Hermes/Claude Dreams
-enablement, no MCP/plugin/bridge/automation/global config change, no commit
-or push (beyond Sami's separate per-push authorization), no branch creation,
-no PR, no staging, no signed trust/event/private-key edit, and no
-proposed-to-approved transition occurs without Sami's explicit per-action
-approval.
+Current hard stop: Claude should critique E5-N before any notification/wake
+design, CommonGround install, adapter prototype, source pinning work, protocol
+or template edit, live dashboard/reflection/improvement path creation, pilot
+repo work, live Open Mic Colorado work, automation, install, or publish action.
 
 — Historical phase content below is preserved per
 the Response History Policy (durable detail lives in
@@ -1795,22 +1729,12 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-M as filed (Phase 3 kit-only reflection proposal template/path
-  implementation)?
-- Decide next step from the five-option Human Decision Packet in the E5-M
-  critique turn note: (A) E5-N CommonGround feasibility review, read-only
-  — **consultant recommendation** per the converged strategic plan (Sami +
-  GPT + Codex + Claude); explicit pause point before Phase 4 risks
-  duplicating CommonGround infrastructure; (B) proceed straight to
-  notification/wake design — NOT recommended; bypasses the converged pause
-  point; (C) live Claude-Codex reflection proposal pilot — reasonable as a
-  follow-up to E5-N if a concrete proposal exists; (D) project/product
-  reflection pilot — Phase 5, valid divergent; (E) defer/pivot.
-- Authorize Claude's E5-M critique push if accepting (two files: critique
-  turn note + this COLLAB.md handoff update).
-- Optional later: tighten two E5-M cosmetic nits (anti-drift note in
-  template Exact Approval Text section; Reviewer field parallel structure).
-  Neither blocks E5-N.
+- None for Codex in E5-N. Codex is hard-stopped after local review.
+- Claude critique is the next review step once Sami provides visibility into
+  the local E5-N artifacts.
+- Optional later: decide whether to run D1 tiny external alert-only watcher
+  design, B CommonGround one-way mirror source-pinning/design, or another menu
+  option after E5-N critique.
 - Optional later: align live `.agent-handoff/COLLAB.md` to the
   `kit/v1/.agent-handoff/COLLAB.md.template` structured field shape and
   rename root docs to reference the newly backported rules (carried forward
@@ -1818,53 +1742,26 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. E5-M critique complete and hard-stopped. Wait for Sami's
-per-push authorization for the E5-M critique files (critique turn note +
-this COLLAB.md handoff update) and/or Sami's authorization of the next
-experiment turn (consultant recommendation: option A E5-N CommonGround
-feasibility review, read-only).
+Critique E5-N. Focus on the source inconsistency finding, whether Git should
+remain authoritative, whether exact approval text is unverified as
+CommonGround-first-class, and whether D1 tiny external alert-only watcher is a
+better immediate next step than a CommonGround adapter.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-M. E5-M does not authorize E5-N
-implementation, notification/wake design, live `.agent-handoff/reflections/`
-creation, live `.agent-handoff/improvements/` creation, live
-`.agent-handoff/DASHBOARD.md` creation or edits, protocol edits, starter-
-turn-note edits, root-doc edits, pilot repo edits, live Open Mic Colorado
-work, product/runtime changes, installs, automation, notification/wake,
-bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron, webhooks, global
-config changes, staging, commit, push, branch, PR, or any proposed-to-
-approved transition.
+None active. Hard stop after E5-N. E5-N does not authorize CommonGround
+install, Postgres setup, adapter/prototype creation, notification/wake design,
+live `.agent-handoff/reflections/` creation, live `.agent-handoff/improvements/`
+creation, live `.agent-handoff/DASHBOARD.md` creation or edits, protocol edits,
+template edits, starter-turn-note edits, root-doc edits, kit edits, pilot repo
+edits, live Open Mic Colorado work, product/runtime changes, installs,
+automation, bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron,
+webhooks, global config changes, staging, commit, push, branch, PR, or any
+proposed-to-approved transition.
 
 ## Next Request To Sami
 
-Decide on next step from the five-option Human Decision Packet above.
-Consultant recommendation: option (A) E5-N CommonGround feasibility review
-as a read-only Codex turn — explicit pause point converged on in the prior
-strategic discussion (Sami + GPT + Codex + Claude). E5-N should be tightly
-scoped: no installs, no Postgres, no adapter creation, no protocol change.
-Sharper questions converged from that discussion:
-- Does CommonGround treat exact approval text as a first-class field?
-- Can it remain Git-native with repo files as authoritative source of
-  truth, or does it force service-first workflow?
-- Does it support cross-vendor model usage natively (Claude + Codex + maybe
-  Gemini in the same workspace)?
-- Is v3r1 preview API stability too risky for a demonstrable/professional
-  system?
-- Would CommonGround reduce decision-throughput latency (your actual
-  bottleneck), or only coordination-throughput?
-- What is the smallest useful adapter (preferred candidate: one-way
-  read-only mirror of `.agent-handoff/turns/*.md` to CommonGround records)?
-- What does CommonGround NOT have that you would still need to maintain?
-- What is the exit cost if v3r1 → v4 introduces breaking changes?
-Per the active Stopgate Rule, no E5-N implementation, no notification/wake
-design, no live DASHBOARD.md creation, no live `.agent-handoff/reflections/`
-creation, no `.agent-handoff/improvements/` creation, no kit-template edit
-beyond E5-M's authorized surfaces, no kit-README edit beyond E5-M's
-authorized note, no root-doc edit, no pilot touch, no live Open Mic Colorado
-touch, no install, no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/
-automation/global config change, no commit or push (beyond your separate
-per-push authorization for the E5-M critique files), no branch creation,
-no PR, no staging, no signed trust/event/private-key edit, and no
-proposed-to-approved transition occurs without your explicit per-action
-approval.
+No immediate decision is required from Sami unless Sami wants to authorize
+staging/commit/push of E5-N artifacts or route them to Claude by another
+visibility path. The next safe action is E5-N critique after artifact
+visibility is sufficient.
