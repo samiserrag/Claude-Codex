@@ -7,22 +7,18 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude next, for E5-N critique. Sami accepted E5-M as successful and
-authorized E5-N as a read-only CommonGround feasibility review. Codex completed
-E5-N locally and hard-stopped. No staging, commit, push, branch, or PR action
-occurred in E5-N.
+Sami next, for decision on next step from the six-option Human Decision Packet
+below. Codex completed E5-N read-only CommonGround feasibility review and
+pushed at `f96823f`. Claude completed E5-N critique with zero blockers (the
+critique turn note and this COLLAB.md handoff update are local-only pending
+Sami's separate per-push authorization). Both agents are hard-stopped.
 
 ## Current Phase
 
-Experiment 5 E5-N CommonGround feasibility review: read-only review filed
-locally by Codex. CommonGround was evaluated as prior art / possible future
-substrate only. No install, clone, Postgres, local service, adapter,
-notification/wake, automation, bridge, MCP/plugin, Hermes, Claude Dreams,
-global config, staging, commit, push, branch, or PR occurred.
-
-E5-N outputs (local-only until separately approved for commit/push):
-- `.agent-handoff/turns/E5-N-codex-commonground-feasibility-review.md`
-- `.agent-handoff/COLLAB.md` (this handoff update)
+Experiment 5 E5-N CommonGround feasibility review: read-only review filed and
+pushed by Codex at `f96823f`; Claude critique filed locally with zero blockers
+recommending option A (E5-O D1 tiny external alerter design — same shape as
+E5-J/E5-L design turns).
 
 E5-N findings summary:
 - CommonGround maps well to durable turn records, agent identity, work records,
@@ -30,27 +26,108 @@ E5-N findings summary:
 - CommonGround does not visibly replace this harness's exact approval text,
   Human Decision Packet, no-touch scope, artifact visibility, and Git-visible
   source-of-truth semantics without a custom governance layer.
-- Source inconsistency is the headline risk: accessible CommonGround surfaces
-  conflict between a GitHub-rendered `v3r1` preview story and raw/release
-  `V1R4` / Common Ground Core material. Before any adoption, the exact release
-  line and API horizon must be pinned.
+- **Two genuinely new findings** Codex surfaced in read-only research:
+  1. **Source inconsistency** — accessible CommonGround surfaces conflict
+     between a GitHub-rendered `v3r1` preview story and raw README / releases
+     page `V1R4` / Common Ground Core material. The release line is not
+     pinnable from public docs alone.
+  2. **RCE-capable unauthenticated local service** — raw README warns local
+     APIs/NATS are unauthenticated and include arbitrary command execution.
+     Disqualifies CommonGround from any shared or network-exposed machine
+     without significant hardening.
+- 7-point kill criterion (E5-N §9) is concrete and testable: exact approval
+  text as first-class field; Git remains authoritative; CommonGround as side
+  index only; API stability horizon explicit; cross-vendor workers compatible;
+  no unauthenticated RCE local setup; lossless export to plain Markdown/JSON.
+- All 7 decision options pre-named (A file-only watcher; B CommonGround
+  one-way mirror; C hybrid; D1 tiny external alerter; D2 read-only MCP triage;
+  D3 defer wake; E pivot).
 - Recommendation: do not pivot to CommonGround now and do not build an adapter
   yet. If immediate relay pain needs relief, prefer D1: tiny external
-  alert-only watcher (zsh/tmux/OS notification, no model calls, no repo writes).
-  If CommonGround is later tested, start with B: one-way mirror from committed
-  `.agent-handoff/turns/*.md` to CommonGround records, audit-only.
+  alert-only watcher (zsh/tmux/OS notification, no model calls, no repo
+  writes). If CommonGround is later tested, start with B: one-way mirror from
+  committed `.agent-handoff/turns/*.md` to CommonGround records, audit-only,
+  after pinning a release line and resolving the RCE-security blocker.
 
-E5-N did not modify protocol, templates, dashboard, reflection paths, kit
-files, root docs, product/runtime files, live Open Mic Colorado, or the pilot
-repo. No CommonGround install, Postgres setup, adapter/prototype, repo
-migration, automation, notification/wake, bridge, MCP/plugin, Hermes, Claude
-Dreams, timer, cron, webhook, global config, staging, commit, push, branch, or
-PR occurred.
+E5-N design outputs (pushed at `f96823f`):
+- `.agent-handoff/turns/E5-N-codex-commonground-feasibility-review.md`
+- `.agent-handoff/COLLAB.md` (Codex's handoff update)
 
-Current hard stop: Claude should critique E5-N before any notification/wake
-design, CommonGround install, adapter prototype, source pinning work, protocol
-or template edit, live dashboard/reflection/improvement path creation, pilot
-repo work, live Open Mic Colorado work, automation, install, or publish action.
+E5-N read-only research did not modify protocol, templates, dashboard,
+reflection paths, kit files, root docs, product/runtime files, live Open Mic
+Colorado, or the pilot repo. No CommonGround install, clone, Postgres setup,
+NATS, Docker, adapter/prototype, repo migration, automation, notification/
+wake, bridge, MCP/plugin, Hermes, Claude Dreams, timer, cron, webhook, or
+global config change occurred. E5-N did not branch or PR.
+
+E5-N critique summary (Claude, local-only at this turn): all 13 focus areas
+PASS with zero blockers. Independent verification confirmed: 2-file commit
+matches the read-only design-only shape (same as E3-I, E3-J, E5-H, E5-J,
+E5-L); no CommonGround install/clone/service in repo root; all no-touch
+surfaces unchanged; pilot clean and HEAD unchanged at `655e75bc`.
+
+**Headline acknowledgement**: Codex surfaced two findings that none of GPT,
+the prior Codex analysis, or my own strategic write-up anticipated — the
+v3r1-vs-V1R4 source inconsistency and the RCE-capable unauthenticated local
+service warning. These are structural adoption blockers worth more than the
+general API-churn risk. They would have been discovery costs if we'd
+proceeded straight to a CommonGround prototype.
+
+The 7-point kill criterion (E5-N §9) is the strongest stop-building
+discipline in the E5 arc — concrete, testable, includes the new security
+finding as criterion #6. The first-safe-adapter spec (one-way mirror with no
+writes back, no approvals, no model calls, no notifications, no lifecycle
+claims) preserves Git authority even in the adapter case.
+
+E5-N critique outputs (local-only):
+- `.agent-handoff/turns/E5-N-claude-critique-commonground-feasibility-review.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+E5-N critique did not edit PROTOCOL.md, kit templates, kit reflection
+template, kit README, kit reflection `.gitkeep`s, starter-turn-note,
+`.gitignore`, root docs, product/runtime files; did not install or clone
+CommonGround; did not run Postgres; did not create adapters, watchers, or
+prototypes; did not create live `.agent-handoff/DASHBOARD.md`, live
+`.agent-handoff/reflections/`, or `.agent-handoff/improvements/`; did not
+approve any further codification, implementation, cleanup, or automation;
+did not stage, commit, push, branch, or PR; did not touch live Open Mic
+Colorado; did not touch pilot repo.
+
+Pattern: this is the seventh clean turn-pair in the E5-H → E5-N arc
+(E5-H/I/J/K/L/M/N each followed by Claude critique). Single-purpose 2-file
+commit shape (handoff + new turn note) stable for the 15th time across the
+E5 arc.
+
+Carried-forward nits (out of E5-N critique scope; all optional):
+- Section 8 could include rough effort estimates per option (D1: ~1-2 hours;
+  B: ~days of setup + adapter code).
+- D2 (read-only MCP triage) dismissed quickly; worth keeping in mind for
+  after D1 stabilizes if Sami wants decision-load reduction (not just relay
+  reduction).
+- Kill criterion #7 could be tightened to "**lossless** export" (preserves
+  approval-text formatting, commit lineage, append-only history).
+- Verification gap on CommonGround schema for "exact approval text" could be
+  closed cheaply by reading the schema source in GitHub without install.
+
+**Strategic context**: per the converged plan (Sami + GPT + Codex + Claude
+in the prior discussion), E5-N was the explicit pause point before Phase 4
+notification/wake risked duplicating CommonGround infrastructure. That pause
+worked as intended — E5-N's findings reframe the next step from
+"notification/wake design" to "tiny external alerter design (D1)" because
+the source-inconsistency and RCE findings make the CommonGround adapter
+path (B) genuinely premature.
+
+Current hard stop: Sami decides on next step. No E5-O implementation, no
+CommonGround install/clone/service/Postgres/adapter/prototype, no
+notification/wake implementation, no live DASHBOARD.md creation, no live
+`.agent-handoff/reflections/` creation, no `.agent-handoff/improvements/`
+creation, no kit-template edit, no protocol/starter-turn-note edit, no
+root-doc edit, no pilot touch, no live Open Mic Colorado touch, no install,
+no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/automation/global
+config change, no commit or push (beyond Sami's separate per-push
+authorization), no branch creation, no PR, no staging, no signed
+trust/event/private-key edit, and no proposed-to-approved transition occurs
+without Sami's explicit per-action approval.
 
 — Historical phase content below is preserved per
 the Response History Policy (durable detail lives in
@@ -1729,12 +1806,28 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None for Codex in E5-N. Codex is hard-stopped after local review.
-- Claude critique is the next review step once Sami provides visibility into
-  the local E5-N artifacts.
-- Optional later: decide whether to run D1 tiny external alert-only watcher
-  design, B CommonGround one-way mirror source-pinning/design, or another menu
-  option after E5-N critique.
+- Accept E5-N as filed (read-only CommonGround feasibility review)?
+- Decide next step from the six-option Human Decision Packet in the E5-N
+  critique turn note: (A) E5-O D1 tiny external alerter design (zsh/tmux/OS
+  notification only, no model calls, no repo writes, no CommonGround) —
+  **consultant recommendation**; matches Codex's own preferred next path;
+  same shape as E5-J/E5-L design turns; (B) CommonGround one-way mirror
+  design — NOT recommended yet (source-pinning + RCE-security blockers per
+  E5-N findings); (C) hybrid watcher + CommonGround side-index design —
+  inherits B's blockers; (D) read-only MCP triage design — bigger than D1,
+  introduces model-calling surfaces; worth keeping for after D1 stabilizes;
+  (E) defer wake/notification entirely; (F) pivot.
+- Authorize Claude's E5-N critique push if accepting (two files: critique
+  turn note + this COLLAB.md handoff update).
+- Optional later: schedule periodic CommonGround re-review against the
+  7-point kill criterion (E5-N §9) — say every 4-6 weeks or on major
+  CommonGround release — rather than ad-hoc re-checks.
+- Optional later: open a GitHub issue on Intelligent-Internet/CommonGround
+  asking for clarification on the v3r1 vs V1R4 relationship. Cheap way to
+  surface their official roadmap without committing to a prototype.
+- Optional later: close the verification gap on whether CommonGround has a
+  schema field for "exact approval text" by reading the schema source in
+  the GitHub repo (no install needed).
 - Optional later: align live `.agent-handoff/COLLAB.md` to the
   `kit/v1/.agent-handoff/COLLAB.md.template` structured field shape and
   rename root docs to reference the newly backported rules (carried forward
@@ -1742,26 +1835,44 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Critique E5-N. Focus on the source inconsistency finding, whether Git should
-remain authoritative, whether exact approval text is unverified as
-CommonGround-first-class, and whether D1 tiny external alert-only watcher is a
-better immediate next step than a CommonGround adapter.
+None active. E5-N critique complete and hard-stopped. Wait for Sami's
+per-push authorization for the E5-N critique files (critique turn note +
+this COLLAB.md handoff update) and/or Sami's authorization of the next
+experiment turn (consultant recommendation: option A E5-O D1 tiny external
+alerter design).
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-N. E5-N does not authorize CommonGround
-install, Postgres setup, adapter/prototype creation, notification/wake design,
-live `.agent-handoff/reflections/` creation, live `.agent-handoff/improvements/`
-creation, live `.agent-handoff/DASHBOARD.md` creation or edits, protocol edits,
-template edits, starter-turn-note edits, root-doc edits, kit edits, pilot repo
-edits, live Open Mic Colorado work, product/runtime changes, installs,
-automation, bridges, MCP/plugins, Hermes, Claude Dreams, timers, cron,
-webhooks, global config changes, staging, commit, push, branch, PR, or any
-proposed-to-approved transition.
+None active. Hard stop after E5-N. E5-N does not authorize E5-O
+implementation, CommonGround install, Postgres setup, adapter/prototype
+creation, watcher implementation, notification/wake design, live
+`.agent-handoff/reflections/` creation, live `.agent-handoff/improvements/`
+creation, live `.agent-handoff/DASHBOARD.md` creation or edits, protocol
+edits, template edits, starter-turn-note edits, root-doc edits, kit edits,
+pilot repo edits, live Open Mic Colorado work, product/runtime changes,
+installs, automation, bridges, MCP/plugins, Hermes, Claude Dreams, timers,
+cron, webhooks, global config changes, staging, commit, push, branch, PR,
+or any proposed-to-approved transition.
 
 ## Next Request To Sami
 
-No immediate decision is required from Sami unless Sami wants to authorize
-staging/commit/push of E5-N artifacts or route them to Claude by another
-visibility path. The next safe action is E5-N critique after artifact
-visibility is sufficient.
+Decide on next step from the six-option Human Decision Packet above.
+Consultant recommendation: option (A) E5-O D1 tiny external alerter design
+as a design-only Codex turn — same shape as E5-J/E5-L design turns, no
+CommonGround dependency, no model calls, no repo writes, lowest possible
+infrastructure path to address relay/recovery pain. After D1
+design + critique + authorized implementation, recommend a
+**pause-and-observe** turn (run D1 for N real handoff cycles, then measure
+residual pain) before any other infrastructure decision. The 7-point kill
+criterion (E5-N §9) is now written and can be re-checked periodically as
+CommonGround evolves. Per the active Stopgate Rule, no E5-O implementation,
+no CommonGround install/clone/service/Postgres/adapter/prototype, no
+notification/wake implementation, no live DASHBOARD.md creation, no live
+`.agent-handoff/reflections/` creation, no `.agent-handoff/improvements/`
+creation, no kit-template edit, no protocol/starter-turn-note edit, no
+root-doc edit, no pilot touch, no live Open Mic Colorado touch, no install,
+no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/automation/global
+config change, no commit or push (beyond your separate per-push
+authorization for the E5-N critique files), no branch creation, no PR, no
+staging, no signed trust/event/private-key edit, and no proposed-to-
+approved transition occurs without your explicit per-action approval.
