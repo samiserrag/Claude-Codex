@@ -22,36 +22,37 @@ artifact, next safe action, or dashboard-vs-COLLAB conflict status.
 
 | Field | Current value |
 | --- | --- |
-| Current coordinator | None active; Codex completed E5-Q and Claude completed E5-Q critique; both hard-stopped |
+| Current coordinator | None active; Codex completed E5-R and Claude completed E5-R critique; both hard-stopped |
 | Current builder | None active |
 | Current advisor | None active |
-| Current auditor | None active; Claude completed E5-Q critique |
-| Current next actor | Sami: decide on next step (option A E5-R authorization is consultant recommendation) |
-| Active role per agent | Codex: completed builder for E5-Q; Claude: completed auditor for E5-Q critique; Sami: final approver |
-| Secondary role / lens | Live dashboard adoption test validates kit template structure and surfaces "What Sami Pastes Next" as the validated missing field for E5-R |
+| Current auditor | None active; Claude completed E5-R critique |
+| Current next actor | Sami: decide on next step (option A E5-S implementation using Codex's pre-drafted exact approval text is consultant recommendation) |
+| Active role per agent | Codex: completed designer for E5-R; Claude: completed auditor for E5-R critique; Sami: final approver |
+| Secondary role / lens | Node-capability + dashboard polish governance correction captures every convergent point from the multi-round strategic discussion |
 | Subagents active | None |
 
 ## Human Attention State
 
 Current state: `decision needed`
 
-E5-Q critique complete with zero blockers. Sami chooses next step from four
-options (A: accept E5-Q + authorize E5-R; B: extend pause-and-observe; C:
-E5-Q-FIX-001 if defect surfaces; D: defer/pivot).
+E5-R critique complete with zero blockers. Sami chooses next step from four
+options (A: E5-S implementation using pre-drafted exact approval text;
+B: E5-R-FIX-001 [not needed]; C: extend pause-and-observe on alert-state.sh;
+D: defer/pivot).
 
 ## Human Decision Packet
 
 | Field | Current value |
 | --- | --- |
 | State | decision needed |
-| Decision needed from Sami | Accept E5-Q and choose next step from 4 options |
-| Why Sami is needed | Only Sami can move proposals to approved. E5-Q produced empirical validation; next decision is whether to proceed with the convergent E5-R authorization |
-| Consensus recommendation | Option (A): accept E5-Q + authorize E5-R using the convergent design authorization text from the recent strategic discussion (Sami + GPT + Codex + Claude) |
-| Divergent opinions | None recorded for E5-Q critique. Option (B) pause-and-observe extension is a conservative alternative if Sami wants more observation data before E5-R |
-| Options | (A) accept E5-Q + authorize E5-R [recommended]; (B) extend pause-and-observe; (C) E5-Q-FIX-001 [no defects identified]; (D) defer/pivot |
-| Risk / tradeoff | (A) Forward momentum; convergent design empirically grounded. (B) Adds observation cycles without clear additional signal — E5-Q already validated the template. (C) Not needed. (D) Loses momentum |
-| Exact approval text, if approval is required | Use the convergent E5-R authorization text from the recent strategic discussion (4-property node model + scribe rule + vendor diversity spectrum + architect-decided subagents + co-architect role + dashboard additions including "What Sami Pastes Next" + PR-consolidation adopter guidance + explicit deferrals) |
-| Technical packet | `.agent-handoff/turns/E5-Q-claude-critique-live-dashboard-adoption-test.md` |
+| Decision needed from Sami | Accept E5-R and choose next step from 4 options |
+| Why Sami is needed | Only Sami can move proposals to approved. E5-R design comprehensive and ready for E5-S implementation |
+| Consensus recommendation | Option (A): accept E5-R + authorize E5-S implementation using Codex's pre-drafted exact approval text from E5-R Section 11 verbatim |
+| Divergent opinions | None recorded for E5-R critique. Option (C) pause-and-observe extension is optional but can run in parallel with E5-S |
+| Options | (A) E5-S implementation [recommended]; (B) E5-R-FIX-001 [not needed; zero structural defects]; (C) extend pause-and-observe on alert-state.sh; (D) defer/pivot |
+| Risk / tradeoff | (A) Forward momentum; comprehensive design ready for narrow implementation. (B) No defects warrant a fix. (C) Optional; can run in parallel with E5-S. (D) Loses momentum |
+| Exact approval text, if approval is required | Use Codex's pre-drafted exact approval text from `.agent-handoff/turns/E5-R-codex-node-capability-dashboard-polish-design.md` Section 11 (lines 397-449) verbatim |
+| Technical packet | `.agent-handoff/turns/E5-R-claude-critique-node-capability-dashboard-polish-design.md` |
 
 ## Technical Review Packet
 
@@ -70,11 +71,11 @@ Allowed statuses: `not prepared`, `prepared local-only`, `sent`, `responded`,
 
 ## Artifact Visibility
 
-Current visibility: E5-Q design `pushed` at `725ce9a`; E5-Q critique `local-only`
+Current visibility: E5-R design `pushed` at `b46624c`; E5-R critique `local-only`
 
-- Latest pushed commit: `725ce9a E5-Q: create live dashboard adoption test`
-- Latest local artifacts (E5-Q critique, awaiting per-push authorization):
-  - `.agent-handoff/turns/E5-Q-claude-critique-live-dashboard-adoption-test.md`
+- Latest pushed commit: `b46624c E5-R: design node capability and dashboard polish`
+- Latest local artifacts (E5-R critique, awaiting per-push authorization):
+  - `.agent-handoff/turns/E5-R-claude-critique-node-capability-dashboard-polish-design.md`
   - `.agent-handoff/COLLAB.md` (this handoff update)
   - `.agent-handoff/DASHBOARD.md` (freshness refresh)
 - If a non-local reviewer needs these local artifacts, the next safe action is
@@ -82,7 +83,7 @@ Current visibility: E5-Q design `pushed` at `725ce9a`; E5-Q critique `local-only
 
 ## Local-Only / Duplicate-Noise Status
 
-- Approved local-only artifacts: E5-Q critique outputs (3 files listed above).
+- Approved local-only artifacts: E5-R critique outputs (3 files listed above).
 - Pre-existing duplicate/noise files: none observed in `.agent-handoff/` (no
   `* 2.md` Finder duplicates).
 - Unrelated local artifacts: none observed.
@@ -90,8 +91,9 @@ Current visibility: E5-Q design `pushed` at `725ce9a`; E5-Q critique `local-only
 
 ## Next Safe Action
 
-Sami decides on next step. Consultant recommendation: option (A) accept E5-Q
-and authorize E5-R using the convergent design authorization text from the
-recent strategic discussion. The text is ready to paste verbatim; E5-Q
-provides empirical validation that the kit template structure works and that
-"What Sami Pastes Next" is the validated missing field.
+Sami decides on next step. Consultant recommendation: option (A) accept E5-R
+and authorize E5-S implementation using Codex's pre-drafted exact approval
+text from E5-R Section 11 (L397-449) verbatim. The design is comprehensive
+(all 11 sections present), the Notion/plugin near-miss was correctly handled
+with verified zero side effects, and the pre-drafted exact approval text is
+conservative (7 allowed files, 13-item no-touch list, verification commands).
