@@ -7,16 +7,42 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami next, for decision on the E5-T-FIX-001 push authorization. Codex completed
-E5-T-FIX-001 local implementation (still uncommitted) and Claude completed
-E5-T-FIX-001 critique with zero blockers. The 8 local files (4 FIX-001 +
-4 critique outputs) await Sami's per-push authorization.
+Codex completed E5-U design locally and is hard-stopped. Claude is next for
+E5-U critique. E5-U addresses the static dashboard lifecycle gap: browser
+refresh reloads the same file bytes and cannot recompute dashboard state after
+a push.
 
 ## Current Phase
 
+Experiment 5 E5-U dashboard refresh + notification design: Codex filed a
+design-only note recommending the smallest safe next implementation: a manually
+run, read-only macOS attention notifier using `osascript`, not browser-only
+auto-refresh and not a file-writing dashboard generator.
+
+E5-U design outputs (local-only):
+- `.agent-handoff/turns/E5-U-codex-dashboard-refresh-notification-design.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+E5-U design conclusion:
+- Static browser refresh cannot update stale dashboard content unless the
+  dashboard file has already changed on disk.
+- Browser-only reload/Notification API is insufficient as the first fix.
+- Dashboard refresh remains a repo-writing-agent responsibility for now.
+- A manual read-only osascript helper is the smallest safe notification path.
+- NanoClaw/CommonGround/MCP/model-calling/generator/watcher paths are deferred.
+
+E5-U no-touch surfaces: `DASHBOARD.html`, `DASHBOARD.md`, `alert-state.sh`,
+`PROTOCOL.md`, kit templates, root docs, product/runtime files, live
+reflections/improvements/advisor-notes paths, pilot repo, live Open Mic
+Colorado, CommonGround, NanoClaw, Notion, MCP/plugins/bridges,
+cron/timers/webhooks/launch agents, global config, staging, commit, push,
+branch, and PR.
+
 Experiment 5 E5-T-FIX-001 human control tower simplification: implementation
-filed locally by Codex (uncommitted); Claude critique filed locally with zero
-blockers recommending acceptance and push.
+and critique were pushed at `1d1b17e` with zero blockers. The current dashboard
+still demonstrates the lifecycle gap: after push, a manual browser refresh
+reloads the same static push-authorization content unless a repo-writing agent
+or generator updates the file.
 
 E5-T-FIX-001 implementation summary: Codex simplified the live
 `.agent-handoff/DASHBOARD.html` and aligned `.agent-handoff/DASHBOARD.md`.
@@ -2378,51 +2404,31 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-T-FIX-001 as filed (human control tower simplification)?
-- Authorize the combined push of 6 files (4 FIX-001 implementation surfaces
-  + 2 new turn notes from FIX-001 implementation and critique). Note:
-  COLLAB.md/DASHBOARD.md/DASHBOARD.html are shared between Codex's FIX-001
-  work and Claude's critique freshness refresh — final state of each
-  reflects both.
-- After push, **use the simplified dashboard for the next real handoff**
-  as continued empirical test of the single-primary-action design.
-- Optional later: if `<details>` sections never get opened in real use,
-  consider whether they're carrying weight or can be removed entirely.
-  Don't decide yet — wait for observation data.
-- Optional later: file E5-V bulk advisor transcript strategy if/when a
+- Accept E5-U as a design-only dashboard refresh + notification design?
+- Decide whether E5-V should implement the recommended manual read-only
+  osascript attention notifier.
+- Optional later: file a separate bulk advisor transcript strategy if/when a
   transcript becomes repeatedly referenced or search/reuse becomes painful.
 
 ## Next Request To Claude
 
-None active. E5-T-FIX-001 critique complete and hard-stopped. Wait for
-Sami's per-push authorization for the combined 6-file commit.
+Critique E5-U as auditor/advisor. Focus on whether the static-file lifecycle
+explanation is correct, whether browser-only reload is correctly rejected as
+insufficient, whether the manual osascript helper is the smallest safe next
+implementation, and whether the E5-V approval text is scoped tightly.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-T-FIX-001. No E5-U, staging, commit, push,
-branch, PR, automation, model calls, MCP/plugins/bridges, CommonGround,
-NanoClaw, Hermes, Claude Dreams, cron, timers, webhooks, launch agents,
+None active. Hard stop after E5-U. No implementation, dashboard edit,
+alert-state edit, protocol edit, kit edit, server, model call, NanoClaw,
+CommonGround, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
 global config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
-protocol, kit-template, alert-state.sh, or any other change is authorized.
+staging, commit, push, branch, PR, or any other change is authorized.
 
 ## Next Request To Sami
 
-Authorize the E5-T-FIX-001 push (combined Codex implementation + Claude
-critique). The dashboard's refreshed primary paste block contains the
-verbatim push authorization, ready to copy. After push, open
-`.agent-handoff/DASHBOARD.html` for the next real handoff and test whether
-the single-primary-action design reduces friction further than the original
-E5-T layout. Per the active Stopgate Rule, no further DASHBOARD.html or
-DASHBOARD.md modification beyond this critique's freshness refresh, no
-PROTOCOL.md edit, no kit template edit, no alert-state.sh edit, no Notion
-use, no NanoClaw use, no plugin install, no `.mcp.json` creation, no
-automation, no CommonGround install/clone/service/Postgres/adapter/
-prototype, no server start, no live `.agent-handoff/reflections/` creation,
-no `.agent-handoff/improvements/` creation, no `.agent-handoff/advisor-
-notes/` creation, no notification/wake runtime, no root-doc edit, no pilot
-touch, no live Open Mic Colorado touch, no install, no Hermes/Claude
-Dreams enablement, no MCP/plugin/bridge/global config change, no
-commit/push/branch/PR (beyond your separate per-push authorization for the
-E5-T-FIX-001 files), no cron/timer/webhook/launchd setup, no signed
-trust/event/private-key edit, and no proposed-to-approved transition
-occurs without your explicit per-action approval.
+After Claude critique, decide whether to accept E5-U and authorize a narrow
+E5-V implementation. Consultant recommendation from E5-U: implement the manual
+read-only osascript attention notifier first; do not start with browser-only
+reload, a dashboard-writing generator, NanoClaw, CommonGround, MCP, model calls,
+daemon, cron, launch agent, timer, webhook, or global config.
