@@ -7,29 +7,123 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex completed E5-T local implementation and is hard-stopped. Claude is next
-for E5-T critique. E5-S is complete and critiqued cleanly at pushed commit
-`7bd05a1`.
+Sami next, for decision on next step from the five-option Human Decision
+Packet below. Codex completed E5-T implementation and pushed at `1922562`.
+Claude completed E5-T critique with zero blockers (the critique turn note,
+this COLLAB.md handoff update, and DASHBOARD.md + DASHBOARD.html freshness
+refreshes are local-only pending Sami's separate per-push authorization).
+Both agents are hard-stopped.
 
 ## Current Phase
 
-Experiment 5 E5-T human-facing control tower dashboard: Codex refreshed the
-live `.agent-handoff/DASHBOARD.md` with E5-S fields and added a self-contained
-static `.agent-handoff/DASHBOARD.html` view. Purpose: make the handoff state
-easier for Sami to scan and provide paste-ready "What Sami Pastes Next" blocks
-without adding automation or changing source-of-truth rules.
+Experiment 5 E5-T human-facing control tower dashboard: implementation
+filed and pushed by Codex at `1922562`; Claude critique filed locally with
+zero blockers recommending option A (use the HTML dashboard for the next
+real handoff as empirical test of relay-burden reduction).
 
-E5-T local outputs:
-- `.agent-handoff/DASHBOARD.md`
-- `.agent-handoff/DASHBOARD.html`
-- `.agent-handoff/COLLAB.md`
+E5-T implementation summary: Codex refreshed the live
+`.agent-handoff/DASHBOARD.md` with the E5-S template fields (Current
+Operational Nodes, External Advisor Input, What Sami Pastes Next, Subagent
+delegations) AND added a new self-contained static `.agent-handoff/
+DASHBOARD.html` view (310 lines, ~10.5 KB) as a human-facing control
+tower. Purpose: make handoff state scannable for Sami and provide
+paste-ready "What Sami Pastes Next" blocks without adding automation or
+changing source-of-truth rules.
+
+E5-T design outputs (pushed at `1922562`):
+- `.agent-handoff/DASHBOARD.md` (refreshed with E5-S fields + paste blocks)
+- `.agent-handoff/DASHBOARD.html` (added — 310 lines, self-contained)
+- `.agent-handoff/COLLAB.md` (Codex's handoff update)
 - `.agent-handoff/turns/E5-T-codex-human-control-tower-dashboard.md`
 
 E5-T no-touch surfaces: `PROTOCOL.md`, `alert-state.sh`, kit templates, root
 docs, product/runtime files, live reflections/improvements/advisor-notes paths,
 pilot repo, live Open Mic Colorado, CommonGround, NanoClaw, Notion,
 MCP/plugins/bridges, cron/timers/webhooks/launch agents, global config,
-staging, commit, push, branch, and PR.
+branch, PR. (Codex did not stage/commit/push; Sami's separate per-push
+authorization landed the commit.)
+
+E5-T critique summary (Claude, local-only at this turn): all 14 focus areas
+PASS with zero blockers. Independent verification confirmed:
+- 4-file commit matches authorization 1:1
+- HTML is **verifiably self-contained** — independent
+  `grep -nE 'src=|href=|http:|https:|fetch|XMLHttpRequest|WebSocket|
+  EventSource|localStorage|sessionStorage|indexedDB|cookie|navigator\.'`
+  returned ONLY one match: `navigator.clipboard.writeText(target.innerText)`
+  at L301 (clipboard API used legitimately for copy buttons)
+- Copy buttons use `target.innerText` (visible text only); cannot
+  exfiltrate arbitrary state
+- All 4 source-of-truth disciplines present in both HTML and MD with
+  visual emphasis on anti-drift wording (HTML uses `.warning` class for
+  orange color on "No approval is inferred from green status, silence,
+  consensus, or 'looks good'")
+- MD and HTML structurally aligned (verified section-by-section)
+- Paste-block content verbatim-identical between MD code blocks and HTML
+  `<pre>` elements
+- All no-touch surfaces unchanged
+- Script execution (`sh .agent-handoff/tools/alert-state.sh`) ran with
+  pre/post status capture; working tree completely unchanged
+
+**Browser verification**: attempted via Chrome MCP; tool auto-upgraded
+`file://` URL to `https://file:///` which returned an error page (same
+Chrome extension URL policy that blocked Codex's attempt). Per directive,
+no server fallback used. Static analysis stands.
+
+**Headline strengths**:
+- **HTML is genuinely human-facing** — 30px H1, card-based 12-column
+  grid, color-coded sections, copy buttons with click feedback, mobile-
+  responsive media query, focus outlines, 32px touch targets. Not
+  another terminal wall.
+- **"What Sami Pastes Next" is `.span-12`** (full width) with 4 copy-
+  blocks (Claude/Codex/Advisor/Approval). Maximum prominence for the
+  highest-value field.
+- **Source-of-truth wording uses visual emphasis** — COLLAB.md
+  authoritative is bolded; anti-drift wording in warning color. Hard
+  to skip.
+- **HTML is 310 lines / 10.5 KB** — small enough to audit fully in one
+  read; comfortable single-file deliverable.
+- **Live MD dashboard refreshed with E5-S fields** — addresses the gap
+  flagged in E5-S critique Nit #3 about the live dashboard lagging the
+  kit template.
+- **Server prohibition honored explicitly** — Codex turn note L93: "No
+  server fallback was used because E5-T explicitly forbids a server."
+
+**Three Nits (all optional, none blocking)**:
+1. DASHBOARD.html's "Paste to Claude" block is ephemeral content — it
+   contains the prompt Sami already used (this critique). After each
+   handoff, refresh needed to show the NEXT paste. Natural lifecycle of
+   "what to paste next" surface; not a defect.
+2. MD has explicit "Next Safe Action" section; HTML covers same content
+   via Next Repo Actor + Status fields. Tiny structural asymmetry.
+3. HTML `<pre>` for Claude prompt uses raw line breaks; long lines may
+   wrap awkwardly on narrow screens. Acceptable v1; tighter wrapping
+   could be future polish.
+
+E5-T critique outputs (local-only):
+- `.agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness handoff refresh)
+- `.agent-handoff/DASHBOARD.html` (freshness handoff refresh; kept aligned
+  with MD)
+
+E5-T critique did not edit PROTOCOL.md, kit templates, alert-state.sh, root
+docs, product/runtime files; did not create advisor-notes/reflections/
+improvements paths; did not use Notion/NanoClaw; did not install plugins;
+did not create `.mcp.json`; did not start a server; did not install or
+clone CommonGround; did not create adapters, watchers, cron jobs, timers,
+webhooks, launch agents, MCP/plugins, bridges, or automation; did not
+stage, commit, push, branch, or PR; did not touch live Open Mic Colorado;
+did not touch pilot repo.
+
+Pattern: thirteenth clean turn-pair in the E5-H → E5-T arc. Single-purpose
+4-file commit shape matches the implementation-pattern across E5.
+
+**Strategic context**: E5-T is the first artifact in the E5 arc designed
+primarily for human readability (vs terminal/Markdown). The empirical
+test is: does it actually reduce relay burden when Sami uses it? The only
+way to know is to use it. Recommend pause-and-observe with the HTML
+dashboard for 3-5 real handoff cycles before any further infrastructure
+decisions.
 
 Experiment 5 E5-S node-capability + dashboard polish implementation: design
 filed and pushed by Codex at `02afd2f`; Claude critique filed and pushed at
@@ -2222,33 +2316,61 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- None immediate during E5-T local implementation.
-- After Claude critique, Sami may separately decide whether to stage, commit,
-  and push the four E5-T files.
+- Accept E5-T as filed (human-facing control tower dashboard)?
+- Decide next step from the five-option Human Decision Packet in the E5-T
+  critique turn note: (A) use the HTML dashboard for the next real handoff
+  (empirical test of relay-burden reduction) — **consultant recommendation**;
+  no new turn required; (B) small E5-T-FIX-001 — not warranted without
+  observation data; (C) add osascript/macOS notification design — queue
+  after observing HTML dashboard alone; (D) NanoClaw V2 toy-repo spike —
+  premature; design philosophy conflicts persist; (E) defer/pivot.
+- Authorize Claude's E5-T critique push if accepting (4 files: critique
+  turn note + this COLLAB.md handoff update + DASHBOARD.md freshness
+  refresh + DASHBOARD.html freshness refresh).
+- Optional later: after first use, optionally file a small turn to update
+  DASHBOARD.html's "Paste to Claude" block to show the NEXT prompt (push
+  authorization for the E5-T critique files), so the dashboard stays
+  actionable as the handoff cycle advances.
 - Optional later: file E5-V bulk advisor transcript strategy if/when a
   transcript becomes repeatedly referenced or search/reuse becomes painful.
 
 ## Next Request To Claude
 
-After Codex hard-stops, critique E5-T as auditor/advisor. Focus on whether the
-live Markdown dashboard and static HTML dashboard are scoped, source-of-truth
-safe, scannable, copy-ready, and useful enough to reduce Sami's relay burden.
-Do not stage, commit, push, branch, or PR.
+None active. E5-T critique complete and hard-stopped. Wait for Sami's
+per-push authorization for the E5-T critique files (4 files) and/or Sami's
+decision on next step (consultant recommendation: option A — use the HTML
+dashboard for the next real handoff).
 
 ## Next Request To Codex
 
-Complete E5-T verification, run `sh .agent-handoff/tools/alert-state.sh`,
-confirm the script leaves the working tree unchanged, perform local browser
-verification of `.agent-handoff/DASHBOARD.html` if possible, then hard stop.
-No staging, commit, push, branch, PR, E5-U, automation, model calls,
-MCP/plugins/bridges, CommonGround, NanoClaw, Hermes, Claude Dreams, cron,
-timers, webhooks, launch agents, global config, pilot repo, live Open Mic
-Colorado, product/runtime, root-doc, protocol, kit-template, or alert-state
-change is authorized.
+None active. Hard stop after E5-T. E5-T does not authorize E5-U, staging,
+commit, push, branch, PR, automation, model calls, MCP/plugins/bridges,
+CommonGround, NanoClaw, Hermes, Claude Dreams, cron, timers, webhooks,
+launch agents, global config, pilot repo, live Open Mic Colorado,
+product/runtime, root-doc, protocol, kit-template, alert-state.sh, or any
+other change.
 
 ## Next Request To Sami
 
-After Codex hard-stops, paste the E5-T Claude critique prompt from
-`.agent-handoff/DASHBOARD.md` or `.agent-handoff/DASHBOARD.html` if proceeding
-with critique. No exact approval text is active for staging, commit, or push
-until after critique and Sami's separate per-action authorization.
+Decide on next step from the five-option Human Decision Packet above.
+Consultant recommendation: option (A) accept E5-T and use the HTML
+dashboard for the next real handoff. Open `.agent-handoff/DASHBOARD.html`
+in a browser (open via Finder, double-click) and try the copy buttons.
+Empirical test: does the "Paste to Claude" / "Exact Approval Text" copy-
+ready flow reduce the keystrokes vs scrolling COLLAB.md? After 3-5 real
+handoff cycles, decide: keep, refine via E5-T-FIX-001, or add C
+(osascript notification) for the passive-notification gap. Per the active
+Stopgate Rule, no further DASHBOARD.html or DASHBOARD.md modification
+beyond this critique's freshness refresh, no PROTOCOL.md edit, no kit
+template edit, no alert-state.sh edit, no Notion/NanoClaw use, no plugin
+install, no `.mcp.json` creation, no automation, no CommonGround
+install/clone/service/Postgres/adapter/prototype, no server start, no
+live `.agent-handoff/reflections/` creation, no `.agent-handoff/
+improvements/` creation, no `.agent-handoff/advisor-notes/` creation, no
+notification/wake runtime, no root-doc edit, no pilot touch, no live Open
+Mic Colorado touch, no install, no Hermes/Claude Dreams enablement, no
+MCP/plugin/bridge/global config change, no commit or push (beyond your
+separate per-push authorization for the E5-T critique files), no
+cron/timer/webhook/launchd setup, no branch creation, no PR, no staging,
+no signed trust/event/private-key edit, and no proposed-to-approved
+transition occurs without your explicit per-action approval.

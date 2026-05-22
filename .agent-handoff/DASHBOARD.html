@@ -155,26 +155,26 @@
         <h1>Claude-Codex Control Tower</h1>
         <p>Human-facing local dashboard for current handoff state. Static view only.</p>
       </div>
-      <div class="badge">Next repo actor: Claude Code</div>
+      <div class="badge">Next repo actor: Sami</div>
     </header>
 
     <div class="grid">
       <section class="span-8">
         <h2>Status</h2>
         <div class="kv">
-          <div class="k">Current status</div><div class="v">E5-T local implementation complete; pending Claude critique</div>
-          <div class="k">Human attention</div><div class="v">No decision needed until Claude critique completes</div>
-          <div class="k">Latest pushed</div><div class="v">7bd05a1 E5-S Claude critique</div>
-          <div class="k">Latest artifact</div><div class="v">.agent-handoff/turns/E5-T-codex-human-control-tower-dashboard.md</div>
+          <div class="k">Current status</div><div class="v">E5-T critique complete; pending Sami push authorization + next-step decision</div>
+          <div class="k">Human attention</div><div class="v">decision needed (5-option HDP)</div>
+          <div class="k">Latest pushed</div><div class="v">1922562 E5-T: add human control tower dashboard</div>
+          <div class="k">Latest artifact</div><div class="v">.agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md (local-only)</div>
         </div>
       </section>
 
       <section class="span-4">
         <h2>Next Repo Actor</h2>
         <div class="kv">
-          <div class="k">Actor</div><div class="v">Claude Code</div>
-          <div class="k">Action</div><div class="v">Critique E5-T</div>
-          <div class="k">Codex</div><div class="v">Hard-stopped after E5-T</div>
+          <div class="k">Actor</div><div class="v">Sami</div>
+          <div class="k">Action</div><div class="v">Per-push authorization (4 files) + next-step decision</div>
+          <div class="k">Claude / Codex</div><div class="v">Both hard-stopped after E5-T critique</div>
         </div>
       </section>
 
@@ -183,60 +183,66 @@
         <div class="copy-grid">
           <div class="copy-block">
             <div class="copy-head">
-              <div class="copy-title">Paste to Claude</div>
+              <div class="copy-title">Paste to Claude (push authorization, if accepting E5-T)</div>
               <button type="button" data-copy="claude">Copy</button>
             </div>
-            <pre id="claude">You are Claude in /Users/samiserrag/Documents/GitHub/claude-codex.
+            <pre id="claude">Approved:
 
-Read Claude-Codex main plus the local E5-T files.
-
-Critique E5-T as auditor/advisor.
-
-Focus:
-1. Did Codex touch only the four approved E5-T files?
-2. Is .agent-handoff/DASHBOARD.md refreshed with the E5-S fields?
-3. Is .agent-handoff/DASHBOARD.html self-contained, static, local-only, and scannable?
-4. Does the HTML clearly preserve COLLAB.md as authoritative?
-5. Does the HTML clearly say it does not grant approval?
-6. Does "What Sami Pastes Next" reduce copy/paste relay burden?
-7. Are copy buttons limited to visible text, if present?
-8. Did Codex avoid PROTOCOL.md, kit templates, alert-state.sh, root docs, product/runtime files, pilot repo, live Open Mic Colorado, automation, model calls, MCP/plugins/bridges, CommonGround, NanoClaw, Notion, cron, timers, webhooks, launch agents, and global config?
-9. Is E5-T safe to accept?
-
-Verification:
-- Run git status --short --untracked-files=all.
-- Run git diff --check.
-- Confirm only E5-T approved surfaces changed.
-- Confirm sh .agent-handoff/tools/alert-state.sh was run and left the working tree unchanged.
-
-Output only:
+Stage, commit, and push only these E5-T critique files:
+- .agent-handoff/COLLAB.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/DASHBOARD.html
 - .agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md
-- .agent-handoff/COLLAB.md handoff update
-- .agent-handoff/DASHBOARD.md and .agent-handoff/DASHBOARD.html only if freshness requires it
 
-Do not stage, commit, push, branch, or PR.
-Hard stop after critique.</pre>
+Do not stage or commit:
+- .agent-handoff/PROTOCOL.md
+- .agent-handoff/tools/alert-state.sh
+- .agent-handoff/reflections/
+- .agent-handoff/improvements/
+- .agent-handoff/advisor-notes/
+- kit/v1/
+- README.md, AGENTS.md, CLAUDE.md, docs/
+- .agent-handoff/consultants/, .agent-handoff/digests/
+- prior turn notes
+- product/runtime files
+- live Open Mic Colorado files
+- open-mic-colorado-agent-pilot files
+- CommonGround / NanoClaw / Notion files
+- plugin/config files / .mcp.json
+- launch agents / cron / timer / webhook / MCP / plugin / bridge files
+- .DS_Store / .claude/worktrees/
+- generated/local/secret files / trust/event/private-key files
+- unrelated files
+
+Before committing, show:
+git status --short --untracked-files=all
+git diff --check
+
+Commit message:
+E5-T Claude critique: accept human control tower dashboard
+
+After push, hard stop.</pre>
           </div>
           <div class="copy-block">
             <div class="copy-head">
               <div class="copy-title">Paste to Codex</div>
               <button type="button" data-copy="codex">Copy</button>
             </div>
-            <pre id="codex">No Codex action is needed. Codex is hard-stopped after E5-T until Sami routes a new turn or push authorization.</pre>
+            <pre id="codex">No Codex action needed. Hard-stopped after E5-T until Sami routes a new turn.</pre>
           </div>
           <div class="copy-block">
             <div class="copy-head">
               <div class="copy-title">Ask GPT-5.5 Pro / External Advisor</div>
               <button type="button" data-copy="advisor">Copy</button>
             </div>
-            <pre id="advisor">Not needed for E5-T. Optional only if Sami wants external strategy review after Claude critique.</pre>
+            <pre id="advisor">Not needed for E5-T critique acceptance. Optional only if you want external review on the next-step decision (use HTML now vs add osascript vs defer).</pre>
           </div>
           <div class="copy-block">
             <div class="copy-head">
               <div class="copy-title">Exact Approval Text</div>
               <button type="button" data-copy="approval">Copy</button>
             </div>
-            <pre id="approval">No approval text is active. E5-T remains local-only until Sami separately approves exact files for staging, commit, and push.</pre>
+            <pre id="approval">See "Paste to Claude (push authorization, if accepting E5-T)" block above. Copy that block to authorize the 4-file push.</pre>
           </div>
         </div>
       </section>
@@ -263,18 +269,18 @@ Hard stop after critique.</pre>
       <section class="span-4">
         <h2>Artifact Visibility</h2>
         <div class="kv">
-          <div class="k">E5-S</div><div class="v">Pushed and critiqued cleanly</div>
-          <div class="k">E5-T</div><div class="v">Local-only</div>
-          <div class="k">Action needed</div><div class="v">Claude critique before push authorization</div>
+          <div class="k">E5-T (Codex)</div><div class="v">Pushed at 1922562</div>
+          <div class="k">E5-T critique</div><div class="v">Local-only (4 files)</div>
+          <div class="k">Action needed</div><div class="v">Sami per-push authorization + first real-use of HTML dashboard</div>
         </div>
       </section>
 
       <section class="span-6">
         <h2>Local-Only / Pushed / Action Needed</h2>
         <ul>
-          <li>Pushed baseline: <strong>7bd05a1</strong>.</li>
-          <li>Local-only E5-T files: DASHBOARD.md, DASHBOARD.html, COLLAB.md, E5-T turn note.</li>
-          <li>Next safe action: paste the Claude critique prompt above.</li>
+          <li>Pushed baseline: <strong>1922562 E5-T: add human control tower dashboard</strong>.</li>
+          <li>Local-only E5-T critique files: critique turn note, COLLAB.md, DASHBOARD.md, DASHBOARD.html.</li>
+          <li>Next safe action: copy the Paste to Claude block above (if accepting) and authorize the 4-file push, then use the HTML dashboard for the next real handoff.</li>
         </ul>
       </section>
 
