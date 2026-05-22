@@ -7,45 +7,176 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude has completed the E5-T-FIX-002 critique locally and is hard-stopped.
-Sami is the next actor to decide between (a) combined push of E5-T-FIX-002 +
+Claude has completed the E5-T-FIX-003 critique locally and is hard-stopped.
+Sami is the next actor to decide between (a) combined push of E5-T-FIX-003 +
 critique (5 files: 3 modifications + 2 new turn notes) or (b) pause-and-
-observe (no push; let the lifecycle card sit in the local working tree for
-3-5 real handoff cycles before any further dashboard work). No staging,
-commit, push, branch, PR, automation, model calls, server,
+observe (no push; let the representation card set sit in the local working
+tree for 3-5 real handoff cycles before any further dashboard work). No
+staging, commit, push, branch, PR, automation, model calls, server,
 NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
 agent/global config, pilot repo, live Open Mic Colorado, protocol, kit
-template, or alert-state work is authorized.
+template, alert-state, advisor-notes/reflections/improvements, or product/
+runtime work is authorized.
 
 ## Current Phase
 
-Experiment 5 E5-T-FIX-002 static dashboard snapshot lifecycle clarity:
-implementation and Claude critique are both local-only and await Sami's push
-decision. This turn keeps the simplified single-primary-action dashboard from
-E5-T-FIX-001 and adds an explicit snapshot lifecycle card so a browser reload
-cannot look like recomputation.
+Experiment 5 E5-T-FIX-003 dashboard provenance + advisor visibility:
+implementation and Claude critique are both local-only and await Sami's
+push decision. This turn preserves the one-action snapshot dashboard from
+E5-T-FIX-002, adds snapshot provenance, and makes GPT-5.5 Pro visible as
+external advisor-class without promoting GPT to operational repo actor or
+claiming GPT was consulted for this snapshot.
 
-E5-T-FIX-002 local outputs:
-- `.agent-handoff/DASHBOARD.html` (snapshot lifecycle card near the top)
-- `.agent-handoff/DASHBOARD.md` (aligned snapshot lifecycle wording)
-- `.agent-handoff/COLLAB.md` (handoff update)
-- `.agent-handoff/turns/E5-T-FIX-002-codex-dashboard-snapshot-lifecycle.md`
+E5-T-FIX-003 local outputs:
+- `.agent-handoff/DASHBOARD.html` (provenance + external-advisor visibility
+  plus post-critique freshness refresh)
+- `.agent-handoff/DASHBOARD.md` (aligned provenance/advisor wording plus
+  post-critique freshness refresh)
+- `.agent-handoff/COLLAB.md` (Codex handoff update then Claude critique
+  handoff update)
+- `.agent-handoff/turns/E5-T-FIX-003-codex-dashboard-provenance-advisor-visibility.md`
+- `.agent-handoff/turns/E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md`
 
-E5-T-FIX-002 dashboard lifecycle fields (post-critique state):
-- Prepared for: Sami push decision for E5-T-FIX-002 + Claude critique.
-- As of: HEAD `b5bd337` plus local E5-T-FIX-002 implementation and Claude
+E5-T-FIX-003 dashboard snapshot fields (post-critique state):
+- Prepared for: Sami push decision for E5-T-FIX-003 + Claude critique.
+- As of: HEAD `d6cdc7b` plus local E5-T-FIX-003 implementation and Claude
   critique working tree changes.
-- Expires after: Sami authorizes a push, Sami routes pause-and-observe, or
-  the next actor changes.
-- After this action: do not reuse this dashboard snapshot until a repo-writing
-  agent refreshes `DASHBOARD.md` and `DASHBOARD.html`.
+- Prepared by: Codex (E5-T-FIX-003 implementation) + Claude (critique
+  freshness refresh).
+- Last repo action:
+  `d6cdc7b E5-T-FIX-002: dashboard snapshot lifecycle + Claude critique`.
+- Snapshot basis: HEAD `d6cdc7b` plus local E5-T-FIX-003 dashboard/handoff
+  edits + Claude critique freshness refresh.
+- Source turn notes:
+  `.agent-handoff/turns/E5-T-FIX-003-codex-dashboard-provenance-advisor-visibility.md`
+  and
+  `.agent-handoff/turns/E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md`.
+- External advisor: GPT-5.5 Pro / OpenAI / advisor-class; current need
+  optional; last advisor input N/A because no repo-visible advisor note
+  or scribed advisor record is incorporated in this snapshot.
 
-E5-T-FIX-002 no-touch surfaces: no `PROTOCOL.md`, `alert-state.sh`, kit/v1,
+E5-T-FIX-003 no-touch surfaces: no `PROTOCOL.md`, `alert-state.sh`, kit/v1,
 root docs, docs/, product/runtime files, live reflections/improvements/
 advisor-notes paths, pilot repo, live Open Mic Colorado, CommonGround,
 NanoClaw, Notion, `.mcp.json`, plugin/config files, automation, model calls,
 MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config,
 server, staging, commit, push, branch, or PR.
+
+E5-T-FIX-003 critique summary (Claude, local-only at this turn): all 11
+focus areas PASS with zero blockers. Independent verification confirmed:
+- 4-file working tree matches authorization 1:1 (3 modifications + 1 new
+  turn note)
+- HTML still verifiably self-contained (independent grep returns ONLY
+  `navigator.clipboard.writeText(target.innerText)` at L370; 1 inline
+  `<script>`, 1 inline `<style>`, 0 `<link>` tags)
+- One-action snapshot design preserved (one DO THIS NOW + h1 + primary
+  paste; Details/Technical/No-touch/Raw state collapsed)
+- Snapshot provenance card adds 4 fields answering "who wrote this and
+  based on what" (Prepared by, Last repo action, Snapshot basis, Source
+  turn note)
+- External advisor visibility card names GPT-5.5 Pro as advisor-class
+  with PROTOCOL.md L171-172 wording preserved verbatim ("External
+  advisor output is not operational unless Sami approves it or a
+  repo-visible record captures it")
+- "Last advisor input: N/A" is honest — does not claim GPT was consulted
+  for this snapshot without repo-visible evidence
+- Details panel now shows all 4 roles (Builder Codex, Auditor Claude,
+  External advisor GPT-5.5 Pro, Sami approval/priority/risk) — first
+  dashboard surface in the E5 arc where Sami is named as a role holder
+- All 3 source-of-truth disciplines preserved with visual emphasis
+- Script execution leaves working tree byte-identical (pre/post
+  `git status` diff empty; script output 109 lines)
+- All no-touch surfaces unchanged (PROTOCOL.md, alert-state.sh, kit
+  templates, root docs, pilot, live OMC; advisor-notes/reflections/
+  improvements paths still absent; no `.mcp.json`; no Notion/NanoClaw/
+  CommonGround new artifacts)
+
+**Headline strengths**:
+- **GPT-5.5 Pro is now visible above the fold as a named advisor-class
+  node** in a dedicated "External advisor visibility" card. No longer
+  buried in collapsed Raw state.
+- **PROTOCOL.md §"Node Capability And Advisor Rules" language is
+  preserved verbatim** — the dashboard surfaces GPT without weakening
+  the operational/advisor distinction.
+- **"Last advisor input: N/A" is honest** — verifiable-evidence-only
+  discipline; does not claim GPT contributed to this snapshot just
+  because GPT has been a regular contributor across the experiment.
+- **Snapshot provenance answers "who wrote this and based on what"** in
+  4 fields, each a verifiable claim (agent name, commit, working tree,
+  file path).
+- **Sami is explicitly named as a role holder in Details** ("Sami:
+  Approval / priority / risk") — first dashboard surface in the E5 arc
+  to do this.
+- **3-card snapshot stack groups related lifecycle info** without
+  duplicating across panels (status → provenance → advisor visibility).
+- **Self-containment preserved.** Single legitimate
+  `navigator.clipboard.writeText(target.innerText)` clipboard call. No
+  `<link>` tags. No external URLs.
+- **Single-purpose 4-file commit shape** matches the proven FIX-002 /
+  FIX-001 / E5-T pattern.
+- **Codex's own turn note verification matches my independent
+  re-verification** 1:1.
+
+**Three Nits (all optional, none blocking)**:
+1. **Growth trajectory observation + snapshot-stack vertical layout.**
+   HTML line count 306 → 350 → 341 → 379 across FIX-001 → FIX-002 →
+   FIX-002+critique → FIX-003. Net +73 lines (24%) in 3 fix iterations.
+   The 3-card snapshot stack pushes the primary paste below the fold on
+   short viewports. Worth observing whether each card actually pays for
+   its above-the-fold space.
+2. **"Snapshot basis" near-duplicates "As of"** — both say "HEAD d6cdc7b
+   plus local FIX-003 working tree." Could consolidate by removing
+   "Snapshot basis" and keeping the 3 distinct provenance fields
+   (Prepared by, Last repo action, Source turn note).
+3. **"Last advisor input: N/A" is accurate but limited** — a future
+   improvement (if Sami separately scopes `.agent-handoff/advisor-notes/`
+   to exist) could surface "Last advisor input across experiment"
+   alongside the snapshot-scoped N/A.
+
+All three fold-able into optional E5-T-FIX-004 or deferrable indefinitely.
+Per the "3-5 real cycles before more dashboard refinement" line, the
+better move is to leave FIX-003 alone for now and observe.
+
+E5-T-FIX-003 critique outputs (local-only):
+- `.agent-handoff/turns/E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to combined-push authorization; snapshot lifecycle fields
+  updated to reflect post-critique state; Prepared by becomes multi-actor)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization (if option a): 5 files (3
+modifications that layer FIX-003 implementation and critique freshness
+refresh together, plus 2 new turn notes). Critique-only push is
+impractical because Codex's FIX-003 modifications and Claude's critique
+freshness refresh are entangled in the same three modified files.
+
+E5-T-FIX-003 critique did not edit PROTOCOL.md, kit templates,
+alert-state.sh, root docs, product/runtime files; did not create
+advisor-notes/reflections/improvements paths; did not create notification
+scripts; did not use Notion/NanoClaw/CommonGround; did not install
+plugins; did not create `.mcp.json`; did not start a server; did not
+create automation, cron, timers, webhooks, launch agents, MCP/plugins,
+bridges; did not stage, commit, push, branch, or PR; did not touch live
+Open Mic Colorado; did not touch pilot repo.
+
+Pattern: sixteenth clean turn-pair in the E5-H → E5-T-FIX-003 arc.
+Single-purpose 5-file combined-push shape (3 modifications + 2 new turn
+notes) matches the proven E5-T-FIX-001 / E5-T-FIX-002 pattern.
+
+**Strategic context**: the representation gap Sami identified
+post-FIX-002 push (GPT buried in collapsed Raw state; no provenance for
+who wrote the current snapshot) is now addressed. The dashboard surfaces
+GPT-5.5 Pro and provenance without promoting GPT to operational or
+weakening any discipline. Per the "3-5 real cycles before more dashboard
+refinement" line, the next move (regardless of push or pause-and-observe)
+is to NOT propose E5-T-FIX-004 until the FIX-003 representation cards
+are observed in real handoff cycles. The local hard-stop discipline
+still holds.
+
+Experiment 5 E5-T-FIX-002 static dashboard snapshot lifecycle clarity was
+pushed at `d6cdc7b` with Claude critique. It added the explicit snapshot
+lifecycle card that E5-T-FIX-003 now preserves and extends.
 
 E5-T-FIX-002 critique summary (Claude, local-only at this turn): all 13 focus
 areas PASS with zero blockers (9 from the prompt + 4 from the system
@@ -2607,10 +2738,10 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to send the E5-T-FIX-002 dashboard snapshot lifecycle update
-  to Claude for critique.
+- Decide whether to send the E5-T-FIX-003 dashboard provenance/advisor
+  visibility update to Claude for critique.
 - After Claude critique, decide whether to authorize staging, commit, and push
-  for the exact E5-T-FIX-002 files plus any critique/freshness files Claude is
+  for the exact E5-T-FIX-003 files plus any critique/freshness files Claude is
   separately authorized to create.
 - No E5-V notification implementation, NanoClaw/CommonGround integration,
   protocol edit, kit edit, alert-state edit, dashboard generator, server,
@@ -2619,18 +2750,19 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-If Sami proceeds, critique E5-T-FIX-002 as auditor/advisor. Use the primary
+If Sami proceeds, critique E5-T-FIX-003 as auditor/advisor. Use the primary
 paste block in `.agent-handoff/DASHBOARD.md` or `.agent-handoff/
-DASHBOARD.html`. Focus on whether the dashboard now reads as a one-action
-static snapshot, includes Prepared for / As of / Expires after / After this
-action near the top, avoids unverifiable fresh/refreshed claims, preserves the
-single primary copy block, keeps details collapsed, remains self-contained,
-preserves COLLAB authority/no-approval rules, and stayed within the approved
-four files.
+DASHBOARD.html`. Focus on whether the dashboard preserves the one-action
+snapshot design, shows snapshot provenance near Snapshot status, makes GPT-5.5
+Pro visible as advisor-class without promoting GPT to operational actor,
+avoids claiming GPT was consulted or incorporated without repo-visible
+evidence, clearly shows Builder/Auditor/External advisor/Sami roles, remains
+self-contained, preserves COLLAB authority/no-approval rules, and stayed within
+the approved four files.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-T-FIX-002. No E5-V implementation, dashboard
+None active. Hard stop after E5-T-FIX-003. No E5-V implementation, dashboard
 edit, alert-state edit, protocol edit, kit edit, server, model call, NanoClaw,
 CommonGround, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
 global config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
@@ -2639,9 +2771,11 @@ authorized.
 
 ## Next Request To Sami
 
-Paste the E5-T-FIX-002 Claude critique prompt from the top of
+Paste the E5-T-FIX-003 Claude critique prompt from the top of
 `.agent-handoff/DASHBOARD.html` or `.agent-handoff/DASHBOARD.md` if you want
-to proceed. Treat the dashboard as a static snapshot: it is prepared for that
-one critique action and expires after the critique starts or completes, after
-any push lands, or when the next actor changes. Do not reuse it until Claude
-or Codex refreshes the dashboard files in a repo-visible turn.
+to proceed. Treat the dashboard as a static snapshot prepared for that one
+critique action. GPT-5.5 Pro is visible as external advisor-class only; no
+repo-visible advisor note or scribed advisor record is incorporated in this
+snapshot. Do not reuse the dashboard after critique starts or completes, after
+any push lands, or when the next actor changes until Claude or Codex refreshes
+the dashboard files in a repo-visible turn.
