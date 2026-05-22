@@ -6,16 +6,16 @@
   <title>Claude-Codex Control Tower</title>
   <style>
     :root {
-      --bg: #f6f7f9;
+      --bg: #f5f7fa;
       --panel: #ffffff;
       --text: #15171a;
       --muted: #5b6472;
-      --line: #d9dee7;
+      --line: #d8dee8;
       --accent: #0f766e;
-      --accent-dark: #134e4a;
+      --accent-soft: #e6f5f2;
       --warn: #9a3412;
-      --code: #111827;
-      --code-text: #f9fafb;
+      --code: #101827;
+      --code-text: #f8fafc;
     }
     * { box-sizing: border-box; }
     body {
@@ -23,100 +23,84 @@
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.35;
+      line-height: 1.38;
     }
     main {
-      max-width: 1180px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 18px;
     }
-    header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 14px;
-      align-items: start;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 14px;
-      margin-bottom: 16px;
-    }
-    h1 {
-      margin: 0 0 6px;
-      font-size: 30px;
-      font-weight: 750;
-      letter-spacing: 0;
-    }
-    h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: 0;
-    }
-    p { margin: 0; color: var(--muted); }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 6px 10px;
-      background: var(--panel);
-      font-weight: 650;
-      color: var(--accent-dark);
-      white-space: nowrap;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-    section {
+    .hero {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 14px;
-      min-width: 0;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
     }
-    .span-12 { grid-column: span 12; }
-    .span-8 { grid-column: span 8; }
-    .span-6 { grid-column: span 6; }
-    .span-4 { grid-column: span 4; }
-    .kv {
-      display: grid;
-      grid-template-columns: minmax(130px, 0.42fr) minmax(0, 1fr);
-      gap: 8px 12px;
-      font-size: 14px;
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 0 0 4px;
     }
-    .k { color: var(--muted); }
-    .v { font-weight: 640; min-width: 0; overflow-wrap: anywhere; }
-    .copy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+    h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      font-weight: 780;
+      letter-spacing: 0;
     }
-    .copy-block {
+    .why {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .facts {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
+      margin-bottom: 14px;
+    }
+    .fact {
+      background: var(--accent-soft);
+      border: 1px solid #bfe5dd;
+      border-radius: 7px;
+      padding: 9px 10px;
       min-width: 0;
+    }
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+      margin-bottom: 2px;
+    }
+    .value {
+      font-weight: 750;
+      overflow-wrap: anywhere;
     }
     .copy-head {
       display: flex;
-      gap: 8px;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
     }
     .copy-title {
-      font-weight: 720;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 760;
     }
     button {
       border: 1px solid var(--accent);
       background: var(--accent);
       color: #ffffff;
       border-radius: 6px;
-      min-height: 32px;
-      padding: 5px 9px;
+      min-height: 34px;
+      padding: 6px 11px;
       font: inherit;
-      font-size: 13px;
+      font-size: 14px;
       cursor: pointer;
+      white-space: nowrap;
     }
     button:focus { outline: 3px solid #99f6e4; outline-offset: 2px; }
     pre {
@@ -124,75 +108,100 @@
       background: var(--code);
       color: var(--code-text);
       border-radius: 7px;
-      padding: 10px;
-      min-height: 76px;
-      max-height: 210px;
-      overflow: auto;
+      padding: 12px;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
-      font-size: 12px;
+      max-height: 300px;
+      overflow: auto;
+      font-size: 13px;
     }
+    .guardrail {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .guardrail strong { color: var(--text); }
+    .panels {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    details {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 760;
+      padding: 12px 14px;
+    }
+    .panel-body {
+      border-top: 1px solid var(--line);
+      padding: 13px 14px;
+    }
+    .kv {
+      display: grid;
+      grid-template-columns: minmax(130px, 0.35fr) minmax(0, 1fr);
+      gap: 8px 12px;
+      font-size: 14px;
+    }
+    .k { color: var(--muted); }
+    .v { font-weight: 650; min-width: 0; overflow-wrap: anywhere; }
     ul {
       margin: 0;
       padding-left: 18px;
     }
-    li { margin: 3px 0; }
-    .warning { color: var(--warn); font-weight: 720; }
-    .source {
-      border-left: 4px solid var(--accent);
+    li { margin: 4px 0; }
+    .secondary {
+      display: grid;
+      gap: 10px;
     }
-    @media (max-width: 900px) {
-      header { grid-template-columns: 1fr; }
-      .span-8, .span-6, .span-4 { grid-column: span 12; }
-      .copy-grid { grid-template-columns: 1fr; }
+    .warning { color: var(--warn); font-weight: 760; }
+    @media (max-width: 740px) {
+      main { padding: 12px; }
+      h1 { font-size: 29px; }
+      .facts { grid-template-columns: 1fr; }
+      .kv { grid-template-columns: 1fr; }
+      .copy-head { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <main>
-    <header>
-      <div>
-        <h1>Claude-Codex Control Tower</h1>
-        <p>Human-facing local dashboard for current handoff state. Static view only.</p>
+    <section class="hero">
+      <p class="eyebrow">DO THIS NOW</p>
+      <h1>Authorize the E5-T-FIX-001 push</h1>
+      <p class="why">Why: Claude critique passed with zero blockers. The simplified dashboard is verifiably safer than E5-T (1 primary action above the fold vs 4 parallel blocks; technical detail collapsed; HTML still self-contained). Empirical first-use success: this critique was invoked via the dashboard's own paste block.</p>
+
+      <div class="facts">
+        <div class="fact">
+          <div class="label">Sami needed</div>
+          <div class="value">Yes — per-push authorization</div>
+        </div>
+        <div class="fact">
+          <div class="label">Next actor</div>
+          <div class="value">Sami (decide); then Claude (execute push)</div>
+        </div>
+        <div class="fact">
+          <div class="label">Current state</div>
+          <div class="value">FIX-001 + critique local; awaiting push</div>
+        </div>
       </div>
-      <div class="badge">Next repo actor: Sami</div>
-    </header>
 
-    <div class="grid">
-      <section class="span-8">
-        <h2>Status</h2>
-        <div class="kv">
-          <div class="k">Current status</div><div class="v">E5-T critique complete; pending Sami push authorization + next-step decision</div>
-          <div class="k">Human attention</div><div class="v">decision needed (5-option HDP)</div>
-          <div class="k">Latest pushed</div><div class="v">1922562 E5-T: add human control tower dashboard</div>
-          <div class="k">Latest artifact</div><div class="v">.agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md (local-only)</div>
-        </div>
-      </section>
+      <div class="copy-head">
+        <div class="copy-title">Primary paste/action: E5-T-FIX-001 push authorization</div>
+        <button type="button" data-copy="primary-action">Copy primary</button>
+      </div>
+      <pre id="primary-action">Approved:
 
-      <section class="span-4">
-        <h2>Next Repo Actor</h2>
-        <div class="kv">
-          <div class="k">Actor</div><div class="v">Sami</div>
-          <div class="k">Action</div><div class="v">Per-push authorization (4 files) + next-step decision</div>
-          <div class="k">Claude / Codex</div><div class="v">Both hard-stopped after E5-T critique</div>
-        </div>
-      </section>
-
-      <section class="span-12">
-        <h2>What Sami Pastes Next</h2>
-        <div class="copy-grid">
-          <div class="copy-block">
-            <div class="copy-head">
-              <div class="copy-title">Paste to Claude (push authorization, if accepting E5-T)</div>
-              <button type="button" data-copy="claude">Copy</button>
-            </div>
-            <pre id="claude">Approved:
-
-Stage, commit, and push only these E5-T critique files:
+Stage, commit, and push only these E5-T-FIX-001 files:
 - .agent-handoff/COLLAB.md
-- .agent-handoff/DASHBOARD.md
 - .agent-handoff/DASHBOARD.html
-- .agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/turns/E5-T-FIX-001-codex-human-control-tower-simplification.md
+- .agent-handoff/turns/E5-T-FIX-001-claude-critique-human-control-tower-simplification.md
 
 Do not stage or commit:
 - .agent-handoff/PROTOCOL.md
@@ -202,15 +211,12 @@ Do not stage or commit:
 - .agent-handoff/advisor-notes/
 - kit/v1/
 - README.md, AGENTS.md, CLAUDE.md, docs/
-- .agent-handoff/consultants/, .agent-handoff/digests/
-- prior turn notes
 - product/runtime files
 - live Open Mic Colorado files
 - open-mic-colorado-agent-pilot files
 - CommonGround / NanoClaw / Notion files
 - plugin/config files / .mcp.json
 - launch agents / cron / timer / webhook / MCP / plugin / bridge files
-- .DS_Store / .claude/worktrees/
 - generated/local/secret files / trust/event/private-key files
 - unrelated files
 
@@ -219,84 +225,75 @@ git status --short --untracked-files=all
 git diff --check
 
 Commit message:
-E5-T Claude critique: accept human control tower dashboard
+E5-T-FIX-001: simplify human control tower + Claude critique
 
 After push, hard stop.</pre>
-          </div>
-          <div class="copy-block">
-            <div class="copy-head">
-              <div class="copy-title">Paste to Codex</div>
-              <button type="button" data-copy="codex">Copy</button>
-            </div>
-            <pre id="codex">No Codex action needed. Hard-stopped after E5-T until Sami routes a new turn.</pre>
-          </div>
-          <div class="copy-block">
-            <div class="copy-head">
-              <div class="copy-title">Ask GPT-5.5 Pro / External Advisor</div>
-              <button type="button" data-copy="advisor">Copy</button>
-            </div>
-            <pre id="advisor">Not needed for E5-T critique acceptance. Optional only if you want external review on the next-step decision (use HTML now vs add osascript vs defer).</pre>
-          </div>
-          <div class="copy-block">
-            <div class="copy-head">
-              <div class="copy-title">Exact Approval Text</div>
-              <button type="button" data-copy="approval">Copy</button>
-            </div>
-            <pre id="approval">See "Paste to Claude (push authorization, if accepting E5-T)" block above. Copy that block to authorize the 4-file push.</pre>
-          </div>
-        </div>
-      </section>
 
-      <section class="span-4">
-        <h2>External Advisor Needed</h2>
-        <div class="kv">
-          <div class="k">Needed</div><div class="v">No</div>
-          <div class="k">Advisor</div><div class="v">N/A</div>
-          <div class="k">Status</div><div class="v">Not needed</div>
-        </div>
-      </section>
+      <p class="guardrail"><strong>Source of truth:</strong> COLLAB.md is authoritative. This dashboard is view-only and does not grant approval. <span class="warning">No approval is inferred from green status, silence, consensus, or "looks good".</span></p>
+    </section>
 
-      <section class="span-4">
-        <h2>Current Operational Nodes</h2>
-        <div class="kv">
+    <div class="panels">
+      <details>
+        <summary>Details</summary>
+        <div class="panel-body kv">
+          <div class="k">Status</div><div class="v">E5-T-FIX-001 local implementation complete; pending Claude critique.</div>
           <div class="k">Builder</div><div class="v">Codex (OpenAI, architect-class)</div>
           <div class="k">Auditor</div><div class="v">Claude Code (Anthropic, architect-class)</div>
           <div class="k">Diversity</div><div class="v">Strong</div>
+          <div class="k">External advisor</div><div class="v">Not needed</div>
           <div class="k">Subagents</div><div class="v">0 - none</div>
         </div>
-      </section>
+      </details>
 
-      <section class="span-4">
-        <h2>Artifact Visibility</h2>
-        <div class="kv">
-          <div class="k">E5-T (Codex)</div><div class="v">Pushed at 1922562</div>
-          <div class="k">E5-T critique</div><div class="v">Local-only (4 files)</div>
-          <div class="k">Action needed</div><div class="v">Sami per-push authorization + first real-use of HTML dashboard</div>
+      <details>
+        <summary>Technical packet</summary>
+        <div class="panel-body">
+          <ul>
+            <li>Latest pushed baseline before this fix: <strong>1922562 E5-T: add human control tower dashboard</strong>.</li>
+            <li>E5-T-FIX-001 simplifies the human-facing dashboard without changing protocol, kit templates, or alert-state.sh.</li>
+            <li>Changed files: DASHBOARD.html, DASHBOARD.md, COLLAB.md, and the E5-T-FIX-001 Codex turn note.</li>
+            <li>Required script check: <code>sh .agent-handoff/tools/alert-state.sh</code> ran and left the working tree unchanged.</li>
+          </ul>
         </div>
-      </section>
+      </details>
 
-      <section class="span-6">
-        <h2>Local-Only / Pushed / Action Needed</h2>
-        <ul>
-          <li>Pushed baseline: <strong>1922562 E5-T: add human control tower dashboard</strong>.</li>
-          <li>Local-only E5-T critique files: critique turn note, COLLAB.md, DASHBOARD.md, DASHBOARD.html.</li>
-          <li>Next safe action: copy the Paste to Claude block above (if accepting) and authorize the 4-file push, then use the HTML dashboard for the next real handoff.</li>
-        </ul>
-      </section>
+      <details>
+        <summary>No-touch list</summary>
+        <div class="panel-body">
+          <ul>
+            <li>No PROTOCOL.md, alert-state.sh, kit/v1, root docs, product/runtime files, pilot repo, or live Open Mic Colorado touch.</li>
+            <li>No reflections, improvements, advisor-notes, .mcp.json, Notion, NanoClaw, CommonGround, plugin/config files, or generated secret files.</li>
+            <li>No automation, model calls, MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config, staging, commit, push, branch, or PR.</li>
+          </ul>
+        </div>
+      </details>
 
-      <section class="span-6">
-        <h2>Hard Stop / No-Touch Summary</h2>
-        <ul>
-          <li>No protocol, kit template, alert-state, root-doc, product/runtime, pilot, or live OMC touch.</li>
-          <li>No automation, model calls, MCP/plugins/bridges, CommonGround, NanoClaw, Notion, cron, timers, webhooks, launch agents, or global config.</li>
-          <li>No staging, commit, push, branch, or PR.</li>
-        </ul>
-      </section>
-
-      <section class="span-12 source">
-        <h2>Source of Truth</h2>
-        <p><strong>COLLAB.md is authoritative.</strong> DASHBOARD.html is a local view only and does not grant approval. <span class="warning">No approval is inferred from green status, silence, consensus, or "looks good".</span></p>
-      </section>
+      <details>
+        <summary>Raw state</summary>
+        <div class="panel-body secondary">
+          <div>
+            <div class="copy-head">
+              <div class="copy-title">Secondary: Paste to Codex</div>
+              <button type="button" data-copy="codex-secondary">Copy</button>
+            </div>
+            <pre id="codex-secondary">No Codex action is needed. Codex is hard-stopped after E5-T-FIX-001 until Sami routes a new turn or push authorization.</pre>
+          </div>
+          <div>
+            <div class="copy-head">
+              <div class="copy-title">Secondary: Ask GPT-5.5 Pro / external advisor</div>
+              <button type="button" data-copy="advisor-secondary">Copy</button>
+            </div>
+            <pre id="advisor-secondary">Not needed for E5-T-FIX-001. Optional only if Sami wants external strategy review after Claude critique.</pre>
+          </div>
+          <div>
+            <div class="copy-head">
+              <div class="copy-title">Secondary: Exact approval text</div>
+              <button type="button" data-copy="approval-secondary">Copy</button>
+            </div>
+            <pre id="approval-secondary">No approval text is active. E5-T-FIX-001 remains local-only until Sami separately approves exact files for staging, commit, and push.</pre>
+          </div>
+        </div>
+      </details>
     </div>
   </main>
   <script>

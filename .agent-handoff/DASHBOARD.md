@@ -11,54 +11,30 @@ not the source of truth.
 - Do not infer approval from green status, silence, consensus, lack of
   objection, or "looks good" language.
 
-## Status
+## DO THIS NOW
 
-| Field | Current value |
-| --- | --- |
-| Current status | E5-T critique complete; pending Sami push authorization + next-step decision |
-| Current next actor | Sami: per-push authorization for E5-T critique files + decide next step |
-| Human attention state | `decision needed` (5-option HDP) |
-| Latest pushed commit | `1922562 E5-T: add human control tower dashboard` |
-| Latest local artifact | `.agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md` |
-| Artifact visibility | E5-T critique local-only until per-push authorization |
-| Local-only / pushed / action needed | 4 local files need push authorization; HTML dashboard ready for first real-use empirical test |
+Paste this to Claude to authorize the E5-T-FIX-001 push (combined Codex
+implementation + Claude critique).
 
-## Current Operational Nodes
+Sami needed: `yes — per-push authorization`
 
-Builder: `Codex` (`OpenAI`, `architect-class`) |
-Auditor: `Claude Code` (`Anthropic`, `architect-class`) |
-Diversity: `strong`
+Next actor: `Sami (decide); then Claude (execute push)`
 
-- Next repo actor: `Sami` (approver / decider)
-- External advisor needed: `no`
-- Subagent delegations this turn: `0` - none
-
-## External Advisor Input
-
-- External advisor needed: `no`
-- Advisor: `N/A`
-- Status: `not needed`
-- Attribution path or quote block: `N/A`
-
-## What Sami Pastes Next
-
-| Target | Prompt / action |
-| --- | --- |
-| Paste to Claude | See copy-ready E5-T critique push authorization below (if accepting). |
-| Paste to Codex | No Codex action; hard-stopped after E5-T. |
-| Ask GPT-5.5 Pro / external advisor | Not needed unless you want external strategy review on the next-step decision. |
-| Exact approval text | See copy-ready push authorization below. |
-
-### Paste To Claude (push authorization, if accepting E5-T)
+Why: Claude critique passed with zero blockers. The simplified dashboard is
+verifiably safer than E5-T (1 primary action above the fold vs 4 parallel
+blocks; 4 `<details>` collapsibles for technical detail; HTML still
+self-contained). Empirical first-use success: this critique was invoked via
+the dashboard's own paste block.
 
 ```text
 Approved:
 
-Stage, commit, and push only these E5-T critique files:
+Stage, commit, and push only these E5-T-FIX-001 files:
 - .agent-handoff/COLLAB.md
-- .agent-handoff/DASHBOARD.md
 - .agent-handoff/DASHBOARD.html
-- .agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/turns/E5-T-FIX-001-codex-human-control-tower-simplification.md
+- .agent-handoff/turns/E5-T-FIX-001-claude-critique-human-control-tower-simplification.md
 
 Do not stage or commit:
 - .agent-handoff/PROTOCOL.md
@@ -68,15 +44,12 @@ Do not stage or commit:
 - .agent-handoff/advisor-notes/
 - kit/v1/
 - README.md, AGENTS.md, CLAUDE.md, docs/
-- .agent-handoff/consultants/, .agent-handoff/digests/
-- prior turn notes
 - product/runtime files
 - live Open Mic Colorado files
 - open-mic-colorado-agent-pilot files
 - CommonGround / NanoClaw / Notion files
 - plugin/config files / .mcp.json
 - launch agents / cron / timer / webhook / MCP / plugin / bridge files
-- .DS_Store / .claude/worktrees/
 - generated/local/secret files / trust/event/private-key files
 - unrelated files
 
@@ -85,54 +58,61 @@ git status --short --untracked-files=all
 git diff --check
 
 Commit message:
-E5-T Claude critique: accept human control tower dashboard
+E5-T-FIX-001: simplify human control tower + Claude critique
 
 After push, hard stop.
 ```
 
-### Paste To Codex
+## Details
+
+| Field | Current value |
+| --- | --- |
+| Current status | E5-T-FIX-001 local implementation complete; pending Claude critique |
+| Builder | Codex (`OpenAI`, `architect-class`) |
+| Auditor | Claude Code (`Anthropic`, `architect-class`) |
+| Diversity | strong |
+| External advisor needed | no |
+| Subagent delegations this turn | 0 - none |
+
+## Technical Packet
+
+- Latest pushed baseline before this fix:
+  `1922562 E5-T: add human control tower dashboard`.
+- E5-T-FIX-001 simplifies the human-facing dashboard without changing protocol,
+  kit templates, or `alert-state.sh`.
+- Changed files:
+  - `.agent-handoff/DASHBOARD.html`
+  - `.agent-handoff/DASHBOARD.md`
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/turns/E5-T-FIX-001-codex-human-control-tower-simplification.md`
+- Required script check: `sh .agent-handoff/tools/alert-state.sh` ran and left
+  the working tree unchanged.
+
+## No-Touch List
+
+No `PROTOCOL.md`, `alert-state.sh`, kit templates, root docs,
+product/runtime files, pilot repo, live Open Mic Colorado,
+reflections/improvements/advisor-notes paths, `.mcp.json`, Notion, NanoClaw,
+CommonGround, plugin/config files, automation, model calls, MCP/plugins,
+bridges, cron, timers, webhooks, launch agents, global config, staging, commit,
+push, branch, or PR.
+
+## Raw State
+
+Paste to Codex:
 
 ```text
-No Codex action is needed. Codex is hard-stopped after E5-T until Sami routes a new turn.
+No Codex action is needed. Codex is hard-stopped after E5-T-FIX-001 until Sami routes a new turn or push authorization.
 ```
 
-### Ask GPT-5.5 Pro / External Advisor
+Ask GPT-5.5 Pro / external advisor:
 
 ```text
-Not needed for E5-T critique acceptance. Optional only if you want external review on the next-step decision (use HTML now vs add osascript vs defer).
+Not needed for E5-T-FIX-001. Optional only if Sami wants external strategy review after Claude critique.
 ```
 
-### Exact Approval Text
+Exact approval text:
 
 ```text
-See "Paste To Claude (push authorization, if accepting E5-T)" above.
+No approval text is active. E5-T-FIX-001 remains local-only until Sami separately approves exact files for staging, commit, and push.
 ```
-
-## Artifact Visibility
-
-- Latest pushed: `1922562 E5-T: add human control tower dashboard`.
-- E5-T critique outputs are local-only pending Sami's per-push authorization:
-  - `.agent-handoff/turns/E5-T-claude-critique-human-control-tower-dashboard.md`
-  - `.agent-handoff/COLLAB.md` (this handoff update)
-  - `.agent-handoff/DASHBOARD.md` (freshness refresh)
-  - `.agent-handoff/DASHBOARD.html` (freshness refresh)
-
-## Hard Stop / No-Touch Summary
-
-No protocol edits, kit template edits, alert-state changes, root docs,
-product/runtime files, pilot repo, live Open Mic Colorado, automation, model
-calls, MCP/plugins/bridges, CommonGround, NanoClaw, Notion, cron, timers,
-webhooks, launch agents, global config, staging, commit, push, branch, or PR
-beyond Sami's separate per-push authorization for the E5-T critique files.
-
-## Next Safe Action
-
-Sami decides:
-- (A) Accept E5-T and authorize the per-push commit above, then **use the
-  HTML dashboard for the next real handoff** as empirical test of relay-
-  burden reduction. **Consultant recommendation.**
-- (B) E5-T-FIX-001 only if specific UI density issues emerge during use
-  (no data yet; premature).
-- (C) Queue osascript/macOS notification design for after observation.
-- (D) NanoClaw V2 toy-repo spike — premature; design philosophy conflicts.
-- (E) Defer/pivot.

@@ -7,19 +7,81 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami next, for decision on next step from the five-option Human Decision
-Packet below. Codex completed E5-T implementation and pushed at `1922562`.
-Claude completed E5-T critique with zero blockers (the critique turn note,
-this COLLAB.md handoff update, and DASHBOARD.md + DASHBOARD.html freshness
-refreshes are local-only pending Sami's separate per-push authorization).
-Both agents are hard-stopped.
+Sami next, for decision on the E5-T-FIX-001 push authorization. Codex completed
+E5-T-FIX-001 local implementation (still uncommitted) and Claude completed
+E5-T-FIX-001 critique with zero blockers. The 8 local files (4 FIX-001 +
+4 critique outputs) await Sami's per-push authorization.
 
 ## Current Phase
 
+Experiment 5 E5-T-FIX-001 human control tower simplification: implementation
+filed locally by Codex (uncommitted); Claude critique filed locally with zero
+blockers recommending acceptance and push.
+
+E5-T-FIX-001 implementation summary: Codex simplified the live
+`.agent-handoff/DASHBOARD.html` and aligned `.agent-handoff/DASHBOARD.md`.
+The top of the HTML dashboard now shows ONE primary action above the fold
+(hero section with "DO THIS NOW" eyebrow, h1 verbalizing the action, 3-fact
+grid, single primary copy block, source-of-truth guardrail). Technical detail
+moves into 4 collapsible `<details>` sections (Details, Technical packet,
+No-touch list, Raw state).
+
+Net effect: HTML went from 310 lines to 306 lines; MD went 31 lines shorter;
+above-the-fold went from 4 competing parallel paste blocks to 1 primary.
+
+**Empirical validation**: the dashboard's primary paste block worked as
+designed — Sami pasted the FIX-001 critique prompt from the dashboard
+directly to invoke this critique. First real-use test PASSED.
+
+E5-T-FIX-001 local outputs (uncommitted):
+- `.agent-handoff/DASHBOARD.html` (199 insertions, 209 deletions)
+- `.agent-handoff/DASHBOARD.md` (75 insertions, 106 deletions)
+- `.agent-handoff/COLLAB.md` (Codex's handoff update)
+- `.agent-handoff/turns/E5-T-FIX-001-codex-human-control-tower-simplification.md`
+
+E5-T-FIX-001 critique summary (Claude, local-only at this turn): all 9 focus
+areas PASS with zero blockers. Independent verification confirmed:
+- 4 working-tree files match authorization 1:1
+- HTML still verifiably self-contained (independent grep returns ONLY
+  `navigator.clipboard.writeText(target.innerText)` at L297)
+- Hero section dominates above-the-fold with strong typographic hierarchy
+  (eyebrow, h1, why, facts grid, primary copy block, guardrail)
+- 4 `<details>` collapsibles for progressive disclosure
+- All 4 source-of-truth disciplines preserved with visual emphasis
+- Script execution leaves working tree unchanged (independently verified
+  against the dirty FIX-001 working tree)
+- All no-touch surfaces unchanged (PROTOCOL.md, alert-state.sh, kit
+  templates, root docs, pilot, live OMC)
+
+**Headline UX improvements vs E5-T**:
+- 4 parallel paste blocks → 1 primary above the fold
+- 9 visible sections → 1 hero + 4 collapsed
+- Source-of-truth guardrail moved from bottom of page → bottom of hero
+  (Sami's eye path)
+- Mobile breakpoint tightened from 900px → 740px
+
+E5-T-FIX-001 critique outputs (local-only):
+- `.agent-handoff/turns/E5-T-FIX-001-claude-critique-human-control-tower-simplification.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to show FIX-001 push authorization)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization: 8 files (4 FIX-001 implementation +
+4 critique outputs). Critique outputs partially overlap (COLLAB.md,
+DASHBOARD.md, DASHBOARD.html are modifications on top of FIX-001's
+modifications; the net effect is the final state of those 3 files after
+critique's freshness refresh, plus the 2 new turn notes).
+
+E5-T-FIX-001 no-touch surfaces: `PROTOCOL.md`, `alert-state.sh`, kit
+templates, root docs, product/runtime files, live reflections/improvements/
+advisor-notes paths, pilot repo, live Open Mic Colorado, CommonGround,
+NanoClaw, Notion, MCP/plugins/bridges, cron/timers/webhooks/launch agents,
+global config, branch, PR (beyond Sami's separate per-push authorization).
+
 Experiment 5 E5-T human-facing control tower dashboard: implementation
-filed and pushed by Codex at `1922562`; Claude critique filed locally with
-zero blockers recommending option A (use the HTML dashboard for the next
-real handoff as empirical test of relay-burden reduction).
+filed and pushed by Codex at `1922562`; Claude critique accepted E5-T with
+zero blockers and identified this simplification need.
 
 E5-T implementation summary: Codex refreshed the live
 `.agent-handoff/DASHBOARD.md` with the E5-S template fields (Current
@@ -2316,61 +2378,51 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-T as filed (human-facing control tower dashboard)?
-- Decide next step from the five-option Human Decision Packet in the E5-T
-  critique turn note: (A) use the HTML dashboard for the next real handoff
-  (empirical test of relay-burden reduction) — **consultant recommendation**;
-  no new turn required; (B) small E5-T-FIX-001 — not warranted without
-  observation data; (C) add osascript/macOS notification design — queue
-  after observing HTML dashboard alone; (D) NanoClaw V2 toy-repo spike —
-  premature; design philosophy conflicts persist; (E) defer/pivot.
-- Authorize Claude's E5-T critique push if accepting (4 files: critique
-  turn note + this COLLAB.md handoff update + DASHBOARD.md freshness
-  refresh + DASHBOARD.html freshness refresh).
-- Optional later: after first use, optionally file a small turn to update
-  DASHBOARD.html's "Paste to Claude" block to show the NEXT prompt (push
-  authorization for the E5-T critique files), so the dashboard stays
-  actionable as the handoff cycle advances.
+- Accept E5-T-FIX-001 as filed (human control tower simplification)?
+- Authorize the combined push of 6 files (4 FIX-001 implementation surfaces
+  + 2 new turn notes from FIX-001 implementation and critique). Note:
+  COLLAB.md/DASHBOARD.md/DASHBOARD.html are shared between Codex's FIX-001
+  work and Claude's critique freshness refresh — final state of each
+  reflects both.
+- After push, **use the simplified dashboard for the next real handoff**
+  as continued empirical test of the single-primary-action design.
+- Optional later: if `<details>` sections never get opened in real use,
+  consider whether they're carrying weight or can be removed entirely.
+  Don't decide yet — wait for observation data.
 - Optional later: file E5-V bulk advisor transcript strategy if/when a
   transcript becomes repeatedly referenced or search/reuse becomes painful.
 
 ## Next Request To Claude
 
-None active. E5-T critique complete and hard-stopped. Wait for Sami's
-per-push authorization for the E5-T critique files (4 files) and/or Sami's
-decision on next step (consultant recommendation: option A — use the HTML
-dashboard for the next real handoff).
+None active. E5-T-FIX-001 critique complete and hard-stopped. Wait for
+Sami's per-push authorization for the combined 6-file commit.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-T. E5-T does not authorize E5-U, staging,
-commit, push, branch, PR, automation, model calls, MCP/plugins/bridges,
-CommonGround, NanoClaw, Hermes, Claude Dreams, cron, timers, webhooks,
-launch agents, global config, pilot repo, live Open Mic Colorado,
-product/runtime, root-doc, protocol, kit-template, alert-state.sh, or any
-other change.
+None active. Hard stop after E5-T-FIX-001. No E5-U, staging, commit, push,
+branch, PR, automation, model calls, MCP/plugins/bridges, CommonGround,
+NanoClaw, Hermes, Claude Dreams, cron, timers, webhooks, launch agents,
+global config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
+protocol, kit-template, alert-state.sh, or any other change is authorized.
 
 ## Next Request To Sami
 
-Decide on next step from the five-option Human Decision Packet above.
-Consultant recommendation: option (A) accept E5-T and use the HTML
-dashboard for the next real handoff. Open `.agent-handoff/DASHBOARD.html`
-in a browser (open via Finder, double-click) and try the copy buttons.
-Empirical test: does the "Paste to Claude" / "Exact Approval Text" copy-
-ready flow reduce the keystrokes vs scrolling COLLAB.md? After 3-5 real
-handoff cycles, decide: keep, refine via E5-T-FIX-001, or add C
-(osascript notification) for the passive-notification gap. Per the active
-Stopgate Rule, no further DASHBOARD.html or DASHBOARD.md modification
-beyond this critique's freshness refresh, no PROTOCOL.md edit, no kit
-template edit, no alert-state.sh edit, no Notion/NanoClaw use, no plugin
-install, no `.mcp.json` creation, no automation, no CommonGround
-install/clone/service/Postgres/adapter/prototype, no server start, no
-live `.agent-handoff/reflections/` creation, no `.agent-handoff/
-improvements/` creation, no `.agent-handoff/advisor-notes/` creation, no
-notification/wake runtime, no root-doc edit, no pilot touch, no live Open
-Mic Colorado touch, no install, no Hermes/Claude Dreams enablement, no
-MCP/plugin/bridge/global config change, no commit or push (beyond your
-separate per-push authorization for the E5-T critique files), no
-cron/timer/webhook/launchd setup, no branch creation, no PR, no staging,
-no signed trust/event/private-key edit, and no proposed-to-approved
-transition occurs without your explicit per-action approval.
+Authorize the E5-T-FIX-001 push (combined Codex implementation + Claude
+critique). The dashboard's refreshed primary paste block contains the
+verbatim push authorization, ready to copy. After push, open
+`.agent-handoff/DASHBOARD.html` for the next real handoff and test whether
+the single-primary-action design reduces friction further than the original
+E5-T layout. Per the active Stopgate Rule, no further DASHBOARD.html or
+DASHBOARD.md modification beyond this critique's freshness refresh, no
+PROTOCOL.md edit, no kit template edit, no alert-state.sh edit, no Notion
+use, no NanoClaw use, no plugin install, no `.mcp.json` creation, no
+automation, no CommonGround install/clone/service/Postgres/adapter/
+prototype, no server start, no live `.agent-handoff/reflections/` creation,
+no `.agent-handoff/improvements/` creation, no `.agent-handoff/advisor-
+notes/` creation, no notification/wake runtime, no root-doc edit, no pilot
+touch, no live Open Mic Colorado touch, no install, no Hermes/Claude
+Dreams enablement, no MCP/plugin/bridge/global config change, no
+commit/push/branch/PR (beyond your separate per-push authorization for the
+E5-T-FIX-001 files), no cron/timer/webhook/launchd setup, no signed
+trust/event/private-key edit, and no proposed-to-approved transition
+occurs without your explicit per-action approval.
