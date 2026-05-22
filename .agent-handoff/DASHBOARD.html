@@ -172,36 +172,35 @@
   <main>
     <section class="hero">
       <p class="eyebrow">DO THIS NOW</p>
-      <h1>Authorize the E5-T-FIX-001 push</h1>
-      <p class="why">Why: Claude critique passed with zero blockers. The simplified dashboard is verifiably safer than E5-T (1 primary action above the fold vs 4 parallel blocks; technical detail collapsed; HTML still self-contained). Empirical first-use success: this critique was invoked via the dashboard's own paste block.</p>
+      <h1>Authorize the E5-U critique push (then optionally authorize E5-V)</h1>
+      <p class="why">Why: E5-U critique passed with zero blockers. The osascript notifier design is the smallest safe path to attention-without-Terminal-staring. After this push lands, the E5-V authorization is pre-drafted verbatim in the E5-U turn note Section 9 (lines 230-303) — copy that to Codex.</p>
 
       <div class="facts">
         <div class="fact">
           <div class="label">Sami needed</div>
-          <div class="value">Yes — per-push authorization</div>
+          <div class="value">Yes — critique push + E5-V decision</div>
         </div>
         <div class="fact">
           <div class="label">Next actor</div>
-          <div class="value">Sami (decide); then Claude (execute push)</div>
+          <div class="value">Sami (decide); then Claude (push); then Codex (E5-V)</div>
         </div>
         <div class="fact">
           <div class="label">Current state</div>
-          <div class="value">FIX-001 + critique local; awaiting push</div>
+          <div class="value">E5-U design pushed; critique local; awaiting push</div>
         </div>
       </div>
 
       <div class="copy-head">
-        <div class="copy-title">Primary paste/action: E5-T-FIX-001 push authorization</div>
+        <div class="copy-title">Primary paste/action: E5-U critique push authorization</div>
         <button type="button" data-copy="primary-action">Copy primary</button>
       </div>
       <pre id="primary-action">Approved:
 
-Stage, commit, and push only these E5-T-FIX-001 files:
+Stage, commit, and push only these E5-U critique files:
 - .agent-handoff/COLLAB.md
-- .agent-handoff/DASHBOARD.html
 - .agent-handoff/DASHBOARD.md
-- .agent-handoff/turns/E5-T-FIX-001-codex-human-control-tower-simplification.md
-- .agent-handoff/turns/E5-T-FIX-001-claude-critique-human-control-tower-simplification.md
+- .agent-handoff/DASHBOARD.html
+- .agent-handoff/turns/E5-U-claude-critique-dashboard-refresh-notification-design.md
 
 Do not stage or commit:
 - .agent-handoff/PROTOCOL.md
@@ -217,6 +216,7 @@ Do not stage or commit:
 - CommonGround / NanoClaw / Notion files
 - plugin/config files / .mcp.json
 - launch agents / cron / timer / webhook / MCP / plugin / bridge files
+- notification scripts
 - generated/local/secret files / trust/event/private-key files
 - unrelated files
 
@@ -225,9 +225,11 @@ git status --short --untracked-files=all
 git diff --check
 
 Commit message:
-E5-T-FIX-001: simplify human control tower + Claude critique
+E5-U Claude critique: accept dashboard refresh and notification design
 
-After push, hard stop.</pre>
+After push, hard stop.
+
+Next paste (for Codex, after this push lands): copy E5-V authorization verbatim from .agent-handoff/turns/E5-U-codex-dashboard-refresh-notification-design.md Section 9 (lines 230-303). Optional refinement: suggest the notifier WRAP alert-state.sh (pipe + grep + osascript) rather than duplicate logic.</pre>
 
       <p class="guardrail"><strong>Source of truth:</strong> COLLAB.md is authoritative. This dashboard is view-only and does not grant approval. <span class="warning">No approval is inferred from green status, silence, consensus, or "looks good".</span></p>
     </section>

@@ -7,21 +7,19 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex completed E5-U design locally and is hard-stopped. Claude is next for
-E5-U critique. E5-U addresses the static dashboard lifecycle gap: browser
-refresh reloads the same file bytes and cannot recompute dashboard state after
-a push.
+Sami next, for decision on the next step from the 6-option Human Decision
+Packet below. Codex completed E5-U design and pushed at `802baa1`. Claude
+completed E5-U critique with zero blockers (the critique turn note, this
+COLLAB.md handoff update, and DASHBOARD.md + DASHBOARD.html freshness
+refreshes are local-only pending Sami's separate per-push authorization).
+Both agents are hard-stopped.
 
 ## Current Phase
 
-Experiment 5 E5-U dashboard refresh + notification design: Codex filed a
-design-only note recommending the smallest safe next implementation: a manually
-run, read-only macOS attention notifier using `osascript`, not browser-only
-auto-refresh and not a file-writing dashboard generator.
-
-E5-U design outputs (local-only):
-- `.agent-handoff/turns/E5-U-codex-dashboard-refresh-notification-design.md`
-- `.agent-handoff/COLLAB.md` (this handoff update)
+Experiment 5 E5-U dashboard refresh + notification design: design filed and
+pushed by Codex at `802baa1`; Claude critique filed locally with zero
+blockers recommending option A (authorize E5-V using Codex's pre-drafted
+exact approval text verbatim).
 
 E5-U design conclusion:
 - Static browser refresh cannot update stale dashboard content unless the
@@ -31,12 +29,83 @@ E5-U design conclusion:
 - A manual read-only osascript helper is the smallest safe notification path.
 - NanoClaw/CommonGround/MCP/model-calling/generator/watcher paths are deferred.
 
-E5-U no-touch surfaces: `DASHBOARD.html`, `DASHBOARD.md`, `alert-state.sh`,
-`PROTOCOL.md`, kit templates, root docs, product/runtime files, live
-reflections/improvements/advisor-notes paths, pilot repo, live Open Mic
-Colorado, CommonGround, NanoClaw, Notion, MCP/plugins/bridges,
-cron/timers/webhooks/launch agents, global config, staging, commit, push,
-branch, and PR.
+E5-U design outputs (pushed at `802baa1`):
+- `.agent-handoff/turns/E5-U-codex-dashboard-refresh-notification-design.md`
+- `.agent-handoff/COLLAB.md` (Codex's handoff update)
+
+E5-U design did not edit `DASHBOARD.html`, `DASHBOARD.md`, `alert-state.sh`,
+`PROTOCOL.md`, kit templates, root docs, product/runtime files; did not
+create live reflections/improvements/advisor-notes paths; did not create
+notification scripts; did not start a server; did not use Notion/NanoClaw/
+CommonGround; did not install plugins; did not create `.mcp.json`; did not
+create cron/timers/webhooks/launch agents; did not change global config; did
+not branch or PR.
+
+E5-U critique summary (Claude, local-only at this turn): all 12 focus areas
+PASS with zero blockers. Independent verification confirmed:
+- 2-file commit matches authorization 1:1
+- No notification scripts in repo
+- No launch agents created by E5-U (only pre-existing third-party plists in
+  ~/Library/LaunchAgents)
+- All no-touch surfaces unchanged
+- Pilot clean and HEAD unchanged at `655e75bc`
+- 10 design sections covering lifecycle explanation, 3-source distinction,
+  browser-only rejection, osascript helper specification, NanoClaw deferral,
+  smallest-safe recommendation, success criteria (8), kill criteria (7),
+  E5-V exact approval text (~70 lines), and verification
+
+**Headline strengths**:
+- **Section 1 lifecycle explanation** correctly diagnoses the static-file
+  ≠ recomputation trap. "The dashboard can be an excellent control surface,
+  but static browser refresh is not dashboard recomputation."
+- **Three-source distinction** (browser reload / repo-writing agent /
+  generator-watcher) eliminates the "auto-refresh will solve it" temptation
+  with precision.
+- **"Repeats stale confidence faster"** framing — auto-refresh isn't
+  neutral; it can actively erode trust by making old content look active.
+- **Browser-only rejection is reasoned** with 6 specific limits, not
+  dismissive.
+- **Osascript helper has 8 explicit constraints + 6 attention triggers +
+  4 risks + 4 mitigations** — comprehensive specification.
+- **"Use a tiny sibling script so alert-state.sh stays unchanged"** — right
+  discipline (don't modify the proven script).
+- **NanoClaw correctly deferred** with explicit "evaluate only after manual
+  notifier proves passive attention useful AND toy-repo spike validates."
+- **Pre-drafted E5-V exact approval text** is ~70 lines comprehensive,
+  ready to paste verbatim.
+- **All 3 source-of-truth disciplines** stated in 4 independent placements.
+- **Single-purpose 2-file design-only commit shape** matches the proven
+  E3-I/J / E5-H/J/L/N/O/R pattern.
+
+**Three Nits (none blocking)**:
+1. Notification wording could include attention state level for at-a-glance
+   signal (e.g., "Claude-Codex: decision needed — check COLLAB.md").
+2. Osascript notifier overlaps with alert-state.sh in reads + triggers.
+   Codex should consider whether to WRAP alert-state.sh (pipe its output
+   and fire osascript when patterns match) rather than duplicate logic.
+   Wrapping reduces maintenance burden and prevents drift.
+3. E5-V exact approval text leaves wrapping-vs-duplication choice implicit.
+   A small explicit note ("may wrap `alert-state.sh` output to detect
+   attention events") would point Codex toward the lower-maintenance path.
+
+E5-U critique outputs (local-only):
+- `.agent-handoff/turns/E5-U-claude-critique-dashboard-refresh-notification-design.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to E5-V authorization)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+E5-U critique did not edit PROTOCOL.md, kit templates, alert-state.sh, root
+docs, product/runtime files; did not create advisor-notes/reflections/
+improvements paths; did not create notification scripts; did not use
+Notion/NanoClaw/CommonGround; did not install plugins; did not create
+`.mcp.json`; did not start a server; did not create automation, cron, timers,
+webhooks, launch agents, MCP/plugins, bridges; did not stage, commit, push,
+branch, or PR; did not touch live Open Mic Colorado; did not touch pilot
+repo.
+
+Pattern: fourteenth clean turn-pair in the E5-H → E5-U arc. Single-purpose
+2-file design-only commit shape stable for the 20th time across E5.
 
 Experiment 5 E5-T-FIX-001 human control tower simplification: implementation
 and critique were pushed at `1d1b17e` with zero blockers. The current dashboard
@@ -2404,31 +2473,61 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-U as a design-only dashboard refresh + notification design?
-- Decide whether E5-V should implement the recommended manual read-only
-  osascript attention notifier.
-- Optional later: file a separate bulk advisor transcript strategy if/when a
-  transcript becomes repeatedly referenced or search/reuse becomes painful.
+- Accept E5-U as filed (design-only dashboard refresh + notification design)?
+- Decide next step from the 6-option Human Decision Packet in the E5-U
+  critique turn note: (A) authorize E5-V using Codex's pre-drafted exact
+  approval text from E5-U Section 9 verbatim — **consultant recommendation**;
+  zero structural defects; pre-drafted text comprehensive; (B) E5-U-FIX-001
+  — not needed (zero defects); (C) defer notification — valid if you want
+  more pause-and-observe; (D) NanoClaw V2 toy-repo spike — premature per
+  E5-U §5; (E) broader integration review — premature; (F) pivot — not
+  recommended.
+- Authorize Claude's E5-U critique push if accepting (4 files: critique
+  turn note + this COLLAB.md handoff + DASHBOARD.md + DASHBOARD.html
+  freshness refreshes).
+- Optional E5-V implementation refinement (per critique Nit #2): consider
+  whether the osascript notifier WRAPS alert-state.sh (pipes its output +
+  grep + fires osascript) or DUPLICATES its logic. Wrapping reduces
+  maintenance burden and prevents drift. Codex can decide during E5-V; worth
+  noting explicitly when authorizing.
 
 ## Next Request To Claude
 
-Critique E5-U as auditor/advisor. Focus on whether the static-file lifecycle
-explanation is correct, whether browser-only reload is correctly rejected as
-insufficient, whether the manual osascript helper is the smallest safe next
-implementation, and whether the E5-V approval text is scoped tightly.
+None active. E5-U critique complete and hard-stopped. Wait for Sami's
+per-push authorization for the E5-U critique files (4 files) and/or Sami's
+decision on next step (consultant recommendation: option A — authorize E5-V
+using Codex's pre-drafted exact approval text from E5-U Section 9
+verbatim).
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-U. No implementation, dashboard edit,
+None active. Hard stop after E5-U. No E5-V implementation, dashboard edit,
 alert-state edit, protocol edit, kit edit, server, model call, NanoClaw,
 CommonGround, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
 global config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
-staging, commit, push, branch, PR, or any other change is authorized.
+notification script, staging, commit, push, branch, PR, or any other change
+is authorized.
 
 ## Next Request To Sami
 
-After Claude critique, decide whether to accept E5-U and authorize a narrow
-E5-V implementation. Consultant recommendation from E5-U: implement the manual
-read-only osascript attention notifier first; do not start with browser-only
-reload, a dashboard-writing generator, NanoClaw, CommonGround, MCP, model calls,
-daemon, cron, launch agent, timer, webhook, or global config.
+Decide on next step from the 6-option Human Decision Packet above.
+Consultant recommendation: option (A) authorize E5-V using Codex's
+pre-drafted exact approval text from E5-U Section 9 (L230-303) verbatim.
+The text is comprehensive (~70 lines), names exact allowed files
+(`attention-notify.sh`, COLLAB.md, new E5-V turn note), enumerates
+required reads, lists 10+ prohibitions, includes verification commands and
+hard stop. Per the active Stopgate Rule, no E5-V implementation, no
+further DASHBOARD.html/DASHBOARD.md modification beyond this critique's
+freshness refresh, no PROTOCOL.md edit, no kit template edit, no
+alert-state.sh edit, no notification script creation, no Notion use, no
+NanoClaw use, no plugin install, no `.mcp.json` creation, no automation,
+no CommonGround install/clone/service/Postgres/adapter/prototype, no
+server start, no live `.agent-handoff/reflections/` creation, no
+`.agent-handoff/improvements/` creation, no `.agent-handoff/advisor-notes/`
+creation, no notification/wake runtime, no root-doc edit, no pilot touch,
+no live Open Mic Colorado touch, no install, no Hermes/Claude Dreams
+enablement, no MCP/plugin/bridge/global config change, no commit or push
+(beyond your separate per-push authorization for the E5-U critique
+files), no cron/timer/webhook/launchd setup, no branch creation, no PR,
+no staging, no signed trust/event/private-key edit, and no proposed-to-
+approved transition occurs without your explicit per-action approval.
