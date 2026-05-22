@@ -7,19 +7,34 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami next, for decision on next step from the six-option Human Decision
-Packet below. Codex completed E5-S implementation and pushed at `02afd2f`.
-Claude completed E5-S critique with zero blockers (the critique turn note,
-this COLLAB.md handoff update, and a DASHBOARD.md freshness refresh are
-local-only pending Sami's separate per-push authorization). Both agents are
-hard-stopped.
+Codex completed E5-T local implementation and is hard-stopped. Claude is next
+for E5-T critique. E5-S is complete and critiqued cleanly at pushed commit
+`7bd05a1`.
 
 ## Current Phase
 
+Experiment 5 E5-T human-facing control tower dashboard: Codex refreshed the
+live `.agent-handoff/DASHBOARD.md` with E5-S fields and added a self-contained
+static `.agent-handoff/DASHBOARD.html` view. Purpose: make the handoff state
+easier for Sami to scan and provide paste-ready "What Sami Pastes Next" blocks
+without adding automation or changing source-of-truth rules.
+
+E5-T local outputs:
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E5-T-codex-human-control-tower-dashboard.md`
+
+E5-T no-touch surfaces: `PROTOCOL.md`, `alert-state.sh`, kit templates, root
+docs, product/runtime files, live reflections/improvements/advisor-notes paths,
+pilot repo, live Open Mic Colorado, CommonGround, NanoClaw, Notion,
+MCP/plugins/bridges, cron/timers/webhooks/launch agents, global config,
+staging, commit, push, branch, and PR.
+
 Experiment 5 E5-S node-capability + dashboard polish implementation: design
-filed and pushed by Codex at `02afd2f`; Claude critique filed locally with
-zero blockers recommending option A (pause-and-observe with dashboard +
-alert-state.sh).
+filed and pushed by Codex at `02afd2f`; Claude critique filed and pushed at
+`7bd05a1` with zero blockers. E5-S is accepted as complete and critiqued
+cleanly.
 
 E5-S implementation summary: Codex implemented the E5-R design narrowly
 across the approved live protocol, kit templates, kit README, COLLAB
@@ -2207,66 +2222,33 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-S as filed (node-capability + dashboard polish implementation)?
-- Decide next step from the six-option Human Decision Packet in the E5-S
-  critique turn note: (A) pause-and-observe with dashboard + alert-state.sh
-  for the next N real handoff cycles (no new turn required) — **consultant
-  recommendation**; governance layer is complete; empirical data should
-  drive next move; (B) small E5-S-FIX-001 — optional; addresses two minor
-  Nits (External advisor needed field duplication, missing PR-consolidation
-  caveat); neither blocks pause-and-observe; (C) tiny osascript/macOS
-  alert-state enhancement design — queue after pause-and-observe data;
-  (D) NanoClaw V1 notification-only spike design — defer until C is
-  evaluated; (E) broader CommonGround/NanoClaw integration review against
-  E5-N kill criteria — premature without observation data; (F)
-  defer/pivot.
-- Authorize Claude's E5-S critique push if accepting (three files: critique
-  turn note + this COLLAB.md handoff update + DASHBOARD.md freshness
-  refresh).
-- Optional later: refresh the live Claude-Codex DASHBOARD.md to incorporate
-  the 3 new template sections (Current Operational Nodes, External Advisor
-  Input, What Sami Pastes Next). Not required for pause-and-observe to
-  begin.
+- None immediate during E5-T local implementation.
+- After Claude critique, Sami may separately decide whether to stage, commit,
+  and push the four E5-T files.
 - Optional later: file E5-V bulk advisor transcript strategy if/when a
   transcript becomes repeatedly referenced or search/reuse becomes painful.
 
 ## Next Request To Claude
 
-None active. E5-S critique complete and hard-stopped. Wait for Sami's
-per-push authorization for the E5-S critique files (critique turn note +
-this COLLAB.md handoff update + DASHBOARD.md freshness refresh) and/or
-Sami's decision on next step (consultant recommendation: option A
-pause-and-observe with dashboard + alert-state.sh).
+After Codex hard-stops, critique E5-T as auditor/advisor. Focus on whether the
+live Markdown dashboard and static HTML dashboard are scoped, source-of-truth
+safe, scannable, copy-ready, and useful enough to reduce Sami's relay burden.
+Do not stage, commit, push, branch, or PR.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-S. E5-S does not authorize E5-T,
-staging, commit, push, branch, PR, live dashboard edits, alert-state edits,
-advisor-notes/reflections/improvements path creation, root-doc edits,
-product/runtime changes, pilot repo edits, live Open Mic Colorado work,
-installs, automation, model calls, watcher/runtime changes, MCP/plugins/
-bridges, CommonGround, Hermes, Claude Dreams, cron/timers/webhooks/launch
-agents, global config changes, signed trust/event/private-key edits, Notion
-use, plugin installs, `.mcp.json` creation, or any proposed-to-approved
-transition.
+Complete E5-T verification, run `sh .agent-handoff/tools/alert-state.sh`,
+confirm the script leaves the working tree unchanged, perform local browser
+verification of `.agent-handoff/DASHBOARD.html` if possible, then hard stop.
+No staging, commit, push, branch, PR, E5-U, automation, model calls,
+MCP/plugins/bridges, CommonGround, NanoClaw, Hermes, Claude Dreams, cron,
+timers, webhooks, launch agents, global config, pilot repo, live Open Mic
+Colorado, product/runtime, root-doc, protocol, kit-template, or alert-state
+change is authorized.
 
 ## Next Request To Sami
 
-Decide on next step from the six-option Human Decision Packet above.
-Consultant recommendation: option (A) pause-and-observe with dashboard +
-alert-state.sh for the next N real handoff cycles. No new turn required to
-start — just use the live system. The governance layer is complete; the
-next decision (osascript enhancement vs NanoClaw spike vs defer) should
-be informed by observation data, not theoretical projection. Per the
-active Stopgate Rule, no E5-T, no live dashboard edit, no alert-state.sh
-edit, no Notion use, no plugin install, no `.mcp.json` creation, no
-automation, no CommonGround install/clone/service/Postgres/adapter/
-prototype, no live `.agent-handoff/reflections/` creation, no
-`.agent-handoff/improvements/` creation, no `.agent-handoff/advisor-notes/`
-creation, no notification/wake runtime, no root-doc edit, no pilot touch,
-no live Open Mic Colorado touch, no
-install, no Hermes/Claude Dreams enablement, no MCP/plugin/bridge/global
-config change, no commit or push, no cron/timer/webhook/launchd setup, no
-branch creation, no PR, no staging, no signed trust/event/private-key edit, and
-no proposed-to-approved transition occurs without your explicit per-action
-approval.
+After Codex hard-stops, paste the E5-T Claude critique prompt from
+`.agent-handoff/DASHBOARD.md` or `.agent-handoff/DASHBOARD.html` if proceeding
+with critique. No exact approval text is active for staging, commit, or push
+until after critique and Sami's separate per-action authorization.
