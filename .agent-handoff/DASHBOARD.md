@@ -13,36 +13,40 @@ not the source of truth.
 
 ## DO THIS NOW
 
-Two pastes available depending on your choice:
+Decide E5-T-FIX-002: combined push (option a) or pause-and-observe (option b).
 
-**Paste 1 (if accepting E5-U critique and proceeding to E5-V)**: paste this
-to Claude first to push the E5-U critique files, then paste the E5-V
-authorization to Codex.
+Sami needed: `yes - choose combined push or pause-and-observe`
 
-**Paste 2 (the E5-V implementation authorization for Codex)**: copy verbatim
-from the E5-U turn note Section 9 (`.agent-handoff/turns/E5-U-codex-dashboard-refresh-notification-design.md`
-lines 230-303). It's 70+ lines and authorizes Codex to implement
-`.agent-handoff/tools/attention-notify.sh` as a manually run read-only
-notifier.
+Next actor: `Sami push decision; then Claude (if push) for hard stop`
 
-Sami needed: `yes — per-push authorization (E5-U critique) + E5-V authorization`
+Why: Claude critique passed all 13 focus areas with zero blockers. The 5-file
+combined push lands the lifecycle clarity in one commit. Pause-and-observe
+leaves it local-only for 3-5 real handoff cycles first. Either is safe.
+Critique-only push is impractical because Codex's FIX-002 modifications and
+Claude's critique freshness refresh are entangled in the same three modified
+files.
 
-Next actor: `Sami (decide); then Claude (push); then Codex (E5-V)`
+## Snapshot Status
 
-Why: E5-U critique passed with zero blockers. The osascript notifier
-design is the smallest safe path to attention-without-Terminal-staring.
-The notifier won't recompute the dashboard (that stays a repo-writing-agent
-responsibility) but it WILL fire macOS notifications when attention is
-needed.
+- Prepared for: Sami push decision for E5-T-FIX-002 + Claude critique.
+- As of: HEAD `b5bd337` plus local E5-T-FIX-002 implementation and Claude
+  critique working tree changes.
+- Expires after: Sami authorizes a push, Sami routes pause-and-observe, or
+  the next actor changes.
+- After this action: do not reuse this dashboard snapshot until a repo-writing
+  agent refreshes `DASHBOARD.md` and `DASHBOARD.html`.
+
+Primary paste (option a - combined push authorization):
 
 ```text
 Approved:
 
-Stage, commit, and push only these E5-U critique files:
+Stage, commit, and push only these E5-T-FIX-002 implementation + Claude critique files:
 - .agent-handoff/COLLAB.md
 - .agent-handoff/DASHBOARD.md
 - .agent-handoff/DASHBOARD.html
-- .agent-handoff/turns/E5-U-claude-critique-dashboard-refresh-notification-design.md
+- .agent-handoff/turns/E5-T-FIX-002-codex-dashboard-snapshot-lifecycle.md
+- .agent-handoff/turns/E5-T-FIX-002-claude-critique-dashboard-snapshot-lifecycle.md
 
 Do not stage or commit:
 - .agent-handoff/PROTOCOL.md
@@ -67,41 +71,47 @@ git status --short --untracked-files=all
 git diff --check
 
 Commit message:
-E5-U Claude critique: accept dashboard refresh and notification design
+E5-T-FIX-002: dashboard snapshot lifecycle + Claude critique
 
 After push, hard stop.
 ```
 
-After the critique push lands, the E5-V implementation authorization for
-Codex is pre-drafted verbatim in `.agent-handoff/turns/E5-U-codex-dashboard-refresh-notification-design.md`
-Section 9 (lines 230-303). Optional implementation refinement: consider
-suggesting Codex WRAP `alert-state.sh` (pipe its output, grep for attention
-events, fire osascript) rather than duplicate its logic.
+Option b - pause-and-observe: requires no approval text. Means do nothing;
+the local working tree remains unchanged so the lifecycle card can be felt
+in real use for 3-5 handoff cycles before any further dashboard work.
 
 ## Details
 
 | Field | Current value |
 | --- | --- |
-| Current status | E5-T-FIX-001 local implementation complete; pending Claude critique |
+| Current status | E5-T-FIX-002 + Claude critique both local-only; awaiting Sami push decision |
 | Builder | Codex (`OpenAI`, `architect-class`) |
 | Auditor | Claude Code (`Anthropic`, `architect-class`) |
 | Diversity | strong |
 | External advisor needed | no |
 | Subagent delegations this turn | 0 - none |
+| Critique result | All 13 focus areas PASS with zero blockers; 3 optional nits |
+| Alternative | Pause-and-observe: do nothing; let the lifecycle card sit local for 3-5 real handoff cycles |
 
 ## Technical Packet
 
 - Latest pushed baseline before this fix:
-  `1922562 E5-T: add human control tower dashboard`.
-- E5-T-FIX-001 simplifies the human-facing dashboard without changing protocol,
-  kit templates, or `alert-state.sh`.
-- Changed files:
+  `b5bd337 E5-U Claude critique: accept dashboard refresh notification design`.
+- E5-T-FIX-002 clarifies that `DASHBOARD.html` is a static one-action snapshot,
+  not a live recomputing app.
+- Changed files (combined for option a - 5 files):
   - `.agent-handoff/DASHBOARD.html`
   - `.agent-handoff/DASHBOARD.md`
   - `.agent-handoff/COLLAB.md`
-  - `.agent-handoff/turns/E5-T-FIX-001-codex-human-control-tower-simplification.md`
-- Required script check: `sh .agent-handoff/tools/alert-state.sh` ran and left
-  the working tree unchanged.
+  - `.agent-handoff/turns/E5-T-FIX-002-codex-dashboard-snapshot-lifecycle.md`
+  - `.agent-handoff/turns/E5-T-FIX-002-claude-critique-dashboard-snapshot-lifecycle.md`
+- Required script check for this turn:
+  `sh .agent-handoff/tools/alert-state.sh` ran and left the working tree
+  byte-identical (pre/post `git status --short --untracked-files=all` diff
+  empty; script output 109 lines).
+- Independent self-contained HTML check: grep for external API patterns
+  returns exactly one match (the legitimate
+  `navigator.clipboard.writeText(target.innerText)` for copy buttons).
 
 ## No-Touch List
 
@@ -117,17 +127,17 @@ push, branch, or PR.
 Paste to Codex:
 
 ```text
-No Codex action is needed. Codex is hard-stopped after E5-T-FIX-001 until Sami routes a new turn or push authorization.
+No Codex action is needed. Codex remains hard-stopped after E5-T-FIX-002 until Sami routes a new turn or push authorization.
 ```
 
 Ask GPT-5.5 Pro / external advisor:
 
 ```text
-Not needed for E5-T-FIX-001. Optional only if Sami wants external strategy review after Claude critique.
+Not needed for E5-T-FIX-002. Critique completed with zero blockers. Optional only if Sami wants external strategy review before deciding push vs pause-and-observe.
 ```
 
 Exact approval text:
 
 ```text
-No approval text is active. E5-T-FIX-001 remains local-only until Sami separately approves exact files for staging, commit, and push.
+The combined-push authorization for option a is the primary paste block in the DO THIS NOW section above. Pause-and-observe (option b) requires no approval text — it simply means do nothing; the local working tree remains unchanged. No approval text is active until Sami pastes the primary block or routes a new action.
 ```

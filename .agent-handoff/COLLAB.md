@@ -7,14 +7,148 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Sami next, for decision on the next step from the 6-option Human Decision
-Packet below. Codex completed E5-U design and pushed at `802baa1`. Claude
-completed E5-U critique with zero blockers (the critique turn note, this
-COLLAB.md handoff update, and DASHBOARD.md + DASHBOARD.html freshness
-refreshes are local-only pending Sami's separate per-push authorization).
-Both agents are hard-stopped.
+Claude has completed the E5-T-FIX-002 critique locally and is hard-stopped.
+Sami is the next actor to decide between (a) combined push of E5-T-FIX-002 +
+critique (5 files: 3 modifications + 2 new turn notes) or (b) pause-and-
+observe (no push; let the lifecycle card sit in the local working tree for
+3-5 real handoff cycles before any further dashboard work). No staging,
+commit, push, branch, PR, automation, model calls, server,
+NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
+agent/global config, pilot repo, live Open Mic Colorado, protocol, kit
+template, or alert-state work is authorized.
 
 ## Current Phase
+
+Experiment 5 E5-T-FIX-002 static dashboard snapshot lifecycle clarity:
+implementation and Claude critique are both local-only and await Sami's push
+decision. This turn keeps the simplified single-primary-action dashboard from
+E5-T-FIX-001 and adds an explicit snapshot lifecycle card so a browser reload
+cannot look like recomputation.
+
+E5-T-FIX-002 local outputs:
+- `.agent-handoff/DASHBOARD.html` (snapshot lifecycle card near the top)
+- `.agent-handoff/DASHBOARD.md` (aligned snapshot lifecycle wording)
+- `.agent-handoff/COLLAB.md` (handoff update)
+- `.agent-handoff/turns/E5-T-FIX-002-codex-dashboard-snapshot-lifecycle.md`
+
+E5-T-FIX-002 dashboard lifecycle fields (post-critique state):
+- Prepared for: Sami push decision for E5-T-FIX-002 + Claude critique.
+- As of: HEAD `b5bd337` plus local E5-T-FIX-002 implementation and Claude
+  critique working tree changes.
+- Expires after: Sami authorizes a push, Sami routes pause-and-observe, or
+  the next actor changes.
+- After this action: do not reuse this dashboard snapshot until a repo-writing
+  agent refreshes `DASHBOARD.md` and `DASHBOARD.html`.
+
+E5-T-FIX-002 no-touch surfaces: no `PROTOCOL.md`, `alert-state.sh`, kit/v1,
+root docs, docs/, product/runtime files, live reflections/improvements/
+advisor-notes paths, pilot repo, live Open Mic Colorado, CommonGround,
+NanoClaw, Notion, `.mcp.json`, plugin/config files, automation, model calls,
+MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config,
+server, staging, commit, push, branch, or PR.
+
+E5-T-FIX-002 critique summary (Claude, local-only at this turn): all 13 focus
+areas PASS with zero blockers (9 from the prompt + 4 from the system
+reminder). Independent verification confirmed:
+- 4-file working tree matches authorization 1:1 (3 modifications + 1 new
+  turn note)
+- HTML still verifiably self-contained (independent grep for
+  `src=|href=|http://|https://|fetch(|XMLHttpRequest|WebSocket|EventSource|
+  localStorage|sessionStorage|indexedDB|cookie|navigator\.` returns ONLY
+  `navigator.clipboard.writeText(target.innerText)` at L341)
+- Lifecycle card uses snapshot-language exclusively ("Prepared for",
+  "As of", "Expires after", "After this action") — zero unverifiable
+  freshness claims
+- "Expires after" lists 3 observable yes/no conditions (Claude critique
+  starts or completes; E5-T-FIX-002 push lands; next actor changes) — no
+  time-based decay
+- "After this action" tells the reader what to do when the snapshot expires
+  — closes the browser-refresh-rewrites-the-file misunderstanding from
+  E5-U Section 2
+- Lifecycle card positioned between facts grid and primary copy block
+  (clean cognitive flow: facts → snapshot status → paste block)
+- MD §"Snapshot Status" mirrors HTML lifecycle card field-for-field
+- HTML grew only 44 lines (306 → 350) — no bloat
+- One primary copy block above the fold; 4 `<details>` collapsed below
+  (Details, Technical packet, No-touch list, Raw state)
+- All 3 source-of-truth disciplines preserved with visual emphasis
+  (COLLAB.md authoritative bolded; "No approval is inferred from green
+  status, silence, consensus, or 'looks good'" in `.warning` orange)
+- Script execution leaves working tree byte-identical (pre/post
+  `git status --short --untracked-files=all` diff is empty; script
+  output 109 lines)
+- All no-touch surfaces unchanged (PROTOCOL.md, alert-state.sh, kit
+  templates, root docs, pilot, live OMC; advisor-notes/reflections/
+  improvements paths still absent; no `.mcp.json`; no Notion/NanoClaw/
+  CommonGround new artifacts)
+
+**Headline strengths**:
+- **Lifecycle card uses zero unverifiable freshness wording.** Every field
+  is a pinned verifiable fact ("As of HEAD b5bd337 + working tree") or a
+  forward-looking expiry condition.
+- **"Expires after" lists 3 concrete observable conditions, not a clock.**
+  Sami checks: did Claude start/finish critique? Did push land? Did the
+  next actor change? Three yes/no questions, no time-based decay.
+- **"After this action" gives the reader explicit next-step instructions**
+  for the expired state — closes the E5-U Section 2 documentation gap.
+- **Lifecycle card positioned between facts grid and primary paste block.**
+  Reader sees facts → snapshot status → paste block in one cognitive flow.
+- **HTML grew only 44 lines** (306 → 350). Growth is the lifecycle card
+  itself and the responsive CSS for its grid. No bloat.
+- **Self-containment preserved.** Independent grep returns exactly ONE
+  external-API-shaped match (the legitimate clipboard call).
+- **Codex's own turn note verification matches my independent
+  re-verification** including self-contained HTML check, post-script
+  working-tree comparison, and no-touch confirmation.
+- **Single-purpose 4-file commit shape** matches E5-T-FIX-001 1:1.
+
+**Three Nits (all optional, none blocking)**:
+1. Lifecycle card uses the shared `.label` CSS class for its "Snapshot
+   status" header — could elevate visually with a dedicated class
+   (e.g., `.lifecycle-header`) with heavier weight or accent color.
+2. "Expires after" lists 3 conditions joined by "or" without ranking —
+   observation only; current order already matches likelihood.
+3. DASHBOARD.md "Snapshot Status" is a flat 4-bullet list while HTML uses
+   a 2-column grid — could use a markdown table to mirror HTML rendering
+   more closely. Aesthetic only.
+
+All three fold-able into optional E5-T-FIX-003 or deferrable indefinitely.
+Per the "3-5 real cycles before more dashboard refinement" line, the
+better move is to leave the lifecycle card alone for now.
+
+E5-T-FIX-002 critique outputs (local-only):
+- `.agent-handoff/turns/E5-T-FIX-002-claude-critique-dashboard-snapshot-lifecycle.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to combined-push authorization; snapshot lifecycle fields
+  updated to reflect post-critique state)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization (if option a): 5 files (3
+modifications that layer FIX-002 implementation and critique freshness
+refresh together, plus 2 new turn notes — FIX-002 implementation note
+and critique note). Critique-only push is impractical because Codex's
+FIX-002 modifications and Claude's critique freshness refresh are
+entangled in the same three modified files.
+
+E5-T-FIX-002 critique did not edit PROTOCOL.md, kit templates,
+alert-state.sh, root docs, product/runtime files; did not create
+advisor-notes/reflections/improvements paths; did not create notification
+scripts; did not use Notion/NanoClaw/CommonGround; did not install
+plugins; did not create `.mcp.json`; did not start a server; did not
+create automation, cron, timers, webhooks, launch agents, MCP/plugins,
+bridges; did not stage, commit, push, branch, or PR; did not touch live
+Open Mic Colorado; did not touch pilot repo.
+
+Pattern: fifteenth clean turn-pair in the E5-H → E5-T-FIX-002 arc.
+Single-purpose 5-file combined-push shape (3 modifications + 2 new turn
+notes) matches the proven E5-T-FIX-001 pattern.
+
+**Strategic context**: per the "3-5 real cycles before more dashboard
+refinement" line, the better next move (regardless of push or
+pause-and-observe) is to NOT propose E5-T-FIX-003 or E5-V until the
+lifecycle card has been observed in real handoff cycles. The local
+hard-stop discipline still holds.
 
 Experiment 5 E5-U dashboard refresh + notification design: design filed and
 pushed by Codex at `802baa1`; Claude critique filed locally with zero
@@ -2473,61 +2607,41 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Accept E5-U as filed (design-only dashboard refresh + notification design)?
-- Decide next step from the 6-option Human Decision Packet in the E5-U
-  critique turn note: (A) authorize E5-V using Codex's pre-drafted exact
-  approval text from E5-U Section 9 verbatim — **consultant recommendation**;
-  zero structural defects; pre-drafted text comprehensive; (B) E5-U-FIX-001
-  — not needed (zero defects); (C) defer notification — valid if you want
-  more pause-and-observe; (D) NanoClaw V2 toy-repo spike — premature per
-  E5-U §5; (E) broader integration review — premature; (F) pivot — not
-  recommended.
-- Authorize Claude's E5-U critique push if accepting (4 files: critique
-  turn note + this COLLAB.md handoff + DASHBOARD.md + DASHBOARD.html
-  freshness refreshes).
-- Optional E5-V implementation refinement (per critique Nit #2): consider
-  whether the osascript notifier WRAPS alert-state.sh (pipes its output +
-  grep + fires osascript) or DUPLICATES its logic. Wrapping reduces
-  maintenance burden and prevents drift. Codex can decide during E5-V; worth
-  noting explicitly when authorizing.
+- Decide whether to send the E5-T-FIX-002 dashboard snapshot lifecycle update
+  to Claude for critique.
+- After Claude critique, decide whether to authorize staging, commit, and push
+  for the exact E5-T-FIX-002 files plus any critique/freshness files Claude is
+  separately authorized to create.
+- No E5-V notification implementation, NanoClaw/CommonGround integration,
+  protocol edit, kit edit, alert-state edit, dashboard generator, server,
+  automation, model call, MCP/plugin/bridge, cron, timer, webhook, launch
+  agent, global config, pilot repo, or live Open Mic Colorado work is active.
 
 ## Next Request To Claude
 
-None active. E5-U critique complete and hard-stopped. Wait for Sami's
-per-push authorization for the E5-U critique files (4 files) and/or Sami's
-decision on next step (consultant recommendation: option A — authorize E5-V
-using Codex's pre-drafted exact approval text from E5-U Section 9
-verbatim).
+If Sami proceeds, critique E5-T-FIX-002 as auditor/advisor. Use the primary
+paste block in `.agent-handoff/DASHBOARD.md` or `.agent-handoff/
+DASHBOARD.html`. Focus on whether the dashboard now reads as a one-action
+static snapshot, includes Prepared for / As of / Expires after / After this
+action near the top, avoids unverifiable fresh/refreshed claims, preserves the
+single primary copy block, keeps details collapsed, remains self-contained,
+preserves COLLAB authority/no-approval rules, and stayed within the approved
+four files.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-U. No E5-V implementation, dashboard edit,
-alert-state edit, protocol edit, kit edit, server, model call, NanoClaw,
+None active. Hard stop after E5-T-FIX-002. No E5-V implementation, dashboard
+edit, alert-state edit, protocol edit, kit edit, server, model call, NanoClaw,
 CommonGround, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
 global config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
-notification script, staging, commit, push, branch, PR, or any other change
-is authorized.
+notification script, staging, commit, push, branch, PR, or any other change is
+authorized.
 
 ## Next Request To Sami
 
-Decide on next step from the 6-option Human Decision Packet above.
-Consultant recommendation: option (A) authorize E5-V using Codex's
-pre-drafted exact approval text from E5-U Section 9 (L230-303) verbatim.
-The text is comprehensive (~70 lines), names exact allowed files
-(`attention-notify.sh`, COLLAB.md, new E5-V turn note), enumerates
-required reads, lists 10+ prohibitions, includes verification commands and
-hard stop. Per the active Stopgate Rule, no E5-V implementation, no
-further DASHBOARD.html/DASHBOARD.md modification beyond this critique's
-freshness refresh, no PROTOCOL.md edit, no kit template edit, no
-alert-state.sh edit, no notification script creation, no Notion use, no
-NanoClaw use, no plugin install, no `.mcp.json` creation, no automation,
-no CommonGround install/clone/service/Postgres/adapter/prototype, no
-server start, no live `.agent-handoff/reflections/` creation, no
-`.agent-handoff/improvements/` creation, no `.agent-handoff/advisor-notes/`
-creation, no notification/wake runtime, no root-doc edit, no pilot touch,
-no live Open Mic Colorado touch, no install, no Hermes/Claude Dreams
-enablement, no MCP/plugin/bridge/global config change, no commit or push
-(beyond your separate per-push authorization for the E5-U critique
-files), no cron/timer/webhook/launchd setup, no branch creation, no PR,
-no staging, no signed trust/event/private-key edit, and no proposed-to-
-approved transition occurs without your explicit per-action approval.
+Paste the E5-T-FIX-002 Claude critique prompt from the top of
+`.agent-handoff/DASHBOARD.html` or `.agent-handoff/DASHBOARD.md` if you want
+to proceed. Treat the dashboard as a static snapshot: it is prepared for that
+one critique action and expires after the critique starts or completes, after
+any push lands, or when the next actor changes. Do not reuse it until Claude
+or Codex refreshes the dashboard files in a repo-visible turn.
