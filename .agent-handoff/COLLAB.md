@@ -7,38 +7,230 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude has completed the E6-C critique locally and is hard-stopped. Sami is
-the next actor to decide between (a) combined push of E6-C + critique
-(5 files: 3 modifications + 2 new turn notes) or (b) pause-and-observe (no
-push; let the E6-C operating-model doc-lock sit in the local working tree
-for further consideration before committing). No staging, commit, push,
-branch, PR, protocol codification, kit template edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, notifier, automation,
-model call, OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/
-bridge, cron/timer/webhook/launch agent/global config, pilot repo touch,
-live Open Mic Colorado touch, or product/runtime work is authorized.
+Claude has completed the E6-D critique locally and is hard-stopped. All 18
+focus areas PASS with zero blockers; 3 observational nits are foldable into
+a future E6-D2 codification turn. Sami is the next actor to decide between:
+
+(a) Ask GPT for next-turn synthesis (E6-D2 protocol/schema codification vs
+    E6-DASH-002 Polaris Project Mode panel vs E6-D-FIX-001 vs pause).
+(b) Authorize push of the local E6-D + critique state via PR (now 6 files
+    local: 3 modifications + 3 new turn notes including the E6-C post-merge
+    refresh that has been carried alongside since the merge).
+(c) Pause-and-observe — leave E6-D + critique in the local working tree.
+
+Options (a) and (b) are not mutually exclusive; (b) can happen before or
+after (a). Pure-(c) keeps state local until Sami returns.
+
+Pre-existing local state before E6-D + this critique: Claude's unpushed
+`E6-C-POST-MERGE-claude-dashboard-refresh.md` was already local and has been
+preserved across both E6-D's edits and this critique's edits.
+
+No further staging, commit, push, branch, PR, protocol codification,
+OPERATING-MODEL edit, kit template edit, alert-state edit, advisor-notes/
+reflections/improvements path creation, notifier, automation, model call,
+OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge,
+cron/timer/webhook/launch agent/global config, pilot repo touch, live Open Mic
+Colorado touch, or product/runtime work is authorized.
 
 ## Coordinator Trigger
 - State: ROUTINE
-- Reason: auditor-handoff layer of the already-scoped E6-C docs-lock
-  critique; per the critique authorization, upgrade only on detection of an
-  architecture/scope/safety/UX/automation/governance defect that needs GPT.
-  No such defect detected; 3 nits are observational, not blockers.
+- Reason: auditor pass of the already-scoped E6-D design turn (Codex correctly
+  classified E6-D itself as NEEDS_GPT; this critique is the auditor handoff
+  layer of that already-scoped scope). Per the Coordinator Trigger
+  Classification rule, upgrade only on detection of an architecture/safety/
+  governance defect needing GPT. No such defect detected; 3 nits are
+  observational and foldable into E6-D2.
 
 ## Project Mode (estimated)
-- Dominant mode: Coordinator (~75%, agent heuristic estimate)
-- Sami-decision-pending: ~20%
-- Execution: ~0%
-- Unknown: ~5%
-- Reason: still in operating-model design phase (no approved outcome
-  circle); after this critique, Sami decides whether to push the doc-lock
-  or route a different action. Dominant mode confidence above the ~60%
-  threshold for Coordinator; mode rules from OPERATING-MODEL.md §5
-  applied.
+- Dominant mode: Coordinator (~70%, agent heuristic estimate)
+- Sami-decision-pending: ~25%
+- Execution: ~5%
+- Unknown: 0%
+- Reason: E6-D is architecture (outcome-circle mechanics outside any active
+  circle); no Outcome Circle has been approved, so default mode remains
+  Coordinator per OPERATING-MODEL.md §5. After this critique, Sami picks the
+  next move; Sami-decision-pending picks up some weight. Execution captures
+  the local refresh work. Confidence above the ~60% threshold for Coordinator;
+  mode rules from OPERATING-MODEL.md §5 applied.
+
+## E6-D Critique Summary (Claude, local-only at this turn)
+
+**All 18 focus areas PASS with zero blockers.** Verification confirmed:
+- 5-file working tree matches expected E6-D scope (3 modifications + 2 new
+  turn notes — Codex's E6-D + my preserved post-merge turn note); after this
+  critique adds the critique turn note + freshness refresh, total working
+  tree is 6 files (3 modifications + 3 new turn notes).
+- `git diff --check` clean.
+- All no-touch surfaces unchanged (PROTOCOL.md, OPERATING-MODEL.md,
+  alert-state.sh, kit/v1, root docs, docs/, .mcp.json, .claude/;
+  advisor-notes/reflections/improvements paths still absent).
+- HTML self-contained (1 inline `<script>`, 1 inline `<style>`, 0 `<link>`
+  tags, 0 HTTP URLs, 0 storage/network APIs, 1 executable
+  `clipboard.writeText` call).
+- Pilot clean at `655e75bc`.
+- Codex correctly classified E6-D as NEEDS_GPT + Coordinator mode (~90%).
+- Codex kept E6-D design-only (§8 and §16 explicit; no tooling/scripts/
+  automation/protocol/operating-model/kit edits).
+- Exact Outcome Circle entry rule defined with `Approved Outcome Circle:
+  <packet name>` plus required inline Outcome Packet (§5); extended
+  non-entry list to 7 cases (was 3 in OPERATING-MODEL.md §8).
+- Outcome Packet schema is 14 fields (§6), extending OPERATING-MODEL.md §8's
+  10-field set with 4 sensible additions: Builder, When GPT is called back,
+  Artifact visibility, Branch/PR policy.
+- Rubric design prevents vague "looks good" criteria (§7); requires
+  evidence-mapped, independently checkable, builder-can't-self-grade rules.
+- Result states are clear (9 states, §9); critically, "satisfied means the
+  auditor believes the rubric is satisfied" and does not authorize commit/
+  push/scope/completion.
+- 14 stop conditions (§10) including scope creep, sycophantic loops,
+  unverifiable evidence, file-scope violations.
+- 11 GPT call-back conditions (§11) + 11 Sami call-back conditions (§12),
+  cleanly distinct (GPT = synthesis/architecture; Sami = approval/taste/
+  risk/scope/commit).
+- §12 includes meta stop-condition: "The circle appears to be more work
+  than manual coordination" — forces honest cost assessment.
+- Default-deny on commit/push (§13); 9 specifics required if allowed,
+  including "whether push to `main` is forbidden" (learning from E6-C).
+- Anti-sycophancy discipline comprehensive (§14, 8 rules + 6-item minimum
+  auditor output); matches OPERATING-MODEL.md §12 dissent requirement.
+- Outcome Circle correctly maps to Execution mode (§15); auditor-upgrade
+  rule on Execution-mode laundering prevents abuse.
+- Polaris guidance stays design-only (§16); single-recommendation principle
+  preserved.
+- Bright-line "satisfied != approval / auditor pass != approval" repeated
+  multiply in §9, §13, §14, §17.
+
+**Headline strengths**:
+- **Default-deny on commit/push inside circles** (§13) — the strongest
+  possible safety default; explicit packet override required.
+- **"Whether push to `main` is forbidden" packet field** (§13) — embeds
+  empirical learning from E6-C's auto-mode-classifier block.
+- **Meta stop-condition: "The circle appears to be more work than manual
+  coordination"** (§12) — prevents process-for-process's-sake drift.
+- **Auditor-upgrade rule on Execution-mode laundering** (§15) — closes a
+  potential abuse path where agents claim Execution without a valid packet.
+- **Bright-line "satisfied != approval" repeated 4 times** (§9, §13, §14,
+  §17) — multiply-placed safety so a future reader can't miss it.
+- **9-state result taxonomy** (§9) distinguishes technical outcomes
+  (failed, blocker, max_iterations_reached) from coordination outcomes
+  (needs_gpt, needs_sami, scope_conflict).
+- **14-condition stop list** (§10) covers iteration, repetition, scope,
+  no-touch, security, taste, disagreement, confidence, unexpected diffs,
+  CI/PR cost, sycophantic loops, file-scope violations, unverifiable
+  evidence, GPT/Sami triggers.
+
+**Three observational Nits (none blocking)**:
+1. **Cross-repo terminology inconsistency in §Verification.** Codex's note
+   says "Read-only pilot repo status check was clean" but the check ran in
+   `/Users/samiserrag/Documents/GitHub/colorado-songwriters-collective` —
+   NOT the pilot (`open-mic-colorado-agent-pilot` at `655e75bc`). Not a
+   no-touch violation (read-only check, no writes), but the term "pilot"
+   should be reserved for the actual pilot repo in future turn notes.
+2. **§5 and §6 extend OPERATING-MODEL.md §8 without a doc-lock.** E6-D
+   adds 4 non-entry cases (3 → 7) and 4 packet fields (10 → 14) without
+   touching OPERATING-MODEL.md. Per OPERATING-MODEL.md §0, the operating
+   model "is updated only via authorized doc-lock turns." Recommendation:
+   E6-D2's authorization scope should explicitly include OPERATING-MODEL.md
+   §8 update so codification (PROTOCOL.md) and reference (OPERATING-MODEL.md)
+   land together.
+3. **§13 lacks a default-PR-over-direct-push hint.** §13 lists "whether push
+   to `main` is forbidden" as a packet field but doesn't establish a default
+   of PR-with-feature-branch (as E6-C demonstrated is the safe path).
+   Foldable into E6-D2 codification.
+
+All 3 nits are observational. None affects E6-D acceptance.
+
+**Anti-sycophancy compliance**: per OPERATING-MODEL.md §12, critique names
+3 specific concerns AND explicitly enumerates 10 failure modes checked-and-
+found-absent (silent PROTOCOL/OPERATING-MODEL edits / advisor-notes paths /
+loop runner / auditor-pass-as-approval / model-consensus rubber-stamp /
+default commit-push / model scope-approval / GPT laundering / missing meta
+stop-condition / Polaris-as-coordinator — all absent). Critique is
+COMPLETE per the §12 dissent requirement.
+
+E6-D critique outputs (local-only):
+- `.agent-handoff/turns/E6-D-claude-critique-outcome-circle-mechanics-design.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary action now
+  GPT next-turn question; role-flow advanced; Coordinator Trigger updated
+  to NEEDS_GPT for next substantive turn)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+**Strategic context**: E6-D is the structural prerequisite for letting
+agents work multiple turns inside an approved scope without Sami at every
+relay step. The design is comprehensive but defensive — multiple
+multiply-placed safety lines ensure that "rubric satisfied" cannot
+laundered into approval, that commits/pushes default-deny, and that the
+auditor can challenge Execution-mode claims that lack a valid packet. The
+recommended next turn is **E6-D2 protocol/schema codification** (Claude's
+preference matches Codex's §18 recommendation), with OPERATING-MODEL.md §8
+update folded in to reconcile the design extensions.
+
+Pattern: **twenty-second clean turn-pair** in the E5-H → E6-D arc.
+6-file shape (3 modifications + 3 new turn notes) extending the proven
+combined-push pattern.
+
+Next step:
+- Sami decides (a) GPT next-turn synthesis, (b) authorize push, or (c)
+  pause. Recommended push order: PR with feature branch (per E6-C
+  empirical learning); commit message: `E6-D: Outcome Circle mechanics
+  design + Claude critique`.
 
 ## Current Phase
 
-Experiment 6 E6-C operating-model docs-lock:
+Experiment 6 E6-D Outcome Circle mechanics design + Claude critique (this
+turn). E6-D is local-only and the critique is now complete. See "E6-D
+Critique Summary" above for results. Codex's pre-critique narrative of E6-D
+follows for historical context.
+
+---
+
+(Historical: E6-D critique completed at this turn; all 18 focus areas PASS,
+3 nits. Detail preserved below as Codex wrote it pre-critique.)
+
+E6-D is local-only and ready for Claude critique. Codex designed Outcome Circle
+mechanics without implementation. The design preserves:
+- exact entry phrase: `Approved Outcome Circle: <packet name>`
+- required inline Outcome Packet
+- verbal agreement / agent consensus / dashboard green status / prior similar
+  approval are not entry
+- rubric criteria must be gradeable and evidence-mapped
+- builder attempts, auditor grades, builder revises, auditor regrades
+- result state `satisfied` means auditor believes rubric is satisfied only
+- `satisfied` does not authorize commit, push, new scope, or final completion
+- default no commits/pushes inside a circle unless exact Outcome Packet
+  approval explicitly allows them
+- GPT call-back for architecture drift, rubric ambiguity, repeated failure,
+  disagreement, UX/cognitive-load, "are we wasting time?", unclear evidence,
+  low mode confidence, or Sami request
+- Sami call-back for approval, scope expansion, commit/push, taste, risk,
+  product direction, cost/CI/PR, blocker/iteration-cap stop/continue, or
+  no-touch exceptions
+- builder cannot grade own work
+- auditor pass is evidence, not approval
+- repeated model agreement without evidence triggers GPT
+
+E6-D outputs:
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/turns/E6-D-codex-outcome-circle-mechanics-design.md`
+
+Polaris was refreshed only as a snapshot pointing to E6-D critique handoff.
+No redesign, mode panel, CSS, new buttons, new collapsibles, new scripts, new
+sections, protocol edit, kit edit, or outcome-loop implementation was added.
+
+Next step:
+- Claude Code critiques E6-D for design-only scope, packet completeness,
+  rubric safety, loop semantics, result states, stop conditions, GPT/Sami
+  call-backs, commit/push rules, anti-sycophancy, Project Mode relationship,
+  Polaris design-only relationship, and no-touch compliance.
+
+---
+
+(Historical: E6-C was merged at `171f568`. Detail preserved below.)
+
+Experiment 6 E6-C operating-model docs-lock (historical, merged via PR #2):
 Codex locked the converged E5/E6 operating model into
 `.agent-handoff/OPERATING-MODEL.md` so the major pivots are not lost to chat
 context compaction. The document is a durable reference, updated only via
@@ -3639,42 +3831,43 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to accept E6-C after Claude critique.
-- Decide whether the next implementation should be a Polaris mode panel,
-  outcome-circle design, advisor-notes/scribing path, or another coordinator
-  preservation step.
-- No protocol edit, kit edit, advisor-notes path creation, outcome-loop
-  implementation, notifier, automation, model call, OpenAI API setup,
-  NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, timer, webhook,
-  launch agent, global config, pilot repo, or live Open Mic Colorado work is
-  active.
+- Decide whether to accept E6-D after Claude critique.
+- If accepted, decide whether the next move is E6-D2 protocol/schema
+  codification, E6-DASH-002 Polaris mode/outcome panel, E6-E advisor-notes, or
+  pause/defer.
+- No protocol edit, OPERATING-MODEL edit, kit edit, advisor-notes path
+  creation, outcome-loop implementation, notifier, automation, model call,
+  OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron,
+  timer, webhook, launch agent, global config, pilot repo, or live Open Mic
+  Colorado work is active.
 
 ## Next Request To Claude
 
-Critique E6-C as auditor/advisor after reading the E6-C local files:
-`.agent-handoff/OPERATING-MODEL.md`, `.agent-handoff/COLLAB.md`,
-`.agent-handoff/DASHBOARD.md`, `.agent-handoff/DASHBOARD.html`, and
-`.agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md`. Focus on
-whether Codex kept the turn design-only, locked the converged operating model
-accurately, avoided protocol/kit/script/advisor-notes/automation scope, kept
-Polaris to a snapshot refresh only, and made Project Mode / Outcome Circle clear
-without implementing loop mechanics.
+Critique E6-D as auditor/advisor after reading `PROTOCOL.md`,
+`OPERATING-MODEL.md`, `COLLAB.md`, Polaris, and
+`.agent-handoff/turns/E6-D-codex-outcome-circle-mechanics-design.md`. Focus on
+whether Codex kept E6-D design-only, made Outcome Circle entry and packet
+requirements precise, preserved satisfied != approval, kept commit/push rules
+safe, separated GPT and Sami call-backs, prevented sycophantic loops, preserved
+Project Mode semantics, kept Polaris design-only, and avoided all no-touch
+surfaces.
 
 ## Next Request To Codex
 
-None active. Codex is hard-stopped after E6-C. No further dashboard edit,
+None active. Codex is hard-stopped after E6-D. No further dashboard edit,
 OPERATING-MODEL edit, protocol edit, alert-state edit, kit edit,
-advisor-notes/reflections/improvements path creation, outcome-loop design,
-server, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
-MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon, global config,
-pilot repo, live Open Mic Colorado, product/runtime, root-doc, notification
-script, staging, commit, push, branch, PR, or any other change is authorized.
+advisor-notes/reflections/improvements path creation, outcome-loop
+implementation, server, model call, OpenAI API setup, NanoClaw/CommonGround/
+Notion, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon, global
+config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
+notification script, staging, commit, push, branch, PR, or any other change is
+authorized.
 
 ## Next Request To Sami
 
-Send the E6-C critique prompt from Polaris to Claude Code, or route a different
-action explicitly. After Claude critique, decide whether to accept E6-C,
-request a fix, pause, or authorize a push. Do not authorize protocol changes,
-kit propagation, advisor-notes creation, outcome-loop implementation,
-automation, API setup, transport/NanoClaw review, staging, commit, push,
-branch, or PR until a separate explicit approval.
+Send the E6-D critique prompt from Polaris to Claude Code, or route a different
+action explicitly. After Claude critique, decide whether to accept E6-D,
+request E6-D-FIX-001, pause, or authorize a later E6-D2/E6-DASH-002/E6-E turn.
+Do not authorize protocol changes, kit propagation, advisor-notes creation,
+outcome-loop implementation, automation, API setup, transport/NanoClaw review,
+staging, commit, push, branch, or PR until a separate explicit approval.
