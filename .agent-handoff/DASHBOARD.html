@@ -93,12 +93,12 @@
       margin-right: 4px;
     }
     .human-role-cue {
-      margin: 0 0 16px;
-      padding: 12px 14px;
-      border-radius: 7px;
+      margin: 0 0 14px;
+      padding: 9px 12px;
+      border-radius: 6px;
       border: 1px solid var(--line);
-      border-left-width: 4px;
-      font-size: 13.5px;
+      border-left-width: 3px;
+      font-size: 13px;
     }
     .human-role-cue.role-courier {
       border-color: #a7f3d0;
@@ -127,20 +127,20 @@
     }
     .cue-header {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       flex-wrap: wrap;
-      gap: 6px 10px;
-      margin: 0 0 8px;
-      font-size: 14px;
-      line-height: 1.3;
+      gap: 4px 8px;
+      margin: 0 0 5px;
+      font-size: 13px;
+      line-height: 1.25;
     }
     .cue-icon {
-      font-size: 17px;
+      font-size: 14px;
       line-height: 1;
     }
     .cue-label {
       font-weight: 800;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
     .role-courier .cue-label { color: #064e3b; }
@@ -150,22 +150,22 @@
     .role-stop .cue-label { color: #7f1d1d; }
     .cue-tagline {
       font-weight: 500;
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--muted);
     }
     .cue-fields {
       display: grid;
-      grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
-      gap: 5px 14px;
-      font-size: 13px;
+      grid-template-columns: minmax(140px, 0.3fr) minmax(0, 1fr);
+      gap: 2px 12px;
+      font-size: 12.5px;
     }
     .cue-k { color: var(--muted); }
     .cue-v { color: var(--text); font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
     .cue-note {
-      margin: 12px 0 0;
-      padding-top: 10px;
+      margin: 7px 0 0;
+      padding-top: 6px;
       border-top: 1px dashed var(--line);
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--muted);
     }
     .cue-note details {
@@ -178,73 +178,75 @@
     .cue-note summary {
       cursor: pointer;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 11.5px;
       padding: 0;
       color: var(--muted);
       list-style: none;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
     .cue-note summary::-webkit-details-marker { display: none; }
     .cue-note summary::after {
       content: "▸";
-      font-size: 10px;
+      font-size: 9px;
       color: var(--muted-2);
       transition: transform 0.15s;
     }
     .cue-note details[open] summary::after { transform: rotate(90deg); }
     .cue-note ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-      font-size: 12px;
+      margin: 6px 0 0;
+      padding-left: 16px;
+      font-size: 11.5px;
       color: var(--muted);
     }
-    .cue-note li { font-size: 12px; margin: 3px 0; }
+    .cue-note li { font-size: 11.5px; margin: 2px 0; line-height: 1.4; }
     .cue-note li strong { color: var(--text); }
     .eyebrow {
       color: var(--accent);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 750;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin: 0 0 6px;
+      margin: 0 0 3px;
     }
     h1 {
-      margin: 0 0 6px;
-      font-size: 30px;
+      margin: 0 0 4px;
+      font-size: 24px;
       font-weight: 780;
-      line-height: 1.25;
+      line-height: 1.2;
     }
     .subtitle {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 14px;
+      line-height: 1.45;
     }
     .why {
-      margin: 0 0 16px;
-      font-size: 14px;
+      margin: 0 0 12px;
+      font-size: 13px;
       color: var(--text);
-      padding: 8px 12px;
+      padding: 7px 11px;
       background: var(--accent-soft);
       border-left: 3px solid var(--accent);
       border-radius: 4px;
+      line-height: 1.45;
     }
     .role-flow {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 4px 6px;
-      margin: 0 0 16px;
-      padding: 8px 10px;
+      gap: 3px 5px;
+      margin: 0 0 12px;
+      padding: 6px 9px;
       background: var(--bg);
       border: 1px solid var(--line);
-      border-radius: 6px;
-      font-size: 13px;
+      border-radius: 5px;
+      font-size: 12px;
     }
     .role-flow .step {
-      padding: 3px 9px;
-      border-radius: 14px;
+      padding: 2px 8px;
+      border-radius: 12px;
       white-space: nowrap;
       color: var(--muted-2);
     }
@@ -271,17 +273,17 @@
     .actions {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin: 0 0 12px;
+      gap: 6px;
+      margin: 0 0 10px;
     }
     .action {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 7px;
+      gap: 9px;
+      padding: 9px 13px;
+      border-radius: 6px;
       font: inherit;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
       text-decoration: none;
       text-align: left;
@@ -311,15 +313,16 @@
       font-weight: 600;
     }
     .action .icon {
-      font-size: 17px;
+      font-size: 15px;
       flex-shrink: 0;
     }
     .action .label { flex: 1; }
     .action .hint {
-      font-size: 12px;
+      font-size: 11.5px;
       opacity: 0.85;
       font-weight: 400;
-      margin-top: 2px;
+      margin-top: 1px;
+      line-height: 1.35;
     }
     .action.primary .hint { color: #c7f0e8; }
     .action.gpt .hint { color: #7c5fcb; }
@@ -331,17 +334,19 @@
       flex: 1;
     }
     .route {
-      margin: 14px 0 0;
+      margin: 12px 0 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
+      line-height: 1.45;
     }
     .route strong { color: var(--text); }
     .guardrail {
-      margin-top: 14px;
-      padding-top: 12px;
+      margin-top: 11px;
+      padding-top: 10px;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11.5px;
+      line-height: 1.45;
     }
     .guardrail strong { color: var(--text); }
     .guardrail .warning { color: var(--warn); font-weight: 700; }
@@ -459,26 +464,25 @@
         <div class="cue-header">
           <span class="cue-icon" aria-hidden="true">✉</span>
           <span class="cue-label">Courier only</span>
-          <span class="cue-tagline">— paste agent-authored content; no judgment from you.</span>
+          <span class="cue-tagline">paste agent-authored content; no judgment needed</span>
         </div>
         <div class="cue-fields">
-          <div class="cue-k">GPT needed now</div><div class="cue-v">No — GPT already routed E6-DASH-002 to Claude Design</div>
-          <div class="cue-k">Sami decision needed now</div><div class="cue-v">No — Codex verifies file scope + self-contained HTML next</div>
           <div class="cue-k">Next paste target</div><div class="cue-v">Codex</div>
           <div class="cue-k">Payload type</div><div class="cue-v">Agent-authored prompt</div>
-          <div class="cue-k">Why</div><div class="cue-v">Codex verifies scope/HTML; no judgment needed from you.</div>
+          <div class="cue-k">GPT needed now</div><div class="cue-v">No — already routed</div>
+          <div class="cue-k">Sami decision now</div><div class="cue-v">No — Codex verifies next</div>
+          <div class="cue-k">Why</div><div class="cue-v">Codex verifies scope/HTML; no judgment from you.</div>
         </div>
         <div class="cue-note">
           <details>
-            <summary>About this cue (new in E6-DASH-002)</summary>
+            <summary>About the 5 states</summary>
             <ul>
-              <li><strong>✉ COURIER ONLY</strong> — paste agent-authored content; no judgment needed.</li>
+              <li><strong>✉ COURIER ONLY</strong> — paste agent content; no judgment.</li>
               <li><strong>🔑 APPROVAL ONLY</strong> — paste authorization text; only Sami can approve.</li>
               <li><strong>💬 ASK GPT</strong> — coordinator question needs synthesis or routing.</li>
               <li><strong>⚙ AGENTS RUNNING</strong> — agents work inside an approved Outcome Circle; monitor for callback (scope, risk, blocker, iteration cap).</li>
               <li><strong>⚠ STOP / UNKNOWN</strong> — inputs unavailable or contradictory; default to Ask GPT.</li>
-              <li>Cue is derived from <code>Coordinator Trigger × inside Outcome Circle? × Next Actor</code> per the routing map in the E6-DASH-002 turn note. It is not an authored field.</li>
-              <li>Project Mode remains visible below as descriptive context, but is not the routing input.</li>
+              <li>Derived from <code>Coordinator Trigger × inside Outcome Circle? × Next Actor</code>; not an authored field.</li>
             </ul>
           </details>
         </div>
@@ -486,7 +490,7 @@
 
       <p class="eyebrow">DO THIS NOW</p>
       <h1>Send E6-DASH-002 to Codex for verification</h1>
-      <p class="subtitle">Claude Design added the Human Role Cue (above) and refreshed stale post-PR4 state. 4 files touched per authorization. Codex verifies file scope, HTML self-containment, and no-touch surface compliance. Sami accepts or routes differently after Codex reports.</p>
+      <p class="subtitle">Claude Design added the cue (above) and refreshed stale post-PR4 state. Codex verifies file scope, HTML self-containment, no-touch surfaces.</p>
 
       <div class="role-flow" aria-label="Role flow">
         <span class="step done">PR #4 (E6-D2) merged</span>
@@ -501,7 +505,7 @@
       </div>
 
       <p class="why">
-        Why this snapshot: E6-DASH-002 adds a compact Human Role Cue above the fold so Sami no longer has to translate <code>Coordinator Trigger</code> + <code>Project Mode</code> into "what should I do right now?" The 5 human-facing states are derived from existing fields per a published routing map — not a new authored field. Step 0 of this turn refreshed Polaris/COLLAB from stale "Push E6-D2" framing to current post-merge state.
+        E6-DASH-002 adds the Human Role Cue above so you don't have to translate <code>Coordinator Trigger</code> + <code>Project Mode</code> into "what do I do now?" The 5 states are derived from existing fields per a published routing map. Step 0 refreshed Polaris/COLLAB from stale "Push E6-D2" framing to current post-merge state.
       </p>
 
       <div class="actions" aria-label="Available actions">

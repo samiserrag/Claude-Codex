@@ -7,53 +7,63 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex has completed E6-DASH-002 verification locally and is hard-stopped.
-**E6-DASH-002 is safe to accept.** Claude Design's Polaris Human Role Cue
-implementation passed all requested scope, routing, self-containment,
-authority, and no-touch checks. Codex added only this COLLAB.md handoff
-update and `.agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md`.
+Claude Design has applied **E6-DASH-002-FIX-001 visual tightening** on
+the same branch (`e6-dash-002-human-role-cue`) as a follow-up commit on
+PR #5 ([Claude-Codex#5](https://github.com/samiserrag/Claude-Codex/pull/5)).
+The parent E6-DASH-002 implementation landed in commit `3057f2d` after
+Codex's 18/18 PASS verification. FIX-001 was triggered by Sami's
+in-thread feedback _"Much better, but still visually unfocused for human
+eyes too... Go ahead and fold it in please. Visual tightening."_ and
+tightens the cue panel's padding/font/border + the hero block's H1/
+subtitle/role-flow/why-panel/action buttons. All cue fields, all 5
+states, the published routing map, and all Polaris one-primary-action
+discipline are preserved. Same scope as parent (UX only); no PROTOCOL/
+OPERATING-MODEL/kit/alert-state edits; no new structural HTML; no new
+state-class colors. See `.agent-handoff/turns/E6-DASH-002-FIX-001-claude-
+design-visual-tightening.md` for before/after CSS values and prose
+tightening list.
 
 Sami is the next actor to decide between:
 
-(a) **RECOMMENDED**: accept E6-DASH-002 and authorize exact staging /
-    commit / push / PR scope for the five E6-DASH-002 files:
-    `.agent-handoff/COLLAB.md`, `.agent-handoff/DASHBOARD.html`,
-    `.agent-handoff/DASHBOARD.md`,
-    `.agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md`,
-    and `.agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md`.
-(b) Request a tiny follow-up fix before push.
-(c) Pause-and-observe — leave E6-DASH-002 in the local working tree.
+(a) **RECOMMENDED**: review the FIX-001 rendering in Chrome and merge
+    PR #5 if visually acceptable.
+(b) Ask Codex to re-verify the FIX-001 commit against the same no-touch
+    + HTML self-containment checks before merging.
+(c) Ask for another visual pass (FIX-002 — e.g., neutral cue background
+    if the mint-green still competes with the primary action button).
+(d) Pause — leave PR #5 open with the FIX-001 commit until you decide.
 
-After E6-DASH-002 is accepted/pushed, the next substantive turn remains
-the **first Outcome Circle scope decision** (`Approved Outcome Circle:
-<packet name>`). That entry requires Sami's exact approval with the full
-inline 14-field Outcome Packet per the codified rule, and per the
-bootstrap policy (tracked as a separate E6-PROTOCOL-FIX follow-up),
-should remain NEEDS_GPT until 2 Outcome Circles have completed
-successfully.
+After PR #5 merges, the next substantive turn remains the **first
+Outcome Circle scope decision** (`Approved Outcome Circle: <packet
+name>`). That entry requires Sami's exact approval with the full inline
+14-field Outcome Packet per the codified rule, and per the bootstrap
+policy (tracked as a separate `E6-PROTOCOL-FIX-001` follow-up), should
+remain NEEDS_GPT until 2 Outcome Circles have completed successfully.
 
-No further staging, commit, push, branch, PR, PROTOCOL.md edit,
-OPERATING-MODEL.md edit, kit template edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, first Outcome
-Circle execution, packet template, loop runner, notifier, automation,
-model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
-MCP/plugin/bridge, cron/timer/webhook/launch agent/global config, pilot
-repo touch, live Open Mic Colorado touch, or product/runtime work is
-authorized.
+No further PROTOCOL.md edit, OPERATING-MODEL.md edit, kit template
+edit, alert-state edit, advisor-notes/reflections/improvements path
+creation, first Outcome Circle execution, packet template, loop runner,
+notifier, automation, model call, OpenAI API setup, NanoClaw/
+CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
+agent/global config, pilot repo touch, live Open Mic Colorado touch,
+or product/runtime work is authorized.
 
 ## Coordinator Trigger
 - State: ROUTINE
-- Reason: Codex performed mechanical verification of an already-scoped
-  Claude Design dashboard pass. No architecture, pivot, UX conflict,
-  safety, automation, or tooling trigger fired during verification.
+- Reason: Sami's in-thread visual-tightening direction is a tightening
+  pass of an already-implemented and Codex-verified cue, applied to the
+  existing PR branch. No architecture, pivot, UX conflict, safety,
+  automation, or tooling trigger fired during the FIX-001 pass.
 
 ## Project Mode (estimated)
-- Dominant mode: Coordinator (~70%, agent heuristic estimate)
-- Sami-decision-pending: ~25%
-- Execution: ~5%
+- Dominant mode: Execution (~60%, agent heuristic estimate)
+- Sami-decision-pending: ~30%
+- Coordinator: ~10%
 - Unknown: 0%
-- Reason: no Outcome Circle is active. E6-DASH-002 verification is
-  complete, and Sami now decides accept/push, request fix, or pause.
+- Reason: FIX-001 was execution-mode tightening of the already-landed
+  E6-DASH-002 against a concrete UX brief from Sami. Sami-decision-
+  pending captures the post-FIX-001 review/merge decision. Coordinator
+  weight is residual (no new routing decisions).
 
 ## E6-DASH-002 Verification Summary (Codex, local-only at this turn)
 
@@ -205,22 +215,35 @@ inside the cue panel, not as a sibling panel).
   MCP/plugin/bridge, .mcp.json, cron/timer/webhook/launch agent, global
   config, product/runtime, live Open Mic Colorado, or pilot repo work.
 
-**Known follow-ups** (NOT folded into E6-DASH-002; tracked here):
+**Known follow-ups** (status after FIX-001):
 1. **Bootstrap rule for Outcome Circles** — until 2 Outcome Circles have
    completed successfully, circle entry and exit decisions should remain
    NEEDS_GPT regardless of packet self-classification. Recommended
    placement: tiny `E6-PROTOCOL-FIX-001` adds one paragraph to
    `PROTOCOL.md` § Outcome Circles. Out of E6-DASH-002 scope (UX only,
-   no PROTOCOL.md edits).
+   no PROTOCOL.md edits). **STATUS: still open.**
 2. **AGENTS RUNNING visual treatment is provisional.** No Outcome Circle
    has run yet, so the AGENTS RUNNING styling (neutral chip + monitor-
    for-callback tagline) is minimum-viable. Refine after the first
    circle reveals what's actually useful (iteration counter? builder/
-   auditor identity strip? stop-condition checklist?).
+   auditor identity strip? stop-condition checklist?). **STATUS: still
+   open; FIX-001 tightened other states but kept AGENTS RUNNING
+   provisional.**
 3. **OPERATING-MODEL.md L3 "Last doc-lock" header is still stale** — was
    noted in E6-D2 critique; remains stale because E6-DASH-002 cannot
    edit OPERATING-MODEL.md per scope. Foldable into a future small
-   docs-cleanup turn or `E6-D2-FIX-001`.
+   docs-cleanup turn or `E6-D2-FIX-001`. **STATUS: still open.**
+4. **Visual tightening of cue panel + hero block** — was flagged by
+   Sami in screenshot review. **STATUS: APPLIED as E6-DASH-002-FIX-001
+   on the same branch (`e6-dash-002-human-role-cue`); folded into PR
+   #5 as a follow-up commit.** See `.agent-handoff/turns/E6-DASH-002-
+   FIX-001-claude-design-visual-tightening.md` for before/after CSS
+   values and prose tightening list.
+5. **(Candidate) FIX-002 neutral cue background** — if the mint-green
+   COURIER ONLY background still competes visually with the primary
+   action button after FIX-001, a future FIX-002 could move the cue to
+   a neutral background with state carried only by the left border +
+   icon. Not authorized; awaiting Sami judgment after FIX-001 review.
 
 **Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): this
 implementation turn names 3 specific concerns (provisional AGENTS

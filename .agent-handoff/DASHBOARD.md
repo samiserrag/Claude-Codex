@@ -16,21 +16,20 @@ not the source of truth.
 
 ## Human Role Cue
 
-> ✉ **COURIER ONLY** — paste content already authored by an agent; no
-> judgment from you.
+> ✉ **COURIER ONLY** — paste agent-authored content; no judgment needed.
 
 | Field | Value |
 | --- | --- |
-| GPT needed now | No — GPT already routed E6-DASH-002 to Claude Design |
-| Sami decision needed now | No — Codex verifies file scope + self-contained HTML next |
 | Next paste target | Codex |
 | Payload type | Agent-authored prompt |
-| Why | Codex verifies scope/HTML; no judgment needed from you. |
+| GPT needed now | No — already routed |
+| Sami decision now | No — Codex verifies next |
+| Why | Codex verifies scope/HTML; no judgment from you. |
 
-**About this cue** (new in E6-DASH-002): the 5 states answer "what role am I
-playing right now?"
+<details>
+<summary>About the 5 states</summary>
 
-- ✉ **COURIER ONLY** — paste agent-authored content; no judgment needed.
+- ✉ **COURIER ONLY** — paste agent content; no judgment.
 - 🔑 **APPROVAL ONLY** — paste authorization text; only Sami can approve.
 - 💬 **ASK GPT** — coordinator question needs synthesis or routing.
 - ⚙ **AGENTS RUNNING** — agents work inside an approved Outcome Circle;
@@ -38,20 +37,20 @@ playing right now?"
 - ⚠ **STOP / UNKNOWN** — inputs unavailable or contradictory; default to
   Ask GPT.
 
-The cue is derived from `(Coordinator Trigger × inside Outcome Circle? ×
-Next Actor)`. It is not an authored field. Project Mode remains visible
-below as descriptive context, but is not the routing input.
+Derived from `Coordinator Trigger × inside Outcome Circle? × Next
+Actor`; not an authored field. Project Mode remains visible below as
+descriptive context but is not a routing input.
+
+</details>
 
 ## DO THIS NOW
 
 **Send E6-DASH-002 to Codex for verification — Claude Design added the
-Human Role Cue (this panel) and refreshed stale post-PR4 state.**
+cue (above) and refreshed stale post-PR4 state.**
 
-E6-DASH-002 implementation is local-only. 4 files touched per
-authorization: `DASHBOARD.html`, `DASHBOARD.md`, `COLLAB.md`, and the new
-turn note. Codex verifies file scope, HTML self-containment, and no-touch
-surface compliance. Sami accepts or routes differently after Codex
-reports.
+Codex verifies file scope (4 files), HTML self-containment, and
+no-touch surface compliance. Sami accepts or routes differently after
+Codex reports.
 
 ### Where you are in the loop
 
@@ -62,12 +61,11 @@ reports.
 
 ### Why this snapshot
 
-E6-DASH-002 adds a compact Human Role Cue above the fold so Sami no longer
-has to translate `Coordinator Trigger` + `Project Mode` into "what should
-I do right now?" The 5 human-facing states (`ASK GPT` / `COURIER ONLY` /
-`APPROVAL ONLY` / `AGENTS RUNNING` / `STOP / UNKNOWN`) are derived from
-existing fields per a published routing map — not a new authored field.
-Step 0 of this turn refreshed Polaris/COLLAB from stale "Push E6-D2"
+E6-DASH-002 adds the Human Role Cue above so you don't have to translate
+`Coordinator Trigger` + `Project Mode` into "what do I do now?" The 5
+states (`ASK GPT` / `COURIER ONLY` / `APPROVAL ONLY` / `AGENTS RUNNING`
+/ `STOP / UNKNOWN`) are derived from existing fields per a published
+routing map. Step 0 refreshed Polaris/COLLAB from stale "Push E6-D2"
 framing to current post-merge state.
 
 ### Three actions
