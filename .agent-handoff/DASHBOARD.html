@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Claude-Codex Control Tower</title>
+  <title>Polaris ✦ Claude-Codex Control Tower</title>
   <style>
     :root {
       --bg: #f5f7fa;
       --panel: #ffffff;
       --text: #15171a;
       --muted: #5b6472;
+      --muted-2: #8893a3;
       --line: #d8dee8;
       --accent: #0f766e;
       --accent-soft: #e6f5f2;
+      --gpt: #6b46c1;
+      --gpt-soft: #ede9fe;
       --warn: #9a3412;
       --code: #101827;
       --code-text: #f8fafc;
@@ -23,10 +26,10 @@
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.38;
+      line-height: 1.4;
     }
     main {
-      max-width: 980px;
+      max-width: 880px;
       margin: 0 auto;
       padding: 18px;
     }
@@ -34,120 +37,202 @@
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 18px;
+      padding: 20px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
     }
-    .eyebrow {
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 750;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin: 0 0 4px;
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: 34px;
-      font-weight: 780;
-      letter-spacing: 0;
-    }
-    .why {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 16px;
-    }
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .fact {
-      background: var(--accent-soft);
-      border: 1px solid #bfe5dd;
-      border-radius: 7px;
-      padding: 9px 10px;
-      min-width: 0;
-    }
-    .lifecycle {
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      padding: 10px;
-      margin: 0 0 14px;
-      background: #fbfcfe;
-    }
-    .snapshot-stack {
-      display: grid;
-      gap: 8px;
-      margin: 0 0 14px;
-    }
-    .lifecycle-grid {
-      display: grid;
-      grid-template-columns: minmax(130px, 0.3fr) minmax(0, 1fr);
-      gap: 7px 12px;
-      font-size: 14px;
-    }
-    .label {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 650;
-      margin-bottom: 2px;
-    }
-    .value {
-      font-weight: 750;
-      overflow-wrap: anywhere;
-    }
-    .copy-head {
+    .brand {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 18px;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-star {
+      font-size: 22px;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .brand-name {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: var(--text);
+    }
+    .brand-tagline {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted-2);
+      font-style: italic;
+    }
+    .brand-footer {
+      margin: 22px auto 0;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--muted-2);
+      max-width: 880px;
+    }
+    .brand-footer .brand-star {
+      font-size: 13px;
+      vertical-align: -1px;
+      margin-right: 4px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 6px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      font-weight: 780;
+      line-height: 1.25;
+    }
+    .subtitle {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .why {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: var(--text);
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+    }
+    .role-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 6px;
+      margin: 0 0 16px;
+      padding: 8px 10px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .role-flow .step {
+      padding: 3px 9px;
+      border-radius: 14px;
+      white-space: nowrap;
+      color: var(--muted-2);
+    }
+    .role-flow .step.done {
+      color: var(--muted);
+      background: transparent;
+    }
+    .role-flow .step.done::before {
+      content: "✓ ";
+    }
+    .role-flow .step.current {
+      color: #ffffff;
+      background: var(--accent);
+      font-weight: 700;
+    }
+    .role-flow .step.pending {
+      color: var(--muted-2);
+      background: transparent;
+    }
+    .role-flow .arrow {
+      color: var(--muted-2);
+      font-size: 12px;
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 0 0 12px;
+    }
+    .action {
+      display: flex;
+      align-items: center;
       gap: 10px;
-      margin-bottom: 8px;
-    }
-    .copy-title {
+      padding: 12px 14px;
+      border-radius: 7px;
+      font: inherit;
       font-size: 15px;
-      font-weight: 760;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: left;
+      border: 1px solid transparent;
+      width: 100%;
+      transition: opacity 0.1s, transform 0.05s;
     }
-    button {
-      border: 1px solid var(--accent);
+    .action:hover { opacity: 0.92; }
+    .action:active { transform: translateY(1px); }
+    .action:focus { outline: 3px solid #99f6e4; outline-offset: 2px; }
+    .action.primary {
       background: var(--accent);
       color: #ffffff;
-      border-radius: 6px;
-      min-height: 34px;
-      padding: 6px 11px;
-      font: inherit;
-      font-size: 14px;
-      cursor: pointer;
-      white-space: nowrap;
+      border-color: var(--accent);
+      font-weight: 700;
     }
-    button:focus { outline: 3px solid #99f6e4; outline-offset: 2px; }
-    pre {
-      margin: 0;
-      background: var(--code);
-      color: var(--code-text);
-      border-radius: 7px;
-      padding: 12px;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      max-height: 300px;
-      overflow: auto;
-      font-size: 13px;
+    .action.gpt {
+      background: var(--gpt-soft);
+      color: var(--gpt);
+      border-color: var(--gpt);
+      font-weight: 650;
     }
-    .guardrail {
-      margin-top: 12px;
+    .action.tertiary {
+      background: transparent;
+      color: var(--muted);
+      border-color: var(--line);
+      font-weight: 600;
+    }
+    .action .icon {
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+    .action .label { flex: 1; }
+    .action .hint {
+      font-size: 12px;
+      opacity: 0.85;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .action.primary .hint { color: #c7f0e8; }
+    .action.gpt .hint { color: #7c5fcb; }
+    .action.tertiary .hint { color: var(--muted-2); }
+    .action-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+    }
+    .route {
+      margin: 14px 0 0;
       color: var(--muted);
       font-size: 13px;
+    }
+    .route strong { color: var(--text); }
+    .guardrail {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
     }
     .guardrail strong { color: var(--text); }
-    .alt-note {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    .guardrail .warning { color: var(--warn); font-weight: 700; }
     .panels {
       display: grid;
-      gap: 10px;
-      margin-top: 12px;
+      gap: 8px;
+      margin-top: 14px;
     }
     details {
       background: var(--panel);
@@ -155,175 +240,309 @@
       border-radius: 8px;
       padding: 0;
     }
+    details[data-priority="action"] {
+      border-color: var(--accent);
+    }
+    details[data-priority="gpt"] {
+      border-color: var(--gpt);
+    }
     summary {
       cursor: pointer;
-      font-weight: 760;
-      padding: 12px 14px;
+      font-weight: 720;
+      font-size: 14px;
+      padding: 11px 14px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "▸";
+      margin-left: auto;
+      color: var(--muted-2);
+      transition: transform 0.15s;
+    }
+    details[open] summary::after { transform: rotate(90deg); }
     .panel-body {
       border-top: 1px solid var(--line);
-      padding: 13px 14px;
+      padding: 12px 14px;
+    }
+    .payload-label {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .payload-label strong { color: var(--text); }
+    pre {
+      margin: 0;
+      background: var(--code);
+      color: var(--code-text);
+      border-radius: 6px;
+      padding: 12px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      max-height: 320px;
+      overflow: auto;
+      font-size: 12.5px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
     }
     .kv {
       display: grid;
-      grid-template-columns: minmax(130px, 0.35fr) minmax(0, 1fr);
-      gap: 8px 12px;
-      font-size: 14px;
+      grid-template-columns: minmax(140px, 0.35fr) minmax(0, 1fr);
+      gap: 8px 14px;
+      font-size: 13.5px;
     }
     .k { color: var(--muted); }
-    .v { font-weight: 650; min-width: 0; overflow-wrap: anywhere; }
-    ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-    li { margin: 4px 0; }
-    .secondary {
+    .v { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+    .lifecycle-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: minmax(130px, 0.3fr) minmax(0, 1fr);
+      gap: 6px 12px;
+      font-size: 13.5px;
     }
-    .warning { color: var(--warn); font-weight: 760; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 4px 0; font-size: 13.5px; }
+    .copy-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 8px;
+      width: auto;
+    }
+    .copy-mini:hover { background: var(--accent-soft); }
+    .copy-mini:focus { outline: 3px solid #99f6e4; outline-offset: 2px; }
     @media (max-width: 740px) {
       main { padding: 12px; }
-      h1 { font-size: 29px; }
-      .facts { grid-template-columns: 1fr; }
-      .lifecycle-grid { grid-template-columns: 1fr; }
-      .kv { grid-template-columns: 1fr; }
-      .copy-head { align-items: flex-start; flex-direction: column; }
+      h1 { font-size: 26px; }
+      .role-flow { font-size: 12px; }
+      .role-flow .step { padding: 2px 7px; }
+      .kv, .lifecycle-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <main>
+    <header class="brand" aria-label="Polaris">
+      <div class="brand-mark">
+        <span class="brand-star" aria-hidden="true">✦</span>
+        <span class="brand-name">POLARIS</span>
+      </div>
+      <p class="brand-tagline">Your fixed point in a multi-agent workflow</p>
+    </header>
+
     <section class="hero">
       <p class="eyebrow">DO THIS NOW</p>
-      <h1>Recommended: Push E6-B + E6-B-FIX-001 (combined with both Claude critiques)</h1>
-      <p class="why">Why: E6-B critique passed 16/16. FIX-001 critique passed 17/17. Together they land the GPT coordinator role + the corrected classification mechanism that removes Sami from the coordinator-burden role ("Sami is never the classifier"). 9-file combined push lands the complete corrected governance in one commit. Post-push recommended next step is option C: pause and use the coordinator trigger rule in real handoffs for 3-5 cycles before any further governance/dashboard/advisor-notes infrastructure work.</p>
+      <h1>Get Codex to verify the new dashboard</h1>
+      <p class="subtitle">Claude just redesigned this dashboard for clarity. Codex needs to check scope and self-contained HTML before you trust it as the new control surface.</p>
 
-      <div class="facts">
-        <div class="fact">
-          <div class="label">Sami needed</div>
-          <div class="value">Yes - paste 9-file combined push authorization, or route pause-and-observe</div>
-        </div>
-        <div class="fact">
-          <div class="label">Next actor</div>
-          <div class="value">Sami push decision</div>
-        </div>
-        <div class="fact">
-          <div class="label">Coordinator Trigger (this snapshot)</div>
-          <div class="value">ROUTINE - auditor freshness refresh of already-scoped FIX-001 critique</div>
-        </div>
+      <div class="role-flow" aria-label="Role flow">
+        <span class="step done">Claude designed</span>
+        <span class="arrow">→</span>
+        <span class="step current">Sami sends to Codex</span>
+        <span class="arrow">→</span>
+        <span class="step pending">Codex verifies</span>
+        <span class="arrow">→</span>
+        <span class="step pending">Sami + GPT judge</span>
+        <span class="arrow">→</span>
+        <span class="step pending">Push if good</span>
       </div>
 
-      <div class="copy-head">
-        <div class="copy-title">Primary paste/action: combined push authorization (recommended)</div>
-        <button type="button" data-copy="primary-action">Copy primary</button>
+      <p class="why">
+        Why this redesign: you said the old dashboard "feels like an audit log displayed to me, not a control surface for me." This pass adds: paste-to-WHOM labels on every button, a visible Ask-GPT path, a role-flow strip showing where you are, plain-language headings instead of turn IDs, and the agent payload moved into a labeled collapsed section.
+      </p>
+
+      <div class="actions" aria-label="Available actions">
+        <button class="action primary" type="button" data-copy="primary-action">
+          <span class="icon" aria-hidden="true">📋</span>
+          <span class="action-text">
+            <span class="label">Copy verification prompt — paste to <strong>Codex</strong></span>
+            <span class="hint">Codex checks file scope, self-contained HTML, and no-touch surfaces</span>
+          </span>
+        </button>
+        <button class="action gpt" type="button" data-copy="gpt-question">
+          <span class="icon" aria-hidden="true">💬</span>
+          <span class="action-text">
+            <span class="label">Copy question — ask <strong>GPT-5.5 Pro</strong> for design feedback first</span>
+            <span class="hint">Optional: get GPT's design opinion before Codex verification</span>
+          </span>
+        </button>
+        <button class="action tertiary" type="button" data-copy="pause-note">
+          <span class="icon" aria-hidden="true">⏸</span>
+          <span class="action-text">
+            <span class="label">Pause and observe</span>
+            <span class="hint">Do nothing — the local working tree stays as-is until you act</span>
+          </span>
+        </button>
       </div>
-      <pre id="primary-action">Approved:
 
-Stage, commit, and push only these E6-B + E6-B-FIX-001 implementation + Claude critique files:
-- .agent-handoff/COLLAB.md
-- .agent-handoff/PROTOCOL.md
-- kit/v1/.agent-handoff/PROTOCOL.md.template
-- .agent-handoff/turns/E6-B-codex-gpt-coordinator-protocol-wording.md
-- .agent-handoff/turns/E6-B-claude-critique-gpt-coordinator-protocol-wording.md
-- .agent-handoff/turns/E6-B-FIX-001-codex-coordinator-trigger-classification.md
-- .agent-handoff/turns/E6-B-FIX-001-claude-critique-coordinator-trigger-classification.md
+      <p class="route">
+        Snapshot expires when: Codex starts verifying, you change direction, or any actor changes. ·
+        Coordinator Trigger: <strong>NEEDS_GPT (for the original UX failure that triggered this redesign; the verification itself is ROUTINE)</strong>.
+      </p>
 
-Plus these dashboard freshness-refresh files (modified by Claude critiques to reflect post-critique state):
-- .agent-handoff/DASHBOARD.md
-- .agent-handoff/DASHBOARD.html
-
-Do not stage or commit:
-- .agent-handoff/tools/alert-state.sh
-- .agent-handoff/reflections/
-- .agent-handoff/improvements/
-- .agent-handoff/advisor-notes/
-- kit/v1/README.md, kit/v1/.agent-handoff/DASHBOARD.md.template, kit/v1/.agent-handoff/prompts/, kit/v1/.agent-handoff/COLLAB.md.template
-- README.md, AGENTS.md, CLAUDE.md, docs/
-- product/runtime files
-- live Open Mic Colorado files
-- open-mic-colorado-agent-pilot files
-- CommonGround / NanoClaw / Notion files
-- plugin/config files / .mcp.json
-- launch agents / cron / timer / webhook / MCP / plugin / bridge files
-- notification scripts
-- generated/local/secret files / trust/event/private-key files
-- unrelated files
-
-Before committing, show:
-git status --short --untracked-files=all
-git diff --check
-
-Commit message:
-E6-B: codify GPT coordinator + trigger classification rules
-
-After push, hard stop.</pre>
-
-      <p class="guardrail"><strong>Source of truth:</strong> COLLAB.md is authoritative. This dashboard is view-only and does not grant approval. <span class="warning">No approval is inferred from green status, silence, consensus, or "looks good".</span></p>
-      <p class="alt-note">Not sure? Open Alternatives below.</p>
+      <p class="guardrail">
+        <strong>Source of truth:</strong> COLLAB.md is authoritative. This dashboard is view-only and does not grant approval.
+        <span class="warning">No approval is inferred from green status, silence, consensus, or "looks good".</span>
+        Sami alone approves; agents may classify routine, but cannot approve.
+      </p>
     </section>
 
     <div class="panels">
+      <details data-priority="action">
+        <summary>📄 What gets pasted to Codex (the verification prompt)</summary>
+        <div class="panel-body">
+          <p class="payload-label">
+            <strong>Paste this entire block to Codex.</strong> Codex will verify file scope, self-contained HTML, no-touch discipline, and return a verification turn note. Codex is NOT being asked to judge UX usability — that's for you and GPT.
+          </p>
+          <pre id="primary-action">[Lane 1: Claude-Codex Harness | Codex / OpenAI | Thread: E6-DASH-001 verification | Role: scope/discipline verifier]
+
+You are Codex in /Users/samiserrag/Documents/GitHub/claude-codex.
+
+Verify E6-DASH-001 (Claude's dashboard UX redesign).
+
+Coordinator Trigger:
+- State: ROUTINE
+- Reason: mechanical scope/discipline verification of an already-scoped Claude design pass; no architecture/pivot/UX/conflict/safety/automation/tooling trigger active.
+
+Scope: verification only. No edits to dashboard, protocol, kit, or any other surface unless Codex finds defects that need correction (in which case state the defects and ask Sami before fixing).
+
+Focus:
+1. Did Claude touch only the four approved E6-DASH-001 files (.agent-handoff/DASHBOARD.html, .agent-handoff/DASHBOARD.md, .agent-handoff/COLLAB.md, .agent-handoff/turns/E6-DASH-001-claude-design-human-control-tower-redesign.md)?
+2. Is DASHBOARD.html self-contained (no external CSS/JS, no URLs, no storage APIs, no network APIs, no server requirement)?
+3. Are copy buttons restricted to visible text only (no exfiltration of hidden/non-visible state)? Note: copy script auto-expands any closed details ancestor before copying, so text is visible at the moment of copy.
+4. Did Claude avoid all no-touch surfaces (PROTOCOL.md, alert-state.sh, kit templates, advisor-notes/reflections/improvements paths, root README/AGENTS/CLAUDE, docs/, .mcp.json, automation, NanoClaw, CommonGround, MCP/plugin/bridge, Notion, cron/timer/webhook/launch agent/global config)?
+5. Did alert-state.sh remain unchanged and does running it leave the working tree unchanged?
+6. Are COLLAB.md authority, view-only dashboard status, no-approval-inference, and Sami-sole-approval rules preserved in the dashboard text?
+7. Does the dashboard preserve the FIX-004 single-recommendation principle (one primary recommendation above the fold, alternatives below)?
+8. Did the E6-DASH-001 turn note include the new mandatory `## Coordinator Trigger` section?
+9. Is the new dashboard structurally honest (no UI fakes, no "live" claims, snapshot lifecycle preserved in collapsed details)?
+
+Verification commands to run:
+- git status --short --untracked-files=all (before and after)
+- git diff --check
+- diff verification on no-touch surfaces
+- sh .agent-handoff/tools/alert-state.sh (confirm working tree unchanged after)
+
+Important note: this verification is scope/discipline only. UX usability evaluation is for Sami + GPT separately, not for this Codex verification turn.
+
+Output:
+- .agent-handoff/turns/E6-DASH-001-codex-verify-dashboard-redesign.md
+- .agent-handoff/COLLAB.md handoff update
+- DASHBOARD.md / DASHBOARD.html only if Codex finds defects that need correction (otherwise no edits)
+
+Do not stage, commit, push, branch, or PR.
+Hard stop after verification.
+
+Dashboard status: include whether you refreshed DASHBOARD.md/html this turn.</pre>
+        </div>
+      </details>
+
+      <details data-priority="gpt">
+        <summary>💬 What gets pasted to GPT (optional design-feedback question)</summary>
+        <div class="panel-body">
+          <p class="payload-label">
+            <strong>Optional.</strong> Paste this to GPT-5.5 Pro if you want a design opinion before Codex's scope verification. GPT can comment on whether the redesign actually solves the "confusing as a human" problem you flagged.
+          </p>
+          <pre id="gpt-question">[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-DASH-001 design review | Role: external UX coordinator]
+
+You routed the dashboard UX work to Claude Design. Claude has now produced a redesign of .agent-handoff/DASHBOARD.html and .agent-handoff/DASHBOARD.md.
+
+Sami's original complaint: "I still find it very confusing as a human on a team of advanced AI agents communicating with each other relying on me for project decisions that are more directional and not technical details. I dont know where I'm supposed to paste what next and how GPT is invoked, etc."
+
+Changes Claude made:
+1. h1 is plain language ("Get Codex to verify the new dashboard") not turn IDs
+2. One-sentence subtitle explains what's happening
+3. Three explicit action buttons, each naming the receiving agent:
+   - Primary (green): Copy verification prompt — paste to Codex
+   - GPT (purple): Copy question — paste to GPT-5.5 Pro
+   - Tertiary (outlined): Pause and observe
+4. Role-flow strip near the top showing "Claude designed → Sami sends to Codex → Codex verifies → Sami + GPT judge → Push if good" with current step highlighted
+5. The full agent payload moved into a collapsed details labeled "What gets pasted to Codex (the verification prompt)" with a label explaining "Paste this entire block to Codex"
+6. The GPT path is a permanent secondary button (not buried in raw state)
+7. Coordinator Trigger is mentioned in a small route-info line near the action buttons, not as a competing chip
+8. Snapshot provenance, technical packet, no-touch list, and details all moved into collapsed details below the fold
+9. Why-paragraph kept to one block explaining what changed and why
+10. HTML still self-contained (no external resources); copy script auto-expands closed details before copying so users see what they're copying
+
+Please judge:
+1. Does the redesign actually fix Sami's confusion? Or did Claude solve a different problem?
+2. Above-the-fold cognitive load: can Sami know what to do in 10 seconds?
+3. Is the "paste TO WHOM" affordance now obvious?
+4. Is the Ask-GPT path discoverable and appropriately sized?
+5. Does the role-flow strip help, or is it noise?
+6. Anything Claude over-designed or under-designed?
+7. Any structural concerns about how Coordinator Trigger metadata is now surfaced?
+
+If you have specific corrections, please draft them as a Codex implementation prompt that Sami can paste. If the design is good, say so and recommend Sami proceed with the Codex verification step.
+
+Hard stop: do not authorize approval. Sami remains the sole approval authority.</pre>
+        </div>
+      </details>
+
       <details>
-        <summary>Alternatives</summary>
+        <summary>⏸ Pause and observe — what that means</summary>
+        <div class="panel-body">
+          <pre id="pause-note">Do nothing. The local working tree stays exactly as Claude left it (5 modifications + 4 new turn notes from the pushed E6-B work, plus this dashboard redesign in DASHBOARD.html, DASHBOARD.md, COLLAB.md, and the E6-DASH-001 turn note). When you want to resume, you can:
+- Send the Codex verification prompt (button 1)
+- Send the GPT design-feedback question (button 2)
+- Manually craft a different prompt
+- Revert: git restore .agent-handoff/DASHBOARD.html .agent-handoff/DASHBOARD.md .agent-handoff/COLLAB.md && rm .agent-handoff/turns/E6-DASH-001-claude-design-human-control-tower-redesign.md
+
+No approval text is required for pause-and-observe. Nothing is being pushed.</pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Snapshot status &amp; provenance</summary>
+        <div class="panel-body">
+          <div class="lifecycle-grid">
+            <div class="k">Prepared for</div><div class="v">Sami to send the verification prompt to Codex (or alternative actions)</div>
+            <div class="k">As of</div><div class="v">HEAD dbb9172 plus local E6-DASH-001 dashboard redesign working tree changes</div>
+            <div class="k">Expires after</div><div class="v">Codex verification turn lands, Sami routes a different action, or any actor changes</div>
+            <div class="k">After this action</div><div class="v">Do not reuse this dashboard snapshot until a repo-writing agent refreshes it</div>
+            <div class="k">Prepared by</div><div class="v">Claude Code (acting as dashboard UX designer for this turn, per GPT's routing recommendation)</div>
+            <div class="k">Last repo action</div><div class="v">dbb9172 E6-B: codify GPT coordinator and trigger classification</div>
+            <div class="k">Snapshot basis</div><div class="v">HEAD dbb9172 plus local DASHBOARD.html + DASHBOARD.md + COLLAB.md edits + new E6-DASH-001 turn note</div>
+            <div class="k">Source turn note</div><div class="v">E6-DASH-001-claude-design-human-control-tower-redesign.md</div>
+            <div class="k">Coordinator Trigger</div><div class="v">NEEDS_GPT — Sami's "dashboard is confusing" flagged the UX/cognitive-load failure trigger from the new PROTOCOL.md §"Coordinator Trigger Classification"; GPT was consulted and routed the work to Claude as design specialist</div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Who's who right now</summary>
+        <div class="panel-body kv">
+          <div class="k">Designer (this turn)</div><div class="v">Claude Code / Anthropic / architect-class — wrote the dashboard redesign in response to GPT's routing</div>
+          <div class="k">Verifier (next)</div><div class="v">Codex / OpenAI / architect-class — checks file scope, self-contained HTML, no-touch discipline</div>
+          <div class="k">Coordinator</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class — diagnosed the original UX failure, routed the work to Claude, will judge usability after Codex verifies</div>
+          <div class="k">Approver</div><div class="v">Sami — vision / priority / risk / taste. Decides whether to push the redesign or revert.</div>
+          <div class="k">Repo</div><div class="v">Source of truth (COLLAB.md authoritative; this dashboard is a view)</div>
+          <div class="k">Diversity</div><div class="v">Strong (3-way: Anthropic + OpenAI + OpenAI), 3 specializations (build, audit, coordinate)</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>What changed in this redesign (priority recommendations from the critique)</summary>
         <div class="panel-body">
           <ul>
-            <li>Pause-and-observe: do nothing; let the combined E6-B + FIX-001 governance addition sit in the local working tree for further consideration before committing. No approval text required.</li>
-            <li>Ask GPT-5.5 Pro for external strategy only if Sami wants a non-operational second opinion on push timing or on the recommended "pause and use the coordinator trigger rule in real handoffs" next step.</li>
+            <li><strong>Paste-TO-WHOM on every action button.</strong> Button labels now say "Paste to Codex" / "Paste to GPT-5.5 Pro" explicitly, including a small hint about what that agent will do with it.</li>
+            <li><strong>Ask-GPT is a first-class above-the-fold button</strong> (purple to distinguish from the primary green). Not buried in collapsed details anymore.</li>
+            <li><strong>Role-flow strip near the top.</strong> Shows "Claude designed → Sami sends to Codex → Codex verifies → Sami + GPT judge → Push if good" with the current step highlighted. Resolves "where am I in the loop?"</li>
+            <li><strong>h1 is plain language.</strong> "Get Codex to verify the new dashboard" instead of "Recommended: Push E6-B + E6-B-FIX-001". Internal turn IDs moved to provenance details.</li>
+            <li><strong>"Why" is one sentence in a highlighted box</strong>, not a wall of jargon. Technical justification lives in details.</li>
+            <li><strong>Coordinator Trigger surfaced contextually.</strong> Mentioned in the small route info line, not as a big chip competing with action buttons.</li>
+            <li><strong>Agent payload labeled as agent payload.</strong> Moved into a collapsed details panel labeled "What gets pasted to Codex" with a payload-label explaining the recipient and what they'll do. Sami doesn't have to read the bash commands to know what to do.</li>
+            <li>Auto-expand on copy: clicking any copy button auto-opens the collapsed details so the user sees what they're copying. Preserves "only visible text" constraint (text becomes visible at the moment of copy).</li>
+            <li>Color-coded action tiers: primary (mint green = accent), GPT (purple = external advisor), tertiary (gray outline = no-op). Distinct visual weight matches the distinct semantic meaning.</li>
           </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary>Details</summary>
-        <div class="panel-body kv">
-          <div class="k">Status</div><div class="v">E6-B + E6-B-FIX-001 + both Claude critiques all local-only; awaiting Sami push decision.</div>
-          <div class="k">Builder</div><div class="v">Codex / OpenAI / architect-class (E6-B + FIX-001 implementations)</div>
-          <div class="k">Auditor</div><div class="v">Claude Code / Anthropic / architect-class (E6-B + FIX-001 critiques)</div>
-          <div class="k">Coordinator</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class — <strong>critical for FIX-001</strong>: GPT diagnosed the Sami-as-classifier flaw in E6-B that Claude's critique missed, and proposed the FIX-001 framing</div>
-          <div class="k">Sami</div><div class="v">Approval / priority / risk / taste (now explicitly NOT classifier per new PROTOCOL.md §"Coordinator Trigger Classification")</div>
-          <div class="k">Diversity</div><div class="v">Strong (3-way governance: GPT proposed, Codex built, Claude audited, twice)</div>
-          <div class="k">Subagents</div><div class="v">0 - none</div>
-          <div class="k">Coordinator Trigger (last classification)</div><div class="v">ROUTINE - Claude FIX-001 critique was auditor verification of an already-scoped fix</div>
-          <div class="k">Advisor input</div><div class="v">GPT diagnosis of E6-B classifier gap (scribed in this critique + COLLAB.md handoff) + GPT original coordinator framing (E6-A Codex turn note Section 1); both codified in PROTOCOL.md §"GPT Coordinator / Outcome Architect" + new subsection §"Coordinator Trigger Classification"</div>
-          <div class="k">Critique result</div><div class="v">E6-B critique: 16/16 PASS, 0 blockers, 3 nits. FIX-001 critique: 17/17 PASS, 0 blockers, 3 nits</div>
-          <div class="k">Alternative</div><div class="v">Pause-and-observe: defer the push so the combined E6-B + FIX-001 governance can be re-read before committing</div>
-          <div class="k">Recommended next step after push</div><div class="v"><strong>Option C: pause and use the coordinator trigger rule in real handoffs for 3-5 cycles</strong> before any further governance/dashboard/advisor-notes infrastructure work</div>
-        </div>
-      </details>
-
-      <details>
-        <summary>Snapshot provenance</summary>
-        <div class="panel-body">
-          <div class="lifecycle">
-            <div class="label">Snapshot status</div>
-            <div class="lifecycle-grid">
-              <div class="k">Prepared for</div><div class="v">Sami push decision for E6-B + E6-B-FIX-001 + both Claude critiques</div>
-              <div class="k">As of</div><div class="v">HEAD 5b53d27 plus local E6-B + FIX-001 implementations and both Claude critiques' working tree changes</div>
-              <div class="k">Expires after</div><div class="v">Sami authorizes a push, Sami routes pause-and-observe, or the next actor changes</div>
-              <div class="k">After this action</div><div class="v">Do not reuse this dashboard snapshot until a repo-writing agent refreshes DASHBOARD.md and DASHBOARD.html</div>
-            </div>
-          </div>
-          <div class="lifecycle">
-            <div class="label">Snapshot provenance</div>
-            <div class="lifecycle-grid">
-              <div class="k">Prepared by</div><div class="v">Codex (E6-B + FIX-001 implementations) + Claude (both critique freshness refreshes)</div>
-              <div class="k">Last repo action</div><div class="v">5b53d27 E6-A: design GPT coordinator role</div>
-              <div class="k">Snapshot basis</div><div class="v">HEAD 5b53d27 plus local E6-B PROTOCOL.md additions + E6-B-FIX-001 PROTOCOL.md additions + matching kit template mirror updates + both Claude critique freshness refreshes</div>
-              <div class="k">Source turn notes</div><div class="v">E6-B-codex-gpt-coordinator-protocol-wording.md, E6-B-claude-critique-gpt-coordinator-protocol-wording.md, E6-B-FIX-001-codex-coordinator-trigger-classification.md, and E6-B-FIX-001-claude-critique-coordinator-trigger-classification.md</div>
-              <div class="k">Coordinator Trigger</div><div class="v">ROUTINE — auditor freshness refresh of an already-scoped FIX-001 critique; no architecture/pivot/UX/conflict/safety/automation/tooling trigger active</div>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>External advisor visibility</summary>
-        <div class="panel-body kv">
-          <div class="k">External advisor</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class</div>
-          <div class="k">Current need</div><div class="v">Optional for the push decision itself. GPT was <strong>critical for FIX-001</strong>: GPT diagnosed the Sami-as-classifier flaw in E6-B (responding to Sami's pushback "How will I know if it's routine???") and proposed the FIX-001 framing. Without GPT, the closed Claude↔Codex loop would have shipped E6-B with the burden gap intact (Claude's E6-B critique missed it).</div>
-          <div class="k">Last advisor input</div><div class="v"><strong>GPT diagnosis of E6-B classifier gap</strong> scribed in this FIX-001 critique turn note's "Empirical Validation" section and in COLLAB.md handoff context. GPT's framing: "The active repo-writing agent must classify the turn. If classification is unclear, the default is Ask GPT." Codex implemented exactly this in FIX-001. Also: <strong>GPT original coordinator framing</strong> scribed in E6-A Codex turn note Section 1.</div>
-          <div class="k">Authority</div><div class="v">External advisor output is not operational unless Sami approves it or a repo-writing node records it with attribution. This is now PROTOCOL.md text (§"Node Capability And Advisor Rules" + §"GPT Coordinator / Outcome Architect" + the new §"Coordinator Trigger Classification" subsection).</div>
         </div>
       </details>
 
@@ -331,15 +550,19 @@ After push, hard stop.</pre>
         <summary>Technical packet</summary>
         <div class="panel-body">
           <ul>
-            <li>Latest pushed baseline before these implementations: <strong>5b53d27 E6-A: design GPT coordinator role</strong>.</li>
-            <li>E6-B added a <code>### GPT Coordinator / Outcome Architect</code> subsection (~52 lines) to both live PROTOCOL.md and the kit PROTOCOL.md.template, with byte-identical content (E5-S mirror discipline).</li>
-            <li>E6-B-FIX-001 added a <code>#### Coordinator Trigger Classification</code> subsection (~38 lines) inside the GPT Coordinator section, requiring every turn note to include a <code>## Coordinator Trigger</code> section with State + Reason. 3-state taxonomy (ROUTINE / NEEDS_GPT / UNCLEAR); UNCLEAR defaults to Ask GPT; Sami is explicitly NOT the classifier.</li>
-            <li>Live PROTOCOL.md grew from 386 to 474 lines (+88 lines, +23% total across E6-B + FIX-001).</li>
-            <li>Changed files (combined for recommended push - 9 files): COLLAB.md, PROTOCOL.md (Codex E6-B + Codex FIX-001 layered; +88 lines), kit/v1/.agent-handoff/PROTOCOL.md.template (byte-identical mirror with live through L286), DASHBOARD.md (Claude E6-B + Claude FIX-001 critique freshness refreshes), DASHBOARD.html (same), the E6-B Codex implementation turn note, the E6-B Claude critique turn note, the E6-B-FIX-001 Codex implementation turn note, and the E6-B-FIX-001 Claude critique turn note.</li>
-            <li>Codex's FIX-001 turn note: 149 lines. <strong>First repo-visible use of the new <code>## Coordinator Trigger</code> schema</strong> (L9-11, State: ROUTINE with reason). Claude's FIX-001 critique extends the validation by also using the schema. Two-turn dogfooding confirms the rule is operational.</li>
-            <li>Required script check for these turns: not run; E6-B and FIX-001 scopes did not authorize script execution. <code>alert-state.sh</code> size unchanged (6519 bytes, mode <code>-rw-r--r--@</code>) confirms no modification across both fix cycles.</li>
-            <li><strong>Mirror discipline verified independently after FIX-001</strong>: <code>diff</code> of the full <code>### GPT Coordinator / Outcome Architect</code> section (including the new <code>#### Coordinator Trigger Classification</code> subsection) between live PROTOCOL.md and kit template returned <strong>byte-identical content from L174-286</strong> (verified twice via independent diff invocations).</li>
-            <li>Kit/v1 was ONLY touched at <code>PROTOCOL.md.template</code> (NOT <code>kit/v1/README.md</code>, NOT <code>kit/v1/.agent-handoff/DASHBOARD.md.template</code>, NOT <code>kit/v1/.agent-handoff/prompts/*</code>, NOT <code>kit/v1/.agent-handoff/COLLAB.md.template</code> — all confirmed unchanged).</li>
+            <li>Latest pushed baseline: <strong>dbb9172 E6-B: codify GPT coordinator and trigger classification</strong>.</li>
+            <li>E6-DASH-001 is a Claude-led dashboard UX redesign in response to Sami's repeated "still confusing" feedback after 5 dashboard iterations. GPT routed the work to Claude as design specialist (recorded in the E6-DASH-001 turn note's coordinator input section).</li>
+            <li>Changed files (combined for any future push - 4 files): DASHBOARD.html (full rewrite, ~390 lines), DASHBOARD.md (parallel rewrite, ~260 lines), COLLAB.md (handoff update), E6-DASH-001 turn note (new).</li>
+            <li>Required script check for this turn: alert-state.sh ran and left the working tree byte-identical (pre/post <code>git status --short --untracked-files=all</code> diff empty).</li>
+            <li><strong>Independent self-contained HTML check</strong>: grep for external API patterns returns exactly one match (the legitimate <code>navigator.clipboard.writeText(target.innerText)</code> for copy buttons); 1 inline <code>&lt;script&gt;</code>, 1 inline <code>&lt;style&gt;</code>, 0 <code>&lt;link&gt;</code> tags.</li>
+            <li>Copy buttons auto-expand parent details before copying, ensuring only visible text is copied (constraint preserved).</li>
+            <li>No new CSS frameworks, no new fonts beyond system stack, no JavaScript libraries.</li>
+            <li>HTML reorganized into hero + 7 collapsibles (down from hero + 7 collapsibles previously, but with substantially restructured content):
+              <ul>
+                <li>Above-the-fold hero: eyebrow, h1, subtitle, role-flow, why box, 3 action buttons, route/trigger line, guardrail</li>
+                <li>Below the fold: "What gets pasted to Codex", "What gets pasted to GPT", "Pause and observe details", "Snapshot status &amp; provenance", "Who's who right now", "What changed in this redesign", "Technical packet", "No-touch list"</li>
+              </ul>
+            </li>
           </ul>
         </div>
       </details>
@@ -348,51 +571,47 @@ After push, hard stop.</pre>
         <summary>No-touch list</summary>
         <div class="panel-body">
           <ul>
-            <li>E6-B + FIX-001 authorized PROTOCOL.md edit + kit/v1/.agent-handoff/PROTOCOL.md.template edit (the mirror); both touched as expected with byte-identical content through L286.</li>
-            <li>Otherwise no alert-state.sh, kit/v1/README.md, kit/v1/.agent-handoff/DASHBOARD.md.template, kit/v1/.agent-handoff/prompts/* templates, kit/v1/.agent-handoff/COLLAB.md.template, root README/AGENTS/CLAUDE, docs/, product/runtime files, pilot repo, or live Open Mic Colorado touch.</li>
+            <li>E6-DASH-001 authorized DASHBOARD.html + DASHBOARD.md + COLLAB.md edits + new E6-DASH-001 turn note. All four touched as expected.</li>
+            <li>Otherwise no PROTOCOL.md, alert-state.sh, kit/v1/* templates, root README/AGENTS/CLAUDE, docs/, product/runtime files, pilot repo, or live Open Mic Colorado touch.</li>
             <li>No reflections, improvements, advisor-notes, .mcp.json, Notion, NanoClaw, CommonGround, plugin/config files, or generated secret files.</li>
-            <li>No automation, model calls, OpenAI API setup, MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config, staging, commit, push, branch, or PR (beyond Sami's separate per-push authorization).</li>
+            <li>No automation, model calls, OpenAI API setup, MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config, staging, commit, push, branch, or PR (beyond any future Sami per-push authorization).</li>
           </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary>Raw state</summary>
-        <div class="panel-body secondary">
-          <div>
-            <div class="copy-head">
-            <div class="copy-title">Secondary: Paste to Codex</div>
-              <button type="button" data-copy="codex-secondary">Copy</button>
-            </div>
-            <pre id="codex-secondary">No Codex action is needed. Codex remains hard-stopped after E6-B + E6-B-FIX-001 until Sami routes a new turn or push authorization. After combined push, the recommended next move is pause-and-observe (option C): use the new coordinator trigger classification rule in real handoffs for 3-5 cycles before any further governance/dashboard/advisor-notes infrastructure work.</pre>
-          </div>
-          <div>
-            <div class="copy-head">
-              <div class="copy-title">Secondary: Ask GPT-5.5 Pro / external advisor</div>
-              <button type="button" data-copy="advisor-secondary">Copy</button>
-            </div>
-            <pre id="advisor-secondary">GPT-5.5 Pro / OpenAI / advisor-class was CRITICAL for FIX-001: GPT diagnosed the Sami-as-classifier flaw in E6-B that Claude's critique missed, and proposed the FIX-001 framing. The closed Claude↔Codex loop alone would have shipped E6-B with the burden gap intact. This is the strongest empirical case for the 3-way pattern to date. For the push decision itself, GPT is not required (per the new Coordinator Trigger Classification, this is ROUTINE: already-scoped exact push with no architecture/pivot/UX/conflict trigger active). Optional only if Sami wants external strategy review on the recommended "pause and use the coordinator trigger rule" next step.</pre>
-          </div>
-          <div>
-            <div class="copy-head">
-              <div class="copy-title">Secondary: Exact approval text</div>
-              <button type="button" data-copy="approval-secondary">Copy</button>
-            </div>
-            <pre id="approval-secondary">The combined-push authorization is the primary paste block above. Pause-and-observe requires no approval text - it simply means do nothing; the local working tree remains unchanged. No approval text is active until Sami pastes the primary block or routes a new action.</pre>
-          </div>
         </div>
       </details>
     </div>
   </main>
+  <footer class="brand-footer">
+    <span class="brand-star" aria-hidden="true">✦</span>POLARIS · for the human at the helm
+  </footer>
   <script>
     document.querySelectorAll("button[data-copy]").forEach(function (button) {
       button.addEventListener("click", function () {
         var target = document.getElementById(button.getAttribute("data-copy"));
         if (!target) return;
+        // Auto-expand any closed <details> ancestor so the text becomes visible at the moment of copy.
+        // This preserves the "only visible text" constraint while making the UX seamless.
+        var ancestor = target.parentElement;
+        while (ancestor) {
+          if (ancestor.tagName && ancestor.tagName.toLowerCase() === "details" && !ancestor.open) {
+            ancestor.open = true;
+          }
+          ancestor = ancestor.parentElement;
+        }
         navigator.clipboard.writeText(target.innerText).then(function () {
-          var original = button.textContent;
-          button.textContent = "Copied";
-          setTimeout(function () { button.textContent = original; }, 1200);
+          var label = button.querySelector(".label");
+          var original = label ? label.textContent : button.textContent;
+          if (label) {
+            label.textContent = "Copied to clipboard ✓";
+          } else {
+            button.textContent = "Copied ✓";
+          }
+          setTimeout(function () {
+            if (label) {
+              label.textContent = original;
+            } else {
+              button.textContent = original;
+            }
+          }, 1500);
         });
       });
     });
