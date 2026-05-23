@@ -7,31 +7,43 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude Design has applied **E6-DASH-002-FIX-001 visual tightening** on
-the same branch (`e6-dash-002-human-role-cue`) as a follow-up commit on
-PR #5 ([Claude-Codex#5](https://github.com/samiserrag/Claude-Codex/pull/5)).
-The parent E6-DASH-002 implementation landed in commit `3057f2d` after
-Codex's 18/18 PASS verification. FIX-001 was triggered by Sami's
-in-thread feedback _"Much better, but still visually unfocused for human
-eyes too... Go ahead and fold it in please. Visual tightening."_ and
-tightens the cue panel's padding/font/border + the hero block's H1/
-subtitle/role-flow/why-panel/action buttons. All cue fields, all 5
-states, the published routing map, and all Polaris one-primary-action
-discipline are preserved. Same scope as parent (UX only); no PROTOCOL/
-OPERATING-MODEL/kit/alert-state edits; no new structural HTML; no new
-state-class colors. See `.agent-handoff/turns/E6-DASH-002-FIX-001-claude-
-design-visual-tightening.md` for before/after CSS values and prose
-tightening list.
+Codex has completed **PR #5 final-head verification** after the
+E6-DASH-002-FIX-001 visual-tightening follow-up. The fetched PR #5 head,
+remote branch, and local branch all resolve to
+`a4628ebc2ae989a2eb1fc1120ce70abb861bd40b`. The final PR diff from
+`origin/main...HEAD` contains exactly six files: COLLAB.md,
+DASHBOARD.html, DASHBOARD.md, the original Claude Design Human Role Cue
+turn note, the original Codex verification turn note, and the Claude
+Design visual-tightening turn note.
+
+Verdict: **PR #5 is safe to merge after Sami approval.** The
+visual-tightening follow-up stayed within dashboard UX/content + turn
+notes, did not touch no-touch surfaces, kept DASHBOARD.html
+self-contained, preserved visible-text-only copy behavior, kept the
+Human Role Cue above the fold, preserved one-primary-action discipline,
+kept ASK GPT secondary for this ROUTINE state, preserved COURIER ONLY /
+APPROVAL ONLY / AGENTS RUNNING / UNCLEAR routing meanings, and preserved
+COLLAB.md authority + view-only dashboard + no-approval-inference +
+Sami-only approval warnings.
+
+Important caveat: `gh pr view 5` could not be used because GitHub
+returned `GraphQL: API rate limit already exceeded for user ID
+197519643`. The PR head itself was verified through fetched Git refs.
+Based on Sami's note that the PR body still describes the original 18/18
+verification and lists 5 files while GitHub metadata now shows 2 commits
+/ 6 changed files, the PR body should be updated before merge to mention
+the FIX-001 visual-tightening follow-up and this final-head verification.
 
 Sami is the next actor to decide between:
 
-(a) **RECOMMENDED**: review the FIX-001 rendering in Chrome and merge
-    PR #5 if visually acceptable.
-(b) Ask Codex to re-verify the FIX-001 commit against the same no-touch
-    + HTML self-containment checks before merging.
+(a) **RECOMMENDED**: update the PR body to mention FIX-001 + final-head
+    verification, then merge PR #5 if the rendered dashboard is visually
+    acceptable.
+(b) Merge PR #5 without PR body cleanup if Sami accepts the stale body as
+    non-blocking.
 (c) Ask for another visual pass (FIX-002 — e.g., neutral cue background
     if the mint-green still competes with the primary action button).
-(d) Pause — leave PR #5 open with the FIX-001 commit until you decide.
+(d) Pause — leave PR #5 open at `a4628ebc` until you decide.
 
 After PR #5 merges, the next substantive turn remains the **first
 Outcome Circle scope decision** (`Approved Outcome Circle: <packet
@@ -50,20 +62,49 @@ or product/runtime work is authorized.
 
 ## Coordinator Trigger
 - State: ROUTINE
-- Reason: Sami's in-thread visual-tightening direction is a tightening
-  pass of an already-implemented and Codex-verified cue, applied to the
-  existing PR branch. No architecture, pivot, UX conflict, safety,
-  automation, or tooling trigger fired during the FIX-001 pass.
+- Reason: Codex performed final-head verification of an already-scoped
+  dashboard UX PR after the visual-tightening follow-up. No architecture,
+  pivot, UX conflict, safety, automation, or tooling trigger fired during
+  verification.
 
 ## Project Mode (estimated)
-- Dominant mode: Execution (~60%, agent heuristic estimate)
-- Sami-decision-pending: ~30%
+- Dominant mode: Sami-decision-pending (~65%, agent heuristic estimate)
+- Execution: ~25%
 - Coordinator: ~10%
 - Unknown: 0%
-- Reason: FIX-001 was execution-mode tightening of the already-landed
-  E6-DASH-002 against a concrete UX brief from Sami. Sami-decision-
-  pending captures the post-FIX-001 review/merge decision. Coordinator
-  weight is residual (no new routing decisions).
+- Reason: the PR branch is verified at the expected final head. Sami now
+  decides whether to update the PR body and merge, request a fix, or pause.
+
+## PR #5 Final-Head Verification Summary (Codex, local-only at this turn)
+
+Codex verified the final PR #5 head after the visual-tightening follow-up:
+- `HEAD`, `origin/e6-dash-002-human-role-cue`, and fetched
+  `refs/remotes/origin/pr/5` all resolve to
+  `a4628ebc2ae989a2eb1fc1120ce70abb861bd40b`.
+- `origin/main` is `d8fa722aabc3afb71d73bb6abeae365939b29d61`.
+- PR #5 final diff contains exactly six files:
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/DASHBOARD.html`
+  - `.agent-handoff/DASHBOARD.md`
+  - `.agent-handoff/turns/E6-DASH-002-FIX-001-claude-design-visual-tightening.md`
+  - `.agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md`
+  - `.agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md`
+- `git diff --check origin/main...HEAD` is clean.
+- No PROTOCOL.md, OPERATING-MODEL.md, alert-state.sh, kit/v1, root docs,
+  docs/, advisor-notes/reflections/improvements, .mcp.json, automation,
+  API/model, NanoClaw, CommonGround, MCP/plugin/bridge, Notion, plugin/
+  config, or global-config surfaces appear in the PR diff.
+- DASHBOARD.html remains self-contained: no external CSS, no external JS,
+  no HTTP(S) URLs, no storage/localStorage/sessionStorage, no network APIs,
+  and no server requirement.
+- Copy buttons still copy visible payload text only; closed details
+  ancestors are auto-expanded before `target.innerText` is copied.
+- `sh .agent-handoff/tools/alert-state.sh` ran on the clean PR branch and
+  left the working tree unchanged.
+- Pilot repo remained clean and untouched.
+
+Codex did **not** refresh DASHBOARD.md or DASHBOARD.html this turn.
+COLLAB.md is authoritative for this final-head handoff.
 
 ## E6-DASH-002 Verification Summary (Codex, local-only at this turn)
 
@@ -4240,10 +4281,9 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to accept E6-DASH-002 as-is, request a follow-up fix
-  (for example, AGENTS RUNNING styling or cue copy), pause, or authorize
-  a later push/PR.
-- After E6-DASH-002 is accepted, decide the first Outcome Circle scope.
+- Decide whether to update the PR #5 body before merge, merge PR #5 as-is,
+  request a follow-up visual fix, or pause.
+- After PR #5 is merged, decide the first Outcome Circle scope.
   Per the bootstrap policy follow-up (`E6-PROTOCOL-FIX-001`, not yet
   authored), circle entry/exit should remain NEEDS_GPT until 2 Outcome
   Circles have completed successfully.
@@ -4256,40 +4296,40 @@ keeping parse-failure recovery simple.
 ## Next Request To Claude
 
 None active. Claude Code (auditor role) and Claude Design (designer
-role) are both hard-stopped after E6-DASH-002 implementation and Codex
-verification. No further PROTOCOL.md edit, OPERATING-MODEL.md edit, kit
-edit, dashboard edit, alert-state edit, advisor-notes/reflections/
-improvements path creation, outcome-loop implementation, first Outcome
-Circle, packet template, server, model call, OpenAI API setup,
-NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, launch agent,
-timer, webhook, daemon, global config, pilot repo, live Open Mic
-Colorado, product/runtime, root-doc, notification script, staging,
-commit, push, branch, PR, or any other change is authorized.
+role) are both hard-stopped after E6-DASH-002 implementation, visual
+tightening, and Codex final-head verification. No further PROTOCOL.md
+edit, OPERATING-MODEL.md edit, kit edit, dashboard edit, alert-state edit,
+advisor-notes/reflections/improvements path creation, outcome-loop
+implementation, first Outcome Circle, packet template, server, model call,
+OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron,
+launch agent, timer, webhook, daemon, global config, pilot repo, live
+Open Mic Colorado, product/runtime, root-doc, notification script,
+staging, commit, push, branch, merge, PR update, or any other change is
+authorized.
 
 ## Next Request To Codex
 
-None active. Codex completed E6-DASH-002 verification and is hard-stopped.
-No further dashboard refresh, PROTOCOL.md edit, OPERATING-MODEL.md edit,
-kit edit, alert-state edit, advisor-notes/reflections/improvements path
-creation, outcome-loop implementation, first Outcome Circle, packet
-template, server, model call, OpenAI API setup, NanoClaw/CommonGround/
-Notion, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
-global config, pilot repo, live Open Mic Colorado, product/runtime,
-root-doc, notification script, staging, commit, push, branch, PR, or any
-other change is authorized.
+None active. Codex completed PR #5 final-head verification and is
+hard-stopped. No further dashboard refresh, PROTOCOL.md edit,
+OPERATING-MODEL.md edit, kit edit, alert-state edit, advisor-notes/
+reflections/improvements path creation, outcome-loop implementation,
+first Outcome Circle, packet template, server, model call, OpenAI API
+setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, launch
+agent, timer, webhook, daemon, global config, pilot repo, live Open Mic
+Colorado, product/runtime, root-doc, notification script, staging,
+commit, push, branch, merge, PR update, or any other change is authorized.
 
 ## Next Request To Sami
 
-Decide whether to accept E6-DASH-002, request a follow-up fix, pause, or
-authorize a later exact-scope push/PR. If accepting and pushing, include
-exact staging scope for:
-- `.agent-handoff/COLLAB.md`
-- `.agent-handoff/DASHBOARD.html`
-- `.agent-handoff/DASHBOARD.md`
-- `.agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md`
-- `.agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md`
+Decide whether to update the PR #5 body and merge, merge without body
+cleanup, request a follow-up visual fix, or pause. Recommended PR body
+cleanup before merge:
+- mention final head `a4628ebc2ae989a2eb1fc1120ce70abb861bd40b`;
+- mention 2 commits / 6 changed files;
+- mention `E6-DASH-002-FIX-001` visual tightening;
+- mention `.agent-handoff/turns/E6-DASH-002-codex-verify-pr5-final-head.md`.
 
 Do not authorize the first Outcome Circle, packet template,
 advisor-notes creation, outcome-loop implementation, automation, API
-setup, transport/NanoClaw review, staging, commit, push, branch, or PR
-until a separate explicit approval.
+setup, transport/NanoClaw review, staging, commit, push, branch, merge,
+or PR update until a separate explicit approval.
