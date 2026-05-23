@@ -139,6 +139,11 @@
       font-size: 13px;
     }
     .guardrail strong { color: var(--text); }
+    .alt-note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
     .panels {
       display: grid;
       gap: 10px;
@@ -191,66 +196,36 @@
   <main>
     <section class="hero">
       <p class="eyebrow">DO THIS NOW</p>
-      <h1>Decide E5-T-FIX-003: combined push or pause-and-observe</h1>
-      <p class="why">Why: Claude critique passed all 11 focus areas with zero blockers. The structural representation gap Sami flagged post-FIX-002 (GPT buried, no provenance) is closed. The 5-file combined push lands the fix in one commit. Pause-and-observe leaves it local-only for 3-5 real handoff cycles first. Either is safe. Critique-only push is impractical because FIX-003 and critique edits are entangled in the same three modified files.</p>
+      <h1>Recommended: Push E5-T-FIX-004 (combined with Claude critique)</h1>
+      <p class="why">Why: critique passed 10/11 cleanly with 1 PARTIAL (chip styling near-blocker, foldable into a tight FIX-005 if it bothers in real use). The 5-file combined push lands the single-recommendation structural simplification in one commit.</p>
 
       <div class="facts">
         <div class="fact">
           <div class="label">Sami needed</div>
-          <div class="value">Yes - choose combined push or pause-and-observe</div>
+          <div class="value">Yes - paste combined push authorization, or route pause-and-observe</div>
         </div>
         <div class="fact">
           <div class="label">Next actor</div>
-          <div class="value">Sami push decision; then Claude (if push) for hard stop</div>
+          <div class="value">Sami push decision</div>
         </div>
         <div class="fact">
-          <div class="label">Current state</div>
-          <div class="value">E5-T-FIX-003 + critique both local-only; awaiting Sami decision</div>
-        </div>
-      </div>
-
-      <div class="snapshot-stack">
-        <div class="lifecycle">
-          <div class="label">Snapshot status</div>
-          <div class="lifecycle-grid">
-            <div class="k">Prepared for</div><div class="v">Sami push decision for E5-T-FIX-003 + Claude critique</div>
-            <div class="k">As of</div><div class="v">HEAD d6cdc7b plus local E5-T-FIX-003 implementation and Claude critique working tree changes</div>
-            <div class="k">Expires after</div><div class="v">Sami authorizes a push, Sami routes pause-and-observe, or the next actor changes</div>
-            <div class="k">After this action</div><div class="v">Do not reuse this dashboard snapshot until a repo-writing agent refreshes DASHBOARD.md and DASHBOARD.html</div>
-          </div>
-        </div>
-        <div class="lifecycle">
-          <div class="label">Snapshot provenance</div>
-          <div class="lifecycle-grid">
-            <div class="k">Prepared by</div><div class="v">Codex (E5-T-FIX-003 implementation) + Claude (critique freshness refresh)</div>
-            <div class="k">Last repo action</div><div class="v">d6cdc7b E5-T-FIX-002: dashboard snapshot lifecycle + Claude critique</div>
-            <div class="k">Snapshot basis</div><div class="v">HEAD d6cdc7b plus local E5-T-FIX-003 dashboard/handoff edits + Claude critique freshness refresh</div>
-            <div class="k">Source turn notes</div><div class="v">E5-T-FIX-003-codex-dashboard-provenance-advisor-visibility.md and E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md</div>
-          </div>
-        </div>
-        <div class="lifecycle">
-          <div class="label">External advisor visibility</div>
-          <div class="lifecycle-grid">
-            <div class="k">External advisor</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class</div>
-            <div class="k">Current need</div><div class="v">Optional; not required for this push decision</div>
-            <div class="k">Last advisor input</div><div class="v">N/A - no repo-visible advisor note or scribed record is incorporated in this snapshot</div>
-            <div class="k">Authority</div><div class="v">External advisor output is not operational unless Sami approves it or a repo-visible record captures it</div>
-          </div>
+          <div class="label">Snapshot expiry</div>
+          <div class="value">Expires after Sami authorizes push, routes pause-and-observe, or next actor changes</div>
         </div>
       </div>
 
       <div class="copy-head">
-        <div class="copy-title">Primary paste/action: combined push authorization (option a)</div>
+        <div class="copy-title">Primary paste/action: combined push authorization (recommended)</div>
         <button type="button" data-copy="primary-action">Copy primary</button>
       </div>
       <pre id="primary-action">Approved:
 
-Stage, commit, and push only these E5-T-FIX-003 implementation + Claude critique files:
+Stage, commit, and push only these E5-T-FIX-004 implementation + Claude critique files:
 - .agent-handoff/COLLAB.md
 - .agent-handoff/DASHBOARD.md
 - .agent-handoff/DASHBOARD.html
-- .agent-handoff/turns/E5-T-FIX-003-codex-dashboard-provenance-advisor-visibility.md
-- .agent-handoff/turns/E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md
+- .agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md
+- .agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md
 
 Do not stage or commit:
 - .agent-handoff/PROTOCOL.md
@@ -275,18 +250,29 @@ git status --short --untracked-files=all
 git diff --check
 
 Commit message:
-E5-T-FIX-003: dashboard provenance + advisor visibility + Claude critique
+E5-T-FIX-004: single-action dashboard simplification + Claude critique
 
 After push, hard stop.</pre>
 
       <p class="guardrail"><strong>Source of truth:</strong> COLLAB.md is authoritative. This dashboard is view-only and does not grant approval. <span class="warning">No approval is inferred from green status, silence, consensus, or "looks good".</span></p>
+      <p class="alt-note">Not sure? Open Alternatives below.</p>
     </section>
 
     <div class="panels">
       <details>
+        <summary>Alternatives</summary>
+        <div class="panel-body">
+          <ul>
+            <li>Pause-and-observe: do nothing; let the simplified single-action architecture sit in the local working tree first to feel whether chip styling or total dashboard length actually bother in real use. No approval text required.</li>
+            <li>Ask GPT-5.5 Pro for external strategy only if Sami wants a non-operational second opinion on push timing.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
         <summary>Details</summary>
         <div class="panel-body kv">
-          <div class="k">Status</div><div class="v">E5-T-FIX-003 + Claude critique both local-only; awaiting Sami push decision.</div>
+          <div class="k">Status</div><div class="v">E5-T-FIX-004 + Claude critique both local-only; awaiting Sami push decision.</div>
           <div class="k">Builder</div><div class="v">Codex / OpenAI / architect-class</div>
           <div class="k">Auditor</div><div class="v">Claude Code / Anthropic / architect-class</div>
           <div class="k">External advisor</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class when invoked; not operational unless repo-visible and approved</div>
@@ -294,8 +280,42 @@ After push, hard stop.</pre>
           <div class="k">Diversity</div><div class="v">Strong</div>
           <div class="k">Subagents</div><div class="v">0 - none</div>
           <div class="k">Advisor input</div><div class="v">No repo-visible advisor note or scribed advisor record incorporated in this snapshot.</div>
-          <div class="k">Critique result</div><div class="v">All 11 focus areas PASS with zero blockers; 3 optional nits.</div>
-          <div class="k">Alternative</div><div class="v">Pause-and-observe: do nothing; let the representation card set sit local for 3-5 real handoff cycles before any further dashboard work.</div>
+          <div class="k">Critique result</div><div class="v">10 of 11 focus areas PASS clean; 1 PARTIAL (chip styling); 3 optional nits.</div>
+          <div class="k">Alternative</div><div class="v">Pause-and-observe: defer the push so the chip weight + total dashboard length can be felt in real use first.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Snapshot provenance</summary>
+        <div class="panel-body">
+          <div class="lifecycle">
+            <div class="label">Snapshot status</div>
+            <div class="lifecycle-grid">
+              <div class="k">Prepared for</div><div class="v">Sami push decision for E5-T-FIX-004 + Claude critique</div>
+              <div class="k">As of</div><div class="v">HEAD 3f8d583 plus local E5-T-FIX-004 implementation and Claude critique working tree changes</div>
+              <div class="k">Expires after</div><div class="v">Sami authorizes a push, Sami routes pause-and-observe, or the next actor changes</div>
+              <div class="k">After this action</div><div class="v">Do not reuse this dashboard snapshot until a repo-writing agent refreshes DASHBOARD.md and DASHBOARD.html</div>
+            </div>
+          </div>
+          <div class="lifecycle">
+            <div class="label">Snapshot provenance</div>
+            <div class="lifecycle-grid">
+              <div class="k">Prepared by</div><div class="v">Codex (E5-T-FIX-004 implementation) + Claude (critique freshness refresh)</div>
+              <div class="k">Last repo action</div><div class="v">3f8d583 E5-T-FIX-003: add dashboard provenance and advisor visibility</div>
+              <div class="k">Snapshot basis</div><div class="v">HEAD 3f8d583 plus local E5-T-FIX-004 dashboard/handoff edits + Claude critique freshness refresh</div>
+              <div class="k">Source turn notes</div><div class="v">E5-T-FIX-004-codex-dashboard-single-action-simplification.md and E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md</div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>External advisor visibility</summary>
+        <div class="panel-body kv">
+          <div class="k">External advisor</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class</div>
+          <div class="k">Current need</div><div class="v">Optional; not required for this E5-T-FIX-004 critique</div>
+          <div class="k">Last advisor input</div><div class="v">N/A - no repo-visible advisor note or scribed record is incorporated in this snapshot</div>
+          <div class="k">Authority</div><div class="v">External advisor output is not operational unless Sami approves it or a repo-visible record captures it</div>
         </div>
       </details>
 
@@ -303,9 +323,9 @@ After push, hard stop.</pre>
         <summary>Technical packet</summary>
         <div class="panel-body">
           <ul>
-            <li>Latest pushed baseline before this fix: <strong>d6cdc7b E5-T-FIX-002: dashboard snapshot lifecycle + Claude critique</strong>.</li>
-            <li>E5-T-FIX-003 adds snapshot provenance and advisor visibility without changing the source-of-truth model.</li>
-            <li>Changed files (combined for option a - 5 files): DASHBOARD.html, DASHBOARD.md, COLLAB.md, the E5-T-FIX-003 Codex turn note, and the E5-T-FIX-003 Claude critique turn note.</li>
+            <li>Latest pushed baseline before this fix: <strong>3f8d583 E5-T-FIX-003: add dashboard provenance and advisor visibility</strong>.</li>
+            <li>E5-T-FIX-004 moves provenance, advisor visibility, alternatives, technical packet, no-touch list, and raw state below the fold into collapsed details.</li>
+            <li>Changed files (combined for recommended push - 5 files): DASHBOARD.html, DASHBOARD.md, COLLAB.md, the E5-T-FIX-004 Codex turn note, and the E5-T-FIX-004 Claude critique turn note.</li>
             <li>Required script check for this turn: <code>sh .agent-handoff/tools/alert-state.sh</code> ran and left the working tree byte-identical (pre/post <code>git status</code> diff empty; script output 109 lines).</li>
             <li>Independent self-contained HTML check: grep for external API patterns returns exactly one match (the legitimate <code>navigator.clipboard.writeText(target.innerText)</code> for copy buttons); 1 inline <code>&lt;script&gt;</code>, 1 inline <code>&lt;style&gt;</code>, 0 <code>&lt;link&gt;</code> tags.</li>
           </ul>
@@ -331,21 +351,21 @@ After push, hard stop.</pre>
             <div class="copy-title">Secondary: Paste to Codex</div>
               <button type="button" data-copy="codex-secondary">Copy</button>
             </div>
-            <pre id="codex-secondary">No Codex action is needed. Codex remains hard-stopped after E5-T-FIX-003 until Sami routes a new turn or push authorization.</pre>
+            <pre id="codex-secondary">No Codex action is needed. Codex remains hard-stopped after E5-T-FIX-004 until Sami routes a new turn or push authorization.</pre>
           </div>
           <div>
             <div class="copy-head">
               <div class="copy-title">Secondary: Ask GPT-5.5 Pro / external advisor</div>
               <button type="button" data-copy="advisor-secondary">Copy</button>
             </div>
-            <pre id="advisor-secondary">GPT-5.5 Pro / OpenAI / advisor-class is visible as an external advisor. Critique completed with zero blockers. Optional only if Sami wants external strategy review before deciding push vs pause-and-observe. No repo-visible advisor note or scribed advisor record is incorporated in this snapshot.</pre>
+            <pre id="advisor-secondary">GPT-5.5 Pro / OpenAI / advisor-class is visible below the fold as an external advisor. Critique completed with 1 PARTIAL (chip styling) but no blockers. Optional only if Sami wants external strategy review before deciding push vs pause-and-observe. No repo-visible advisor note or scribed advisor record is incorporated in this snapshot.</pre>
           </div>
           <div>
             <div class="copy-head">
               <div class="copy-title">Secondary: Exact approval text</div>
               <button type="button" data-copy="approval-secondary">Copy</button>
             </div>
-            <pre id="approval-secondary">The combined-push authorization for option a is the primary paste block above. Pause-and-observe (option b) requires no approval text - it simply means do nothing; the local working tree remains unchanged. No approval text is active until Sami pastes the primary block or routes a new action.</pre>
+            <pre id="approval-secondary">The combined-push authorization is the primary paste block above. Pause-and-observe requires no approval text - it simply means do nothing; the local working tree remains unchanged. No approval text is active until Sami pastes the primary block or routes a new action.</pre>
           </div>
         </div>
       </details>

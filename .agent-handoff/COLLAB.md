@@ -7,25 +7,169 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude has completed the E5-T-FIX-003 critique locally and is hard-stopped.
-Sami is the next actor to decide between (a) combined push of E5-T-FIX-003 +
+Claude has completed the E5-T-FIX-004 critique locally and is hard-stopped.
+Sami is the next actor to decide between (a) combined push of E5-T-FIX-004 +
 critique (5 files: 3 modifications + 2 new turn notes) or (b) pause-and-
-observe (no push; let the representation card set sit in the local working
-tree for 3-5 real handoff cycles before any further dashboard work). No
-staging, commit, push, branch, PR, automation, model calls, server,
-NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
-agent/global config, pilot repo, live Open Mic Colorado, protocol, kit
-template, alert-state, advisor-notes/reflections/improvements, or product/
-runtime work is authorized.
+observe (no push; let the simplified single-action architecture sit in the
+local working tree first to feel whether the chip styling or total
+dashboard length actually bother in real use). No staging, commit, push,
+branch, PR, automation, model calls, server, NanoClaw/CommonGround/Notion,
+MCP/plugin/bridge, cron/timer/webhook/launch agent/global config, pilot
+repo, live Open Mic Colorado, protocol, kit template, alert-state,
+advisor-notes/reflections/improvements, or product/runtime work is
+authorized.
 
 ## Current Phase
 
-Experiment 5 E5-T-FIX-003 dashboard provenance + advisor visibility:
+Experiment 5 E5-T-FIX-004 human control tower single-action simplification:
 implementation and Claude critique are both local-only and await Sami's
-push decision. This turn preserves the one-action snapshot dashboard from
-E5-T-FIX-002, adds snapshot provenance, and makes GPT-5.5 Pro visible as
+push decision. This turn preserves the E5-T-FIX-003 truth/provenance
+improvements but moves alternatives, snapshot provenance, external advisor
+visibility, technical packet, no-touch list, and raw state into collapsed
+details so the top of the dashboard shows one recommended action.
+
+E5-T-FIX-004 local outputs:
+- `.agent-handoff/DASHBOARD.html` (single recommended action above the
+  fold; post-critique freshness refresh)
+- `.agent-handoff/DASHBOARD.md` (aligned single-action structure;
+  post-critique freshness refresh)
+- `.agent-handoff/COLLAB.md` (Codex handoff update then Claude critique
+  handoff update)
+- `.agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md`
+- `.agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md`
+
+E5-T-FIX-004 dashboard top-state (post-critique):
+- Recommended action: combined push of E5-T-FIX-004 + Claude critique.
+- Why: critique passed 10/11 cleanly with 1 PARTIAL (chip styling
+  near-blocker); combined push lands the structural simplification.
+  Pause-and-observe is the alternative if chip styling concern needs
+  real-use observation first.
+- Status chips: Sami needed, next actor, snapshot expiry.
+- Snapshot expiry: after Sami authorizes push, routes pause-and-observe,
+  or next actor changes.
+- Alternatives, provenance, GPT/external advisor visibility, no-touch
+  list, raw state, and technical packet remain below the fold in
+  collapsed details.
+
+E5-T-FIX-004 no-touch surfaces: no `PROTOCOL.md`, `alert-state.sh`, kit/v1,
+root docs, docs/, product/runtime files, live reflections/improvements/
+advisor-notes paths, pilot repo, live Open Mic Colorado, CommonGround,
+NanoClaw, Notion, `.mcp.json`, plugin/config files, automation, model calls,
+MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config,
+server, staging, commit, push, branch, or PR.
+
+E5-T-FIX-004 critique summary (Claude, local-only at this turn): 10 of 11
+focus areas PASS clean; 1 PARTIAL (focus area 5: chips moved into the
+right position but still use the `.fact` card styling rather than compact
+chip styling). 3 optional nits including the chip styling carry-forward.
+The structural intent of GPT's E5-T-FIX-004 prompt (recommendation not
+decision menu; alternatives + provenance + advisor visibility below the
+fold; one-action snapshot preserved) IS achieved. Independent verification
+confirmed:
+- 4-file working tree matches authorization 1:1 (3 modifications + 1 new
+  turn note)
+- HTML still verifiably self-contained (independent grep returns ONLY
+  `navigator.clipboard.writeText(target.innerText)` at L389; 1 inline
+  `<script>`, 1 inline `<style>`, 0 `<link>` tags)
+- One recommendation above the fold, not decision menu
+- "Not sure? Open Alternatives below." secondary affordance present
+  (Codex incorporated my previous-turn nuance b)
+- Alternatives + Snapshot provenance + External advisor visibility +
+  Details + Technical packet + No-touch list + Raw state all in
+  collapsed `<details>` (7 panels below the fold)
+- GPT-5.5 Pro visible below the fold only, no operational promotion
+- Source-of-truth disciplines preserved with visual emphasis
+- alert-state.sh unchanged (6519 bytes, mode `-rw-r--r--@`); pre/post
+  `git status` diff empty; script output 109 lines
+- All no-touch surfaces unchanged; advisor-notes/reflections/
+  improvements still absent; pilot clean at `655e75bc`
+
+**Headline strengths**:
+- **Single recommendation above the fold, not decision menu.** Core
+  architectural shift GPT asked for lands cleanly.
+- **"Not sure? Open Alternatives below." affordance** makes the
+  alternative discoverable without scanning. (Codex uptake of nuance b
+  from my previous turn.)
+- **Snapshot provenance + external advisor visibility moved into
+  collapsed details** — audit info no longer competes with action info.
+- **Alternatives is the FIRST collapsible below the hero** — natural
+  reading order.
+- **Source-of-truth guardrail still visible above the fold** —
+  protocol discipline preserved even after simplification.
+- **GPT-5.5 Pro stays visible** below the fold; representation gap
+  fixed in FIX-003 not regressed.
+- **Self-containment preserved.**
+- **Single-purpose 4-file commit shape** matches FIX-002 / FIX-001 /
+  FIX-003.
+- **Codex verification matches my independent re-verification 1:1.**
+
+**Three Nits (Nit 1 is near-blocker)**:
+1. **Chip styling regression** — the 3 status items use the existing
+   `.fact` class (mint green cards) rather than a dedicated chip class.
+   They occupy ~70-90px of above-fold real estate with significant
+   visual weight, competing with the primary copy block. GPT's prompt
+   specified "compact status chips"; my previous-turn nuance a asked
+   for a dedicated `.status-chip` class. Neither was implemented.
+   Recommended CSS fix documented in critique. Foldable into FIX-005
+   IF chip weight bothers in real use; NOT recommended preemptively
+   (per the "no further dashboard refinement unless single-action
+   version actually fails" commitment).
+2. **Snapshot status / Snapshot provenance duplication** carries
+   forward from FIX-003 ("As of" and "Snapshot basis" still
+   near-duplicate). Foldable into same hypothetical FIX-005.
+3. **Total dashboard line count grew, not shrunk** (HTML 368 → 398,
+   MD 169 → 205). Above-fold height IS improved (no more 3-card
+   snapshot stack) but total file size grew from `<details>` wrapper
+   overhead. Observation only.
+
+Note on the round-trip: nuances I documented in the previous strategic
+exchange got partial uptake — discoverability fix landed ("Not sure?"
+affordance), visual styling didn't (chip class). Predictable failure
+mode of "let Codex make the call with my critique as the second pass."
+Worth noting for future prompts: if a specific CSS class is needed,
+name it in the prompt.
+
+E5-T-FIX-004 critique outputs (local-only):
+- `.agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to combined-push authorization; snapshot fields updated to
+  reflect post-critique state; Prepared by becomes multi-actor; h1
+  remains recommendation-style)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization (if option a): 5 files (3
+modifications that layer FIX-004 implementation and critique freshness
+refresh together, plus 2 new turn notes). Critique-only push is
+impractical (same entanglement reason as FIX-002 / FIX-003).
+
+E5-T-FIX-004 critique did not edit PROTOCOL.md, kit templates,
+alert-state.sh, root docs, product/runtime files; did not create
+advisor-notes/reflections/improvements paths; did not create
+notification scripts; did not use Notion/NanoClaw/CommonGround; did not
+install plugins; did not create `.mcp.json`; did not start a server;
+did not create automation, cron, timers, webhooks, launch agents,
+MCP/plugins, bridges; did not stage, commit, push, branch, or PR; did
+not touch live Open Mic Colorado; did not touch pilot repo.
+
+Pattern: seventeenth clean turn-pair in the E5-H → E5-T-FIX-004 arc.
+Single-purpose 5-file combined-push shape (3 modifications + 2 new turn
+notes) matches the proven FIX-001 / FIX-002 / FIX-003 pattern.
+
+**Strategic context**: the structural overload GPT diagnosed
+post-FIX-003 push (decision menu, 3-card snapshot stack, advisor
+visibility above the fold) is addressed by FIX-004. The chip styling
+concern in focus area 5 is the only remaining "ruthless simplification"
+gap; observation-first is the right discipline before any further
+dashboard work. The commitment from the FIX-003 critique stands: after
+FIX-004 lands, no further dashboard refinement (FIX-005+) unless the
+single-action version actually fails in real use.
+
+Experiment 5 E5-T-FIX-003 dashboard provenance + advisor visibility:
+was pushed at `3f8d583`. It preserved the one-action snapshot dashboard from
+E5-T-FIX-002, added snapshot provenance, and made GPT-5.5 Pro visible as
 external advisor-class without promoting GPT to operational repo actor or
-claiming GPT was consulted for this snapshot.
+claiming GPT was consulted for that snapshot.
 
 E5-T-FIX-003 local outputs:
 - `.agent-handoff/DASHBOARD.html` (provenance + external-advisor visibility
@@ -2738,10 +2882,10 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to send the E5-T-FIX-003 dashboard provenance/advisor
-  visibility update to Claude for critique.
+- Decide whether to send the E5-T-FIX-004 dashboard single-action
+  simplification update to Claude for critique.
 - After Claude critique, decide whether to authorize staging, commit, and push
-  for the exact E5-T-FIX-003 files plus any critique/freshness files Claude is
+  for the exact E5-T-FIX-004 files plus any critique/freshness files Claude is
   separately authorized to create.
 - No E5-V notification implementation, NanoClaw/CommonGround integration,
   protocol edit, kit edit, alert-state edit, dashboard generator, server,
@@ -2750,19 +2894,18 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-If Sami proceeds, critique E5-T-FIX-003 as auditor/advisor. Use the primary
+If Sami proceeds, critique E5-T-FIX-004 as auditor/advisor. Use the primary
 paste block in `.agent-handoff/DASHBOARD.md` or `.agent-handoff/
-DASHBOARD.html`. Focus on whether the dashboard preserves the one-action
-snapshot design, shows snapshot provenance near Snapshot status, makes GPT-5.5
-Pro visible as advisor-class without promoting GPT to operational actor,
-avoids claiming GPT was consulted or incorporated without repo-visible
-evidence, clearly shows Builder/Auditor/External advisor/Sami roles, remains
-self-contained, preserves COLLAB authority/no-approval rules, and stayed within
-the approved four files.
+DASHBOARD.html`. Focus on whether the dashboard now shows one recommended
+action instead of a decision menu, keeps the above-fold surface short, moves
+alternatives/provenance/GPT visibility/technical/no-touch/raw state into
+collapsed details, keeps GPT below the fold unless it is the next action,
+remains self-contained, preserves COLLAB authority/no-approval/snapshot expiry
+rules, and stayed within the approved four files.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-T-FIX-003. No E5-V implementation, dashboard
+None active. Hard stop after E5-T-FIX-004. No E5-V implementation, dashboard
 edit, alert-state edit, protocol edit, kit edit, server, model call, NanoClaw,
 CommonGround, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
 global config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
@@ -2771,11 +2914,12 @@ authorized.
 
 ## Next Request To Sami
 
-Paste the E5-T-FIX-003 Claude critique prompt from the top of
+Paste the E5-T-FIX-004 Claude critique prompt from the top of
 `.agent-handoff/DASHBOARD.html` or `.agent-handoff/DASHBOARD.md` if you want
 to proceed. Treat the dashboard as a static snapshot prepared for that one
-critique action. GPT-5.5 Pro is visible as external advisor-class only; no
-repo-visible advisor note or scribed advisor record is incorporated in this
-snapshot. Do not reuse the dashboard after critique starts or completes, after
-any push lands, or when the next actor changes until Claude or Codex refreshes
-the dashboard files in a repo-visible turn.
+critique action. Above the fold now contains one recommendation and one primary
+copy block; alternatives, provenance, GPT/external advisor status, no-touch,
+raw state, and technical packet are collapsed below. Do not reuse the dashboard
+after critique starts or completes, after any push lands, or when the next
+actor changes until Claude or Codex refreshes the dashboard files in a
+repo-visible turn.

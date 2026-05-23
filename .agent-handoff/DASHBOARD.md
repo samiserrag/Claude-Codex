@@ -13,63 +13,31 @@ not the source of truth.
 
 ## DO THIS NOW
 
-Decide E5-T-FIX-003: combined push (option a) or pause-and-observe (option b).
+Recommended: push E5-T-FIX-004 (combined with Claude critique).
 
-Sami needed: `yes - choose combined push or pause-and-observe`
+Why: critique passed 10/11 cleanly with 1 PARTIAL (chip styling near-blocker,
+foldable into a tight FIX-005 if it bothers in real use). The 5-file combined
+push lands the single-recommendation structural simplification in one commit.
 
-Next actor: `Sami push decision; then Claude (if push) for hard stop`
+Sami needed: `yes - paste combined push authorization, or route pause-and-observe`
 
-Why: Claude critique passed all 11 focus areas with zero blockers. The
-structural representation gap Sami flagged post-FIX-002 (GPT buried, no
-provenance) is closed. The 5-file combined push lands the fix in one
-commit. Pause-and-observe leaves it local-only for 3-5 real handoff cycles
-first. Either is safe. Critique-only push is impractical because Codex's
-FIX-003 modifications and Claude's critique freshness refresh are entangled
-in the same three modified files.
+Next actor: `Sami push decision`
 
-## Snapshot Status
+Snapshot expiry: `expires after Sami authorizes push, routes pause-and-observe, or next actor changes`
 
-- Prepared for: Sami push decision for E5-T-FIX-003 + Claude critique.
-- As of: HEAD `d6cdc7b` plus local E5-T-FIX-003 implementation and Claude
-  critique working tree changes.
-- Expires after: Sami authorizes a push, Sami routes pause-and-observe, or
-  the next actor changes.
-- After this action: do not reuse this dashboard snapshot until a repo-writing
-  agent refreshes `DASHBOARD.md` and `DASHBOARD.html`.
+Not sure? Open Alternatives below.
 
-## Snapshot Provenance
-
-- Prepared by: Codex (E5-T-FIX-003 implementation) + Claude (critique
-  freshness refresh).
-- Last repo action:
-  `d6cdc7b E5-T-FIX-002: dashboard snapshot lifecycle + Claude critique`.
-- Snapshot basis: HEAD `d6cdc7b` plus local E5-T-FIX-003 dashboard/handoff
-  edits + Claude critique freshness refresh.
-- Source turn notes:
-  `.agent-handoff/turns/E5-T-FIX-003-codex-dashboard-provenance-advisor-visibility.md`
-  and
-  `.agent-handoff/turns/E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md`.
-
-## External Advisor Visibility
-
-- External advisor: GPT-5.5 Pro / OpenAI / advisor-class.
-- Current need: optional; not required for this push decision.
-- Last advisor input: N/A - no repo-visible advisor note or scribed record is
-  incorporated in this snapshot.
-- Authority: external advisor output is not operational unless Sami approves
-  it or a repo-visible record captures it.
-
-Primary paste (option a - combined push authorization):
+Primary paste (combined push authorization):
 
 ```text
 Approved:
 
-Stage, commit, and push only these E5-T-FIX-003 implementation + Claude critique files:
+Stage, commit, and push only these E5-T-FIX-004 implementation + Claude critique files:
 - .agent-handoff/COLLAB.md
 - .agent-handoff/DASHBOARD.md
 - .agent-handoff/DASHBOARD.html
-- .agent-handoff/turns/E5-T-FIX-003-codex-dashboard-provenance-advisor-visibility.md
-- .agent-handoff/turns/E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md
+- .agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md
+- .agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md
 
 Do not stage or commit:
 - .agent-handoff/PROTOCOL.md
@@ -94,20 +62,63 @@ git status --short --untracked-files=all
 git diff --check
 
 Commit message:
-E5-T-FIX-003: dashboard provenance + advisor visibility + Claude critique
+E5-T-FIX-004: single-action dashboard simplification + Claude critique
 
 After push, hard stop.
 ```
 
-Option b - pause-and-observe: requires no approval text. Means do nothing;
-the local working tree remains unchanged so the representation card set can
-be felt in real use for 3-5 handoff cycles before any further dashboard work.
+<details>
+<summary>Alternatives</summary>
 
-## Details
+- Pause-and-observe: do nothing; let the simplified single-action architecture
+  sit in the local working tree first to feel whether chip styling or total
+  dashboard length actually bother in real use. No approval text required.
+- Ask GPT-5.5 Pro for external strategy only if Sami wants a non-operational
+  second opinion on push timing.
+
+</details>
+
+<details>
+<summary>Snapshot provenance</summary>
+
+- Prepared for: Sami push decision for E5-T-FIX-004 + Claude critique.
+- As of: HEAD `3f8d583` plus local E5-T-FIX-004 implementation and Claude
+  critique working tree changes.
+- Expires after: Sami authorizes a push, Sami routes pause-and-observe, or
+  the next actor changes.
+- After this action: do not reuse this dashboard snapshot until a repo-writing
+  agent refreshes `DASHBOARD.md` and `DASHBOARD.html`.
+- Prepared by: Codex (E5-T-FIX-004 implementation) + Claude (critique
+  freshness refresh).
+- Last repo action:
+  `3f8d583 E5-T-FIX-003: add dashboard provenance and advisor visibility`.
+- Snapshot basis: HEAD `3f8d583` plus local E5-T-FIX-004 dashboard/handoff
+  edits + Claude critique freshness refresh.
+- Source turn notes:
+  `.agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md`
+  and
+  `.agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md`.
+
+</details>
+
+<details>
+<summary>External advisor visibility</summary>
+
+- External advisor: GPT-5.5 Pro / OpenAI / advisor-class.
+- Current need: optional; not required for this E5-T-FIX-004 critique.
+- Last advisor input: N/A - no repo-visible advisor note or scribed record is
+  incorporated in this snapshot.
+- Authority: external advisor output is not operational unless Sami approves
+  it or a repo-visible record captures it.
+
+</details>
+
+<details>
+<summary>Details</summary>
 
 | Field | Current value |
 | --- | --- |
-| Current status | E5-T-FIX-003 + Claude critique both local-only; awaiting Sami push decision |
+| Current status | E5-T-FIX-004 + Claude critique both local-only; awaiting Sami push decision |
 | Builder | Codex / OpenAI / architect-class |
 | Auditor | Claude Code / Anthropic / architect-class |
 | External advisor | GPT-5.5 Pro / OpenAI / advisor-class when invoked; not operational unless repo-visible and approved |
@@ -115,21 +126,24 @@ be felt in real use for 3-5 handoff cycles before any further dashboard work.
 | Diversity | strong |
 | Subagent delegations this turn | 0 - none |
 | Advisor input | No repo-visible advisor note or scribed advisor record incorporated in this snapshot |
-| Critique result | All 11 focus areas PASS with zero blockers; 3 optional nits |
-| Alternative | Pause-and-observe: do nothing; let the representation card set sit local for 3-5 real handoff cycles |
+| Critique result | 10 of 11 focus areas PASS clean; 1 PARTIAL (chip styling); 3 optional nits |
+| Alternative | Pause-and-observe: defer the push so chip weight + total dashboard length can be felt in real use first |
 
-## Technical Packet
+</details>
+
+<details>
+<summary>Technical packet</summary>
 
 - Latest pushed baseline before this fix:
-  `d6cdc7b E5-T-FIX-002: dashboard snapshot lifecycle + Claude critique`.
-- E5-T-FIX-003 adds snapshot provenance and advisor visibility without changing
-  the source-of-truth model.
-- Changed files (combined for option a - 5 files):
+  `3f8d583 E5-T-FIX-003: add dashboard provenance and advisor visibility`.
+- E5-T-FIX-004 moves provenance, advisor visibility, alternatives, technical
+  packet, no-touch list, and raw state below the fold into collapsed details.
+- Changed files (combined for recommended push - 5 files):
   - `.agent-handoff/DASHBOARD.html`
   - `.agent-handoff/DASHBOARD.md`
   - `.agent-handoff/COLLAB.md`
-  - `.agent-handoff/turns/E5-T-FIX-003-codex-dashboard-provenance-advisor-visibility.md`
-  - `.agent-handoff/turns/E5-T-FIX-003-claude-critique-dashboard-provenance-advisor-visibility.md`
+  - `.agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md`
+  - `.agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md`
 - Required script check for this turn:
   `sh .agent-handoff/tools/alert-state.sh` ran and left the working tree
   byte-identical (pre/post `git status --short --untracked-files=all` diff
@@ -139,7 +153,10 @@ be felt in real use for 3-5 handoff cycles before any further dashboard work.
   `navigator.clipboard.writeText(target.innerText)` for copy buttons);
   1 inline `<script>`, 1 inline `<style>`, 0 `<link>` tags.
 
-## No-Touch List
+</details>
+
+<details>
+<summary>No-touch list</summary>
 
 No `PROTOCOL.md`, `alert-state.sh`, kit templates, root docs,
 product/runtime files, pilot repo, live Open Mic Colorado,
@@ -148,22 +165,27 @@ CommonGround, plugin/config files, automation, model calls, MCP/plugins,
 bridges, cron, timers, webhooks, launch agents, global config, staging, commit,
 push, branch, or PR.
 
-## Raw State
+</details>
+
+<details>
+<summary>Raw state</summary>
 
 Paste to Codex:
 
 ```text
-No Codex action is needed. Codex remains hard-stopped after E5-T-FIX-003 until Sami routes a new turn or push authorization.
+No Codex action is needed. Codex remains hard-stopped after E5-T-FIX-004 until Sami routes a new turn or push authorization.
 ```
 
 Ask GPT-5.5 Pro / external advisor:
 
 ```text
-GPT-5.5 Pro / OpenAI / advisor-class is visible as an external advisor. Critique completed with zero blockers. Optional only if Sami wants external strategy review before deciding push vs pause-and-observe. No repo-visible advisor note or scribed advisor record is incorporated in this snapshot.
+GPT-5.5 Pro / OpenAI / advisor-class is visible below the fold as an external advisor. Critique completed with 1 PARTIAL (chip styling) but no blockers. Optional only if Sami wants external strategy review before deciding push vs pause-and-observe. No repo-visible advisor note or scribed advisor record is incorporated in this snapshot.
 ```
 
 Exact approval text:
 
 ```text
-The combined-push authorization for option a is the primary paste block in the DO THIS NOW section above. Pause-and-observe (option b) requires no approval text — it simply means do nothing; the local working tree remains unchanged. No approval text is active until Sami pastes the primary block or routes a new action.
+The combined-push authorization is the primary paste block in the DO THIS NOW section above. Pause-and-observe requires no approval text — it simply means do nothing; the local working tree remains unchanged. No approval text is active until Sami pastes the primary block or routes a new action.
 ```
+
+</details>
