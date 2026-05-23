@@ -171,6 +171,98 @@ what Sami accepted, rejected, or left undecided. For non-text or unavailable
 transient artifacts, state the gap explicitly. Do not truncate advisor text to
 save storage or tokens.
 
+### GPT Coordinator / Outcome Architect
+
+Stable role model:
+
+- GPT-5.5 Pro: coordinator / outcome architect / external advisor.
+- Codex: builder / implementer / investigator.
+- Claude Code: auditor / critic / verifier.
+- Sami: approval / priority / risk / taste.
+- Repo: source of truth.
+
+GPT may recommend, synthesize, draft prompts, and define outcome/rubric
+proposals. GPT does not approve scope, pushes, or completion. Approval remains
+Sami's sole authority.
+
+Ask GPT when a milestone, pivot, architecture decision, repeated UX or
+cognitive-load failure, "are we wasting time?" question, conflicting
+Claude/Codex recommendations, outcome/rubric definition, multi-turn loop
+approval consideration, high-stakes/noisy/ambiguous decision, or Sami request
+for external synthesis appears. GPT is not required for routine
+implementation, routine critique, straightforward push authorization,
+already-scoped no-choice handoffs, or low-risk verification where Claude/Codex
+agree and Sami is not being asked for strategic judgment.
+
+#### Coordinator Trigger Classification
+
+Every turn note must include this section near the top:
+
+```markdown
+## Coordinator Trigger
+- State: ROUTINE | NEEDS_GPT | UNCLEAR
+- Reason: <one sentence>
+```
+
+Sami is never responsible for determining routine status. The active
+repo-writing node must classify the Coordinator Trigger state. If the
+classification is missing, treat the turn as `UNCLEAR` and default to Ask GPT.
+
+`ROUTINE` is allowed only when the turn is already scoped, low-risk,
+non-strategic, and no architecture, pivot, UX-friction, cognitive-load,
+conflict, safety, automation, or tooling trigger is active.
+
+`NEEDS_GPT` applies when any GPT coordinator invocation trigger fires,
+including milestone, pivot, architecture decision, repeated UX/cognitive-load
+failure, "are we wasting time?", conflicting Claude/Codex recommendations,
+outcome/rubric definition, multi-turn loop approval consideration, high-stakes/
+noisy/ambiguous decision, or Sami request.
+
+`UNCLEAR` applies when the active repo-writing node cannot confidently classify
+the turn as `ROUTINE`. `UNCLEAR` defaults to Ask GPT.
+
+When state is `NEEDS_GPT` or `UNCLEAR`, the dashboard primary recommendation
+should become "Ask GPT-5.5 Pro," not "Sami decide if GPT is needed." The
+handoff must include the exact question to paste to GPT. Respect the
+E5-T-FIX-004 single-recommendation principle.
+
+When critiquing an implementation or design, the auditor may upgrade the
+Coordinator Trigger classification with a one-sentence reason, such as when
+the auditor detects an unapproved architecture, UX, safety, automation, or
+scope decision. Turn notes and handoffs should include the Coordinator Trigger
+state and reason; if state is `NEEDS_GPT` or `UNCLEAR`, include the exact GPT
+paste question.
+
+When invoked, GPT should produce concise synthesis, consensus recommendation,
+divergent opinions, risk/tradeoff summary, exact next prompts for Codex and/or
+Claude, outcome/rubric proposal when relevant, exact approval text if Sami must
+approve, explicit uncertainty / unknowns, and no repo-authoritative claims
+unless scribed.
+
+Near term, Sami pastes GPT output into Claude/Codex, and the active
+repo-writing node scribes it with attribution. Include a verbatim quote in a
+code block when exact text is available, no length cap for text, a structured
+summary, and what Sami accepted, rejected, or left undecided. Do not silently
+launder GPT advice into "the system decided." If no turn is active, the next
+repo-writing turn that uses the GPT input scribes it. If GPT input applies to
+both Codex and Claude, the next repo-writing node records the shared source
+once and the other node references it.
+
+If a GPT invocation trigger fires, the dashboard primary recommendation may
+become "Ask GPT-5.5 Pro." Respect the E5-T-FIX-004 single-recommendation
+principle: Ask GPT becomes the one recommendation, not an extra competing
+surface.
+
+Multi-turn outcome/rubric loops remain deferred to E6-C or later. Rubric
+satisfied means the auditor believes the rubric is satisfied; it does not
+authorize commit, push, new scope, or final completion unless Sami's exact
+approval text says so.
+
+NanoClaw or any transport layer is a possible future option only. NanoClaw was
+previously investigated and deferred for governance-fit reasons; reconsidering
+it requires a separate review. Do not treat NanoClaw as the default future
+path.
+
 Use vendor diversity as a spectrum:
 
 - strong: different model families, such as Anthropic, OpenAI, Google, Mistral,

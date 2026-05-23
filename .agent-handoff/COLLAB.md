@@ -7,24 +7,386 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude has completed the E6-A critique locally and is hard-stopped. Sami is
-the next actor to decide between (a) combined push of E6-A + critique
-(5 files: 3 modifications + 2 new turn notes) or (b) pause-and-observe
-(no push; let the E6-A design sit in the local working tree for further
-consideration before committing). No implementation, staging, commit, push,
-branch, PR, automation, model calls, OpenAI API setup, server, NanoClaw/
-CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch agent/
-global config, protocol edit, kit template edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, pilot repo touch, live
-Open Mic Colorado touch, or product/runtime work is authorized.
+Claude has completed the E6-B-FIX-001 critique locally and is hard-stopped.
+Sami is the next actor to decide between (a) combined push of E6-B +
+E6-B-FIX-001 + both critiques (9 files: 5 modifications + 4 new turn notes)
+or (b) pause-and-observe (no push; let the combined E6-B + FIX-001
+governance addition sit in the local working tree for further consideration
+before committing). No staging, commit, push, branch, PR, dashboard edit
+(beyond the freshness refresh in Claude's critiques), DASHBOARD.html edit
+(beyond freshness refresh), alert-state edit, kit dashboard template edit,
+reflection proposal template edit, kit README edit, prompt template edit,
+advisor-notes/reflections/improvements path creation, automation, model
+calls, OpenAI API setup, server, NanoClaw/CommonGround/Notion, MCP/plugin/
+bridge, cron/timer/webhook/launch agent/global config, pilot repo touch,
+live Open Mic Colorado touch, or product/runtime work is authorized.
+
+## Coordinator Trigger
+- State: ROUTINE
+- Reason: this COLLAB.md update is the auditor-handoff layer of the
+  already-scoped FIX-001 critique; no architecture, pivot, UX-friction,
+  cognitive-load, conflict, safety, automation, or tooling trigger is
+  active.
 
 ## Current Phase
 
-Experiment 6 E6-A GPT Coordinator / Outcome Architect integration design:
-implementation and Claude critique are both local-only and await Sami's push
-decision. E6-A restores GPT-5.5 Pro as a structural coordinator/outcome
-architect while preserving the repo-governed Claude <-> Codex bridge and
-Sami-only approval. It does not implement the coordinator rule, create
+Experiment 6 E6-B-FIX-001 coordinator-trigger classification fix:
+implementation and Claude critique are both local-only and await Sami's
+push decision. Codex stacked a tiny protocol wording fix on top of the
+existing local E6-B implementation + Claude critique state. The fix adds
+mandatory Coordinator Trigger classification to live PROTOCOL.md and the
+kit protocol template, requiring active repo-writing nodes to classify each
+turn as `ROUTINE`, `NEEDS_GPT`, or `UNCLEAR`. It removes the burden from
+Sami to decide whether a turn is routine. Missing or unclear classification
+defaults to Ask GPT.
+
+Coordinator Trigger for E6-B-FIX-001 (Codex's classification):
+- State: ROUTINE
+- Reason: Sami already authorized the exact narrow protocol wording fix, and
+  no unresolved strategic, UX, safety, automation, tooling, or scope decision
+  requires GPT input for this implementation turn.
+
+Coordinator Trigger for E6-B-FIX-001 critique (Claude's classification):
+- State: ROUTINE
+- Reason: auditor critique of an already-scoped FIX-001 implementation
+  against E6-A/E6-B specs; no architecture, pivot, UX-friction,
+  cognitive-load, conflict, safety, automation, or tooling trigger is
+  active. (First repo-visible dogfooding of the schema by an auditor.)
+
+E6-B-FIX-001 local outputs:
+- `.agent-handoff/PROTOCOL.md` (Codex E6-B + FIX-001 layered; total +88 lines vs pre-E6-B)
+- `kit/v1/.agent-handoff/PROTOCOL.md.template` (Codex E6-B + FIX-001 layered, byte-identical mirror with live through L286)
+- `.agent-handoff/COLLAB.md` (Codex E6-B + Claude E6-B critique + Codex FIX-001 + Claude FIX-001 critique handoff updates layered)
+- `.agent-handoff/DASHBOARD.md` (Claude E6-B critique freshness refresh + Claude FIX-001 critique freshness refresh)
+- `.agent-handoff/DASHBOARD.html` (same)
+- `.agent-handoff/turns/E6-B-codex-gpt-coordinator-protocol-wording.md`
+- `.agent-handoff/turns/E6-B-claude-critique-gpt-coordinator-protocol-wording.md`
+- `.agent-handoff/turns/E6-B-FIX-001-codex-coordinator-trigger-classification.md`
+- `.agent-handoff/turns/E6-B-FIX-001-claude-critique-coordinator-trigger-classification.md`
+
+E6-B-FIX-001 critique summary (Claude, local-only at this turn): **all 17
+focus areas PASS with zero blockers**. Independent verification confirmed:
+- 4-file FIX-001 commit shape matches authorization (3 modifications +
+  1 new turn note); after this critique adds freshness refresh + critique
+  turn note, total working tree is 9 files (5 modifications + 4 new turn
+  notes)
+- `git diff --check` clean
+- **Mirror discipline byte-identical from L174-286** in both live
+  PROTOCOL.md and kit template (verified via independent `diff` of the
+  `### GPT Coordinator / Outcome Architect` section including the new
+  `#### Coordinator Trigger Classification` subsection)
+- All no-touch surfaces unchanged (alert-state.sh, root docs, docs/,
+  .mcp.json, kit/v1/README.md, kit/v1/.agent-handoff/DASHBOARD.md.template,
+  kit/v1/.agent-handoff/prompts/, kit/v1/.agent-handoff/COLLAB.md.template)
+- DASHBOARD.md and DASHBOARD.html were NOT touched by Codex in FIX-001;
+  pre-existing Claude E6-B critique freshness refresh state preserved
+- `.agent-handoff/tools/` contains only `alert-state.sh` (6519 bytes,
+  unchanged)
+- advisor-notes/reflections/improvements paths all ABSENT
+- Pilot repo clean at `655e75bc`
+
+**Headline strengths**:
+- **Codex dogfooded the rule at first use.** FIX-001's own turn note
+  includes `## Coordinator Trigger: State ROUTINE` with reason (L9-11).
+  Claude's critique extends the validation by also including
+  `## Coordinator Trigger: State ROUTINE` at the top of this critique
+  turn note. Two consecutive turns of dogfooding confirms the
+  classification rule is operational, not theoretical.
+- **3-state simplification adopted** (ROUTINE / NEEDS_GPT / UNCLEAR).
+  Matches my pre-fix recommendation #2. Cleaner than GPT's original
+  4-state proposal.
+- **Auditor upgrade authority explicit** (PROTOCOL.md L229-234,
+  verbatim from my pre-fix recommendation #3).
+- **Sami-is-not-classifier stated twice** with explicit framing
+  (L207-208 + structural enforcement at L199).
+- **Default-to-UNCLEAR when missing** (L208-209 + L221-222 — two
+  independent placements).
+- **All 8 disqualifying triggers for ROUTINE listed inline**
+  (architecture, pivot, UX-friction, cognitive-load, conflict, safety,
+  automation, tooling).
+- **All 9 NEEDS_GPT triggers listed inline.**
+- **Dashboard guidance respects FIX-004 single-recommendation
+  principle** (L224-227).
+- **Handoff requirement includes exact GPT paste question** when
+  NEEDS_GPT or UNCLEAR (L226-227 + L232-234 — two placements).
+- **Mirror discipline byte-identical L174-286.**
+- **All E6-B coordinator/scribe content preserved** (role model,
+  triggers, output contract, scribing rules, multi-turn deferral,
+  NanoClaw caveat).
+- **Single-purpose 4-file fix shape** matches the proven E5-S
+  implementation pattern.
+- **Codex's verification matches my independent re-verification 1:1.**
+
+**Three optional Nits (none blocking)**:
+1. **Kit template has pre-existing duplicate `## Evidence Basis` (L350,
+   L355) and `## Portability Findings` (L363, L369) headings.** NOT
+   introduced by FIX-001 — pre-existing kit template messiness. Worth
+   flagging for separate small kit-cleanup turn at some point but not
+   blocking. Live PROTOCOL.md doesn't have these duplicates.
+2. **Turn Note Schema (PROTOCOL.md L290-329) was not updated to add
+   `## Coordinator Trigger` to the formal schema.** The new subsection
+   describes the requirement but doesn't update the existing schema. A
+   future small turn could add a cross-reference or inline the
+   requirement. Discoverability nit; rule is findable in PROTOCOL.md.
+3. **Codex's classification reason at FIX-001 turn note L11 is
+   technically correct but could be slightly sharper** (e.g., explicitly
+   mapping to the 8 ROUTINE-disqualifying triggers). Style nit only.
+
+All three nits are observational. None affects acceptance.
+
+**Empirical validation of the new classification rule**: this is the
+first turn-pair (Codex implementation + Claude critique) where both
+agents included `## Coordinator Trigger` sections in their turn notes.
+Both correctly classified as ROUTINE (FIX-001 is implementation of a
+Sami-authorized exact narrow protocol wording fix; this critique is
+auditor verification of FIX-001 against E6-A/E6-B specs). The schema
+works in practice, not just specification.
+
+The previous misclassification problem (where Sami silently classified
+turns by deciding which agent to consult) is now structurally
+impossible: every future turn note MUST include the classification, so
+"who classified this?" has a documented answer in the turn note itself.
+
+E6-B-FIX-001 critique outputs (local-only):
+- `.agent-handoff/turns/E6-B-FIX-001-claude-critique-coordinator-trigger-classification.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to combined 9-file push authorization; snapshot fields updated;
+  Coordinator Trigger added to Details)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization (if option a): **9 files** (5
+modifications that layer E6-B + FIX-001 + critique freshness refreshes
+together, plus 4 new turn notes — E6-B Codex implementation + E6-B Claude
+critique + E6-B-FIX-001 Codex implementation + E6-B-FIX-001 Claude
+critique). Critique-only or partial pushes are impractical because of
+entanglement in the modified files.
+
+E6-B-FIX-001 critique did not edit PROTOCOL.md, kit templates,
+alert-state.sh, root docs, product/runtime files; did not create
+advisor-notes/reflections/improvements paths; did not create notification
+scripts; did not use Notion/NanoClaw/CommonGround; did not install
+plugins; did not create `.mcp.json`; did not start a server; did not set
+up OpenAI API; did not create automation, cron, timers, webhooks, launch
+agents, MCP/plugins, bridges; did not stage, commit, push, branch, or PR;
+did not touch live Open Mic Colorado; did not touch pilot repo.
+
+Pattern: **twentieth clean turn-pair** in the E5-H → E6-B-FIX-001 arc.
+9-file combined-push shape (5 modifications + 4 new turn notes) is the
+largest of the E5-E6 arc, reflecting two stacked turn-pairs (E6-B +
+FIX-001) being pushed together.
+
+**Strategic context**: with E6-B + FIX-001 landed (if pushed), the GPT
+coordinator role + the trigger classification mechanism are both in
+protocol text. The combined push gives the next handoff (whoever does
+it) all the operational rules they need to function with the corrected
+governance. The next move should be **option C: pause and use the
+coordinator trigger rule in real handoffs** for 3-5 cycles before any
+further governance/dashboard/advisor-notes infrastructure work. The
+"observe-before-add" pattern that worked at every prior decision point
+applies here as well.
+
+E6-B-FIX-001 implementation details:
+- Every future turn note must include a near-top `Coordinator Trigger` section
+  with state and one-sentence reason.
+- `ROUTINE` is allowed only for already scoped, low-risk, non-strategic turns
+  with no active architecture, pivot, UX-friction, cognitive-load, conflict,
+  safety, automation, or tooling trigger.
+- `NEEDS_GPT` applies when any GPT coordinator invocation trigger fires.
+- `UNCLEAR` applies when the active repo-writing node cannot confidently mark
+  the turn `ROUTINE`; it defaults to Ask GPT.
+- If the classification is missing, the turn is treated as `UNCLEAR` and
+  defaults to Ask GPT.
+- When state is `NEEDS_GPT` or `UNCLEAR`, dashboard guidance should make
+  "Ask GPT-5.5 Pro" the primary recommendation, not "Sami decide if GPT is
+  needed."
+- Handoffs must include the exact GPT paste question when state is
+  `NEEDS_GPT` or `UNCLEAR`.
+- Auditors may upgrade the Coordinator Trigger classification during critique
+  with a one-sentence reason.
+- E6-B's existing rules remain preserved: GPT may advise but not approve;
+  Sami remains sole approval authority; rubric satisfaction is not approval;
+  multi-turn outcome loops remain deferred.
+
+E6-B-FIX-001 no-touch surfaces: no `DASHBOARD.md`, `DASHBOARD.html`,
+`alert-state.sh`, advisor-notes/reflections/improvements paths, kit dashboard
+template, kit COLLAB template, kit prompts, kit README, root docs, docs/,
+product/runtime files, live Open Mic Colorado, pilot repo, CommonGround,
+NanoClaw, Notion, `.mcp.json`, plugin/config files, automation, model calls,
+OpenAI API setup, MCP/plugins/bridges, cron, timers, webhooks, launch agents,
+global config, server, staging, commit, push, branch, or PR.
+
+Experiment 6 E6-B GPT coordinator/scribe protocol wording implementation
+(historical local context): implementation and Claude critique are local-only.
+Codex added a concise `GPT Coordinator / Outcome Architect` subsection to
+both the live protocol and the kit protocol template. The wording codifies the
+accepted E6-A role model, trigger-based GPT invocation, GPT output contract,
+repo-visible scribing discipline, dashboard Ask GPT behavior as guidance only,
+multi-turn outcome-loop deferral, and NanoClaw/transport caveat. E6-B does not
+edit dashboard files (except the freshness refresh in Claude's critique),
+create advisor-notes, add automation, set up an API or transport layer, or
+design multi-turn outcome loops.
+
+E6-B local outputs:
+- `.agent-handoff/PROTOCOL.md` (+50 lines for the GPT Coordinator subsection)
+- `kit/v1/.agent-handoff/PROTOCOL.md.template` (byte-identical mirror of the
+  GPT Coordinator subsection)
+- `.agent-handoff/COLLAB.md` (Codex handoff update then Claude critique
+  handoff update)
+- `.agent-handoff/DASHBOARD.md` (Claude critique freshness refresh)
+- `.agent-handoff/DASHBOARD.html` (Claude critique freshness refresh)
+- `.agent-handoff/turns/E6-B-codex-gpt-coordinator-protocol-wording.md`
+- `.agent-handoff/turns/E6-B-claude-critique-gpt-coordinator-protocol-wording.md`
+
+E6-B critique summary (Claude, local-only at this turn): **all 16 focus
+areas PASS with zero blockers**. Independent verification confirmed:
+- 4-file working tree matches authorization 1:1 (3 modifications + 1 new
+  turn note); after critique freshness refresh, working tree is 5 files
+  (3 modifications including dashboard refresh + 2 new turn notes)
+- `git diff --check` clean
+- **Mirror discipline exact**: live PROTOCOL.md and kit template have
+  byte-identical `### GPT Coordinator / Outcome Architect` subsection
+  content (verified via independent `diff` of the section between the two
+  files; the only "diff" line shown was the next-section heading, a
+  pre-existing structural difference between live and template, NOT
+  introduced by E6-B)
+- All no-touch surfaces unchanged (DASHBOARD.md, DASHBOARD.html,
+  alert-state.sh, root docs, docs/, .mcp.json, kit/v1/README.md,
+  kit/v1/.agent-handoff/DASHBOARD.md.template, kit prompts/* templates)
+- `.agent-handoff/tools/` contains only `alert-state.sh` (6519 bytes,
+  unchanged)
+- advisor-notes/reflections/improvements paths all ABSENT
+- No new Notion/NanoClaw/CommonGround/.mcp.json artifacts
+- Pilot repo clean at `655e75bc`
+
+**Headline strengths**:
+- **Faithful implementation of E6-A.** Every key element from E6-A
+  sections 3-6 + 7 + 8-9 + 11 is captured in protocol wording. No drift,
+  no over-interpretation, no addition beyond what E6-A designed.
+- **Mirror discipline exact.** Byte-identical GPT Coordinator content
+  between live PROTOCOL.md and kit template. E5-S precedent preserved.
+- **Verbatim preservation of pre-design pushback wording across 3 turns**
+  (pre-design review → E6-A design → E6-B implementation). "GPT may
+  recommend... does not approve" sentence; NanoClaw caveat; FIX-004
+  single-recommendation constraint — all preserved exactly.
+- **Trigger list + "not required for" list are symmetric and scannable**
+  (9 triggers + 5 exemptions). Readers can classify any turn quickly.
+- **All 4 scribing sub-cases covered** (active writer / Sami-only window /
+  dual-applicability / no duplication-or-loss).
+- **Rubric-satisfaction safety wording NOW IN PROTOCOL TEXT.** Strongest
+  pre-lock against any future multi-turn loop design drifting toward soft
+  approval. Carried from E6-A's "recommended default" into governance.
+- **Dashboard guidance honors FIX-004 constraint exactly.**
+- **Single section addition, no protocol restructure.** Codex extended
+  existing `## Node Capability And Advisor Rules` section with a new
+  `### GPT Coordinator / Outcome Architect` subsection. Keeps structure
+  coherent.
+- **Single-purpose 4-file commit shape** matches E5-S implementation
+  pattern (PROTOCOL.md + kit template mirror + COLLAB.md + turn note).
+- **Codex's verification matches my independent re-verification 1:1.**
+
+**Three optional Nits (none blocking)**:
+1. **PROTOCOL.md grew from 386 to 436 lines (+50 lines, +13%).**
+   Substantial addition. Justified — captures team operating model and a
+   new node's role — but worth watching whether protocol navigability
+   suffers if E6-C and E6-B2 continue growing the file.
+2. **The `## Node Capability And Advisor Rules` section is now ~100
+   lines** (was ~50 after E5-S). Could potentially be split in the future
+   if the combined section becomes hard to navigate. Not needed yet.
+3. **Codex's verification mentioned checking live Open Mic Colorado
+   status read-only.** Slight scope expansion (authorization didn't
+   explicitly require this); good defensive discipline but the cleanest
+   pattern is to verify non-touch entirely within the active repo's git
+   state. Tiny nit on operational discipline.
+
+All three nits are observational and can be addressed (or deferred
+indefinitely) without affecting E6-B acceptance.
+
+**Empirical validation of trigger-based GPT discipline**: E6-B is the
+first turn where the trigger-based pattern from E6-A was tested in
+practice. Sami skipped the GPT pre-pass for E6-B (correctly, per E6-A
+Section 4 "GPT not required for routine implementation"). The result is
+a clean 16/16 PASS implementation. That's empirical evidence the trigger
+list works as intended: GPT in the loop when it matters, out when it
+doesn't.
+
+E6-B critique outputs (local-only):
+- `.agent-handoff/turns/E6-B-claude-critique-gpt-coordinator-protocol-wording.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to combined-push authorization; snapshot fields updated to
+  reflect post-critique state; advisor input now points to E6-A Section 1
+  + the new protocol section)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization (if option a): 5 files (3
+modifications that layer E6-B implementation and critique freshness
+refresh together, plus 2 new turn notes — E6-B Codex implementation +
+E6-B Claude critique). Critique-only push is impractical because Codex's
+E6-B modifications and Claude's critique freshness refresh are entangled
+in the same modified files.
+
+E6-B critique did not edit PROTOCOL.md, kit templates, alert-state.sh,
+root docs, product/runtime files; did not create advisor-notes/
+reflections/improvements paths; did not create notification scripts; did
+not use Notion/NanoClaw/CommonGround; did not install plugins; did not
+create `.mcp.json`; did not start a server; did not set up OpenAI API;
+did not create automation, cron, timers, webhooks, launch agents, MCP/
+plugins, bridges; did not stage, commit, push, branch, or PR; did not
+touch live Open Mic Colorado; did not touch pilot repo.
+
+Pattern: **nineteenth clean turn-pair** in the E5-H → E6-B arc.
+Single-purpose 5-file combined-push shape (3 modifications + 2 new turn
+notes) matches the proven E5-T-FIX-001 / FIX-002 / FIX-003 / FIX-004 /
+E6-A pattern. Single-purpose 4-file implementation commit shape (Codex's
+E6-B alone) matches E5-S implementation precedent.
+
+**Strategic context**: with E6-B landed (if pushed), the GPT coordinator
+role is now in protocol text. The next move should be **option A: pause
+and use the protocol in real handoffs for 3-5 cycles before any further
+governance/dashboard/advisor-notes infrastructure work.** The
+"observe-before-add" pattern that worked at every prior decision point in
+the E5-E6 arc applies here. If real-use observation reveals a specific
+gap (Sami forgets when to invoke GPT → dashboard trigger surface; GPT
+input getting lost between turns → advisor-notes path; routing burden
+remains high → multi-turn loop design), that diagnosis informs which
+option (C, E, or D) to do next.
+
+E6-B implementation details:
+- Stable team model is now protocol wording: GPT-5.5 Pro coordinates; Codex
+  builds; Claude audits; Sami approves; repo records the trail.
+- GPT may recommend, synthesize, draft prompts, and define outcome/rubric
+  proposals, but GPT does not approve scope, pushes, or completion.
+- GPT is asked only when triggers fire; it is not mandatory for routine
+  implementation, routine critique, straightforward push authorization,
+  already-scoped no-choice handoffs, or low-risk verification where Claude and
+  Codex agree without strategic judgment from Sami.
+- Active repo-writing node scribes GPT output with attribution, exact quote
+  when available, no text length cap, structured summary, and accepted /
+  rejected / left undecided status.
+- Future dashboard behavior is protocol guidance only: if GPT is the primary
+  need, "Ask GPT-5.5 Pro" may become the one recommendation, not a competing
+  extra surface.
+- E6-C or later remains the required separate design for multi-turn
+  outcome/rubric loops. Rubric satisfaction does not authorize commit, push,
+  new scope, or completion without Sami's exact approval.
+- NanoClaw or any transport layer remains a future option only and requires
+  separate review.
+
+E6-B no-touch surfaces: no `DASHBOARD.md`, `DASHBOARD.html`,
+`alert-state.sh`, kit dashboard template, kit COLLAB template, kit starter
+turn note, kit reflection proposal template, kit README, root docs, docs/,
+product/runtime files, live reflections/improvements/advisor-notes paths,
+pilot repo, live Open Mic Colorado, CommonGround, NanoClaw, Notion,
+`.mcp.json`, plugin/config files, automation, model calls, OpenAI API setup,
+MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config,
+server, staging, commit, push, branch, or PR.
+
+Experiment 6 E6-A GPT Coordinator / Outcome Architect integration design
+(historical context): implementation and Claude critique were accepted as a
+successful design turn. E6-A restored GPT-5.5 Pro as a structural coordinator/
+outcome architect while preserving the repo-governed Claude <-> Codex bridge
+and Sami-only approval. It did not implement the coordinator rule, create
 advisor notes, edit the dashboard, add automation, or reduce Sami's relay
 burden yet.
 
@@ -3096,42 +3458,45 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to send E6-A to Claude Code for critique.
-- After Claude critique, decide whether E6-A is accepted and whether the next
-  step is E6-B coordinator rule + scribing/advisor-notes + dashboard Ask GPT
-  trigger, E6-C multi-turn outcome/rubric loop design, defer/manual GPT
-  coordination, or pivot.
-- No E6-B implementation, E6-C outcome-loop design, advisor-notes path
-  creation, dashboard edit, protocol edit, kit edit, alert-state edit,
+- Decide whether to send E6-B-FIX-001 to Claude Code for critique.
+- After Claude critique, decide whether E6-B + E6-B-FIX-001 are accepted and
+  whether the next step is combined push, pause-and-observe, dashboard Ask GPT
+  trigger work, advisor-notes path design/creation, E6-C multi-turn outcome/
+  rubric loop design, or pivot.
+- No dashboard edit, advisor-notes path creation, E6-C outcome-loop design,
   automation, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
   MCP/plugin/bridge, cron, timer, webhook, launch agent, global config, pilot
   repo, or live Open Mic Colorado work is active.
 
 ## Next Request To Claude
 
-If Sami proceeds, critique E6-A as auditor/advisor. Read
-`.agent-handoff/turns/E6-A-codex-gpt-coordinator-outcome-architect-design.md`
-and this COLLAB handoff. Focus on whether the design restores GPT-5.5 Pro as
-coordinator/outcome architect without making GPT repo-writing or approval
-authority, preserves Codex as builder and Claude as auditor, keeps Sami as
-approval/priority/risk/taste, clarifies GPT triggers/output/scribing, respects
-the E5-T-FIX-004 single-recommendation dashboard principle, and correctly
-defers multi-turn outcome/rubric loops to E6-C or later.
+If Sami proceeds, critique E6-B-FIX-001 as auditor/advisor. Read
+`.agent-handoff/PROTOCOL.md`, `kit/v1/.agent-handoff/PROTOCOL.md.template`,
+this COLLAB handoff, and
+`.agent-handoff/turns/E6-B-FIX-001-codex-coordinator-trigger-classification.md`.
+Also read the E6-B implementation and critique notes as pre-existing local
+state. Focus on whether FIX-001 removes Sami's burden to decide routine status,
+requires active repo-writing-node classification, defaults missing/unclear
+classification to Ask GPT, preserves E6-B coordinator/scribe rules, mirrors
+the classification wording between live and kit protocol surfaces, avoids
+dashboard edits by Codex, and keeps multi-turn outcome loops, advisor-notes
+creation, API setup, automation, and transport/NanoClaw work deferred.
 
 ## Next Request To Codex
 
-None active. Hard stop after E6-A. No E6-B implementation, E6-C outcome-loop
-design, advisor-notes path creation, dashboard edit, protocol edit, kit edit,
-alert-state edit, server, model call, OpenAI API setup, NanoClaw/CommonGround/
-Notion, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon, global
-config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
-notification script, staging, commit, push, branch, PR, or any other change is
-authorized.
+None active. Hard stop after E6-B-FIX-001. No dashboard edit, DASHBOARD.html edit,
+alert-state edit, kit dashboard template edit, kit README edit, reflection
+proposal template edit, advisor-notes path creation, E6-C outcome-loop design,
+server, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
+MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon, global config,
+pilot repo, live Open Mic Colorado, product/runtime, root-doc, notification
+script, staging, commit, push, branch, PR, or any other change is authorized.
 
 ## Next Request To Sami
 
-Paste the E6-A Claude critique prompt if you want to proceed. Treat E6-A as a
-design-only local turn until Claude critiques it and Sami decides whether to
-accept it. Do not authorize E6-B, E6-C, advisor-notes creation, dashboard
-changes, protocol changes, automation, API setup, transport/NanoClaw review,
-staging, commit, push, branch, or PR until a separate explicit approval.
+Paste the E6-B-FIX-001 Claude critique prompt if you want to proceed. Treat
+E6-B-FIX-001 as a local protocol-wording fix stacked on E6-B until Claude
+critiques it and Sami decides whether to accept it. Do not authorize dashboard
+Ask GPT implementation, advisor-notes creation, E6-C outcome-loop design,
+automation, API setup, transport/NanoClaw review, staging, commit, push,
+branch, or PR until a separate explicit approval.
