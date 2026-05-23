@@ -7,28 +7,208 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude has completed the E5-T-FIX-004 critique locally and is hard-stopped.
-Sami is the next actor to decide between (a) combined push of E5-T-FIX-004 +
-critique (5 files: 3 modifications + 2 new turn notes) or (b) pause-and-
-observe (no push; let the simplified single-action architecture sit in the
-local working tree first to feel whether the chip styling or total
-dashboard length actually bother in real use). No staging, commit, push,
-branch, PR, automation, model calls, server, NanoClaw/CommonGround/Notion,
-MCP/plugin/bridge, cron/timer/webhook/launch agent/global config, pilot
-repo, live Open Mic Colorado, protocol, kit template, alert-state,
-advisor-notes/reflections/improvements, or product/runtime work is
-authorized.
+Claude has completed the E6-A critique locally and is hard-stopped. Sami is
+the next actor to decide between (a) combined push of E6-A + critique
+(5 files: 3 modifications + 2 new turn notes) or (b) pause-and-observe
+(no push; let the E6-A design sit in the local working tree for further
+consideration before committing). No implementation, staging, commit, push,
+branch, PR, automation, model calls, OpenAI API setup, server, NanoClaw/
+CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch agent/
+global config, protocol edit, kit template edit, alert-state edit,
+advisor-notes/reflections/improvements path creation, pilot repo touch, live
+Open Mic Colorado touch, or product/runtime work is authorized.
 
 ## Current Phase
 
-Experiment 5 E5-T-FIX-004 human control tower single-action simplification:
-implementation and Claude critique are both local-only and await Sami's
-push decision. This turn preserves the E5-T-FIX-003 truth/provenance
-improvements but moves alternatives, snapshot provenance, external advisor
+Experiment 6 E6-A GPT Coordinator / Outcome Architect integration design:
+implementation and Claude critique are both local-only and await Sami's push
+decision. E6-A restores GPT-5.5 Pro as a structural coordinator/outcome
+architect while preserving the repo-governed Claude <-> Codex bridge and
+Sami-only approval. It does not implement the coordinator rule, create
+advisor notes, edit the dashboard, add automation, or reduce Sami's relay
+burden yet.
+
+E6-A local outputs:
+- `.agent-handoff/turns/E6-A-codex-gpt-coordinator-outcome-architect-design.md`
+- `.agent-handoff/turns/E6-A-claude-critique-gpt-coordinator-outcome-architect-design.md`
+- `.agent-handoff/COLLAB.md` (Codex handoff update then Claude critique
+  handoff update)
+- `.agent-handoff/DASHBOARD.md` (post-critique freshness refresh)
+- `.agent-handoff/DASHBOARD.html` (post-critique freshness refresh)
+
+E6-A design conclusions:
+- Stable team model: GPT-5.5 Pro coordinates; Codex builds; Claude audits;
+  Sami approves; repo records the trail.
+- GPT may recommend, synthesize, draft prompts, and propose outcome/rubric
+  content, but GPT does not approve scope, pushes, or completion.
+- GPT invocation is trigger-based, not mandatory every turn.
+- GPT output contract specified (9 elements: concise synthesis, consensus
+  recommendation, divergent opinions, risk/tradeoff, exact next prompts,
+  outcome/rubric proposals, exact approval text, explicit uncertainty, no
+  repo-authoritative claims unless scribed).
+- Near term: Sami pastes GPT output into Claude/Codex, active repo-writing
+  node scribes with attribution. Scribing responsibility resolved for all 4
+  sub-cases (active writer / Sami-only windows / no duplication / dual
+  applicability).
+- Dashboard Ask GPT behavior designed but not implemented; future
+  implementation must respect E5-T-FIX-004 single-recommendation principle.
+- Multi-turn outcome/rubric loops explicitly deferred to E6-C or later.
+  Rubric satisfaction means auditor evidence only — does not authorize
+  commit, push, new scope, or completion without Sami's exact approval
+  text. This safety wording appears in two independent placements.
+- NanoClaw and transport layers explicitly NOT a default future path
+  (previously investigated and deferred for governance-fit reasons).
+- E6-A does NOT eliminate Sami's relay burden in the near term (honest
+  scope statement).
+- Likely sequence if accepted: E6-B coordinator/scribe protocol wording
+  (C2, the recommended smallest implementation); later C1 dashboard Ask GPT
+  trigger or A advisor-notes/ path scope if needed; E6-C multi-turn loop
+  design separately.
+
+E6-A no-touch surfaces: no `PROTOCOL.md`, `alert-state.sh`, kit/v1, root
+docs, docs/, product/runtime files, live reflections/improvements/
+advisor-notes paths, pilot repo, live Open Mic Colorado, CommonGround,
+NanoClaw, Notion, `.mcp.json`, plugin/config files, automation, model calls,
+OpenAI API setup, MCP/plugins/bridges, cron, timers, webhooks, launch agents,
+global config, server, staging, commit, push, branch, or PR.
+
+E6-A critique summary (Claude, local-only at this turn): **all 20 focus
+areas PASS with zero blockers** (the most clean-incorporated design turn in
+the E5-E6 arc to date). Independent verification confirmed:
+- 2-file E6-A working tree matches authorization 1:1 (1 modification + 1
+  new turn note); after critique freshness refresh, working tree is 5 files
+  (3 modifications + 2 new turn notes)
+- `git diff --check` clean
+- All no-touch surfaces unchanged (PROTOCOL.md, alert-state.sh, kit/v1,
+  root docs, docs/, .mcp.json — also DASHBOARD.md and .html were no-touch
+  in E6-A's design scope)
+- `.agent-handoff/tools/` contains only `alert-state.sh` (6519 bytes,
+  unchanged)
+- advisor-notes/reflections/improvements paths all ABSENT (not created)
+- No new Notion/NanoClaw/CommonGround artifacts (only pre-existing E5-N
+  feasibility turn notes match the search patterns)
+- Pilot repo clean at `655e75bc`
+
+**Headline strengths**:
+- **First repo-visible scribed external coordinator input in the
+  experiment.** Section 1 ("External Coordinator Input: GPT-5.5 Pro")
+  demonstrates the scribing pattern works at first use — verbatim framing,
+  structured summary, accepted/rejected/undecided status, explicit
+  non-creation of advisor-notes/.
+- **Verbatim incorporation of pre-design pushback wording.** "GPT may
+  recommend, synthesize, draft prompts, and define outcome/rubric
+  proposals. GPT does not approve scope, pushes, or completion." appears
+  exactly as requested. NanoClaw caveat appears exactly as requested.
+  Dashboard FIX-004-respect constraint appears exactly as requested.
+- **Trigger-based GPT invocation with explicit "not required" cases**
+  (9 trigger conditions + 5 "not required for" conditions + closing
+  principle preventing routine relay).
+- **All 4 scribing sub-cases addressed** (active writer / Sami-only
+  windows / no duplication / dual-applicability).
+- **Rubric-satisfaction safety wording in two independent placements**
+  (Section 8 recommended default + Section 9 grader-false-pass). Pre-locks
+  the most important E6-C constraint before the loop is designed.
+- **Multi-turn loop deferral is disciplined.** 13 questions for E6-C
+  without drafting any loop mechanics.
+- **Honest scope statement** in Problem Statement: "E6-A adds GPT's
+  structural coordinator role, but it does not eliminate Sami's relay
+  burden in the near term."
+- **Section 10 (managed-agent comparison) is one focused paragraph**, not
+  a sprawling section. Borrow + differentiator framing without bloat.
+- **Section 12 lists E6-B questions without enumerating exact files** —
+  discipline against premature implementation specification.
+- **Single-purpose 2-file design-only commit shape** matches the proven
+  E5-J / E5-L / E5-N / E5-O / E5-R / E5-U pattern for the 22nd time across
+  the E5-E6 arc.
+- **Codex's own verification matches my independent re-verification 1:1.**
+
+**Three optional Nits (none blocking)**:
+1. **Section 1 placement** — "External Coordinator Input" is now the
+   FIRST design section before Problem Statement. Unusual structurally
+   (normally scribed input is preamble or appendix). Works fine for this
+   self-dogfooding design; future scribed-input turns could standardize on
+   "Preamble" or "Appendix" placement.
+2. **Section 12 "Likely sequence" mildly pre-empts the E6-B questions**
+   it just asked. Could be reframed as "depending on E6-B's answers,
+   possible sequences include...". Foldable into E6-B itself.
+3. **Section 11 "Possible API-backed GPT coordinator node" missing
+   credentials/OAuth caveat** parallel to the NanoClaw one. Would benefit
+   from "API-backed GPT coordinator node would require credentials/OAuth
+   setup that Sami must configure directly; do not treat as a default
+   future path." Foldable into future protocol addition.
+
+All three nits are optional and can be addressed (or deferred indefinitely)
+without affecting E6-A acceptance.
+
+**Empirical validation of the 3-way pattern**: E6-A is the first turn
+where the proposed 3-way pattern was dogfooded BEFORE the design that
+documents it. GPT framed the coordinator-role need; Claude audited GPT's
+proposal and added 9 specific pushbacks; GPT incorporated essentially all
+pushbacks into the final E6-A authorization; Codex drafted with all
+pre-design feedback baked in; Sami approved and routed to Codex; this
+critique closes the loop. The fact that 20 of 20 focus areas pass with
+zero blockers — including verbatim wording and pre-design corrections —
+is empirical evidence that the 3-way pattern produces cleaner designs
+than the 2-way Claude↔Codex loop did. Pre-design coordination caught
+issues that would otherwise have surfaced in critique as nits-to-
+blockers.
+
+E6-A critique outputs (local-only):
+- `.agent-handoff/turns/E6-A-claude-critique-gpt-coordinator-outcome-architect-design.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to combined-push authorization; snapshot fields updated to
+  reflect post-critique state; first non-N/A advisor input — points to
+  E6-A Section 1 as the scribed source)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization (if option a): 5 files (3
+modifications that layer E6-A implementation and critique freshness
+refresh together, plus 2 new turn notes — E6-A Codex design + E6-A
+Claude critique). Critique-only push is impractical because Codex's E6-A
+modifications and Claude's critique freshness refresh are entangled in
+the same three modified files.
+
+E6-A critique did not edit PROTOCOL.md, kit templates, alert-state.sh,
+root docs, product/runtime files; did not create advisor-notes/
+reflections/improvements paths; did not create notification scripts; did
+not use Notion/NanoClaw/CommonGround; did not install plugins; did not
+create `.mcp.json`; did not start a server; did not set up OpenAI API;
+did not create automation, cron, timers, webhooks, launch agents, MCP/
+plugins, bridges; did not stage, commit, push, branch, or PR; did not
+touch live Open Mic Colorado; did not touch pilot repo.
+
+Pattern: **eighteenth clean turn-pair** in the E5-H → E6-A arc.
+Single-purpose 5-file combined-push shape (3 modifications + 2 new turn
+notes) matches the proven E5-T-FIX-001 / FIX-002 / FIX-003 / FIX-004
+pattern. Single-purpose 2-file design-only commit shape (Codex's E6-A
+alone) matches E5-J / E5-L / E5-N / E5-O / E5-R / E5-U for the 22nd time.
+
+**Strategic context**: with E6-A landed (if pushed), the coordinator role
+is documented as repo-visible design. The next E6-B implementation should
+be small and protocol-focused (option C2: coordinator/scribe wording in
+PROTOCOL.md + kit template). Observe 3-5 real handoff cycles before
+adding more infrastructure (dashboard Ask GPT trigger, advisor-notes/
+path, or multi-turn loop design). The pause-before-each-next-layer
+discipline established across the E5 arc still holds.
+
+**Strategic recommendation for after E6-A push**: option C2 (E6-B
+coordinator/scribe protocol wording only) as the smallest safe
+implementation. Adds the role model + invocation triggers + GPT output
+contract + scribing rules + rubric-satisfaction safety wording to
+PROTOCOL.md + kit/v1/.agent-handoff/PROTOCOL.md.template. Does NOT touch
+dashboard files (preserves FIX-004 architecture). Does NOT create
+advisor-notes/ (preserves Sami's "left undecided" status). Does NOT design
+or implement multi-turn loops (preserves E6-C deferral).
+
+Experiment 5 E5-T-FIX-004 human control tower single-action simplification
+(historical context): implementation and Claude critique were pushed at
+`9187c92`. This turn preserved the E5-T-FIX-003 truth/provenance
+improvements but moved alternatives, snapshot provenance, external advisor
 visibility, technical packet, no-touch list, and raw state into collapsed
 details so the top of the dashboard shows one recommended action.
 
-E5-T-FIX-004 local outputs:
+E5-T-FIX-004 pushed outputs (historical, superseded by E6-A current state):
 - `.agent-handoff/DASHBOARD.html` (single recommended action above the
   fold; post-critique freshness refresh)
 - `.agent-handoff/DASHBOARD.md` (aligned single-action structure;
@@ -38,7 +218,41 @@ E5-T-FIX-004 local outputs:
 - `.agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md`
 - `.agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md`
 
-E5-T-FIX-004 dashboard top-state (post-critique):
+E5-T-FIX-004 dashboard top-state (historical stale snapshot after push):
+- Recommended action: combined push of E5-T-FIX-004 + Claude critique.
+- Why: critique passed 10/11 cleanly with 1 PARTIAL (chip styling
+  near-blocker); combined push lands the structural simplification.
+  Pause-and-observe is the alternative if chip styling concern needs
+  real-use observation first.
+- Status chips: Sami needed, next actor, snapshot expiry.
+- Snapshot expiry: after Sami authorizes push, routes pause-and-observe,
+  or next actor changes.
+- Alternatives, provenance, GPT/external advisor visibility, no-touch
+  list, raw state, and technical packet remain below the fold in
+  collapsed details.
+
+E5-T-FIX-004 no-touch surfaces: no `PROTOCOL.md`, `alert-state.sh`, kit/v1,
+root docs, docs/, product/runtime files, live reflections/improvements/
+advisor-notes paths, pilot repo, live Open Mic Colorado, CommonGround,
+
+Experiment 5 E5-T-FIX-004 human control tower single-action simplification
+(historical context): implementation and Claude critique were pushed at
+`9187c92`. This turn preserved the E5-T-FIX-003 truth/provenance
+improvements but moved alternatives, snapshot provenance, external advisor
+visibility, technical packet, no-touch list, and raw state into collapsed
+details so the top of the dashboard shows one recommended action.
+
+E5-T-FIX-004 pushed outputs (historical, superseded by E6-A current state):
+- `.agent-handoff/DASHBOARD.html` (single recommended action above the
+  fold; post-critique freshness refresh)
+- `.agent-handoff/DASHBOARD.md` (aligned single-action structure;
+  post-critique freshness refresh)
+- `.agent-handoff/COLLAB.md` (Codex handoff update then Claude critique
+  handoff update)
+- `.agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md`
+- `.agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md`
+
+E5-T-FIX-004 dashboard top-state (historical stale snapshot after push):
 - Recommended action: combined push of E5-T-FIX-004 + Claude critique.
 - Why: critique passed 10/11 cleanly with 1 PARTIAL (chip styling
   near-blocker); combined push lands the structural simplification.
@@ -58,7 +272,7 @@ NanoClaw, Notion, `.mcp.json`, plugin/config files, automation, model calls,
 MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config,
 server, staging, commit, push, branch, or PR.
 
-E5-T-FIX-004 critique summary (Claude, local-only at this turn): 10 of 11
+E5-T-FIX-004 critique summary (historical): 10 of 11
 focus areas PASS clean; 1 PARTIAL (focus area 5: chips moved into the
 right position but still use the `.fact` card styling rather than compact
 chip styling). 3 optional nits including the chip styling carry-forward.
@@ -129,7 +343,7 @@ mode of "let Codex make the call with my critique as the second pass."
 Worth noting for future prompts: if a specific CSS class is needed,
 name it in the prompt.
 
-E5-T-FIX-004 critique outputs (local-only):
+E5-T-FIX-004 critique outputs (historical, pushed):
 - `.agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md`
 - `.agent-handoff/COLLAB.md` (this handoff update)
 - `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
@@ -2882,44 +3096,42 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to send the E5-T-FIX-004 dashboard single-action
-  simplification update to Claude for critique.
-- After Claude critique, decide whether to authorize staging, commit, and push
-  for the exact E5-T-FIX-004 files plus any critique/freshness files Claude is
-  separately authorized to create.
-- No E5-V notification implementation, NanoClaw/CommonGround integration,
-  protocol edit, kit edit, alert-state edit, dashboard generator, server,
-  automation, model call, MCP/plugin/bridge, cron, timer, webhook, launch
-  agent, global config, pilot repo, or live Open Mic Colorado work is active.
+- Decide whether to send E6-A to Claude Code for critique.
+- After Claude critique, decide whether E6-A is accepted and whether the next
+  step is E6-B coordinator rule + scribing/advisor-notes + dashboard Ask GPT
+  trigger, E6-C multi-turn outcome/rubric loop design, defer/manual GPT
+  coordination, or pivot.
+- No E6-B implementation, E6-C outcome-loop design, advisor-notes path
+  creation, dashboard edit, protocol edit, kit edit, alert-state edit,
+  automation, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
+  MCP/plugin/bridge, cron, timer, webhook, launch agent, global config, pilot
+  repo, or live Open Mic Colorado work is active.
 
 ## Next Request To Claude
 
-If Sami proceeds, critique E5-T-FIX-004 as auditor/advisor. Use the primary
-paste block in `.agent-handoff/DASHBOARD.md` or `.agent-handoff/
-DASHBOARD.html`. Focus on whether the dashboard now shows one recommended
-action instead of a decision menu, keeps the above-fold surface short, moves
-alternatives/provenance/GPT visibility/technical/no-touch/raw state into
-collapsed details, keeps GPT below the fold unless it is the next action,
-remains self-contained, preserves COLLAB authority/no-approval/snapshot expiry
-rules, and stayed within the approved four files.
+If Sami proceeds, critique E6-A as auditor/advisor. Read
+`.agent-handoff/turns/E6-A-codex-gpt-coordinator-outcome-architect-design.md`
+and this COLLAB handoff. Focus on whether the design restores GPT-5.5 Pro as
+coordinator/outcome architect without making GPT repo-writing or approval
+authority, preserves Codex as builder and Claude as auditor, keeps Sami as
+approval/priority/risk/taste, clarifies GPT triggers/output/scribing, respects
+the E5-T-FIX-004 single-recommendation dashboard principle, and correctly
+defers multi-turn outcome/rubric loops to E6-C or later.
 
 ## Next Request To Codex
 
-None active. Hard stop after E5-T-FIX-004. No E5-V implementation, dashboard
-edit, alert-state edit, protocol edit, kit edit, server, model call, NanoClaw,
-CommonGround, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
-global config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
+None active. Hard stop after E6-A. No E6-B implementation, E6-C outcome-loop
+design, advisor-notes path creation, dashboard edit, protocol edit, kit edit,
+alert-state edit, server, model call, OpenAI API setup, NanoClaw/CommonGround/
+Notion, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon, global
+config, pilot repo, live Open Mic Colorado, product/runtime, root-doc,
 notification script, staging, commit, push, branch, PR, or any other change is
 authorized.
 
 ## Next Request To Sami
 
-Paste the E5-T-FIX-004 Claude critique prompt from the top of
-`.agent-handoff/DASHBOARD.html` or `.agent-handoff/DASHBOARD.md` if you want
-to proceed. Treat the dashboard as a static snapshot prepared for that one
-critique action. Above the fold now contains one recommendation and one primary
-copy block; alternatives, provenance, GPT/external advisor status, no-touch,
-raw state, and technical packet are collapsed below. Do not reuse the dashboard
-after critique starts or completes, after any push lands, or when the next
-actor changes until Claude or Codex refreshes the dashboard files in a
-repo-visible turn.
+Paste the E6-A Claude critique prompt if you want to proceed. Treat E6-A as a
+design-only local turn until Claude critiques it and Sami decides whether to
+accept it. Do not authorize E6-B, E6-C, advisor-notes creation, dashboard
+changes, protocol changes, automation, API setup, transport/NanoClaw review,
+staging, commit, push, branch, or PR until a separate explicit approval.

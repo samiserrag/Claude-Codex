@@ -196,8 +196,8 @@
   <main>
     <section class="hero">
       <p class="eyebrow">DO THIS NOW</p>
-      <h1>Recommended: Push E5-T-FIX-004 (combined with Claude critique)</h1>
-      <p class="why">Why: critique passed 10/11 cleanly with 1 PARTIAL (chip styling near-blocker, foldable into a tight FIX-005 if it bothers in real use). The 5-file combined push lands the single-recommendation structural simplification in one commit.</p>
+      <h1>Recommended: Push E6-A (combined with Claude critique)</h1>
+      <p class="why">Why: critique passed all 20 focus areas with zero blockers — the cleanest design turn in the E5-E6 arc. The 5-file combined push lands the GPT Coordinator / Outcome Architect integration design + critique in one commit. Recommended next E6-B step (post-push) is option C2: coordinator/scribe protocol wording only, the smallest safe implementation.</p>
 
       <div class="facts">
         <div class="fact">
@@ -220,12 +220,12 @@
       </div>
       <pre id="primary-action">Approved:
 
-Stage, commit, and push only these E5-T-FIX-004 implementation + Claude critique files:
+Stage, commit, and push only these E6-A implementation + Claude critique files:
 - .agent-handoff/COLLAB.md
 - .agent-handoff/DASHBOARD.md
 - .agent-handoff/DASHBOARD.html
-- .agent-handoff/turns/E5-T-FIX-004-codex-dashboard-single-action-simplification.md
-- .agent-handoff/turns/E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md
+- .agent-handoff/turns/E6-A-codex-gpt-coordinator-outcome-architect-design.md
+- .agent-handoff/turns/E6-A-claude-critique-gpt-coordinator-outcome-architect-design.md
 
 Do not stage or commit:
 - .agent-handoff/PROTOCOL.md
@@ -250,7 +250,7 @@ git status --short --untracked-files=all
 git diff --check
 
 Commit message:
-E5-T-FIX-004: single-action dashboard simplification + Claude critique
+E6-A: add GPT Coordinator / Outcome Architect integration design + Claude critique
 
 After push, hard stop.</pre>
 
@@ -263,8 +263,8 @@ After push, hard stop.</pre>
         <summary>Alternatives</summary>
         <div class="panel-body">
           <ul>
-            <li>Pause-and-observe: do nothing; let the simplified single-action architecture sit in the local working tree first to feel whether chip styling or total dashboard length actually bother in real use. No approval text required.</li>
-            <li>Ask GPT-5.5 Pro for external strategy only if Sami wants a non-operational second opinion on push timing.</li>
+            <li>Pause-and-observe: do nothing; let the E6-A design sit in the local working tree for further consideration before committing. No approval text required.</li>
+            <li>Ask GPT-5.5 Pro for external strategy only if Sami wants a non-operational second opinion on push timing or on the recommended E6-B (option C2) next step.</li>
           </ul>
         </div>
       </details>
@@ -272,16 +272,17 @@ After push, hard stop.</pre>
       <details>
         <summary>Details</summary>
         <div class="panel-body kv">
-          <div class="k">Status</div><div class="v">E5-T-FIX-004 + Claude critique both local-only; awaiting Sami push decision.</div>
-          <div class="k">Builder</div><div class="v">Codex / OpenAI / architect-class</div>
-          <div class="k">Auditor</div><div class="v">Claude Code / Anthropic / architect-class</div>
-          <div class="k">External advisor</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class when invoked; not operational unless repo-visible and approved</div>
-          <div class="k">Sami</div><div class="v">Approval / priority / risk</div>
-          <div class="k">Diversity</div><div class="v">Strong</div>
+          <div class="k">Status</div><div class="v">E6-A + Claude critique both local-only; awaiting Sami push decision.</div>
+          <div class="k">Builder</div><div class="v">Codex / OpenAI / architect-class (E6-A design author)</div>
+          <div class="k">Auditor</div><div class="v">Claude Code / Anthropic / architect-class (E6-A critique author)</div>
+          <div class="k">Coordinator</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class (E6-A coordinator framing scribed in Codex turn note Section 1)</div>
+          <div class="k">Sami</div><div class="v">Approval / priority / risk / taste</div>
+          <div class="k">Diversity</div><div class="v">Strong (3-way: Anthropic + OpenAI + OpenAI)</div>
           <div class="k">Subagents</div><div class="v">0 - none</div>
-          <div class="k">Advisor input</div><div class="v">No repo-visible advisor note or scribed advisor record incorporated in this snapshot.</div>
-          <div class="k">Critique result</div><div class="v">10 of 11 focus areas PASS clean; 1 PARTIAL (chip styling); 3 optional nits.</div>
-          <div class="k">Alternative</div><div class="v">Pause-and-observe: defer the push so the chip weight + total dashboard length can be felt in real use first.</div>
+          <div class="k">Advisor input</div><div class="v"><strong>First repo-visible scribed external coordinator input in the experiment</strong>: GPT-5.5 Pro coordinator framing in E6-A Codex turn note Section 1.</div>
+          <div class="k">Critique result</div><div class="v">All 20 focus areas PASS with zero blockers; 3 optional nits.</div>
+          <div class="k">Alternative</div><div class="v">Pause-and-observe: defer the push so the E6-A design can be re-read or revised before committing.</div>
+          <div class="k">Recommended next step after push</div><div class="v">E6-B option C2 (coordinator/scribe protocol wording only, smallest safe implementation).</div>
         </div>
       </details>
 
@@ -291,8 +292,8 @@ After push, hard stop.</pre>
           <div class="lifecycle">
             <div class="label">Snapshot status</div>
             <div class="lifecycle-grid">
-              <div class="k">Prepared for</div><div class="v">Sami push decision for E5-T-FIX-004 + Claude critique</div>
-              <div class="k">As of</div><div class="v">HEAD 3f8d583 plus local E5-T-FIX-004 implementation and Claude critique working tree changes</div>
+              <div class="k">Prepared for</div><div class="v">Sami push decision for E6-A + Claude critique</div>
+              <div class="k">As of</div><div class="v">HEAD 9187c92 plus local E6-A implementation and Claude critique working tree changes</div>
               <div class="k">Expires after</div><div class="v">Sami authorizes a push, Sami routes pause-and-observe, or the next actor changes</div>
               <div class="k">After this action</div><div class="v">Do not reuse this dashboard snapshot until a repo-writing agent refreshes DASHBOARD.md and DASHBOARD.html</div>
             </div>
@@ -300,10 +301,10 @@ After push, hard stop.</pre>
           <div class="lifecycle">
             <div class="label">Snapshot provenance</div>
             <div class="lifecycle-grid">
-              <div class="k">Prepared by</div><div class="v">Codex (E5-T-FIX-004 implementation) + Claude (critique freshness refresh)</div>
-              <div class="k">Last repo action</div><div class="v">3f8d583 E5-T-FIX-003: add dashboard provenance and advisor visibility</div>
-              <div class="k">Snapshot basis</div><div class="v">HEAD 3f8d583 plus local E5-T-FIX-004 dashboard/handoff edits + Claude critique freshness refresh</div>
-              <div class="k">Source turn notes</div><div class="v">E5-T-FIX-004-codex-dashboard-single-action-simplification.md and E5-T-FIX-004-claude-critique-dashboard-single-action-simplification.md</div>
+              <div class="k">Prepared by</div><div class="v">Codex (E6-A design) + Claude (critique freshness refresh)</div>
+              <div class="k">Last repo action</div><div class="v">9187c92 E5-T-FIX-004: simplify dashboard to single recommended action</div>
+              <div class="k">Snapshot basis</div><div class="v">HEAD 9187c92 plus local E6-A design + Claude critique freshness refresh</div>
+              <div class="k">Source turn notes</div><div class="v">E6-A-codex-gpt-coordinator-outcome-architect-design.md and E6-A-claude-critique-gpt-coordinator-outcome-architect-design.md</div>
             </div>
           </div>
         </div>
@@ -313,9 +314,9 @@ After push, hard stop.</pre>
         <summary>External advisor visibility</summary>
         <div class="panel-body kv">
           <div class="k">External advisor</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class</div>
-          <div class="k">Current need</div><div class="v">Optional; not required for this E5-T-FIX-004 critique</div>
-          <div class="k">Last advisor input</div><div class="v">N/A - no repo-visible advisor note or scribed record is incorporated in this snapshot</div>
-          <div class="k">Authority</div><div class="v">External advisor output is not operational unless Sami approves it or a repo-visible record captures it</div>
+          <div class="k">Current need</div><div class="v">Optional; not required for this E6-A push decision</div>
+          <div class="k">Last advisor input</div><div class="v"><strong>GPT-5.5 Pro coordinator framing scribed in E6-A Codex turn note Section 1</strong> ("External Coordinator Input: GPT-5.5 Pro"). First repo-visible scribed external coordinator input in the experiment.</div>
+          <div class="k">Authority</div><div class="v">External advisor output is not operational unless Sami approves it or a repo-writing node records it with attribution. GPT's coordinator framing for E6-A was scribed by Codex with Sami's accepted/rejected/undecided status preserved.</div>
         </div>
       </details>
 
@@ -323,11 +324,13 @@ After push, hard stop.</pre>
         <summary>Technical packet</summary>
         <div class="panel-body">
           <ul>
-            <li>Latest pushed baseline before this fix: <strong>3f8d583 E5-T-FIX-003: add dashboard provenance and advisor visibility</strong>.</li>
-            <li>E5-T-FIX-004 moves provenance, advisor visibility, alternatives, technical packet, no-touch list, and raw state below the fold into collapsed details.</li>
-            <li>Changed files (combined for recommended push - 5 files): DASHBOARD.html, DASHBOARD.md, COLLAB.md, the E5-T-FIX-004 Codex turn note, and the E5-T-FIX-004 Claude critique turn note.</li>
-            <li>Required script check for this turn: <code>sh .agent-handoff/tools/alert-state.sh</code> ran and left the working tree byte-identical (pre/post <code>git status</code> diff empty; script output 109 lines).</li>
-            <li>Independent self-contained HTML check: grep for external API patterns returns exactly one match (the legitimate <code>navigator.clipboard.writeText(target.innerText)</code> for copy buttons); 1 inline <code>&lt;script&gt;</code>, 1 inline <code>&lt;style&gt;</code>, 0 <code>&lt;link&gt;</code> tags.</li>
+            <li>Latest pushed baseline before this design: <strong>9187c92 E5-T-FIX-004: simplify dashboard to single recommended action</strong>.</li>
+            <li>E6-A is a design-only turn restoring GPT-5.5 Pro as a structural coordinator/outcome architect without making GPT a repo-writing node.</li>
+            <li>Changed files (combined for recommended push - 5 files): COLLAB.md, DASHBOARD.md, DASHBOARD.html, the E6-A Codex design turn note, and the E6-A Claude critique turn note.</li>
+            <li>Codex's E6-A turn note: 376 lines, 12 sections (External Coordinator Input, Problem Statement, Role Model, Coordinator Invocation Triggers, GPT Output Contract, Scribing/Repo Visibility, Dashboard Coordinator Trigger, Multi-Turn Outcome Loop Deferral, Safety Model, Managed-Agent Comparison, Near-Term vs Future Implementation, E6-B/E6-C Planning Questions).</li>
+            <li>Claude's E6-A critique turn note: comprehensive coverage of all 20 focus areas with PASS results and 3 optional nits.</li>
+            <li>Required script check for this turn: not run; E6-A scope did not authorize script execution and the critique prompt's verification list did not require it. <code>alert-state.sh</code> size unchanged (6519 bytes) confirms no modification.</li>
+            <li>E6-A made NO dashboard edits during design (DASHBOARD.md/html were no-touch in E6-A scope; refreshed only here in critique as freshness handoff).</li>
           </ul>
         </div>
       </details>
@@ -351,14 +354,14 @@ After push, hard stop.</pre>
             <div class="copy-title">Secondary: Paste to Codex</div>
               <button type="button" data-copy="codex-secondary">Copy</button>
             </div>
-            <pre id="codex-secondary">No Codex action is needed. Codex remains hard-stopped after E5-T-FIX-004 until Sami routes a new turn or push authorization.</pre>
+            <pre id="codex-secondary">No Codex action is needed. Codex remains hard-stopped after E6-A until Sami routes a new turn or push authorization. If E6-A is pushed, the recommended next Codex turn is E6-B implementation of option C2 (coordinator/scribe protocol wording in PROTOCOL.md + kit/v1/.agent-handoff/PROTOCOL.md.template) — but that requires separate Sami authorization with exact files and approval text.</pre>
           </div>
           <div>
             <div class="copy-head">
               <div class="copy-title">Secondary: Ask GPT-5.5 Pro / external advisor</div>
               <button type="button" data-copy="advisor-secondary">Copy</button>
             </div>
-            <pre id="advisor-secondary">GPT-5.5 Pro / OpenAI / advisor-class is visible below the fold as an external advisor. Critique completed with 1 PARTIAL (chip styling) but no blockers. Optional only if Sami wants external strategy review before deciding push vs pause-and-observe. No repo-visible advisor note or scribed advisor record is incorporated in this snapshot.</pre>
+            <pre id="advisor-secondary">GPT-5.5 Pro / OpenAI / advisor-class participated in E6-A as coordinator (framing scribed in Codex turn note Section 1). For the push decision itself, GPT is not required: critique passed all 20 focus areas with zero blockers. Optional only if Sami wants external strategy review on E6-B sequencing (C2 protocol-only vs C2+A combined with advisor-notes/ path scope).</pre>
           </div>
           <div>
             <div class="copy-head">
