@@ -7,56 +7,266 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude has completed the E6-D2 critique locally and is hard-stopped. **All
-17 focus areas PASS with zero blockers**; mirror discipline is byte-identical
-between live `PROTOCOL.md` and `kit/v1/.agent-handoff/PROTOCOL.md.template`;
-1 observational nit (stale `OPERATING-MODEL.md` L3 "Last doc-lock" header) is
-foldable into a tiny future cleanup turn or E6-D2-FIX-001. Sami is the next
-actor to decide between:
+Codex has completed E6-DASH-002 verification locally and is hard-stopped.
+**E6-DASH-002 is safe to accept.** Claude Design's Polaris Human Role Cue
+implementation passed all requested scope, routing, self-containment,
+authority, and no-touch checks. Codex added only this COLLAB.md handoff
+update and `.agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md`.
 
-(a) **RECOMMENDED**: Authorize push of E6-D2 (7-file PR via feature branch
-    `e6-d2-outcome-circle-protocol-codification`). Codification is the
-    substantive deliverable that should land before any test circle.
-(b) Ask GPT for any pre-push concerns or first-circle scope guidance.
-(c) Pause-and-observe — leave E6-D2 + this critique in the local working
-    tree.
+Sami is the next actor to decide between:
 
-After (a) lands, the next turn is the **first test circle**: `Approved
-Outcome Circle: one-doc protocol mirror verification`. This requires Sami's
-exact approval with the full inline 14-field Outcome Packet per the newly
-codified rule. Scope: read-only verification that the Outcome Circles
-section in live `PROTOCOL.md` and `kit/v1/.agent-handoff/PROTOCOL.md.template`
-is byte-identical. Pass criterion is mechanical (`diff` exit 0); commit/push
-default-deny is naturally upheld (verification + one turn note only).
+(a) **RECOMMENDED**: accept E6-DASH-002 and authorize exact staging /
+    commit / push / PR scope for the five E6-DASH-002 files:
+    `.agent-handoff/COLLAB.md`, `.agent-handoff/DASHBOARD.html`,
+    `.agent-handoff/DASHBOARD.md`,
+    `.agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md`,
+    and `.agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md`.
+(b) Request a tiny follow-up fix before push.
+(c) Pause-and-observe — leave E6-DASH-002 in the local working tree.
 
-No further staging, commit, push, branch, PR, protocol codification beyond
-E6-D2, OPERATING-MODEL edit beyond the §8 fold, kit template edit beyond the
-PROTOCOL.md.template mirror, alert-state edit, advisor-notes/reflections/
-improvements path creation, first Outcome Circle execution, packet template,
-loop runner, notifier, automation, model call, OpenAI API setup, NanoClaw/
-CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch agent/
-global config, pilot repo touch, live Open Mic Colorado touch, or product/
-runtime work is authorized.
+After E6-DASH-002 is accepted/pushed, the next substantive turn remains
+the **first Outcome Circle scope decision** (`Approved Outcome Circle:
+<packet name>`). That entry requires Sami's exact approval with the full
+inline 14-field Outcome Packet per the codified rule, and per the
+bootstrap policy (tracked as a separate E6-PROTOCOL-FIX follow-up),
+should remain NEEDS_GPT until 2 Outcome Circles have completed
+successfully.
+
+No further staging, commit, push, branch, PR, PROTOCOL.md edit,
+OPERATING-MODEL.md edit, kit template edit, alert-state edit,
+advisor-notes/reflections/improvements path creation, first Outcome
+Circle execution, packet template, loop runner, notifier, automation,
+model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
+MCP/plugin/bridge, cron/timer/webhook/launch agent/global config, pilot
+repo touch, live Open Mic Colorado touch, or product/runtime work is
+authorized.
 
 ## Coordinator Trigger
 - State: ROUTINE
-- Reason: auditor pass of the already-scoped E6-D2 codification (which
-  itself implemented the already-accepted E6-D design). Per the Coordinator
-  Trigger Classification rule, upgrade only on detection of an
-  architecture/safety/governance defect needing GPT. No such defect
-  detected; 1 nit (stale L3 header) is observational and foldable.
+- Reason: Codex performed mechanical verification of an already-scoped
+  Claude Design dashboard pass. No architecture, pivot, UX conflict,
+  safety, automation, or tooling trigger fired during verification.
 
 ## Project Mode (estimated)
 - Dominant mode: Coordinator (~70%, agent heuristic estimate)
 - Sami-decision-pending: ~25%
 - Execution: ~5%
 - Unknown: 0%
-- Reason: E6-D2 codified the Outcome Circle protocol but no circle is active
-  yet; default mode remains Coordinator per OPERATING-MODEL.md §5. After
-  this critique, Sami picks push vs first-circle-then-push vs pause, so
-  Sami-decision-pending picks up some weight. Execution captures the small
-  refresh work in this turn. Coordinator confidence above the ~60%
-  threshold.
+- Reason: no Outcome Circle is active. E6-DASH-002 verification is
+  complete, and Sami now decides accept/push, request fix, or pause.
+
+## E6-DASH-002 Verification Summary (Codex, local-only at this turn)
+
+**All 18 requested verification focus areas PASS.** Codex verified:
+- Claude Design changed only the four approved E6-DASH-002 files before
+  Codex's handoff edit.
+- Claude Design first corrected stale post-PR4 Polaris/COLLAB state from
+  "Push E6-D2" framing to current post-PR4 merge state at HEAD `d8fa722`.
+- Polaris shows a Human Role Cue above the fold.
+- The cue distinguishes Project Mode from Current Step and derives routing
+  from Coordinator Trigger + inside Outcome Circle? + Next Actor, not from
+  Project Mode alone.
+- UNCLEAR maps to ASK GPT; STOP / UNKNOWN is reserved for unavailable or
+  contradictory routing inputs.
+- COURIER ONLY, ASK GPT, APPROVAL ONLY, and AGENTS RUNNING are text-labeled;
+  AGENTS RUNNING means monitor for callback, not do nothing.
+- Sami is not asked to classify routine-vs-GPT.
+- One-primary-action discipline, paste-to-whom labels, COLLAB.md authority,
+  view-only dashboard status, no-approval-inference, and Sami-sole-approval
+  warnings are preserved.
+- DASHBOARD.html remains self-contained: no external CSS, no external JS,
+  no HTTP(S) URLs, no storage/localStorage/sessionStorage, no network APIs,
+  and no server requirement.
+- Copy buttons only copy visible payload text; closed details ancestors are
+  auto-expanded before copying.
+- `sh .agent-handoff/tools/alert-state.sh` ran successfully and left the
+  working tree unchanged.
+
+Non-blocking observations:
+- The in-cue "About this cue" collapsible is not a top-level competing
+  panel and does not break the one-primary-action model, but it is a narrow
+  interpretation of the "no new collapsibles" constraint.
+- The dashboard technical packet uses `Inside Circle?` while the turn note
+  uses `Inside Outcome Circle?`; the meaning is equivalent and routing is
+  correct.
+
+Codex did **not** refresh DASHBOARD.md or DASHBOARD.html this turn. The
+Polaris snapshot still points to Codex verification and is stale after this
+verification; COLLAB.md is authoritative.
+
+## E6-DASH-002 Implementation Summary (Claude Design, local-only at this turn)
+
+**Step 0 stale-state refresh** completed before any design edits:
+- Confirmed PR #4 / E6-D2 merged at `d8fa722` (HEAD on `main`, working
+  tree clean pre-edit).
+- Verified `git diff --check` clean pre-edit.
+- Refreshed COLLAB.md `Current Owner`, `Coordinator Trigger`, and
+  `Project Mode` sections from stale E6-D2-push framing to current
+  post-merge E6-DASH-002 framing.
+- Refreshed DASHBOARD.md and DASHBOARD.html H1, subtitle, role-flow,
+  why-panel, three actions, snapshot fields, who's-who, what-changed,
+  technical packet, no-touch list, and all paste blocks to point at the
+  current E6-DASH-002 implementation handoff (Codex verification).
+
+**Human Role Cue addition** (the substantive E6-DASH-002 deliverable):
+- Added a compact above-the-fold cue panel in both `DASHBOARD.md` and
+  `DASHBOARD.html`.
+- 6 fields: Human role now, GPT needed now, Sami decision needed now,
+  Next paste target, Payload type, Why.
+- 5 human-facing states with distinct visual treatment and icons:
+  - ✉ **COURIER ONLY** (mint green, `--courier-soft` background) —
+    agent-authored content; no judgment needed.
+  - 🔑 **APPROVAL ONLY** (amber, `--approval-soft` background) —
+    authorization text; only Sami can approve.
+  - 💬 **ASK GPT** (purple, existing `--gpt-soft`) — coordinator question
+    needs synthesis or routing.
+  - ⚙ **AGENTS RUNNING** (neutral, page background) — agents work
+    inside an approved Outcome Circle; monitor for callback (scope,
+    risk, blocker, iteration cap). Visual treatment marked provisional
+    in the turn note pending first-circle observation.
+  - ⚠ **STOP / UNKNOWN** (light red, `--stop-soft`) — inputs unavailable
+    or contradictory; default to Ask GPT.
+- Icons reinforce text labels for color-blind accessibility (color is
+  not the only differentiator).
+- Cue includes a collapsible "About this cue" explainer with all 5
+  states and a note that the cue is derived from existing fields (not
+  authored).
+
+**Routing map** (published in the E6-DASH-002 turn note, treated as the
+single source of truth for cue derivation):
+
+```text
+Coordinator Trigger  Inside Circle?  Next Actor          Human Role Cue
+NEEDS_GPT            any             any                 ASK GPT
+UNCLEAR              any             any                 ASK GPT
+ROUTINE              yes             builder/auditor     AGENTS RUNNING
+ROUTINE              no              Sami                APPROVAL ONLY
+ROUTINE              no              Claude/Codex/Design APPROVAL ONLY when
+                                                         payload is auth text;
+                                                         else COURIER ONLY
+inputs unavailable   unknown         unknown             STOP / UNKNOWN
+```
+
+**Protocol correctness:** UNCLEAR maps to ASK GPT per PROTOCOL.md L222
+(not STOP / UNKNOWN — STOP / UNKNOWN is reserved for unavailable or
+contradictory routing inputs).
+
+**Disambiguation rule for APPROVAL ONLY vs COURIER ONLY when Next Actor
+is an agent:** payload-type label. `Authorization text` (Sami's explicit
+approval phrase, including the Outcome Circle entry phrase `Approved
+Outcome Circle: <packet name>`) → APPROVAL ONLY. `Agent-authored prompt`
+or `Coordinator question` → COURIER ONLY.
+
+**Polaris strengths preserved:**
+- Plain-language H1 (one action, imperative).
+- Paste-to-whom button labels (Codex / GPT-5.5 Pro / Claude Code retained
+  in vocabulary; Claude Design added).
+- Role-flow strip advanced to current step.
+- Visible Ask-GPT path (secondary action button).
+- One primary recommendation (Codex verify).
+- Collapsed technical payloads (paste blocks behind `<details>`).
+- COLLAB.md authority warning (Source of Truth section).
+- No-approval-inference warning (guardrail line under hero).
+
+**Polaris NOT redesigned beyond the cue:** no new architecture, no large
+mode panel, no extra competing primary buttons, no new scripts (existing
+`navigator.clipboard.writeText` copy behavior unchanged), no new
+collapsibles beyond the in-cue "About this cue" explainer (which lives
+inside the cue panel, not as a sibling panel).
+
+**HTML self-contained** (verified pre-edit and unchanged pattern):
+- 1 inline `<script>`, 1 inline `<style>`, 0 external `<link>` tags.
+- 0 HTTP(S) URLs.
+- 0 storage / localStorage / sessionStorage references.
+- 0 network APIs (fetch / XMLHttpRequest / EventSource / WebSocket).
+- Single `navigator.clipboard.writeText(target.innerText)` call
+  preserved; copy buttons still only copy visible text.
+- No server requirement.
+
+**CSS additions (minimal, scoped to the cue only):**
+- 6 new color tokens: `--courier`, `--courier-soft`, `--approval`,
+  `--approval-soft`, `--stop`, `--stop-soft`.
+- 1 new panel class `.human-role-cue` with 5 state-class variants
+  (`role-courier`, `role-approval`, `role-ask-gpt`, `role-agents-running`,
+  `role-stop`).
+- Layout helpers: `.cue-header`, `.cue-icon`, `.cue-label`,
+  `.cue-tagline`, `.cue-fields`, `.cue-k`, `.cue-v`, `.cue-note`.
+- One media-query addition: collapses `.cue-fields` to single-column at
+  ≤740px (mirrors existing `.kv` / `.lifecycle-grid` mobile behavior).
+
+**Scope boundaries observed:**
+- PROTOCOL.md untouched.
+- OPERATING-MODEL.md untouched.
+- kit/v1/** untouched.
+- alert-state.sh untouched.
+- advisor-notes/, reflections/, improvements/ paths still absent.
+- Root README/AGENTS/CLAUDE, docs/ untouched.
+- No automation, model calls, API setup, NanoClaw, CommonGround, Notion,
+  MCP/plugin/bridge, .mcp.json, cron/timer/webhook/launch agent, global
+  config, product/runtime, live Open Mic Colorado, or pilot repo work.
+
+**Known follow-ups** (NOT folded into E6-DASH-002; tracked here):
+1. **Bootstrap rule for Outcome Circles** — until 2 Outcome Circles have
+   completed successfully, circle entry and exit decisions should remain
+   NEEDS_GPT regardless of packet self-classification. Recommended
+   placement: tiny `E6-PROTOCOL-FIX-001` adds one paragraph to
+   `PROTOCOL.md` § Outcome Circles. Out of E6-DASH-002 scope (UX only,
+   no PROTOCOL.md edits).
+2. **AGENTS RUNNING visual treatment is provisional.** No Outcome Circle
+   has run yet, so the AGENTS RUNNING styling (neutral chip + monitor-
+   for-callback tagline) is minimum-viable. Refine after the first
+   circle reveals what's actually useful (iteration counter? builder/
+   auditor identity strip? stop-condition checklist?).
+3. **OPERATING-MODEL.md L3 "Last doc-lock" header is still stale** — was
+   noted in E6-D2 critique; remains stale because E6-DASH-002 cannot
+   edit OPERATING-MODEL.md per scope. Foldable into a future small
+   docs-cleanup turn or `E6-D2-FIX-001`.
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): this
+implementation turn names 3 specific concerns (provisional AGENTS
+RUNNING styling; bootstrap rule placement deferred; OPERATING-MODEL.md
+header still stale) AND explicitly enumerates 12 failure modes
+checked-and-found-absent (silent PROTOCOL/OPERATING-MODEL edit; silent
+kit edit; silent alert-state.sh edit; advisor-notes path creation; new
+JS / network API / storage API introduction; external CSS/JS link;
+mode-panel-as-second-source-of-truth; multiple competing primary
+buttons; classification field exposed as authored rather than derived;
+UNCLEAR misrouted to STOP/UNKNOWN; AGENTS RUNNING framed as "do
+nothing"; APPROVAL/COURIER distinguished only by color — all absent).
+Implementation is COMPLETE per the §12 dissent requirement.
+
+E6-DASH-002 outputs (local-only at this turn):
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md`
+
+Pattern: **twenty-fourth clean turn** in the E5-H → E6-DASH-002 arc.
+Single-turn 4-file shape (3 modifications + 1 new turn note) is a
+sub-scope of the proven combined-push shape and matches the prior
+E6-DASH-001 dashboard UX turn.
+
+**Strategic context:** with E6-DASH-002 in place, the next time Sami
+looks at Polaris she sees "Human role now: <X>" immediately, without
+having to translate `Coordinator Trigger` + `Project Mode` into action
+language. The cue is a state-machine view of the existing protocol
+fields, not a new authored field. The next substantive coordination
+problem is choosing the first Outcome Circle scope (a NEEDS_GPT
+question per the codified protocol and per the bootstrap policy
+follow-up).
+
+Next step:
+- Sami pastes the Codex verification prompt (primary), pastes the GPT
+  optional question (secondary), or pauses.
+- After Codex verifies and Sami accepts: queue the first Outcome Circle
+  scope decision as a separate NEEDS_GPT turn.
+
+---
+
+(Historical: PR #4 merged at `d8fa722` on 2026-05-23, bringing E6-D2
+codification of the Outcome Circle protocol to durable governance. The
+E6-D2 critique summary below was Claude Code's pre-merge auditor pass.
+Detail preserved below.)
 
 ## E6-D2 Critique Summary (Claude, local-only at this turn)
 
@@ -4007,44 +4217,56 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- After Claude critique, decide whether to accept E6-D2, request
-  E6-D2-FIX-001, pause, or authorize a later push/PR.
-- Decide whether the later first test circle should be
-  `Approved Outcome Circle: one-doc protocol mirror verification`.
-- No loop runner, first Outcome Circle, packet template, Polaris mode panel,
-  advisor-notes path creation, notifier, automation, model call, OpenAI API
-  setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, timer, webhook,
-  launch agent, global config, pilot repo, or live Open Mic Colorado work is
-  active.
+- Decide whether to accept E6-DASH-002 as-is, request a follow-up fix
+  (for example, AGENTS RUNNING styling or cue copy), pause, or authorize
+  a later push/PR.
+- After E6-DASH-002 is accepted, decide the first Outcome Circle scope.
+  Per the bootstrap policy follow-up (`E6-PROTOCOL-FIX-001`, not yet
+  authored), circle entry/exit should remain NEEDS_GPT until 2 Outcome
+  Circles have completed successfully.
+- No loop runner, first Outcome Circle, packet template, advisor-notes
+  path creation, notifier, automation, model call, OpenAI API setup,
+  NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, timer, webhook,
+  launch agent, global config, pilot repo, or live Open Mic Colorado work
+  is active.
 
 ## Next Request To Claude
 
-Critique E6-D2 as auditor/advisor after reading `PROTOCOL.md`,
-`kit/v1/.agent-handoff/PROTOCOL.md.template`, `OPERATING-MODEL.md`,
-`COLLAB.md`, Polaris, E6-D design/critique notes, and the E6-D2 Codex turn
-note. Focus on whether the protocol/template Outcome Circle wording is
-identical or byte-equivalent, whether the schema matches E6-D, whether
-`OPERATING-MODEL.md` edits stayed limited to §8 plus breadcrumbs, whether
-Polaris was only refreshed as a snapshot, and whether all no-touch surfaces
-were avoided.
+None active. Claude Code (auditor role) and Claude Design (designer
+role) are both hard-stopped after E6-DASH-002 implementation and Codex
+verification. No further PROTOCOL.md edit, OPERATING-MODEL.md edit, kit
+edit, dashboard edit, alert-state edit, advisor-notes/reflections/
+improvements path creation, outcome-loop implementation, first Outcome
+Circle, packet template, server, model call, OpenAI API setup,
+NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, launch agent,
+timer, webhook, daemon, global config, pilot repo, live Open Mic
+Colorado, product/runtime, root-doc, notification script, staging,
+commit, push, branch, PR, or any other change is authorized.
 
 ## Next Request To Codex
 
-None active. Codex is hard-stopped after E6-D2. No further protocol edit,
-kit edit, operating-model edit, dashboard edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, outcome-loop
-implementation, first test circle, packet template, server, model call, OpenAI
-API setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, launch
-agent, timer, webhook, daemon, global config, pilot repo, live Open Mic
-Colorado, product/runtime, root-doc, notification script, staging, commit,
-push, branch, PR, or any other change is authorized.
+None active. Codex completed E6-DASH-002 verification and is hard-stopped.
+No further dashboard refresh, PROTOCOL.md edit, OPERATING-MODEL.md edit,
+kit edit, alert-state edit, advisor-notes/reflections/improvements path
+creation, outcome-loop implementation, first Outcome Circle, packet
+template, server, model call, OpenAI API setup, NanoClaw/CommonGround/
+Notion, MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon,
+global config, pilot repo, live Open Mic Colorado, product/runtime,
+root-doc, notification script, staging, commit, push, branch, PR, or any
+other change is authorized.
 
 ## Next Request To Sami
 
-Send the E6-D2 critique prompt from Polaris to Claude Code, or route a
-different action explicitly. After Claude critique, decide whether to accept
-E6-D2, request E6-D2-FIX-001, pause, or authorize a later push/PR. Do not
-authorize the first Outcome Circle, packet template, Polaris mode panel,
-advisor-notes creation, outcome-loop implementation, automation, API setup,
-transport/NanoClaw review, staging, commit, push, branch, or PR until a
-separate explicit approval.
+Decide whether to accept E6-DASH-002, request a follow-up fix, pause, or
+authorize a later exact-scope push/PR. If accepting and pushing, include
+exact staging scope for:
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md`
+- `.agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md`
+
+Do not authorize the first Outcome Circle, packet template,
+advisor-notes creation, outcome-loop implementation, automation, API
+setup, transport/NanoClaw review, staging, commit, push, branch, or PR
+until a separate explicit approval.
