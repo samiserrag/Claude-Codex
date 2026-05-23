@@ -7,119 +7,202 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex has completed E6-DASH-001 scope/discipline verification locally and is
-hard-stopped. Sami + GPT are the next recommended actors for UX usability
-judgment, or Sami may decide whether to authorize push/pause after reviewing
-the verification. Codex found no dashboard defects requiring correction. No
-staging, commit, push, branch, PR, dashboard edit, PROTOCOL.md edit,
-alert-state edit, kit template edit, advisor-notes/reflections/improvements
-path creation, automation, model calls, OpenAI API setup, server,
-NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
-agent/global config, pilot repo touch, live Open Mic Colorado touch, or
-product/runtime work is authorized.
+Claude has completed the E6-C critique locally and is hard-stopped. Sami is
+the next actor to decide between (a) combined push of E6-C + critique
+(5 files: 3 modifications + 2 new turn notes) or (b) pause-and-observe (no
+push; let the E6-C operating-model doc-lock sit in the local working tree
+for further consideration before committing). No staging, commit, push,
+branch, PR, protocol codification, kit template edit, alert-state edit,
+advisor-notes/reflections/improvements path creation, notifier, automation,
+model call, OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/
+bridge, cron/timer/webhook/launch agent/global config, pilot repo touch,
+live Open Mic Colorado touch, or product/runtime work is authorized.
 
 ## Coordinator Trigger
 - State: ROUTINE
-- Reason: Codex's verification was a mechanical scope/discipline check of an
-  already-scoped Claude dashboard design pass; UX judgment remains for
-  Sami + GPT and no new architecture/pivot/safety/automation/tooling decision
-  was made by Codex.
+- Reason: auditor-handoff layer of the already-scoped E6-C docs-lock
+  critique; per the critique authorization, upgrade only on detection of an
+  architecture/scope/safety/UX/automation/governance defect that needs GPT.
+  No such defect detected; 3 nits are observational, not blockers.
+
+## Project Mode (estimated)
+- Dominant mode: Coordinator (~75%, agent heuristic estimate)
+- Sami-decision-pending: ~20%
+- Execution: ~0%
+- Unknown: ~5%
+- Reason: still in operating-model design phase (no approved outcome
+  circle); after this critique, Sami decides whether to push the doc-lock
+  or route a different action. Dominant mode confidence above the ~60%
+  threshold for Coordinator; mode rules from OPERATING-MODEL.md §5
+  applied.
 
 ## Current Phase
 
-Experiment 6 E6-DASH-001 dashboard UX human-control-tower redesign:
-Claude's implementation and Codex's scope/discipline verification are both
-local-only and await Sami + GPT usability judgment or Sami push/pause routing.
-Claude (acting as dashboard UX designer for this turn, per GPT's routing)
-rewrote `.agent-handoff/DASHBOARD.html` and `.agent-handoff/DASHBOARD.md`
-from scratch to address Sami's repeated "still confusing" feedback after 5
-dashboard iterations (E5-T through E5-T-FIX-004 plus several intermediate
-freshness refreshes). Codex verified file scope, self-contained HTML,
-copy-button visibility discipline, no-touch surfaces, alert-state read-only
-behavior, source-of-truth/approval guardrails, single-recommendation
-structure, mandatory Coordinator Trigger section, and snapshot honesty.
+Experiment 6 E6-C operating-model docs-lock:
+Codex locked the converged E5/E6 operating model into
+`.agent-handoff/OPERATING-MODEL.md` so the major pivots are not lost to chat
+context compaction. The document is a durable reference, updated only via
+authorized doc-lock turns. It states that `PROTOCOL.md` is enforced governance,
+`OPERATING-MODEL.md` is current architecture/reference, `COLLAB.md` is current
+handoff state, Polaris is the human control surface, and turn notes are the
+append-only historical record.
 
-E6-DASH-001 Codex verification result:
-- PASS for scope/discipline verification.
-- No dashboard defects found requiring correction.
-- `DASHBOARD.md` and `DASHBOARD.html` were not refreshed or edited by Codex.
-- UX usability judgment remains explicitly out of scope for Codex and belongs
-  to Sami + GPT.
+E6-C locked:
+- Polaris is the cockpit, not the coordinator.
+- GPT coordinates.
+- Codex builds.
+- Claude audits.
+- Sami approves.
+- Repo records the trail.
+- Project Mode has four mutually exclusive modes: Coordinator, Execution,
+  Sami-decision-pending, Unknown.
+- Outside an approved outcome circle, default mode is Coordinator unless only
+  a Sami approval decision remains.
+- Inside an approved outcome circle, default mode is Execution.
+- Unknown mode defaults to `UNCLEAR` -> Ask GPT.
+- Outcome Circle entry requires exact phrase:
+  `Approved Outcome Circle: <packet name>`.
+- Outcome-loop mechanics remain deferred to E6-D or later.
 
-E6-DASH-001 local outputs:
-- `.agent-handoff/DASHBOARD.html` (full rewrite; ~390 lines; new hero
-  with eyebrow + plain-language h1 + subtitle + role-flow strip + why
-  box + 3 color-coded action buttons (primary green / GPT purple /
-  tertiary outlined) + route/trigger line + guardrail; 7 collapsibles
-  below the fold for payloads, snapshot status, roles, change-summary,
-  technical packet, no-touch list)
-- `.agent-handoff/DASHBOARD.md` (parallel rewrite; ~260 lines; same
-  structure adapted to markdown)
-- `.agent-handoff/COLLAB.md` (Claude handoff update, then Codex verification
-  handoff update)
-- `.agent-handoff/turns/E6-DASH-001-claude-design-human-control-tower-redesign.md`
-- `.agent-handoff/turns/E6-DASH-001-codex-verify-dashboard-redesign.md`
+E6-C outputs:
+- `.agent-handoff/OPERATING-MODEL.md`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md`
 
-E6-DASH-001 implementation highlights:
-- **Naming + branding (same-turn addition):** dashboard is named
-  **Polaris ✦** with tagline "Your fixed point in a multi-agent
-  workflow." Small wordmark header above the hero, footer line at the
-  bottom, page title updated. Brand uses existing mint-green accent
-  for continuity; star symbol (✦) is Unicode (no external assets).
-  Self-containment + mobile-responsive + accessibility constraints
-  all preserved.
-- Every action button names the receiving agent ("paste to Codex",
-  "paste to GPT-5.5 Pro").
-- Ask-GPT is a permanent above-the-fold secondary button (color-coded
-  purple) rather than buried in collapsed details.
-- Role-flow strip near the top visualizes "Claude designed → Sami sends
-  to Codex → Codex verifies → Sami + GPT judge → Push if good" with
-  current step highlighted.
-- h1 reads "Get Codex to verify the new dashboard" — plain language,
-  not turn IDs.
-- "Why" is one explanatory paragraph in a highlighted accent-soft box,
-  not a wall of jargon.
-- Coordinator Trigger surfaced in a small route/trigger info line near
-  action buttons (not as a competing chip in the facts grid).
-- Full agent payload (verification prompt for Codex; design-feedback
-  question for GPT) lives in clearly-labeled collapsed `<details>`
-  panels with payload-label explaining recipient + what they'll do.
-- Copy buttons auto-expand parent `<details>` ancestors before copying,
-  preserving "only visible text" constraint while making UX seamless.
-- HTML still self-contained: 1 inline `<script>`, 1 inline `<style>`,
-  0 `<link>` tags, single legitimate `navigator.clipboard.writeText(
-  target.innerText)` call.
-- All FIX-004 single-recommendation principles preserved: one primary
-  recommendation above the fold; alternatives clearly labeled below.
-- All FIX-002 snapshot lifecycle preserved (prepared for / as of /
-  expires after / after this action) — moved into collapsed "Snapshot
-  status & provenance" details.
-- All E6-B + FIX-001 coordinator/scribe rules preserved in protocol
-  text (untouched); dashboard text references them explicitly.
+Polaris was refreshed only as a snapshot pointing to E6-C critique handoff:
+primary action, h1, short why, role-flow/current-step text, and paste-block
+contents now point Sami to Claude Code for critique. No new CSS, buttons,
+collapsibles, scripts, mode panel, sections, protocol codification, or kit
+changes were added.
 
-E6-DASH-001 no-touch surfaces: no `PROTOCOL.md`, `alert-state.sh`,
-`kit/v1/*` templates, root README/AGENTS/CLAUDE, `docs/`, product/
-runtime files, pilot repo, live Open Mic Colorado, CommonGround,
-NanoClaw, Notion, `.mcp.json`, plugin/config files, automation, model
-calls, OpenAI API setup, MCP/plugins/bridges, cron, timers, webhooks,
-launch agents, global config, server, staging, commit, push, branch,
-or PR.
+E6-C critique summary (Claude, local-only at this turn): **all 15 focus
+areas PASS with zero blockers**. Independent verification confirmed:
+- 5-file working tree matches authorization 1:1 (3 modifications + 2 new
+  turn notes including OPERATING-MODEL.md and the E6-C Codex turn note)
+- `git diff --check` clean
+- All 10 pre-authorization refinements landed verbatim (lived-vs-frozen
+  rule, precedence statement, §18 table format, version/date header, READ
+  ME FIRST framing, subagent attribution discipline, §4 timeline table
+  format, dissent enforcement, mode-confidence trigger signal, etc.)
+- GPT's 3 bonus refinements also landed (bright-line deferral in §8,
+  API-backed credentials caveat, mode schema dogfooded in turn notes)
+- OPERATING-MODEL.md is 435 lines, 18 sections, navigable
+- E6-C turn note is 213 lines, well under the 600-line target
+- §3 Major Pivot Timeline is a 14-row table mapping E5/E6 arc to commits
+- §18 Source Breadcrumbs is a 32-row table with consistent format
+- **Dashboard discipline exact**: snapshot refresh only; HTML CONTRACTED
+  by 5 lines (620 → 615) because new payload is shorter than previous;
+  no CSS/buttons/sections/scripts added; role-flow strip dynamically
+  updated for new actor sequence
+- **GPT prominence in role-flow**: dashboard now starts the role-flow
+  with "GPT framed" — first time GPT visually leads the chain
+- Coordinator Trigger + Project Mode dogfooded in both Codex's E6-C turn
+  note AND this critique turn note
+- All no-touch surfaces unchanged (PROTOCOL.md, alert-state.sh, kit/v1,
+  root docs, docs/, .mcp.json; advisor-notes/reflections/improvements
+  paths still absent)
+- HTML self-contained (1 inline `<script>`, 1 inline `<style>`, 0
+  `<link>` tags, single legitimate `navigator.clipboard.writeText
+  (target.innerText)` call)
+- alert-state.sh ran; working tree byte-identical
+- Pilot clean at `655e75bc`
 
-Next steps:
-- **Recommended:** Sami pastes the verification prompt (in dashboard's
-  "What gets pasted to Codex" collapsed panel) to Codex. Codex verifies
-  file scope, self-contained HTML, no-touch discipline. Codex is NOT
-  asked to judge UX usability — that's reserved for Sami + GPT.
-- **Optional first:** Sami asks GPT-5.5 Pro for a design opinion (using
-  the question in dashboard's "What gets pasted to GPT" collapsed
-  panel). GPT can judge whether the redesign actually solves the
-  "confusing as a human" problem.
-- **Pause:** revert via `git restore` if Sami prefers to back out.
+**Headline strengths**:
+- **All 10 pre-authorization refinements landed verbatim** — cleanest
+  authorization-incorporation in the experiment to date.
+- **OPERATING-MODEL.md is comprehensive but navigable** (435 lines, 18
+  sections, ~24 lines per section average).
+- **§3 Major Pivot Timeline as 14-row table** maps the full E5/E6 arc.
+- **§18 Source Breadcrumbs is a 32-row table** with consistent format —
+  best traceability discipline in the experiment.
+- **Bright-line deferrals are explicit, multiply-placed**: outcome-loop
+  mechanics deferred in §8, §15, §16, §17.
+- **Dashboard snapshot discipline exact** — HTML contracted not expanded;
+  proves the snapshot-refresh-only constraint can be enforced.
+- **5-layer model preserved with crisp boundaries**: PROTOCOL (enforced)
+  / OPERATING-MODEL (reference) / COLLAB (current state) / Polaris
+  (view) / turn notes (history) with explicit precedence rules.
+- **Coordinator Trigger + Project Mode dogfooded** in both turn notes;
+  the new mode schema works at first use.
 
-After Codex verifies + Sami + GPT judge usable: Sami authorizes
-push of the dashboard redesign (4-file commit shape: DASHBOARD.html +
-DASHBOARD.md + COLLAB.md + E6-DASH-001 turn note + Codex verification
-turn note).
+**Three optional Nits (none blocking)**:
+1. **Web source URLs not in breadcrumbs.** §9 cites Anthropic Outcomes /
+   Zenith / CGK but doesn't include the URLs in §18's Source Breadcrumbs
+   table. Future agents wanting to verify external claims would need to
+   re-fetch fresh. Foldable into future doc-lock.
+2. **Mode estimate convention in §6 not yet protocol-text.** Per
+   "docs first, codify later" discipline. Future turns may forget to
+   include the Mode section until codification. Foldable into future
+   E6-PROTOCOL turn.
+3. **§3 doesn't include Polaris naming/branding as discrete row.**
+   E6-DASH-001 row says "Polaris redesign" without explicit naming/
+   branding note. Aesthetic only.
+
+All 3 nits are observational. None affects E6-C acceptance.
+
+**Empirical validation**: E6-C is the 4th consecutive turn where 3-way
+coordination caught structural issues that 2-way would have shipped
+(FIX-002 chip-stack, FIX-003→FIX-001 classifier gap, E6-A→E6-B clean
+3-way, E6-C clean 3-way). The pattern is stable. The architecture is
+working as designed. Additional empirical: the dashboard role-flow strip
+now shows GPT as the FIRST actor in the chain (`GPT framed → Codex
+locked docs → Sami sends to Claude → Claude critiques → Sami decides`).
+First time GPT visually leads the flow.
+
+**Anti-sycophancy compliance**: per OPERATING-MODEL.md §12, critique
+names 3 specific concerns AND explicitly enumerates 10 failure modes
+checked-and-found-absent (Codex over-claimed credit / laundered GPT
+advice / used "looks good" framing / silently expanded scope / designed
+outcome-loop mechanics / implemented mode panel / inferred Sami approval
+/ made GPT a repo-writing node / modified PROTOCOL.md to "match"
+OPERATING-MODEL.md / mirror discipline drift — all absent). Critique is
+COMPLETE per the §12 dissent requirement.
+
+E6-C critique outputs (local-only):
+- `.agent-handoff/turns/E6-C-claude-critique-operating-model-docs-lock.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/DASHBOARD.md` (freshness refresh — primary paste block
+  updated to combined-push authorization; snapshot fields updated;
+  role-flow advanced to next step; Coordinator Trigger updated to
+  ROUTINE)
+- `.agent-handoff/DASHBOARD.html` (freshness refresh — same)
+
+Combined for Sami's push authorization (if option a): 5 files (3
+modifications that layer E6-C implementation and critique freshness
+refresh together, plus 2 new turn notes — E6-C Codex implementation +
+E6-C Claude critique). Critique-only push is impractical (entanglement
+in modified files; same shape as prior combined pushes).
+
+Pattern: **twenty-first clean turn-pair** in the E5-H → E6-C arc.
+Single-purpose 5-file combined-push shape (3 modifications + 2 new turn
+notes) matches the proven E5-T-FIX-001 / FIX-002 / FIX-003 / FIX-004 /
+E6-A / E6-B / E6-B-FIX-001 / E6-DASH-001 pattern.
+
+**Strategic context**: E6-C locks the converged operating model into a
+durable repo artifact (OPERATING-MODEL.md) that survives chat
+compaction. The next step after push is **either E6-DASH-002 (Polaris
+mode panel) or E6-D (Outcome Circle design)**, both NEEDS_GPT.
+Claude's slight preference is E6-D — the outcome-loop design is the
+structural pre-requisite for "let agents work without Sami at every
+step," which is the real burden-reduction win. Mode panel is nice but
+doesn't reduce per-turn burden until outcome circles exist.
+
+Next step:
+- Sami decides push or pause-and-observe.
+- If push: recommended next NEEDS_GPT turn is E6-D (outcome circle
+  design) per Claude's recommendation; or E6-DASH-002 (Polaris mode
+  panel) per OPERATING-MODEL.md §16 ordering. Both require GPT framing
+  before Codex implements.
+
+Hard stop:
+- No further E6-C work, staging, commit, push, branch, PR, protocol edit,
+  kit edit, dashboard redesign, advisor-notes path creation, outcome-loop
+  implementation, notifier, automation, model/API setup, NanoClaw/
+  CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch agent,
+  global config, pilot repo, live Open Mic Colorado, or product/runtime
+  work is authorized.
 
 ---
 
@@ -3556,39 +3639,42 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to ask GPT for UX design judgment using the dashboard's
-  optional GPT question.
-- Decide whether E6-DASH-001 is usable enough to push, should pause-and-
-  observe, or needs a separately scoped dashboard fix.
-- No dashboard edit, protocol edit, kit edit, advisor-notes path creation,
-  E6-C outcome-loop design, automation, model call, OpenAI API setup,
+- Decide whether to accept E6-C after Claude critique.
+- Decide whether the next implementation should be a Polaris mode panel,
+  outcome-circle design, advisor-notes/scribing path, or another coordinator
+  preservation step.
+- No protocol edit, kit edit, advisor-notes path creation, outcome-loop
+  implementation, notifier, automation, model call, OpenAI API setup,
   NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, timer, webhook,
   launch agent, global config, pilot repo, or live Open Mic Colorado work is
   active.
 
 ## Next Request To Claude
 
-None active. E6-DASH-001 has already been designed by Claude and verified by
-Codex for scope/discipline. UX usability judgment is reserved for Sami + GPT
-unless Sami explicitly routes another Claude critique turn.
+Critique E6-C as auditor/advisor after reading the E6-C local files:
+`.agent-handoff/OPERATING-MODEL.md`, `.agent-handoff/COLLAB.md`,
+`.agent-handoff/DASHBOARD.md`, `.agent-handoff/DASHBOARD.html`, and
+`.agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md`. Focus on
+whether Codex kept the turn design-only, locked the converged operating model
+accurately, avoided protocol/kit/script/advisor-notes/automation scope, kept
+Polaris to a snapshot refresh only, and made Project Mode / Outcome Circle clear
+without implementing loop mechanics.
 
 ## Next Request To Codex
 
-None active. Hard stop after E6-DASH-001 verification. No dashboard edit,
-DASHBOARD.html edit, protocol edit, alert-state edit, kit edit,
-advisor-notes/reflections/improvements path creation, E6-C outcome-loop
-design, server, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
+None active. Codex is hard-stopped after E6-C. No further dashboard edit,
+OPERATING-MODEL edit, protocol edit, alert-state edit, kit edit,
+advisor-notes/reflections/improvements path creation, outcome-loop design,
+server, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
 MCP/plugin/bridge, cron, launch agent, timer, webhook, daemon, global config,
 pilot repo, live Open Mic Colorado, product/runtime, root-doc, notification
 script, staging, commit, push, branch, PR, or any other change is authorized.
 
 ## Next Request To Sami
 
-Use the redesigned dashboard's optional GPT question if you want external UX
-judgment, then decide whether to authorize push of the E6-DASH-001 dashboard
-redesign plus Codex verification note, pause-and-observe, or route a separate
-dashboard fix. Codex did not refresh `DASHBOARD.md` or `DASHBOARD.html` during
-verification. Do not authorize dashboard changes, protocol changes,
-advisor-notes creation, E6-C outcome-loop design, automation, API setup,
-transport/NanoClaw review, staging, commit, push, branch, or PR until a
-separate explicit approval.
+Send the E6-C critique prompt from Polaris to Claude Code, or route a different
+action explicitly. After Claude critique, decide whether to accept E6-C,
+request a fix, pause, or authorize a push. Do not authorize protocol changes,
+kit propagation, advisor-notes creation, outcome-loop implementation,
+automation, API setup, transport/NanoClaw review, staging, commit, push,
+branch, or PR until a separate explicit approval.

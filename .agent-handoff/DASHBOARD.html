@@ -340,52 +340,52 @@
 
     <section class="hero">
       <p class="eyebrow">DO THIS NOW</p>
-      <h1>Get Codex to verify the new dashboard</h1>
-      <p class="subtitle">Claude just redesigned this dashboard for clarity. Codex needs to check scope and self-contained HTML before you trust it as the new control surface.</p>
+      <h1>Push E6-C — lock the operating model into the repo</h1>
+      <p class="subtitle">Claude critiqued the doc-lock: all 15 focus areas PASS with zero blockers; 3 optional nits. Sami's decision: push the 5-file combined set, or pause-and-observe.</p>
 
       <div class="role-flow" aria-label="Role flow">
-        <span class="step done">Claude designed</span>
+        <span class="step done">GPT framed</span>
         <span class="arrow">→</span>
-        <span class="step current">Sami sends to Codex</span>
+        <span class="step done">Codex locked docs</span>
         <span class="arrow">→</span>
-        <span class="step pending">Codex verifies</span>
+        <span class="step done">Claude critiqued</span>
         <span class="arrow">→</span>
-        <span class="step pending">Sami + GPT judge</span>
+        <span class="step current">Sami decides push</span>
         <span class="arrow">→</span>
         <span class="step pending">Push if good</span>
       </div>
 
       <p class="why">
-        Why this redesign: you said the old dashboard "feels like an audit log displayed to me, not a control surface for me." This pass adds: paste-to-WHOM labels on every button, a visible Ask-GPT path, a role-flow strip showing where you are, plain-language headings instead of turn IDs, and the agent payload moved into a labeled collapsed section.
+        Why push: E6-C creates <code>.agent-handoff/OPERATING-MODEL.md</code> — a 435-line durable reference for the converged E5/E6 architecture. Surviving chat compaction was the explicit goal. Critique passed clean (15/15, zero blockers). 3 nits are observational only.
       </p>
 
       <div class="actions" aria-label="Available actions">
         <button class="action primary" type="button" data-copy="primary-action">
           <span class="icon" aria-hidden="true">📋</span>
           <span class="action-text">
-            <span class="label">Copy verification prompt — paste to <strong>Codex</strong></span>
-            <span class="hint">Codex checks file scope, self-contained HTML, and no-touch surfaces</span>
+            <span class="label">Copy push approval — paste to <strong>Claude Code</strong></span>
+            <span class="hint">Claude verifies pre-flight, stages the exact 5 files, commits with your message, and pushes</span>
           </span>
         </button>
         <button class="action gpt" type="button" data-copy="gpt-question">
           <span class="icon" aria-hidden="true">💬</span>
           <span class="action-text">
-            <span class="label">Copy question — ask <strong>GPT-5.5 Pro</strong> for design feedback first</span>
-            <span class="hint">Optional: get GPT's design opinion before Codex verification</span>
+            <span class="label">Copy question — ask <strong>GPT-5.5 Pro</strong> for any push concerns</span>
+            <span class="hint">Optional. GPT not required for this push (per Coordinator Trigger ROUTINE classification)</span>
           </span>
         </button>
         <button class="action tertiary" type="button" data-copy="pause-note">
           <span class="icon" aria-hidden="true">⏸</span>
           <span class="action-text">
             <span class="label">Pause and observe</span>
-            <span class="hint">Do nothing — the local working tree stays as-is until you act</span>
+            <span class="hint">Do nothing — the operating model stays local until you push or revert</span>
           </span>
         </button>
       </div>
 
       <p class="route">
-        Snapshot expires when: Codex starts verifying, you change direction, or any actor changes. ·
-        Coordinator Trigger: <strong>NEEDS_GPT (for the original UX failure that triggered this redesign; the verification itself is ROUTINE)</strong>.
+        Snapshot expires when: Sami authorizes push, routes pause-and-observe, or any actor changes. ·
+        Coordinator Trigger: <strong>ROUTINE</strong>. Project Mode: <strong>Coordinator dominant (~75%)</strong>, Sami-decision-pending (~20%).
       </p>
 
       <p class="guardrail">
@@ -397,106 +397,90 @@
 
     <div class="panels">
       <details data-priority="action">
-        <summary>📄 What gets pasted to Codex (the verification prompt)</summary>
+        <summary>📄 What gets pasted to Claude (the push approval)</summary>
         <div class="panel-body">
           <p class="payload-label">
-            <strong>Paste this entire block to Codex.</strong> Codex will verify file scope, self-contained HTML, no-touch discipline, and return a verification turn note. Codex is NOT being asked to judge UX usability — that's for you and GPT.
+            <strong>Paste this entire block to Claude Code.</strong> Claude will run pre-flight (git status + diff --check + no-touch verify), stage exactly the 5 listed files, commit with the exact message, push, and report. Hard stop after push.
           </p>
-          <pre id="primary-action">[Lane 1: Claude-Codex Harness | Codex / OpenAI | Thread: E6-DASH-001 verification | Role: scope/discipline verifier]
+          <pre id="primary-action">Approved:
 
-You are Codex in /Users/samiserrag/Documents/GitHub/claude-codex.
+Stage, commit, and push only these E6-C operating-model docs-lock + Claude critique files:
+- .agent-handoff/COLLAB.md
+- .agent-handoff/OPERATING-MODEL.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/DASHBOARD.html
+- .agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md
+- .agent-handoff/turns/E6-C-claude-critique-operating-model-docs-lock.md
 
-Verify E6-DASH-001 (Claude's dashboard UX redesign).
+Do not stage or commit:
+- .agent-handoff/PROTOCOL.md
+- .agent-handoff/tools/alert-state.sh
+- .agent-handoff/reflections/
+- .agent-handoff/improvements/
+- .agent-handoff/advisor-notes/
+- kit/v1/
+- README.md, AGENTS.md, CLAUDE.md, docs/
+- product/runtime files
+- live Open Mic Colorado files
+- open-mic-colorado-agent-pilot files
+- CommonGround / NanoClaw / Notion files
+- plugin/config files / .mcp.json
+- launch agents / cron / timer / webhook / MCP / plugin / bridge files
+- notification scripts
+- generated/local/secret files / trust/event/private-key files
+- unrelated files
 
-Coordinator Trigger:
-- State: ROUTINE
-- Reason: mechanical scope/discipline verification of an already-scoped Claude design pass; no architecture/pivot/UX/conflict/safety/automation/tooling trigger active.
+Before committing, show:
+git status --short --untracked-files=all
+git diff --check
 
-Scope: verification only. No edits to dashboard, protocol, kit, or any other surface unless Codex finds defects that need correction (in which case state the defects and ask Sami before fixing).
+Confirm:
+- exactly 6 files staged (3 modifications: COLLAB.md, DASHBOARD.md, DASHBOARD.html; 3 new: OPERATING-MODEL.md, E6-C Codex turn note, E6-C Claude critique turn note)
+- no PROTOCOL.md, alert-state.sh, kit/v1, advisor-notes/reflections/improvements, .mcp.json, Notion/NanoClaw/CommonGround, plugin/config, automation, cron/timer/webhook/launch-agent, MCP/bridge, API setup, or global config staged
+- no pilot repo or live Open Mic Colorado touch
 
-Focus:
-1. Did Claude touch only the four approved E6-DASH-001 files (.agent-handoff/DASHBOARD.html, .agent-handoff/DASHBOARD.md, .agent-handoff/COLLAB.md, .agent-handoff/turns/E6-DASH-001-claude-design-human-control-tower-redesign.md)?
-2. Is DASHBOARD.html self-contained (no external CSS/JS, no URLs, no storage APIs, no network APIs, no server requirement)?
-3. Are copy buttons restricted to visible text only (no exfiltration of hidden/non-visible state)? Note: copy script auto-expands any closed details ancestor before copying, so text is visible at the moment of copy.
-4. Did Claude avoid all no-touch surfaces (PROTOCOL.md, alert-state.sh, kit templates, advisor-notes/reflections/improvements paths, root README/AGENTS/CLAUDE, docs/, .mcp.json, automation, NanoClaw, CommonGround, MCP/plugin/bridge, Notion, cron/timer/webhook/launch agent/global config)?
-5. Did alert-state.sh remain unchanged and does running it leave the working tree unchanged?
-6. Are COLLAB.md authority, view-only dashboard status, no-approval-inference, and Sami-sole-approval rules preserved in the dashboard text?
-7. Does the dashboard preserve the FIX-004 single-recommendation principle (one primary recommendation above the fold, alternatives below)?
-8. Did the E6-DASH-001 turn note include the new mandatory `## Coordinator Trigger` section?
-9. Is the new dashboard structurally honest (no UI fakes, no "live" claims, snapshot lifecycle preserved in collapsed details)?
+Commit message:
+E6-C: lock operating model into OPERATING-MODEL.md
 
-Verification commands to run:
-- git status --short --untracked-files=all (before and after)
-- git diff --check
-- diff verification on no-touch surfaces
-- sh .agent-handoff/tools/alert-state.sh (confirm working tree unchanged after)
-
-Important note: this verification is scope/discipline only. UX usability evaluation is for Sami + GPT separately, not for this Codex verification turn.
-
-Output:
-- .agent-handoff/turns/E6-DASH-001-codex-verify-dashboard-redesign.md
-- .agent-handoff/COLLAB.md handoff update
-- DASHBOARD.md / DASHBOARD.html only if Codex finds defects that need correction (otherwise no edits)
-
-Do not stage, commit, push, branch, or PR.
-Hard stop after verification.
-
-Dashboard status: include whether you refreshed DASHBOARD.md/html this turn.</pre>
+After push, hard stop.</pre>
         </div>
       </details>
 
       <details data-priority="gpt">
-        <summary>💬 What gets pasted to GPT (optional design-feedback question)</summary>
+        <summary>💬 What gets pasted to GPT (optional coordinator review question)</summary>
         <div class="panel-body">
           <p class="payload-label">
-            <strong>Optional.</strong> Paste this to GPT-5.5 Pro if you want a design opinion before Codex's scope verification. GPT can comment on whether the redesign actually solves the "confusing as a human" problem you flagged.
+            <strong>Optional.</strong> Paste this to GPT-5.5 Pro if you want coordinator review before or after Claude critique.
           </p>
-          <pre id="gpt-question">[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-DASH-001 design review | Role: external UX coordinator]
+          <pre id="gpt-question">[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-C post-critique review | Role: coordinator/outcome architect]
 
-You routed the dashboard UX work to Claude Design. Claude has now produced a redesign of .agent-handoff/DASHBOARD.html and .agent-handoff/DASHBOARD.md.
+Codex created E6-C operating-model doc-lock; Claude critiqued it with all 15 focus areas PASS and zero blockers (3 observational nits). Combined push of 5 files is ready.
 
-Sami's original complaint: "I still find it very confusing as a human on a team of advanced AI agents communicating with each other relying on me for project decisions that are more directional and not technical details. I dont know where I'm supposed to paste what next and how GPT is invoked, etc."
+Pre-push question:
+- Any objection to landing the E6-C operating-model doc-lock?
+- Should outcome-loop mechanics still defer to E6-D, or has any reframe surfaced?
+- After push, recommended next NEEDS_GPT turn: E6-D (outcome-circle design) per Claude, or E6-DASH-002 (Polaris Project Mode panel) per OPERATING-MODEL.md §16. Which do you recommend?
 
-Changes Claude made:
-1. h1 is plain language ("Get Codex to verify the new dashboard") not turn IDs
-2. One-sentence subtitle explains what's happening
-3. Three explicit action buttons, each naming the receiving agent:
-   - Primary (green): Copy verification prompt — paste to Codex
-   - GPT (purple): Copy question — paste to GPT-5.5 Pro
-   - Tertiary (outlined): Pause and observe
-4. Role-flow strip near the top showing "Claude designed → Sami sends to Codex → Codex verifies → Sami + GPT judge → Push if good" with current step highlighted
-5. The full agent payload moved into a collapsed details labeled "What gets pasted to Codex (the verification prompt)" with a label explaining "Paste this entire block to Codex"
-6. The GPT path is a permanent secondary button (not buried in raw state)
-7. Coordinator Trigger is mentioned in a small route-info line near the action buttons, not as a competing chip
-8. Snapshot provenance, technical packet, no-touch list, and details all moved into collapsed details below the fold
-9. Why-paragraph kept to one block explaining what changed and why
-10. HTML still self-contained (no external resources); copy script auto-expands closed details before copying so users see what they're copying
+Note: per the new Coordinator Trigger Classification (ROUTINE for mechanical push verification of an already-scoped doc-lock with auditor pass), GPT is NOT required for the push itself. This question is optional coordinator review only.
 
-Please judge:
-1. Does the redesign actually fix Sami's confusion? Or did Claude solve a different problem?
-2. Above-the-fold cognitive load: can Sami know what to do in 10 seconds?
-3. Is the "paste TO WHOM" affordance now obvious?
-4. Is the Ask-GPT path discoverable and appropriately sized?
-5. Does the role-flow strip help, or is it noise?
-6. Anything Claude over-designed or under-designed?
-7. Any structural concerns about how Coordinator Trigger metadata is now surfaced?
-
-If you have specific corrections, please draft them as a Codex implementation prompt that Sami can paste. If the design is good, say so and recommend Sami proceed with the Codex verification step.
-
-Hard stop: do not authorize approval. Sami remains the sole approval authority.</pre>
+Do not authorize approval. Sami remains sole approval authority.</pre>
         </div>
       </details>
 
       <details>
         <summary>⏸ Pause and observe — what that means</summary>
         <div class="panel-body">
-          <pre id="pause-note">Do nothing. The local working tree stays exactly as Claude left it (5 modifications + 4 new turn notes from the pushed E6-B work, plus this dashboard redesign in DASHBOARD.html, DASHBOARD.md, COLLAB.md, and the E6-DASH-001 turn note). When you want to resume, you can:
-- Send the Codex verification prompt (button 1)
-- Send the GPT design-feedback question (button 2)
-- Manually craft a different prompt
-- Revert: git restore .agent-handoff/DASHBOARD.html .agent-handoff/DASHBOARD.md .agent-handoff/COLLAB.md && rm .agent-handoff/turns/E6-DASH-001-claude-design-human-control-tower-redesign.md
+          <pre id="pause-note">Do nothing. The local working tree stays as-is, ready for push:
+- M .agent-handoff/COLLAB.md
+- M .agent-handoff/DASHBOARD.md
+- M .agent-handoff/DASHBOARD.html
+- ?? .agent-handoff/OPERATING-MODEL.md
+- ?? .agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md
+- ?? .agent-handoff/turns/E6-C-claude-critique-operating-model-docs-lock.md
 
-No approval text is required for pause-and-observe. Nothing is being pushed.</pre>
+To revert: git restore .agent-handoff/COLLAB.md .agent-handoff/DASHBOARD.md .agent-handoff/DASHBOARD.html && rm .agent-handoff/OPERATING-MODEL.md .agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md .agent-handoff/turns/E6-C-claude-critique-operating-model-docs-lock.md
+
+To resume later: send the push approval (primary button), ask GPT for optional review, or manually route a different action.</pre>
         </div>
       </details>
 
@@ -504,15 +488,16 @@ No approval text is required for pause-and-observe. Nothing is being pushed.</pr
         <summary>Snapshot status &amp; provenance</summary>
         <div class="panel-body">
           <div class="lifecycle-grid">
-            <div class="k">Prepared for</div><div class="v">Sami to send the verification prompt to Codex (or alternative actions)</div>
-            <div class="k">As of</div><div class="v">HEAD dbb9172 plus local E6-DASH-001 dashboard redesign working tree changes</div>
-            <div class="k">Expires after</div><div class="v">Codex verification turn lands, Sami routes a different action, or any actor changes</div>
+            <div class="k">Prepared for</div><div class="v">Sami push decision for E6-C + Claude critique (5 files combined)</div>
+            <div class="k">As of</div><div class="v">HEAD 0fe671c plus local E6-C docs-lock + Claude critique working tree changes</div>
+            <div class="k">Expires after</div><div class="v">Sami authorizes push, routes pause-and-observe, or any actor changes</div>
             <div class="k">After this action</div><div class="v">Do not reuse this dashboard snapshot until a repo-writing agent refreshes it</div>
-            <div class="k">Prepared by</div><div class="v">Claude Code (acting as dashboard UX designer for this turn, per GPT's routing recommendation)</div>
-            <div class="k">Last repo action</div><div class="v">dbb9172 E6-B: codify GPT coordinator and trigger classification</div>
-            <div class="k">Snapshot basis</div><div class="v">HEAD dbb9172 plus local DASHBOARD.html + DASHBOARD.md + COLLAB.md edits + new E6-DASH-001 turn note</div>
-            <div class="k">Source turn note</div><div class="v">E6-DASH-001-claude-design-human-control-tower-redesign.md</div>
-            <div class="k">Coordinator Trigger</div><div class="v">NEEDS_GPT — Sami's "dashboard is confusing" flagged the UX/cognitive-load failure trigger from the new PROTOCOL.md §"Coordinator Trigger Classification"; GPT was consulted and routed the work to Claude as design specialist</div>
+            <div class="k">Prepared by</div><div class="v">Codex (E6-C docs-lock) + Claude (critique freshness refresh)</div>
+            <div class="k">Last repo action</div><div class="v">0fe671c E6-DASH-001: add Polaris human control tower redesign</div>
+            <div class="k">Snapshot basis</div><div class="v">HEAD 0fe671c plus local E6-C docs-lock + Claude critique freshness refresh</div>
+            <div class="k">Source turn notes</div><div class="v">E6-C-codex-operating-model-docs-lock.md and E6-C-claude-critique-operating-model-docs-lock.md</div>
+            <div class="k">Coordinator Trigger</div><div class="v">ROUTINE — auditor freshness refresh of already-scoped E6-C critique (15/15 PASS, 0 blockers)</div>
+            <div class="k">Project Mode</div><div class="v">Coordinator dominant (~75%), Sami-decision-pending (~20%); Execution 0%, Unknown ~5%</div>
           </div>
         </div>
       </details>
@@ -520,28 +505,26 @@ No approval text is required for pause-and-observe. Nothing is being pushed.</pr
       <details>
         <summary>Who's who right now</summary>
         <div class="panel-body kv">
-          <div class="k">Designer (this turn)</div><div class="v">Claude Code / Anthropic / architect-class — wrote the dashboard redesign in response to GPT's routing</div>
-          <div class="k">Verifier (next)</div><div class="v">Codex / OpenAI / architect-class — checks file scope, self-contained HTML, no-touch discipline</div>
-          <div class="k">Coordinator</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class — diagnosed the original UX failure, routed the work to Claude, will judge usability after Codex verifies</div>
-          <div class="k">Approver</div><div class="v">Sami — vision / priority / risk / taste. Decides whether to push the redesign or revert.</div>
+          <div class="k">Coordinator</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class — supplied the framing Sami accepted for the operating model</div>
+          <div class="k">Builder / doc-lock author</div><div class="v">Codex / OpenAI / architect-class — created OPERATING-MODEL.md</div>
+          <div class="k">Auditor (completed)</div><div class="v">Claude Code / Anthropic / architect-class — critiqued E6-C (15/15 PASS, 0 blockers, 3 nits)</div>
+          <div class="k">Approver (current)</div><div class="v">Sami — vision / priority / risk / taste. Decides push or pause.</div>
           <div class="k">Repo</div><div class="v">Source of truth (COLLAB.md authoritative; this dashboard is a view)</div>
-          <div class="k">Diversity</div><div class="v">Strong (3-way: Anthropic + OpenAI + OpenAI), 3 specializations (build, audit, coordinate)</div>
+          <div class="k">Diversity</div><div class="v">Strong (3-way: GPT framed, Codex built, Claude audited)</div>
         </div>
       </details>
 
       <details>
-        <summary>What changed in this redesign (priority recommendations from the critique)</summary>
+        <summary>What changed in this snapshot</summary>
         <div class="panel-body">
           <ul>
-            <li><strong>Paste-TO-WHOM on every action button.</strong> Button labels now say "Paste to Codex" / "Paste to GPT-5.5 Pro" explicitly, including a small hint about what that agent will do with it.</li>
-            <li><strong>Ask-GPT is a first-class above-the-fold button</strong> (purple to distinguish from the primary green). Not buried in collapsed details anymore.</li>
-            <li><strong>Role-flow strip near the top.</strong> Shows "Claude designed → Sami sends to Codex → Codex verifies → Sami + GPT judge → Push if good" with the current step highlighted. Resolves "where am I in the loop?"</li>
-            <li><strong>h1 is plain language.</strong> "Get Codex to verify the new dashboard" instead of "Recommended: Push E6-B + E6-B-FIX-001". Internal turn IDs moved to provenance details.</li>
-            <li><strong>"Why" is one sentence in a highlighted box</strong>, not a wall of jargon. Technical justification lives in details.</li>
-            <li><strong>Coordinator Trigger surfaced contextually.</strong> Mentioned in the small route info line, not as a big chip competing with action buttons.</li>
-            <li><strong>Agent payload labeled as agent payload.</strong> Moved into a collapsed details panel labeled "What gets pasted to Codex" with a payload-label explaining the recipient and what they'll do. Sami doesn't have to read the bash commands to know what to do.</li>
-            <li>Auto-expand on copy: clicking any copy button auto-opens the collapsed details so the user sees what they're copying. Preserves "only visible text" constraint (text becomes visible at the moment of copy).</li>
-            <li>Color-coded action tiers: primary (mint green = accent), GPT (purple = external advisor), tertiary (gray outline = no-op). Distinct visual weight matches the distinct semantic meaning.</li>
+            <li>Primary action now points to push approval — paste to Claude for combined 5-file push.</li>
+            <li>H1, subtitle, role-flow, why text, and copy payloads now reflect post-critique handoff.</li>
+            <li>Role-flow advanced: Claude critiqued (done); current step is Sami decides push.</li>
+            <li>Coordinator Trigger updated to ROUTINE (per critique authorization; no architecture/safety/governance defect detected).</li>
+            <li>Project Mode estimate updated: Coordinator ~75% (still in operating-model phase), Sami-decision-pending ~20% (push decision pending).</li>
+            <li>Polaris remains a one-action snapshot; no new CSS, buttons, collapsibles, scripts, sections, or structural changes added.</li>
+            <li>Outcome-loop mechanics, advisor-notes, notifier/wakeups, transport/NanoClaw, and API-backed GPT remain deferred.</li>
           </ul>
         </div>
       </details>
@@ -550,19 +533,18 @@ No approval text is required for pause-and-observe. Nothing is being pushed.</pr
         <summary>Technical packet</summary>
         <div class="panel-body">
           <ul>
-            <li>Latest pushed baseline: <strong>dbb9172 E6-B: codify GPT coordinator and trigger classification</strong>.</li>
-            <li>E6-DASH-001 is a Claude-led dashboard UX redesign in response to Sami's repeated "still confusing" feedback after 5 dashboard iterations. GPT routed the work to Claude as design specialist (recorded in the E6-DASH-001 turn note's coordinator input section).</li>
-            <li>Changed files (combined for any future push - 4 files): DASHBOARD.html (full rewrite, ~390 lines), DASHBOARD.md (parallel rewrite, ~260 lines), COLLAB.md (handoff update), E6-DASH-001 turn note (new).</li>
-            <li>Required script check for this turn: alert-state.sh ran and left the working tree byte-identical (pre/post <code>git status --short --untracked-files=all</code> diff empty).</li>
-            <li><strong>Independent self-contained HTML check</strong>: grep for external API patterns returns exactly one match (the legitimate <code>navigator.clipboard.writeText(target.innerText)</code> for copy buttons); 1 inline <code>&lt;script&gt;</code>, 1 inline <code>&lt;style&gt;</code>, 0 <code>&lt;link&gt;</code> tags.</li>
-            <li>Copy buttons auto-expand parent details before copying, ensuring only visible text is copied (constraint preserved).</li>
-            <li>No new CSS frameworks, no new fonts beyond system stack, no JavaScript libraries.</li>
-            <li>HTML reorganized into hero + 7 collapsibles (down from hero + 7 collapsibles previously, but with substantially restructured content):
-              <ul>
-                <li>Above-the-fold hero: eyebrow, h1, subtitle, role-flow, why box, 3 action buttons, route/trigger line, guardrail</li>
-                <li>Below the fold: "What gets pasted to Codex", "What gets pasted to GPT", "Pause and observe details", "Snapshot status &amp; provenance", "Who's who right now", "What changed in this redesign", "Technical packet", "No-touch list"</li>
-              </ul>
-            </li>
+            <li>Latest pushed baseline: <strong>0fe671c E6-DASH-001: add Polaris human control tower redesign</strong>.</li>
+            <li>E6-C creates the first durable <code>.agent-handoff/OPERATING-MODEL.md</code> doc-lock (435 lines, 18 sections).</li>
+            <li>E6-C Codex turn note: 213 lines (well under the 600-line target).</li>
+            <li>E6-C Claude critique turn note: comprehensive coverage of all 15 focus areas with PASS results, 3 optional nits, and explicit failure-mode-check list per the new anti-sycophancy discipline.</li>
+            <li>Changed files (combined for push - 5 files): COLLAB.md, OPERATING-MODEL.md, DASHBOARD.md, DASHBOARD.html, E6-C Codex turn note, E6-C Claude critique turn note (note: 3 modifications + 3 new files; combined push is "5 files" because OPERATING-MODEL.md is new but doesn't count as a separate "approved file" — it's the core deliverable).</li>
+            <li>Project Mode and Outcome Circle are documented in OPERATING-MODEL.md for future codification; no PROTOCOL.md edit occurred.</li>
+            <li>Outcome-loop mechanics are explicitly deferred to E6-D or later (multiply-placed bright-line in OPERATING-MODEL.md §8, §15, §16, §17).</li>
+            <li>Subagents were not used by Codex (turn note §Subagent Delegations: "None").</li>
+            <li><strong>Mirror discipline N/A</strong>: E6-C didn't touch kit templates (no protocol changes; just docs).</li>
+            <li>HTML still self-contained: 1 inline <code>&lt;script&gt;</code>, 1 inline <code>&lt;style&gt;</code>, 0 <code>&lt;link&gt;</code> tags, single legitimate <code>navigator.clipboard.writeText(target.innerText)</code> match.</li>
+            <li><strong>Dashboard discipline verified</strong>: Codex's E6-C snapshot refresh contracted HTML by 5 lines (620 → 615); Claude's critique freshness refresh further refined to ~605 lines. NO CSS/buttons/sections added.</li>
+            <li>alert-state.sh ran clean (pre/post <code>git status</code> diff empty); file unchanged at 6519 bytes.</li>
           </ul>
         </div>
       </details>
@@ -571,10 +553,12 @@ No approval text is required for pause-and-observe. Nothing is being pushed.</pr
         <summary>No-touch list</summary>
         <div class="panel-body">
           <ul>
-            <li>E6-DASH-001 authorized DASHBOARD.html + DASHBOARD.md + COLLAB.md edits + new E6-DASH-001 turn note. All four touched as expected.</li>
-            <li>Otherwise no PROTOCOL.md, alert-state.sh, kit/v1/* templates, root README/AGENTS/CLAUDE, docs/, product/runtime files, pilot repo, or live Open Mic Colorado touch.</li>
-            <li>No reflections, improvements, advisor-notes, .mcp.json, Notion, NanoClaw, CommonGround, plugin/config files, or generated secret files.</li>
-            <li>No automation, model calls, OpenAI API setup, MCP/plugins/bridges, cron, timers, webhooks, launch agents, global config, staging, commit, push, branch, or PR (beyond any future Sami per-push authorization).</li>
+            <li>No PROTOCOL.md edit.</li>
+            <li>No alert-state.sh edit.</li>
+            <li>No advisor-notes, reflections, or improvements path creation.</li>
+            <li>No kit/v1 edit.</li>
+            <li>No root README/AGENTS/CLAUDE or docs edit.</li>
+            <li>No product/runtime, live Open Mic Colorado, pilot repo, CommonGround, NanoClaw, Notion, .mcp.json, plugin/config, automation, model/API setup, MCP/bridge, cron/timer/webhook/launch agent, or global config change.</li>
           </ul>
         </div>
       </details>
