@@ -253,10 +253,58 @@ become "Ask GPT-5.5 Pro." Respect the E5-T-FIX-004 single-recommendation
 principle: Ask GPT becomes the one recommendation, not an extra competing
 surface.
 
-Multi-turn outcome/rubric loops remain deferred to E6-C or later. Rubric
-satisfied means the auditor believes the rubric is satisfied; it does not
-authorize commit, push, new scope, or final completion unless Sami's exact
-approval text says so.
+#### Outcome Circles
+
+An Outcome Circle is a bounded builder/auditor loop that may run only after
+Sami approves the exact entry phrase and packet:
+
+```text
+Approved Outcome Circle: <packet name>
+```
+
+Entry requires the full Outcome Packet inline with the approval. Verbal
+agreement, agent consensus, dashboard green status, prior approval of similar
+work, a GPT recommendation, a Claude/auditor pass, or a Codex/builder
+implementation plan is not Outcome Circle entry.
+
+Minimum Outcome Packet fields:
+
+- outcome description
+- rubric
+- allowed files
+- no-touch list
+- max iterations
+- builder
+- auditor/grader
+- pass evidence
+- stop conditions
+- when Sami is called back
+- when GPT is called back
+- commit/push rule
+- artifact visibility requirement
+- branch/PR policy if applicable
+
+Result states are `satisfied`, `needs_revision`, `max_iterations_reached`,
+`blocker`, `scope_conflict`, `needs_gpt`, `needs_sami`, `failed`, and
+`interrupted`.
+
+Auditor pass is not approval. Rubric satisfied is not approval. Model
+consensus is not approval. `satisfied` means the auditor believes the rubric
+is satisfied; it does not authorize commit, push, new scope, or final
+completion. Commit, push, new scope, and final completion still require
+Sami's exact approval unless the exact Outcome Packet explicitly permits them.
+
+Builder cannot grade its own work. The auditor must search for failure modes.
+If scope or mode is unclear, stop and Ask GPT.
+
+No commits or pushes occur inside an Outcome Circle unless the packet
+explicitly allows them. If the packet allows commit/push, it must state
+branch/PR policy and whether direct push to `main` is forbidden. The default
+recommendation for CI-heavy or shared repos is PR over direct push unless
+Sami explicitly approves direct push.
+
+Outcome Circle protocol/schema is codified here; loop runners, automation,
+tooling, and the first test circle remain separate future work.
 
 NanoClaw or any transport layer is a possible future option only. NanoClaw was
 previously investigated and deferred for governance-fit reasons; reconsidering

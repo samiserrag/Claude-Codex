@@ -206,28 +206,49 @@ Approved Outcome Circle: <packet name>
 
 The full Outcome Packet must be inline with the approval. Minimum fields:
 
-- outcome statement / description
+- outcome description
 - rubric
 - allowed files
 - no-touch list
 - max iterations
-- grader / auditor
+- builder
+- auditor/grader
 - pass evidence
 - stop conditions
 - when Sami is called back
+- when GPT is called back
 - commit/push rule
+- artifact visibility requirement
+- branch/PR policy if applicable
 
-Verbal agreement is not circle entry. Agent consensus is not circle entry.
+Non-entry cases:
+- verbal agreement
+- agent consensus
+- dashboard green status
+- prior approval of similar work
+- GPT recommendation
+- Claude/auditor pass
+- Codex/builder implementation plan
+
 Auditor pass is not approval. "Rubric satisfied" means the auditor believes
 the rubric is satisfied; it does not mean the work is approved. Commit, push,
 new scope, and final completion still require Sami's exact approval unless the
 exact Outcome Packet approval explicitly says otherwise.
 
-Bright-line deferral: E6-C does not design rubric formats, grader behaviors,
-iteration semantics, commit/push handling inside loops, or detailed loop
-mechanics. Those belong to E6-D or later.
+Default commit/push policy:
+- no commits or pushes inside an Outcome Circle unless the packet explicitly
+  allows them
+- if the packet allows commit/push, it must state branch/PR policy and whether
+  direct push to `main` is forbidden
+- the default recommendation for CI-heavy or shared repos is PR over direct
+  push unless Sami explicitly approves direct push
 
-Breadcrumbs: E6-A, E6-B, E6-B-FIX-001, E6-C current authorization.
+This section describes the reference model and packet contract. It does not
+implement loop runners, rubric templates, automation, tooling, or the first
+test circle.
+
+Breadcrumbs: E6-A, E6-B, E6-B-FIX-001, E6-C current authorization, E6-D,
+E6-D2.
 
 ## 9. Research Synthesis
 
@@ -432,4 +453,6 @@ Breadcrumbs: E6-C current authorization, E5-U, E5-N, E6-B.
 | `.agent-handoff/turns/E6-DASH-001-claude-design-human-control-tower-redesign.md` | Polaris cockpit redesign and GPT-routed design-specialist work | E6-DASH-001 |
 | `.agent-handoff/turns/E6-DASH-001-codex-verify-dashboard-redesign.md` | Scope/static verification of Polaris and no-touch/self-contained checks | E6-DASH-001 |
 | `.agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md` | Current GPT coordinator framing, Project Mode, Outcome Circle, and roadmap doc-lock | E6-C |
+| `.agent-handoff/turns/E6-D-codex-outcome-circle-mechanics-design.md` | Outcome Circle entry refinements, 14-field packet schema, result states, default-deny commit/push policy, and PR-over-direct-push hint | E6-D |
+| `.agent-handoff/turns/E6-D-claude-critique-outcome-circle-mechanics-design.md` | Auditor acceptance of E6-D and recommendation to fold non-entry cases, packet fields, and PR default into E6-D2 codification | E6-D |
 | `0fe671c E6-DASH-001: add Polaris human control tower redesign` | Latest pushed baseline before E6-C | E6-DASH-001 |
