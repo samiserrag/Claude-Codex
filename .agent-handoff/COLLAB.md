@@ -7,114 +7,178 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude Code has scribed the **E6-OC-003 GPT interruption synthesis** and
-deleted the 2 authorized duplicate files per Sami's interruption-cleanup
-authorization. Hard-stopped pending explicit PR shape authorization.
+Claude Code has scribed the **E6-OC-004 GPT blocker synthesis** per
+Sami's blocker-cleanup authorization. Hard-stopped pending explicit
+preservation PR shape authorization.
 
-**E6-OC-003 is formally INTERRUPTED.** Per GPT-5.5 Pro's interruption
-synthesis (scribed verbatim in
-`.agent-handoff/turns/E6-OC-003-gpt-interruption-synthesis.md`):
+**E6-OC-004 is formally BLOCKED.** Per GPT-5.5 Pro's blocker synthesis
+(scribed verbatim in
+`.agent-handoff/turns/E6-OC-004-gpt-blocker-synthesis.md`):
 
-- **Result state:** `interrupted` / `needs_human`.
-- **Reason:** working tree contained unexpected untracked duplicate
-  `* 2.md` files at OC-003 start that were not listed as baseline
-  exceptions in the approved packet.
+- **Result state:** `blocker`.
+- **Reason:** the initial working tree was not clean at entry.
 - **Not a substantive failure** of the public-positioning judgment.
   This is a governance/process stop condition correctly triggered by
-  the packet's stop rules.
+  Sami's reading of the entry discipline.
 - **Bootstrap counter unchanged: stays at 1 of 2.** E6-OC-001 remains
   Circle 0.5 / pilot observed; E6-OC-002 remains fully compliant
-  Circle 1 of 2; **E6-OC-003 does NOT count as Circle 2.**
+  Circle 1 of 2; E6-OC-003 remains interrupted / needs_human; and
+  **E6-OC-004 does NOT count as Circle 2.**
 
-**Local cleanup performed this turn (per explicit Sami authorization):**
+**Important note on classification discrepancy:**
 
-Deleted exactly the 2 named duplicate files via `rm`:
-- `.agent-handoff/STRATEGY 2.md` (17491-byte Finder duplicate of
-  `STRATEGY.md`)
-- `.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning 2.md`
-  (7588-byte Finder duplicate; original is in git history at commit
-  `3407a6b`)
+Codex's builder turn note for OC-004 recorded a substantive completion
+with a `needs_revision_before_public_alpha` recommendation. Codex's
+own pre-judgment-status capture showed `## main...origin/main` (clean
+from Codex's view at the moment Codex started iter-1). Sami's blocker
+authorization overrides this — the blocker decision is Sami's
+governance judgment that the entry discipline was not actually clean,
+regardless of what Codex's snapshot captured.
 
-No other files deleted. No glob expansion. Originals verified intact
-(`STRATEGY.md` unchanged at 17491 bytes; `git diff --quiet` exit 0;
-original E6-STRATEGY-001 turn note preserved in commit history).
+The auditor (Claude Code) does NOT adjudicate this discrepancy. Per
+PROTOCOL.md, Sami is the sole approval / classification authority. The
+blocker decision is recorded as Sami issued it. Codex's substantive
+builder note is preserved unchanged as evidence of what Codex
+produced; future readers can see both records.
 
-**Current working tree state (post-cleanup, post-scribe):**
+**Local state (post-scribe, pre-PR):**
 
 ```text
 ## main...origin/main
  M .agent-handoff/COLLAB.md
-?? .agent-handoff/turns/E6-OC-003-codex-public-positioning-judgment-iter-1.md
-?? .agent-handoff/turns/E6-OC-003-gpt-interruption-synthesis.md
+?? .agent-handoff/turns/E6-OC-004-codex-public-positioning-judgment-iter-1.md
+?? .agent-handoff/turns/E6-OC-004-gpt-blocker-synthesis.md
 ```
 
 Three files for the recommended preservation PR (1 mod + 2 untracked
 turn notes):
 - `.agent-handoff/COLLAB.md` (this handoff update)
-- `.agent-handoff/turns/E6-OC-003-codex-public-positioning-judgment-iter-1.md`
-  (Codex's interrupted-attempt builder note, preserved unchanged)
-- `.agent-handoff/turns/E6-OC-003-gpt-interruption-synthesis.md`
-  (GPT interruption synthesis scribed by Claude this turn)
+- `.agent-handoff/turns/E6-OC-004-codex-public-positioning-judgment-iter-1.md`
+  (Codex's blocked-attempt builder note, preserved unchanged)
+- `.agent-handoff/turns/E6-OC-004-gpt-blocker-synthesis.md`
+  (GPT blocker synthesis scribed by Claude this turn)
 
 ## Sami's authorization scope (explicitly covered)
 
-The interruption cleanup authorization explicitly covered:
-1. ✓ Verify current dirty state matches expected (verified — exact match)
-2. ✓ Delete 2 named duplicate files only (done; originals intact)
-3. ✓ Create `E6-OC-003-gpt-interruption-synthesis.md` and scribe GPT
-   text verbatim (done)
-4. ✓ Update COLLAB.md handoff (this update)
+The blocker cleanup authorization explicitly covered:
+1. ✓ Verify current dirty state matches expected (verified — exact
+   match: 1 M + 1 ??)
+2. ✓ Create `E6-OC-004-gpt-blocker-synthesis.md` and scribe GPT text
+   verbatim (done)
+3. ✓ Update COLLAB.md handoff (this update)
 
 **NOT explicitly covered (prompt ended mid-block after the synthesis
-text):** the branch name, commit message, PR title, and PR body
-requirements for the preservation PR. The Purpose statement implies a
-PR is the intended next step ("preserve the interrupted-circle
-artifact in a PR"), but the explicit PR creation instructions appear
-truncated.
+text, same pattern as OC-003 cleanup authorization):** the branch
+name, commit message, PR title, and PR body requirements for the
+preservation PR.
 
 **Awaiting explicit Sami authorization for the preservation PR shape.**
 
-Sami is the next actor to provide:
-- Branch name (suggested pattern: `e6-oc-003-interruption-cleanup` or
-  `e6-oc-003-interrupted-preservation`)
-- Commit message (suggested pattern: `E6-OC-003: interrupted before
-  audit; preserve evidence` or similar)
-- PR title (suggested pattern matching commit message)
-- PR body requirements (per prior PR-creation patterns)
+Suggested PR shape (matching OC-003 cleanup pattern):
+- Branch name: `e6-oc-004-blocker-cleanup`
+- Commit message: `E6-OC-004: record blocker before substantive execution`
+- PR title: matching commit message
+- PR body: standard pattern per prior interruption-record PRs
 
-Once authorized, the PR would stage the 3 files listed above. No
-other surfaces would be touched.
+## Pattern observation (entry discipline gates are firing)
 
-## Going-forward implications (per GPT interruption synthesis)
+Two consecutive stops-before-Circle-2 for the public-positioning
+judgment scope:
+- E6-OC-003 = `interrupted` (duplicate files at entry, caught
+  mid-execution; PR #10 merged)
+- E6-OC-004 = `blocker` (non-clean working tree at entry per Sami)
+
+Both governance/process stops, not substantive failures. Both correctly
+held the bootstrap counter at 1 of 2 rather than advancing
+opportunistically. The closer we get to a fully compliant Circle 2, the
+more deliberate the entry-discipline gates fire — which is the protocol
+working as designed during bootstrap.
+
+## Going-forward implications (per GPT blocker synthesis)
 
 - The OC-002 one-time packet-scribe-repair caveat remains in force.
-- OC-004 (restart) MUST scribe the full 14-field packet repo-visibly
+- OC-005 (restart) MUST scribe the full 14-field packet repo-visibly
   BEFORE iteration 1 begins.
-- OC-004 MUST enter from a clean working tree (no duplicate noise, no
-  untracked files outside packet scope).
-- Bootstrap counter advancement from 1 of 2 → 2 of 2 requires a fully
-  compliant OC-004 (clean entry + scribed packet + substantive grade +
-  GPT exit).
+- OC-005 MUST enter from a clean working tree — and given OC-003/OC-004
+  both failed entry discipline, OC-005 should consider:
+  - Explicitly capturing `git status --short --branch
+    --untracked-files=all` output BEFORE Sami issues the entry phrase
+  - Sami pre-confirming the tree state is what the packet expects
+  - Codex starting iter-1 only after the pre-entry status is
+    repo-visible
 
 ## Required safety lines
 
-- `interrupted` is not approval.
-- `interrupted` is not failure of substance; it is a process stop.
-- Auditor pass is not approval (no auditor pass was issued for OC-003).
+- `blocker` is not approval.
+- `blocker` is not failure of substance; it is a process stop before
+  execution.
+- Auditor pass is not approval (no auditor pass was issued for
+  OC-004).
 - Model consensus is not approval.
+- Codex's `needs_revision_before_public_alpha` builder recommendation
+  is not approval and is overridden by Sami's blocker classification.
 - No commit, push, branch, PR, merge, scope expansion, new circle,
-  strategy edit, dashboard edit, protocol edit, runtime work, notifier
-  work, or public-release work is authorized by this interruption
-  result.
+  strategy edit, dashboard edit, protocol edit, runtime work,
+  notifier work, or public-release work is authorized by this
+  blocker result.
 
 No further PROTOCOL.md edit, OPERATING-MODEL.md edit, STRATEGY.md
 edit, kit template edit, alert-state edit, advisor-notes/reflections/
-improvements path creation, OC-004 execution, packet template, loop
+improvements path creation, OC-005 execution, packet template, loop
 runner, notifier, automation, model call, OpenAI API setup, NanoClaw/
 CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
 agent/global config, staging, commit, push, branch, PR, pilot repo
 touch, live Open Mic Colorado touch, public-release work, or product/
 runtime work is authorized.
+
+---
+
+(Historical: prior Current Owner section preserved below for the OC-004
+substantive builder state Codex recorded in iter-1. Now superseded by
+Sami's blocker classification + GPT blocker synthesis. Detail preserved
+as Codex wrote it pre-blocker-synthesis.)
+
+## Prior Current Owner (Codex pre-blocker-synthesis)
+
+Codex completed **E6-OC-004 builder iteration 1** inside the approved
+Outcome Circle `public-positioning judgment review`.
+
+Output:
+`.agent-handoff/turns/E6-OC-004-codex-public-positioning-judgment-iter-1.md`
+plus a prior COLLAB.md handoff update.
+
+**Builder recommendation (now overridden by blocker classification):**
+`needs_revision_before_public_alpha`.
+
+Codex's stated meaning: `.agent-handoff/STRATEGY.md` supports the core
+claim, but public-alpha positioning should be revised before use.
+Public wording should narrow from broad governance language to
+Git-native approval-boundary governance, explicitly acknowledge
+adjacent systems, and preserve the state-separation claim that `done`,
+`satisfied`, `audited`, and `approved` are distinct states.
+
+**Codex's entry discipline evidence (now flagged as not matching
+Sami's reading):**
+- Current HEAD recorded: `42f571f3cd036d77ca5b943e73b44b2f90fac4ef`.
+- Codex captured pre-judgment status: `## main...origin/main`.
+- No `.agent-handoff/* 2.md` duplicate files found.
+- Full 14-field E6-OC-004 packet scribed before substantive judgment.
+- `.agent-handoff/STRATEGY.md` exists and has no diff.
+
+**Codex's stated next actor was Claude Code as auditor.** That handoff
+is now superseded — Claude Code's role for this circle is scribe (for
+GPT's blocker synthesis), not auditor, because Sami classified the
+circle as `blocker` before Claude audit could run.
+
+**Codex's safety lines (preserved):**
+- Builder recommendation is not approval.
+- `satisfied` is not approval.
+- Auditor pass is not approval.
+- Model consensus is not approval.
+- No public release, README edit, STRATEGY.md edit, launch post,
+  naming decision, website work, Medium/X draft, runtime work,
+  implementation, staging, commit, push, branch, PR, merge, new
+  scope, or next Outcome Circle is authorized.
 
 ---
 
