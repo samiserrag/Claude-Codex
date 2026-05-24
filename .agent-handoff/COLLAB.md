@@ -7,98 +7,284 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude Code has scribed the **E6-OC-002 GPT exit synthesis** and is
-hard-stopped. **E6-OC-002 is formally closed.** Scribe output:
-`.agent-handoff/turns/E6-OC-002-gpt-exit-synthesis.md` plus this
-COLLAB.md handoff update.
+Claude Code has scribed the **E6-OC-003 GPT interruption synthesis** and
+deleted the 2 authorized duplicate files per Sami's interruption-cleanup
+authorization. Hard-stopped pending explicit PR shape authorization.
 
-**Exit synthesis headline (per GPT-5.5 Pro):**
-- E6-OC-002 = fully compliant bootstrap Circle 1 of 2.
-- **Bootstrap counter advances from 0 of 2 to 1 of 2.**
-- E6-OC-001 remains Circle 0.5 / pilot observed.
-- One-time caveat: OC-002's retroactive packet-scribe is accepted once.
-  Starting with OC-003, the full 14-field Outcome Packet MUST be
-  repo-visible BEFORE iteration 1 begins. Circles that enter with an
-  unscribed packet may produce useful evidence but must NOT advance
-  the bootstrap counter.
+**E6-OC-003 is formally INTERRUPTED.** Per GPT-5.5 Pro's interruption
+synthesis (scribed verbatim in
+`.agent-handoff/turns/E6-OC-003-gpt-interruption-synthesis.md`):
 
-**Critical reminders (verbatim from GPT exit synthesis):**
-- `satisfied` is not approval.
-- Auditor pass is not approval.
+- **Result state:** `interrupted` / `needs_human`.
+- **Reason:** working tree contained unexpected untracked duplicate
+  `* 2.md` files at OC-003 start that were not listed as baseline
+  exceptions in the approved packet.
+- **Not a substantive failure** of the public-positioning judgment.
+  This is a governance/process stop condition correctly triggered by
+  the packet's stop rules.
+- **Bootstrap counter unchanged: stays at 1 of 2.** E6-OC-001 remains
+  Circle 0.5 / pilot observed; E6-OC-002 remains fully compliant
+  Circle 1 of 2; **E6-OC-003 does NOT count as Circle 2.**
+
+**Local cleanup performed this turn (per explicit Sami authorization):**
+
+Deleted exactly the 2 named duplicate files via `rm`:
+- `.agent-handoff/STRATEGY 2.md` (17491-byte Finder duplicate of
+  `STRATEGY.md`)
+- `.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning 2.md`
+  (7588-byte Finder duplicate; original is in git history at commit
+  `3407a6b`)
+
+No other files deleted. No glob expansion. Originals verified intact
+(`STRATEGY.md` unchanged at 17491 bytes; `git diff --quiet` exit 0;
+original E6-STRATEGY-001 turn note preserved in commit history).
+
+**Current working tree state (post-cleanup, post-scribe):**
+
+```text
+## main...origin/main
+ M .agent-handoff/COLLAB.md
+?? .agent-handoff/turns/E6-OC-003-codex-public-positioning-judgment-iter-1.md
+?? .agent-handoff/turns/E6-OC-003-gpt-interruption-synthesis.md
+```
+
+Three files for the recommended preservation PR (1 mod + 2 untracked
+turn notes):
+- `.agent-handoff/COLLAB.md` (this handoff update)
+- `.agent-handoff/turns/E6-OC-003-codex-public-positioning-judgment-iter-1.md`
+  (Codex's interrupted-attempt builder note, preserved unchanged)
+- `.agent-handoff/turns/E6-OC-003-gpt-interruption-synthesis.md`
+  (GPT interruption synthesis scribed by Claude this turn)
+
+## Sami's authorization scope (explicitly covered)
+
+The interruption cleanup authorization explicitly covered:
+1. ✓ Verify current dirty state matches expected (verified — exact match)
+2. ✓ Delete 2 named duplicate files only (done; originals intact)
+3. ✓ Create `E6-OC-003-gpt-interruption-synthesis.md` and scribe GPT
+   text verbatim (done)
+4. ✓ Update COLLAB.md handoff (this update)
+
+**NOT explicitly covered (prompt ended mid-block after the synthesis
+text):** the branch name, commit message, PR title, and PR body
+requirements for the preservation PR. The Purpose statement implies a
+PR is the intended next step ("preserve the interrupted-circle
+artifact in a PR"), but the explicit PR creation instructions appear
+truncated.
+
+**Awaiting explicit Sami authorization for the preservation PR shape.**
+
+Sami is the next actor to provide:
+- Branch name (suggested pattern: `e6-oc-003-interruption-cleanup` or
+  `e6-oc-003-interrupted-preservation`)
+- Commit message (suggested pattern: `E6-OC-003: interrupted before
+  audit; preserve evidence` or similar)
+- PR title (suggested pattern matching commit message)
+- PR body requirements (per prior PR-creation patterns)
+
+Once authorized, the PR would stage the 3 files listed above. No
+other surfaces would be touched.
+
+## Going-forward implications (per GPT interruption synthesis)
+
+- The OC-002 one-time packet-scribe-repair caveat remains in force.
+- OC-004 (restart) MUST scribe the full 14-field packet repo-visibly
+  BEFORE iteration 1 begins.
+- OC-004 MUST enter from a clean working tree (no duplicate noise, no
+  untracked files outside packet scope).
+- Bootstrap counter advancement from 1 of 2 → 2 of 2 requires a fully
+  compliant OC-004 (clean entry + scribed packet + substantive grade +
+  GPT exit).
+
+## Required safety lines
+
+- `interrupted` is not approval.
+- `interrupted` is not failure of substance; it is a process stop.
+- Auditor pass is not approval (no auditor pass was issued for OC-003).
 - Model consensus is not approval.
 - No commit, push, branch, PR, merge, scope expansion, new circle,
   strategy edit, dashboard edit, protocol edit, runtime work, notifier
-  work, or public-release work is authorized by this result.
+  work, or public-release work is authorized by this interruption
+  result.
 
-**What E6-OC-002 proved (per GPT):**
-- A full GPT-framed Outcome Packet can launch a builder/auditor circle.
-- Codex can verify a strategy document against objective smoke gates.
-- Claude can independently audit the evidence.
-- The system can detect and repair a governance-record gap without
-  hiding it.
-- The bootstrap rule correctly forced GPT/Sami exit synthesis.
-- The protocol can distinguish substantive satisfaction from approval.
-
-**What E6-OC-002 did NOT prove (per GPT):**
-- Subjective rubric grading.
-- Autonomy without Sami as transport.
-- Notification/wakeup or auto-handoff behavior.
-- Behavior under serious Claude/Codex disagreement.
-- Product/runtime task safety.
-- Burden reduction magnitude.
-
-**Lessons (per GPT):**
-- Full packet visibility is not optional; it is part of the governance
-  product.
-- Retroactive packet scribing should not become normal practice.
-- The auditor's process-gap finding was valuable and should be
-  preserved as evidence that the protocol can self-correct.
-- OC-003 should test a more judgment-based rubric while keeping full
-  packet scribing clean from the start.
-- Public-alpha readiness should not be claimed yet; Circle 2 of 2 is
-  still required.
-
-Sami is the next actor to decide one of (per GPT's recommended next):
-
-(a) **RECOMMENDED**: authorize a PR that preserves all 5 E6-OC-002
-    turn notes + COLLAB.md updates on main (Sami's "preserve OC-002
-    artifacts in a PR after this exit synthesis is recorded").
-(b) Queue OC-003 immediately (a bounded judgment task, with full
-    14-field packet scribed pre-iter-1 per the one-time caveat).
-(c) Pause — leave the local circle artifacts as-is until you decide.
-
-After (a) lands and (b) runs successfully, the bootstrap counter
-reaches 2 of 2, satisfying the bootstrap requirement and unlocking:
-- Consideration of relaxing entry/exit NEEDS_GPT for non-novel circles.
-- Retrospective per GPT's recommended-next bullet 4.
-- Public-alpha readiness assessment per the tripwire conditions
-  Claude flagged earlier.
-
-No PROTOCOL.md edit, OPERATING-MODEL.md edit, STRATEGY.md edit, kit
-template edit, alert-state edit, advisor-notes/reflections/improvements
-path creation, OC-003 execution, packet template, loop runner,
-notifier, automation, model call, OpenAI API setup, NanoClaw/
+No further PROTOCOL.md edit, OPERATING-MODEL.md edit, STRATEGY.md
+edit, kit template edit, alert-state edit, advisor-notes/reflections/
+improvements path creation, OC-004 execution, packet template, loop
+runner, notifier, automation, model call, OpenAI API setup, NanoClaw/
 CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
 agent/global config, staging, commit, push, branch, PR, pilot repo
-touch, live Open Mic Colorado touch, public-release work, or
-product/runtime work is authorized.
+touch, live Open Mic Colorado touch, public-release work, or product/
+runtime work is authorized.
+
+---
+
+(Historical: prior Current Owner section preserved below for the OC-003
+interrupted state Codex recorded in iter-1. The detail is now superseded
+by this interruption synthesis + cleanup. Detail preserved as Codex
+wrote it pre-interruption-synthesis.)
+
+## Prior Current Owner (Codex pre-interruption-synthesis)
+
+Codex paused **E6-OC-003 builder iteration 1** inside the approved
+Outcome Circle `public-positioning judgment review` before Claude audit.
+
+Output:
+`.agent-handoff/turns/E6-OC-003-codex-public-positioning-judgment-iter-1.md`
+plus a prior COLLAB.md handoff update.
+
+**Prior circle state:** `needs_human` (now formally upgraded to
+`interrupted` per GPT synthesis).
+
+Reason: current status included untracked duplicate `* 2.md` files that
+were not explicitly listed in the OC-003 packet as known baseline
+exceptions. OC-003 was intended to prove clean packet discipline, so it
+should not proceed to Claude audit until the human approver / GPT decides
+whether to clean, classify, or restart.
+
+(The "clean" path was chosen by Sami via the interruption-cleanup
+authorization. Duplicates are now deleted; interruption is recorded;
+preservation PR is the next move pending PR shape authorization.)
+
+Exact pre-cleanup status was:
+
+```text
+## main...origin/main
+ M .agent-handoff/COLLAB.md
+?? ".agent-handoff/STRATEGY 2.md"
+?? .agent-handoff/turns/E6-OC-003-codex-public-positioning-judgment-iter-1.md
+?? ".agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning 2.md"
+```
+
+Pre-cleanup duplicate paths (now deleted by Claude per Sami auth):
+- `.agent-handoff/STRATEGY 2.md`
+- `.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning 2.md`
+
+Codex did not create, edit, stage, delete, or otherwise touch the duplicate
+files during its OC-003 builder turn. They were not present in the originally
+recorded clean OC-003 start status from Codex's first OC-003 builder pass, but
+they were present before the refined OC-003 packet rewrite began.
+
+Do not send OC-003 to Claude audit yet.
+
+**Builder recommendation:** `needs_revision_before_public_alpha`.
+
+Meaning: the core claim is defensible, but the public-alpha positioning
+should be revised before use. The revised wording should narrow from broad
+governance language to approval-boundary governance, explicitly acknowledge
+adjacent systems, and preserve the state-separation claim.
+
+Safe revised statement for future approval, not authorized for publication:
+
+```text
+We are testing a Git-native approval-boundary protocol and minimal reference
+cockpit for cross-model agent work. The narrow claim is state separation: done,
+satisfied, audited, and approved are different states, recorded in repo-visible
+evidence, and only explicit human approval authorizes release actions.
+Runtime/action governance, HITL cards, tracing, orchestration, coding-agent
+IDEs, and governed-swarm systems are adjacent categories; this project is not
+claiming to replace them.
+```
+
+Codex scribed the refined full 14-field Outcome Packet into the iter-1 turn
+note before the judgment section, satisfying the OC-003 pre-judgment packet
+visibility requirement.
+
+Key evidence:
+- HEAD: `cb12dbf819b757bb51f09a157a23314cc85eafbb`
+- Initial status included pre-existing local E6-OC-003/COLLAB artifacts and
+  two pre-existing untracked duplicate `* 2.md` files; Codex did not touch the
+  duplicate files.
+- `.agent-handoff/STRATEGY.md` exists and has no diff.
+- E6-OC-002 is formally Circle 1 of 2 per
+  `.agent-handoff/turns/E6-OC-002-gpt-exit-synthesis.md`.
+- STRATEGY.md supports the core approval-discipline claim but does not yet
+  explicitly carry the new competitor-overlap caveats from Sami's deep-research
+  framing.
+- Public wording should avoid broad "agent governance" novelty and should not
+  claim runtime/action governance, HITL cards, tracing, orchestration,
+  coding-agent IDEs, governed swarms, or AI-review-cannot-approve precedent as
+  uniquely covered by this project.
+
+No public release, README edit, STRATEGY.md edit, launch post, naming decision,
+website work, Medium/X draft, implementation, protocol edit, dashboard edit,
+kit edit, automation/model/API setup, advisor-notes/reflections/improvements
+path creation, staging, commit, push, branch, PR, merge, pilot repo touch, or
+live Open Mic Colorado touch was performed or authorized.
 
 ## Coordinator Trigger
-- State: ROUTINE
-- Reason: mechanical scribing of GPT's exit-synthesis text into a
-  repo-visible turn note. The exit-synthesis decision itself was GPT's
-  per the bootstrap rule (Outcome Circle exit = NEEDS_GPT until 2
-  circles complete). This scribe records that decision; it does not
-  make a new decision.
+- State: ROUTINE inside approved Outcome Circle
+- Reason: judgment-based builder evaluation inside a GPT/human-approver-approved
+  Outcome Circle packet; no public release, implementation, strategy edit,
+  dashboard edit, protocol edit, PR, or next scope decision is being made by
+  Codex. Sami is the configured human approver in this repo.
 
 ## Project Mode (estimated)
-- Dominant mode: Coordinator (~50%, agent heuristic estimate)
-- Sami-decision-pending: ~40%
-- Execution: ~10%
+- Dominant mode: Execution
+- Coordinator: 0%
+- Sami-decision-pending: 0%
 - Unknown: 0%
-- Reason: E6-OC-002 closed with this scribe. The coordinator (GPT)
-  authored the exit synthesis; Sami approved the scribe. The next move
-  is Sami's post-circle decision (preserve PR / queue OC-003 / pause).
+- Reason: `Approved Outcome Circle: public-positioning judgment review`
+  is active. Codex completed builder evidence and a bounded judgment for
+  Claude audit. Exit remains bootstrap-sensitive and requires GPT/Sami
+  handling in this local repo instance.
+
+## Next Request To Claude
+
+None yet. Do not audit OC-003 until the duplicate-file gate is resolved by the
+human approver / GPT.
+
+## Next Request To Human Approver / GPT
+
+Decide how to handle the untracked duplicate files before OC-003 proceeds:
+
+1. Treat OC-003 as `needs_human` and run a tiny housekeeping turn to remove or
+   classify the duplicate files, then restart OC-003 cleanly.
+2. Explicitly classify the duplicate files as known baseline exceptions and
+   decide whether OC-003 may proceed despite the packet omission.
+3. Mark OC-003 `scope_conflict` or `blocker` if the current working tree state
+   prevents reliable continuation.
+
+No cleanup, deletion, Claude audit, new Outcome Circle, staging, commit, push,
+branch, PR, merge, public release, naming, launch copy, website, or exit
+synthesis is authorized by this clarification.
+
+## E6-OC-003 Builder Iteration 1 Summary (Codex, local-only at this turn)
+
+**Outcome Circle:** `public-positioning judgment review`.
+
+**Builder recommendation:** `needs_revision_before_public_alpha`.
+
+**Files written by Codex:**
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-OC-003-codex-public-positioning-judgment-iter-1.md`
+
+**Read-only evidence files not edited:**
+- `.agent-handoff/STRATEGY.md`
+- `.agent-handoff/COLLAB.md` was read first, then updated only as the
+  allowed handoff file.
+- `.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning.md`
+- `.agent-handoff/turns/E6-OC-002-gpt-exit-synthesis.md`
+- existing `.agent-handoff/turns/E6-OC-002-*` support files
+
+**Key judgment:** the core approval-boundary thesis is defensible, but the
+public-alpha wording should be revised before use to include competitor-overlap
+caveats and narrower state-separation language. This is not public-release
+approval and does not authorize launch work.
+
+**No-touch confirmation:** Codex did not edit STRATEGY.md, PROTOCOL.md,
+OPERATING-MODEL.md, dashboard files, alert-state.sh, advisor-notes/reflections/
+improvements, kit files, root docs, docs, product/runtime files, pilot repo,
+live Open Mic Colorado files, CommonGround, NanoClaw, Notion, MCP/plugin/bridge,
+`.mcp.json`, automation/model/API setup, cron/timer/webhook/launch-agent/global
+config, generated/local/secret files, trust/event/private-key files, unrelated
+files, staging, commit, push, branch, PR, merge, public release, launch post,
+naming decision, website work, Medium/X draft, or implementation.
+
+---
+
+(Historical: E6-OC-002 closed summary preserved below.)
+
+## E6-OC-002 Closed Summary (Claude Code scribe of GPT exit synthesis)
 
 ## E6-OC-002 Closed (Claude Code scribe of GPT exit synthesis, local-only at this turn)
 
