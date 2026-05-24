@@ -7,73 +7,288 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex has completed **PR #5 final-head verification** after the
-E6-DASH-002-FIX-001 visual-tightening follow-up. The fetched PR #5 head,
-remote branch, and local branch all resolve to
-`a4628ebc2ae989a2eb1fc1120ce70abb861bd40b`. The final PR diff from
-`origin/main...HEAD` contains exactly six files: COLLAB.md,
-DASHBOARD.html, DASHBOARD.md, the original Claude Design Human Role Cue
-turn note, the original Codex verification turn note, and the Claude
-Design visual-tightening turn note.
+Claude Code has completed the **E6-PROTOCOL-FIX-001-RESTORE critique**
+locally and is hard-stopped. Critique outputs:
+`.agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md`
+(this critique) + this COLLAB.md handoff update + DASHBOARD.md /
+DASHBOARD.html text-only snapshot refresh.
 
-Verdict: **PR #5 is safe to merge after Sami approval.** The
-visual-tightening follow-up stayed within dashboard UX/content + turn
-notes, did not touch no-touch surfaces, kept DASHBOARD.html
-self-contained, preserved visible-text-only copy behavior, kept the
-Human Role Cue above the fold, preserved one-primary-action discipline,
-kept ASK GPT secondary for this ROUTINE state, preserved COURIER ONLY /
-APPROVAL ONLY / AGENTS RUNNING / UNCLEAR routing meanings, and preserved
-COLLAB.md authority + view-only dashboard + no-approval-inference +
-Sami-only approval warnings.
+**Critique headline: 13 of 13 focus areas PASS. Safe to accept.**
 
-Important caveat: `gh pr view 5` could not be used because GitHub
-returned `GraphQL: API rate limit already exceeded for user ID
-197519643`. The PR head itself was verified through fetched Git refs.
-Based on Sami's note that the PR body still describes the original 18/18
-verification and lists 5 files while GitHub metadata now shows 2 commits
-/ 6 changed files, the PR body should be updated before merge to mention
-the FIX-001 visual-tightening follow-up and this final-head verification.
+Codex's RESTORE is exactly what was needed:
+
+1. **HTML structural repairs verified:** `role-courier` restored on
+   the cue panel (L401); "About the 5 states" cue-note restored
+   (L416); "Who's who right now" + "What changed in this snapshot"
+   standing panels restored (L578/L589). `<details>` count and
+   `<summary>` count both = 9 (matches origin/main `fbdb0b3`).
+2. **Bootstrap rule preserved:** the 12-line bootstrap paragraph from
+   FIX-001 is intact; mirror discipline still byte-identical between
+   live PROTOCOL.md and kit template (independently verified via
+   `sed`-extract + `diff` exit 0 on both the paragraph and the full
+   Outcome Circles section, 71 lines each).
+3. **`scope_conflict` fold applied:** added to bootstrap exit-list at
+   PROTOCOL.md L277, mirrored byte-equivalently to kit template.
+   Grammar/position is sensible (between `blocker` and `failed`,
+   matching the canonical result-state order).
+4. **No new regressions:** all no-touch surfaces clean
+   (OPERATING-MODEL.md, alert-state.sh still 6519 bytes, kit/v1
+   except template, root docs, docs/, advisor-notes/reflections/
+   improvements still absent, .mcp.json still absent). HTML
+   self-containment intact (0 external CSS/JS, 0 storage/network
+   APIs, 1 executable `clipboard.writeText`). `alert-state.sh` ran
+   without modifying the working tree (diff exit 0).
+
+**Three foldable nits (none blocking):**
+1. Bootstrap paragraph's line wrap is slightly awkward after
+   `scope_conflict` insertion (cosmetic; semantics unchanged).
+2. OPERATING-MODEL.md §8 doesn't yet reference the bootstrap rule —
+   carried from FIX-001 critique. PROTOCOL.md is authoritative on
+   conflicts; foldable into a future small docs-lock turn.
+3. First Outcome Circle packet drafting is now unblocked but not yet
+   started. Per the bootstrap rule, drafting must be NEEDS_GPT.
+
+**One small correction to my prior FIX-001 critique:** I cited the
+`<details>` count as "10 → 6 (−4)." Recounting against the actual
+file (excluding a JS comment that mentions `<details>` in source
+text), the accurate counts were **9 → 6 (−3)** details elements + 1
+state-class removal = 4 total regressions. The −3 details + 1 class
+framing remained correct; the absolute count was off by one. All 4
+regressions are now repaired.
 
 Sami is the next actor to decide between:
 
-(a) **RECOMMENDED**: update the PR body to mention FIX-001 + final-head
-    verification, then merge PR #5 if the rendered dashboard is visually
-    acceptable.
-(b) Merge PR #5 without PR body cleanup if Sami accepts the stale body as
-    non-blocking.
-(c) Ask for another visual pass (FIX-002 — e.g., neutral cue background
-    if the mint-green still competes with the primary action button).
-(d) Pause — leave PR #5 open at `a4628ebc` until you decide.
+(a) **RECOMMENDED**: authorize push of the combined FIX-001 + RESTORE
+    as one PR (5 file modifications + 3 new turn notes = 8-file PR,
+    matching prior combined-push shapes). Recommend feature branch
+    `e6-protocol-fix-001-bootstrap-rule` with commit message
+    `E6-PROTOCOL-FIX-001: add Outcome Circle bootstrap rule
+    (+ RESTORE repair)`.
+(b) Request one more small tweak (e.g., fix the wrap nit, fold
+    OPERATING-MODEL.md §8 reference) before push.
+(c) Pause-and-observe — leave the local stack until later.
 
-After PR #5 merges, the next substantive turn remains the **first
-Outcome Circle scope decision** (`Approved Outcome Circle: <packet
-name>`). That entry requires Sami's exact approval with the full inline
-14-field Outcome Packet per the codified rule, and per the bootstrap
-policy (tracked as a separate `E6-PROTOCOL-FIX-001` follow-up), should
-remain NEEDS_GPT until 2 Outcome Circles have completed successfully.
+After acceptance/push, the next substantive turn is the **first
+Outcome Circle scope decision** — now properly bootstrap-gated as
+NEEDS_GPT (GPT frames packet → Codex builder-reviews → Claude audits
+→ Sami approves) per the rule that just landed.
 
 No further PROTOCOL.md edit, OPERATING-MODEL.md edit, kit template
-edit, alert-state edit, advisor-notes/reflections/improvements path
-creation, first Outcome Circle execution, packet template, loop runner,
-notifier, automation, model call, OpenAI API setup, NanoClaw/
-CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
-agent/global config, pilot repo touch, live Open Mic Colorado touch,
-or product/runtime work is authorized.
+edit beyond the approved protocol mirror, alert-state edit,
+advisor-notes/reflections/improvements path creation, first Outcome
+Circle execution, packet template, loop runner, notifier, automation,
+model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
+MCP/plugin/bridge, cron/timer/webhook/launch agent/global config,
+staging, commit, push, branch, PR, pilot repo touch, live Open Mic
+Colorado touch, or product/runtime work is authorized.
 
 ## Coordinator Trigger
 - State: ROUTINE
-- Reason: Codex performed final-head verification of an already-scoped
-  dashboard UX PR after the visual-tightening follow-up. No architecture,
-  pivot, UX conflict, safety, automation, or tooling trigger fired during
-  verification.
+- Reason: auditor pass on a concrete, narrowly-scoped repair of an
+  auditor-identified regression. Per the Coordinator Trigger
+  Classification rule, upgrade only on detection of an architecture /
+  safety / governance defect. None detected — RESTORE is faithful to
+  the repair spec; the previously-flagged HTML regression is resolved
+  and the optional protocol nit (scope_conflict fold) was applied
+  byte-equivalently.
 
 ## Project Mode (estimated)
-- Dominant mode: Sami-decision-pending (~65%, agent heuristic estimate)
-- Execution: ~25%
-- Coordinator: ~10%
+- Dominant mode: Coordinator (~65%, agent heuristic estimate)
+- Sami-decision-pending: ~30%
+- Execution: ~5%
 - Unknown: 0%
-- Reason: the PR branch is verified at the expected final head. Sami now
-  decides whether to update the PR body and merge, request a fix, or pause.
+- Reason: no Outcome Circle is active. The combined FIX-001 + RESTORE
+  stack is fully repaired and ready for accept/push. Sami-decision-
+  pending weight increases because the local state is now in
+  "decision-needed" mode.
+
+## E6-PROTOCOL-FIX-001-RESTORE Claude Critique Summary (Claude Code, local-only at this turn)
+
+**Focus-area results: 13 of 13 PASS.**
+
+| # | Focus area | Result |
+| --- | --- | --- |
+| 1 | RESTORE tiny + repair-only | PASS |
+| 2 | Bootstrap-rule work preserved | PASS |
+| 3 | `role-courier` restored on cue panel | PASS (verified at L401) |
+| 4 | "About the 5 states" cue-note restored in HTML | PASS (verified at L416) |
+| 5 | Two top-level standing panels restored | PASS (verified at L578, L589) |
+| 6 | No stale content revert | PASS |
+| 7 | No Polaris redesign | PASS (structure counts match origin/main) |
+| 8 | `scope_conflict` added byte-equivalently | PASS (3 independent diff checks exit 0) |
+| 9 | OPERATING-MODEL.md avoided | PASS |
+| 10 | All other no-touch surfaces avoided | PASS (verified per-surface) |
+| 11 | DASHBOARD.html self-contained | PASS |
+| 12 | `alert-state.sh` runs without modifying working tree | PASS (diff exit 0) |
+| 13 | Combined FIX-001 + RESTORE safe to accept | YES |
+
+**Independent verification commands run:**
+- `git status --short --branch --untracked-files=all` → 5 files
+  modified + 3 new turn notes on `main...origin/main`.
+- `git diff --check` → exit 0.
+- `grep -n 'class="human-role-cue'` → cue panel has `role-courier`
+  class at L401.
+- `grep -nE '<summary'` → 9 summary tags including all 3 expected
+  restorations.
+- `grep -c '^Bootstrap rule for early circles:'` → 1 in both PROTOCOL.md
+  and kit template.
+- Bootstrap paragraph extraction + diff → exit 0 (byte-identical).
+- Full Outcome Circles section extraction + diff → exit 0 (mirror
+  byte-identical, 71 lines each).
+- `sh .agent-handoff/tools/alert-state.sh` → exit 0; pre/post `git
+  status` byte-identical.
+- `wc -c .agent-handoff/tools/alert-state.sh` → 6519 (unchanged).
+- HTML self-containment static checks: 0 external CSS, 0 external JS,
+  0 HTTP URLs in executable positions, 0 storage APIs, 0 network APIs,
+  1 executable `clipboard.writeText` call.
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): critique
+names 3 specific nits (wrap awkwardness; OPERATING-MODEL.md §8
+freshness; first-circle packet drafting still pending) AND explicitly
+enumerates 12 failure modes checked-and-found-absent (silent
+OPERATING-MODEL edit / silent alert-state edit / kit-outside-template
+edit / advisor-notes-path creation / state-class re-removal / cue-note
+re-removal / standing-panel re-removal / bootstrap-rule mutation /
+external CSS-JS link / storage-network API introduction /
+self-containment break / first Outcome Circle execution — all absent).
+Critique is COMPLETE per the §12 dissent requirement.
+
+Pattern: **twenty-eighth clean turn** in the E5-H → E6-PROTOCOL-FIX-001
+arc. Combined FIX-001 + RESTORE delivers a clean prerequisite for the
+first Outcome Circle scope decision.
+
+---
+
+(Historical: Codex's E6-PROTOCOL-FIX-001-RESTORE implementation summary
+follows. Detail preserved below as Codex wrote it pre-critique.)
+
+## E6-PROTOCOL-FIX-001-RESTORE Implementation Summary (Codex, local-only at this turn)
+
+**Files changed by this restore turn:**
+- `.agent-handoff/DASHBOARD.html` — restored the missing `role-courier`
+  state class, in-cue "About the 5 states" details, and the two standing
+  top-level panels from the PR #5 Polaris structure using current
+  E6-PROTOCOL-FIX-001 content.
+- `.agent-handoff/PROTOCOL.md` — added `scope_conflict` to the bootstrap
+  exit-state list.
+- `kit/v1/.agent-handoff/PROTOCOL.md.template` — mirrored the same
+  `scope_conflict` wording.
+- `.agent-handoff/COLLAB.md` — this handoff update.
+- `.agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-codex-restore-polaris-bootstrap.md`
+  — restore turn note.
+
+**DASHBOARD.md:** not edited. It already retained the in-cue "About the
+5 states" explanation; the repair was HTML structural parity, not a new
+snapshot redesign.
+
+**Preserved from E6-PROTOCOL-FIX-001:**
+- Outcome Circle entry/exit remain `NEEDS_GPT` until at least two
+  circles complete successfully and are reviewed in repo-visible turn
+  notes.
+- Outcome Packets may not self-classify entry or exit as `ROUTINE`
+  during bootstrap.
+- Mechanical builder/auditor work inside a valid approved Outcome Circle
+  may still be `ROUTINE` when it remains within the packet.
+- No first Outcome Circle, Outcome Packet template, loop runner,
+  automation, notifier, advisor-notes path, model/API setup, transport,
+  staging, commit, push, branch, or PR was started.
+
+**Next recommended action:** paste the RESTORE critique request to
+Claude Code. After Claude critique, Sami can decide whether to accept,
+request a smaller fix, pause, or authorize a later exact-scope push/PR.
+
+## E6-PROTOCOL-FIX-001 Claude Critique Summary (Claude Code, local-only at this turn)
+
+**Focus-area results: 11 of 12 PASS; 1 PARTIAL PASS / blocker.**
+
+Detailed assessment lives in the critique turn note
+(`E6-PROTOCOL-FIX-001-claude-critique-outcome-circle-bootstrap-rule.md`).
+Headline per focus area:
+
+| # | Focus area | Result |
+| --- | --- | --- |
+| 1 | E6-D2 Outcome Circle protocol satisfied | PASS |
+| 2 | Fix is tiny | PASS |
+| 3 | Byte-identical mirror (live ↔ kit) | PASS (verified) |
+| 4 | Entry/exit always NEEDS_GPT until 2 circles | PASS |
+| 5 | Preserves ROUTINE eligibility for mechanical inside-circle work | PASS |
+| 6 | Prevents packet self-classifying entry/exit as ROUTINE | PASS |
+| 7 | Defines entry/exit clearly | PASS with nit (`scope_conflict` omitted from exit list) |
+| 8 | Did not start first Outcome Circle | PASS |
+| 9 | No OPERATING-MODEL / alert-state / kit-outside-template / advisor-notes / automation / API / etc touches | PASS (verified) |
+| 10 | Polaris/COLLAB refreshed without redesigning Polaris | **PARTIAL PASS / blocker** (HTML regression) |
+| 11 | DASHBOARD.html self-contained | PASS |
+| 12 | Safe to accept | NO as-is; YES with Path A or Path B |
+
+**Independent verification commands run:**
+- `git status --short --untracked-files=all` → 6 files changed (matches
+  authorization scope).
+- `git diff --check` → exit 0.
+- `grep -c '^Bootstrap rule for early circles:'` → 1 in both PROTOCOL.md
+  and kit template.
+- `sed`-extract bootstrap paragraph from both files + `diff` → exit 0
+  (byte-identical).
+- `sed`-extract entire `#### Outcome Circles` section (70 lines each)
+  from both files + `diff` → exit 0 (mirror byte-identical).
+- `sh .agent-handoff/tools/alert-state.sh` → exit 0, pre/post `git
+  status` byte-identical.
+- HTML self-containment: 0 external CSS, 0 external JS, 0 HTTP URLs in
+  executable positions, 0 storage APIs, 0 network APIs, 1 executable
+  `clipboard.writeText` call (pre-existing).
+- `wc -c .agent-handoff/tools/alert-state.sh` → 6519 (unchanged).
+- HTML structure counts vs origin/main `fbdb0b3`:
+  - `role-(courier|approval|ask-gpt|agents-running|stop)` class
+    occurrences: **0** (was 12).
+  - `<details>` count: 6 (was 10).
+  - `cue-note` count: 0 (was 1).
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): critique
+names 3 specific concerns (HTML regression, missing `scope_conflict`
+from exit list, OPERATING-MODEL.md §8 freshness) AND explicitly
+enumerates 11 failure modes checked-and-found-absent (silent
+OPERATING-MODEL edit / silent alert-state edit / kit-outside-template
+edit / advisor-notes-path creation / automation / API call / first
+Outcome Circle execution / packet template / loop runner / external
+CSS-JS link / storage-network API introduction — all absent). Critique
+is COMPLETE per the §12 dissent requirement.
+
+Pattern: **twenty-seventh clean turn** in the E5-H → E6-PROTOCOL-FIX-001
+arc, and the **second** turn where the auditor catches a scope-creep
+defect that 2-way would have shipped (the first was FIX-003→FIX-001's
+classifier gap; this is the second).
+
+---
+
+(Historical: Codex's E6-PROTOCOL-FIX-001 implementation summary
+follows. Detail preserved below as Codex wrote it pre-critique.)
+
+## E6-PROTOCOL-FIX-001 Implementation Summary (Codex, local-only at this turn)
+
+Codex completed the tiny bootstrap-rule fix:
+- Added one concise bootstrap paragraph inside `#### Outcome Circles` in
+  `.agent-handoff/PROTOCOL.md`.
+- Mirrored the same paragraph into
+  `kit/v1/.agent-handoff/PROTOCOL.md.template`.
+- Refreshed COLLAB.md, DASHBOARD.md, and DASHBOARD.html from stale post-PR5
+  merge/final-head verification framing to the current E6-PROTOCOL-FIX-001
+  Claude critique handoff.
+- Created
+  `.agent-handoff/turns/E6-PROTOCOL-FIX-001-codex-outcome-circle-bootstrap-rule.md`.
+
+Preserved boundaries:
+- No Outcome Circle execution.
+- No Outcome Packet template.
+- No loop runner, notifier, wakeup, automation, model call, API setup,
+  NanoClaw, CommonGround, MCP/plugin/bridge, Notion, cron/timer/webhook/
+  launch agent/global config.
+- No advisor-notes/reflections/improvements path creation.
+- No alert-state.sh edit.
+- No OPERATING-MODEL.md edit.
+- No kit edits outside `kit/v1/.agent-handoff/PROTOCOL.md.template`.
+- No staging, commit, push, branch, or PR.
+
+Dashboard status: refreshed this turn as a static view-only snapshot
+pointing to Claude critique. COLLAB.md remains authoritative.
 
 ## PR #5 Final-Head Verification Summary (Codex, local-only at this turn)
 
@@ -4281,12 +4496,12 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- Decide whether to update the PR #5 body before merge, merge PR #5 as-is,
-  request a follow-up visual fix, or pause.
-- After PR #5 is merged, decide the first Outcome Circle scope.
-  Per the bootstrap policy follow-up (`E6-PROTOCOL-FIX-001`, not yet
-  authored), circle entry/exit should remain NEEDS_GPT until 2 Outcome
-  Circles have completed successfully.
+- After Claude critiques E6-PROTOCOL-FIX-001, decide whether to accept,
+  request a tiny fix, pause, or authorize a later exact-scope push/PR.
+- After E6-PROTOCOL-FIX-001 is accepted/pushed, decide the first Outcome
+  Circle scope. Per the new bootstrap rule, circle entry/exit remains
+  NEEDS_GPT until two Outcome Circles complete successfully and are
+  reviewed in repo-visible turn notes.
 - No loop runner, first Outcome Circle, packet template, advisor-notes
   path creation, notifier, automation, model call, OpenAI API setup,
   NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, timer, webhook,
@@ -4295,39 +4510,41 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-None active. Claude Code (auditor role) and Claude Design (designer
-role) are both hard-stopped after E6-DASH-002 implementation, visual
-tightening, and Codex final-head verification. No further PROTOCOL.md
-edit, OPERATING-MODEL.md edit, kit edit, dashboard edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, outcome-loop
-implementation, first Outcome Circle, packet template, server, model call,
-OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron,
-launch agent, timer, webhook, daemon, global config, pilot repo, live
-Open Mic Colorado, product/runtime, root-doc, notification script,
-staging, commit, push, branch, merge, PR update, or any other change is
-authorized.
+Critique E6-PROTOCOL-FIX-001-RESTORE as auditor/advisor. Verify Codex
+preserved the good bootstrap-rule work, restored `role-courier`,
+restored the in-cue "About the 5 states" details block, restored the
+"Who's who right now" and "What changed in this snapshot" top-level
+details panels, and folded `scope_conflict` into the live/kit bootstrap
+exit-state list with byte-equivalent wording. Confirm DASHBOARD.html
+remains self-contained and copy buttons only copy visible payload text.
+Confirm no OPERATING-MODEL.md edit, alert-state edit,
+advisor-notes/reflections/improvements path creation, kit dashboard /
+COLLAB / prompt / README edit, automation, model/API setup, transport,
+Outcome Circle execution, packet template, staging, commit, push, branch,
+PR, pilot repo, live Open Mic Colorado, or product/runtime work started.
+Output one critique turn note plus COLLAB.md handoff update; refresh
+DASHBOARD.md/html only if snapshot handoff requires it. Hard stop after
+critique.
 
 ## Next Request To Codex
 
-None active. Codex completed PR #5 final-head verification and is
-hard-stopped. No further dashboard refresh, PROTOCOL.md edit,
-OPERATING-MODEL.md edit, kit edit, alert-state edit, advisor-notes/
-reflections/improvements path creation, outcome-loop implementation,
-first Outcome Circle, packet template, server, model call, OpenAI API
-setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, launch
-agent, timer, webhook, daemon, global config, pilot repo, live Open Mic
-Colorado, product/runtime, root-doc, notification script, staging,
-commit, push, branch, merge, PR update, or any other change is authorized.
+None active. Codex completed E6-PROTOCOL-FIX-001-RESTORE and is
+hard-stopped. No further PROTOCOL.md edit, kit edit, dashboard refresh,
+COLLAB edit, OPERATING-MODEL.md edit, alert-state edit,
+advisor-notes/reflections/improvements path creation, outcome-loop
+implementation, first Outcome Circle, packet template, server, model
+call, OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge,
+cron, launch agent, timer, webhook, daemon, global config, pilot repo,
+live Open Mic Colorado, product/runtime, root-doc, notification script,
+staging, commit, push, branch, merge, PR update, or any other change is
+authorized.
 
 ## Next Request To Sami
 
-Decide whether to update the PR #5 body and merge, merge without body
-cleanup, request a follow-up visual fix, or pause. Recommended PR body
-cleanup before merge:
-- mention final head `a4628ebc2ae989a2eb1fc1120ce70abb861bd40b`;
-- mention 2 commits / 6 changed files;
-- mention `E6-DASH-002-FIX-001` visual tightening;
-- mention `.agent-handoff/turns/E6-DASH-002-codex-verify-pr5-final-head.md`.
+Paste the E6-PROTOCOL-FIX-001-RESTORE critique prompt to Claude Code, or
+route a different action explicitly. After Claude critique, decide whether
+to accept the combined bootstrap + restore state, request a tiny follow-up,
+pause, or authorize a later exact-scope push/PR.
 
 Do not authorize the first Outcome Circle, packet template,
 advisor-notes creation, outcome-loop implementation, automation, API

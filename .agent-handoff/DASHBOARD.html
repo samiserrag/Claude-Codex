@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Polaris ✦ Claude-Codex Control Tower</title>
+  <title>Polaris - Claude-Codex Control Tower</title>
   <style>
     :root {
       --bg: #f5f7fa;
@@ -39,20 +39,12 @@
       margin: 0 auto;
       padding: 18px;
     }
-    .hero {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
-    }
     .brand {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       margin: 0 0 18px;
-      padding: 0;
       flex-wrap: wrap;
     }
     .brand-mark {
@@ -69,7 +61,6 @@
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.2em;
-      color: var(--text);
     }
     .brand-tagline {
       margin: 0;
@@ -77,20 +68,12 @@
       color: var(--muted-2);
       font-style: italic;
     }
-    .brand-footer {
-      margin: 22px auto 0;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      text-align: center;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      color: var(--muted-2);
-      max-width: 880px;
-    }
-    .brand-footer .brand-star {
-      font-size: 13px;
-      vertical-align: -1px;
-      margin-right: 4px;
+    .hero {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
     }
     .human-role-cue {
       margin: 0 0 14px;
@@ -127,17 +110,13 @@
     }
     .cue-header {
       display: flex;
-      align-items: baseline;
       flex-wrap: wrap;
+      align-items: baseline;
       gap: 4px 8px;
-      margin: 0 0 5px;
-      font-size: 13px;
+      margin-bottom: 5px;
       line-height: 1.25;
     }
-    .cue-icon {
-      font-size: 14px;
-      line-height: 1;
-    }
+    .cue-icon { font-size: 14px; line-height: 1; }
     .cue-label {
       font-weight: 800;
       letter-spacing: 0.04em;
@@ -149,9 +128,9 @@
     .role-agents-running .cue-label { color: var(--text); }
     .role-stop .cue-label { color: #7f1d1d; }
     .cue-tagline {
-      font-weight: 500;
-      font-size: 12px;
       color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
     }
     .cue-fields {
       display: grid;
@@ -160,7 +139,7 @@
       font-size: 12.5px;
     }
     .cue-k { color: var(--muted); }
-    .cue-v { color: var(--text); font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+    .cue-v { color: var(--text); font-weight: 600; overflow-wrap: anywhere; }
     .cue-note {
       margin: 7px 0 0;
       padding-top: 6px;
@@ -200,7 +179,11 @@
       font-size: 11.5px;
       color: var(--muted);
     }
-    .cue-note li { font-size: 11.5px; margin: 2px 0; line-height: 1.4; }
+    .cue-note li {
+      margin: 2px 0;
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
     .cue-note li strong { color: var(--text); }
     .eyebrow {
       color: var(--accent);
@@ -222,16 +205,6 @@
       font-size: 14px;
       line-height: 1.45;
     }
-    .why {
-      margin: 0 0 12px;
-      font-size: 13px;
-      color: var(--text);
-      padding: 7px 11px;
-      background: var(--accent-soft);
-      border-left: 3px solid var(--accent);
-      border-radius: 4px;
-      line-height: 1.45;
-    }
     .role-flow {
       display: flex;
       flex-wrap: wrap;
@@ -250,25 +223,26 @@
       white-space: nowrap;
       color: var(--muted-2);
     }
-    .role-flow .step.done {
-      color: var(--muted);
-      background: transparent;
-    }
-    .role-flow .step.done::before {
-      content: "✓ ";
-    }
-    .role-flow .step.current {
+    .role-flow .done { color: var(--muted); }
+    .role-flow .done::before { content: "✓ "; }
+    .role-flow .current {
       color: #ffffff;
       background: var(--accent);
       font-weight: 700;
     }
-    .role-flow .step.pending {
-      color: var(--muted-2);
-      background: transparent;
-    }
     .role-flow .arrow {
       color: var(--muted-2);
       font-size: 12px;
+    }
+    .why {
+      margin: 0 0 12px;
+      padding: 7px 11px;
+      color: var(--text);
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      font-size: 13px;
+      line-height: 1.45;
     }
     .actions {
       display: flex;
@@ -280,20 +254,15 @@
       display: flex;
       align-items: center;
       gap: 9px;
+      width: 100%;
       padding: 9px 13px;
+      border: 1px solid transparent;
       border-radius: 6px;
       font: inherit;
       font-size: 14px;
-      cursor: pointer;
-      text-decoration: none;
       text-align: left;
-      border: 1px solid transparent;
-      width: 100%;
-      transition: opacity 0.1s, transform 0.05s;
+      cursor: pointer;
     }
-    .action:hover { opacity: 0.92; }
-    .action:active { transform: translateY(1px); }
-    .action:focus { outline: 3px solid #99f6e4; outline-offset: 2px; }
     .action.primary {
       background: var(--accent);
       color: #ffffff;
@@ -312,43 +281,33 @@
       border-color: var(--line);
       font-weight: 600;
     }
-    .action .icon {
-      font-size: 15px;
-      flex-shrink: 0;
-    }
-    .action .label { flex: 1; }
-    .action .hint {
-      font-size: 11.5px;
-      opacity: 0.85;
-      font-weight: 400;
-      margin-top: 1px;
-      line-height: 1.35;
-    }
-    .action.primary .hint { color: #c7f0e8; }
-    .action.gpt .hint { color: #7c5fcb; }
-    .action.tertiary .hint { color: var(--muted-2); }
+    .action .icon { font-size: 15px; flex-shrink: 0; }
     .action-text {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       flex: 1;
     }
-    .route {
-      margin: 12px 0 0;
+    .action .hint {
+      margin-top: 1px;
+      opacity: 0.85;
+      font-size: 11.5px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+    .action.primary .hint { color: #c7f0e8; }
+    .route, .guardrail {
       color: var(--muted);
       font-size: 12px;
       line-height: 1.45;
     }
-    .route strong { color: var(--text); }
     .guardrail {
       margin-top: 11px;
       padding-top: 10px;
       border-top: 1px solid var(--line);
-      color: var(--muted);
       font-size: 11.5px;
-      line-height: 1.45;
     }
-    .guardrail strong { color: var(--text); }
+    .guardrail strong, .route strong { color: var(--text); }
     .guardrail .warning { color: var(--warn); font-weight: 700; }
     .panels {
       display: grid;
@@ -359,14 +318,9 @@
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 0;
     }
-    details[data-priority="action"] {
-      border-color: var(--accent);
-    }
-    details[data-priority="gpt"] {
-      border-color: var(--gpt);
-    }
+    details[data-priority="action"] { border-color: var(--accent); }
+    details[data-priority="gpt"] { border-color: var(--gpt); }
     summary {
       cursor: pointer;
       font-weight: 720;
@@ -382,7 +336,6 @@
       content: "▸";
       margin-left: auto;
       color: var(--muted-2);
-      transition: transform 0.15s;
     }
     details[open] summary::after { transform: rotate(90deg); }
     .panel-body {
@@ -394,57 +347,42 @@
       color: var(--muted);
       font-size: 13px;
     }
-    .payload-label strong { color: var(--text); }
     pre {
       margin: 0;
+      padding: 12px;
+      max-height: 320px;
+      overflow: auto;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
       background: var(--code);
       color: var(--code-text);
       border-radius: 6px;
-      padding: 12px;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      max-height: 320px;
-      overflow: auto;
       font-size: 12.5px;
       font-family: ui-monospace, "SF Mono", Menlo, monospace;
     }
-    .kv {
+    .kv, .lifecycle-grid {
       display: grid;
       grid-template-columns: minmax(140px, 0.35fr) minmax(0, 1fr);
-      gap: 8px 14px;
-      font-size: 13.5px;
-    }
-    .k { color: var(--muted); }
-    .v { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
-    .lifecycle-grid {
-      display: grid;
-      grid-template-columns: minmax(130px, 0.3fr) minmax(0, 1fr);
       gap: 6px 12px;
       font-size: 13.5px;
     }
+    .k { color: var(--muted); }
+    .v { font-weight: 600; overflow-wrap: anywhere; }
     ul { margin: 0; padding-left: 20px; }
     li { margin: 4px 0; font-size: 13.5px; }
-    .copy-mini {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      border-radius: 5px;
-      padding: 5px 10px;
-      font-size: 13px;
-      cursor: pointer;
-      margin-top: 8px;
-      width: auto;
+    .brand-footer {
+      max-width: 880px;
+      margin: 22px auto 0;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted-2);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.15em;
     }
-    .copy-mini:hover { background: var(--accent-soft); }
-    .copy-mini:focus { outline: 3px solid #99f6e4; outline-offset: 2px; }
     @media (max-width: 740px) {
       main { padding: 12px; }
       h1 { font-size: 26px; }
-      .role-flow { font-size: 12px; }
-      .role-flow .step { padding: 2px 7px; }
       .kv, .lifecycle-grid, .cue-fields { grid-template-columns: 1fr; }
     }
   </style>
@@ -460,18 +398,18 @@
     </header>
 
     <section class="hero">
-      <div class="human-role-cue role-courier" role="region" aria-label="Human role cue">
+      <div class="human-role-cue role-approval" role="region" aria-label="Human role cue">
         <div class="cue-header">
-          <span class="cue-icon" aria-hidden="true">✉</span>
-          <span class="cue-label">Courier only</span>
-          <span class="cue-tagline">paste agent-authored content; no judgment needed</span>
+          <span class="cue-icon" aria-hidden="true">🔑</span>
+          <span class="cue-label">Approval only</span>
+          <span class="cue-tagline">Claude's critique is complete (13/13 PASS); your decision authorizes what happens next</span>
         </div>
         <div class="cue-fields">
-          <div class="cue-k">Next paste target</div><div class="cue-v">Codex</div>
-          <div class="cue-k">Payload type</div><div class="cue-v">Agent-authored prompt</div>
-          <div class="cue-k">GPT needed now</div><div class="cue-v">No — already routed</div>
-          <div class="cue-k">Sami decision now</div><div class="cue-v">No — Codex verifies next</div>
-          <div class="cue-k">Why</div><div class="cue-v">Codex verifies scope/HTML; no judgment from you.</div>
+          <div class="cue-k">Next paste target</div><div class="cue-v">Claude Code (for push) — or none if you pause</div>
+          <div class="cue-k">Payload type</div><div class="cue-v">Authorization text</div>
+          <div class="cue-k">GPT needed now</div><div class="cue-v">No — critique surfaced no NEEDS_GPT triggers</div>
+          <div class="cue-k">Sami decision now</div><div class="cue-v">Yes — accept/push, request one more tweak, or pause</div>
+          <div class="cue-k">Why</div><div class="cue-v">Combined FIX-001 + RESTORE is safe to accept.</div>
         </div>
         <div class="cue-note">
           <details>
@@ -489,52 +427,54 @@
       </div>
 
       <p class="eyebrow">DO THIS NOW</p>
-      <h1>Send E6-DASH-002 to Codex for verification</h1>
-      <p class="subtitle">Claude Design added the cue (above) and refreshed stale post-PR4 state. Codex verifies file scope, HTML self-containment, no-touch surfaces.</p>
+      <h1>Decide on E6-PROTOCOL-FIX-001 + RESTORE — Claude critique complete (13/13 PASS)</h1>
+      <p class="subtitle">Codex's RESTORE repaired the FIX-001 Polaris HTML regression (restored <code>role-courier</code> class, About-the-5-states cue-note, and the two standing top-level panels) and applied Claude's <code>scope_conflict</code> nit byte-equivalently to both PROTOCOL.md and the kit template.</p>
 
       <div class="role-flow" aria-label="Role flow">
-        <span class="step done">PR #4 (E6-D2) merged</span>
+        <span class="step done">PR #5 merged</span>
         <span class="arrow">→</span>
-        <span class="step done">GPT routed DASH-002</span>
+        <span class="step done">Codex added bootstrap rule</span>
         <span class="arrow">→</span>
-        <span class="step done">Claude Design implemented</span>
+        <span class="step done">Claude critiqued (flagged regression)</span>
         <span class="arrow">→</span>
-        <span class="step current">Codex verifies</span>
+        <span class="step done">Codex restored</span>
         <span class="arrow">→</span>
-        <span class="step pending">Sami accepts</span>
+        <span class="step done">Claude re-critiqued</span>
+        <span class="arrow">→</span>
+        <span class="step current">Sami decides</span>
       </div>
 
       <p class="why">
-        E6-DASH-002 adds the Human Role Cue above so you don't have to translate <code>Coordinator Trigger</code> + <code>Project Mode</code> into "what do I do now?" The 5 states are derived from existing fields per a published routing map. Step 0 refreshed Polaris/COLLAB from stale "Push E6-D2" framing to current post-merge state.
+        The combined FIX-001 + RESTORE stack adds the Outcome Circle bootstrap rule (entry/exit always <code>NEEDS_GPT</code> until 2 circles complete successfully and are reviewed in repo-visible turn notes; packets can't self-classify entry/exit as ROUTINE; mechanical inside-circle work stays ROUTINE-eligible when within the packet) AND restores the Polaris HTML structure that FIX-001 inadvertently regressed. Independent verification: mirror byte-identical; structural counts match origin/main; all no-touch surfaces clean.
       </p>
 
       <div class="actions" aria-label="Available actions">
         <button class="action primary" type="button" data-copy="primary-action">
           <span class="icon" aria-hidden="true">📋</span>
           <span class="action-text">
-            <span class="label">Copy verification prompt — paste to <strong>Codex</strong></span>
-            <span class="hint">Codex verifies file scope (4 files), Human Role Cue presence/correctness, HTML self-containment, no-touch surfaces</span>
+            <span class="label">Authorize push — paste authorization to <strong>Claude Code</strong></span>
+            <span class="hint">Combined FIX-001 + RESTORE as one PR (5 modifications + 3 new turn notes; 8-file PR shape).</span>
           </span>
         </button>
         <button class="action gpt" type="button" data-copy="gpt-question">
           <span class="icon" aria-hidden="true">💬</span>
           <span class="action-text">
-            <span class="label">Optional — ask <strong>GPT-5.5 Pro</strong> for post-impl review or first-circle framing</span>
-            <span class="hint">GPT not required (this verification handoff is ROUTINE) but available for coordinator concerns about the cue design or next-turn framing</span>
+            <span class="label">Optional — ask <strong>GPT-5.5 Pro</strong> for post-critique synthesis</span>
+            <span class="hint">Not required (13/13 PASS) but available if you want coordinator review or first-circle framing.</span>
           </span>
         </button>
         <button class="action tertiary" type="button" data-copy="pause-note">
           <span class="icon" aria-hidden="true">⏸</span>
           <span class="action-text">
             <span class="label">Pause and observe</span>
-            <span class="hint">Do nothing — the local E6-DASH-002 implementation state stays as-is until you act</span>
+            <span class="hint">Leave the local FIX-001 + RESTORE + critique stack as-is until you act.</span>
           </span>
         </button>
       </div>
 
       <p class="route">
-        Snapshot expires when: Sami pastes Codex verification, asks GPT, pauses-and-observes, or any actor changes. ·
-        Coordinator Trigger: <strong>ROUTINE</strong> for this implementation handoff (GPT already routed E6-DASH-002; Codex verification is mechanical scope/HTML check). Project Mode: <strong>Coordinator dominant (~80%)</strong>, Execution (~10%, this implementation), Sami-decision-pending (~10%, post-verify accept).
+        Snapshot expires when: Sami authorizes push, requests a tweak, pauses, or any actor changes. ·
+        Coordinator Trigger: <strong>ROUTINE</strong>. Project Mode: <strong>Coordinator (~65%), Sami-decision-pending (~30%)</strong>; no Outcome Circle is active.
       </p>
 
       <p class="guardrail">
@@ -546,126 +486,84 @@
 
     <div class="panels">
       <details data-priority="action">
-        <summary>📄 What gets pasted to Codex (the E6-DASH-002 verification)</summary>
+        <summary>📄 What gets pasted to Claude Code (push authorization)</summary>
         <div class="panel-body">
           <p class="payload-label">
-            <strong>Paste this entire block to Codex.</strong> Codex verifies file scope, Human Role Cue presence/correctness, HTML self-containment, and no-touch surfaces; writes one verify turn note + COLLAB handoff update; does not stage/commit/push.
+            <strong>Sami authors the exact push authorization text.</strong> Use the same shape as the E6-DASH-002 push approval: list the files to stage, the no-touch list, the verification checklist, the exact commit message, the branch name, and the PR title/body requirements. Then hard stop after PR opens; report PR URL, branch, commit SHA, local main/feature-branch state.
           </p>
-          <pre id="primary-action">[Lane 1: Claude-Codex Harness | Codex / OpenAI | Thread: E6-DASH-002 verification | Role: verifier]
+          <pre id="primary-action">Suggested 8-file stage list (combined FIX-001 + RESTORE):
+- .agent-handoff/COLLAB.md
+- .agent-handoff/DASHBOARD.html
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/PROTOCOL.md
+- kit/v1/.agent-handoff/PROTOCOL.md.template
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-codex-outcome-circle-bootstrap-rule.md
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-claude-critique-outcome-circle-bootstrap-rule.md
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-codex-restore-polaris-bootstrap.md
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md
 
-Verify E6-DASH-002.
+(That's 9 files counting both critique turn notes — adjust scope if you'd prefer to land RESTORE in a separate PR.)
 
-Focus:
-1. Did Claude Design change only the four approved files?
-   - .agent-handoff/DASHBOARD.html
-   - .agent-handoff/DASHBOARD.md
-   - .agent-handoff/COLLAB.md
-   - .agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md
-2. Does Polaris now show a clear Human Role Cue above the fold?
-3. Does the cue distinguish Project Mode (big-picture) from current step (human role now)?
-4. Does it make COURIER ONLY obvious when GPT is not needed?
-5. Does it make ASK GPT obvious when GPT is needed?
-6. Does it avoid making Sami classify routine vs. GPT?
-7. Does it preserve one-primary-action discipline?
-8. Does it preserve paste-to-whom labels (Claude Code / Codex / GPT / Claude Design / Sami)?
-9. Does it preserve COLLAB.md authority warning and no-approval-inference warning?
-10. Does DASHBOARD.html remain self-contained:
-    - no external CSS (no &lt;link rel="stylesheet"&gt;)
-    - no external JS (no &lt;script src=...&gt;)
-    - no HTTP(S) URLs
-    - no storage/localStorage/sessionStorage
-    - no network APIs (fetch, XMLHttpRequest, EventSource, WebSocket)
-    - no server requirement
-11. Did `sh .agent-handoff/tools/alert-state.sh` run without modifying the working tree?
-12. Does the published routing map (Coordinator Trigger x Inside Outcome Circle? x Next Actor -&gt; Human Role Cue) match the cue shown in the current snapshot? Confirm UNCLEAR -&gt; ASK GPT (not STOP / UNKNOWN) per PROTOCOL.md L222.
-13. Is APPROVAL ONLY vs COURIER ONLY distinguishable by text label (Authorization text vs Agent-authored prompt), not by color alone?
-14. Does AGENTS RUNNING wording convey "monitor for callback" (scope, risk, blocker, iteration cap), not "do nothing"?
-15. Is E6-DASH-002 safe to accept?
+Suggested branch: e6-protocol-fix-001-bootstrap-rule
+Suggested commit message: E6-PROTOCOL-FIX-001: add Outcome Circle bootstrap rule (+ RESTORE repair)
 
-Output only:
-- .agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md
-- .agent-handoff/COLLAB.md handoff update
-- .agent-handoff/DASHBOARD.md / DASHBOARD.html only if Polaris snapshot handoff requires it
-
-Do not stage, commit, push, branch, or PR.
-Hard stop after verification.
-
-Dashboard status: include whether DASHBOARD.md/html were refreshed this turn.</pre>
+Critique result to cite in PR body: 13 of 13 focus areas PASS (Codex implementation + Claude critique combined); mirror byte-identical (diff exit 0); scope_conflict added to bootstrap exit list per auditor nit; Polaris HTML structure restored; HTML self-contained; alert-state.sh runs without modifying working tree; all no-touch surfaces clean.</pre>
         </div>
       </details>
 
       <details data-priority="gpt">
-        <summary>💬 What gets pasted to GPT (optional pre-verify / post-impl review)</summary>
+        <summary>💬 What gets pasted to GPT (optional)</summary>
         <div class="panel-body">
-          <p class="payload-label">
-            <strong>Paste this to GPT-5.5 Pro</strong> only if you want coordinator review before Codex verifies, or for framing the next substantive work (first Outcome Circle scope decision).
-          </p>
-          <pre id="gpt-question">[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-DASH-002 post-impl | Role: coordinator/outcome architect]
+          <pre id="gpt-question">[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-PROTOCOL-FIX-001 + RESTORE post-critique | Role: coordinator/outcome architect]
 
-Claude Design implemented E6-DASH-002 (Polaris Human Role Cue above the fold). Codex verifies next. Cue design highlights:
+Claude completed the combined FIX-001 + RESTORE critique: 13 of 13 focus areas PASS, safe to accept. The bootstrap rule for Outcome Circles is now codified in both live PROTOCOL.md and the kit template byte-identically (entry/exit NEEDS_GPT until 2 circles complete successfully and are reviewed; packets can't self-classify entry/exit as ROUTINE; mechanical inside-circle work stays ROUTINE-eligible). The Polaris HTML regression from FIX-001 was repaired in RESTORE. scope_conflict was added to the bootstrap exit list per Claude's nit.
 
-- 5 human-facing states: ASK GPT / COURIER ONLY / APPROVAL ONLY / AGENTS RUNNING / STOP / UNKNOWN.
-- Derived from (Coordinator Trigger x inside Outcome Circle? x Next Actor) per a published routing map in the E6-DASH-002 turn note. Not a new authored field.
-- UNCLEAR maps to ASK GPT (per PROTOCOL.md L222), not STOP / UNKNOWN. STOP / UNKNOWN is reserved for unavailable/contradictory routing inputs.
-- APPROVAL ONLY vs COURIER ONLY distinguished by text label (Authorization text vs Agent-authored prompt), not color alone.
-- AGENTS RUNNING wording conveys "monitor for callback: scope, risk, blocker, iteration cap" — not "do nothing."
-- Project Mode kept visible as descriptive context, not a routing input.
-- Visual treatment is provisional for AGENTS RUNNING (no Outcome Circle has run yet); refine after first circle.
-- Bootstrap rule ("GPT-in-loop for circle entry/exit until 2 circles complete") tracked as a separate future E6-PROTOCOL-FIX, not folded into E6-DASH-002.
+Any coordinator concern before Sami pushes? Anything to fold in for the upcoming first Outcome Circle packet drafting (which will be NEEDS_GPT per the bootstrap rule)?
 
-Optional coordinator review:
-- Any concern about the routing map or the 5-state taxonomy before Codex verifies?
-- After E6-DASH-002 is accepted, the next substantive work is choosing/framing the first Outcome Circle scope. Want to frame that now as a separate NEEDS_GPT turn, or wait until E6-DASH-002 lands?
-- Bootstrap rule placement: still recommend a tiny E6-PROTOCOL-FIX in PROTOCOL.md § Outcome Circles, or fold into the first-circle authorization text?
-
-Do not authorize approval. Sami remains sole approval authority.</pre>
+Do not approve. Sami remains sole approval authority.</pre>
         </div>
       </details>
 
       <details>
-        <summary>⏸ Pause and observe — what that means</summary>
+        <summary>⏸ Pause and observe</summary>
         <div class="panel-body">
-          <pre id="pause-note">Do nothing. The local working tree stays as-is after E6-DASH-002:
+          <pre id="pause-note">Do nothing. The local working tree stays as-is after FIX-001 + RESTORE + Claude critique:
 - M .agent-handoff/COLLAB.md
-- M .agent-handoff/DASHBOARD.md
 - M .agent-handoff/DASHBOARD.html
-- ?? .agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md
+- M .agent-handoff/DASHBOARD.md
+- M .agent-handoff/PROTOCOL.md
+- M kit/v1/.agent-handoff/PROTOCOL.md.template
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-codex-outcome-circle-bootstrap-rule.md
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-claude-critique-outcome-circle-bootstrap-rule.md
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-codex-restore-polaris-bootstrap.md
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md
 
-When you want to resume, paste the Codex verification prompt (primary), paste the GPT question (secondary), or route a different action.
-
-To revert the local working tree back to the merge commit (d8fa722), discarding E6-DASH-002 entirely:
-  git restore .agent-handoff/COLLAB.md .agent-handoff/DASHBOARD.md .agent-handoff/DASHBOARD.html
-  rm .agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md</pre>
+When you want to resume, paste a push authorization to Claude Code, ask GPT, request a tweak, or route a different action.</pre>
         </div>
       </details>
 
       <details>
         <summary>Snapshot status &amp; provenance</summary>
-        <div class="panel-body">
-          <div class="lifecycle-grid">
-            <div class="k">Prepared for</div><div class="v">Sami to paste Codex verification prompt for E6-DASH-002 (or ask GPT, or pause)</div>
-            <div class="k">As of</div><div class="v">HEAD d8fa722 plus local E6-DASH-002 implementation</div>
-            <div class="k">Expires after</div><div class="v">Sami pastes verification, asks GPT, pauses-and-observes, or any actor changes</div>
-            <div class="k">After this action</div><div class="v">Do not reuse this dashboard snapshot until a repo-writing agent refreshes it</div>
-            <div class="k">Prepared by</div><div class="v">Claude Design (E6-DASH-002 implementation + this snapshot refresh)</div>
-            <div class="k">Last repo action</div><div class="v">d8fa722 Merge pull request #4 from samiserrag/e6-d2-outcome-circle-protocol-codification (E6-D2 merge commit)</div>
-            <div class="k">Snapshot basis</div><div class="v">HEAD d8fa722 plus local COLLAB / dashboard refresh + 1 new turn note (E6-DASH-002 Claude Design implementation)</div>
-            <div class="k">Source turn notes</div><div class="v">E6-DASH-002-claude-design-human-role-cue.md (this turn)</div>
-            <div class="k">Coordinator Trigger</div><div class="v">ROUTINE for this implementation handoff (GPT already routed E6-DASH-002; Codex verification is mechanical scope/HTML check)</div>
-            <div class="k">Project Mode</div><div class="v">Coordinator dominant (~80%), Execution (~10%, this implementation), Sami-decision-pending (~10%, post-verify accept), Unknown 0%</div>
-          </div>
+        <div class="panel-body lifecycle-grid">
+          <div class="k">Prepared for</div><div class="v">Sami to authorize push of FIX-001 + RESTORE (or tweak / pause)</div>
+          <div class="k">As of</div><div class="v">fbdb0b3 plus local FIX-001 + RESTORE + Claude critique</div>
+          <div class="k">Expires after</div><div class="v">Sami authorizes push, requests a tweak, pauses, or any actor changes</div>
+          <div class="k">Prepared by</div><div class="v">Claude Code (FIX-001 critique + RESTORE critique + this snapshot refresh); FIX-001 + RESTORE implementations by Codex</div>
+          <div class="k">Source turn notes</div><div class="v">All four E6-PROTOCOL-FIX-001 turn notes (Codex FIX-001 impl, Claude FIX-001 critique, Codex RESTORE impl, Claude RESTORE critique)</div>
+          <div class="k">Coordinator Trigger</div><div class="v">ROUTINE for this critique handoff</div>
+          <div class="k">Project Mode</div><div class="v">Coordinator ~65%, Sami-decision-pending ~30%, Execution ~5%; no Outcome Circle active</div>
         </div>
       </details>
 
       <details>
         <summary>Who's who right now</summary>
         <div class="panel-body kv">
-          <div class="k">Coordinator</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class — idle; last action: routed E6-DASH-002 to Claude Design with 5-state taxonomy proposal</div>
-          <div class="k">Designer (completed)</div><div class="v">Claude Design / Anthropic / architect-class — implemented E6-DASH-002 (Human Role Cue + stale-state refresh); refreshed this snapshot</div>
-          <div class="k">Verifier (pending)</div><div class="v">Codex / OpenAI / architect-class — will verify file scope, HTML self-containment, no-touch surfaces</div>
-          <div class="k">Approver</div><div class="v">Sami — vision / priority / risk / taste. Pastes verification, asks GPT, or pauses</div>
+          <div class="k">Coordinator</div><div class="v">GPT-5.5 Pro / OpenAI / advisor-class — idle; last action: routed E6-PROTOCOL-FIX-001 scope. Available for optional post-critique review.</div>
+          <div class="k">Builder</div><div class="v">Codex / OpenAI / architect-class — idle; completed FIX-001 implementation + RESTORE repair</div>
+          <div class="k">Auditor (completed)</div><div class="v">Claude Code / Anthropic / architect-class — critiqued FIX-001 (flagged HTML regression), then re-critiqued RESTORE (13/13 PASS); refreshed this snapshot</div>
+          <div class="k">Approver</div><div class="v">Sami — decides push / tweak / pause</div>
           <div class="k">Repo</div><div class="v">Source of truth (COLLAB.md authoritative; this dashboard is a view)</div>
-          <div class="k">Diversity</div><div class="v">Multi-org (Anthropic + OpenAI); 3-way coordination preserved</div>
+          <div class="k">Diversity</div><div class="v">Multi-org (Anthropic + OpenAI); 3-way coordination preserved through both turns</div>
         </div>
       </details>
 
@@ -673,11 +571,13 @@ To revert the local working tree back to the merge commit (d8fa722), discarding 
         <summary>What changed in this snapshot</summary>
         <div class="panel-body">
           <ul>
-            <li>Step 0 stale-state refresh: previous Polaris pointed at "Push E6-D2" but PR #4 merged at <code>d8fa722</code>. H1, subtitle, role-flow, why-panel, three actions, snapshot fields, and all paste blocks now reflect post-merge state.</li>
-            <li>Added <strong>Human Role Cue</strong> panel above the fold in both <code>DASHBOARD.md</code> and <code>DASHBOARD.html</code>. Cue shows 6 fields: Human role, GPT needed, Sami decision needed, Next paste target, Payload type, Why.</li>
-            <li>Published 5-state taxonomy with icons (✉ COURIER ONLY, 🔑 APPROVAL ONLY, 💬 ASK GPT, ⚙ AGENTS RUNNING, ⚠ STOP / UNKNOWN). Icons reinforce text labels for color-blind accessibility.</li>
-            <li>HTML adds minimal CSS for the cue: 5 state classes (<code>role-courier</code>, <code>role-approval</code>, <code>role-ask-gpt</code>, <code>role-agents-running</code>, <code>role-stop</code>) with distinct background + left-border color, plus a <code>.cue-fields</code> grid layout. No JS changes. No new buttons. No new collapsibles.</li>
-            <li>All existing Polaris strengths preserved: plain-language H1, paste-to-whom button labels, role-flow strip, visible Ask-GPT path, one primary recommendation, collapsed technical payloads, COLLAB.md authority warning, no-approval-inference warning.</li>
+            <li>Human Role Cue advanced from COURIER ONLY (paste to Claude) → 🔑 APPROVAL ONLY (Sami decides).</li>
+            <li>H1, subtitle, role-flow, three-actions, and snapshot status fields advanced to post-RESTORE-critique state.</li>
+            <li>"Three actions" updated: primary is now "Authorize push, paste authorization to Claude Code"; optional shifted to "post-critique synthesis"; tertiary still pause.</li>
+            <li>Paste blocks updated: "What gets pasted to Claude Code" now stages push authorization framing (Sami authors specific text); GPT optional updated to post-critique synthesis question.</li>
+            <li>"Pause and observe" file list updated to include all 4 FIX-001 + RESTORE turn notes.</li>
+            <li>Snapshot status `Prepared by` updated to credit Claude Code (FIX-001 critique + RESTORE critique + snapshot refresh) + Codex (FIX-001 + RESTORE implementations).</li>
+            <li>Polaris remains a one-action snapshot; no new CSS, buttons, collapsibles, scripts, sections, or mode panel added. Same structural shape as origin/main `fbdb0b3`.</li>
           </ul>
         </div>
       </details>
@@ -686,57 +586,42 @@ To revert the local working tree back to the merge commit (d8fa722), discarding 
         <summary>Technical packet</summary>
         <div class="panel-body">
           <ul>
-            <li>Latest pushed baseline: <strong>d8fa722 Merge pull request #4 from samiserrag/e6-d2-outcome-circle-protocol-codification</strong> (E6-D2 merge commit; brings Outcome Circle entry rule + 14-field packet schema + 9 result states + PR-over-direct-push hint to durable governance).</li>
-            <li>E6-DASH-002 scope: dashboard UX/content only. Four files: <code>.agent-handoff/DASHBOARD.html</code>, <code>.agent-handoff/DASHBOARD.md</code>, <code>.agent-handoff/COLLAB.md</code>, <code>.agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md</code>.</li>
-            <li>Human Role Cue routing map (full table published in turn note):
-              <pre style="margin-top:6px;">Coordinator Trigger  Inside Circle?  Next Actor          Human Role Cue
-NEEDS_GPT            any             any                 ASK GPT
-UNCLEAR              any             any                 ASK GPT
-ROUTINE              yes             builder/auditor     AGENTS RUNNING
-ROUTINE              no              Sami                APPROVAL ONLY
-ROUTINE              no              Claude/Codex/Design APPROVAL ONLY when
-                                                         payload is auth text;
-                                                         else COURIER ONLY
-inputs unavailable   unknown         unknown             STOP / UNKNOWN</pre>
-            </li>
-            <li>UNCLEAR maps to ASK GPT per PROTOCOL.md L222 (not STOP / UNKNOWN).</li>
-            <li>Payload type label disambiguates APPROVAL ONLY vs COURIER ONLY when Next Actor is an agent: <code>Authorization text</code> (Sami's explicit approval phrase, including Outcome Circle entry text) vs <code>Agent-authored prompt</code> / <code>Coordinator question</code> / <code>No paste</code>.</li>
-            <li>AGENTS RUNNING wording: "monitor for callback: scope, risk, blocker, iteration cap." Visual treatment is provisional; refine after first Outcome Circle runs.</li>
-            <li>Bootstrap rule ("GPT-in-loop for circle entry/exit until 2 circles complete") NOT folded into E6-DASH-002. Tracked as follow-up: tiny E6-PROTOCOL-FIX adds one paragraph to PROTOCOL.md § Outcome Circles.</li>
-            <li>HTML self-contained: 1 inline <code>&lt;script&gt;</code>, 1 inline <code>&lt;style&gt;</code>, 0 external <code>&lt;link&gt;</code> / network APIs / storage APIs. Single executable <code>navigator.clipboard.writeText(target.innerText)</code> call preserved.</li>
-            <li>Cue CSS additions: 5 state classes + <code>.cue-fields</code> grid + base <code>.human-role-cue</code> panel + <code>.cue-note</code> collapsible explainer. No structural HTML refactor.</li>
-            <li>Subagents not used.</li>
-            <li>Pilot repo (<code>open-mic-colorado-agent-pilot</code>) untouched at <code>655e75bc</code>.</li>
+            <li>Latest pushed baseline: <code>fbdb0b3</code> Merge pull request #5 from <code>e6-dash-002-human-role-cue</code> (brings the Human Role Cue + FIX-001 visual tightening to durable governance).</li>
+            <li>Bootstrap rule added in <code>PROTOCOL.md</code> L267–280 and mirrored byte-identically into <code>kit/v1/.agent-handoff/PROTOCOL.md.template</code> (independently verified: diff exit 0 on paragraph extraction; diff exit 0 on full Outcome Circles section, 71 lines each).</li>
+            <li><code>scope_conflict</code> added to bootstrap exit list per Claude's nit (byte-equivalent in both files).</li>
+            <li>DASHBOARD.html structural elements restored per Claude's FIX-001 critique: <code>role-courier</code> class on cue panel; "About the 5 states" cue-note; "Who's who right now" + "What changed in this snapshot" standing panels. <code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code> count = 9 (matches origin/main).</li>
+            <li>HTML self-contained: 0 external CSS/JS/URLs, 0 storage/network APIs, 1 executable <code>clipboard.writeText</code> call (pre-existing).</li>
+            <li><code>alert-state.sh</code> runs without modifying the working tree (verified via pre/post <code>git status</code> diff exit 0; still 6519 bytes).</li>
+            <li>All no-touch surfaces clean: <code>OPERATING-MODEL.md</code> (untouched), root docs (untouched), <code>docs/</code> (untouched), advisor-notes/reflections/improvements (still absent), <code>.mcp.json</code> (still absent), pilot repo (untouched), live Open Mic Colorado (untouched).</li>
+            <li>4 turn notes for this stack (2 Codex implementations + 2 Claude critiques). 8-file PR shape recommended for push.</li>
+            <li>Subagents not used in any of the 4 turns.</li>
           </ul>
         </div>
       </details>
 
       <details>
-        <summary>No-touch list</summary>
+        <summary>No-touch summary</summary>
         <div class="panel-body">
           <ul>
-            <li>No <code>PROTOCOL.md</code> edit.</li>
             <li>No <code>OPERATING-MODEL.md</code> edit.</li>
-            <li>No kit template edits (<code>kit/v1/**</code>).</li>
             <li>No <code>alert-state.sh</code> edit.</li>
+            <li>No kit edits outside <code>kit/v1/.agent-handoff/PROTOCOL.md.template</code>.</li>
+            <li>No root README / AGENTS / CLAUDE / docs edit.</li>
             <li>No advisor-notes, reflections, or improvements path creation.</li>
-            <li>No root <code>README.md</code> / <code>AGENTS.md</code> / <code>CLAUDE.md</code> / <code>docs/</code> edit.</li>
-            <li>No packet template, first Outcome Circle, loop runner, automation, tooling, notifier, model/API setup, NanoClaw, CommonGround, Notion, <code>.mcp.json</code>, MCP/plugin/bridge, cron/timer/webhook/launch agent, global config, product/runtime, live Open Mic Colorado, or pilot repo work.</li>
+            <li>No product/runtime, pilot repo, live Open Mic Colorado, CommonGround, NanoClaw, Notion, MCP/plugin/bridge, .mcp.json, cron/timer/webhook/launch agent, model/API, or global config work.</li>
           </ul>
         </div>
       </details>
     </div>
   </main>
   <footer class="brand-footer">
-    <span class="brand-star" aria-hidden="true">✦</span>POLARIS · for the human at the helm
+    <span aria-hidden="true">✦</span> POLARIS · for the human at the helm
   </footer>
   <script>
     document.querySelectorAll("button[data-copy]").forEach(function (button) {
       button.addEventListener("click", function () {
         var target = document.getElementById(button.getAttribute("data-copy"));
         if (!target) return;
-        // Auto-expand any closed <details> ancestor so the text becomes visible at the moment of copy.
-        // This preserves the "only visible text" constraint while making the UX seamless.
         var ancestor = target.parentElement;
         while (ancestor) {
           if (ancestor.tagName && ancestor.tagName.toLowerCase() === "details" && !ancestor.open) {
@@ -749,15 +634,9 @@ inputs unavailable   unknown         unknown             STOP / UNKNOWN</pre>
           var original = label ? label.textContent : button.textContent;
           if (label) {
             label.textContent = "Copied to clipboard ✓";
-          } else {
-            button.textContent = "Copied ✓";
           }
           setTimeout(function () {
-            if (label) {
-              label.textContent = original;
-            } else {
-              button.textContent = original;
-            }
+            if (label) label.textContent = original;
           }, 1500);
         });
       });
