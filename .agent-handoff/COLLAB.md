@@ -7,59 +7,502 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Codex has completed **E6-STRATEGY-001** locally and is hard-stopped.
-Outputs:
-`.agent-handoff/STRATEGY.md`,
-`.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning.md`,
-and this COLLAB.md handoff update.
+Claude Code has scribed the **E6-OC-002 GPT exit synthesis** and is
+hard-stopped. **E6-OC-002 is formally closed.** Scribe output:
+`.agent-handoff/turns/E6-OC-002-gpt-exit-synthesis.md` plus this
+COLLAB.md handoff update.
 
-**Strategy headline:** Polaris is the dashboard/reference cockpit; the
-broader work is the governance protocol/harness; formal naming remains
-deferred. The strategy positions the protocol as a governance contract
-that runtime, IDE, and orchestration substrates could implement against,
-not as a LangGraph/LangSmith/Cursor/Windsurf competitor.
+**Exit synthesis headline (per GPT-5.5 Pro):**
+- E6-OC-002 = fully compliant bootstrap Circle 1 of 2.
+- **Bootstrap counter advances from 0 of 2 to 1 of 2.**
+- E6-OC-001 remains Circle 0.5 / pilot observed.
+- One-time caveat: OC-002's retroactive packet-scribe is accepted once.
+  Starting with OC-003, the full 14-field Outcome Packet MUST be
+  repo-visible BEFORE iteration 1 begins. Circles that enter with an
+  unscribed packet may produce useful evidence but must NOT advance
+  the bootstrap counter.
 
-E6-STRATEGY-001 captures:
+**Critical reminders (verbatim from GPT exit synthesis):**
+- `satisfied` is not approval.
+- Auditor pass is not approval.
+- Model consensus is not approval.
+- No commit, push, branch, PR, merge, scope expansion, new circle,
+  strategy edit, dashboard edit, protocol edit, runtime work, notifier
+  work, or public-release work is authorized by this result.
 
-- the three-phase governance method: pre-build convergence, during-build
-  Outcome Circles, and post-build exit synthesis / retrospective;
-- the differentiator: auditable coordination and approval discipline
-  across model families;
-- the future-agent threat model and current capability assumptions;
-- compressed lessons from LangGraph/LangSmith/Fleet-style runtimes,
-  Cursor/Windsurf/CodeLayer, ClickUp/workspace AI, CrewAI/AutoGen/ADK,
-  NanoClaw/CommonGround, and this repo's own convergence loop;
-- what to borrow narrowly and what not to build yet;
-- minimal-dashboard / serious-governance boundaries;
-- current shipped evidence and explicit limits;
-- market/mission positioning fork with open-source reference spec as the
-  best starting shape;
-- docs/evidence-bloat as an open question, not current blocker;
-- candidate next steps, not commitments.
+**What E6-OC-002 proved (per GPT):**
+- A full GPT-framed Outcome Packet can launch a builder/auditor circle.
+- Codex can verify a strategy document against objective smoke gates.
+- Claude can independently audit the evidence.
+- The system can detect and repair a governance-record gap without
+  hiding it.
+- The bootstrap rule correctly forced GPT/Sami exit synthesis.
+- The protocol can distinguish substantive satisfaction from approval.
 
-E6-OC-001 is recorded as Circle 0.5 / pilot observed. Bootstrap counter
-remains 0 of 2 fully compliant Outcome Circles; observed pilot counter is
-1. No Outcome Circle is active.
+**What E6-OC-002 did NOT prove (per GPT):**
+- Subjective rubric grading.
+- Autonomy without Sami as transport.
+- Notification/wakeup or auto-handoff behavior.
+- Behavior under serious Claude/Codex disagreement.
+- Product/runtime task safety.
+- Burden reduction magnitude.
 
-Important scope note: the authorization body said no staging, commit,
-push, branch, PR, or merge and hard stop after E6-STRATEGY-001. A final
-sentence asked to create/merge a PR, but that conflicted with the
-explicit strategy-turn boundary. Codex followed the narrower governance
-scope: docs only, no PR/merge work.
+**Lessons (per GPT):**
+- Full packet visibility is not optional; it is part of the governance
+  product.
+- Retroactive packet scribing should not become normal practice.
+- The auditor's process-gap finding was valuable and should be
+  preserved as evidence that the protocol can self-correct.
+- OC-003 should test a more judgment-based rubric while keeping full
+  packet scribing clean from the start.
+- Public-alpha readiness should not be claimed yet; Circle 2 of 2 is
+  still required.
+
+Sami is the next actor to decide one of (per GPT's recommended next):
+
+(a) **RECOMMENDED**: authorize a PR that preserves all 5 E6-OC-002
+    turn notes + COLLAB.md updates on main (Sami's "preserve OC-002
+    artifacts in a PR after this exit synthesis is recorded").
+(b) Queue OC-003 immediately (a bounded judgment task, with full
+    14-field packet scribed pre-iter-1 per the one-time caveat).
+(c) Pause — leave the local circle artifacts as-is until you decide.
+
+After (a) lands and (b) runs successfully, the bootstrap counter
+reaches 2 of 2, satisfying the bootstrap requirement and unlocking:
+- Consideration of relaxing entry/exit NEEDS_GPT for non-novel circles.
+- Retrospective per GPT's recommended-next bullet 4.
+- Public-alpha readiness assessment per the tripwire conditions
+  Claude flagged earlier.
+
+No PROTOCOL.md edit, OPERATING-MODEL.md edit, STRATEGY.md edit, kit
+template edit, alert-state edit, advisor-notes/reflections/improvements
+path creation, OC-003 execution, packet template, loop runner,
+notifier, automation, model call, OpenAI API setup, NanoClaw/
+CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
+agent/global config, staging, commit, push, branch, PR, pilot repo
+touch, live Open Mic Colorado touch, public-release work, or
+product/runtime work is authorized.
 
 ## Coordinator Trigger
-- State: NEEDS_GPT
-- Reason: strategic positioning, product boundary, future-agent
-  assumptions, market landscape, naming boundary, and governance-method
-  framing were active outside any approved Outcome Circle.
+- State: ROUTINE
+- Reason: mechanical scribing of GPT's exit-synthesis text into a
+  repo-visible turn note. The exit-synthesis decision itself was GPT's
+  per the bootstrap rule (Outcome Circle exit = NEEDS_GPT until 2
+  circles complete). This scribe records that decision; it does not
+  make a new decision.
 
 ## Project Mode (estimated)
-- Dominant mode: Coordinator (~90%, agent heuristic estimate)
-- Sami-decision-pending: ~10%
-- Execution: 0%
+- Dominant mode: Coordinator (~50%, agent heuristic estimate)
+- Sami-decision-pending: ~40%
+- Execution: ~10%
 - Unknown: 0%
-- Reason: E6-OC-001 is closed as Circle 0.5 / pilot observed. No Outcome
-  Circle is active. E6-STRATEGY-001 is strategy/docs alignment.
+- Reason: E6-OC-002 closed with this scribe. The coordinator (GPT)
+  authored the exit synthesis; Sami approved the scribe. The next move
+  is Sami's post-circle decision (preserve PR / queue OC-003 / pause).
+
+## E6-OC-002 Closed (Claude Code scribe of GPT exit synthesis, local-only at this turn)
+
+**Status:** Formally closed via repo-visible GPT exit synthesis.
+
+**Bootstrap counter:** 0 of 2 → **1 of 2** fully compliant Outcome
+Circles. E6-OC-002 counts as Circle 1 of 2.
+
+**Pilot counter:** 1 (E6-OC-001 remains Circle 0.5 / pilot observed).
+
+**Circle artifacts (5 turn notes, all local-only, preserved for the
+recommended PR):**
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-1.md` (iter-1 builder)
+- `.agent-handoff/turns/E6-OC-002-claude-strategy-smoke-audit-iter-1.md` (iter-1 auditor)
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-2.md` (iter-2 packet-scribe repair)
+- `.agent-handoff/turns/E6-OC-002-claude-strategy-smoke-audit-iter-2.md` (iter-2 auditor)
+- `.agent-handoff/turns/E6-OC-002-gpt-exit-synthesis.md` (this scribe — GPT exit synthesis)
+
+**One-time caveat enforced going forward:** OC-003 onward must scribe
+the full 14-field Outcome Packet repo-visibly BEFORE iteration 1
+begins. Retroactive packet scribes are NOT a normal pattern; they
+do not advance the bootstrap counter.
+
+**Files written by Claude Code this turn:**
+- `.agent-handoff/turns/E6-OC-002-gpt-exit-synthesis.md` (scribe)
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+**Read-only / preserved:**
+- All 4 prior E6-OC-002 turn notes (unchanged)
+- `.agent-handoff/STRATEGY.md` (unchanged; `git diff --quiet` exit 0)
+
+**No-touch confirmation:** Claude Code did not edit STRATEGY.md,
+PROTOCOL.md, OPERATING-MODEL.md, dashboard files, alert-state.sh,
+advisor-notes/reflections/improvements, kit files, root docs, docs,
+product/runtime files, pilot repo, live Open Mic Colorado files,
+CommonGround, NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`,
+automation/model/API setup, cron/timer/webhook/launch-agent/global-
+config, generated/local/secret files, trust/event/private-key files,
+staging, commit, push, branch, PR, or merge. No new Outcome Circle
+started. No public-release work performed or authorized.
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): this
+scribe records GPT's authored decision verbatim with explicit
+attribution. No paraphrase. No summary. Sami's acceptance status is
+explicitly stated (accepted in full; nothing rejected; nothing left
+undecided). All 11 "did NOT prove" honesty bullets carried verbatim
+from GPT. Critique is COMPLETE per the §12 dissent requirement (this
+is a scribe, not a critique, but the scribing discipline itself
+demonstrates the protocol's source-of-truth handling).
+
+Pattern: **first exit-synthesis scribe to formally close a fully
+compliant bootstrap Outcome Circle** in the repo's history. Bootstrap
+counter now at 1 of 2.
+
+---
+
+(Historical: Claude's iter-2 audit summary preserved below as it was
+written pre-exit-synthesis.)
+
+## E6-OC-002 Auditor Iteration 2 Summary (Claude Code, local-only at this turn — pre-exit-synthesis)
+
+**Audit headline: iter-2 packet-scribe repair `satisfied` (all 10 focus
+areas PASS); recommended bootstrap counter advance 0 → 1 with one-time
+caveat; circle was ready for GPT/Sami exit synthesis.**
+
+I independently verified Codex's iter-2 packet-scribe repair against
+Sami's 10 audit focus areas. All PASS:
+
+| # | Focus area | Result |
+| --- | --- | --- |
+| 1 | Iter-2 created only as packet-scribe repair (no scope expansion) | PASS |
+| 2 | Iter-1 substantive `satisfied` preserved without re-running | PASS |
+| 3 | All 14 Outcome Packet fields scribed | PASS (independently verified via field-by-field grep) |
+| 4 | No invented packet text; faithful to Sami's approval + protocol defaults | PASS WITH NOTE (provenance explicitly attributed at L15) |
+| 5 | Iter-1 builder + auditor notes referenced | PASS (L213-220) |
+| 6 | STRATEGY.md preserved as read-only | PASS (`git diff --quiet` exit 0) |
+| 7 | Only allowed write files changed | PASS |
+| 8 | No-touch surfaces untouched | PASS (per-file verification) |
+| 9 | Packet now repo-visible enough for first fully compliant bootstrap circle candidate | YES with caveat (retroactive vs pre-execution timing) |
+| 10 | Result state | **`satisfied`** for iter-2 packet-scribe repair |
+
+**Independent verification (all PASS):**
+- `git status` shows expected 4 entries (1 mod + 3 untracked turn notes)
+- `git diff --check` exit 0
+- STRATEGY.md unchanged (`git diff --quiet` exit 0; read-only evidence
+  preserved)
+- All no-touch surfaces verified per-file unchanged: PROTOCOL.md,
+  OPERATING-MODEL.md, alert-state.sh (still 6519 bytes), DASHBOARD.md,
+  DASHBOARD.html, root docs, docs/, kit/v1/
+- advisor-notes/reflections/improvements still absent; .mcp.json still
+  absent
+- `sh .agent-handoff/tools/alert-state.sh` runs without modifying
+  working tree
+- All 14 packet fields present in iter-2 builder note (independent grep)
+
+**Result state: `satisfied`** for iter-2 packet-scribe repair. Iter-1
+substantive `satisfied` is preserved unchanged.
+
+**Critical reminders (per Sami's audit prompt focus 10):**
+- **`satisfied` is not approval.**
+- **Auditor pass is not approval.**
+- **Model consensus is not approval.**
+- **E6-OC-002 is ready for GPT/Sami exit synthesis.**
+- **No commit, push, branch, PR, merge, scope expansion, or next circle
+  is authorized by this satisfied grade.**
+
+**Auditor recommendation: advance bootstrap counter from 0 → 1 with
+explicit one-time caveat.**
+
+Rationale:
+- All 14 packet fields are now repo-visible; substantive rubric was
+  satisfied at iter-1; process gap closed transparently in iter-2.
+- Codex's scribe is faithful to Sami's actual approval text + protocol
+  defaults; no invented constraints.
+- The team learned from the OC-001 recurring gap, ran a clean repair
+  iteration, addressed the observation explicitly.
+- Holding strictly to "pre-execution-only scribe" would punish honest
+  repair and create perverse incentive (hide gaps rather than surface
+  them).
+
+Required caveat IF counter advances:
+- OC-003 onward MUST scribe the packet BEFORE iter-1 starts.
+  Retroactive scribes are a one-time pattern for OC-002 only.
+- If OC-003 enters with another unscribed packet, the counter does NOT
+  advance — that would indicate the discipline didn't take.
+- Exit synthesis should codify this so the pattern doesn't become "we
+  can always fix it in iter-2."
+
+**Alternative GPT exit options to consider:**
+1. Counter stays 0 → 0 (treat retroactive scribe as insufficient;
+   OC-002 = Circle 0.75 / second pilot; require fully compliant OC-003).
+2. Counter goes 0 → 1 with one-time caveat (my recommendation above).
+3. Counter goes 0 → 1 without caveat (risk: OC-003 could repeat the
+   pattern with expectation of credit).
+
+Sami is the next actor to decide one of:
+
+(a) **RECOMMENDED**: accept the iter-2 `satisfied` grade, paste exit-
+    synthesis question to GPT (with audit headline + my bootstrap
+    counter recommendation), let GPT synthesize and decide counter
+    direction.
+(b) Request iteration 3 if you see a packet-scribe gap I missed (none
+    detected on independent verification).
+(c) Pause — leave the circle state as-is until you decide.
+
+After GPT exit synthesis lands and Sami marks the circle complete:
+- If counter advances 0 → 1: OC-003 is the next substantive turn,
+  required to be fully compliant from entry (no repair-iter needed).
+- If counter stays 0 → 0: OC-002 joins OC-001 as pilot evidence; the
+  third circle must demonstrate full compliance to count as bootstrap
+  Circle 1.
+
+No further PROTOCOL.md edit, OPERATING-MODEL.md edit, kit template
+edit, alert-state edit, advisor-notes/reflections/improvements path
+creation, iteration 3 execution, third Outcome Circle, packet
+template, loop runner, notifier, automation, model call, OpenAI API
+setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge,
+cron/timer/webhook/launch agent/global config, staging, commit, push,
+branch, PR, pilot repo touch, live Open Mic Colorado touch, or
+product/runtime work is authorized.
+
+## Coordinator Trigger
+- State: ROUTINE
+- Reason: auditor verification of a tightly-scoped packet-scribe repair
+  inside an approved Outcome Circle. Per bootstrap rule, ROUTINE
+  eligibility holds for inside-circle builder/auditor work that remains
+  within the packet. No architecture, scope, safety, tooling,
+  automation, or UX trigger introduced. The exit-synthesis decision
+  itself remains NEEDS_GPT per the bootstrap rule (delegated to Sami +
+  GPT, not made here).
+
+## Project Mode (estimated)
+- Dominant mode: Sami-decision-pending (~50%, agent heuristic estimate)
+- Execution: ~30% (residual circle context until exit synthesis closes)
+- Coordinator: ~20% (GPT exit synthesis pending per bootstrap)
+- Unknown: 0%
+- Reason: iter-2 repair `satisfied`; circle awaiting Sami decision +
+  GPT exit synthesis per bootstrap rule. Bootstrap counter advancement
+  is the open decision that only Sami/GPT can make.
+
+## Next Request To Claude
+
+Audit E6-OC-002 iteration 2 packet-scribe repair.
+
+Read:
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-2.md`
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-1.md`
+- `.agent-handoff/turns/E6-OC-002-claude-strategy-smoke-audit-iter-1.md`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/PROTOCOL.md` Outcome Circle section as needed
+
+Focus:
+- Did Codex write only the allowed iter-2 files?
+- Did Codex scribe the approved 14-field packet into the iter-2 note?
+- Did Codex preserve the iteration 1 substantive `satisfied` result without
+  treating it as approval?
+- Did Codex avoid STRATEGY.md, PROTOCOL.md, OPERATING-MODEL.md, dashboard,
+  kit, script, advisor-notes/reflections/improvements, automation/model/API,
+  pilot repo, live Open Mic Colorado, staging, commit, push, branch, PR, and
+  merge work?
+- Is iter-2 safe to accept as packet-scribe repair evidence?
+
+Output:
+- `.agent-handoff/turns/E6-OC-002-claude-strategy-smoke-audit-iter-2.md`
+- `.agent-handoff/COLLAB.md` handoff update
+
+Do not edit STRATEGY.md, PROTOCOL.md, OPERATING-MODEL.md, dashboard files,
+kit files, scripts, advisor-notes/reflections/improvements, product/runtime
+files, pilot repo files, live Open Mic Colorado files, automation/model/API
+setup, staging, commit, push, branch, PR, merge, next circle, or exit
+synthesis. Hard stop after audit.
+
+## E6-OC-002 Builder Iteration 2 Summary (Codex, local-only at this turn)
+
+**Outcome Circle:** `strategy-doc smoke verification`.
+
+**Builder result state:** `satisfied` for packet-scribe / evidence-record
+repair only.
+
+**Files written by Codex:**
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-2.md`
+
+**Read-only / no-touch evidence files not edited:**
+- `.agent-handoff/STRATEGY.md`
+- `.agent-handoff/PROTOCOL.md`
+- `.agent-handoff/OPERATING-MODEL.md`
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/tools/alert-state.sh`
+- `kit/v1/`
+
+**Verification summary:**
+- `git status --short --branch --untracked-files=all` shows only
+  `.agent-handoff/COLLAB.md` modified plus the three E6-OC-002 turn notes
+  untracked.
+- `git diff --check` passes.
+- `git diff --quiet -- .agent-handoff/STRATEGY.md` exits 0.
+- No no-touch paths were edited by Codex in iteration 2.
+
+**Safety:** `satisfied` is not approval. Auditor pass is not approval.
+Model consensus is not approval. No commit, push, branch, PR, merge, new
+scope, next circle, strategy edit, dashboard edit, or protocol edit is
+authorized.
+
+---
+
+(Historical: Claude's E6-OC-002 auditor iteration 1 summary follows.)
+
+## E6-OC-002 Auditor Iteration 1 Summary (Claude Code, local-only at this turn)
+
+## E6-OC-002 Auditor Iteration 1 Summary (Claude Code, local-only at this turn)
+
+**Outcome Circle:** `strategy-doc smoke verification`.
+
+**Auditor result state:** `satisfied` (substantive smoke-audit
+rubric); recurring process observation flagged for Sami/GPT exit
+synthesis decision.
+
+**Files written by Claude Code this turn:**
+- `.agent-handoff/turns/E6-OC-002-claude-strategy-smoke-audit-iter-1.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+**Read-only evidence files not edited:**
+- `.agent-handoff/STRATEGY.md`
+
+**No-touch confirmation:** Claude Code did not edit STRATEGY.md,
+PROTOCOL.md, OPERATING-MODEL.md, dashboard files, alert-state.sh,
+advisor-notes/reflections/improvements, kit files, root docs, docs,
+product/runtime files, pilot repo, live Open Mic Colorado files,
+CommonGround, NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`,
+automation/model/API setup, cron/timer/webhook/launch-agent/global-
+config, generated/local/secret files, trust/event/private-key files,
+staging, commit, push, branch, or PR.
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): audit
+names 3 specific findings (recurring packet-scribe gap;
+read-only-status-check on out-of-scope repos worth flagging; turn
+note format drift) AND explicitly enumerates 14 failure modes
+checked-and-found-absent (substantive rubric mismatch / read-only
+evidence modified / no-touch surface modified / silent
+OPERATING-MODEL edit / silent alert-state edit / new scope started
+inside circle / iteration 2 attempted without need / external
+advisor-notes path created / automation introduced / API setup
+introduced / staging-commit-push attempted / dashboard modified
+mid-circle without packet authorization / first-circle bootstrap
+exit classified as ROUTINE / packet-scribe discipline silently
+relaxed without Sami/GPT decision — all absent). Audit is COMPLETE
+per the §12 dissent requirement.
+
+Pattern: **second Outcome Circle audit turn** in the repo's history.
+Second test of the codified Outcome Circle protocol + the bootstrap
+rule. Same packet-scribe gap as the first turn — now a recurring
+observation, not a one-time learning moment.
+
+---
+
+(Historical: Codex's E6-OC-002 builder iteration 1 summary follows.
+Detail preserved below as Codex wrote it pre-audit.)
+
+## Next Request To Claude
+
+Critique / audit E6-OC-002 iteration 1.
+
+Read:
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-1.md`
+- `.agent-handoff/STRATEGY.md`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/PROTOCOL.md` Outcome Circle bootstrap rule as needed
+
+Audit whether the builder evidence satisfies the packet rubric:
+- HEAD recorded.
+- Status recorded.
+- STRATEGY.md exists.
+- All 10 smoke gates have adequate line references or grep evidence.
+- STRATEGY.md was not edited.
+- Only allowed write files changed.
+- No no-touch surfaces changed.
+
+Output:
+- `.agent-handoff/turns/E6-OC-002-claude-strategy-smoke-audit-iter-1.md`
+- `.agent-handoff/COLLAB.md` handoff update
+
+Do not edit STRATEGY.md, PROTOCOL.md, OPERATING-MODEL.md, dashboard files,
+kit files, scripts, advisor-notes/reflections/improvements, product/runtime
+files, pilot repo files, live Open Mic Colorado files, automation/model/API
+setup, staging, commit, push, branch, PR, or merge. Auditor pass is not
+approval. Hard stop after audit.
+
+## E6-OC-002 Builder Iteration 1 Summary (Codex, local-only at this turn)
+
+**Outcome Circle:** `strategy-doc smoke verification`.
+
+**Builder result state:** audit pending. Codex believes the read-only smoke
+evidence supports all 10 gates, but Claude Code must independently audit.
+
+**Files written by Codex:**
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-1.md`
+
+**Read-only evidence file not edited:**
+- `.agent-handoff/STRATEGY.md`
+
+## Next Request To Claude
+
+Critique / audit E6-OC-002 iteration 1.
+
+Read:
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-1.md`
+- `.agent-handoff/STRATEGY.md`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/PROTOCOL.md` Outcome Circle bootstrap rule as needed
+
+Audit whether the builder evidence satisfies the packet rubric:
+- HEAD recorded.
+- Status recorded.
+- STRATEGY.md exists.
+- All 10 smoke gates have adequate line references or grep evidence.
+- STRATEGY.md was not edited.
+- Only allowed write files changed.
+- No no-touch surfaces changed.
+
+Output:
+- `.agent-handoff/turns/E6-OC-002-claude-strategy-smoke-audit-iter-1.md`
+- `.agent-handoff/COLLAB.md` handoff update
+
+Do not edit STRATEGY.md, PROTOCOL.md, OPERATING-MODEL.md, dashboard files,
+kit files, scripts, advisor-notes/reflections/improvements, product/runtime
+files, pilot repo files, live Open Mic Colorado files, automation/model/API
+setup, staging, commit, push, branch, PR, or merge. Auditor pass is not
+approval. Hard stop after audit.
+
+## E6-OC-002 Builder Iteration 1 Summary (Codex, local-only at this turn)
+
+**Outcome Circle:** `strategy-doc smoke verification`.
+
+**Builder result state:** audit pending. Codex believes the read-only smoke
+evidence supports all 10 gates, but Claude Code must independently audit.
+
+**Files written by Codex:**
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-OC-002-codex-strategy-smoke-verification-iter-1.md`
+
+**Read-only evidence file not edited:**
+- `.agent-handoff/STRATEGY.md`
+
+**Key evidence:**
+- HEAD: `8910050977642d330eff4e5a0e9da9ed6edead96`
+- Initial status: `## main...origin/main`
+- Strategy file exists: `-rw-r--r--@ ... .agent-handoff/STRATEGY.md`
+- Smoke gates 1-10 each have line references / grep evidence in the
+  builder turn note.
+- Suggested exact greps for `formal naming`, `hypothesis`, and `smarter
+  future agents` returned no output due capitalization/phrasing, and were
+  replaced with broader `rg` evidence. No STRATEGY.md change was needed.
+
+**No-touch confirmation:** Codex did not edit STRATEGY.md, PROTOCOL.md,
+OPERATING-MODEL.md, dashboard files, alert-state.sh, advisor-notes/
+reflections/improvements, kit files, root docs, docs, product/runtime
+files, live Open Mic Colorado files, pilot repo files, CommonGround,
+NanoClaw, Notion, MCP/plugin/bridge files, `.mcp.json`, automation/model/
+API setup, cron/timer/webhook/launch-agent/global-config files,
+generated/local/secret files, trust/event/private-key files, unrelated
+files, staging, commit, push, branch, PR, or merge.
 
 ## E6-STRATEGY-001 Summary (Codex, local-only at this turn)
 
