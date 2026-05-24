@@ -7,100 +7,202 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude Code has completed the **E6-PROTOCOL-FIX-001-RESTORE critique**
-locally and is hard-stopped. Critique outputs:
-`.agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md`
-(this critique) + this COLLAB.md handoff update + DASHBOARD.md /
-DASHBOARD.html text-only snapshot refresh.
+Claude Code has completed **E6-OC-001 auditor iteration 1** inside the
+approved Outcome Circle `one-doc protocol mirror verification` and is
+hard-stopped. Auditor output:
+`.agent-handoff/turns/E6-OC-001-claude-protocol-mirror-audit-iter-1.md`
+plus this COLLAB.md handoff update.
 
-**Critique headline: 13 of 13 focus areas PASS. Safe to accept.**
+**Audit headline: substantive mechanical rubric `satisfied` (16/16
+evidence points match builder); 1 process observation flagged (packet
+not scribed); bootstrap exit requires Sami + GPT callback.**
 
-Codex's RESTORE is exactly what was needed:
+I independently re-ran the rubric (auditor cannot trust builder
+evidence per protocol). All 16 evidence points match Codex's builder
+turn note:
 
-1. **HTML structural repairs verified:** `role-courier` restored on
-   the cue panel (L401); "About the 5 states" cue-note restored
-   (L416); "Who's who right now" + "What changed in this snapshot"
-   standing panels restored (L578/L589). `<details>` count and
-   `<summary>` count both = 9 (matches origin/main `fbdb0b3`).
-2. **Bootstrap rule preserved:** the 12-line bootstrap paragraph from
-   FIX-001 is intact; mirror discipline still byte-identical between
-   live PROTOCOL.md and kit template (independently verified via
-   `sed`-extract + `diff` exit 0 on both the paragraph and the full
-   Outcome Circles section, 71 lines each).
-3. **`scope_conflict` fold applied:** added to bootstrap exit-list at
-   PROTOCOL.md L277, mirrored byte-equivalently to kit template.
-   Grammar/position is sensible (between `blocker` and `failed`,
-   matching the canonical result-state order).
-4. **No new regressions:** all no-touch surfaces clean
-   (OPERATING-MODEL.md, alert-state.sh still 6519 bytes, kit/v1
-   except template, root docs, docs/, advisor-notes/reflections/
-   improvements still absent, .mcp.json still absent). HTML
-   self-containment intact (0 external CSS/JS, 0 storage/network
-   APIs, 1 executable `clipboard.writeText`). `alert-state.sh` ran
-   without modifying the working tree (diff exit 0).
+| Field | Builder | Auditor | ✓ |
+| --- | --- | --- | --- |
+| HEAD | `06efb3a...` | `06efb3a...` | ✓ |
+| Marker counts (live start/end, kit start/end) | 1/1/1/1 | 1/1/1/1 | ✓ |
+| Line numbers (live/kit start/end) | 256/327/256/327 | 256/327/256/327 | ✓ |
+| Boundary order tests | exit 0 both | exit 0 both | ✓ |
+| Extraction sizes | 2958/2958 bytes | 2958/2958 bytes | ✓ |
+| Diff exit code | 0 | 0 | ✓ |
+| Diff stdout | `<empty>` | `<empty>` | ✓ |
 
-**Three foldable nits (none blocking):**
-1. Bootstrap paragraph's line wrap is slightly awkward after
-   `scope_conflict` insertion (cosmetic; semantics unchanged).
-2. OPERATING-MODEL.md §8 doesn't yet reference the bootstrap rule —
-   carried from FIX-001 critique. PROTOCOL.md is authoritative on
-   conflicts; foldable into a future small docs-lock turn.
-3. First Outcome Circle packet drafting is now unblocked but not yet
-   started. Per the bootstrap rule, drafting must be NEEDS_GPT.
+All 12 audit focus areas PASS (see audit turn note for per-area detail
+table). All no-touch surfaces verified clean: read-only evidence files
+unchanged; OPERATING-MODEL.md / alert-state.sh / dashboards / root docs
+/ docs/ / advisor-notes/reflections/improvements / .mcp.json all
+unchanged or absent; `sh .agent-handoff/tools/alert-state.sh` runs
+without modifying the working tree.
 
-**One small correction to my prior FIX-001 critique:** I cited the
-`<details>` count as "10 → 6 (−4)." Recounting against the actual
-file (excluding a JS comment that mentions `<details>` in source
-text), the accurate counts were **9 → 6 (−3)** details elements + 1
-state-class removal = 4 total regressions. The −3 details + 1 class
-framing remained correct; the absolute count was off by one. All 4
-regressions are now repaired.
+**Result state: `satisfied`** for the mechanical mirror rubric.
 
-Sami is the next actor to decide between:
+**Critical reminder:** `satisfied` is **NOT approval**. Per PROTOCOL.md
+L291, `satisfied` means the auditor believes the rubric is satisfied;
+it does not authorize commit, push, new scope, or final completion.
+Per the bootstrap rule (PROTOCOL.md L267-280 from PR #6), **Outcome
+Circle exit is always `NEEDS_GPT` until two Outcome Circles have
+completed successfully and been reviewed in repo-visible turn notes.**
+This is circle #1; exit synthesis requires Sami + GPT callback.
 
-(a) **RECOMMENDED**: authorize push of the combined FIX-001 + RESTORE
-    as one PR (5 file modifications + 3 new turn notes = 8-file PR,
-    matching prior combined-push shapes). Recommend feature branch
-    `e6-protocol-fix-001-bootstrap-rule` with commit message
-    `E6-PROTOCOL-FIX-001: add Outcome Circle bootstrap rule
-    (+ RESTORE repair)`.
-(b) Request one more small tweak (e.g., fix the wrap nit, fold
-    OPERATING-MODEL.md §8 reference) before push.
-(c) Pause-and-observe — leave the local stack until later.
+**One process observation (non-blocking, flag for exit synthesis):**
+The 14-field Outcome Packet for E6-OC-001 is not scribed into any repo
+file. Per PROTOCOL.md L259-263, "Entry requires the full Outcome Packet
+inline with the approval." Codex's builder turn note records
+operational details (read-only evidence files, allowed write files,
+HEAD, commands, evidence) but does not enumerate the 14 packet fields.
+COLLAB.md references the entry phrase but does not include the inline
+packet either. The substantive rubric grade is unaffected (mechanical
+mirror is independently reproducible), but the bootstrap process
+should learn from this and either (a) scribe the packet retroactively
+during exit synthesis, or (b) explicitly waive the inline-packet-scribe
+requirement for this circle with reasoning and codify a lesson learned
+for circle #2.
 
-After acceptance/push, the next substantive turn is the **first
-Outcome Circle scope decision** — now properly bootstrap-gated as
-NEEDS_GPT (GPT frames packet → Codex builder-reviews → Claude audits
-→ Sami approves) per the rule that just landed.
+Sami is the next actor to decide one of:
+
+(a) **RECOMMENDED**: accept the `satisfied` grade, paste an exit-
+    synthesis question to GPT (with the audit headline + process
+    observation), then fold GPT's synthesis + Sami's decision into a
+    retrospective turn note (`E6-OC-001-sami-retrospective-iter-1.md`
+    or similar). Per bootstrap, both the audit turn note AND the exit
+    synthesis are required for this circle to count as "completed
+    successfully and reviewed in repo-visible turn notes."
+(b) Request iteration 2 if the substantive evidence has a gap I
+    missed (none detected on independent re-run).
+(c) Pause — leave the circle state as-is until you act.
+
+After bootstrap-counted exit of circle #1, the next move is circle
+#2 — a separate NEEDS_GPT authorization sequence (GPT frames packet
+→ Codex builder-reviews → Claude audits → Sami approves). After
+2 circles complete + are reviewed, the bootstrap rule allows Sami to
+consider relaxing entry/exit to ROUTINE for non-novel circles (via
+explicit later protocol change).
 
 No further PROTOCOL.md edit, OPERATING-MODEL.md edit, kit template
-edit beyond the approved protocol mirror, alert-state edit,
-advisor-notes/reflections/improvements path creation, first Outcome
-Circle execution, packet template, loop runner, notifier, automation,
-model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
-MCP/plugin/bridge, cron/timer/webhook/launch agent/global config,
-staging, commit, push, branch, PR, pilot repo touch, live Open Mic
-Colorado touch, or product/runtime work is authorized.
+edit, alert-state edit, advisor-notes/reflections/improvements path
+creation, iteration 2 execution, second Outcome Circle, packet
+template, loop runner, notifier, automation, model call, OpenAI API
+setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge,
+cron/timer/webhook/launch agent/global config, staging, commit, push,
+branch, PR, pilot repo touch, live Open Mic Colorado touch, or
+product/runtime work is authorized.
 
 ## Coordinator Trigger
 - State: ROUTINE
-- Reason: auditor pass on a concrete, narrowly-scoped repair of an
-  auditor-identified regression. Per the Coordinator Trigger
-  Classification rule, upgrade only on detection of an architecture /
-  safety / governance defect. None detected — RESTORE is faithful to
-  the repair spec; the previously-flagged HTML regression is resolved
-  and the optional protocol nit (scope_conflict fold) was applied
-  byte-equivalently.
+- Reason: auditor work inside the approved Outcome Circle is mechanical
+  re-verification of a builder's mirror check within the packet. Per
+  the bootstrap rule, ROUTINE eligibility holds for inside-circle
+  builder/auditor work that remains within the packet. No architecture,
+  scope, safety, tooling, automation, or UX decision was introduced.
 
 ## Project Mode (estimated)
-- Dominant mode: Coordinator (~65%, agent heuristic estimate)
-- Sami-decision-pending: ~30%
-- Execution: ~5%
+- Dominant mode: Sami-decision-pending (~50%, agent heuristic estimate)
+- Execution: ~30% (residual circle context until exit synthesis closes)
+- Coordinator: ~20% (GPT exit synthesis pending per bootstrap)
 - Unknown: 0%
-- Reason: no Outcome Circle is active. The combined FIX-001 + RESTORE
-  stack is fully repaired and ready for accept/push. Sami-decision-
-  pending weight increases because the local state is now in
-  "decision-needed" mode.
+- Reason: substantive rubric is `satisfied`; circle is awaiting
+  Sami decision + GPT exit synthesis per the bootstrap rule. Execution
+  weight residual because the circle is technically still open until
+  the exit synthesis lands.
+
+## E6-OC-001 Auditor Iteration 1 Summary (Claude Code, local-only at this turn)
+
+**Outcome Circle:** `one-doc protocol mirror verification`.
+
+**Auditor result state:** `satisfied` (substantive mechanical rubric).
+
+**Files written by Claude Code this turn:**
+- `.agent-handoff/turns/E6-OC-001-claude-protocol-mirror-audit-iter-1.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+**Read-only evidence files not edited:**
+- `.agent-handoff/PROTOCOL.md`
+- `kit/v1/.agent-handoff/PROTOCOL.md.template`
+
+**Key audit evidence:**
+- HEAD verified: `06efb3ad98491894be9ea09a3d729e999b7c3a43` (matches builder)
+- Marker counts verified independently: 1/1/1/1 (matches builder)
+- Line numbers verified independently: live 256/327, kit 256/327 (matches builder)
+- Boundary order tests: both exit 0 (matches builder)
+- Extract sizes verified independently: 2958/2958 bytes (matches builder)
+- Diff exit verified independently: 0, stdout empty (matches builder)
+- 16/16 evidence points match between builder and auditor independent re-runs.
+- `git diff --quiet -- .agent-handoff/PROTOCOL.md` exits 0 (read-only evidence unchanged).
+- `git diff --quiet -- kit/v1/.agent-handoff/PROTOCOL.md.template` exits 0 (read-only evidence unchanged).
+- `sh .agent-handoff/tools/alert-state.sh` runs without modifying working tree (diff exit 0).
+- `wc -c .agent-handoff/tools/alert-state.sh` = 6519 (unchanged).
+- All other no-touch surfaces verified unchanged.
+
+**No-touch confirmation:** Claude Code did not edit PROTOCOL.md, kit
+protocol template, OPERATING-MODEL.md, dashboard files, alert-state.sh,
+advisor-notes/reflections/improvements, other kit files, root docs,
+docs, product/runtime files, pilot repo, live Open Mic Colorado files,
+CommonGround, NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`,
+automation/model/API setup, cron/timer/webhook/launch-agent/global-
+config, generated/local/secret files, trust/event/private-key files,
+staging, commit, push, branch, or PR.
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): audit
+names 1 specific process observation (packet not scribed) AND 3 nits
+(observation framing; pre-write vs post-write status sequencing;
+retrospective format not yet codified) AND explicitly enumerates 14
+failure modes checked-and-found-absent (substantive rubric mismatch
+between builder and auditor / read-only evidence modified / no-touch
+surface modified / packet self-classified entry/exit as ROUTINE during
+bootstrap / silent OPERATING-MODEL edit / silent alert-state edit /
+new scope started inside circle / iteration 2 attempted without need /
+external advisor-notes path created / automation introduced / API setup
+introduced / staging-commit-push attempted / dashboard modified mid-
+circle without packet authorization / first-circle bootstrap exit
+classified as ROUTINE — all absent). Audit is COMPLETE per the §12
+dissent requirement.
+
+Pattern: **first Outcome Circle audit turn** in the repo's history.
+First test of the codified Outcome Circle protocol + the bootstrap
+rule that just landed in PR #6.
+
+---
+
+(Historical: Codex's E6-OC-001 builder iteration 1 summary follows.
+Detail preserved below as Codex wrote it pre-audit.)
+
+## E6-OC-001 Builder Iteration 1 Summary (Codex, local-only at this turn)
+
+**Outcome Circle:** `one-doc protocol mirror verification`.
+
+**Builder result state:** audit pending. Codex believes the mirror check
+evidence satisfies the mechanical rubric, but auditor pass is required and
+is not approval.
+
+**Files written by Codex:**
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-OC-001-codex-protocol-mirror-verification-iter-1.md`
+
+**Read-only evidence files not edited:**
+- `.agent-handoff/PROTOCOL.md`
+- `kit/v1/.agent-handoff/PROTOCOL.md.template`
+
+**Key evidence:**
+- HEAD: `06efb3ad98491894be9ea09a3d729e999b7c3a43`
+- Initial status: `## main...origin/main`
+- Marker counts: `1` for both start markers; `1` for both boundary markers.
+- Line numbers: `live_start=256 live_end=327`; `kit_start=256 kit_end=327`.
+- Extraction sizes: 2958 bytes each.
+- Diff exit: `0`.
+- Diff output: `<empty>`.
+
+**No-touch confirmation:** Codex did not edit PROTOCOL.md, kit protocol
+template, OPERATING-MODEL.md, dashboard files, alert-state.sh,
+advisor-notes/reflections/improvements, other kit files, root docs, docs,
+product/runtime files, pilot repo, live Open Mic Colorado files,
+CommonGround, NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`,
+automation/model/API setup, cron/timer/webhook/launch-agent/global-config,
+generated/local/secret files, trust/event/private-key files, staging,
+commit, push, branch, or PR.
 
 ## E6-PROTOCOL-FIX-001-RESTORE Claude Critique Summary (Claude Code, local-only at this turn)
 
@@ -4496,55 +4598,52 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- After Claude critiques E6-PROTOCOL-FIX-001, decide whether to accept,
-  request a tiny fix, pause, or authorize a later exact-scope push/PR.
-- After E6-PROTOCOL-FIX-001 is accepted/pushed, decide the first Outcome
-  Circle scope. Per the new bootstrap rule, circle entry/exit remains
-  NEEDS_GPT until two Outcome Circles complete successfully and are
-  reviewed in repo-visible turn notes.
-- No loop runner, first Outcome Circle, packet template, advisor-notes
-  path creation, notifier, automation, model call, OpenAI API setup,
-  NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, timer, webhook,
-  launch agent, global config, pilot repo, or live Open Mic Colorado work
-  is active.
+- After Claude audits E6-OC-001 iter 1, decide whether to accept the
+  Outcome Circle result, request iteration 2 for evidence/audit-record
+  mistakes only, pause, or authorize a later exact-scope push/PR.
+- `diff empty` means only "mirror check satisfied." It does not mean
+  approval, completion, commit, push, or permission to proceed to new
+  scope.
+- No loop runner, packet template, advisor-notes path creation, notifier,
+  automation, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
+  MCP/plugin/bridge, cron, timer, webhook, launch agent, global config,
+  pilot repo, or live Open Mic Colorado work is active.
 
 ## Next Request To Claude
 
-Critique E6-PROTOCOL-FIX-001-RESTORE as auditor/advisor. Verify Codex
-preserved the good bootstrap-rule work, restored `role-courier`,
-restored the in-cue "About the 5 states" details block, restored the
-"Who's who right now" and "What changed in this snapshot" top-level
-details panels, and folded `scope_conflict` into the live/kit bootstrap
-exit-state list with byte-equivalent wording. Confirm DASHBOARD.html
-remains self-contained and copy buttons only copy visible payload text.
-Confirm no OPERATING-MODEL.md edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, kit dashboard /
-COLLAB / prompt / README edit, automation, model/API setup, transport,
-Outcome Circle execution, packet template, staging, commit, push, branch,
-PR, pilot repo, live Open Mic Colorado, or product/runtime work started.
-Output one critique turn note plus COLLAB.md handoff update; refresh
-DASHBOARD.md/html only if snapshot handoff requires it. Hard stop after
-critique.
+Audit E6-OC-001 builder iteration 1 as independent auditor/grader.
+Read `.agent-handoff/turns/E6-OC-001-codex-protocol-mirror-verification-iter-1.md`,
+`.agent-handoff/PROTOCOL.md`, and
+`kit/v1/.agent-handoff/PROTOCOL.md.template`. Independently repeat or
+inspect the marker counts, boundary line numbers, non-empty extraction,
+and `diff -u` evidence. Confirm whether the evidence is sufficient under
+the approved Outcome Circle rubric. Auditor pass is not approval. Output
+only `.agent-handoff/turns/E6-OC-001-claude-protocol-mirror-audit-iter-1.md`
+and `.agent-handoff/COLLAB.md` handoff update. Do not edit protocol,
+template, dashboards, operating model, kit files, no-touch paths, stage,
+commit, push, branch, PR, or start new scope. Hard stop after audit.
 
 ## Next Request To Codex
 
-None active. Codex completed E6-PROTOCOL-FIX-001-RESTORE and is
-hard-stopped. No further PROTOCOL.md edit, kit edit, dashboard refresh,
+None active. Codex completed E6-OC-001 builder iteration 1 and is
+hard-stopped pending Claude audit. Iteration 2 is not authorized unless
+the auditor identifies evidence, command, or audit-record mistakes that
+fit the approved packet. No protocol/template edits, dashboard refresh,
 COLLAB edit, OPERATING-MODEL.md edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, outcome-loop
-implementation, first Outcome Circle, packet template, server, model
-call, OpenAI API setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge,
-cron, launch agent, timer, webhook, daemon, global config, pilot repo,
-live Open Mic Colorado, product/runtime, root-doc, notification script,
-staging, commit, push, branch, merge, PR update, or any other change is
+advisor-notes/reflections/improvements path creation, loop runner,
+packet template, server, model call, OpenAI API setup,
+NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, launch agent,
+timer, webhook, daemon, global config, pilot repo, live Open Mic
+Colorado, product/runtime, root-doc, notification script, staging,
+commit, push, branch, merge, PR update, or any other change is
 authorized.
 
 ## Next Request To Sami
 
-Paste the E6-PROTOCOL-FIX-001-RESTORE critique prompt to Claude Code, or
-route a different action explicitly. After Claude critique, decide whether
-to accept the combined bootstrap + restore state, request a tiny follow-up,
-pause, or authorize a later exact-scope push/PR.
+Paste the E6-OC-001 auditor prompt to Claude Code, or route a different
+action explicitly. After Claude audit, decide whether to accept the
+Outcome Circle result, authorize iteration 2 only for evidence/audit
+record correction, pause, or authorize a later exact-scope push/PR.
 
 Do not authorize the first Outcome Circle, packet template,
 advisor-notes creation, outcome-loop implementation, automation, API
