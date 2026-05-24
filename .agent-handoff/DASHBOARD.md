@@ -16,15 +16,16 @@ not the source of truth.
 
 ## Human Role Cue
 
-> ✉ **COURIER ONLY** — paste agent-authored content; no judgment needed.
+> 🔑 **APPROVAL ONLY** — Claude's critique is complete (13/13 PASS); your
+> decision authorizes what happens next.
 
 | Field | Value |
 | --- | --- |
-| Next paste target | Codex |
-| Payload type | Agent-authored prompt |
-| GPT needed now | No — already routed |
-| Sami decision now | No — Codex verifies next |
-| Why | Codex verifies scope/HTML; no judgment from you. |
+| Next paste target | Claude Code (for push) — or none if you pause |
+| Payload type | Authorization text |
+| GPT needed now | No — critique surfaced no NEEDS_GPT triggers |
+| Sami decision now | Yes — accept/push, request one more tweak, or pause |
+| Why | Combined FIX-001 + RESTORE is safe to accept. |
 
 <details>
 <summary>About the 5 states</summary>
@@ -37,216 +38,153 @@ not the source of truth.
 - ⚠ **STOP / UNKNOWN** — inputs unavailable or contradictory; default to
   Ask GPT.
 
-Derived from `Coordinator Trigger × inside Outcome Circle? × Next
-Actor`; not an authored field. Project Mode remains visible below as
-descriptive context but is not a routing input.
+Derived from `Coordinator Trigger × inside Outcome Circle? × Next Actor`;
+not an authored field. Project Mode remains visible below as descriptive
+context but is not a routing input.
 
 </details>
 
 ## DO THIS NOW
 
-**Send E6-DASH-002 to Codex for verification — Claude Design added the
-cue (above) and refreshed stale post-PR4 state.**
+**Decide on E6-PROTOCOL-FIX-001 + RESTORE — Claude critique complete
+(13/13 PASS, safe to accept).**
 
-Codex verifies file scope (4 files), HTML self-containment, and
-no-touch surface compliance. Sami accepts or routes differently after
-Codex reports.
+Codex's RESTORE repaired the FIX-001 Polaris HTML regression (restored
+`role-courier` class, About-the-5-states cue-note, and the two standing
+top-level panels) and applied Claude's `scope_conflict` nit
+byte-equivalently to both PROTOCOL.md and the kit template.
 
 ### Where you are in the loop
 
 ```text
-✓ PR #4 (E6-D2) merged → ✓ GPT routed DASH-002 → ✓ Claude Design implemented → [Codex verifies] → Sami accepts → First Outcome Circle scope (NEEDS_GPT, future)
-                                                                                  ↑ YOU ARE HERE
+✓ PR #5 merged → ✓ Codex added bootstrap rule → ✓ Claude critiqued (flagged regression) → ✓ Codex restored → ✓ Claude re-critiqued → [Sami decides]
+                                                                                                                                       ↑ YOU ARE HERE
 ```
 
 ### Why this snapshot
 
-E6-DASH-002 adds the Human Role Cue above so you don't have to translate
-`Coordinator Trigger` + `Project Mode` into "what do I do now?" The 5
-states (`ASK GPT` / `COURIER ONLY` / `APPROVAL ONLY` / `AGENTS RUNNING`
-/ `STOP / UNKNOWN`) are derived from existing fields per a published
-routing map. Step 0 refreshed Polaris/COLLAB from stale "Push E6-D2"
-framing to current post-merge state.
+The combined FIX-001 + RESTORE stack adds the Outcome Circle bootstrap
+rule (entry/exit always NEEDS_GPT until 2 circles complete successfully
+and are reviewed in repo-visible turn notes; packets can't self-classify
+entry/exit as ROUTINE; mechanical inside-circle work stays ROUTINE-
+eligible when within the packet) AND restores the Polaris HTML
+structure that FIX-001 inadvertently regressed. Independent
+verification: mirror byte-identical (diff exit 0); 9 `<details>` /
+`<summary>` count matches origin/main; all no-touch surfaces clean;
+`alert-state.sh` runs without modifying the working tree.
 
 ### Three actions
 
-#### 1. RECOMMENDED — Copy verification prompt, paste to **Codex**
+#### 1. RECOMMENDED — Copy push authorization, paste to **Claude Code**
 
-Codex verifies E6-DASH-002: only 4 authorized files changed, Human Role
-Cue is above the fold, distinguishes Project Mode from current step,
-COURIER vs ASK GPT vs APPROVAL ONLY are visually and label-distinct,
-HTML remains self-contained, alert-state.sh ran without modifying the
-working tree. Codex writes one verify turn note; no staging/commit/push.
+Authorize push of the combined FIX-001 + RESTORE as one PR (5
+modifications + 3 new turn notes = 8-file PR; matches prior
+combined-push shapes). Suggested branch:
+`e6-protocol-fix-001-bootstrap-rule`. Suggested commit message:
+`E6-PROTOCOL-FIX-001: add Outcome Circle bootstrap rule (+ RESTORE
+repair)`.
 
-See the full verification prompt under "What gets pasted to Codex" below.
+Sami authors the exact push authorization text; Claude Code executes
+the PR creation under the same shape as the E6-DASH-002 push (verify
+scope → stage exactly the listed files → commit → push to feature
+branch → open PR → report URL/SHA/state → hard stop).
 
-#### 2. OPTIONAL — Copy question, paste to **GPT-5.5 Pro**
+#### 2. OPTIONAL — Request one more tweak
 
-Ask GPT for any coordinator concern about the cue design before Codex
-verifies, or for framing of the next substantive work (first Outcome
-Circle scope decision, which is NEEDS_GPT and follows acceptance of
-E6-DASH-002).
-
-See the full question under "What gets pasted to GPT" below.
+If Sami wants any of the three foldable nits addressed before push:
+1. Fix the bootstrap paragraph's slightly awkward line wrap (cosmetic).
+2. Fold an OPERATING-MODEL.md §8 reference to the bootstrap rule.
+3. Trim the "final synthesis" phrase in the bootstrap exit list.
 
 #### 3. OR — Pause and observe
 
-Do nothing. The local E6-DASH-002 implementation state stays as-is until
-you act.
+Do nothing. The local FIX-001 + RESTORE stack stays as-is until you
+act.
 
 ### Status
 
-- Snapshot expires when: Sami pastes Codex verification, asks GPT,
-  pauses-and-observes, or any actor changes.
-- Coordinator Trigger: **ROUTINE** for this implementation handoff (GPT
-  already routed E6-DASH-002 to Claude Design; Codex verification is
-  mechanical scope/HTML check).
-- Project Mode: **Coordinator dominant (~80%)**, Execution (~10%, this
-  implementation), Sami-decision-pending (~10%, post-verify accept).
+- Snapshot expires when: Sami authorizes push, requests a tweak,
+  pauses, or any actor changes.
+- Coordinator Trigger: **ROUTINE** for this critique handoff.
+- Project Mode: **Coordinator (~65%)**, Sami-decision-pending (~30%),
+  Execution (~5%); no Outcome Circle active.
 
 ---
 
-## What gets pasted to Codex (the E6-DASH-002 verification)
+## What gets pasted to Claude Code (push authorization)
 
-**Paste this entire block to Codex.** Codex verifies file scope, Human
-Role Cue presence/correctness, HTML self-containment, and no-touch
-surfaces; writes one verify turn note + COLLAB handoff update; does not
-stage/commit/push.
+**Sami authors the exact authorization text.** Use the same shape as
+the E6-DASH-002 push approval: list the 8 files to stage, the
+no-touch list, the verification checklist, the exact commit message,
+the branch name, and the PR title/body requirements. Then "hard stop
+after PR opens; report PR URL, branch, commit SHA, local main /
+feature-branch state."
+
+Suggested 8-file stage list:
 
 ```text
-[Lane 1: Claude-Codex Harness | Codex / OpenAI | Thread: E6-DASH-002 verification | Role: verifier]
+- .agent-handoff/COLLAB.md
+- .agent-handoff/DASHBOARD.html
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/PROTOCOL.md
+- kit/v1/.agent-handoff/PROTOCOL.md.template
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-codex-outcome-circle-bootstrap-rule.md
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-claude-critique-outcome-circle-bootstrap-rule.md
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-codex-restore-polaris-bootstrap.md
+- .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md
+```
 
-Verify E6-DASH-002.
+(That's 9 files counting both critique turn notes — adjust scope if
+you'd prefer to land RESTORE in a separate PR.)
 
-Focus:
-1. Did Claude Design change only the four approved files?
-   - .agent-handoff/DASHBOARD.html
-   - .agent-handoff/DASHBOARD.md
-   - .agent-handoff/COLLAB.md
-   - .agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md
-2. Does Polaris now show a clear Human Role Cue above the fold?
-3. Does the cue distinguish Project Mode (big-picture) from current step
-   (human role now)?
-4. Does it make COURIER ONLY obvious when GPT is not needed?
-5. Does it make ASK GPT obvious when GPT is needed?
-6. Does it avoid making Sami classify routine vs. GPT?
-7. Does it preserve one-primary-action discipline?
-8. Does it preserve paste-to-whom labels (Claude Code / Codex / GPT /
-   Claude Design / Sami)?
-9. Does it preserve COLLAB.md authority warning and no-approval-inference
-   warning?
-10. Does DASHBOARD.html remain self-contained:
-    - no external CSS (no <link rel="stylesheet">)
-    - no external JS (no <script src=...>)
-    - no HTTP(S) URLs
-    - no storage/localStorage/sessionStorage
-    - no network APIs (fetch, XMLHttpRequest, EventSource, WebSocket)
-    - no server requirement
-11. Did `sh .agent-handoff/tools/alert-state.sh` run without modifying
-    the working tree?
-12. Does the published routing map (Coordinator Trigger × Inside Outcome
-    Circle? × Next Actor → Human Role Cue) match the cue shown in the
-    current snapshot? Confirm UNCLEAR → ASK GPT (not STOP / UNKNOWN) per
-    PROTOCOL.md L222.
-13. Is APPROVAL ONLY vs COURIER ONLY distinguishable by text label
-    (Authorization text vs Agent-authored prompt), not by color alone?
-14. Does AGENTS RUNNING wording convey "monitor for callback" (scope,
-    risk, blocker, iteration cap), not "do nothing"?
-15. Is E6-DASH-002 safe to accept?
+---
 
-Output only:
-- .agent-handoff/turns/E6-DASH-002-codex-verify-human-role-cue.md
-- .agent-handoff/COLLAB.md handoff update
-- .agent-handoff/DASHBOARD.md / DASHBOARD.html only if Polaris snapshot
-  handoff requires it
+## What gets pasted to GPT (optional)
 
-Do not stage, commit, push, branch, or PR.
-Hard stop after verification.
+```text
+[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-PROTOCOL-FIX-001 + RESTORE post-critique | Role: coordinator/outcome architect]
 
-Dashboard status: include whether DASHBOARD.md/html were refreshed this turn.
+Claude completed the combined FIX-001 + RESTORE critique: 13 of 13 focus areas PASS, safe to accept. The bootstrap rule for Outcome Circles is now codified in both live PROTOCOL.md and the kit template byte-identically (entry/exit NEEDS_GPT until 2 circles complete successfully and are reviewed; packets can't self-classify entry/exit as ROUTINE; mechanical inside-circle work stays ROUTINE-eligible). The Polaris HTML regression from FIX-001 was repaired in RESTORE. scope_conflict was added to the bootstrap exit list per Claude's nit.
+
+Any coordinator concern before Sami pushes? Anything to fold in for the upcoming first Outcome Circle packet drafting (which will be NEEDS_GPT per the bootstrap rule)?
+
+Do not approve. Sami remains sole approval authority.
 ```
 
 ---
 
-## What gets pasted to GPT (optional pre-verify / post-impl review)
-
-**Paste this to GPT-5.5 Pro** only if you want coordinator review before
-Codex verifies, or for framing the next substantive work (first Outcome
-Circle scope decision).
+## Pause and observe
 
 ```text
-[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-DASH-002 post-impl | Role: coordinator/outcome architect]
-
-Claude Design implemented E6-DASH-002 (Polaris Human Role Cue above the
-fold). Codex verifies next. Cue design highlights:
-
-- 5 human-facing states: ASK GPT / COURIER ONLY / APPROVAL ONLY /
-  AGENTS RUNNING / STOP / UNKNOWN.
-- Derived from (Coordinator Trigger × inside Outcome Circle? × Next
-  Actor) per a published routing map in the E6-DASH-002 turn note. Not
-  a new authored field.
-- UNCLEAR maps to ASK GPT (per PROTOCOL.md L222), not STOP / UNKNOWN.
-  STOP / UNKNOWN is reserved for unavailable/contradictory routing inputs.
-- APPROVAL ONLY vs COURIER ONLY distinguished by text label
-  (Authorization text vs Agent-authored prompt), not color alone.
-- AGENTS RUNNING wording conveys "monitor for callback: scope, risk,
-  blocker, iteration cap" — not "do nothing."
-- Project Mode kept visible as descriptive context, not a routing input.
-- Visual treatment is provisional for AGENTS RUNNING (no Outcome Circle
-  has run yet); refine after first circle.
-- Bootstrap rule ("GPT-in-loop for circle entry/exit until 2 circles
-  complete") tracked as a separate future E6-PROTOCOL-FIX, not folded
-  into E6-DASH-002.
-
-Optional coordinator review:
-- Any concern about the routing map or the 5-state taxonomy before Codex
-  verifies?
-- After E6-DASH-002 is accepted, the next substantive work is choosing/
-  framing the first Outcome Circle scope. Want to frame that now as a
-  separate NEEDS_GPT turn, or wait until E6-DASH-002 lands?
-- Bootstrap rule placement: still recommend a tiny E6-PROTOCOL-FIX in
-  PROTOCOL.md § Outcome Circles, or fold into the first-circle authorization
-  text?
-
-Do not authorize approval. Sami remains sole approval authority.
-```
-
----
-
-## Pause and observe — what that means
-
-```text
-Do nothing. The local working tree stays as-is after E6-DASH-002:
+Do nothing. The local working tree stays as-is after FIX-001 + RESTORE + Claude critique:
 - M .agent-handoff/COLLAB.md
-- M .agent-handoff/DASHBOARD.md
 - M .agent-handoff/DASHBOARD.html
-- ?? .agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md
+- M .agent-handoff/DASHBOARD.md
+- M .agent-handoff/PROTOCOL.md
+- M kit/v1/.agent-handoff/PROTOCOL.md.template
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-codex-outcome-circle-bootstrap-rule.md
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-claude-critique-outcome-circle-bootstrap-rule.md
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-codex-restore-polaris-bootstrap.md
+- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md
 
-When you want to resume, paste the Codex verification prompt (primary),
-paste the GPT question (secondary), or route a different action.
-
-To revert the local working tree back to the merge commit (d8fa722),
-discarding E6-DASH-002 entirely:
-  git restore .agent-handoff/COLLAB.md .agent-handoff/DASHBOARD.md .agent-handoff/DASHBOARD.html
-  rm .agent-handoff/turns/E6-DASH-002-claude-design-human-role-cue.md
+When you want to resume, paste a push authorization to Claude Code, ask GPT, request a tweak, or route a different action.
 ```
 
 ---
 
-## Snapshot status & provenance
+## Snapshot Status & Provenance
 
 | Field | Current value |
 | --- | --- |
-| Prepared for | Sami to paste Codex verification prompt for E6-DASH-002 (or ask GPT, or pause) |
-| As of | HEAD `d8fa722` plus local E6-DASH-002 implementation |
-| Expires after | Sami pastes verification, asks GPT, pauses-and-observes, or any actor changes |
+| Prepared for | Sami to authorize push of FIX-001 + RESTORE (or tweak / pause) |
+| As of | `fbdb0b3` plus local FIX-001 + RESTORE + Claude critique |
+| Expires after | Sami authorizes push, requests a tweak, pauses, or any actor changes |
 | After this action | Do not reuse this dashboard snapshot until a repo-writing agent refreshes it |
-| Prepared by | Claude Design (E6-DASH-002 implementation + this snapshot refresh) |
-| Last repo action | `d8fa722 Merge pull request #4 from samiserrag/e6-d2-outcome-circle-protocol-codification` (E6-D2 merge commit) |
-| Snapshot basis | HEAD `d8fa722` plus local COLLAB / dashboard refresh + 1 new turn note (E6-DASH-002 Claude Design implementation) |
-| Source turn notes | `E6-DASH-002-claude-design-human-role-cue.md` (this turn) |
-| Coordinator Trigger | ROUTINE for this implementation handoff (GPT already routed E6-DASH-002; Codex verification is mechanical scope/HTML check) |
-| Project Mode | Coordinator dominant (~80%), Execution (~10%, this implementation), Sami-decision-pending (~10%, post-verify accept), Unknown 0% |
+| Prepared by | Claude Code (FIX-001 critique + RESTORE critique + this snapshot refresh); FIX-001 + RESTORE implementations by Codex |
+| Last repo action | `fbdb0b3` Merge pull request #5 from `e6-dash-002-human-role-cue` |
+| Source turn notes | All four E6-PROTOCOL-FIX-001 turn notes (Codex FIX-001 impl, Claude FIX-001 critique, Codex RESTORE impl, Claude RESTORE critique) |
+| Coordinator Trigger | ROUTINE for this critique handoff |
+| Project Mode | Coordinator ~65%, Sami-decision-pending ~30%, Execution ~5%; no Outcome Circle active |
 
 ---
 
@@ -254,94 +192,80 @@ discarding E6-DASH-002 entirely:
 
 | Role | Agent | What they're doing |
 | --- | --- | --- |
-| Coordinator | GPT-5.5 Pro / OpenAI / advisor-class | Idle — last action: routed E6-DASH-002 to Claude Design with 5-state taxonomy proposal |
-| Designer (completed) | Claude Design / Anthropic / architect-class | Implemented E6-DASH-002 (Human Role Cue + stale-state refresh); refreshed this snapshot |
-| Verifier (pending) | Codex / OpenAI / architect-class | Will verify file scope, HTML self-containment, no-touch surfaces |
-| Approver | Sami | Vision / priority / risk / taste. Pastes verification, asks GPT, or pauses |
-| Source of truth | Repo (`COLLAB.md` authoritative) | This dashboard is a view |
-| Diversity | Multi-org (Anthropic + OpenAI) | 3-way coordination preserved |
+| Coordinator | GPT-5.5 Pro / OpenAI / advisor-class | Idle — last action: routed E6-PROTOCOL-FIX-001 scope. Available for optional post-critique review. |
+| Builder | Codex / OpenAI / architect-class | Idle — completed FIX-001 implementation + RESTORE repair. |
+| Auditor (completed) | Claude Code / Anthropic / architect-class | Critiqued FIX-001 (flagged HTML regression), then re-critiqued RESTORE (13/13 PASS). Refreshed this snapshot. |
+| Approver | Sami | Decides push / tweak / pause. |
+| Source of truth | Repo (`COLLAB.md` authoritative) | This dashboard is a view. |
+| Diversity | Multi-org (Anthropic + OpenAI) | 3-way coordination preserved through both turns. |
 
 ---
 
 ## What changed in this snapshot
 
-- Step 0 stale-state refresh: previous Polaris pointed at "Push E6-D2"
-  but PR #4 merged at `d8fa722`. H1, subtitle, role-flow, why-panel,
-  three actions, snapshot fields, and all paste blocks now reflect
-  post-merge state.
-- Added **Human Role Cue** panel above the fold in both `DASHBOARD.md`
-  and `DASHBOARD.html`. Cue shows 6 fields: Human role, GPT needed,
-  Sami decision needed, Next paste target, Payload type, Why.
-- Published 5-state taxonomy with icons (✉ COURIER ONLY, 🔑 APPROVAL
-  ONLY, 💬 ASK GPT, ⚙ AGENTS RUNNING, ⚠ STOP / UNKNOWN). Icons
-  reinforce text labels for color-blind accessibility.
-- HTML adds minimal CSS for the cue: 5 state classes (`role-courier`,
-  `role-approval`, `role-ask-gpt`, `role-agents-running`, `role-stop`)
-  with distinct background + left-border color, plus a `.cue-fields`
-  grid layout. No JS changes. No new buttons. No new collapsibles.
-- All existing Polaris strengths preserved: plain-language H1,
-  paste-to-whom button labels, role-flow strip, visible Ask-GPT path,
-  one primary recommendation, collapsed technical payloads, COLLAB.md
-  authority warning, no-approval-inference warning.
+- Human Role Cue advanced from COURIER ONLY (paste to Claude) → 🔑
+  APPROVAL ONLY (Sami decides).
+- H1, subtitle, role-flow, three-actions, and snapshot status fields
+  advanced to post-RESTORE-critique state.
+- Cue field values updated to reflect Sami-decision-needed state.
+- "Three actions" updated: primary is now "Copy push authorization,
+  paste to Claude Code"; optional shifted to "Request one more tweak";
+  tertiary still pause.
+- Paste blocks updated: "What gets pasted to Claude Code" now stages
+  push authorization framing (Sami authors specific text); GPT
+  optional updated to post-critique synthesis question.
+- "Pause and observe" file list updated to include all 4 FIX-001 +
+  RESTORE turn notes.
+- Snapshot status `Prepared by` updated to credit Claude Code (FIX-001
+  critique + RESTORE critique + snapshot refresh) + Codex (FIX-001 +
+  RESTORE implementations).
+- Polaris remains a one-action snapshot; no new CSS, buttons,
+  collapsibles, scripts, sections, or mode panel added.
 
 ---
 
-## Technical packet
+## Technical Packet
 
-- Latest pushed baseline: `d8fa722 Merge pull request #4 from
-  samiserrag/e6-d2-outcome-circle-protocol-codification` (E6-D2 merge
-  commit; brings Outcome Circle entry rule + 14-field packet schema +
-  9 result states + PR-over-direct-push hint to durable governance).
-- E6-DASH-002 scope: dashboard UX/content only. Four files: `.agent-handoff/
-  DASHBOARD.html`, `.agent-handoff/DASHBOARD.md`, `.agent-handoff/
-  COLLAB.md`, `.agent-handoff/turns/E6-DASH-002-claude-design-human-role-
-  cue.md`.
-- Human Role Cue routing map (published in turn note):
+- Latest pushed baseline: `fbdb0b3` Merge pull request #5 from
+  `e6-dash-002-human-role-cue` (brings the Human Role Cue + FIX-001
+  visual tightening to durable governance).
+- Bootstrap rule added in PROTOCOL.md L267–280 and mirrored
+  byte-identically into `kit/v1/.agent-handoff/PROTOCOL.md.template`
+  (independently verified: diff exit 0 on paragraph extraction; diff
+  exit 0 on full Outcome Circles section, 71 lines each).
+- `scope_conflict` added to bootstrap exit list per Claude's nit
+  (byte-equivalent in both files).
+- DASHBOARD.html structural elements restored per Claude's FIX-001
+  critique: `role-courier` class on cue panel; "About the 5 states"
+  cue-note; "Who's who right now" + "What changed in this snapshot"
+  standing panels. `<details>` / `<summary>` count = 9 (matches
+  origin/main).
+- HTML self-contained: 0 external CSS/JS/URLs, 0 storage/network
+  APIs, 1 executable `clipboard.writeText` call (pre-existing).
+- `alert-state.sh` runs without modifying the working tree (verified
+  via pre/post `git status` diff exit 0; still 6519 bytes).
+- All no-touch surfaces clean: PROTOCOL.md (only the bootstrap
+  paragraph + scope_conflict edit), kit/v1/ (only PROTOCOL.md.template),
+  OPERATING-MODEL.md (untouched), root docs (untouched), docs/
+  (untouched), advisor-notes/reflections/improvements (still absent),
+  `.mcp.json` (still absent), pilot repo (untouched), live Open Mic
+  Colorado (untouched).
+- 4 turn notes for this stack (2 Codex implementations + 2 Claude
+  critiques).
+- Subagents not used in any of the 4 turns.
 
-```text
-Coordinator Trigger  Inside Circle?  Next Actor          Human Role Cue
-NEEDS_GPT            any             any                 ASK GPT
-UNCLEAR              any             any                 ASK GPT
-ROUTINE              yes             builder/auditor     AGENTS RUNNING
-ROUTINE              no              Sami                APPROVAL ONLY
-ROUTINE              no              Claude/Codex/Design APPROVAL ONLY when
-                                                         payload is auth text;
-                                                         else COURIER ONLY
-inputs unavailable   unknown         unknown             STOP / UNKNOWN
-```
+## No-Touch Summary
 
-- UNCLEAR maps to ASK GPT per PROTOCOL.md L222 (not STOP / UNKNOWN).
-- Payload type label disambiguates APPROVAL ONLY vs COURIER ONLY when
-  Next Actor is an agent: `Authorization text` (Sami's explicit approval
-  phrase, including Outcome Circle entry text) vs `Agent-authored
-  prompt` / `Coordinator question` / `No paste`.
-- AGENTS RUNNING wording: "monitor for callback: scope, risk, blocker,
-  iteration cap." Visual treatment is provisional; refine after first
-  Outcome Circle runs.
-- Bootstrap rule ("GPT-in-loop for circle entry/exit until 2 circles
-  complete") NOT folded into E6-DASH-002. Tracked as follow-up: tiny
-  E6-PROTOCOL-FIX adds one paragraph to PROTOCOL.md § Outcome Circles.
-- HTML self-contained: 1 inline `<script>`, 1 inline `<style>`, 0
-  external `<link>` / network APIs / storage APIs. Single executable
-  `clipboard.writeText(target.innerText)` call preserved (now at L660
-  after the cue addition).
-- Cue CSS additions: 5 state classes + `.cue-fields` grid + base
-  `.human-role-cue` panel. No structural HTML refactor.
-- Subagents not used.
-- Pilot repo (`open-mic-colorado-agent-pilot`) untouched at `655e75bc`.
-
----
-
-## No-touch list
-
-- No `PROTOCOL.md` edit.
+- No further `PROTOCOL.md` edit beyond the bootstrap rule + scope_conflict.
 - No `OPERATING-MODEL.md` edit.
-- No kit template edits (kit/v1/**).
 - No `alert-state.sh` edit.
+- No kit edits outside `kit/v1/.agent-handoff/PROTOCOL.md.template`.
+- No root README / AGENTS / CLAUDE / docs edit.
 - No advisor-notes, reflections, or improvements path creation.
-- No root `README.md` / `AGENTS.md` / `CLAUDE.md` / `docs/` edit.
-- No packet template, first Outcome Circle, loop runner, automation,
-  tooling, notifier, model/API setup, NanoClaw, CommonGround, Notion,
-  `.mcp.json`, MCP/plugin/bridge, cron/timer/webhook/launch agent,
-  global config, product/runtime, live Open Mic Colorado, or pilot
-  repo work.
+- No product/runtime, pilot repo, live Open Mic Colorado, CommonGround,
+  NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`, cron/timer/webhook/
+  launch agent, model/API, or global config work.
+
+Dashboard status: refreshed by Claude Code this turn (text content
+only — no structural changes; modeling the right "snapshot refresh"
+discipline). COLLAB.md is authoritative.

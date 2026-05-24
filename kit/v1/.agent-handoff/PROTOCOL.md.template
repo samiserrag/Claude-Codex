@@ -267,6 +267,19 @@ agreement, agent consensus, dashboard green status, prior approval of similar
 work, a GPT recommendation, a Claude/auditor pass, or a Codex/builder
 implementation plan is not Outcome Circle entry.
 
+Bootstrap rule for early circles: until at least two Outcome Circles have
+completed successfully and been reviewed in repo-visible turn notes, Outcome
+Circle entry and Outcome Circle exit are always `NEEDS_GPT`. During this
+bootstrap period, an Outcome Packet may not self-classify entry or exit as
+`ROUTINE`. Mechanical builder/auditor work inside a valid approved Outcome
+Circle may still be `ROUTINE` when it remains within the packet. Entry includes
+drafting, finalizing, and approving the packet. Exit includes `satisfied`,
+`blocker`, `scope_conflict`, `failed`, `interrupted`,
+`max_iterations_reached`, `needs_gpt`, `needs_sami`, or final synthesis about
+whether the outcome was met. This
+bootstrap rule may be revised only by explicit later protocol change after the
+first two circles are observed.
+
 Minimum Outcome Packet fields:
 
 - outcome description
