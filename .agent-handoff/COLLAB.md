@@ -7,107 +7,92 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude Code has completed **E6-OC-001 auditor iteration 1** inside the
-approved Outcome Circle `one-doc protocol mirror verification` and is
-hard-stopped. Auditor output:
-`.agent-handoff/turns/E6-OC-001-claude-protocol-mirror-audit-iter-1.md`
-plus this COLLAB.md handoff update.
+Codex has completed **E6-STRATEGY-001** locally and is hard-stopped.
+Outputs:
+`.agent-handoff/STRATEGY.md`,
+`.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning.md`,
+and this COLLAB.md handoff update.
 
-**Audit headline: substantive mechanical rubric `satisfied` (16/16
-evidence points match builder); 1 process observation flagged (packet
-not scribed); bootstrap exit requires Sami + GPT callback.**
+**Strategy headline:** Polaris is the dashboard/reference cockpit; the
+broader work is the governance protocol/harness; formal naming remains
+deferred. The strategy positions the protocol as a governance contract
+that runtime, IDE, and orchestration substrates could implement against,
+not as a LangGraph/LangSmith/Cursor/Windsurf competitor.
 
-I independently re-ran the rubric (auditor cannot trust builder
-evidence per protocol). All 16 evidence points match Codex's builder
-turn note:
+E6-STRATEGY-001 captures:
 
-| Field | Builder | Auditor | ✓ |
-| --- | --- | --- | --- |
-| HEAD | `06efb3a...` | `06efb3a...` | ✓ |
-| Marker counts (live start/end, kit start/end) | 1/1/1/1 | 1/1/1/1 | ✓ |
-| Line numbers (live/kit start/end) | 256/327/256/327 | 256/327/256/327 | ✓ |
-| Boundary order tests | exit 0 both | exit 0 both | ✓ |
-| Extraction sizes | 2958/2958 bytes | 2958/2958 bytes | ✓ |
-| Diff exit code | 0 | 0 | ✓ |
-| Diff stdout | `<empty>` | `<empty>` | ✓ |
+- the three-phase governance method: pre-build convergence, during-build
+  Outcome Circles, and post-build exit synthesis / retrospective;
+- the differentiator: auditable coordination and approval discipline
+  across model families;
+- the future-agent threat model and current capability assumptions;
+- compressed lessons from LangGraph/LangSmith/Fleet-style runtimes,
+  Cursor/Windsurf/CodeLayer, ClickUp/workspace AI, CrewAI/AutoGen/ADK,
+  NanoClaw/CommonGround, and this repo's own convergence loop;
+- what to borrow narrowly and what not to build yet;
+- minimal-dashboard / serious-governance boundaries;
+- current shipped evidence and explicit limits;
+- market/mission positioning fork with open-source reference spec as the
+  best starting shape;
+- docs/evidence-bloat as an open question, not current blocker;
+- candidate next steps, not commitments.
 
-All 12 audit focus areas PASS (see audit turn note for per-area detail
-table). All no-touch surfaces verified clean: read-only evidence files
-unchanged; OPERATING-MODEL.md / alert-state.sh / dashboards / root docs
-/ docs/ / advisor-notes/reflections/improvements / .mcp.json all
-unchanged or absent; `sh .agent-handoff/tools/alert-state.sh` runs
-without modifying the working tree.
+E6-OC-001 is recorded as Circle 0.5 / pilot observed. Bootstrap counter
+remains 0 of 2 fully compliant Outcome Circles; observed pilot counter is
+1. No Outcome Circle is active.
 
-**Result state: `satisfied`** for the mechanical mirror rubric.
-
-**Critical reminder:** `satisfied` is **NOT approval**. Per PROTOCOL.md
-L291, `satisfied` means the auditor believes the rubric is satisfied;
-it does not authorize commit, push, new scope, or final completion.
-Per the bootstrap rule (PROTOCOL.md L267-280 from PR #6), **Outcome
-Circle exit is always `NEEDS_GPT` until two Outcome Circles have
-completed successfully and been reviewed in repo-visible turn notes.**
-This is circle #1; exit synthesis requires Sami + GPT callback.
-
-**One process observation (non-blocking, flag for exit synthesis):**
-The 14-field Outcome Packet for E6-OC-001 is not scribed into any repo
-file. Per PROTOCOL.md L259-263, "Entry requires the full Outcome Packet
-inline with the approval." Codex's builder turn note records
-operational details (read-only evidence files, allowed write files,
-HEAD, commands, evidence) but does not enumerate the 14 packet fields.
-COLLAB.md references the entry phrase but does not include the inline
-packet either. The substantive rubric grade is unaffected (mechanical
-mirror is independently reproducible), but the bootstrap process
-should learn from this and either (a) scribe the packet retroactively
-during exit synthesis, or (b) explicitly waive the inline-packet-scribe
-requirement for this circle with reasoning and codify a lesson learned
-for circle #2.
-
-Sami is the next actor to decide one of:
-
-(a) **RECOMMENDED**: accept the `satisfied` grade, paste an exit-
-    synthesis question to GPT (with the audit headline + process
-    observation), then fold GPT's synthesis + Sami's decision into a
-    retrospective turn note (`E6-OC-001-sami-retrospective-iter-1.md`
-    or similar). Per bootstrap, both the audit turn note AND the exit
-    synthesis are required for this circle to count as "completed
-    successfully and reviewed in repo-visible turn notes."
-(b) Request iteration 2 if the substantive evidence has a gap I
-    missed (none detected on independent re-run).
-(c) Pause — leave the circle state as-is until you act.
-
-After bootstrap-counted exit of circle #1, the next move is circle
-#2 — a separate NEEDS_GPT authorization sequence (GPT frames packet
-→ Codex builder-reviews → Claude audits → Sami approves). After
-2 circles complete + are reviewed, the bootstrap rule allows Sami to
-consider relaxing entry/exit to ROUTINE for non-novel circles (via
-explicit later protocol change).
-
-No further PROTOCOL.md edit, OPERATING-MODEL.md edit, kit template
-edit, alert-state edit, advisor-notes/reflections/improvements path
-creation, iteration 2 execution, second Outcome Circle, packet
-template, loop runner, notifier, automation, model call, OpenAI API
-setup, NanoClaw/CommonGround/Notion, MCP/plugin/bridge,
-cron/timer/webhook/launch agent/global config, staging, commit, push,
-branch, PR, pilot repo touch, live Open Mic Colorado touch, or
-product/runtime work is authorized.
+Important scope note: the authorization body said no staging, commit,
+push, branch, PR, or merge and hard stop after E6-STRATEGY-001. A final
+sentence asked to create/merge a PR, but that conflicted with the
+explicit strategy-turn boundary. Codex followed the narrower governance
+scope: docs only, no PR/merge work.
 
 ## Coordinator Trigger
-- State: ROUTINE
-- Reason: auditor work inside the approved Outcome Circle is mechanical
-  re-verification of a builder's mirror check within the packet. Per
-  the bootstrap rule, ROUTINE eligibility holds for inside-circle
-  builder/auditor work that remains within the packet. No architecture,
-  scope, safety, tooling, automation, or UX decision was introduced.
+- State: NEEDS_GPT
+- Reason: strategic positioning, product boundary, future-agent
+  assumptions, market landscape, naming boundary, and governance-method
+  framing were active outside any approved Outcome Circle.
 
 ## Project Mode (estimated)
-- Dominant mode: Sami-decision-pending (~50%, agent heuristic estimate)
-- Execution: ~30% (residual circle context until exit synthesis closes)
-- Coordinator: ~20% (GPT exit synthesis pending per bootstrap)
+- Dominant mode: Coordinator (~90%, agent heuristic estimate)
+- Sami-decision-pending: ~10%
+- Execution: 0%
 - Unknown: 0%
-- Reason: substantive rubric is `satisfied`; circle is awaiting
-  Sami decision + GPT exit synthesis per the bootstrap rule. Execution
-  weight residual because the circle is technically still open until
-  the exit synthesis lands.
+- Reason: E6-OC-001 is closed as Circle 0.5 / pilot observed. No Outcome
+  Circle is active. E6-STRATEGY-001 is strategy/docs alignment.
+
+## E6-STRATEGY-001 Summary (Codex, local-only at this turn)
+
+**Files changed:**
+- `.agent-handoff/STRATEGY.md` (created, 526 lines)
+- `.agent-handoff/COLLAB.md` (handoff update)
+- `.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning.md`
+  (created)
+
+**Key decisions recorded:**
+- Polaris means dashboard/reference cockpit only.
+- The broader protocol/harness naming remains deferred.
+- The protocol is the product thesis; Polaris demonstrates it; `kit/v1`
+  is the adoption path.
+- The project should not compete with runtime, IDE, orchestration, tracing,
+  deployment, or workspace vendors.
+- The current differentiator is governance: exact approval discipline,
+  cross-model role separation, repo-visible evidence, Outcome Circle
+  boundaries, anti-sycophancy, and human-role clarity.
+- STRATEGY.md treats open-source reference spec as the best starting shape
+  while preserving later developer-tooling, B-corp, nonprofit/foundation,
+  and compliance/audit paths.
+
+**Explicit limits preserved:**
+- No PROTOCOL.md edit.
+- No OPERATING-MODEL.md edit.
+- No kit edit.
+- No dashboard edit.
+- No Outcome Circle started.
+- No advisor-notes path.
+- No automation, model/API setup, LangGraph/LangSmith integration,
+  NanoClaw/CommonGround/MCP/plugin/bridge setup, Notion, cron/timer/webhook,
+  launch agent, global config, staging, commit, push, branch, PR, or merge.
 
 ## E6-OC-001 Auditor Iteration 1 Summary (Claude Code, local-only at this turn)
 
@@ -4598,12 +4583,11 @@ keeping parse-failure recovery simple.
 
 ## Questions Requiring Sami Approval
 
-- After Claude audits E6-OC-001 iter 1, decide whether to accept the
-  Outcome Circle result, request iteration 2 for evidence/audit-record
-  mistakes only, pause, or authorize a later exact-scope push/PR.
-- `diff empty` means only "mirror check satisfied." It does not mean
-  approval, completion, commit, push, or permission to proceed to new
-  scope.
+- After Claude critiques E6-STRATEGY-001, decide whether to accept the
+  strategy doc, request a narrow fix, pause, or authorize a later
+  exact-scope push/PR.
+- E6-STRATEGY-001 does not authorize implementation, protocol changes,
+  runtime mapping, dashboard work, or public/open-source release.
 - No loop runner, packet template, advisor-notes path creation, notifier,
   automation, model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
   MCP/plugin/bridge, cron, timer, webhook, launch agent, global config,
@@ -4611,26 +4595,26 @@ keeping parse-failure recovery simple.
 
 ## Next Request To Claude
 
-Audit E6-OC-001 builder iteration 1 as independent auditor/grader.
-Read `.agent-handoff/turns/E6-OC-001-codex-protocol-mirror-verification-iter-1.md`,
-`.agent-handoff/PROTOCOL.md`, and
-`kit/v1/.agent-handoff/PROTOCOL.md.template`. Independently repeat or
-inspect the marker counts, boundary line numbers, non-empty extraction,
-and `diff -u` evidence. Confirm whether the evidence is sufficient under
-the approved Outcome Circle rubric. Auditor pass is not approval. Output
-only `.agent-handoff/turns/E6-OC-001-claude-protocol-mirror-audit-iter-1.md`
-and `.agent-handoff/COLLAB.md` handoff update. Do not edit protocol,
-template, dashboards, operating model, kit files, no-touch paths, stage,
-commit, push, branch, PR, or start new scope. Hard stop after audit.
+Critique E6-STRATEGY-001 as auditor/advisor. Read
+`.agent-handoff/STRATEGY.md`, `.agent-handoff/COLLAB.md`,
+`.agent-handoff/PROTOCOL.md`, `.agent-handoff/OPERATING-MODEL.md`,
+`.agent-handoff/turns/E6-BRAND-001-claude-naming-discovery.md`,
+`.agent-handoff/turns/E6-OC-001-gpt-exit-synthesis.md`, and
+`.agent-handoff/turns/E6-STRATEGY-001-codex-polaris-governance-positioning.md`.
+Verify the doc is strategy-only, names Polaris as cockpit not protocol,
+keeps formal naming deferred, captures the three-phase method, preserves
+Circle 0.5 / 0-of-2 bootstrap honesty, avoids runtime/IDE/vendor overbuild,
+keeps claims evidence-grounded, and does not smuggle implementation,
+protocol, kit, dashboard, automation, or PR work. Output one critique turn
+note plus COLLAB.md handoff update. Do not stage, commit, push, branch, PR,
+merge, or start an Outcome Circle. Hard stop after critique.
 
 ## Next Request To Codex
 
-None active. Codex completed E6-OC-001 builder iteration 1 and is
-hard-stopped pending Claude audit. Iteration 2 is not authorized unless
-the auditor identifies evidence, command, or audit-record mistakes that
-fit the approved packet. No protocol/template edits, dashboard refresh,
-COLLAB edit, OPERATING-MODEL.md edit, alert-state edit,
-advisor-notes/reflections/improvements path creation, loop runner,
+None active. Codex completed E6-STRATEGY-001 and is hard-stopped pending
+Claude critique. No STRATEGY.md edit, PROTOCOL.md edit, kit edit,
+dashboard refresh, COLLAB edit, OPERATING-MODEL.md edit, alert-state edit,
+advisor-notes/reflections/improvements path creation, Outcome Circle,
 packet template, server, model call, OpenAI API setup,
 NanoClaw/CommonGround/Notion, MCP/plugin/bridge, cron, launch agent,
 timer, webhook, daemon, global config, pilot repo, live Open Mic
@@ -4640,12 +4624,12 @@ authorized.
 
 ## Next Request To Sami
 
-Paste the E6-OC-001 auditor prompt to Claude Code, or route a different
-action explicitly. After Claude audit, decide whether to accept the
-Outcome Circle result, authorize iteration 2 only for evidence/audit
-record correction, pause, or authorize a later exact-scope push/PR.
+Paste the E6-STRATEGY-001 critique prompt to Claude Code, or route a
+different action explicitly. After Claude critique, decide whether to accept
+the strategy doc, request a narrow fix, pause, or authorize a later
+exact-scope push/PR.
 
-Do not authorize the first Outcome Circle, packet template,
-advisor-notes creation, outcome-loop implementation, automation, API
-setup, transport/NanoClaw review, staging, commit, push, branch, merge,
-or PR update until a separate explicit approval.
+Do not authorize another Outcome Circle, packet template, advisor-notes
+creation, outcome-loop implementation, automation, API setup,
+transport/NanoClaw review, public release, staging, commit, push, branch,
+merge, or PR update until a separate explicit approval.
