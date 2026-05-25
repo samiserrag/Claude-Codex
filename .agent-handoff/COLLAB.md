@@ -7,129 +7,797 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
-Claude Code has scribed the **E6-OC-004 GPT blocker synthesis** per
-Sami's blocker-cleanup authorization. Hard-stopped pending explicit
-preservation PR shape authorization.
+Claude Code has completed the **E6-DOCS-ALIGN-001-FIX-002 audit** locally
+and is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-DOCS-ALIGN-001-FIX-002-claude-audit-approver-label-signpost.md`.
 
-**E6-OC-004 is formally BLOCKED.** Per GPT-5.5 Pro's blocker synthesis
-(scribed verbatim in
-`.agent-handoff/turns/E6-OC-004-gpt-blocker-synthesis.md`):
+Next actor: **Sami** (then GPT-5.5 Pro for PR-shape synthesis).
 
-- **Result state:** `blocker`.
-- **Reason:** the initial working tree was not clean at entry.
-- **Not a substantive failure** of the public-positioning judgment.
-  This is a governance/process stop condition correctly triggered by
-  Sami's reading of the entry discipline.
-- **Bootstrap counter unchanged: stays at 1 of 2.** E6-OC-001 remains
-  Circle 0.5 / pilot observed; E6-OC-002 remains fully compliant
-  Circle 1 of 2; E6-OC-003 remains interrupted / needs_human; and
-  **E6-OC-004 does NOT count as Circle 2.**
+### FIX-002 audit result
 
-**Important note on classification discrepancy:**
+**PASS with 0 nits, 0 blockers.**
 
-Codex's builder turn note for OC-004 recorded a substantive completion
-with a `needs_revision_before_public_alpha` recommendation. Codex's
-own pre-judgment-status capture showed `## main...origin/main` (clean
-from Codex's view at the moment Codex started iter-1). Sami's blocker
-authorization overrides this — the blocker decision is Sami's
-governance judgment that the entry discipline was not actually clean,
-regardless of what Codex's snapshot captured.
+Codex's FIX-002 cleanly closes the FIX-001 audit's lone nit (approver-label
+allowance not discoverable near the top of PROTOCOL.md). The new
+`## Approver Labeling Convention` section appears at PROTOCOL.md L20 and
+kit template L18, immediately after `## Source Of Truth` and before
+`## Baseline And Optional Layers` in both files. Section is mirror-clean
+(`diff` exit 0). Wording explicitly names the reusable terms
+(`the human approver` / `configured human approver`), permits local labels
+with type ("such as the configured person's name"), and forbids local
+labels from becoming reusable state/action vocabulary with a concrete
+counter-example (`needs_human`, not `needs_<local_name>`).
 
-The auditor (Claude Code) does NOT adjudicate this discrepancy. Per
-PROTOCOL.md, Sami is the sole approval / classification authority. The
-blocker decision is recorded as Sami issued it. Codex's substantive
-builder note is preserved unchanged as evidence of what Codex
-produced; future readers can see both records.
+Independent verifications:
 
-**Local state (post-scribe, pre-PR):**
+- New section locations: PROTOCOL.md L20, kit template L18 (different
+  numbers because of pre-existing template-vs-live lead-in structure;
+  both immediately after `## Source Of Truth`).
+- New section mirror discipline: byte-identical (`diff` exit 0).
+- Sami mention counts: PROTOCOL.md `0`, kit template `0`, OPERATING-MODEL.md
+  `27 lines / 32 occurrences`, STRATEGY.md `10` — all unchanged from
+  post-FIX-001 state.
+- Operative state vocabulary absence: `needs_sami`, `Decision needed from
+  Sami`, `when Sami`, `Call Sami`, `Why Sami is needed` — zero matches in
+  any of the 4 durable docs.
+- Prior E6-DOCS-ALIGN-001 + FIX-001 substance preserved: 5 decision
+  actions, `needs_human`, Notes shape, sycophantic-adaptation
+  prohibition, descriptive-not-normative, citation attribution line all
+  intact in both files. Line numbers shifted by +9 due to new section
+  insertion at L20-28 (e.g., Outcome Circle bounded-loop now at L273,
+  was L264 pre-FIX-002).
+- Outcome Circle mechanics unchanged: bounded loop, packet shape, result
+  states, bootstrap rule, builder/auditor separation, default
+  no-commit-no-push.
+- No protocol rename. Polaris not in PROTOCOL.md / kit template.
+- STRATEGY.md / OPERATING-MODEL.md sizes (23321 / 35701 bytes) identical
+  to post-FIX-001 state. FIX-002 did NOT edit them. Their `M` flags in
+  `git status` reflect accumulated E6-DOCS-ALIGN-001 stack diffs, not
+  FIX-002 edits.
+- No-touch surfaces unchanged from HEAD `64ef94a`: DASHBOARD.html/.md,
+  alert-state.sh (6519 bytes), README, AGENTS, CLAUDE, docs/, kit
+  non-template files. `advisor-notes/`, `reflections/`, `improvements/`,
+  `.mcp.json` absent. No Finder duplicates. Pilot and live Open Mic
+  Colorado repos untouched.
+- Pre-existing artifacts preserved: 3 mockups, 3 OC-005 turn notes, 2
+  prior E6-DOCS-ALIGN-001 turn notes, 2 FIX-001 turn notes all at
+  original byte counts, not edited by FIX-002.
 
-```text
-## main...origin/main
- M .agent-handoff/COLLAB.md
-?? .agent-handoff/turns/E6-OC-004-codex-public-positioning-judgment-iter-1.md
-?? .agent-handoff/turns/E6-OC-004-gpt-blocker-synthesis.md
-```
+### FIX-002 soft observation (not a nit)
 
-Three files for the recommended preservation PR (1 mod + 2 untracked
-turn notes):
-- `.agent-handoff/COLLAB.md` (this handoff update)
-- `.agent-handoff/turns/E6-OC-004-codex-public-positioning-judgment-iter-1.md`
-  (Codex's blocked-attempt builder note, preserved unchanged)
-- `.agent-handoff/turns/E6-OC-004-gpt-blocker-synthesis.md`
-  (GPT blocker synthesis scribed by Claude this turn)
+Codex's FIX-002 turn note records a deliberate trade-off: Sami's preferred
+example used "Sami" specifically, but Codex used "the configured person's
+name" because the same authorization required keeping the kit template at
+zero Sami mentions. The mirrored signpost is therefore abstract in both
+files (byte-identical), not concrete on either side.
 
-## Sami's authorization scope (explicitly covered)
+Claude's lean: **leave as-is**. Reasons: (a) the convention is already
+discoverable and unambiguous without a concrete name; (b) concrete Sami
+examples already exist abundantly in OPERATING-MODEL.md (32 occurrences)
+and STRATEGY.md (10) — natural homes for local-instance illustration; (c)
+introducing template-vs-live divergence in the portability section
+itself would be ironic. If Sami disagrees, adding `(in this repo,
+"Sami")` parenthetical to live PROTOCOL.md only is a trivial follow-up.
 
-The blocker cleanup authorization explicitly covered:
-1. ✓ Verify current dirty state matches expected (verified — exact
-   match: 1 M + 1 ??)
-2. ✓ Create `E6-OC-004-gpt-blocker-synthesis.md` and scribe GPT text
-   verbatim (done)
-3. ✓ Update COLLAB.md handoff (this update)
+### Updated PR-shape options (now four arcs)
 
-**NOT explicitly covered (prompt ended mid-block after the synthesis
-text, same pattern as OC-003 cleanup authorization):** the branch
-name, commit message, PR title, and PR body requirements for the
-preservation PR.
+Coordinator Trigger for the next handoff: **NEEDS_GPT**. PR sequencing now
+spans four arcs (OC-005 preservation, E6-DOCS-ALIGN-001 docs realignment,
+FIX-001 portability sweep, FIX-002 approver-label signpost) plus 3
+untracked mockups; default to Ask GPT.
 
-**Awaiting explicit Sami authorization for the preservation PR shape.**
+Three options (full GPT paste question in audit turn note §"Coordinator
+Trigger For Next Handoff"):
 
-Suggested PR shape (matching OC-003 cleanup pattern):
-- Branch name: `e6-oc-004-blocker-cleanup`
-- Commit message: `E6-OC-004: record blocker before substantive execution`
-- PR title: matching commit message
-- PR body: standard pattern per prior interruption-record PRs
+- **Option A:** single combined PR — all four arcs + mockups. Reasonable
+  now since all four arcs are docs-portability / bootstrap-closure with
+  no runtime / dashboard / trust / public-release content.
+- **Option B (Claude's lean):** two PRs — B1 OC-005 preservation; B2
+  E6-DOCS-ALIGN-001 + FIX-001 + FIX-002 + all three audits + mockups.
+- **Option C:** three or four PRs (C1 OC-005; C2 E6-DOCS-ALIGN-001;
+  C3 FIX-001; optionally C4 FIX-002). Over-ceremony.
 
-## Pattern observation (entry discipline gates are firing)
+Option B lean unchanged: the three docs-portability arcs are a single
+convergence-then-sweep-then-signpost narrative on the same files and
+should ship together; OC-005 preservation deserves its own scoped PR
+matching the PR #9/#10/#11 rhythm; mockups belong with B2.
 
-Two consecutive stops-before-Circle-2 for the public-positioning
-judgment scope:
-- E6-OC-003 = `interrupted` (duplicate files at entry, caught
-  mid-execution; PR #10 merged)
-- E6-OC-004 = `blocker` (non-clean working tree at entry per Sami)
+Sami next steps:
 
-Both governance/process stops, not substantive failures. Both correctly
-held the bootstrap counter at 1 of 2 rather than advancing
-opportunistically. The closer we get to a fully compliant Circle 2, the
-more deliberate the entry-discipline gates fire — which is the protocol
-working as designed during bootstrap.
+1. Confirm FIX-002 audit accepted (PASS or request revision).
+2. Paste the PR-shape question to GPT-5.5 Pro.
+3. After GPT synthesis, authorize one of A/B/C with exact files and
+   branch name.
+4. Decide whether to add `(in this repo, "Sami")` parenthetical to live
+   PROTOCOL.md signpost (soft observation) — either path is fine.
+5. After preservation/realignment PR(s) merge, run the bootstrap
+   retrospective per GPT's recommended-next sequence.
 
-## Going-forward implications (per GPT blocker synthesis)
+No staging, commit, push, branch, PR, merge, dashboard implementation,
+trust implementation, public release, README work, automation, model/API
+setup, MCP/plugin/bridge/global config, OC-006, OPERATING-MODEL.md /
+STRATEGY.md Sami sweep, COLLAB archival, pilot repo touch, or live Open
+Mic Colorado touch is authorized by this audit.
 
-- The OC-002 one-time packet-scribe-repair caveat remains in force.
-- OC-005 (restart) MUST scribe the full 14-field packet repo-visibly
-  BEFORE iteration 1 begins.
-- OC-005 MUST enter from a clean working tree — and given OC-003/OC-004
-  both failed entry discipline, OC-005 should consider:
-  - Explicitly capturing `git status --short --branch
-    --untracked-files=all` output BEFORE Sami issues the entry phrase
-  - Sami pre-confirming the tree state is what the packet expects
-  - Codex starting iter-1 only after the pre-entry status is
-    repo-visible
+### Previous FIX-001 audit state
 
-## Required safety lines
+Claude Code has completed the **E6-DOCS-ALIGN-001-FIX-001 audit** locally
+and is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-DOCS-ALIGN-001-FIX-001-claude-audit-portability-sweep.md`.
 
-- `blocker` is not approval.
-- `blocker` is not failure of substance; it is a process stop before
-  execution.
-- Auditor pass is not approval (no auditor pass was issued for
-  OC-004).
+Next actor: **Sami** (then GPT-5.5 Pro for PR-shape synthesis).
+
+### FIX-001 audit result
+
+**PASS with 1 nit, 0 blockers.**
+
+Codex's E6-DOCS-ALIGN-001-FIX-001 cleanly resolved both nits from the prior
+audit:
+
+- Prior Nit #1 (kit template Sami residue): kit template now has **zero**
+  `Sami` mentions. Verified by both `grep -c 'Sami'` and `grep -o 'Sami'`.
+- Prior Nit #2 (live PROTOCOL.md voice inconsistency): live PROTOCOL.md now
+  uses `configured human approver` consistently across §"Node Capability",
+  §"GPT Coordinator", and the rest of the document. Zero `Sami` mentions
+  remain.
+
+All prior E6-DOCS-ALIGN-001 substance intact in both PROTOCOL.md and kit
+template (verified by independent grep at identical line numbers):
+
+- 5 decision actions (`authorize_exact_action`, `reject_redo`, `reject_close`,
+  `ask_coordinator`, `pause_pending`) at L335-347.
+- `needs_human` result state at L284, L307.
+- Human Decision Notes shape (`Why I chose this:`) at L358.
+- Generic-reject prohibition at L350.
+- Sycophantic-adaptation prohibition L370-376.
+- Descriptive-not-normative rule at L379.
+- Citation attribution line at L386.
+
+Mirror discipline preserved: Packet Field Vocabulary → Outcome Circles →
+Human Decision Actions enforced range is byte-identical (`diff` exit 0).
+Pre-existing template-vs-live divergences in Stopgates / Prior-Art Citation
+Policy / Experiment Authorization Convention are NOT FIX-001 regressions —
+they predate this fix and reflect the kit's intentional forward-looking
+adopter affordances. The authority wording FIX-001 actually changed is
+correctly mirrored.
+
+Outcome Circle mechanics intact (bounded loop, packet shape, result states,
+bootstrap rule, builder/auditor separation, default no-commit-no-push).
+
+No protocol rename. Polaris not renamed (not even present in PROTOCOL.md /
+kit template; lives in OPERATING-MODEL.md / STRATEGY.md which FIX-001
+correctly did not touch).
+
+No-touch surfaces unchanged from HEAD `64ef94a`: DASHBOARD.html, DASHBOARD.md,
+alert-state.sh (6519 bytes), README.md, AGENTS.md, CLAUDE.md, docs/, kit
+non-template files. `advisor-notes/` / `reflections/` / `improvements/` /
+`.mcp.json` absent. No Finder duplicates. Pilot and live Open Mic Colorado
+repos untouched.
+
+OPERATING-MODEL.md (32 Sami occurrences across 27 lines) and STRATEGY.md
+(10 occurrences) are correctly out of FIX-001 scope. Codex's classification
+of those remaining mentions as local-instance metadata / current local role
+labels / historical breadcrumbs is defensible: those files are not part of
+the adopter-facing kit. A broader sweep is only needed if/when they become
+public-facing whitepaper material — and even then, writing whitepaper-shaped
+derived docs is preferable to sweeping the repo's own explanation docs.
+
+Sami's future-direction note about multi-human approval captured by Codex
+as deferred whitepaper consideration.
+
+### FIX-001 nit (not a blocker)
+
+1. PROTOCOL.md's local-label allowance ("The adopting repo may configure a
+   local label for the human approver") lives only in the Outcome Circles
+   subsection (L315-316). A future authorized doc-touch could add one
+   sentence near the top of PROTOCOL.md (e.g., in §"Source Of Truth" or a
+   new §"Approver Labeling Convention") making the local-vs-reusable label
+   distinction discoverable without scrolling to Outcome Circles. Not
+   required before merging FIX-001.
+
+### Next decisions (Sami-owned, NEEDS_GPT)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT**. PR sequencing now
+spans three arcs (OC-005 preservation, E6-DOCS-ALIGN-001 docs realignment,
+FIX-001 portability sweep) plus 3 untracked mockups; default to Ask GPT.
+
+Three PR-shape options (full GPT paste question in audit turn note
+§"Coordinator Trigger For Next Handoff"):
+
+- **Option A:** single combined PR — all three arcs + mockups.
+- **Option B (Claude's lean):** two PRs — B1 OC-005 preservation;
+  B2 E6-DOCS-ALIGN-001 + FIX-001 + both audits + mockups.
+- **Option C:** three PRs — C1 OC-005; C2 E6-DOCS-ALIGN-001 + audit;
+  C3 FIX-001 + audit + mockups.
+
+Reasoning for Option B lean: FIX-001 is a natural follow-on to
+E6-DOCS-ALIGN-001 (same files, same nit fix), shipping them together
+preserves the convergence-fix-audit narrative; OC-005 preservation deserves
+its own scoped PR matching the PR #9/#10/#11 rhythm; mockups belong with
+B2 (they drove the wording convergence).
+
+Sami next steps:
+
+1. Confirm FIX-001 audit accepted (PASS or request revision).
+2. Paste the PR-shape question to GPT-5.5 Pro.
+3. After GPT synthesis, authorize one of A/B/C with exact files and branch
+   name.
+4. Optionally fold Nit #1 (local-label allowance discoverability) into the
+   same PR or defer.
+5. After preservation/realignment PR(s) merge, run the bootstrap
+   retrospective per GPT's recommended-next sequence.
+
+No staging, commit, push, branch, PR, merge, dashboard implementation,
+trust implementation, public release, README work, automation, model/API
+setup, MCP/plugin/bridge/global config, OC-006, OPERATING-MODEL.md /
+STRATEGY.md Sami sweep, COLLAB archival, pilot repo touch, or live Open
+Mic Colorado touch is authorized by this audit.
+
+### Previous E6-DOCS-ALIGN-001 audit state
+
+Claude Code has completed the **E6-DOCS-ALIGN-001 audit** locally and is
+hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-DOCS-ALIGN-001-claude-audit-decision-notes-trust-doc-alignment.md`.
+
+Next actor: **Sami** (then GPT-5.5 Pro for PR-shape synthesis).
+
+### Audit result
+
+**Satisfied with 2 nits, 0 blockers.**
+
+Codex's E6-DOCS-ALIGN-001 correctly folded the converged Human Decision
+Notes, five decision actions, trust-layer phasing, sycophantic-adaptation
+threat, prompt/API injection scoping, smarter-agent honest limitation,
+portable-naming of operative state vocabulary, and Decision Cockpit v1
+direction into durable docs without starting dashboard implementation, trust
+implementation, runtime work, public release, or unauthorized OC-005
+preservation.
+
+Verified independently (see audit turn note for full evidence):
+
+- Only the 5 allowed tracked files and 1 new turn note changed; no-touch
+  surfaces unchanged (DASHBOARD.html/.md, alert-state.sh, README.md,
+  AGENTS.md, CLAUDE.md, docs/, kit non-template files, .mcp.json,
+  advisor-notes/reflections/improvements paths, pilot/live Open Mic
+  Colorado repos).
+- Live `PROTOCOL.md` and `kit/v1/.agent-handoff/PROTOCOL.md.template`
+  byte-identical on the enforced changed range (`diff` exit 0).
+- Operative state vocabulary fully portable: `needs_sami`,
+  `Decision needed from Sami`, `Why Sami is needed`, `when Sami is called
+  back` absent from all four enforced/durable docs.
+- All 5 decision actions (`authorize_exact_action`, `reject_redo`,
+  `reject_close`, `ask_coordinator`, `pause_pending`) present with
+  action/state mapping and concrete note-required triggers; fuzzy "high
+  consequence" classification explicitly excluded.
+- Sycophantic-adaptation threat named at three altitudes (`PROTOCOL.md`,
+  `OPERATING-MODEL.md` §12, `STRATEGY.md` §5) with codified prohibitions,
+  citation attribution line, and future meta-audit patterns.
+- Trust wording discipline clean: "tamper-proof" / "immutable audit trail"
+  / "blockchain-secured" / "AI-safe approval system" / "cannot be forged"
+  appear only inside prohibition lists, never as positive claims. Phase 0/
+  1/2/3 framing identical in spirit across `OPERATING-MODEL.md` §13 and
+  `STRATEGY.md` §11. Blockchain explicitly not MVP.
+- Prompt/API injection screening scoped as future auditor/CI input, output
+  "concerns found" / "no concerns detected," never "approved."
+- Decision Cockpit v1 framed as future scope; `DASHBOARD.html` /
+  `DASHBOARD.md` unchanged.
+- Smarter-agent / alignment honest limitation present in
+  `OPERATING-MODEL.md` §13 and `STRATEGY.md` §5: "friction and
+  transparency layer, not a strong security layer or a solution to AI
+  alignment."
+- OC-005 preservation status honestly not overclaimed in 3 places (Codex
+  turn note §"OC-005 Status Handling", `OPERATING-MODEL.md` L100,
+  `STRATEGY.md` L420-422); `git log` confirms HEAD at `64ef94a` PR #11
+  merge with no OC-005 preservation PR yet.
+
+### Nits (not blockers)
+
+1. Kit template carries pre-existing Sami-name residue beyond the
+   operative-state vocabulary Codex correctly swept this turn (30 mentions
+   in `kit/v1/.agent-handoff/PROTOCOL.md.template`, including the stable
+   role-model bullet and the schema-change rule). Out of E6-DOCS-ALIGN-001
+   scope; recommend a future authorized portability sweep
+   (`E6-PORTABILITY-001` or similar) before any external adopter uses the
+   kit.
+2. Live `PROTOCOL.md` §"GPT Coordinator / Outcome Architect" still uses
+   Sami-specific authority wording while the new Outcome Circles
+   subsection uses portable "the human approver" wording. For this repo it
+   is fine, but the document now contains two voices. The portability
+   sweep above resolves both nits in one pass.
+
+### Soft observation
+
+`COLLAB.md` is 287632 bytes / 5691 lines. A future archival convention is
+worth considering after the bootstrap retrospective. Out of scope this
+turn.
+
+### Next decisions (Sami-owned, NEEDS_GPT)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT**. The PR-shape
+question and the post-PR sequencing are strategic and bootstrap-adjacent;
+default to Ask GPT.
+
+1. Confirm audit accepted (satisfied or request revision).
+2. Paste the PR-shape question (full text in audit turn note §"PR-Shape
+   Recommendation") to GPT-5.5 Pro.
+3. After GPT synthesis, authorize one PR shape with exact files and
+   branch name:
+   - **Option A:** single combined PR (OC-005 preservation +
+     E6-DOCS-ALIGN-001 + audit + mockups).
+   - **Option B (Claude's lean):** two sequential PRs — B1 for OC-005
+     preservation (matches PR #9/#10/#11 rhythm), B2 for E6-DOCS-ALIGN-001
+     docs realignment + audit + mockups.
+4. Optionally authorize kit-template portability sweep as a separate
+   future turn — not required to land before the bootstrap retrospective.
+5. After preservation PR(s) merge, run the bootstrap retrospective per
+   GPT's recommended-next sequence.
+
+No staging, commit, push, branch, PR, merge, dashboard implementation,
+trust implementation, public release, README work, automation, model/API
+setup, MCP/plugin/bridge/global config, OC-006, kit template Sami-sweep,
+COLLAB archival, pilot repo touch, or live Open Mic Colorado touch is
+authorized by this audit.
+
+### Previous OC-005 state
+
+Claude Code has scribed the **E6-OC-005 GPT exit synthesis** and is
+hard-stopped. **E6-OC-005 is formally closed.** **Bootstrap rule's
+two-circle requirement is SATISFIED for the first time in the repo's
+history.** Scribe output:
+`.agent-handoff/turns/E6-OC-005-gpt-exit-synthesis.md` plus this
+COLLAB.md handoff update.
+
+**🎯 BOOTSTRAP MILESTONE: counter advances 1 of 2 → 2 of 2.**
+
+Per GPT-5.5 Pro's exit synthesis (scribed verbatim in
+`.agent-handoff/turns/E6-OC-005-gpt-exit-synthesis.md`):
+
+- **E6-OC-005 = fully compliant bootstrap Circle 2 of 2.**
+- **Bootstrap counter: 2 of 2.** Bootstrap observation requirement
+  satisfied for the first time.
+- E6-OC-002 remains Circle 1 of 2 (objective rubric — strategy-doc
+  smoke verification).
+- E6-OC-005 = Circle 2 of 2 (judgment rubric — public-positioning
+  review with clean pre-entry discipline).
+- E6-OC-001 remains Circle 0.5 / pilot observed.
+- E6-OC-003 remains interrupted; OC-004 remains blocker; both do NOT
+  count.
+
+**Critical reminders (verbatim from GPT exit synthesis):**
+- `satisfied` is not approval.
+- Auditor pass is not approval.
 - Model consensus is not approval.
-- Codex's `needs_revision_before_public_alpha` builder recommendation
-  is not approval and is overridden by Sami's blocker classification.
+- `public_alpha_ready_with_caveats` is a positioning recommendation,
+  NOT launch approval.
 - No commit, push, branch, PR, merge, scope expansion, new circle,
   strategy edit, dashboard edit, protocol edit, runtime work,
-  notifier work, or public-release work is authorized by this
-  blocker result.
+  notifier work, advisor-notes work, automation work, or
+  public-release work is authorized by this result.
+- **Bootstrap relaxation (entry/exit NEEDS_GPT) is NOT automatic.**
+  Any relaxation requires explicit later protocol change.
+
+**What E6-OC-005 proved (per GPT):**
+- A clean working-tree entry can be captured before any circle file
+  write.
+- The full 14-field packet can be scribed before substantive judgment.
+- Codex can perform a bounded judgment review, not just a grep/
+  content-presence check.
+- Claude can independently audit whether the judgment is supported.
+- The protocol can preserve narrow public positioning without
+  overclaiming.
+- The system can distinguish `public_alpha_ready_with_caveats` from
+  launch approval.
+- The bootstrap rule correctly forced GPT/human exit synthesis.
+
+**What E6-OC-005 did NOT prove (per GPT):**
+- Public adoption.
+- External users can install or use the kit.
+- Burden-reduction magnitude.
+- Autonomy without the human as transport.
+- Runtime, wakeups, notifications, or auto-handoffs.
+- Behavior under severe model disagreement.
+- Cross-repo rollout.
+- Public release approval.
+
+**Milestone summary (per GPT):**
+- 2 fully compliant circles observed: OC-002 (objective) + OC-005
+  (judgment-based with clean pre-entry discipline).
+- 2 process-stop circles preserved: OC-003 (interrupted on duplicates)
+  + OC-004 (blocker on disputed clean-entry).
+- 1 pilot: OC-001 (Circle 0.5).
+- **Enough evidence to run a short bootstrap retrospective** on
+  whether the bootstrap rule should remain unchanged, relax for
+  non-novel circles, or be revised.
+
+Sami is the next actor to decide one of (per GPT's recommended next):
+
+(a) **RECOMMENDED**: authorize a preservation PR for E6-OC-005 turn
+    notes + COLLAB.md updates on main. Same shape as OC-002
+    preservation (PR #9) and OC-003/OC-004 record preservation (PR
+    #10/#11).
+(b) Pause for thinking time before authorizing the PR.
+
+After (a) merges, the next move per GPT is the **bootstrap
+retrospective** — a short turn note reviewing whether the bootstrap
+rule should remain unchanged, relax for non-novel circles, or be
+revised.
+
+**Public-alpha packaging is NOT yet authorized.** The retrospective
+must land first. After retrospective (if authorized), the likely next
+track is repo strangerprintability: root README, kit extraction sanity
+check, naming/public positioning, and example packet artifacts.
+
+## Tripwire status update (per Sami's earlier "watch for public-flip" ask)
+
+| Condition | Status |
+| --- | --- |
+| #1: Bootstrap counter hits 2 of 2 | ✓ **ACHIEVED** (this turn) |
+| #2: Subjective rubric circle | ✓ **ACHIEVED** (OC-005 was judgment-based) |
+| #3: Documented honest failure resolved transparently | ✓ **ACHIEVED** (3 layers on main: PR #9, #10, #11; OC-005 preservation PR will add a 4th if authorized) |
+| #4: Repo strangerprintable | **STILL PENDING** — needs root README, naming, kit extractability; GPT's recommended-next track AFTER retrospective |
+| #5: Top-of-funnel artifacts | **STILL PENDING** — needs Medium draft, X thread, landing page |
+
+**3 of 5 tripwire conditions now achieved.** Conditions #4 and #5
+remain. The bootstrap retrospective is the explicit gate before either
+can start.
 
 No further PROTOCOL.md edit, OPERATING-MODEL.md edit, STRATEGY.md
 edit, kit template edit, alert-state edit, advisor-notes/reflections/
-improvements path creation, OC-005 execution, packet template, loop
+improvements path creation, OC-006 execution, packet template, loop
 runner, notifier, automation, model call, OpenAI API setup, NanoClaw/
 CommonGround/Notion, MCP/plugin/bridge, cron/timer/webhook/launch
 agent/global config, staging, commit, push, branch, PR, pilot repo
-touch, live Open Mic Colorado touch, public-release work, or product/
-runtime work is authorized.
+touch, live Open Mic Colorado touch, public-release work, or
+product/runtime work is authorized.
+
+## Coordinator Trigger
+- State: ROUTINE
+- Reason: mechanical scribing of GPT's exit-synthesis text into a
+  repo-visible turn note. The exit-synthesis decision itself was GPT's
+  per the bootstrap rule. This scribe records that decision; it does
+  not make a new decision. **The bootstrap milestone (counter 1 → 2)
+  was decided by GPT, not introduced here.**
+
+## Project Mode (estimated)
+- Dominant mode: Sami-decision-pending (~55%, agent heuristic
+  estimate)
+- Coordinator: ~30% (next retrospective is coordinator-class)
+- Execution: ~15%
+- Unknown: 0%
+- Reason: E6-OC-005 closed; bootstrap milestone reached. Sami's next
+  decisions are: preservation PR shape + bootstrap retrospective +
+  then the post-bootstrap track (repo strangerprintability per GPT
+  recommended-next). All three are pending Sami.
+
+## E6-OC-005 Closed — BOOTSTRAP MILESTONE REACHED (Claude Code scribe of GPT exit synthesis, local-only at this turn)
+
+**Status:** Formally closed via repo-visible GPT exit synthesis.
+
+**Bootstrap counter:** 1 of 2 → **2 of 2** fully compliant Outcome
+Circles. **First bootstrap-rule completion in the repo's history.**
+
+**Pilot counter:** 1 (E6-OC-001 remains Circle 0.5 / pilot observed).
+
+**Process-stop evidence preserved:** OC-003 (interrupted), OC-004
+(blocker).
+
+**E6-OC-005 circle artifacts (3 turn notes, all local-only, ready for
+preservation PR):**
+- `.agent-handoff/turns/E6-OC-005-codex-public-positioning-judgment-iter-1.md`
+  (Codex builder)
+- `.agent-handoff/turns/E6-OC-005-claude-public-positioning-audit-iter-1.md`
+  (Claude auditor)
+- `.agent-handoff/turns/E6-OC-005-gpt-exit-synthesis.md` (this scribe
+  — GPT exit synthesis)
+
+**Files written by Claude Code this turn:**
+- `.agent-handoff/turns/E6-OC-005-gpt-exit-synthesis.md` (scribe)
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+**Read-only / preserved:**
+- 2 prior E6-OC-005 turn notes (unchanged)
+- `.agent-handoff/STRATEGY.md` (unchanged; 17491 bytes preserved;
+  `git diff --quiet` exit 0)
+
+**No-touch confirmation:** Claude Code did not edit STRATEGY.md,
+PROTOCOL.md, OPERATING-MODEL.md, dashboard files, alert-state.sh,
+advisor-notes/reflections/improvements, kit files, root docs, docs,
+product/runtime files, pilot repo, live Open Mic Colorado files,
+CommonGround, NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`,
+automation/model/API setup, cron/timer/webhook/launch-agent/global-
+config, generated/local/secret files, trust/event/private-key files,
+staging, commit, push, branch, PR, or merge. No new Outcome Circle
+started. No public-release work performed or authorized. **No
+bootstrap-rule relaxation performed; relaxation requires explicit
+later protocol change.**
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): this
+scribe records GPT's authored decision verbatim with explicit
+attribution. No paraphrase. No summary. Sami's acceptance status is
+explicitly stated (accepted in full; nothing rejected; nothing left
+undecided). All 8 "did NOT prove" honesty bullets carried verbatim
+from GPT. The bootstrap milestone is recorded honestly with explicit
+non-authorization of relaxation. Scribe is COMPLETE per the §12
+dissent requirement.
+
+Pattern: **first exit-synthesis scribe to record a bootstrap-rule
+completion** in the repo's history. The bootstrap discipline that was
+codified in PR #6 (E6-PROTOCOL-FIX-001) has now been observed for the
+first time. The relaxation possibility it unlocks is gated behind
+retrospective + explicit protocol change.
+
+---
+
+(Historical: prior auditor section preserved below as Claude wrote it
+pre-exit-synthesis. Now superseded by the formal closure recorded
+above.)
+
+## Prior Current Owner (Claude Code post-audit, pre-exit-synthesis)
+
+Claude Code completed **E6-OC-005 auditor iteration 1** inside the
+approved Outcome Circle `public-positioning judgment review` and was
+hard-stopped pending GPT/human exit synthesis. Auditor output:
+`.agent-handoff/turns/E6-OC-005-claude-public-positioning-audit-iter-1.md`
+plus a prior COLLAB.md handoff update.
+
+**Prior audit headline (now confirmed by GPT acceptance):** substantive
+judgment rubric `satisfied` (19/19 audit focus areas PASS); recommended
+bootstrap counter advance 1 → 2 of 2; circle was ready for GPT/human
+exit synthesis.
+
+The auditor recommendation was accepted by GPT in full. The bootstrap
+milestone framing the auditor anticipated is now formally recorded.
+
+I independently verified Codex's iter-1 against Sami's 19 audit focus
+areas. All PASS:
+
+| # | Focus area | Result |
+| --- | --- | --- |
+| 1 | Pre-entry clean-state capture before file write | PASS (lesson from OC-004 applied) |
+| 2-4 | HEAD + status + duplicate check | PASS (independently verified; `64ef94a`; clean; 0 dups) |
+| 5 | Full 14-field packet scribed before judgment | PASS (all 14 fields appear before "Substantive Judgment" section) |
+| 6 | STRATEGY.md exists and read-only | PASS (17491 bytes preserved; `git diff --quiet` exit 0) |
+| 7 | All 12 public-positioning gates with line refs | PASS (spot-checked Gates 1, 3, 6, 12 — refs accurate, not fabricated) |
+| 8 | Real judgment table (not presence checklist) | PASS (10 rows with substantive Safe/Unsafe distinction) |
+| 9 | 3 competitor-covered claims to avoid | PASS (first-governance / runtime / AI-review-novelty) |
+| 10 | 3 defensible claims | PASS (Git-native approval-boundary / state separation / minimal cockpit) |
+| 11 | 3 public wording changes | PASS (approval-boundary language / overlap caveats / portable "human" language) |
+| 12 | 3 evidence gaps before stronger claims | PASS (close OC-005 / competitor matrix / empirical value) |
+| 13 | `public_alpha_ready_with_caveats` supported | YES (best-fit recommendation; alternatives don't fit) |
+| 14 | No overclaiming | PASS (every overclaim category explicitly rejected) |
+| 15 | No STRATEGY edits or public-release work | PASS |
+| 16 | Only allowed write files changed | PASS |
+| 17 | No-touch surfaces untouched | PASS (per-file verified) |
+| 18 | Pass evidence sufficient | PASS (comprehensive for bounded judgment circle) |
+| 19 | Result state | **`satisfied`** for substantive judgment rubric |
+
+**Independent verification (all PASS):**
+- `git status` shows expected 2 entries (1 mod + 1 untracked turn note)
+- `git diff --check` exit 0
+- STRATEGY.md unchanged (17491 bytes preserved; `git diff --quiet` exit 0)
+- All no-touch surfaces verified per-file unchanged: PROTOCOL.md,
+  OPERATING-MODEL.md, alert-state.sh (still 6519 bytes), DASHBOARD.md,
+  DASHBOARD.html, root docs, docs/, kit/v1/
+- advisor-notes/reflections/improvements still absent; .mcp.json still
+  absent
+- Zero `* 2.md` duplicates anywhere in `.agent-handoff/`
+- Gate evidence spot-checked against STRATEGY.md — references match
+  content exactly (Codex did not fabricate references)
+- Codex's 14-field packet field-order verified inline pre-judgment
+
+**Result state: `satisfied`** for substantive judgment rubric.
+
+**Critical reminders:**
+- **`satisfied` is NOT approval.**
+- **Auditor pass is NOT approval.**
+- **Model consensus is NOT approval.**
+- **`public_alpha_ready_with_caveats` is a positioning recommendation,
+  NOT launch approval.** It says safe wording exists, not that release
+  is authorized.
+- **E6-OC-005 is ready for GPT/human exit synthesis.**
+- No commit, push, branch, PR, merge, scope expansion, new circle,
+  strategy edit, dashboard edit, protocol edit, runtime work, notifier
+  work, or public-release work is authorized by this satisfied grade.
+
+**Auditor recommendation: advance bootstrap counter from 1 → 2 of 2.**
+
+Rationale:
+- Pre-entry clean-state captured BEFORE any file write (OC-004 lesson
+  applied)
+- Full 14-field packet scribed inline pre-judgment (OC-002 lesson
+  applied)
+- Subjective rubric grading was the explicit purpose (tripwire condition
+  #2 achieved)
+- No-touch surfaces clean throughout (STRATEGY.md preserved read-only)
+- Substantive judgment honest + well-evidenced (10-row judgment table
+  with real determinations; safe positioning narrow and defensible)
+- Every overclaim category explicitly rejected
+
+This circle demonstrates: full bootstrap-compliant entry discipline +
+full pre-judgment packet scribe + subjective rubric grading + clean
+no-touch + honest judgment with explicit caveats. That's exactly what
+the bootstrap rule was designed to test.
+
+Combined with PR #9 (OC-002 as fully compliant Circle 1 of 2) and this
+circle (OC-005 as proposed Circle 2 of 2), the bootstrap rule's "two
+fully compliant Outcome Circles completed successfully and reviewed in
+repo-visible turn notes" requirement is met.
+
+**Alternative GPT exit options to consider:**
+1. Counter advances 1 → 2 (my recommendation — bootstrap requirement
+   met; unlocks next-phase considerations)
+2. Counter stays at 1 (OC-005 joins OC-003/OC-004 as not-counted;
+   would require OC-006 to satisfy bootstrap — but no substantive gap
+   detected here to justify this)
+3. Counter advances 1 → 2 with explicit retrospective requirement
+   before any NEEDS_GPT-relaxation consideration (cleaner sequencing)
+
+Sami is the next actor to decide one of:
+
+(a) **RECOMMENDED**: accept the iter-1 `satisfied` grade, paste exit-
+    synthesis question to GPT (with audit headline + bootstrap counter
+    recommendation), let GPT synthesize and decide counter direction.
+(b) Request iteration 2 if you see a substantive judgment gap I missed
+    (none detected on independent verification).
+(c) Pause — leave the circle state as-is until you decide.
+
+After GPT exit synthesis lands and Sami marks the circle complete:
+- If counter advances 1 → 2: bootstrap satisfied → retrospective
+  considered → tripwire conditions #1 and #2 achieved → public-flip
+  path moves to conditions #4 (repo strangerprintability) and #5
+  (top-of-funnel artifacts).
+- If counter stays at 1: another fully compliant circle needed.
+
+No further PROTOCOL.md edit, OPERATING-MODEL.md edit, STRATEGY.md
+edit, kit template edit, alert-state edit, advisor-notes/reflections/
+improvements path creation, iteration 2 execution, third Outcome
+Circle (OC-006), packet template, loop runner, notifier, automation,
+model call, OpenAI API setup, NanoClaw/CommonGround/Notion,
+MCP/plugin/bridge, cron/timer/webhook/launch agent/global config,
+staging, commit, push, branch, PR, pilot repo touch, live Open Mic
+Colorado touch, public-release work, or product/runtime work is
+authorized.
+
+## Coordinator Trigger
+- State: ROUTINE
+- Reason: auditor judgment of a bounded judgment-rubric circle inside
+  an approved Outcome Circle. Per bootstrap rule, ROUTINE eligibility
+  holds for inside-circle builder/auditor work within the packet. The
+  exit-synthesis decision itself remains NEEDS_GPT per the bootstrap
+  rule (delegated to Sami + GPT, not made here). No architecture,
+  scope, safety, tooling, automation, or UX trigger introduced this
+  turn.
+
+## Project Mode (estimated)
+- Dominant mode: Sami-decision-pending (~55%, agent heuristic
+  estimate)
+- Execution: ~25% (residual circle context until exit synthesis
+  closes)
+- Coordinator: ~20% (GPT exit synthesis pending per bootstrap;
+  potentially major decision point if counter advances)
+- Unknown: 0%
+- Reason: substantive rubric is `satisfied`; circle is awaiting Sami
+  decision + GPT exit synthesis per bootstrap rule. The bootstrap
+  counter advancement decision is a major milestone (1 → 2 means the
+  bootstrap rule is satisfied for the first time).
+
+## E6-OC-005 Auditor Iteration 1 Summary (Claude Code, local-only at this turn)
+
+**Outcome Circle:** `public-positioning judgment review`.
+
+**Auditor result state:** `satisfied` (substantive judgment rubric);
+recommended bootstrap counter advancement 1 → 2 of 2.
+
+**Files written by Claude Code this turn:**
+- `.agent-handoff/turns/E6-OC-005-claude-public-positioning-audit-iter-1.md`
+- `.agent-handoff/COLLAB.md` (this handoff update)
+
+**Read-only evidence files not edited:**
+- `.agent-handoff/STRATEGY.md` (17491 bytes preserved)
+- All prior turn notes referenced by Codex (OC-002 / OC-003 / OC-004
+  exit syntheses; OC-005 builder note; E6-STRATEGY-001 turn note)
+
+**Key audit evidence (independently verified):**
+- HEAD verified: `64ef94a1574361e9341c8db4e57a557b318dbfce`
+- Pre-entry clean status confirmed
+- Zero `* 2.md` duplicates confirmed (independently re-checked)
+- 14-field packet field-order verified inline pre-judgment
+- All 12 gate evidence references spot-checked (Gates 1, 3, 6, 12)
+  against STRATEGY.md content — match exactly
+- Codex's judgment table internally consistent (4 yes + 1 with caveats
+  vs 5 no + 1 partial; balanced toward narrow defensibility)
+- Codex's safe positioning statement passes anti-overclaim filter
+- All no-touch surfaces verified per-file unchanged
+- alert-state.sh still 6519 bytes
+
+**No-touch confirmation:** Claude Code did not edit STRATEGY.md,
+PROTOCOL.md, OPERATING-MODEL.md, dashboard files, alert-state.sh,
+advisor-notes/reflections/improvements, kit files, root docs, docs,
+product/runtime files, pilot repo, live Open Mic Colorado files,
+CommonGround, NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`,
+automation/model/API setup, cron/timer/webhook/launch-agent/global-
+config, generated/local/secret files, trust/event/private-key files,
+staging, commit, push, branch, or PR. No new Outcome Circle started.
+No public-release work performed or authorized.
+
+**Anti-sycophancy compliance** (per OPERATING-MODEL.md §12): audit
+names 3 specific nits (STRATEGY.md L367 stale relative to OC-002
+completion; positioning prose could compress for tweet-thread use;
+governance evidence layers not yet referenced in positioning prose)
+AND explicitly enumerates 14 failure modes checked-and-found-absent
+(substantive judgment mismatch / fabricated gate evidence / read-only
+evidence modified / no-touch surface modified / silent
+OPERATING-MODEL edit / silent alert-state edit / new scope started
+inside circle / iteration 2 attempted without need / external
+advisor-notes path created / STRATEGY edit / public-release work /
+launch approval / counter-advancement-without-clean-entry-discipline /
+sycophantic agreement with builder recommendation without independent
+re-evaluation — all absent). Audit is COMPLETE per the §12 dissent
+requirement.
+
+Pattern: **first Outcome Circle audit turn to grade a judgment-based
+rubric** (not just mechanical content presence). If GPT accepts counter
+advancement, **first bootstrap-rule completion in the repo's history**.
+
+---
+
+(Historical: prior Current Owner section preserved below for the
+OC-005 builder state Codex recorded in iter-1. Now superseded by this
+auditor grade. Detail preserved as Codex wrote it pre-audit.)
+
+## Prior Current Owner (Codex pre-audit)
+
+Codex completed **E6-OC-005 builder iteration 1** inside the approved
+Outcome Circle `public-positioning judgment review`.
+
+Output:
+`.agent-handoff/turns/E6-OC-005-codex-public-positioning-judgment-iter-1.md`
+plus a prior COLLAB.md handoff update.
+
+**Builder recommendation:** `public_alpha_ready_with_caveats`.
+
+Meaning: `.agent-handoff/STRATEGY.md`, combined with the attributed
+external deep-research summary supplied in the E6-OC-005 packet, supports
+a truthful public-alpha positioning statement if and only if the statement
+uses narrow approval-boundary language, avoids broad "first agent
+governance" claims, acknowledges adjacent systems, and keeps unproven
+claims explicit.
+
+Safe positioning statement drafted for future human/GPT approval, not
+authorized for publication here:
+
+```text
+We are testing a Git-native approval-boundary protocol and minimal reference
+cockpit for cross-model agent work. The narrow claim is state separation:
+done, satisfied, audited, and approved are different states, recorded in
+repo-visible evidence, and only explicit human approval authorizes release
+actions. Runtime/action governance, HITL cards, tracing, orchestration,
+coding-agent IDEs, governed-swarm systems, durable work-record systems,
+and AI-review-cannot-approve precedents are adjacent categories; this
+project is not claiming to replace or originate them.
+```
+
+**Codex's entry discipline evidence:**
+- Current HEAD recorded before any OC-005 file write:
+  `64ef94a1574361e9341c8db4e57a557b318dbfce`.
+- Clean pre-entry status recorded: `## main...origin/main`.
+- No `.agent-handoff/* 2.md` duplicate files found.
+- Full OC-005 packet scribed before substantive judgment.
+- `.agent-handoff/STRATEGY.md` exists and has no diff.
+
+**Codex's stated next actor was Claude Code as auditor.** That handoff
+is now executed via the auditor turn note above.
+
+**Safety lines:**
+- Builder recommendation is not approval.
+- Public-alpha-ready judgment is not public-release approval.
+- `satisfied` is not approval.
+- Auditor pass is not approval.
+- Model consensus is not approval.
+- No public release, README edit, STRATEGY.md edit, launch post, naming
+  decision, website work, Medium/X draft, runtime work, implementation,
+  staging, commit, push, branch, PR, merge, new scope, or next Outcome
+  Circle is authorized.
 
 ---
 

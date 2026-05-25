@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Polaris Decision Cockpit — Mockup v2 (recalibrated)</title>
+  <style>
+    :root {
+      /* Recalibrated palette: deliberate, calm-premium, not muted-utility */
+      --bg: #0f1217;
+      --surface-1: #161a21;
+      --surface-2: #1a1f27;
+      --surface-3: #1e2530;
+
+      --border-subtle: #232931;
+      --border-defined: #2e3540;
+      --border-accent: #3a4148;
+
+      --text-primary: #e8ecf2;
+      --text-secondary: #a0a8b4;
+      --text-muted: #6e7682;
+
+      /* Three deliberate accent colors, related family, warm-cool balance */
+      --accent-state: #88a890;      /* sage — for "complete" / progress states */
+      --accent-state-soft: rgba(136, 168, 144, 0.12);
+      --accent-role: #d8b070;       /* warm amber — role identity */
+      --accent-role-soft: rgba(216, 176, 112, 0.10);
+      --accent-boundary: #e09060;   /* warm copper — boundary / authority */
+      --accent-boundary-soft: rgba(224, 144, 96, 0.08);
+      --accent-boundary-border: rgba(224, 144, 96, 0.32);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+    }
+
+    /* MOCKUP BANNER — always visible */
+    .mockup-banner {
+      background: var(--accent-boundary-soft);
+      border: 1px solid var(--accent-boundary-border);
+      border-radius: 6px;
+      padding: 10px 16px;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: var(--accent-boundary);
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .mockup-banner strong { letter-spacing: 0.1em; }
+
+    /* BRAND HEADER */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .brand-mark {
+      width: 22px;
+      height: 22px;
+      color: var(--accent-state);
+    }
+    .brand-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--text-secondary);
+    }
+    .brand-sep {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .brand-context {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .brand-context code {
+      color: var(--text-secondary);
+      background: var(--surface-1);
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 11.5px;
+    }
+
+    /* HERO CARD — role + decision + step indicator */
+    .hero {
+      position: relative;
+      background: var(--surface-2);
+      border: 1px solid var(--border-defined);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    /* subtle radial gradient — one designed moment */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, var(--accent-role-soft) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero > * { position: relative; }
+
+    .role-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .role-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-role-soft);
+      border: 1px solid var(--accent-role);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-role);
+      flex-shrink: 0;
+    }
+    .role-icon svg { width: 18px; height: 18px; }
+    .role-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .role-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .role-value {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--accent-role);
+      letter-spacing: -0.005em;
+    }
+
+    .decision-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .decision-title {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: 16px;
+    }
+    .decision-context {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      max-width: 64ch;
+    }
+
+    /* STEP TIMELINE — designed component, no progress rings */
+    .step-track {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 18px 4px 4px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: calc(50% + 8px);
+      right: calc(-50% + 8px);
+      height: 1px;
+      background: var(--border-defined);
+    }
+    .step.done:not(:last-child)::after {
+      background: var(--accent-state);
+    }
+    .step-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1.5px solid var(--border-defined);
+    }
+    .step.done .step-dot {
+      background: var(--accent-state);
+      border-color: var(--accent-state);
+    }
+    .step.current .step-dot {
+      background: var(--accent-role);
+      border-color: var(--accent-role);
+      box-shadow: 0 0 0 4px var(--accent-role-soft);
+    }
+    .step-name {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .step.done .step-name { color: var(--text-secondary); }
+    .step.current .step-name {
+      color: var(--accent-role);
+      font-weight: 600;
+    }
+
+    /* ACTION ROW */
+    .action-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .btn {
+      padding: 13px 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.05s;
+      letter-spacing: 0.005em;
+    }
+    .btn:hover { opacity: 0.92; }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      flex: 1;
+      background: var(--accent-state);
+      color: #0d1518;
+      border-color: var(--accent-state);
+    }
+    .btn-secondary {
+      background: var(--surface-1);
+      color: var(--text-secondary);
+      border-color: var(--border-defined);
+      padding: 13px 20px;
+    }
+
+    /* BOUNDARY BLOCK — designed moment, not a warning sticker */
+    .boundary {
+      background: var(--surface-1);
+      border: 1px solid var(--accent-boundary-border);
+      border-left: 3px solid var(--accent-boundary);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 20px;
+    }
+    .boundary-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .boundary-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-boundary);
+    }
+    .boundary-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-boundary);
+    }
+    .boundary-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .boundary-list li {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .boundary-list li:first-child { padding-top: 0; }
+    .boundary-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .boundary-list li::before {
+      content: "✕";
+      color: var(--accent-boundary);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* TWO-COLUMN META GRID */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .meta {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+    .meta-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .meta-value {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .meta-value strong { color: var(--text-primary); font-weight: 600; }
+    .meta-value code {
+      background: var(--surface-3);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+      color: var(--text-primary);
+    }
+
+    /* EVIDENCE CARD */
+    .evidence {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .evidence-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .evidence-title {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .evidence-link {
+      font-size: 12.5px;
+      color: var(--accent-state);
+      text-decoration: none;
+    }
+    .evidence-link:hover { text-decoration: underline; }
+    .evidence-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .evidence-list li {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-left: 22px;
+      position: relative;
+    }
+    .evidence-list li:first-child { padding-top: 0; }
+    .evidence-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .evidence-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 17px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-state);
+    }
+    .evidence-list li:first-child::before { top: 7px; }
+    .evidence-list strong { color: var(--text-primary); font-weight: 600; }
+
+    /* FOOTER — persistent boundary reminder */
+    .footer {
+      padding-top: 22px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .footer strong { color: var(--text-secondary); font-weight: 600; }
+    .footer code {
+      color: var(--accent-state);
+      background: transparent;
+      font-size: 11.5px;
+    }
+
+    /* DESIGN NOTES (mockup-only — would not ship) */
+    .design-notes {
+      margin-top: 48px;
+      padding: 24px;
+      background: var(--surface-1);
+      border: 1px dashed var(--border-defined);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .design-notes-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+    .design-notes ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+    .design-notes li { margin-bottom: 6px; color: var(--text-muted); }
+    .design-notes strong { color: var(--text-secondary); font-weight: 600; }
+    .design-notes p { margin: 0 0 12px; }
+    .design-notes p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 640px) {
+      main { padding: 20px 14px 32px; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .action-row { flex-direction: column; }
+      .decision-title { font-size: 24px; }
+      .step-name { font-size: 10.5px; }
+      .step-track { padding: 16px 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mockup-banner">
+      <strong>MOCKUP v2</strong> — Recalibrated for "calm premium, not muted utility." Not the live dashboard. <code>COLLAB.md</code> remains source of truth.
+    </div>
+
+    <header class="brand">
+      <svg class="brand-mark" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M11 1 L13.2 8.8 L21 11 L13.2 13.2 L11 21 L8.8 13.2 L1 11 L8.8 8.8 Z" fill="currentColor" opacity="0.85"/>
+      </svg>
+      <span class="brand-name">POLARIS</span>
+      <span class="brand-sep">·</span>
+      <span class="brand-name" style="color: var(--text-muted); font-weight: 600;">DECISION COCKPIT</span>
+      <span class="brand-context">as of <code>cb12dbf</code></span>
+    </header>
+
+    <!-- HERO: role + decision + step timeline in one designed surface -->
+    <section class="hero">
+      <div class="role-row">
+        <div class="role-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 9 A 3 3 0 1 1 12 6 M 15 9 L 21 9 L 21 11 L 19 11 L 19 13 L 17 13 L 17 11 L 15 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="role-text">
+          <span class="role-label">Your role right now</span>
+          <span class="role-value">Approver</span>
+        </div>
+      </div>
+
+      <div class="decision-label">Decision needed</div>
+      <h1 class="decision-title">Authorize OC-005 preservation PR</h1>
+      <p class="decision-context">
+        Bootstrap counter advanced 1 → 2 of 2 via GPT exit synthesis. Three OC-005 turn notes plus COLLAB.md handoff are ready for preservation on main. This authorization issues a standard preservation-PR sequence identical to PRs #9, #10, #11.
+      </p>
+
+      <!-- Step timeline: text-named states, no progress rings -->
+      <div class="step-track" role="list" aria-label="Outcome circle progress">
+        <div class="step done" role="listitem">
+          <span class="step-dot"></span>
+          <span class="step-name">Draft</span>
+        </div>
+        <div class="step done" role="listitem">
+          <span class="step-dot"></span>
+          <span class="step-name">Built</span>
+        </div>
+        <div class="step done" role="listitem">
+          <span class="step-dot"></span>
+          <span class="step-name">Audited</span>
+        </div>
+        <div class="step done" role="listitem">
+          <span class="step-dot"></span>
+          <span class="step-name">GPT Exit</span>
+        </div>
+        <div class="step current" role="listitem">
+          <span class="step-dot"></span>
+          <span class="step-name">Your approval</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION ROW -->
+    <div class="action-row">
+      <button class="btn btn-primary" type="button">Copy authorization → paste to Claude Code</button>
+      <button class="btn btn-secondary" type="button">Ask GPT first</button>
+    </div>
+
+    <!-- BOUNDARY BLOCK — designed, not warning sticker -->
+    <section class="boundary">
+      <div class="boundary-header">
+        <svg class="boundary-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 1.5 L13.5 4 L13.5 8.5 C13.5 11.5 11 13.5 8 14.5 C5 13.5 2.5 11.5 2.5 8.5 L2.5 4 Z" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M5.5 8 L7 9.5 L10.5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="boundary-title">This authorization does NOT authorize</span>
+      </div>
+      <ul class="boundary-list">
+        <li>Bootstrap retrospective execution (separate next turn)</li>
+        <li>Public-alpha packaging, README writing, or launch posts</li>
+        <li>Dashboard implementation (this mockup is not authorized to ship)</li>
+        <li>OC-006 or any new Outcome Circle</li>
+        <li>NEEDS_GPT relaxation (requires explicit protocol change)</li>
+      </ul>
+    </section>
+
+    <!-- META GRID -->
+    <div class="meta-grid">
+      <div class="meta">
+        <div class="meta-label">This authorizes</div>
+        <div class="meta-value">
+          Stage 4 files, commit on <code>e6-oc-005-public-positioning-circle</code>, push, open PR against main. <strong>No merge.</strong>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="meta-label">If you wait</div>
+        <div class="meta-value">
+          <strong>Nothing blocked.</strong> Local state preserved. No agents waiting. Bootstrap milestone holds locally — just not visible on main yet.
+        </div>
+      </div>
+    </div>
+
+    <!-- EVIDENCE -->
+    <section class="evidence">
+      <div class="evidence-header">
+        <span class="evidence-title">Evidence</span>
+        <a class="evidence-link" href="#">View full audit →</a>
+      </div>
+      <ul class="evidence-list">
+        <li>Claude auditor graded OC-005 <strong>satisfied</strong> — 19/19 audit focus areas PASS (judgment rubric, not just content presence)</li>
+        <li>GPT-5.5 Pro exit synthesis accepted counter advancement to 2/2 with explicit "satisfied is not approval" reminder</li>
+        <li>Pre-entry clean state captured before any file write — lesson from OC-004 blocker applied</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <strong>Approval boundary enforced.</strong> Only your explicit authorization moves this forward.<br>
+      Auditor pass is not approval. Model consensus is not approval. <code>satisfied</code> is not approval.
+    </footer>
+
+    <!-- DESIGN NOTES — would not ship in real cockpit -->
+    <aside class="design-notes" aria-label="Design notes (mockup-only)">
+      <div class="design-notes-title">Design notes (mockup-only — what changed from v1)</div>
+      <p>Same semantic discipline; recalibrated visual treatment per GPT/Sami feedback.</p>
+      <ul>
+        <li><strong>Palette shift:</strong> three deliberate accents (sage state, amber role, copper boundary) from a related warm family. Replaced v1's flat teal with intentional color choices that signal craft.</li>
+        <li><strong>Typography hierarchy:</strong> larger headline (28px), more weight variation (400/500/600/700), generous tracking on labels. Reads as "someone designed this" instead of "default browser stylesheet."</li>
+        <li><strong>Step timeline:</strong> 5-dot horizontal track with named states. The current step (Approver) is highlighted in amber with a subtle ring. Communicates progress without a progress ring that could imply approval.</li>
+        <li><strong>Hero card:</strong> subtle radial gradient (one designed moment, not gradients-everywhere). 12px radius vs 6-8px on subordinate cards establishes hierarchy.</li>
+        <li><strong>Boundary block:</strong> styled as a deliberate component with custom shield SVG, 3px left border, ✕ markers on each item. Not a warning sticker.</li>
+        <li><strong>Custom inline SVGs:</strong> brand star, key icon (role), shield (boundary). All inline, no external assets. Replaces v1's emoji.</li>
+        <li><strong>Breathing room:</strong> 24-32px section spacing, 24px card padding, generous line-height. v1 was too dense.</li>
+        <li><strong>Action treatment:</strong> primary button is sage green (calm, considered — not "GO" green). Secondary button has substance, not just a text link.</li>
+      </ul>
+      <p style="margin-top: 14px;">Still single-panel, no vanity metrics, no three-panel layout, no progress rings for approval states, no drag-drop, no auto-actions. Semantic discipline from v1 carries forward verbatim.</p>
+    </aside>
+  </main>
+</body>
+</html>

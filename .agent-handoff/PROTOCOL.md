@@ -17,6 +17,15 @@ experiments, not the first run and not enabled by default.
 - Hidden chat context is not authoritative unless it is summarized into these
   files.
 
+## Approver Labeling Convention
+
+Reusable protocol language refers to `the human approver` or `configured human
+approver`. An adopting repo may display a local label for that role, such as
+the configured person's name, but local labels are instance metadata and must
+not become reusable protocol state/action vocabulary. Reusable state/action
+names must remain portable, for example `needs_human`, not
+`needs_<local_name>`.
+
 ## Baseline And Optional Layers
 
 - File-based handoff is the minimal binding reference path: Tier 0 manual
@@ -25,9 +34,9 @@ experiments, not the first run and not enabled by default.
 - Signed event governance is an optional add-on for adopters that need
   cryptographic event verification. It is not required for the v1 file-based
   kit.
-- Live bridges and adapters remain disabled until Sami separately approves the
-  exact MCP registration, plugin setup, bridge enablement, `.mcp.json`, or
-  global config change.
+- Live bridges and adapters remain disabled until the configured human
+  approver separately approves the exact MCP registration, plugin setup,
+  bridge enablement, `.mcp.json`, or global config change.
 - Turn caps are per-experiment authorization values. Experiment 1 used a
   four-turn cap; later experiments use the cap recorded in their own
   authorizing approval.
@@ -52,8 +61,8 @@ experiments, not the first run and not enabled by default.
 4. Update `COLLAB.md` before delegating to the other agent.
 5. Use file-based handoff unless the current experiment explicitly approves a
    bridge or adapter. Write the next request into `COLLAB.md`, add a turn note,
-   and stop so Sami can paste the matching prompt into the other agent when the
-   active mode is manual.
+   and stop so the configured human approver can paste the matching prompt into
+   the other agent when the active mode is manual.
 6. Add a new turn note named with the next sequence number, for example
    `001-claude-architecture.md` or `002-codex-review.md`.
 
@@ -77,8 +86,8 @@ Decision Packet or artifact-visibility fields.
 When a Human Decision Packet is used, use these fields:
 
 - State
-- Decision needed from Sami
-- Why Sami is needed
+- Decision needed from the human approver
+- Why the human approver is needed
 - Consensus recommendation
 - Divergent opinions
 - Options
@@ -98,10 +107,10 @@ Before staging, committing, or pushing, list local-only artifacts and untracked
 noise. Classify each as approved work, pre-existing duplicate/noise, unrelated
 local artifact, or unknown.
 
-Finder duplicate files such as `* 2.md` must not be staged unless Sami
-explicitly authorizes that exact path. If a non-local reviewer needs local-only
-artifacts, the next safe action is sharing, pushing, or exporting, not further
-implementation.
+Finder duplicate files such as `* 2.md` must not be staged unless the
+configured human approver explicitly authorizes that exact path. If a non-local
+reviewer needs local-only artifacts, the next safe action is sharing, pushing,
+or exporting, not further implementation.
 
 If duplicate/noise files recur, propose cleanup separately. Do not silently
 delete them, ignore them, or fold cleanup into unrelated work.
@@ -132,15 +141,17 @@ friction, evidence, proposed change, risk, files that would change, reviewer,
 Human Decision Packet, Technical Review Packet if needed, and exact approval
 text.
 
-No proposal becomes approved without Sami's explicit approval of exact files
-and scope. Prior acceptance, silence, model consensus, or "good idea" language
-is not approval. Unclear proposals must be classified before action.
+No proposal becomes approved without the configured human approver's explicit
+approval of exact files and scope. Prior acceptance, silence, model consensus,
+or "good idea" language is not approval. Unclear proposals must be classified
+before action.
 
 ## Review Routing
 
-Sami reviews vision, priority, risk tolerance, and approval. Claude and Codex
-critique or build only within explicit scope. GPT-5.5 Pro or other third-model
-review may provide useful technical cross-checks, but it is not approval.
+The configured human approver reviews vision, priority, risk tolerance, and
+approval. Claude and Codex critique or build only within explicit scope.
+GPT-5.5 Pro or other third-model review may provide useful technical
+cross-checks, but it is not approval.
 
 ## Node Capability And Advisor Rules
 
@@ -157,19 +168,20 @@ Describe each participant by four separate properties:
 
 Write capability does not imply operational role. Operational role is assigned
 per turn, and tier is assigned or declared per turn. Operational work must
-produce repo-visible output. Sami alone has approval capability.
+produce repo-visible output. The configured human approver alone has approval
+capability.
 
-External advisor output is non-operational until Sami approves it or a
-repo-visible record captures it. Self-scribed external advisor notes should use
-`.agent-handoff/advisor-notes/`; creating that path still requires explicit
-scope. Operational turn notes that use advisor input must cite the advisor note
-path or quote block.
+External advisor output is non-operational until the configured human approver
+approves it or a repo-visible record captures it. Self-scribed external advisor
+notes should use `.agent-handoff/advisor-notes/`; creating that path still
+requires explicit scope. Operational turn notes that use advisor input must
+cite the advisor note path or quote block.
 
-If Sami or a repo-writing node scribes advisor input, include the advisor name,
-verbatim text in a code block with no length cap, a structured summary, and
-what Sami accepted, rejected, or left undecided. For non-text or unavailable
-transient artifacts, state the gap explicitly. Do not truncate advisor text to
-save storage or tokens.
+If the configured human approver or a repo-writing node scribes advisor input,
+include the advisor name, verbatim text in a code block with no length cap, a
+structured summary, and what the configured human approver accepted, rejected,
+or left undecided. For non-text or unavailable transient artifacts, state the
+gap explicitly. Do not truncate advisor text to save storage or tokens.
 
 ### GPT Coordinator / Outcome Architect
 
@@ -178,21 +190,22 @@ Stable role model:
 - GPT-5.5 Pro: coordinator / outcome architect / external advisor.
 - Codex: builder / implementer / investigator.
 - Claude Code: auditor / critic / verifier.
-- Sami: approval / priority / risk / taste.
+- Human approver: approval / priority / risk / taste.
 - Repo: source of truth.
 
 GPT may recommend, synthesize, draft prompts, and define outcome/rubric
 proposals. GPT does not approve scope, pushes, or completion. Approval remains
-Sami's sole authority.
+the configured human approver's sole authority.
 
 Ask GPT when a milestone, pivot, architecture decision, repeated UX or
 cognitive-load failure, "are we wasting time?" question, conflicting
 Claude/Codex recommendations, outcome/rubric definition, multi-turn loop
-approval consideration, high-stakes/noisy/ambiguous decision, or Sami request
-for external synthesis appears. GPT is not required for routine
-implementation, routine critique, straightforward push authorization,
-already-scoped no-choice handoffs, or low-risk verification where Claude/Codex
-agree and Sami is not being asked for strategic judgment.
+approval consideration, high-stakes/noisy/ambiguous decision, or a request from
+the configured human approver for external synthesis appears. GPT is not
+required for routine implementation, routine critique, straightforward push
+authorization, already-scoped no-choice handoffs, or low-risk verification
+where Claude/Codex agree and the configured human approver is not being asked
+for strategic judgment.
 
 #### Coordinator Trigger Classification
 
@@ -204,9 +217,10 @@ Every turn note must include this section near the top:
 - Reason: <one sentence>
 ```
 
-Sami is never responsible for determining routine status. The active
-repo-writing node must classify the Coordinator Trigger state. If the
-classification is missing, treat the turn as `UNCLEAR` and default to Ask GPT.
+The configured human approver is never responsible for determining routine
+status. The active repo-writing node must classify the Coordinator Trigger
+state. If the classification is missing, treat the turn as `UNCLEAR` and
+default to Ask GPT.
 
 `ROUTINE` is allowed only when the turn is already scoped, low-risk,
 non-strategic, and no architecture, pivot, UX-friction, cognitive-load,
@@ -216,15 +230,15 @@ conflict, safety, automation, or tooling trigger is active.
 including milestone, pivot, architecture decision, repeated UX/cognitive-load
 failure, "are we wasting time?", conflicting Claude/Codex recommendations,
 outcome/rubric definition, multi-turn loop approval consideration, high-stakes/
-noisy/ambiguous decision, or Sami request.
+noisy/ambiguous decision, or request from the configured human approver.
 
 `UNCLEAR` applies when the active repo-writing node cannot confidently classify
 the turn as `ROUTINE`. `UNCLEAR` defaults to Ask GPT.
 
 When state is `NEEDS_GPT` or `UNCLEAR`, the dashboard primary recommendation
-should become "Ask GPT-5.5 Pro," not "Sami decide if GPT is needed." The
-handoff must include the exact question to paste to GPT. Respect the
-E5-T-FIX-004 single-recommendation principle.
+should become "Ask GPT-5.5 Pro," not a request for the human approver to decide
+whether GPT is needed. The handoff must include the exact question to paste to
+GPT. Respect the E5-T-FIX-004 single-recommendation principle.
 
 When critiquing an implementation or design, the auditor may upgrade the
 Coordinator Trigger classification with a one-sentence reason, such as when
@@ -235,18 +249,19 @@ paste question.
 
 When invoked, GPT should produce concise synthesis, consensus recommendation,
 divergent opinions, risk/tradeoff summary, exact next prompts for Codex and/or
-Claude, outcome/rubric proposal when relevant, exact approval text if Sami must
-approve, explicit uncertainty / unknowns, and no repo-authoritative claims
-unless scribed.
+Claude, outcome/rubric proposal when relevant, exact approval text if the
+configured human approver must approve, explicit uncertainty / unknowns, and no
+repo-authoritative claims unless scribed.
 
-Near term, Sami pastes GPT output into Claude/Codex, and the active
-repo-writing node scribes it with attribution. Include a verbatim quote in a
-code block when exact text is available, no length cap for text, a structured
-summary, and what Sami accepted, rejected, or left undecided. Do not silently
-launder GPT advice into "the system decided." If no turn is active, the next
-repo-writing turn that uses the GPT input scribes it. If GPT input applies to
-both Codex and Claude, the next repo-writing node records the shared source
-once and the other node references it.
+Near term, the configured human approver pastes GPT output into Claude/Codex,
+and the active repo-writing node scribes it with attribution. Include a
+verbatim quote in a code block when exact text is available, no length cap for
+text, a structured summary, and what the configured human approver accepted,
+rejected, or left undecided. Do not silently launder GPT advice into "the
+system decided." If no turn is active, the next repo-writing turn that uses the
+GPT input scribes it. If GPT input applies to both Codex and Claude, the next
+repo-writing node records the shared source once and the other node references
+it.
 
 If a GPT invocation trigger fires, the dashboard primary recommendation may
 become "Ask GPT-5.5 Pro." Respect the E5-T-FIX-004 single-recommendation
@@ -256,7 +271,7 @@ surface.
 #### Outcome Circles
 
 An Outcome Circle is a bounded builder/auditor loop that may run only after
-Sami approves the exact entry phrase and packet:
+the configured human approver approves the exact entry phrase and packet:
 
 ```text
 Approved Outcome Circle: <packet name>
@@ -275,7 +290,7 @@ bootstrap period, an Outcome Packet may not self-classify entry or exit as
 Circle may still be `ROUTINE` when it remains within the packet. Entry includes
 drafting, finalizing, and approving the packet. Exit includes `satisfied`,
 `blocker`, `scope_conflict`, `failed`, `interrupted`,
-`max_iterations_reached`, `needs_gpt`, `needs_sami`, or final synthesis about
+`max_iterations_reached`, `needs_gpt`, `needs_human`, or final synthesis about
 whether the outcome was met. This
 bootstrap rule may be revised only by explicit later protocol change after the
 first two circles are observed.
@@ -291,21 +306,23 @@ Minimum Outcome Packet fields:
 - auditor/grader
 - pass evidence
 - stop conditions
-- when Sami is called back
+- when the human approver is called back
 - when GPT is called back
 - commit/push rule
 - artifact visibility requirement
 - branch/PR policy if applicable
 
 Result states are `satisfied`, `needs_revision`, `max_iterations_reached`,
-`blocker`, `scope_conflict`, `needs_gpt`, `needs_sami`, `failed`, and
+`blocker`, `scope_conflict`, `needs_gpt`, `needs_human`, `failed`, and
 `interrupted`.
 
 Auditor pass is not approval. Rubric satisfied is not approval. Model
 consensus is not approval. `satisfied` means the auditor believes the rubric
 is satisfied; it does not authorize commit, push, new scope, or final
 completion. Commit, push, new scope, and final completion still require
-Sami's exact approval unless the exact Outcome Packet explicitly permits them.
+the configured human approver's exact approval unless the exact Outcome Packet
+explicitly permits them. The adopting repo may configure a local label for the
+human approver.
 
 Builder cannot grade its own work. The auditor must search for failure modes.
 If scope or mode is unclear, stop and Ask GPT.
@@ -314,10 +331,74 @@ No commits or pushes occur inside an Outcome Circle unless the packet
 explicitly allows them. If the packet allows commit/push, it must state
 branch/PR policy and whether direct push to `main` is forbidden. The default
 recommendation for CI-heavy or shared repos is PR over direct push unless
-Sami explicitly approves direct push.
+the configured human approver explicitly approves direct push.
 
 Outcome Circle protocol/schema is codified here; loop runners, automation,
 tooling, and the first test circle remain separate future work.
+
+#### Human Decision Actions And Notes
+
+Human decision actions are action verbs, not auditor result states. Use these
+portable action names when recording an explicit human decision:
+
+- `authorize_exact_action`: authorizes only the exact requested action and
+  scope. Resulting state may be recorded as `authorized_exact_action` or an
+  exact local approval state such as `approved_for_<specific_action>`.
+- `reject_redo`: rejects the current result and requests another attempt.
+  Resulting state is `needs_revision` when the existing packet still permits
+  another iteration; otherwise a new Outcome Packet is required.
+- `reject_close`: rejects and closes the scope without another attempt.
+  Resulting state is `closed_rejected`.
+- `ask_coordinator`: pauses for coordinator synthesis. Resulting state is
+  `paused_pending_coordinator` or `needs_gpt`; the decision should re-surface
+  after the coordinator response or after the packet's stated deadline, with a
+  24-hour default when no deadline is given.
+- `pause_pending`: pauses without rejecting. Resulting state is
+  `paused_pending_human`.
+
+Do not collapse `reject_redo` and `reject_close` into a generic reject action.
+Rejection does not authorize new scope, automatic redo, file edits, commits,
+pushes, public release, naming, dashboard changes, protocol changes, or
+runtime work unless the packet explicitly authorizes that next action.
+
+Human Decision Notes are decision rationale, not private reasoning. Use this
+minimum note shape when a note is required or useful:
+
+- Why I chose this:
+- Scope boundary:
+- Caveat / condition:
+
+Notes are required for `reject_redo`, `reject_close`, `ask_coordinator`,
+`pause_pending` when the pause blocks another agent or is long-running, and
+any decision that overrides a Builder, Auditor, or Coordinator recommendation.
+Notes are optional for routine `authorize_exact_action`. Do not use fuzzy
+"high consequence" classification as a required-note trigger unless a later
+protocol turn defines exact thresholds.
+
+Notes are repo-visible audit context. They must not include secrets, private
+reasoning, or content the human would not include in a PR review.
+
+Agents may read repo-visible Human Decision Notes as context and may cite them
+in turn notes with attribution. Agents may not adjust builder or auditor
+thresholds based on past notes, pad evidence to match what was approved last
+time, add boilerplate or proactive flags merely to match perceived human
+preferences, treat individual past decisions as protocol changes, or silently
+modify rubrics or evidence collection based on past notes.
+
+Notes are descriptive, not normative, until codified by an explicit protocol or
+doc-lock turn. Redo notes may propose rubric changes, but they do not
+automatically modify rubrics.
+
+When an agent cites a past Human Decision Note, include this attribution line:
+
+```text
+Citing this note as context only; not adjusting [builder/auditor/coordinator] thresholds based on it.
+```
+
+Future meta-audits may look for adaptation patterns, including formulaic audit
+findings, declining rejection rates without independent quality evidence, new
+sections that mirror past notes, or builder/auditor agreement rising without a
+clear quality explanation.
 
 NanoClaw or any transport layer is a possible future option only. NanoClaw was
 previously investigated and deferred for governance-fit reasons; reconsidering
@@ -332,7 +413,7 @@ Use vendor diversity as a spectrum:
 - weak: same model with different prompts, context, sampling, or role framing.
 
 Stronger diversity often catches more blind spots, but this is a guideline;
-Sami may override.
+the configured human approver may override.
 
 Architect-tier nodes may delegate scoped subagent work inside an authorized turn
 without separate per-subagent approval when the task fits the parent scope, the
@@ -343,7 +424,7 @@ approvals, or scope expansion. Subagent output is advisory to the architect.
 Two architect-tier nodes may be assigned as co-architects for a turn. A
 reconciliation note must include `Convergence Status: converged | synthesized |
 divergent | escalated`. No implementation proceeds while status is `divergent`
-or `escalated` without explicit Sami routing.
+or `escalated` without explicit configured human approver routing.
 
 ## Turn Note Schema
 
@@ -381,7 +462,7 @@ architecture | critique | implementation | smoke | retrospective
 - Console/network issues:
 
 ## Handoff
-- Next agent: Claude | Codex | Sami
+- Next agent: Claude | Codex | human approver
 - Specific ask:
 ```
 
@@ -391,7 +472,7 @@ Nits are optional and must not expand the required scope.
 ## Turn Note Schema Additions
 
 Agent values may include:
-Claude | Codex | Sami | Consultant
+Claude | Codex | human approver | Consultant
 
 Add this optional section to all future turn notes:
 
@@ -427,7 +508,7 @@ append-only files or append-only event entries.
 If an unscheduled fix turn is required, the turn note must include:
 
 - Trigger:
-- Sami approval basis:
+- human approval basis:
 - Scope limit:
 - Files touched:
 - Verification performed:
@@ -450,16 +531,16 @@ Experiment 1's authorizing turn cap was 4 experiment turn notes:
 3. `003-claude-implementation.md`
 4. `004-codex-implementation-smoke.md`
 
-After turn 004, stop and hand off to Sami for retrospective. Do not create turn
-005 without explicit approval.
+After turn 004, stop and hand off to the configured human approver for
+retrospective. Do not create turn 005 without explicit approval.
 
 ## Later Bridge Or Adapter Experiments
 
 After the file-based contract is proven, a later experiment may test
 Claude-hosted Codex through the official Codex plugin, a direct
-`codex mcp-server` wrapper, or another adapter. This requires Sami's explicit
-approval for the exact adapter and setup because it changes tool configuration
-and the failure mode under test.
+`codex mcp-server` wrapper, or another adapter. This requires the configured
+human approver's explicit approval for the exact adapter and setup because it
+changes tool configuration and the failure mode under test.
 
 Codex-hosted Claude is out of scope until the file-based and Claude-hosted Codex
 experiments both show clear value.
@@ -488,7 +569,7 @@ For Experiment 1, use this split:
 
 ## Stopgates
 
-Stop and ask Sami before:
+Stop and ask the configured human approver before:
 
 - installing dependencies,
 - committing, pushing, merging, or creating a PR,
@@ -510,9 +591,11 @@ A consultant, coordinator, or subagent may not treat a proposal as approved,
 authorize implementation, bypass approvals, delete files, change permissions,
 enable bridges, install dependencies, modify global Claude/Codex configuration,
 commit, push, merge, create a PR, or instruct another agent to do any of those
-things unless Sami has explicitly approved that exact action and scope.
+things unless the configured human approver has explicitly approved that exact
+action and scope.
 
-Only Sami can move an item from "proposed" to "approved."
+Only the configured human approver can move an item from "proposed" to
+"approved."
 
 Approval must be explicit, scoped, and recorded in `COLLAB.md`, a turn note, or
 a protocol file. Absence of objection, prior delegation, or model consensus is

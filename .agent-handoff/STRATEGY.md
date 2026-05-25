@@ -26,16 +26,21 @@ developer-workspace surfaces. The differentiator here is not another runtime.
 It is auditable coordination and approval discipline across different model
 families.
 
-The current working role model remains:
+The portable role model is:
 
 ```text
-GPT coordinates.
-Codex builds.
-Claude audits.
-Sami approves.
+Coordinator frames.
+Builder implements.
+Auditor verifies.
+Human approver decides.
 Repo records the trail.
 Polaris shows the next action.
 ```
+
+Current local assignments are GPT-5.5 Pro as Coordinator, Codex as Builder,
+Claude Code as Auditor, Claude Design as Design specialist, and Sami as the
+configured human approver. Those assignments are instance metadata, not fixed
+protocol semantics.
 
 The strategy should be open-source-first unless evidence later says otherwise.
 Open-source-first does not foreclose later B-corp services, nonprofit/spec
@@ -109,7 +114,7 @@ Current pattern:
 - Sami approves an exact Outcome Packet.
 - Builder works inside allowed files and no-touch boundaries.
 - Auditor grades against explicit pass evidence.
-- Stop conditions call back GPT or Sami.
+- Stop conditions call back the Coordinator or the human approver.
 - No scope expansion occurs inside the circle.
 - Rubric satisfaction is evidence, not approval.
 
@@ -213,8 +218,22 @@ invariants explicit:
 - Approval remains human-only.
 - Operational state must be repo-visible.
 - Independent review must be evidenced, not asserted.
-- Stop conditions must call back the coordinator or Sami.
+- Stop conditions must call back the Coordinator or the human approver.
 - Transport cannot become governance.
+
+Honest limitation: this is a friction and transparency layer, not a strong
+security layer and not a solution to AI alignment. It assumes mostly
+cooperative agents. Smarter agents may learn to game visible rules,
+attribution lines, meta-audits, or approval patterns. Cryptographic integrity
+can help with record tampering, but it does not prove good judgment, honest
+intent, or non-sycophantic behavior.
+
+Human Decision Notes add a useful audit trail and a specific new risk:
+sycophantic adaptation. Agents may read notes as context, but notes are
+descriptive, not normative, until codified by an explicit protocol/doc-lock
+turn. Agents should not pad evidence, soften audit thresholds, or add
+boilerplate merely because prior notes revealed what the human liked or
+disliked.
 
 ## 6. Lessons From Existing Products
 
@@ -322,8 +341,16 @@ Polaris should remain minimal, directional, and human-role-aware.
 It should show:
 
 - Current human role.
+- Decision needed.
+- Primary action surfaced.
+- Decision options.
+- Human Decision Notes.
 - Paste target.
 - Approval / courier / Ask-GPT distinction.
+- Approval boundary: this authorizes / this does not authorize.
+- Risk context, not risk permission.
+- Trust footer: Git-visible / tamper-evident when configured / not
+  tamper-proof.
 - Source-of-truth warning.
 - Snapshot lifecycle.
 - One primary recommendation.
@@ -348,6 +375,35 @@ The line between cockpit and IDE:
 - Polaris does not run agents, manage worktrees, display full traces, or host
   the runtime.
 
+The current v1 design direction is Decision Cockpit / Command View as the
+default, with Kanban / Operations Board as a secondary scan view. The default
+screen should answer: am I needed, what decision is needed, what exact action
+is surfaced, who receives it, what evidence supports it, what is not
+authorized, and what happens if I wait.
+
+Decision options should include:
+
+- `authorize_exact_action`
+- `reject_redo`
+- `reject_close`
+- `ask_coordinator`
+- `pause_pending`
+
+Human Decision Notes should appear as decision rationale, not private
+reasoning. Copy direction for the later dashboard:
+
+```text
+Decision rationale (required for reject, ask, override, or long pause)
+Visible to future agents and preserved in the audit trail. Keep to ~2-4
+sentences. Avoid private reasoning, secrets, or content you would not include
+in a PR review.
+```
+
+Avoid generic "Approve" without scope, green "safe to approve" badges,
+progress rings that imply approved, drag/drop approval, agent-online vanity
+metrics, full traces, and dashboard copy that makes `satisfied` look like
+approval.
+
 ## 9. Current Evidence And Limits
 
 Evidence actually shipped:
@@ -360,14 +416,19 @@ Evidence actually shipped:
 - E6-BRAND-001 clarified naming boundaries.
 - The repo has multiple merged governance PRs and a clean pattern of scoped
   turn notes, no-touch verification, and source-of-truth warnings.
+- E6-OC-002 is recorded as fully compliant bootstrap Circle 1 of 2.
+- E6-OC-005 exit synthesis is present locally and records E6-OC-005 as fully
+  compliant bootstrap Circle 2 of 2. E6-DOCS-ALIGN-001 did not verify whether
+  the OC-005 preservation PR has landed.
 
 Evidence limits:
 
 - E6-OC-001 is Circle 0.5 / pilot observed, not fully compliant Circle 1.
-- Bootstrap counter remains 0 of 2 fully compliant circles.
+- Bootstrap observation is locally recorded as 2 of 2 after E6-OC-005 exit
+  synthesis, but automatic bootstrap-rule relaxation is not authorized.
 - Observed pilot counter is 1.
 - Burden reduction magnitude is unproven.
-- Autonomy without Sami as transport is unproven.
+- Autonomy without the human approver as transport is unproven.
 - Subjective rubric grading is unproven.
 - Behavior under serious Claude/Codex disagreement is unproven.
 - Product/runtime task safety is unproven.
@@ -378,6 +439,9 @@ Claim discipline:
 - We can say the protocol is promising.
 - We can say it caught real problems in this harness.
 - We can say it has a coherent differentiator.
+- We can say the bootstrap observation requirement is locally recorded as met
+  only after OC-002 and OC-005, with OC-003 and OC-004 preserved as non-counting
+  process stops.
 - We cannot yet say it reduces burden by a measured amount.
 - We cannot yet say it generalizes to teams, regulated environments, or
   production agent swarms.
@@ -415,7 +479,69 @@ Commercial paths later.
 If the protocol fails to generalize, a clear negative result is still useful:
 it can show which governance assumptions broke and why.
 
-## 11. Documentation And Evidence Bloat
+## 11. Trust Layer And Public Wording
+
+Repo-visible evidence is necessary but not sufficient for legal/audit trust.
+The trust model should be phased.
+
+Phase 0 - current:
+
+- Git-visible Markdown records.
+- PR history.
+- Exact approval text.
+- No-touch lists.
+- Turn notes.
+- `COLLAB.md` handoff.
+
+Phase 1 - Git hardening:
+
+- Protected branches.
+- Signed commits or signed tags where practical.
+- Artifact manifests with stable hashes.
+- Hash-bound approval records.
+- CI verification of manifest consistency.
+
+Phase 2 - external transparency:
+
+- Transparency logs or attestations.
+- External timestamping.
+- Signed release artifacts.
+- WORM/append-only storage.
+- Independent mirror repo.
+
+Phase 3 - optional high-stakes anchoring:
+
+- Blockchain hash anchoring for approval/evidence manifests only.
+- No content on-chain.
+- Optional deployment plugin, not a default dependency.
+
+Blockchain is not MVP. It may later prove useful for censorship-resistant hash
+anchoring, but it does not solve forged human intent, bad rubrics, prompt
+injection, model-generated fake evidence, compromised credentials, insider
+misuse, sycophancy, or governance drift. Avoid crypto-theater framing.
+
+Safe public wording:
+
+- Git-native, audit-visible governance record.
+- Tamper-evident with protected-branch and signing discipline.
+- Externally anchorable evidence record.
+- Audit-friendly by design.
+
+Unsafe wording:
+
+- Tamper-proof.
+- Immutable audit trail.
+- Legally compliant or legally verified.
+- Blockchain-secured.
+- AI-safe approval system.
+- Cannot be forged.
+
+Prompt/API injection screening belongs later as auditor or CI input, not as an
+approval gate. It may scan high-stakes PR diffs, approval text, dashboard copy,
+protocol changes, kit changes, and external advisor transcripts. Its output
+should be "concerns found" or "no concerns detected," never "approved."
+
+## 12. Documentation And Evidence Bloat
 
 Repo-visible evidence is part of the product.
 
@@ -451,26 +577,25 @@ Possible future approaches, not authorized here:
 
 No compaction machinery is recommended in this strategy turn.
 
-## 12. Candidate Next Steps
+## 13. Candidate Next Steps
 
 These are candidates, not commitments. No implementation is authorized by this
 section.
 
 Candidate sequence:
 
-1. Claude critiques E6-STRATEGY-001 for accuracy, scope, evidence discipline,
-   naming boundary, and overclaiming.
-2. Run a fully compliant Outcome Circle #1 with explicit full-packet entry,
-   GPT at entry, builder review, auditor review, and GPT exit.
-3. Run a second fully compliant circle.
-4. After two fully compliant circles, hold a retrospective on whether the
-   bootstrap rule can be relaxed for non-novel circles.
-5. Consider an Outcome Packet template only if packet authoring proves painful.
-6. Consider advisor-notes only if external input becomes hard to preserve in
-   turn notes.
-7. Consider runtime mapping only after manual governance mechanics prove useful.
-8. Consider open-source/spec packaging only after at least two fully compliant
-   circles and a retrospective.
+1. Claude critiques E6-DOCS-ALIGN-001 for scope, mirror discipline, trust
+   wording, decision-action clarity, and no-touch compliance.
+2. Preserve OC-005 artifacts and this docs alignment by whatever PR shape Sami
+   separately authorizes.
+3. Run the bootstrap retrospective before relaxing the bootstrap rule,
+   implementing dashboard v1, or beginning public-alpha packaging.
+4. Lock Decision Cockpit v1 scope.
+5. Build Decision Cockpit v1 in a separately approved Outcome Circle.
+6. Run a trust-layer design-only turn for signing/manifest/transparency design.
+7. Consider README/strangerprintability only after the retrospective and
+   preservation path are settled.
+8. Consider runtime mapping only after manual governance mechanics prove useful.
 
 Near-term restraint:
 
@@ -480,8 +605,10 @@ Near-term restraint:
 - Do not build a graph editor.
 - Do not build dashboard features beyond what the human needs for the next
   action.
+- Do not implement trust-layer machinery, blockchain anchoring, prompt/API
+  scanning, or public-release artifacts in this strategy/docs turn.
 
-## 13. Open Questions
+## 14. Open Questions
 
 - What is the formal name of the broader protocol?
 - When does Polaris become open-source vs remain internal harness?
@@ -496,6 +623,13 @@ Near-term restraint:
   reference implementation?
 - What belongs in `STRATEGY.md` vs `OPERATING-MODEL.md` vs `PROTOCOL.md`?
 - When should the bootstrap counter move from observation to protocol change?
+- What is the minimum Human Decision Record schema that preserves rationale
+  without turning notes into essays?
+- Which trust phase is the honest public-alpha default: Phase 0 only, or Phase
+  0 with a Phase 1 roadmap?
+- Which prompt/API injection checks belong in auditor practice versus CI?
+- How do we detect sycophantic adaptation without creating a new gameable
+  checklist?
 
 ## Source Breadcrumbs
 
@@ -508,6 +642,11 @@ Primary repo artifacts:
 - `.agent-handoff/turns/E6-OC-001-codex-protocol-mirror-verification-iter-1.md`
 - `.agent-handoff/turns/E6-OC-001-claude-protocol-mirror-audit-iter-1.md`
 - `.agent-handoff/turns/E6-OC-001-gpt-exit-synthesis.md`
+- `.agent-handoff/turns/E6-OC-002-gpt-exit-synthesis.md`
+- `.agent-handoff/turns/E6-OC-005-codex-public-positioning-judgment-iter-1.md`
+- `.agent-handoff/turns/E6-OC-005-claude-public-positioning-audit-iter-1.md`
+- `.agent-handoff/turns/E6-OC-005-gpt-exit-synthesis.md`
+- `.agent-handoff/turns/E6-DOCS-ALIGN-001-codex-decision-notes-trust-doc-alignment.md`
 
 User-provided strategy material:
 
@@ -516,6 +655,9 @@ User-provided strategy material:
 - GPT coordinator framing.
 - Screenshots and commentary about LangSmith / Fleet-style surfaces.
 - Discussion of docs bloat, open-source paths, and purpose-driven strategy.
+- Decision Cockpit v1 design convergence.
+- Human Decision Notes and trust-layer advisory material.
+- Sycophantic-adaptation and smarter-agent limitation notes.
 
 ## Operating Guardrail
 

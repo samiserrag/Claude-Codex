@@ -1,6 +1,6 @@
 # Operating Model — Claude-Codex Harness
 
-_Last doc-lock: E6-C (commit pending)_
+_Last doc-lock: E6-DOCS-ALIGN-001 (local, commit pending)_
 
 _Document is updated only via authorized doc-lock turns._
 
@@ -31,10 +31,10 @@ Breadcrumbs: `PROTOCOL.md`, `COLLAB.md`, E5-I, E5-T, E5-U, E6-B, E6-DASH-001.
 The converged operating model is:
 
 ```text
-GPT coordinates.
-Codex builds.
-Claude audits.
-Sami approves.
+Coordinator frames.
+Builder implements.
+Auditor verifies.
+Human approver decides.
 Repo records the trail.
 Polaris shows the next action.
 ```
@@ -51,7 +51,13 @@ Transport, notification, API-backed nodes, or NanoClaw-like runtimes may assist
 later, but they cannot become governance. They may move messages; they do not
 grant approval or replace Git, `COLLAB.md`, Polaris, and turn notes.
 
-Breadcrumbs: E6-A, E6-B, E6-B-FIX-001, E6-DASH-001, E5-N, E5-U.
+Role names are portable. Model names are current assignments in this local
+repo, not fixed protocol semantics. A later repo may assign different models
+or humans to Coordinator, Builder, Auditor, Design specialist, Verifier, Scribe,
+and Human approver roles without changing the role boundaries.
+
+Breadcrumbs: E6-A, E6-B, E6-B-FIX-001, E6-DASH-001, E5-N, E5-U,
+E6-DOCS-ALIGN-001.
 
 ## 2. Stable Role Model
 
@@ -91,6 +97,8 @@ Breadcrumbs: E5-S, E6-A, E6-B, E6-B-FIX-001, E6-DASH-001.
 | E6-B-FIX-001 | Coordinator Trigger Classification | Removed burden from Sami to decide routine status; active repo-writing node classifies `ROUTINE`, `NEEDS_GPT`, or `UNCLEAR`. | `E6-B-FIX-001-*`; commit `dbb9172` |
 | E6-DASH-001 | Polaris redesign | Reframed dashboard as a human cockpit: paste-to-whom actions, role-flow strip, visible Ask-GPT path, and collapsed agent payloads. | `E6-DASH-001-*`; commit `0fe671c` |
 | E6-C | Operating model doc-lock | Locks the E5/E6 convergence into durable repo documentation and adds Project Mode / Outcome Circle concepts. | `E6-C-codex-operating-model-docs-lock.md`; commit pending |
+| E6-OC-002 / E6-OC-005 | Bootstrap observation milestone | Observed two fully compliant bootstrap circles: one objective smoke verification and one judgment-based public-positioning review. OC-003 and OC-004 remain useful process-stop evidence, not counting circles. | `E6-OC-002-*`, `E6-OC-005-*`; OC-005 preservation PR status not verified in E6-DOCS-ALIGN-001 |
+| E6-DOCS-ALIGN-001 | Decision notes + trust-layer docs realignment | Folds human decision actions, decision notes, sycophantic-adaptation threat, trust-layer phases, and Decision Cockpit v1 direction into docs before dashboard implementation. | `E6-DOCS-ALIGN-001-codex-decision-notes-trust-doc-alignment.md`; local, commit pending |
 
 ## 4. Coordinator Trigger
 
@@ -215,7 +223,7 @@ The full Outcome Packet must be inline with the approval. Minimum fields:
 - auditor/grader
 - pass evidence
 - stop conditions
-- when Sami is called back
+- when the human approver is called back
 - when GPT is called back
 - commit/push rule
 - artifact visibility requirement
@@ -232,8 +240,8 @@ Non-entry cases:
 
 Auditor pass is not approval. "Rubric satisfied" means the auditor believes
 the rubric is satisfied; it does not mean the work is approved. Commit, push,
-new scope, and final completion still require Sami's exact approval unless the
-exact Outcome Packet approval explicitly says otherwise.
+new scope, and final completion still require the human approver's exact
+approval unless the exact Outcome Packet approval explicitly says otherwise.
 
 Default commit/push policy:
 - no commits or pushes inside an Outcome Circle unless the packet explicitly
@@ -242,6 +250,30 @@ Default commit/push policy:
   direct push to `main` is forbidden
 - the default recommendation for CI-heavy or shared repos is PR over direct
   push unless Sami explicitly approves direct push
+
+Human decision actions are a separate layer from auditor result states. The
+portable action vocabulary is:
+
+| Human action | Protocol meaning | Resulting state | Note requirement |
+| --- | --- | --- | --- |
+| `authorize_exact_action` | Approve only the exact requested action and scope | `authorized_exact_action` or exact local approval state | Optional for routine approval |
+| `reject_redo` | Reject current result and request another attempt | `needs_revision` if still inside packet; otherwise new packet needed | Required |
+| `reject_close` | Reject and close the scope | `closed_rejected` | Required |
+| `ask_coordinator` | Pause for coordinator synthesis | `paused_pending_coordinator` or `needs_gpt` | Required |
+| `pause_pending` | Pause without rejecting | `paused_pending_human` | Required only when blocking another agent or long-running |
+
+Notes are also required for any human decision that overrides a Builder,
+Auditor, or Coordinator recommendation. They are decision rationale, not
+private reasoning. Suggested shape:
+
+```text
+Why I chose this:
+Scope boundary:
+Caveat / condition:
+```
+
+Redo notes may propose rubric changes, but they do not modify rubrics until a
+later protocol/doc-lock turn codifies the change.
 
 This section describes the reference model and packet contract. It does not
 implement loop runners, rubric templates, automation, tooling, or the first
@@ -286,6 +318,33 @@ staleness are expected: browser refresh reloads the same static file bytes
 until a repo-writing agent refreshes the dashboard. Future Project Mode panel
 work belongs in a later turn.
 
+The current converged v1 direction is Decision Cockpit first, Kanban /
+Operations Board second. The default view should answer:
+
+- What is the human approver's current role?
+- What decision is needed?
+- What exact action is surfaced?
+- Who receives the action?
+- What evidence supports it?
+- What is explicitly not authorized?
+- What happens if the human waits?
+
+Decision Cockpit v1 should include Simple Signals / Focus Panel, human role,
+decision needed, primary action surfaced, decision options, Human Decision
+Notes, approval boundary, risk context, and a trust footer. Risk context is not
+risk permission; avoid a single green "safe to approve" badge. Prefer
+consequence, evidence confidence, reversibility, open caveats, and unknowns.
+
+Decision options should include `authorize_exact_action`, `reject_redo`,
+`reject_close`, `ask_coordinator`, and `pause_pending`. The dashboard copy
+should say "Decision needed" or "Primary action surfaced," not "Recommended
+action" when that phrasing would launder agent preference into human approval.
+
+Decision Cockpit v1 should avoid generic "Approve" buttons without scope,
+progress rings that imply approval, drag/drop approval, agent-online vanity
+metrics, full runtime traces, real-time IDE functionality, and dashboard copy
+that implies `satisfied` means approved.
+
 Breadcrumbs: E5-T, E5-U, E5-T-FIX-002, E5-T-FIX-004, E6-DASH-001.
 
 ## 11. Advisor / Scribing / Context Preservation
@@ -318,14 +377,26 @@ Critique must not become rubber-stamping. Risks to prevent:
 - Model consensus becoming approval.
 - Auditor pass becoming approval.
 - Worker self-reporting as completion.
+- Agents silently adapting thresholds to past Human Decision Notes.
 
 Every critique must either name at least one specific concern or explicitly
 state which failure modes were checked and found absent. "Looks good, ship it"
 alone is not a valid critique. Incomplete critiques should be re-routed to
 another auditor or to GPT synthesis.
 
+Human Decision Notes create useful context and a new sycophantic-adaptation
+threat. Agents may cite notes with attribution, but notes are descriptive, not
+normative, until a protocol/doc-lock turn codifies them. Agents must not pad
+evidence, soften audits, add boilerplate, or change grading thresholds merely
+because a prior note revealed what the human liked or disliked.
+
+Future meta-audits should look for suspicious patterns: audit findings becoming
+formulaic, rejection rates dropping without independent quality evidence, new
+sections appearing across turn notes that mirror past notes, or builder/auditor
+agreement rising without a clear quality explanation.
+
 Breadcrumbs: E3-E harness-control loop, E6-A safety model, E6-B-FIX-001 auditor
-upgrade rule, E6-DASH-001 verification discipline.
+upgrade rule, E6-DASH-001 verification discipline, E6-DOCS-ALIGN-001.
 
 ## 13. Security / Boundary Model
 
@@ -345,7 +416,48 @@ Scripts and dashboards may assist humans, but they cannot authorize actions.
 Transport and wake layers may route messages later, but they cannot replace
 Git-visible approval artifacts.
 
-Breadcrumbs: `PROTOCOL.md`, E5-P, E5-N, E5-U, E6-B.
+The current trust model is phased:
+
+- Phase 0: Git-visible Markdown records, PR history, exact approval text,
+  no-touch lists, turn notes, and `COLLAB.md` handoff.
+- Phase 1: protected branches, signed commits or tags where practical,
+  artifact manifests with stable hashes, hash-bound approval records, and CI
+  manifest consistency checks.
+- Phase 2: transparency logs, attestations, external timestamping, signed
+  release artifacts, WORM/append-only storage, or independent mirrors.
+- Phase 3: optional blockchain hash anchoring for high-stakes deployments
+  only. Store hashes, not content, and do not make blockchain required.
+
+Use "Git-visible" or "audit-visible" for Phase 0. Use "tamper-evident" only
+when protected-branch, signing, manifest, or external witness discipline is
+actually configured. Never claim "tamper-proof," "immutable audit trail,"
+"legally compliant," "legally verified," "blockchain-secured," "AI-safe
+approval system," or "cannot be forged."
+
+Trust-layer hardening protects record integrity more than judgment quality. It
+does not solve forged human intent, bad rubrics, prompt injection,
+model-generated fake evidence, compromised credentials, insider misuse, or
+sycophancy.
+
+Additional threats to track: time-of-check/time-of-use races on read-only
+evidence, supply-chain changes to hooks or dependencies, cross-repo poisoning
+through shared kit files, stale local caches, insiders with valid permissions,
+fake builder evidence, fake auditor evidence, prompt/API injection, malicious
+PRs changing governance files, CI bypass, and duplicate/noise files confusing
+the trail.
+
+Prompt/API injection screening is future auditor or CI input, not an approval
+gate. It may scan high-stakes PR diffs, approval text, dashboard copy, protocol
+changes, kit changes, and external advisor transcripts. Its output should be
+"concerns found" or "no concerns detected," never "approved."
+
+This protocol is a friction and transparency layer, not a strong security
+layer or a solution to AI alignment. It assumes mostly cooperative agents.
+Smarter agents may game visible rules, attribution lines, meta-audits, or
+approval patterns. The honest value is making common failures visible and
+reviewable, not preventing all adversarial behavior.
+
+Breadcrumbs: `PROTOCOL.md`, E5-P, E5-N, E5-U, E6-B, E6-DOCS-ALIGN-001.
 
 ## 14. Cross-Repo Adoption
 
@@ -387,25 +499,29 @@ discipline, E6-B.
 | Transport / NanoClaw / API-backed options | NEEDS_GPT, deferred | Later separate review | Premature runtime adds hidden state and authority confusion |
 | Kit propagation | ROUTINE after design accepted + Sami approval | After protocol/dashboard decisions | Adopter repos miss coordinator/mode rules |
 | Multi-lane support | NEEDS_GPT | Later | Lanes may cross-contaminate state |
+| Decision Cockpit v1 | NEEDS_GPT design lock, Outcome Circle build after approval | After OC-005 preservation + bootstrap retrospective | Dashboard teaches the wrong default mental model |
+| Human Decision Notes | Partly codified; dashboard implementation deferred | Dashboard v1 build | Human decisions lose rationale and agents lose audit context |
+| Trust-layer design | NEEDS_GPT design-only | Parallel after retrospective | Public claims overstate Git-visible trust strength |
 
 ## 16. Next Three Turns
 
-Recommended minimal sequence after E6-C:
+Recommended minimal sequence after E6-DOCS-ALIGN-001:
 
-1. E6-C Claude critique: audit this doc-lock for fidelity, scope, source
-   breadcrumbs, and whether Project Mode / Outcome Circle are clear without
-   over-implementing.
-2. E6-DASH-002 or similar: Polaris Project Mode panel design/implementation,
-   if Claude accepts E6-C and Sami wants mode visible in the cockpit. Keep it
-   dashboard-only and single-recommendation preserving.
-3. E6-D: Outcome Circle / rubric-loop design. Do not implement loops; design
-   the safety model, packet, iteration cap, grader, stop conditions, and commit
-   / push handling.
+1. Claude audits E6-DOCS-ALIGN-001 for protocol/kit mirror discipline,
+   decision-action clarity, trust wording, no-touch compliance, and whether
+   the dashboard scope stayed future-facing.
+2. Preserve the OC-005 artifacts and this docs alignment by whatever PR shape
+   Sami separately authorizes. E6-DOCS-ALIGN-001 did not verify that OC-005
+   preservation has already landed.
+3. Run the bootstrap retrospective before dashboard build or public-alpha
+   packaging. The retrospective should decide whether entry/exit `NEEDS_GPT`
+   remains unchanged, relaxes for non-novel circles, or needs revision.
 
-Advisor-notes / durable scribing path can be E6-E or swapped earlier if E6-C
-critique finds scribing is the bigger blocker than dashboard mode display.
+After that: lock Decision Cockpit v1 scope, run a dashboard v1 Outcome Circle,
+and run a trust-layer design-only turn. README/strangerprintability and public
+top-of-funnel work remain later tracks.
 
-Breadcrumbs: E6-C current authorization, E6-A, E6-B, E6-DASH-001.
+Breadcrumbs: E6-DOCS-ALIGN-001, E6-OC-005, E6-C, E6-A, E6-B, E6-DASH-001.
 
 ## 17. Explicit Deferrals
 
@@ -419,8 +535,12 @@ Breadcrumbs: E6-C current authorization, E6-A, E6-B, E6-DASH-001.
 - Cross-repo rollout.
 - Any automation, cron, timer, webhook, launch agent, MCP/plugin/bridge,
   CommonGround, Notion, or global config.
+- Dashboard v1 implementation until separately scoped.
+- Trust-layer implementation, signed-manifest tooling, transparency logs, or
+  blockchain anchoring.
+- Public README/strangerprintability and top-of-funnel launch artifacts.
 
-Breadcrumbs: E6-C current authorization, E5-U, E5-N, E6-B.
+Breadcrumbs: E6-DOCS-ALIGN-001, E6-C current authorization, E5-U, E5-N, E6-B.
 
 ## 18. Source Breadcrumbs
 
@@ -455,4 +575,8 @@ Breadcrumbs: E6-C current authorization, E5-U, E5-N, E6-B.
 | `.agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md` | Current GPT coordinator framing, Project Mode, Outcome Circle, and roadmap doc-lock | E6-C |
 | `.agent-handoff/turns/E6-D-codex-outcome-circle-mechanics-design.md` | Outcome Circle entry refinements, 14-field packet schema, result states, default-deny commit/push policy, and PR-over-direct-push hint | E6-D |
 | `.agent-handoff/turns/E6-D-claude-critique-outcome-circle-mechanics-design.md` | Auditor acceptance of E6-D and recommendation to fold non-entry cases, packet fields, and PR default into E6-D2 codification | E6-D |
+| `.agent-handoff/turns/E6-OC-005-codex-public-positioning-judgment-iter-1.md` | Judgment-based public-positioning review and safe wording recommendation | E6-OC-005 |
+| `.agent-handoff/turns/E6-OC-005-claude-public-positioning-audit-iter-1.md` | Auditor result `satisfied`, 19/19 focus areas, and bootstrap counter advancement recommendation | E6-OC-005 |
+| `.agent-handoff/turns/E6-OC-005-gpt-exit-synthesis.md` | GPT exit synthesis accepting OC-005 as bootstrap Circle 2 of 2 and preserving no-launch/no-relaxation boundaries | E6-OC-005 |
+| `.agent-handoff/turns/E6-DOCS-ALIGN-001-codex-decision-notes-trust-doc-alignment.md` | Decision actions, Human Decision Notes, trust-layer, sycophantic-adaptation, and Decision Cockpit docs realignment | E6-DOCS-ALIGN-001 |
 | `0fe671c E6-DASH-001: add Polaris human control tower redesign` | Latest pushed baseline before E6-C | E6-DASH-001 |
