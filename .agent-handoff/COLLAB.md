@@ -7,6 +7,135 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
+Claude Code has completed the **E6-RETRO-001 audit** locally and is
+hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-RETRO-001-claude-audit-bootstrap-retrospective.md`.
+
+Next actor: **Sami** (then GPT-5.5 Pro for Decision Cockpit v1 scope-lock
+framing, after preservation PR merges).
+
+### E6-RETRO-001 audit result
+
+**PASS with 0 nits, 0 blockers.**
+
+Codex's E6-RETRO-001 bootstrap retrospective is honest, bounded, and ready
+to preserve. All 10 audit foci pass:
+
+1. **Scope discipline** — only COLLAB.md and the retrospective turn note
+   touched. No PROTOCOL.md / OPERATING-MODEL.md / STRATEGY.md / DASHBOARD
+   / mockup / kit / scripts / root docs diffs (`git diff` exit 0 for all
+   no-touch paths). No advisor-notes / reflections / improvements / mcp.
+   No new Outcome Circle (no E6-OC-006+ found).
+2. **Bootstrap accounting** — correctly counts OC-002 (Circle 1 of 2,
+   objective rubric, packet-scribe gap caught + repaired iter-2) and
+   OC-005 (Circle 2 of 2, judgment rubric, clean entry, 19/19 audit);
+   correctly leaves OC-001 as Circle 0.5 / pilot observed, OC-003 as
+   interrupted / needs_human, OC-004 as blocker; non-counting circles
+   classified as "evidence of governance pressure, not wasted turns" —
+   prevents future quiet reclassification as successes.
+3. **What was proven** — all 9 audit-requested items present plus bonus
+   "the bootstrap rule did useful work."
+4. **What was NOT proven** — all 9 audit-requested items present plus 3
+   additional honest non-claims (cross-repo rollout, multi-human
+   approval, legal/compliance). Most important non-claim landed sharply:
+   "proof of life for the governance method inside this repo, not the
+   product is ready for broad public use."
+5. **Bootstrap-rule recommendation** — keep unchanged for now; no
+   automatic relaxation; future narrow relaxation requires explicit
+   protocol change for repeated low-risk mechanical circles only; keeps
+   NEEDS_GPT for novel/strategic/public-facing/protocol/dashboard/
+   trust-layer/launch/naming work. Critical self-restraint clause: "Do
+   not let this retrospective itself modify `PROTOCOL.md`; it only
+   recommends a future decision."
+6. **Dashboard priority** — Decision Cockpit v1 is next product-proof
+   priority; README/strangerprintability waits until cockpit locked;
+   Kanban secondary. Component list and avoid-list both present and
+   correct. Insightful rationale: "A public README without a cockpit
+   that teaches the boundary could attract users into the wrong mental
+   model."
+7. **Human/agent protection thesis** — all 5 elements present and
+   crystallized: "If an auditor says `satisfied`, the agent is doing
+   its job. If a human approves, the human is authorizing consequences.
+   The protocol should not blur those roles." Plus Human Decision Notes
+   integration with the sycophantic-adaptation discipline.
+8. **Trust-layer posture** — Git-visible useful but not tamper-proof;
+   tamper-evident hardening future; blockchain not MVP; trust
+   implementation waits until cockpit/state model stable. Safe wording
+   template provided as fenced block, directly usable as future
+   dashboard copy.
+9. **Next sequence** — 6 steps in correct order (Claude audit →
+   preservation PR → Decision Cockpit scope lock → Cockpit build →
+   README → public-alpha prep). Parallel trust-layer design-only turn
+   correctly noted as after-cockpit-scope-stable.
+10. **Overclaim/underclaim check** — does not claim protocol proven at
+    scale, public-alpha approved, dashboard redesigned, trust-layer
+    implemented, or bootstrap relaxed. Practices the discipline it
+    audits.
+
+Independent verifications:
+
+- `git diff --check` exit 0.
+- Only `.agent-handoff/COLLAB.md` modified + retrospective turn note
+  untracked. No other diffs.
+- No-touch diff for PROTOCOL / OPERATING-MODEL / STRATEGY / DASHBOARD /
+  mockups / kit / scripts / root docs / docs: exit 0.
+- `advisor-notes/`, `reflections/`, `improvements/`, `.mcp.json` absent.
+- No `* 2.md` Finder duplicates.
+- No E6-OC-006 or later turn notes.
+- PROTOCOL.md / kit template `Sami` count: still 0 (FIX-001 preserved).
+- `## Approver Labeling Convention` at PROTOCOL.md L20 / kit template
+  L18: still present (FIX-002 preserved).
+
+### Recommended preservation PR shape
+
+- **Branch:** `e6-retro-001-bootstrap-retrospective`
+- **Files (3):**
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/turns/E6-RETRO-001-codex-bootstrap-retrospective.md`
+  - `.agent-handoff/turns/E6-RETRO-001-claude-audit-bootstrap-retrospective.md`
+- **Commit:** `E6-RETRO-001: preserve bootstrap retrospective`
+- **PR title:** `E6-RETRO-001: preserve bootstrap retrospective`
+
+PR body bullets (full text in audit turn note §"PR-Shape
+Recommendation"):
+- Bootstrap counter 2 of 2 retrospected.
+- OC-002 = Circle 1; OC-005 = Circle 2.
+- OC-001/003/004 remain non-counting governance-pressure evidence.
+- Bootstrap rule **unchanged**.
+- `satisfied` is not approval; auditor pass is not approval; model
+  consensus is not approval.
+- No protocol/dashboard/trust/public-release/README/new-circle work.
+- Next track: Decision Cockpit v1 scope lock.
+
+COLLAB.md should be cleanly separable this time (unlike OC-005
+preservation, which hit the multi-layer entanglement stop) — only the
+retrospective handoff stack is present.
+
+### Next decisions (Sami-owned, NEEDS_GPT)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** (the preservation
+PR is mechanical but the post-PR Decision Cockpit v1 scope lock is
+bootstrap-adjacent strategic work).
+
+Sami next steps:
+
+1. Confirm E6-RETRO-001 audit accepted (PASS or request revision).
+2. Authorize preservation PR (recommended shape above).
+3. After preservation PR merges, paste the Decision Cockpit v1 scope-lock
+   framing question (full text in audit turn note §"Coordinator Trigger
+   For Next Handoff") to GPT-5.5 Pro.
+4. After GPT synthesis, authorize a scope-lock turn (single Codex
+   design turn + Claude audit, or full Outcome Circle — GPT to
+   recommend).
+
+No staging, commit, push, branch, PR, merge, dashboard implementation,
+trust implementation, public release, README work, automation, model/API
+setup, MCP/plugin/bridge/global config, OC-006, OPERATING-MODEL.md /
+STRATEGY.md / PROTOCOL.md edits, COLLAB archival, pilot repo touch, or
+live Open Mic Colorado touch is authorized by this audit.
+
+### Previous FIX-002 audit state
+
 Claude Code has completed the **E6-DOCS-ALIGN-001-FIX-002 audit** locally
 and is hard-stopped for Sami review. Audit turn note:
 `.agent-handoff/turns/E6-DOCS-ALIGN-001-FIX-002-claude-audit-approver-label-signpost.md`.
