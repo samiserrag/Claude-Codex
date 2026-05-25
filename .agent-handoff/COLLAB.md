@@ -7,6 +7,171 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
+Claude Code has completed the **E6-DASH-SCOPE-001 audit** locally and is
+hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-DASH-SCOPE-001-claude-audit-decision-cockpit-v1-scope-lock.md`.
+
+Next actor: **Sami** (then GPT-5.5 Pro for preservation-PR authorization
+and Outcome Circle packet framing for the v1 implementation).
+
+### E6-DASH-SCOPE-001 audit result
+
+**PASS with 1 nit, 0 blockers.**
+
+Codex's E6-DASH-SCOPE-001 Decision Cockpit v1 scope lock is a buildable,
+honest, well-bounded design-only artifact. All 19 substantive audit foci
+pass:
+
+1. **Scope discipline** — only COLLAB.md modified + scope-lock turn note
+   untracked. No PROTOCOL.md / OPERATING-MODEL.md / STRATEGY.md /
+   DASHBOARD.md / DASHBOARD.html / mockup / kit / script / root docs /
+   docs/ diffs. Self-restraint clause explicit: "This scope-lock turn
+   does not authorize those edits" and "The bootstrap rule is not
+   relaxed by this scope lock."
+2. **Default view** — single-panel Decision Cockpit / Command View;
+   Kanban deferred as secondary scan view ("must not be an approval
+   surface"); three-panel layout / analytics / IDE-like management
+   deferred. Mockup v3 used as baseline with explicit correction list
+   ("must be corrected to include all five decision actions and Human
+   Decision Notes"). Honest retrospective on v1 (too plain) / v2 (model-
+   name coupling) / v3 (closest, but needs corrections).
+3. **MVP components** — 12 enumerated in §2, all consistent with
+   E6-RETRO-001 recommendations.
+4. **Decision actions** — all 5 portable IDs (`authorize_exact_action`,
+   `reject_redo`, `reject_close`, `ask_coordinator`, `pause_pending`)
+   with UI labels in a table. No generic-reject collapse.
+5. **Risk Context** — multi-part (7 sub-fields), no single score, prose
+   for caveats/unknowns/if-wrong, forbidden wording listed. Disclaimer:
+   "This summarizes what the agents found. It does not decide for you."
+6. **Trust footer** — exact copy matches FIX-002 safe-wording template.
+   Forbidden wording absent. "Do not show a green 'signed' or
+   'anchored' indicator unless those mechanisms actually exist."
+7. **Approval boundary** — "This authorizes" / "This does NOT authorize"
+   with explicit guidance: "The `does NOT` wording should remain
+   visibly stronger than surrounding text."
+8. **`satisfied` ≠ approval** — reinforced 3 times across §3 satisfied
+   warning copy, §8 state vocabulary ("Never collapse `satisfied` into
+   `approved`"), and §13 failure mode #2.
+9. **Portable roles + Current assignments** — Human approver,
+   Coordinator, Builder, Auditor, Scribe-only-when-actual, Verifier-
+   only-when-actual. Model/person names "may appear only in a
+   `Current assignments` metadata block." Action labels: "Use `Ask
+   Coordinator`, not `Ask GPT`."
+10. **Implementation boundaries** — static self-contained HTML/Markdown;
+    no external CSS / JS / network / storage / backend / runtime / trust
+    implementation; copy buttons copy only visible text; view-only;
+    `COLLAB.md` authoritative; no hidden payloads.
+11. **Interaction model** — 5 actions + View-full-audit; 7 forbidden
+    interactions including hidden-clipboard-vs-visible-text discipline.
+12. **Failure modes table** — 11 rows operationalizing every
+    governance-semantic risk. Directly usable as Claude's audit rubric
+    for the future implementation Outcome Circle.
+13. **Build plan** — recommends Decision Cockpit v1 implementation
+    Outcome Circle. Reasoning: "Dashboard v1 is product-facing and
+    governance-semantic. The failure modes are not purely visual."
+    Codex builds, Claude audits, GPT/Coordinator frames entry/exit for
+    "conservative post-bootstrap pattern." Claude audit rubric pre-
+    staged with 10 specific checks.
+14. **Visual design direction** — "serious but not boring", "modern but
+    not AI-demo hype", "calm dark or neutral premium style". Resolves
+    v1-vs-v2/v3 tension cleanly; avoids both admin-page dullness and
+    AI-command-center theater.
+15. **Required exact copy** — header/status, Simple Signals labels,
+    Primary Action label and button, Decision option labels, Human
+    Decision Note field/helper/placeholder/warning, Risk Context block
+    headers and disclaimer, Trust Footer, Approval Boundary, Satisfied
+    Warning. All directly buildable.
+16. **Human Decision Notes behavior** — required cases / optional cases
+    / content shape / rules including anti-sycophantic-adaptation
+    prohibition / dashboard behavior (visible below decision options,
+    inline warning, no copy blocking for optional notes, static text
+    area for MVP). Matches FIX-001/FIX-002 / E6-DOCS-ALIGN-001 protocol
+    vocabulary precisely.
+17. **Bootstrap-rule preservation** — explicit: "The bootstrap rule is
+    not relaxed by this scope lock."
+18. **Deferred items** — 12 explicit deferrals (Kanban, three-panel,
+    analytics, trust manifests/signing/hash/transparency/blockchain,
+    notifications/wakeup/webhook/cron/auto-routing, README, public-
+    alpha, protocol relaxation, naming, multi-human approval, trust
+    implementation, runtime/backend).
+19. **Overclaim/underclaim check** — does not claim Decision Cockpit v1
+    is built, trust-layer implemented, bootstrap relaxed, public-alpha
+    ready, or new Outcome Circle started. Practices the discipline it
+    audits.
+
+Independent verifications:
+
+- `git diff --check` exit 0.
+- Only `.agent-handoff/COLLAB.md` modified + scope-lock turn note
+  untracked. No other diffs.
+- No-touch diff for PROTOCOL / OPERATING-MODEL / STRATEGY / DASHBOARD /
+  mockups / kit / scripts / root docs / docs: exit 0.
+- `advisor-notes/`, `reflections/`, `improvements/`, `.mcp.json`
+  absent.
+- No `* 2.md` Finder duplicates.
+- No E6-OC-006 or later turn notes.
+- PROTOCOL.md / kit template `Sami` count still 0 (FIX-001 preserved).
+- `## Approver Labeling Convention` at PROTOCOL.md L20 / kit template
+  L18 still present (FIX-002 preserved).
+
+### Nit (not a blocker)
+
+1. **Component-count consistency between §2 and §14.** §2 enumerates 12
+   top-level MVP components; §14 final scope lists 13 (adds "Current
+   assignments metadata"). The metadata block is mandated either way
+   (§8 makes it part of the role model), so a builder would build it.
+   Recommend either adding "Current assignments metadata" as item 13 in
+   §2 or noting in §14 that Current assignments lives inside Human
+   Role. Easy fix; could land in the preservation PR or be folded into
+   the future v1 implementation turn note. Not required pre-merge.
+
+### Recommended preservation PR shape
+
+- **Branch:** `e6-dash-scope-001-decision-cockpit-v1-scope-lock`
+- **Files (3):**
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/turns/E6-DASH-SCOPE-001-codex-decision-cockpit-v1-scope-lock.md`
+  - `.agent-handoff/turns/E6-DASH-SCOPE-001-claude-audit-decision-cockpit-v1-scope-lock.md`
+- **Commit:** `E6-DASH-SCOPE-001: preserve Decision Cockpit v1 scope lock`
+- **PR title:** `E6-DASH-SCOPE-001: preserve Decision Cockpit v1 scope lock`
+
+COLLAB.md should be **cleanly separable** this time (no intermixed prior
+layered handoffs — the retrospective preservation PR #13 cleared the
+stack).
+
+### Next decisions (Sami-owned, NEEDS_GPT)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** (preservation PR
+is mechanical, but the post-PR Decision Cockpit v1 implementation
+Outcome Circle packet is product-facing, governance-semantic, and
+bootstrap-adjacent — exactly the kind of work the bootstrap rule keeps
+`NEEDS_GPT`).
+
+Sami next steps:
+
+1. Confirm E6-DASH-SCOPE-001 audit accepted (PASS or request revision).
+2. Authorize the preservation PR (recommended shape above).
+3. After preservation PR merges, paste the v1 implementation packet
+   framing question (full text in audit turn note §"Coordinator Trigger
+   For Next Handoff") to GPT-5.5 Pro. The 5-question framing covers:
+   - Outcome Circle vs simpler scoped turn (Claude leans Outcome Circle)
+   - Max iterations (Claude suggests 2)
+   - Stop conditions (Claude suggests 7 specific UI/governance triggers)
+   - Direct DASHBOARD.html edit vs new file for side-by-side review
+   - Single PR with live swap vs separate "go live" PR
+4. After GPT synthesis, authorize the Outcome Packet with exact fields
+   per the post-OC-005 standard.
+5. Optionally fold Nit #1 into the preservation PR or defer to the
+   future implementation turn note.
+
+No staging, commit, push, branch, PR, merge, dashboard implementation,
+trust implementation, public release, README work, automation, model/
+API setup, MCP/plugin/bridge/global config, OC-006, OPERATING-MODEL.md
+/ STRATEGY.md / PROTOCOL.md edits, COLLAB archival, pilot repo touch,
+or live Open Mic Colorado touch is authorized by this audit.
+
+### Previous E6-RETRO-001 audit state
+
 Claude Code has completed the **E6-RETRO-001 audit** locally and is
 hard-stopped for Sami review. Audit turn note:
 `.agent-handoff/turns/E6-RETRO-001-claude-audit-bootstrap-retrospective.md`.
