@@ -7,6 +7,177 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
+Claude Code has completed the **E6-DASH-SCOPE-001-FIX-001 audit** locally
+and is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-DASH-SCOPE-001-FIX-001-claude-audit-execution-interruptibility-addendum.md`.
+
+Branch: `e6-dash-scope-001-decision-cockpit-v1-scope-lock` (PR #14 open,
+unmerged). Addendum + audit are uncommitted on this branch; Sami may
+extend PR #14 with them (Claude's lean) or handle as a follow-on PR.
+
+Next actor: **Sami** (then GPT-5.5 Pro for v1 implementation Outcome
+Circle packet framing after preservation lands).
+
+### FIX-001 audit result
+
+**PASS with 0 blockers. 1 soft observation, 0 nits.**
+
+Codex's FIX-001 addendum cleanly adds a required minimal **Agents
+Running / Execution Mode** state to Decision Cockpit v1 without expanding
+scope, introducing transport / runners / wakeups, or relaxing the
+bootstrap rule. All 6 of Sami's audit questions get clear YES answers
+with concrete textual evidence.
+
+### Sami's 6 audit questions — all YES
+
+1. **Preserves agent autonomy inside approved scope?** YES — §1
+   explicitly: "The human should not need to approve every builder/
+   auditor micro-turn." §2 Simple Signals: "Human approval required:
+   Not for the current reversible micro-turn."
+2. **Preserves human interrupt authority?** YES — §1: "The human must
+   remain able to interrupt, steer, pause, reject, close, or ask the
+   Coordinator." §3 enumerates 6 interrupt actions (Pause, Reject/Redo,
+   Reject/Close, Ask Coordinator, Stop/Escalate blocker, Add steering
+   note) with protocol state mappings.
+3. **Prevents irreversible hidden action?** YES — §4 Reversibility Rule
+   has explicit two-list partition. Allowed within packet: local diffs,
+   draft turn notes, evidence, proposed patches, read-only checks,
+   local verification, builder/auditor iteration notes. Requires human
+   authorization: commit, push, branch/PR creation, merge, deploy,
+   publish, external send, deletion, credential use, trust-layer
+   change, protocol relaxation, scope expansion, public release, no-
+   touch modifications, any irreversible external side effect. Rule:
+   "If an internal step is not reversible, agents must stop and call
+   the human approver before doing it." Unknown reversibility →
+   default-stop.
+4. **Keeps dashboard v1 minimal?** YES — §8 explicit: "Execution Mode
+   should be a required v1 state, **minimal**." §5 Minimum Compact View
+   is spare. §8 "Do not build" list: full auto-runner, agent-to-agent
+   transport, wakeups, notifications, webhooks, live cancellation,
+   runtime backend, trust manifests/signing, queue/worker
+   infrastructure.
+5. **Avoids sneaking in wakeups / auto-runner / transport?** YES —
+   §3: "must not perform live agent cancellation, routing, webhook
+   calls, or hidden state mutation." §7 failure mode #8: "Interrupt
+   buttons imply live cancellation → Buttons copy visible text only;
+   no runner, webhook, notification, or live transport." §8 do-not-
+   build list (above).
+6. **Avoids requiring human for every micro-turn?** YES — §1: "The
+   cockpit should reduce human routing burden without making the inner
+   loop a black box." §2 status copy: "No human action is needed right
+   now."
+
+### Additional substantive checks (all PASS)
+
+- §2 forbidden wording ("Approved / Auto-approved / All clear / No
+  oversight needed / Agents are authorized for anything") prevents
+  Execution Mode from becoming broad approval.
+- §6 callback conditions: 15 triggers including all 7 result states +
+  irreversible action / stale state / human interrupt / agent
+  disagreement / GPT uncertainty / no-touch ambiguity / scope drift /
+  packet missing / evidence gap. Crucial rule: "The dashboard must not
+  say 'No human action needed' when any callback condition is already
+  active."
+- §7 failure modes: 9 rows operationalizing every risk.
+- Consistent with existing 5-state Human Role Cue (live `DASHBOARD.html`
+  already names `AGENTS RUNNING` — addendum formalizes what that state
+  must show).
+- §"Relationship to E6-DASH-SCOPE-001" preserves all scope-lock
+  invariants (single-panel default, Kanban deferral, 5 decision actions,
+  Human Decision Notes, Risk Context, trust footer, source-of-truth
+  disclaimer, static view-only boundary, no dashboard implementation).
+- Bootstrap rule preserved implicitly (design-only addendum, no protocol
+  edit).
+
+### Independent verifications
+
+- Branch: `e6-dash-scope-001-decision-cockpit-v1-scope-lock`, 1 commit
+  ahead of main (PR #14), 0 behind.
+- `git diff --check` exit 0.
+- Only `COLLAB.md` modified + addendum turn note untracked (now + this
+  audit turn note).
+- No-touch diff for PROTOCOL / OPERATING-MODEL / STRATEGY / DASHBOARD /
+  mockups / kit / scripts / root docs / docs vs both branch tip and
+  main: exit 0.
+- advisor-notes / reflections / improvements / `.mcp.json` absent.
+- No `* 2.md` Finder duplicates.
+- No E6-OC-006 or later turn notes.
+
+### Soft observation (not a nit)
+
+**"Steering note" vs "Human Decision Note" terminology.** §3 introduces
+"Add steering note" as a 6th interrupt action mapped to "Human Decision
+Note / steering note". The current protocol vocabulary defines 5
+decision actions + Human Decision Notes; "steering note" is a new
+label. Two readings:
+1. Steering note = Human Decision Note attached to an existing
+   interrupt action, with intent labeled "steering" (Claude's lean —
+   no protocol expansion needed).
+2. Steering note = a 6th lightweight observational note type that does
+   not trigger state transition (would be a new protocol concept).
+
+The addendum's §3 row treats it as #1; §7 mitigation works under both
+readings. Not blocking. The future v1 implementation packet should
+clarify which reading applies.
+
+### Recommended preservation-PR shape (Claude's lean: Path A)
+
+- **Path A (Claude's lean — extend PR #14):** commit the addendum + this
+  audit + COLLAB update as a second commit on the existing
+  `e6-dash-scope-001-decision-cockpit-v1-scope-lock` branch. Force-
+  refresh PR #14. Reviewers see scope lock + addendum as one cohesive
+  design artifact set, which is the natural reading since FIX-001 only
+  exists to refine the scope lock. Suggested second commit message:
+  `E6-DASH-SCOPE-001-FIX-001: add execution interruptibility addendum`
+- **Path B (separate PR after PR #14 merges):** leave PR #14 as scope-
+  lock-only, merge it first, then open a small follow-on PR for the
+  FIX-001 addendum + audit. Matches the E6-DOCS-ALIGN-001 → FIX-001 →
+  FIX-002 rhythm if Sami prefers per-fix PRs. Suggested branch:
+  `e6-dash-scope-001-fix-001-execution-interruptibility`.
+
+Claude's lean is **Path A** (the addendum exists only to refine the
+scope lock; one merged PR is the right granularity for the future v1
+implementation packet to reference).
+
+### Next decisions (Sami-owned, NEEDS_GPT for the post-merge step)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** for the post-
+merge Decision Cockpit v1 implementation Outcome Circle packet
+question. The previous E6-DASH-SCOPE-001 audit pre-staged a 5-question
+GPT framing; the addendum adds a 6th question:
+
+```text
+6. Should the implementation packet explicitly cover both cockpit
+   states (Decision Pending + Execution Mode) as separate static
+   layouts, or as a single layout with state-conditional component
+   visibility? Claude leans separate layouts for clarity, with shared
+   trust footer + source-of-truth disclaimer + current assignments
+   metadata visible across both.
+```
+
+Sami next steps:
+
+1. Confirm FIX-001 audit accepted (PASS or request revision).
+2. Authorize Path A (extend PR #14) or Path B (follow-on PR).
+3. After preservation lands, paste the v1 implementation packet
+   framing question (full text in audit turn note §"Coordinator
+   Trigger For Next Handoff") to GPT-5.5 Pro.
+4. After GPT synthesis, authorize the Outcome Packet with exact
+   fields including: scope lock + FIX-001 addendum as joint
+   authoritative design reference; Decision Pending + Execution Mode
+   as two required cockpit states; reversibility status enum;
+   6 interrupt actions; 15 callback conditions.
+5. Optionally clarify "steering note" terminology in the
+   implementation packet (Claude's lean: interpretation #1).
+
+No staging, commit, push, branch, PR, merge, dashboard implementation,
+trust implementation, public release, README work, automation, model/
+API setup, MCP/plugin/bridge/global config, OC-006, OPERATING-MODEL.md
+/ STRATEGY.md / PROTOCOL.md edits, COLLAB archival, pilot repo touch,
+or live Open Mic Colorado touch is authorized by this audit.
+
+### Previous E6-DASH-SCOPE-001 audit state
+
 Claude Code has completed the **E6-DASH-SCOPE-001 audit** locally and is
 hard-stopped for Sami review. Audit turn note:
 `.agent-handoff/turns/E6-DASH-SCOPE-001-claude-audit-decision-cockpit-v1-scope-lock.md`.
