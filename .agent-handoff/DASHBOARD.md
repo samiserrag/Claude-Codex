@@ -1,271 +1,267 @@
-# Polaris ✦ Claude-Codex Control Tower
+# Polaris - Decision Cockpit v1
 
-> _Your fixed point in a multi-agent workflow._
-
-Human-facing operational view for the current handoff. This file is a view,
-not the source of truth.
+Static reference cockpit for the current handoff. This file is a view, not
+the source of truth.
 
 ## Source Of Truth
 
 - `.agent-handoff/COLLAB.md` is authoritative.
 - On conflict, `COLLAB.md` wins.
 - `DASHBOARD.md` and `DASHBOARD.html` do not grant approval.
-- Do not infer approval from green status, silence, consensus, lack of
-  objection, or "looks good" language.
-- Sami alone approves; agents may classify routine, but cannot approve.
+- Do not infer approval from UI state, copy buttons, agent satisfaction,
+  auditor pass, model consensus, silence, or visual status.
+- Human approval authorizes only the exact named consequence.
 
-## Human Role Cue
+## Current Live State: Courier Only
 
-> 🔑 **APPROVAL ONLY** — Claude's critique is complete (13/13 PASS); your
-> decision authorizes what happens next.
+**Paste the E6-DASH-003 audit request to Auditor.**
+
+Codex has implemented the static Decision Cockpit v1 files locally. The next
+handoff is Claude audit. This is not a human approval request, and no
+consequence is authorized by viewing or copying this prompt.
+
+## Simple Signals / Focus Panel
 
 | Field | Value |
 | --- | --- |
-| Next paste target | Claude Code (for push) — or none if you pause |
-| Payload type | Authorization text |
-| GPT needed now | No — critique surfaced no NEEDS_GPT triggers |
-| Sami decision now | Yes — accept/push, request one more tweak, or pause |
-| Why | Combined FIX-001 + RESTORE is safe to accept. |
+| What is happening? | Builder handoff is ready for independent audit. |
+| Decision needed | No approval decision. Courier action only. |
+| Your role right now | Courier only. |
+| Can this wait? | Yes. No agent is authorized to proceed without audit. |
+| Current protocol state | E6-DASH-003 builder complete; auditor pending. |
+| Human approval required | Not for courier handoff. Required later for any commit, push, PR, merge, launch, or new scope. |
 
-<details>
-<summary>About the 5 states</summary>
+## Primary Action Surfaced
 
-- ✉ **COURIER ONLY** — paste agent content; no judgment.
-- 🔑 **APPROVAL ONLY** — paste authorization text; only Sami can approve.
-- 💬 **ASK GPT** — coordinator question needs synthesis or routing.
-- ⚙ **AGENTS RUNNING** — agents work inside an approved Outcome Circle;
-  monitor for callback (scope, risk, blocker, iteration cap).
-- ⚠ **STOP / UNKNOWN** — inputs unavailable or contradictory; default to
-  Ask GPT.
+Paste target: Auditor.
 
-Derived from `Coordinator Trigger × inside Outcome Circle? × Next Actor`;
-not an authored field. Project Mode remains visible below as descriptive
-context but is not a routing input.
+Payload type: audit handoff prompt.
 
-</details>
-
-## DO THIS NOW
-
-**Decide on E6-PROTOCOL-FIX-001 + RESTORE — Claude critique complete
-(13/13 PASS, safe to accept).**
-
-Codex's RESTORE repaired the FIX-001 Polaris HTML regression (restored
-`role-courier` class, About-the-5-states cue-note, and the two standing
-top-level panels) and applied Claude's `scope_conflict` nit
-byte-equivalently to both PROTOCOL.md and the kit template.
-
-### Where you are in the loop
+Visible copy target in `DASHBOARD.html`: `copy-audit-prompt`.
 
 ```text
-✓ PR #5 merged → ✓ Codex added bootstrap rule → ✓ Claude critiqued (flagged regression) → ✓ Codex restored → ✓ Claude re-critiqued → [Sami decides]
-                                                                                                                                       ↑ YOU ARE HERE
+[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread: E6-DASH-003 Decision Cockpit v1 implementation audit | Role: auditor inside approved Outcome Circle]
+
+Audit E6-DASH-003 Decision Cockpit v1 implementation.
+
+Inspect .agent-handoff/DASHBOARD.html, .agent-handoff/DASHBOARD.md, .agent-handoff/COLLAB.md, and .agent-handoff/turns/E6-DASH-003-codex-decision-cockpit-v1-implementation-iter-1.md.
+
+Grade against the approved E6-DASH-003 rubric: clean entry, full packet before implementation, HTML/MD parity, static self-contained dashboard, Human Decision Pending state, Agents Running / Execution Mode state, five decision actions, Human Decision Notes, approval boundary, Risk Context, Evidence Summary, Wait-risk signal, Trust footer, source-of-truth disclaimer, current assignments metadata, copy-visible-only behavior, no network/storage/backend/runtime behavior, and no-touch discipline.
+
+Auditor pass is not approval. Rubric satisfied is not approval. Model consensus is not approval. Hard stop after audit.
 ```
 
-### Why this snapshot
+## Current Assignments Metadata
 
-The combined FIX-001 + RESTORE stack adds the Outcome Circle bootstrap
-rule (entry/exit always NEEDS_GPT until 2 circles complete successfully
-and are reviewed in repo-visible turn notes; packets can't self-classify
-entry/exit as ROUTINE; mechanical inside-circle work stays ROUTINE-
-eligible when within the packet) AND restores the Polaris HTML
-structure that FIX-001 inadvertently regressed. Independent
-verification: mirror byte-identical (diff exit 0); 9 `<details>` /
-`<summary>` count matches origin/main; all no-touch surfaces clean;
-`alert-state.sh` runs without modifying the working tree.
-
-### Three actions
-
-#### 1. RECOMMENDED — Copy push authorization, paste to **Claude Code**
-
-Authorize push of the combined FIX-001 + RESTORE as one PR (5
-modifications + 3 new turn notes = 8-file PR; matches prior
-combined-push shapes). Suggested branch:
-`e6-protocol-fix-001-bootstrap-rule`. Suggested commit message:
-`E6-PROTOCOL-FIX-001: add Outcome Circle bootstrap rule (+ RESTORE
-repair)`.
-
-Sami authors the exact push authorization text; Claude Code executes
-the PR creation under the same shape as the E6-DASH-002 push (verify
-scope → stage exactly the listed files → commit → push to feature
-branch → open PR → report URL/SHA/state → hard stop).
-
-#### 2. OPTIONAL — Request one more tweak
-
-If Sami wants any of the three foldable nits addressed before push:
-1. Fix the bootstrap paragraph's slightly awkward line wrap (cosmetic).
-2. Fold an OPERATING-MODEL.md §8 reference to the bootstrap rule.
-3. Trim the "final synthesis" phrase in the bootstrap exit list.
-
-#### 3. OR — Pause and observe
-
-Do nothing. The local FIX-001 + RESTORE stack stays as-is until you
-act.
-
-### Status
-
-- Snapshot expires when: Sami authorizes push, requests a tweak,
-  pauses, or any actor changes.
-- Coordinator Trigger: **ROUTINE** for this critique handoff.
-- Project Mode: **Coordinator (~65%)**, Sami-decision-pending (~30%),
-  Execution (~5%); no Outcome Circle active.
-
----
-
-## What gets pasted to Claude Code (push authorization)
-
-**Sami authors the exact authorization text.** Use the same shape as
-the E6-DASH-002 push approval: list the 8 files to stage, the
-no-touch list, the verification checklist, the exact commit message,
-the branch name, and the PR title/body requirements. Then "hard stop
-after PR opens; report PR URL, branch, commit SHA, local main /
-feature-branch state."
-
-Suggested 8-file stage list:
-
-```text
-- .agent-handoff/COLLAB.md
-- .agent-handoff/DASHBOARD.html
-- .agent-handoff/DASHBOARD.md
-- .agent-handoff/PROTOCOL.md
-- kit/v1/.agent-handoff/PROTOCOL.md.template
-- .agent-handoff/turns/E6-PROTOCOL-FIX-001-codex-outcome-circle-bootstrap-rule.md
-- .agent-handoff/turns/E6-PROTOCOL-FIX-001-claude-critique-outcome-circle-bootstrap-rule.md
-- .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-codex-restore-polaris-bootstrap.md
-- .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md
-```
-
-(That's 9 files counting both critique turn notes — adjust scope if
-you'd prefer to land RESTORE in a separate PR.)
-
----
-
-## What gets pasted to GPT (optional)
-
-```text
-[Lane 1: Claude-Codex Harness | GPT-5.5 Pro / OpenAI | Thread: E6-PROTOCOL-FIX-001 + RESTORE post-critique | Role: coordinator/outcome architect]
-
-Claude completed the combined FIX-001 + RESTORE critique: 13 of 13 focus areas PASS, safe to accept. The bootstrap rule for Outcome Circles is now codified in both live PROTOCOL.md and the kit template byte-identically (entry/exit NEEDS_GPT until 2 circles complete successfully and are reviewed; packets can't self-classify entry/exit as ROUTINE; mechanical inside-circle work stays ROUTINE-eligible). The Polaris HTML regression from FIX-001 was repaired in RESTORE. scope_conflict was added to the bootstrap exit list per Claude's nit.
-
-Any coordinator concern before Sami pushes? Anything to fold in for the upcoming first Outcome Circle packet drafting (which will be NEEDS_GPT per the bootstrap rule)?
-
-Do not approve. Sami remains sole approval authority.
-```
-
----
-
-## Pause and observe
-
-```text
-Do nothing. The local working tree stays as-is after FIX-001 + RESTORE + Claude critique:
-- M .agent-handoff/COLLAB.md
-- M .agent-handoff/DASHBOARD.html
-- M .agent-handoff/DASHBOARD.md
-- M .agent-handoff/PROTOCOL.md
-- M kit/v1/.agent-handoff/PROTOCOL.md.template
-- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-codex-outcome-circle-bootstrap-rule.md
-- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-claude-critique-outcome-circle-bootstrap-rule.md
-- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-codex-restore-polaris-bootstrap.md
-- ?? .agent-handoff/turns/E6-PROTOCOL-FIX-001-RESTORE-claude-critique-restore-polaris-bootstrap.md
-
-When you want to resume, paste a push authorization to Claude Code, ask GPT, request a tweak, or route a different action.
-```
-
----
-
-## Snapshot Status & Provenance
-
-| Field | Current value |
+| Role | Current assignment |
 | --- | --- |
-| Prepared for | Sami to authorize push of FIX-001 + RESTORE (or tweak / pause) |
-| As of | `fbdb0b3` plus local FIX-001 + RESTORE + Claude critique |
-| Expires after | Sami authorizes push, requests a tweak, pauses, or any actor changes |
-| After this action | Do not reuse this dashboard snapshot until a repo-writing agent refreshes it |
-| Prepared by | Claude Code (FIX-001 critique + RESTORE critique + this snapshot refresh); FIX-001 + RESTORE implementations by Codex |
-| Last repo action | `fbdb0b3` Merge pull request #5 from `e6-dash-002-human-role-cue` |
-| Source turn notes | All four E6-PROTOCOL-FIX-001 turn notes (Codex FIX-001 impl, Claude FIX-001 critique, Codex RESTORE impl, Claude RESTORE critique) |
-| Coordinator Trigger | ROUTINE for this critique handoff |
-| Project Mode | Coordinator ~65%, Sami-decision-pending ~30%, Execution ~5%; no Outcome Circle active |
+| Human approver | Sami. Local assignment only; reusable role is human approver. |
+| Coordinator | GPT-5.5 Pro / OpenAI for packet framing when called. |
+| Builder | Codex / OpenAI completed this implementation turn. |
+| Auditor | Claude Code / Anthropic is the next requested actor. |
+| Role rule | Roles are model-agnostic and swappable. Model names are current assignments, not protocol vocabulary. |
 
----
+## Evidence Summary
 
-## Who's who right now
+- Clean entry captured at HEAD `8a2e0528ca6328707e3355238568498448db67cf`.
+- Full E6-DASH-003 packet was scribed before implementation.
+- Dashboard files were replaced with static Decision Cockpit v1 content.
+- Builder note records changed sections, copy targets, parity, and no-touch
+  verification.
 
-| Role | Agent | What they're doing |
-| --- | --- | --- |
-| Coordinator | GPT-5.5 Pro / OpenAI / advisor-class | Idle — last action: routed E6-PROTOCOL-FIX-001 scope. Available for optional post-critique review. |
-| Builder | Codex / OpenAI / architect-class | Idle — completed FIX-001 implementation + RESTORE repair. |
-| Auditor (completed) | Claude Code / Anthropic / architect-class | Critiqued FIX-001 (flagged HTML regression), then re-critiqued RESTORE (13/13 PASS). Refreshed this snapshot. |
-| Approver | Sami | Decides push / tweak / pause. |
-| Source of truth | Repo (`COLLAB.md` authoritative) | This dashboard is a view. |
-| Diversity | Multi-org (Anthropic + OpenAI) | 3-way coordination preserved through both turns. |
+## Wait-Risk Signal
 
----
+Waiting does not authorize anything. The only cost is delayed Claude audit and
+delayed preservation decision. No runtime, deploy, public release, or external
+action is pending from the dashboard.
 
-## What changed in this snapshot
+## Safety Language
 
-- Human Role Cue advanced from COURIER ONLY (paste to Claude) → 🔑
-  APPROVAL ONLY (Sami decides).
-- H1, subtitle, role-flow, three-actions, and snapshot status fields
-  advanced to post-RESTORE-critique state.
-- Cue field values updated to reflect Sami-decision-needed state.
-- "Three actions" updated: primary is now "Copy push authorization,
-  paste to Claude Code"; optional shifted to "Request one more tweak";
-  tertiary still pause.
-- Paste blocks updated: "What gets pasted to Claude Code" now stages
-  push authorization framing (Sami authors specific text); GPT
-  optional updated to post-critique synthesis question.
-- "Pause and observe" file list updated to include all 4 FIX-001 +
-  RESTORE turn notes.
-- Snapshot status `Prepared by` updated to credit Claude Code (FIX-001
-  critique + RESTORE critique + snapshot refresh) + Codex (FIX-001 +
-  RESTORE implementations).
-- Polaris remains a one-action snapshot; no new CSS, buttons,
-  collapsibles, scripts, sections, or mode panel added.
+- `satisfied` is not approval.
+- Auditor pass is not approval.
+- Model consensus is not approval.
+- Human approval authorizes only the exact named consequence.
+- `COLLAB.md` is authoritative; dashboard is view-only.
 
----
+## Required Cockpit State: Human Decision Pending
 
-## Technical Packet
+Agents may be satisfied. Human approval is still pending. The human must
+choose an exact decision action. No consequence is authorized until exact
+human approval.
 
-- Latest pushed baseline: `fbdb0b3` Merge pull request #5 from
-  `e6-dash-002-human-role-cue` (brings the Human Role Cue + FIX-001
-  visual tightening to durable governance).
-- Bootstrap rule added in PROTOCOL.md L267–280 and mirrored
-  byte-identically into `kit/v1/.agent-handoff/PROTOCOL.md.template`
-  (independently verified: diff exit 0 on paragraph extraction; diff
-  exit 0 on full Outcome Circles section, 71 lines each).
-- `scope_conflict` added to bootstrap exit list per Claude's nit
-  (byte-equivalent in both files).
-- DASHBOARD.html structural elements restored per Claude's FIX-001
-  critique: `role-courier` class on cue panel; "About the 5 states"
-  cue-note; "Who's who right now" + "What changed in this snapshot"
-  standing panels. `<details>` / `<summary>` count = 9 (matches
-  origin/main).
-- HTML self-contained: 0 external CSS/JS/URLs, 0 storage/network
-  APIs, 1 executable `clipboard.writeText` call (pre-existing).
-- `alert-state.sh` runs without modifying the working tree (verified
-  via pre/post `git status` diff exit 0; still 6519 bytes).
-- All no-touch surfaces clean: PROTOCOL.md (only the bootstrap
-  paragraph + scope_conflict edit), kit/v1/ (only PROTOCOL.md.template),
-  OPERATING-MODEL.md (untouched), root docs (untouched), docs/
-  (untouched), advisor-notes/reflections/improvements (still absent),
-  `.mcp.json` (still absent), pilot repo (untouched), live Open Mic
-  Colorado (untouched).
-- 4 turn notes for this stack (2 Codex implementations + 2 Claude
-  critiques).
-- Subagents not used in any of the 4 turns.
+This state is not the current live handoff. It is the required cockpit
+behavior when approval or rejection is genuinely pending.
 
-## No-Touch Summary
+## Required Cockpit State: Agents Running / Execution Mode
 
-- No further `PROTOCOL.md` edit beyond the bootstrap rule + scope_conflict.
-- No `OPERATING-MODEL.md` edit.
-- No `alert-state.sh` edit.
-- No kit edits outside `kit/v1/.agent-handoff/PROTOCOL.md.template`.
-- No root README / AGENTS / CLAUDE / docs edit.
-- No advisor-notes, reflections, or improvements path creation.
-- No product/runtime, pilot repo, live Open Mic Colorado, CommonGround,
-  NanoClaw, Notion, MCP/plugin/bridge, `.mcp.json`, cron/timer/webhook/
-  launch agent, model/API, or global config work.
+Agents are working inside approved reversible scope. No human approval is
+needed for every reversible micro-turn. The human may interrupt, pause,
+reject/redo, reject/close, ask Coordinator, or steer anytime. Irreversible
+actions still require exact human approval.
 
-Dashboard status: refreshed by Claude Code this turn (text content
-only — no structural changes; modeling the right "snapshot refresh"
-discipline). COLLAB.md is authoritative.
+Execution Mode must show packet, iteration, builder/auditor status, allowed
+files, no-touch list, stop conditions, latest evidence, and reversibility
+status.
+
+## Decision Options
+
+These are the portable decision actions for a real Human Decision Pending
+state. They are shown as visible templates, not active approval for the
+current courier handoff.
+
+### Authorize exact action
+
+Action id: `authorize_exact_action`
+
+Meaning: authorizes only the named consequence and scope.
+
+Visible copy target in `DASHBOARD.html`: `copy-authorize`.
+
+```text
+Action: authorize_exact_action
+I authorize only: [exact named consequence or scope].
+This does NOT authorize: [excluded scope, launch, merge, protocol change, public release, or other excluded consequence].
+Evidence refs: [repo-visible turn notes or audit paths].
+Decision rationale: optional for routine authorization.
+```
+
+### Reject / Redo
+
+Action id: `reject_redo`
+
+Meaning: returns work for revision inside the approved packet when possible.
+
+Visible copy target in `DASHBOARD.html`: `copy-redo`.
+
+```text
+Action: reject_redo
+Requested state: needs_revision
+Redo because: [specific evidence, copy, parity, scope, or safety defect].
+Scope boundary: stay inside the approved packet unless a new packet is authorized.
+Decision rationale: required.
+```
+
+### Reject / Close
+
+Action id: `reject_close`
+
+Meaning: closes the request without approval.
+
+Visible copy target in `DASHBOARD.html`: `copy-close`.
+
+```text
+Action: reject_close
+Requested state: closed_rejected
+Close because: [why this outcome should not continue].
+This does NOT authorize alternate scope or replacement work.
+Decision rationale: required.
+```
+
+### Ask Coordinator
+
+Action id: `ask_coordinator`
+
+Meaning: asks for synthesis or clarification before the human decides.
+
+Visible copy target in `DASHBOARD.html`: `copy-coordinator`.
+
+```text
+Action: ask_coordinator
+Question for Coordinator: [scope, strategy, risk, or judgment question].
+Current uncertainty: [what prevents a human decision].
+Decision rationale: required.
+No implementation, approval, or new scope is authorized by this question.
+```
+
+### Pause
+
+Action id: `pause_pending`
+
+Meaning: keeps state pending without approval or rejection.
+
+Visible copy target in `DASHBOARD.html`: `copy-pause`.
+
+```text
+Action: pause_pending
+Pause until: [time, event, or condition].
+Reason: [optional for short non-blocking pause; required if blocking or long-running].
+This does NOT authorize approval, rejection, new scope, or irreversible action.
+```
+
+## Human Decision Notes
+
+Field label:
+
+```text
+Decision rationale
+```
+
+Helper copy:
+
+```text
+Visible to future agents and preserved in the audit trail. Keep to ~2-4 sentences. Avoid private reasoning, secrets, or content you would not include in a PR review.
+```
+
+Required-note warning:
+
+```text
+A decision rationale is required for reject, ask, override, or long pause.
+```
+
+Rules:
+
+- Notes are descriptive, not normative.
+- Agents may cite notes as context but may not adapt thresholds based on them.
+- Notes must not include private reasoning, secrets, or content unsuitable for
+  a PR review.
+
+## Approval Boundary
+
+### This authorizes
+
+- Only the exact named consequence in the visible human text.
+- Only the files, scope, and action explicitly listed.
+
+### This does NOT authorize
+
+- Public release, protocol relaxation, merge, push, deploy, trust-layer work,
+  or new scope unless named.
+- Turning auditor satisfaction into approval.
+
+## Risk Context
+
+This summarizes what the agents found. It does not decide for you.
+
+| Field | Value |
+| --- | --- |
+| Consequence | Claude audit begins for the static dashboard implementation. No merge, PR, public release, or protocol change follows from this dashboard. |
+| Evidence confidence | Builder evidence is repo-visible; auditor has not graded it yet. |
+| Reversibility | Local dashboard and handoff edits are reversible until a later exact human authorization preserves them. |
+| Open caveats | Visual judgment and governance semantics still need independent audit. |
+| Unknowns | No external user testing; no browser automation evidence unless separately recorded. |
+| If wrong | Claude should request iteration 2 for copy, parity, self-containment, or boundary defects. |
+| Human approval required | Yes for any commit, push, PR, merge, launch, protocol change, or irreversible consequence. |
+
+## Trust Footer
+
+Audit trail: Git-visible. Verifiable through PR and commit history.
+Tamper-evident when protected branches, signing, manifests, or external
+witnesses are configured. Not tamper-proof. No blockchain or legal compliance
+claim is made by this dashboard.
+
+Static self-contained file. No external CSS or JavaScript. No network,
+storage, backend, notification, webhook, model, or runtime behavior. Copy
+buttons copy only visible text from this page.
+
+## Deferred By This Dashboard
+
+- Kanban / Operations Board.
+- Three-panel concurrent layout.
+- Real-time agent status.
+- Analytics, throughput, lead-time, leaderboard, or agent-online metrics.
+- Trust manifests, signing, hash manifests, transparency logs, and blockchain.
+- Notification, wakeup, webhook, cron, or auto-routing.
+- README / strangerprintability.
+- Public-alpha packaging.
+- Protocol relaxation.
+- Runtime/backend integration.
