@@ -7,6 +7,198 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
+Claude Code has completed the **E6-README-SCOPE-001 audit** locally and
+is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-README-SCOPE-001-claude-audit-repo-strangerprintability-scope-lock.md`.
+
+Next actor: **Sami** (then GPT-5.5 Pro for README implementation Outcome
+Packet framing after preservation lands).
+
+### E6-README-SCOPE-001 audit result
+
+**PASS with 0 blockers, 0 nits, 1 soft observation.**
+
+Codex's E6-README-SCOPE-001 scope lock is a buildable, honest, claim-
+disciplined, and well-bounded design-only artifact. All 15 audit foci
+pass. The 12 substantive sections of the scope lock map cleanly onto
+the 15 audit foci, with appropriate extensions in proof-status,
+failure-modes, and whitepaper-theory lists that exceed Sami's minimum
+without expanding scope.
+
+### All 15 audit foci PASS
+
+1. **Scope discipline** — only COLLAB.md modified + scope-lock turn
+   note untracked. Per-path `git diff` exit 0 for PROTOCOL /
+   OPERATING-MODEL / STRATEGY / DASHBOARD / mockups / kit / scripts /
+   root docs / `docs/`.
+2. **Strangerprintability definition** — §1 explicitly defines all 7
+   sub-questions (what problem / what not / who / "satisfied is not
+   approval" / Decision Cockpit demonstrates / protocol without
+   dashboard / where to start) plus a sharp Minimum Success Test.
+3. **Public claim discipline** — §2 enumerates 9 safe phrases (all 5
+   Sami-requested + 4 bonus) and 13 unsafe phrases (all 8 Sami-
+   requested + 5 bonus including "blockchain-secured"). Plus a
+   Boundary sentence pre-staged for the README.
+4. **Audience segmentation** — §3 covers all 7 audiences in a table
+   with First-question + README-path columns. "First question"
+   framing tells the README implementation to answer the audience's
+   question, not narrate E5/E6 history.
+5. **Adoption patterns** — §4 enumerates exactly the 5 patterns
+   Sami required, with one-line descriptions and discipline reminders.
+6. **Root README structure** — §5 enumerates exactly the 12 sections
+   Sami requested, with subsection notes (no full prose — exactly
+   what a design-only scope lock should provide). Plus length
+   discipline: "compact enough to read in under ten minutes."
+7. **Kit extraction / adopter path** — §6 enumerates exactly the 9
+   items Sami required (PROTOCOL template, Outcome Packet template,
+   Human Decision Record template, Decision Notes guidance, dashboard
+   optionality, approval-boundary copy, trust-layer caveats, example
+   circle, what-not-to-copy) plus a directly-usable adopter-path
+   framing sentence.
+8. **Whitepaper separation** — §7 enumerates exactly the 7 theory
+   items Sami listed + 3 bonus (alignment non-solution, multi-human
+   approval, Decision-Cockpit-teaches-method-without-becoming-method).
+9. **Naming / branding** — §8 preserves all required naming + helpful
+   clarification (Polaris is the cockpit container; Decision Cockpit
+   is v1 default view). "Outcome Circles Protocol" explicitly not
+   adopted. Public naming remains open. Sami-minimization rule
+   matches post-FIX-002 Approver Labeling Convention precisely.
+10. **Proof status** — §9 lists all proven items (5 Sami + 2 bonus)
+    and not-proven items (8 Sami + 4 bonus including "repo
+    strangerprintability"). Bonus items are honest underclaims, not
+    overclaims. Claim discipline: "Say 'proof of life' and 'protocol
+    + reference cockpit proof.' Do not say 'public-alpha ready' or
+    'proven at scale.'"
+11. **Next implementation recommendation** — root README first as an
+    Outcome Circle; public-docs scrub adjacent; kit/adopter example
+    second; whitepaper third; trust-layer design-only in parallel;
+    public-alpha launch separate and later. Pre-stages packet
+    constraint: "The README implementation packet should explicitly
+    forbid public-alpha launch, landing page, Medium/X, runtime
+    integration, trust-layer implementation, protocol relaxation,
+    and broad kit rewrites unless separately authorized."
+12. **Dashboard relationship** — cockpit is reference implementation;
+    dashboard is not the whole protocol; protocol can be adopted
+    without the cockpit. Reinforced by §11 failure-mode #2.
+13. **Trust-layer stance** — Git-visible useful but not tamper-proof;
+    tamper-evident hardening is future work; no legal/compliance
+    claim; trust-layer design may be parallel later, implementation
+    not started. **Soft observation:** "Blockchain is not MVP" not
+    repeated as exact phrase (discipline preserved through unsafe-
+    wording list + later-implementation framing, but the exact phrase
+    used in E6-RETRO-001 and STRATEGY.md §11 isn't restated).
+14. **Failure modes** — §11 enumerates 11 failure modes covering all
+    9 risks Sami listed + 2 bonus (kit-sound-production-ready,
+    whitepaper-absorbs-README-scope). Directly usable as Claude's
+    audit rubric for the future README implementation Outcome Circle.
+15. **Overclaim / underclaim check** — all 8 audit-requested checks
+    addressed. The scope lock practices the discipline it audits and
+    does not overclaim about itself (§12 says "Ready for README
+    implementation packet: Conditionally yes: after Claude audit
+    passes or requested fixes land.").
+
+### Independent verifications
+
+- `git diff --check` exit 0.
+- HEAD `3de5856` (PR #15 merge); branch main; 0 ahead, 0 behind.
+- Only COLLAB.md modified + scope-lock turn note untracked + this
+  audit turn note untracked. No other diffs.
+- Per-path no-touch diff for PROTOCOL / OPERATING-MODEL / STRATEGY /
+  DASHBOARD / mockups / kit / scripts / root docs / docs: exit 0.
+- advisor-notes / reflections / improvements / `.mcp.json` absent.
+- No `* 2.md` Finder duplicates.
+- No E6-OC-006 or later turn notes.
+- PROTOCOL.md / kit template `Sami` count: 0 (FIX-001 preserved).
+- `## Approver Labeling Convention` at PROTOCOL.md L20 / kit template
+  L18 (FIX-002 preserved).
+
+### Soft observation (not a nit)
+
+**"Blockchain is not MVP" not explicitly named.** Discipline is
+preserved through (a) §2 unsafe-wording list rejecting "blockchain-
+secured" and (b) §10 trust-implementation-is-later framing. The exact
+phrase used in E6-RETRO-001 and STRATEGY.md §11 isn't restated. Not
+blocking. Recommend the future README implementation packet pick up
+the phrase from RETRO-001 / STRATEGY.md if Sami wants it explicit
+under §11 "Safety / Trust Caveats."
+
+### Other observations (for README implementation packet, not nits)
+
+1. **Memory note attribution (L49).** Codex transparently cites
+   local Codex memory registry — confirms repo-visible rules. No
+   action needed; worth noting as new transparency pattern.
+2. **README length discipline.** §1 says "5-minute orientation skim";
+   §5 says "under ten minutes" full read. Not contradictory; the
+   implementation packet should name both targets so the builder
+   knows the right granularity.
+3. **Public-docs scrub scope.** §10 names that root `README.md`,
+   `AGENTS.md`, `CLAUDE.md` still carry Decision Ledger experiment
+   framing. The implementation packet should decide whether scrub
+   happens in the same OC, an adjacent OC, or is deferred — scope
+   lock leans same or adjacent, doesn't enforce either.
+
+### Recommended preservation PR shape
+
+- **Branch:** `e6-readme-scope-001-repo-strangerprintability-scope-lock`
+- **Files (3):**
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/turns/E6-README-SCOPE-001-codex-repo-strangerprintability-scope-lock.md`
+  - `.agent-handoff/turns/E6-README-SCOPE-001-claude-audit-repo-strangerprintability-scope-lock.md`
+- **Commit:** `E6-README-SCOPE-001: preserve repo strangerprintability scope lock`
+- **PR title:** `E6-README-SCOPE-001: preserve repo strangerprintability scope lock`
+
+COLLAB.md should be **cleanly separable** this time (PR #15 cleared
+the stack; only the scope-lock + audit handoff stack is on it now).
+
+### Next decisions (Sami-owned, NEEDS_GPT for the post-merge step)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** for the
+post-merge README implementation Outcome Circle packet framing per
+the bootstrap rule for public-facing strategic work.
+
+Full GPT framing question pre-staged in audit turn note §"Coordinator
+Trigger For Next Handoff" — 5 packet-shape questions covering:
+1. Should the README OC include public-docs scrub in the same OC or
+   adjacent follow-on (Claude leans: same OC with explicit allowed-
+   files list).
+2. Max iterations (suggest 2).
+3. Stop conditions (7 specific triggers including unsafe-wording
+   appearance, length-budget exceed, Sami-mention outside §8 allowed
+   contexts, no-touch violation, new OC, premature commit/push).
+4. Should README explicitly include "Blockchain is not MVP" phrase
+   (soft observation).
+5. Target README length / byte budget (e.g., 25KB ± 5KB).
+
+Sami next steps:
+
+1. Confirm E6-README-SCOPE-001 audit accepted.
+2. Authorize the preservation PR (recommended shape above).
+3. After preservation merges, paste the GPT framing question to
+   GPT-5.5 Pro for README OC packet synthesis.
+4. After GPT synthesis, authorize the Outcome Packet with exact
+   fields per the post-OC-005 standard.
+5. Optionally fold "Blockchain is not MVP" explicit phrase into the
+   implementation packet — either path is fine.
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**README implementation is the candidate next track but NOT yet
+authorized — Sami's call after preservation merges.**
+
+No staging, commit, push, branch, PR, merge, README implementation,
+public release, trust implementation, dashboard implementation, new
+Outcome Circle, OPERATING-MODEL.md / STRATEGY.md / PROTOCOL.md / kit
+edits, COLLAB archival, pilot repo touch, or live Open Mic Colorado
+touch is authorized by this audit.
+
+### Previous E6-README-SCOPE-001 Codex scope-lock state
+
+Codex completed the **E6-README-SCOPE-001 repo strangerprintability
+scope lock** prior to this audit. Scope-lock turn note:
+`.agent-handoff/turns/E6-README-SCOPE-001-codex-repo-strangerprintability-scope-lock.md`.
+
+### Previous E6-DASH-003 exit state
+
 Claude Code has scribed the **E6-DASH-003 GPT exit synthesis** per
 Sami's exit-synthesis authorization. Hard-stopped pending explicit
 preservation-PR shape authorization. Exit-synthesis turn note:
