@@ -7,6 +7,325 @@ The sample build is a small static Decision Ledger app.
 
 ## Current Owner
 
+Claude Code has scribed the **E6-DASH-003 GPT exit synthesis** per
+Sami's exit-synthesis authorization. Hard-stopped pending explicit
+preservation-PR shape authorization. Exit-synthesis turn note:
+`.agent-handoff/turns/E6-DASH-003-gpt-exit-synthesis.md`.
+
+Next actor: **Sami** (then release-operator role for preservation PR).
+
+### 🎯 E6-DASH-003 formally closed: `satisfied`
+
+Per GPT-5.5 Pro's exit synthesis (scribed verbatim in the turn note):
+
+- **Accept the auditor's `satisfied` result for E6-DASH-003.**
+- **E6-DASH-003 is satisfied at iteration 1.**
+- **No iteration 2 is needed.**
+- **Decision Cockpit v1 implementation passed audit.**
+
+### Critical reminders (verbatim from GPT exit synthesis)
+
+- `satisfied` is not approval.
+- Auditor pass is not approval.
+- Model consensus is not approval.
+- No commit, push, branch, PR, merge, public release, README work,
+  strangerprintability work, trust-layer implementation, protocol
+  relaxation, new Outcome Circle, runtime work, notification/wakeup
+  work, automation work, or additional dashboard scope is authorized
+  by this result.
+
+### What E6-DASH-003 proved (per GPT)
+
+- Decision Cockpit v1 can replace the older dense dashboard with a
+  clearer human-facing cockpit.
+- Live cockpit can honestly show `Courier only` without faking
+  approval.
+- Dashboard supports both required states (Human Decision Pending +
+  Agents Running / Execution Mode).
+- Dashboard shows all 5 portable decision actions.
+- Human Decision Notes represented as decision rationale, not
+  private chain-of-thought.
+- Risk Context as structured decision context, not risk permission.
+- Execution Mode preserves agent autonomy inside approved reversible
+  scope while preserving human interrupt authority.
+- Approval-boundary discipline preserved: built ≠ audited, audited ≠
+  satisfied, satisfied ≠ approved, approved ≠ committed/pushed/
+  merged/launched.
+- Live HTML remains static, self-contained, view-only, safe to open
+  locally.
+- DASHBOARD.md / DASHBOARD.html parity maintained.
+
+### What E6-DASH-003 did NOT prove (per GPT)
+
+- Public adoption.
+- External installability.
+- Repo strangerprintability.
+- Burden-reduction magnitude.
+- Autonomy without the human approver as transport.
+- Runtime / wakeup / notifier / auto-handoff safety.
+- Trust-layer tamper-evidence.
+- Legal or compliance suitability.
+- **Public-alpha release approval.**
+- README / whitepaper / Medium / X / landing page / top-of-funnel
+  work approval.
+
+### Milestone (per GPT)
+
+- The product-proof track identified by the bootstrap retrospective
+  has now reached a first audited implementation.
+- Decision Cockpit v1 is no longer only a mockup or scope note; it is
+  implemented locally and audited satisfied.
+- This advances the project from "protocol-only proof" toward
+  "**protocol + reference cockpit proof.**"
+- **The next step is artifact preservation, not additional dashboard
+  expansion.**
+
+### Tripwire status update
+
+| Condition | Status |
+| --- | --- |
+| #1: Bootstrap counter hits 2 of 2 | ✓ ACHIEVED (E6-OC-005) |
+| #2: Subjective rubric circle | ✓ ACHIEVED (E6-OC-005) |
+| #3: Documented honest failure resolved transparently | ✓ ACHIEVED (PR #9/#10/#11/#12) |
+| #4: Repo strangerprintable | **STILL PENDING** — README/strangerprintability is the next strategic track per GPT |
+| #5: Top-of-funnel artifacts | **STILL PENDING** — explicitly not approved by this synthesis |
+| **Bonus: reference cockpit proof** | **🎯 ACHIEVED (this turn) — implemented + audited + GPT-exit-accepted** |
+
+### Recommended preservation-PR shape (per GPT)
+
+Single PR with 6 files:
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/turns/E6-DASH-003-codex-decision-cockpit-v1-implementation-iter-1.md`
+- `.agent-handoff/turns/E6-DASH-003-claude-audit-decision-cockpit-v1-implementation-iter-1.md`
+- `.agent-handoff/turns/E6-DASH-003-gpt-exit-synthesis.md`
+
+Suggested branch: `e6-dash-003-decision-cockpit-v1-implementation`
+Suggested commit: `E6-DASH-003: preserve Decision Cockpit v1 implementation`
+
+COLLAB.md should be cleanly separable this time (no intermixed prior
+layered handoffs — PR #14 cleared the stack).
+
+### Next decisions (Sami-owned)
+
+Coordinator Trigger for the next handoff: **ROUTINE** for the
+preservation-PR creation itself once Sami authorizes the exact files
+and branch name (GPT's exit synthesis is now in the repo, so the
+preservation step is mechanical).
+
+Sami next steps:
+
+1. Confirm scribe accuracy (verbatim text faithfully captured;
+   summary + acceptance/rejection/undecided faithfully recorded).
+2. Issue the preservation-PR release-operator authorization with
+   exact files, branch, and commit message (recommended shape above).
+3. Optionally authorize Claude in Chrome MCP browser-level clipboard
+   confirmation pre-merge — not required by rubric, available if
+   Sami wants extra confidence.
+4. Optionally fold STRATEGY.md / OPERATING-MODEL.md tripwire updates
+   into the preservation PR (cockpit-is-now-live is real evidence
+   those docs could reflect; or defer to a separate small docs PR
+   after merge — either path is reasonable).
+5. After preservation PR merges, paste the next-track framing to
+   GPT-5.5 Pro: README / strangerprintability (per retrospective
+   sequence + GPT recommendation here) vs trust-layer design-only
+   parallel — both options open.
+
+**Public-alpha packaging is still NOT authorized.**
+**Trust-layer implementation is still NOT authorized.**
+**README / strangerprintability is the candidate next track but is
+NOT yet authorized — Sami's call after preservation merges.**
+
+No staging, commit, push, branch, PR, merge, dashboard expansion,
+README work, public release, trust implementation, protocol
+relaxation, new Outcome Circle, OPERATING-MODEL.md / STRATEGY.md /
+PROTOCOL.md / kit edits, COLLAB archival, pilot repo touch, or live
+Open Mic Colorado touch is authorized by this scribe.
+
+### Previous E6-DASH-003 iter 1 audit state
+
+Claude Code completed the **E6-DASH-003 iteration 1 audit** prior to
+this exit synthesis. Audit turn note:
+`.agent-handoff/turns/E6-DASH-003-claude-audit-decision-cockpit-v1-implementation-iter-1.md`.
+
+### E6-DASH-003 iter 1 audit result
+
+**`satisfied`** (0 blockers, 0 nits, 4 soft observations).
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. No commit, push, branch, PR, merge, public
+release, README work, trust implementation, protocol relaxation, or
+new Outcome Circle is authorized by this result. E6-DASH-003 iter 1 is
+ready for GPT/human exit synthesis.
+
+The implementation satisfies all 18 audit foci. Independent grep/diff
+confirms every required element is present in both `DASHBOARD.html` and
+`DASHBOARD.md`, every forbidden element is absent, every self-
+containment check passes, and every no-touch surface is unchanged.
+
+### All 18 foci PASS
+
+1. **Entry / packet discipline** — clean entry at HEAD `8a2e0528...`
+   captured before any file write; full 14-field Outcome Packet
+   scribed before implementation in builder note L22-313; zero `* 2.md`
+   duplicates at entry.
+2. **Allowed files / no-touch discipline** — only COLLAB.md +
+   DASHBOARD.html + DASHBOARD.md + builder turn note changed. Per-path
+   `git diff` exit 0 for PROTOCOL / OPERATING-MODEL / STRATEGY /
+   mockups / kit / root docs / `docs/` / alert-state.sh (6519 bytes
+   preserved). advisor-notes / reflections / improvements / `.mcp.json`
+   absent. No pilot or live Open Mic Colorado touch.
+3. **DASHBOARD.md / DASHBOARD.html parity** — 16-component parity
+   inventory verified. Differences are only format-specific. Both
+   honestly state same "Courier only" current handoff.
+4. **Current live state honesty** — hero card states "Current live
+   state: Courier only / Paste the E6-DASH-003 audit request to
+   Auditor / This is not a human approval request." No fake approval
+   prompt. 5 decision-action templates explicitly labeled "visible
+   templates, not active approval for the current courier handoff."
+5. **Required v1 components** — all 13 present (Simple Signals,
+   Human role, Decision needed, Primary action surfaced [not
+   "recommended action"], 5 actions with portable IDs, Notes,
+   approval boundary, multi-part Risk Context, evidence summary,
+   wait-risk, trust footer, source-of-truth disclaimer, current
+   assignments metadata, Execution Mode / Agents Running state).
+6. **Human Decision Pending state** — pending card states all
+   required points: "Agents may be satisfied. Human approval is still
+   pending. The human must choose an exact decision action. No
+   consequence is authorized until exact human approval." Plus
+   safety language card reinforcing `satisfied` / auditor pass /
+   model consensus are not approval.
+7. **Agents Running / Execution Mode** — running card states all
+   required points: agents inside approved reversible scope; no
+   approval per micro-turn; human may interrupt/pause/reject/ask/
+   steer; irreversible actions still require human approval. Plus
+   small-note codifying Execution Mode visibility requirements from
+   FIX-001 addendum (packet / iteration / builder-auditor status /
+   allowed files / no-touch / stop conditions / latest evidence /
+   reversibility).
+8. **Decision actions** — all 5 with correct labels and IDs in option
+   list (`authorize_exact_action`, `reject_redo`, `reject_close`,
+   `ask_coordinator`, `pause_pending`). No generic-Reject collapse
+   (only `closed_rejected` portable result state appears, correct
+   usage). Each has visible `<pre>` template + Copy button.
+9. **Human Decision Notes** — Decision rationale textarea + helper +
+   placeholder example + required-note warning + descriptive-not-
+   normative + cite-only-no-threshold-adaptation rules. Mirrors
+   E6-DOCS-ALIGN-001 / FIX-001 / FIX-002 sycophantic-adaptation
+   discipline precisely.
+10. **Risk Context** — 7 fields (Consequence / Evidence confidence /
+    Reversibility / Open caveats / Unknowns / If wrong / Human
+    approval required) + disclaimer "This summarizes what the agents
+    found. It does not decide for you." No single score. Forbidden
+    wording grep returned exit 1 ("safe to approve", "low risk,
+    approve", "all agents agree", "all systems go" — all absent).
+11. **Trust footer** — exact FIX-002 safe-wording template: "Audit
+    trail: Git-visible. Verifiable through PR and commit history.
+    Tamper-evident when protected branches, signing, manifests, or
+    external witnesses are configured. Not tamper-proof. No
+    blockchain or legal compliance claim is made by this dashboard."
+12. **Visual / cognitive-load** — single-panel Decision Cockpit (not
+    Kanban); Kanban explicitly deferred; no progress rings, no drag/
+    drop, no vanity metrics; 6 scope-lock readability questions all
+    answerable in ~30 seconds. Calm dark surface with restrained
+    accent palette. Resolves v1-vs-v2/v3 design tension cleanly.
+13. **Interaction / copy behavior** — copy buttons copy only visible
+    `<pre>` innerText; no hidden payload divergence between primary
+    `navigator.clipboard.writeText` path and fallback
+    `document.execCommand("copy")` path; no one-click approval; no
+    external CSS/JS; no network/storage/backend; no notifications/
+    webhooks; no auto-routing; no approval inferred from UI state.
+14. **HTML self-containment** — grep for `localStorage` /
+    `sessionStorage` / `indexedDB` / `fetch(` / `XMLHttpRequest` /
+    `WebSocket` / `EventSource` / `<script src` / `<link` returns
+    exit 1. Grep for browser-resolvable URLs (`href="http`, `src="http`,
+    `@import`, `url(http(s))`) returns exit 1. Fully self-contained
+    file://.
+15. **alert-state.sh** — Codex documented running it; exited 0; did
+    not modify the tree. Byte count 6519 unchanged. Script remains
+    advisory only, no authority. Re-running not required.
+16. **Markdown / HTML quality** — well-formed HTML5; all id targets
+    referenced correctly; no broken anchors; no raw JSON; no
+    unfilled placeholders; model names properly scoped to Current
+    Assignments metadata + narrative descriptions of current concrete
+    handoff (not used as permanent role labels). No "Ask GPT" /
+    "Paste to Codex" / "Paste to Claude" forbidden labels (grep
+    exit 1).
+17. **Governance semantics** — protects humans from approval
+    laundering (multiple reinforcements); protects agents from being
+    treated as fake approvers; distinguishes built / audited /
+    satisfied / approved / committed-pushed-merged-launched;
+    preserves exact-consequence-only approval; avoids implying public
+    release / trust implementation / README work / protocol
+    relaxation (10 deferrals enumerated in Deferred By This Dashboard
+    card).
+18. **Result state** — `satisfied`.
+
+### Soft observations (not nits)
+
+1. Current assignments "Human approver" row uses "Sami. Local
+   assignment only; reusable role is human approver." — correct per
+   FIX-002 Approver Labeling Convention.
+2. Clipboard fallback uses deprecated `document.execCommand("copy")`
+   — acceptable for v1 (ensures file:// works in any context).
+3. JavaScript inline footprint is ~45 lines, tight scope, no creep.
+4. `alert-state.sh` advisory output remains consistent with view-only
+   discipline.
+
+### Independent verifications
+
+- `git diff --check` exit 0.
+- HEAD `8a2e0528ca6328707e3355238568498448db67cf` (PR #14 merge).
+- Exactly 3 modified tracked + 1 new untracked + this audit turn note.
+- Per-path no-touch diff exit 0 for PROTOCOL / OPERATING-MODEL /
+  STRATEGY / mockups / kit / root docs / docs / alert-state.sh.
+- advisor-notes / reflections / improvements / `.mcp.json` absent.
+- No `* 2.md` Finder duplicates.
+- Required-copy grep matches in both files (satisfied / Human
+  Decision / Agents Running / tamper-proof in negative framing).
+- Forbidden-copy grep returns exit 1 for all 4 phrases + "recommended
+  action" + model-name-as-role-label patterns.
+- HTML self-containment grep returns exit 1 for all 9 forbidden APIs +
+  external URL patterns.
+
+### Next decisions (Sami-owned, NEEDS_GPT)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** per the
+bootstrap rule for dashboard work (entry/exit `NEEDS_GPT`, unchanged
+by the retrospective).
+
+Full GPT exit-synthesis paste question in audit turn note
+§"Coordinator Trigger For Next Handoff" — 5 questions covering:
+1. Confirm satisfied vs request narrow iter-2 revision.
+2. Preservation-PR shape (Claude leans single combined PR for the 5
+   files since the live cockpit swap and audit are naturally one
+   unit).
+3. Tripwire updates to STRATEGY / OPERATING-MODEL (cockpit is now
+   live).
+4. Browser-level clipboard confirmation pre-merge (optional —
+   Claude in Chrome MCP available; not required by rubric).
+5. Next track after preservation (README per retrospective sequence
+   vs trust-layer design-only parallel).
+
+Sami next steps:
+
+1. Confirm `satisfied` accepted (none recommended for iter-2 revision
+   by the auditor).
+2. Paste the GPT exit-synthesis framing question to GPT-5.5 Pro.
+3. After GPT synthesis, authorize preservation PR shape.
+4. Optionally authorize Claude-in-Chrome browser-level clipboard
+   confirmation pre-merge.
+5. After preservation lands, GPT can frame the next track.
+
+No staging, commit, push, branch, PR, merge, public release, README
+work, trust implementation, protocol relaxation, new Outcome Circle,
+OPERATING-MODEL.md / STRATEGY.md / PROTOCOL.md / kit edits, COLLAB
+archival, pilot repo touch, or live Open Mic Colorado touch is
+authorized by this audit.
+
+### Previous E6-DASH-SCOPE-001-FIX-001 audit state
+
 Claude Code has completed the **E6-DASH-SCOPE-001-FIX-001 audit** locally
 and is hard-stopped for Sami review. Audit turn note:
 `.agent-handoff/turns/E6-DASH-SCOPE-001-FIX-001-claude-audit-execution-interruptibility-addendum.md`.
