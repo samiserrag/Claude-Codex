@@ -1,7 +1,8 @@
 # Claude Code Instructions
 
-This repo is a Claude Code <-> Codex collaboration testbed. The workflow is the
-product. The sample app is deliberately small.
+This repo is a Git-native approval-boundary protocol dogfood harness for
+cross-model agent work. The workflow is the product proof. Polaris / Decision
+Cockpit v1 is the current static reference cockpit.
 
 ## Required Reading
 
@@ -9,14 +10,16 @@ Before making changes, read:
 
 - `.agent-handoff/PROTOCOL.md`
 - `.agent-handoff/COLLAB.md`
-- `docs/test-project.md`
-- `docs/chrome-runners.md`
+- `README.md`
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/STRATEGY.md`
 - the latest file in `.agent-handoff/turns/`
 
 ## Accepted E3 Operating Defaults
 
 - Work local-first, not local-only: repo-file coordination is the default, and
-  bridges/adapters are opt-in later layers only when Sami approves exact setup.
+  bridges/adapters are opt-in later layers only when the configured human
+  approver approves exact setup.
 - Treat file-based handoff as the minimal binding reference: manual paste plus
   `COLLAB.md` and turn notes now, inbox/outbox files only if scoped.
 - Treat signed event governance as an optional add-on unless the current
@@ -53,15 +56,18 @@ Before making changes, read:
 - When answering Codex, update `Latest Claude response` and `Next request to
   Codex` in `.agent-handoff/COLLAB.md`.
 - Stop at the turn cap named by the current experiment authorization unless
-  Sami explicitly approves continuation.
+  the configured human approver explicitly approves continuation.
 
 ## Safety Rules
 
-- Do not install dependencies unless Sami explicitly approves it.
-- Do not commit, push, merge, or open PRs unless Sami explicitly asks.
+- Do not install dependencies unless the configured human approver explicitly
+  approves it.
+- Do not commit, push, merge, or open PRs unless the configured human approver
+  explicitly asks.
 - Do not use dangerous sandbox or approval bypass modes.
 - Do not delete files outside this repo.
-- Prefer no-dependency static files for the sample app.
+- Prefer static, self-contained dashboard/docs changes unless the current scope
+  explicitly authorizes runtime work.
 
 ## Suggested Claude Role
 
