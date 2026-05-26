@@ -8,14 +8,240 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
-Claude Code has scribed the **E6-README-001 GPT exit synthesis** per
-Sami's exit-synthesis authorization. Hard-stopped pending explicit
-preservation-PR shape authorization. Exit-synthesis turn note:
-`.agent-handoff/turns/E6-README-001-gpt-exit-synthesis.md`.
+Claude Code has completed the **E6-KIT-SCOPE-001 audit** locally and is
+hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-KIT-SCOPE-001-claude-audit-adopter-path-expansion-scope-lock.md`.
 
-Next actor: **Sami** (then release-operator role for preservation PR).
+Next actor: **Sami** (then GPT-5.5 Pro for kit-implementation Outcome
+Packet framing after preservation lands).
 
-### 🎯 E6-README-001 formally closed: `satisfied`
+### E6-KIT-SCOPE-001 audit result
+
+**PASS with 0 blockers, 0 nits, 2 soft observations.**
+
+Codex's E6-KIT-SCOPE-001 scope lock is a buildable, honest, claim-
+disciplined, mostly mirror-aware, and well-bounded design-only
+artifact. All 15 audit foci pass. The 12 substantive sections cover
+current inventory, adopter success tests, MVP deliverables,
+what-not-to-include, protocol portability, dashboard portability,
+trust caveats, example strategy, public-docs scrub dependency,
+implementation PR shape, failure modes, and final recommendation.
+
+### All 15 audit foci PASS
+
+1. **Scope discipline** — only COLLAB.md modified + scope-lock turn
+   note untracked. Per-path `git diff` exit 0 for kit / README /
+   AGENTS / CLAUDE / docs / PROTOCOL / OPERATING-MODEL / STRATEGY /
+   DASHBOARD / mockups / alert-state.sh.
+2. **Current kit inventory** — 15 files enumerated; cross-checked
+   against `find kit/v1 -type f` (identical). Inventory assessment
+   table per file is accurate; closing insight: "the kit is a real
+   scaffold, but it is not stranger-extractable yet. The current
+   main gap is not protocol theory; it is adopter path, portability
+   copy, example artifacts, and trust/dashboard optionality."
+3. **External adopter success test** — 10 operationally testable
+   criteria + sharp Minimum Success Test sentence ("I copied the
+   kit, assigned my own Builder/Auditor/Coordinator/human approver,
+   created an Outcome Packet, ran one manual review loop, recorded
+   evidence, and did not treat satisfied/model consensus as
+   approval.")
+4. **Minimum kit deliverables** — exactly 7 MVP deliverables
+   (README expansion / portability sweep / Outcome Packet template /
+   Human Decision Record template / approval-boundary snippets /
+   adoption checklist / 5 minimal examples) + 6 non-MVP deferrals.
+   Sharp scope discipline: "smallest useful adopter-path upgrade,
+   not a full product package."
+5. **What-not-to-include-yet discipline** — 16 explicit deferrals
+   (public-alpha, Medium/X/landing, whitepaper, trust implementation,
+   signed manifests, blockchain anchoring, transparency logs,
+   runtime/wakeup/notifier/auto-handoff, vendor automation, hosted
+   dashboard, legal/compliance claims, new protocol name, public
+   launch language, broad refactor of repo root docs, broad protocol
+   rewrite). Closing principle: "make the kit understandable, not
+   make it look complete in ways the project has not proven."
+6. **Protocol portability** — role-based vocabulary preserved
+   (human approver / Coordinator / Builder / Auditor / Scribe /
+   verifier); avoid-list named (Sami / GPT-5.5 Pro / Claude Code /
+   Codex / this repo's E6 history / Polaris as whole-protocol name).
+   Thoughtful threading on legacy filenames (`AGENTS.md.template`,
+   `CLAUDE.md.template` may remain for convenience IF kit README
+   clarifies they are examples).
+7. **Dashboard portability** — protocol-only adoption is valid;
+   cockpit optional; kit must not force dashboard adoption; copy
+   must not imply approval from `satisfied` / auditor pass / model
+   consensus / UI state. Important discipline: **"Do not add
+   DASHBOARD.html to the kit yet"** — prevents kit from becoming
+   a UI distribution channel.
+8. **Trust-layer caveats** — verbatim kit-wording block including
+   the explicit "Blockchain is not MVP" phrase (resolves prior
+   scope-lock audit soft observation); honest-limits clause about
+   signing/manifests/anchors not proving good judgment, preventing
+   prompt injection, or making agent recommendations legally
+   sufficient. Closing: "The kit should not include trust
+   implementation in this round. It should only teach honest trust
+   posture."
+9. **Example artifact strategy** — exactly 5 MVP examples (Outcome
+   Packet / builder note / auditor note / "satisfied not approved"
+   decision record / reject-redo) + 6 deferred. Sharp reasoning:
+   "the MVP needs enough examples that a stranger can run one
+   manual loop. Too many examples will look like a finished product
+   and create a false sense of safety."
+10. **Public-docs scrub dependency assessment** — PR #17 evaluated
+    as sufficient for root scrub; explicit instruction "do not edit
+    root README / AGENTS / CLAUDE as part of kit scope. If the
+    future kit implementation discovers a direct contradiction in
+    root docs, stop and report rather than folding a root-doc
+    scrub into kit work." Correct scope-isolation principle.
+11. **Implementation PR shape** — max 2 iterations; entry/exit
+    NEEDS_GPT (correct bootstrap-rule application for public-facing
+    strategic work); builder Codex, auditor Claude Code; 10 likely
+    files to edit enumerated; no-touch list comprehensive; future
+    audit pre-staged with 8 specific checks (directly usable as
+    Claude's audit rubric for kit-implementation OC).
+12. **Failure modes** — 10 rows covering model/person coupling,
+    dashboard coupling, trust overclaim, excess length, too few
+    examples, example-as-proof, stale dogfood export, new name
+    drift, false safety, hidden implementation creep.
+13. **Public claim discipline** — distributed across §4 + §7 + §11
+    rather than a dedicated section (different shape from
+    E6-README-SCOPE-001's pattern but equally complete for this
+    scope).
+14. **Naming / branding** — Polaris / Outcome Circle / Outcome
+    Packet preserved; broader protocol name remains deferred; no
+    new public protocol name adopted; thoughtful threading of
+    legacy-filename-vs-portability tradeoff.
+15. **Overclaim / underclaim check** — scope lock does NOT claim
+    kit is extractable yet (explicit "not stranger-extractable yet"
+    in §1); doesn't claim public-alpha / trust hardening / runtime
+    / legal compliance; doesn't even overclaim about itself ("Ready
+    for kit implementation Outcome Circle: Conditionally yes:
+    after Claude audit passes or requested fixes land").
+
+### Independent cross-checks
+
+- Live kit inventory matches Codex's enumeration exactly (15 files
+  via `find kit/v1 -type f`).
+- Direct Sami-mention grep per kit file confirms Codex's portability-
+  gap claims (29 Sami mentions across 7 non-PROTOCOL kit files;
+  PROTOCOL.md.template clean at 0 — already swept by FIX-001).
+- GPT-5.5 Pro / Codex / Claude Code dogfood examples verified at
+  `kit/v1/.agent-handoff/PROTOCOL.md.template` L190-192 (and L5,
+  L46, L152-153).
+- Trust caveat verbatim block matches FIX-002 safe-wording template
+  and explicitly includes "Blockchain is not MVP."
+
+### 2 soft observations (not nits, for kit-implementation packet)
+
+1. **PROTOCOL.md.template mirror tension.** §5 recommends placeholders
+   like `{{COORDINATOR_AGENT}}` for the role-model assignments at
+   `kit/v1/.agent-handoff/PROTOCOL.md.template` L190-192. But that
+   section is currently byte-identically mirrored with live
+   `.agent-handoff/PROTOCOL.md` (per E6-DOCS-ALIGN-001 + FIX-001 +
+   FIX-002 mirror discipline). Two paths:
+   (a) Accept divergence: kit uses placeholders, live PROTOCOL.md
+   keeps concrete dogfood assignments; document the intentional
+   divergence.
+   (b) Move role-model assignments out of protocol entirely; keep
+   both files byte-identical with no role-model section; put dogfood
+   assignments in OPERATING-MODEL.md or new CONFIGURATION.md.
+   Claude leans (a). Implementation packet should explicitly decide.
+2. **Placeholder-naming convention.** §3 deliverable #2 mentions
+   `{{BUILDER_AGENT}}`, etc., but the repo doesn't currently have a
+   placeholder-naming convention documented. Implementation packet
+   should establish the exact placeholder syntax, canonical list
+   location, and substitution guidance (one paragraph in kit README
+   is enough).
+
+### Independent verifications
+
+- `git diff --check` exit 0.
+- HEAD `5b5cb3c5965c644be8eaff07b52f8d63605e27cb` (PR #17 merge).
+- Exactly 1 modified tracked + 1 untracked scope-lock turn note +
+  this audit turn note untracked. No other diffs.
+- Per-path no-touch diff for kit / README / AGENTS / CLAUDE / docs /
+  PROTOCOL / OPERATING-MODEL / STRATEGY / DASHBOARD / mockups /
+  alert-state.sh: exit 0.
+- advisor-notes / reflections / improvements / `.mcp.json` absent.
+- No `* 2.md` Finder duplicates.
+- No E6-OC-006 or later turn notes.
+- PROTOCOL.md / kit template `Sami` count: 0 (FIX-001 preserved).
+- `## Approver Labeling Convention` at PROTOCOL.md L20 / kit
+  template L18 (FIX-002 preserved).
+
+### Recommended preservation PR shape
+
+- **Branch:** `e6-kit-scope-001-adopter-path-expansion-scope-lock`
+- **Files (3):**
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/turns/E6-KIT-SCOPE-001-codex-adopter-path-expansion-scope-lock.md`
+  - `.agent-handoff/turns/E6-KIT-SCOPE-001-claude-audit-adopter-path-expansion-scope-lock.md`
+- **Commit:** `E6-KIT-SCOPE-001: preserve kit adopter-path expansion scope lock`
+- **PR title:** `E6-KIT-SCOPE-001: preserve kit adopter-path expansion scope lock`
+
+COLLAB.md cleanly separable this time (PR #17 cleared the stack;
+only the kit-scope-lock handoff stack is on it now).
+
+### Next decisions (Sami-owned, NEEDS_GPT for kit-implementation OC)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** per the
+bootstrap rule for public-facing strategic work (entry/exit
+`NEEDS_GPT` for the future kit-implementation Outcome Circle).
+
+Full GPT framing question pre-staged in audit turn note §"Coordinator
+Trigger For Next Handoff" — 5 packet-shape questions covering:
+1. PROTOCOL.md.template mirror tension: accept divergence (Claude's
+   lean) or move role-model assignments out of protocol entirely.
+2. Whether to establish explicit placeholder-naming convention.
+3. Examples location: separate files under `kit/v1/.agent-handoff/
+   examples/` or inlined in kit README.
+4. Stop-condition list for implementation packet (10 specific
+   triggers including defer-list claims, Sami reintroduction,
+   length-budget exceed, no-touch violation, DASHBOARD.html
+   addition, trust implementation, new OC, premature commit, new
+   dependencies, external network/storage/API in kit files).
+5. Browser-level confirmation: not needed (kit v1 is Markdown-only
+   per §6 "Do not add DASHBOARD.html to the kit yet").
+
+Sami next steps:
+
+1. Confirm E6-KIT-SCOPE-001 audit accepted.
+2. Authorize the preservation PR (recommended shape above).
+3. After preservation merges, paste the GPT framing question to
+   GPT-5.5 Pro for kit-implementation Outcome Packet synthesis.
+4. After GPT synthesis, authorize the Outcome Packet with exact
+   fields per the post-OC-005 standard.
+5. Optionally fold both soft observations into the implementation
+   packet (mirror tension + placeholder-naming convention).
+
+**Trust-layer design timing per Codex's §12 (worth preserving):**
+"Run trust-layer design in parallel or after kit implementation,
+not before it. Kit expansion should include trust caveats but not
+trust implementation. The project should prove external
+extractability before hardening a trail that external adopters
+cannot yet use."
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing (Medium / X / landing page) still NOT
+authorized.**
+**Whitepaper publication still NOT authorized.**
+**Kit implementation is the candidate next track but NOT yet
+authorized — Sami's call after preservation merges.**
+
+No staging, commit, push, branch, PR, merge, kit implementation,
+README implementation, public release, trust implementation,
+dashboard work, protocol relaxation, new Outcome Circle,
+OPERATING-MODEL.md / STRATEGY.md / PROTOCOL.md / mockups / docs /
+runtime edits, COLLAB archival, pilot repo touch, or live Open Mic
+Colorado touch is authorized by this audit.
+
+### Previous E6-KIT-SCOPE-001 Codex builder state
+
+Codex completed the **E6-KIT-SCOPE-001 kit adopter-path expansion
+scope lock** prior to this audit. Scope-lock turn note:
+`.agent-handoff/turns/E6-KIT-SCOPE-001-codex-adopter-path-expansion-scope-lock.md`.
+
+### Previous E6-README-001 formal closure: `satisfied`
 
 Per GPT-5.5 Pro's exit synthesis (scribed verbatim in the turn note):
 
