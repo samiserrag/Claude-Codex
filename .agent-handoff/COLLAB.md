@@ -8,6 +8,452 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
+Claude Code has completed the **E6-DURABLE-SCOPE-001 audit** locally and is
+hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-DURABLE-SCOPE-001-claude-audit-durable-behavior-promotion-boundary.md`.
+
+Next actor: **Sami** (then GPT-5.5 Pro for next-track framing after
+combined preservation PR merges).
+
+### E6-DURABLE-SCOPE-001 audit result
+
+**PASS with 0 blockers, 0 nits, 3 soft observations.**
+
+Codex's E6-DURABLE-SCOPE-001 scope lock is buildable, honest, well-
+bounded, and correctly distinguishes observation from authorization.
+All 15 audit foci pass. The 12 substantive sections cover boundary
+definition (6 terms), 14 durable behavior types, promotion path
+(`Observed → shortlisted → proposed → audited → human-approved →
+durable` + rejected/paused/deprecated/deleted), 12-field proposal
+template, creation-vs-invocation discipline (with self-applied
+invocation breadcrumb), sycophantic adaptation extension, memory
+governance, skills/automations, kit implications, what-not-to-
+implement-yet (25 deferrals), failure modes (12 rows), and final
+recommendation (10 open decisions).
+
+### All 15 audit foci PASS
+
+1. **Scope discipline** — only COLLAB.md + new turn note touched;
+   per-path `git diff` exit 0 for all no-touch surfaces; no memory/
+   skill/automation/subagent created.
+2. **Pre-existing dirty-stack handling** — Codex explicitly disclosed
+   the name-scrub preservation stack mismatch (L23-49); treated as
+   pre-existing state; did not revert, stage, commit, preserve, or
+   rewrite; no scope drift introduced.
+3. **Boundary definition** — all 6 terms defined (observed pattern /
+   proposal / durable behavior / approved / rejected / deprecated);
+   all 6 required boundary-lines present including "Only the human
+   approver can authorize durable behavior" (L155).
+4. **Durable behavior types** — §2 table covers all 14 types
+   (memory file / hosted memory / skill / subagent / automation /
+   scheduled check / standing prompt / rubric / protocol / dashboard
+   default / kit template / approval threshold / evidence threshold /
+   workflow checklist) with Why-It-Is-Durable + Approval-Boundary
+   columns.
+5. **Promotion path** — canonical state flow + 4 additional states
+   (rejected / paused / deprecated / deleted-rolled-back); critical
+   load-bearing clause: *"none of the intermediate states authorize
+   behavior. Observed, shortlisted, proposed, and audited are still
+   non-authoritative."*
+6. **Durable Behavior Proposal template** — exactly the 12 minimum
+   fields requested; template notes bias toward smallest persistent
+   artifact (turn-note convention before protocol rewrite, kit
+   example before repo-wide rule, checklist before automation);
+   "Does NOT authorize" field mandatory; invocation breadcrumb
+   mandatory.
+7. **Creation vs invocation** — all 4 modes distinguished (creating /
+   editing / invoking / silently relying); invocation breadcrumb
+   format exactly as requested. **Meta-discipline: Codex applies the
+   breadcrumb to itself (L293-303)**, declaring its own context for
+   the turn. Audit mirrors this pattern.
+8. **Sycophantic adaptation** — all 5 threat-model items + design
+   rules; critical anti-compliance-cover clause: *"A model writing
+   'not adapting' is not sufficient evidence. The audit needs to
+   inspect whether thresholds, evidence, pass/fail language, or
+   blocker handling actually changed."*
+9. **Memory governance** — 5 surfaces enumerated + dual cite-as /
+   not-cite-as list; memory cannot override Outcome Packet / rubric /
+   no-touch / approval boundary / PROTOCOL / COLLAB / allowed-files;
+   "Memory cannot convert prior user tolerance into future approval."
+10. **Skills and automations** — durable-behavior framing with
+    approval gates for creation/modification/adoption/default-routing;
+    sharp clause: *"Skill discovery should not become skill
+    adoption."* Plus explicit "No automation should stage, commit,
+    push, merge, publish, alter global config, create credentials,
+    or change approval boundaries unless a later explicit
+    authorization says so."
+11. **Kit implications** — short Durable Behavior Boundary section +
+    proposal template + 5 verbatim copy snippets + memory/skill/
+    automation caveats + breadcrumb in turn-note examples + state-
+    flow copy + "what this does not authorize" + 12-item "what the
+    kit should NOT copy from this repo" list + recommended kit
+    placement.
+12. **What not to implement yet** — 25 explicit deferrals (exceeds
+    13-item minimum); closing discipline: *"This note should be
+    preserved and audited before implementation. It should not be
+    treated as implementation authorization."*
+13. **Failure modes** — 12 rows covering all 11 requested + bonus;
+    includes the sharp "agents behave correctly during audits but
+    drift elsewhere" failure with kit-examples mitigation.
+14. **Sequencing/next-step judgment** — preserve+audit before kit;
+    short kit section now + whitepaper later; do not modify
+    PROTOCOL.md now; E6-KIT-001 should wait; 10 explicit open
+    human/GPT decisions.
+15. **Overclaim/underclaim check** — does NOT claim durable behavior
+    is technically enforced, memory cannot drift, skills/automations
+    safe by default, public-alpha approved, trust implemented, kit
+    started, protocol changed, alignment solved. Substantively honest
+    about itself ("design-only").
+
+### Independent verifications
+
+- `git diff --check` exit 0.
+- HEAD `0aafdfcedf470bf492472c45e4dd8b2f282d5ab6` (PR #18 merge).
+- Pre-existing dirty stack (Codex's E6-NAME-SCRUB inventory + my
+  E6-NAME-SCRUB audit + COLLAB.md handoff layering) confirmed
+  preserved untouched.
+- Per-path no-touch diff for README / AGENTS / CLAUDE / kit /
+  PROTOCOL / OPERATING-MODEL / STRATEGY / DASHBOARD / mockups /
+  `.gitignore` / docs / alert-state.sh: exit 0.
+- advisor-notes / reflections / improvements / `.mcp.json` /
+  `.design-concepts/` absent.
+- No `* 2.md` Finder duplicates.
+- No E6-OC-006 or later turn notes.
+- No memory/skill/automation/subagent file created (`.claude/
+  worktrees/` is pre-existing gitignored infrastructure, not Codex-
+  created).
+- Stash `stash@{0}: defer dashboard design concepts gitignore
+  workfolder` preserved (NOT popped, NOT dropped, NOT inspected).
+
+### 3 soft observations (not nits, for kit-implementation packet)
+
+1. **§7 memory-surfaces list doesn't explicitly include hosted/
+   Cowork-style memory** — covered in §2 type table (L177-178) and
+   §10 deferrals (L446-447), so discipline is preserved but split
+   across sections. Future kit-implementation packet should either
+   add it as a 6th surface item or cross-reference §2 from §7.
+2. **§9 kit implications doesn't include adopter memory-enable/
+   disable prompt** — Sami's audit focus 11 last bullet was *"guidance
+   that adopters should decide whether memory is enabled or disabled
+   before running Outcome Circles"*. Recommend adding a one-sentence
+   adopter prompt under "memory caveats" in the kit packet.
+3. **§11 failure modes doesn't explicitly name "viral prompt"
+   failure mode** — covered implicitly by observed-pattern-not-
+   approval, but worth adding a 13th row to the failure-modes table
+   for the social-influence vector that the Greg Brockman viral-
+   prompt context pre-staged.
+
+### Recommended preservation PR shape: Option A (combined)
+
+The COLLAB.md is interleaved between E6-NAME-SCRUB-SCOPE-001 audit
+handoff and E6-DURABLE-SCOPE-001 audit handoff. Splitting would
+require either hand-editing COLLAB.md (prohibited per OC-005
+preservation stop-condition precedent) or leaving one PR without a
+COLLAB handoff record (violates established pattern). Combined PR is
+the clean path.
+
+**Branch:** `e6-name-scrub-and-durable-behavior-scope-locks`
+
+**Files (5):**
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-NAME-SCRUB-SCOPE-001-codex-public-name-inventory.md`
+- `.agent-handoff/turns/E6-NAME-SCRUB-SCOPE-001-claude-audit-public-name-inventory.md`
+- `.agent-handoff/turns/E6-DURABLE-SCOPE-001-codex-durable-behavior-promotion-boundary.md`
+- `.agent-handoff/turns/E6-DURABLE-SCOPE-001-claude-audit-durable-behavior-promotion-boundary.md`
+
+**Commit message:** `E6-NAME-SCRUB-SCOPE-001 + E6-DURABLE-SCOPE-001: preserve scope locks`
+
+**PR title:** `E6-NAME-SCRUB-SCOPE-001 + E6-DURABLE-SCOPE-001: preserve scope locks`
+
+**E6-KIT-001 should wait** until this combined preservation lands so
+the kit implementation can reference both scope-locks on main as
+authoritative design references.
+
+### Next decisions (Sami-owned, NEEDS_GPT for next-track framing)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** per the
+bootstrap rule for public-facing strategic work.
+
+Full 5-question GPT framing pre-staged in audit turn note §"Coordinator
+Trigger For Next Handoff" — same multi-decision space as
+E6-NAME-SCRUB-SCOPE-001 audit, now expanded by durable-behavior work:
+1. Strategic option A/B/C from name-scrub (scrub current repo / clean
+   public-proof repo / both)
+2. Kit-implementation packet shape (Claude leans single combined OC
+   with both scope-locks; max iter 2)
+3. Fold 3 soft observations into kit packet
+4. Dashboard-design stash disposition
+5. Kit-implementation location
+
+Sami next steps:
+
+1. Confirm E6-DURABLE-SCOPE-001 audit accepted.
+2. Authorize the combined preservation PR (recommended Option A,
+   5 files).
+3. After preservation merges, paste the GPT framing question to
+   GPT-5.5 Pro for next-track packet synthesis.
+4. After GPT synthesis, authorize the next track with explicit scope.
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing still NOT authorized.**
+**Whitepaper publication still NOT authorized.**
+**Kit implementation still NOT authorized.**
+**Dashboard unstash still NOT authorized.**
+**No memory/skill/automation/subagent creation authorized.**
+
+No staging, commit, push, branch, PR, merge, kit implementation,
+name-scrub implementation, memory/skill/automation creation,
+dashboard work, public release, trust implementation, public-proof
+run, clean repo/branch creation, stash pop/drop, new Outcome Circle,
+OPERATING-MODEL.md / STRATEGY.md / PROTOCOL.md / kit / mockups /
+docs / runtime edits, COLLAB archival, pilot repo touch, or live
+Open Mic Colorado touch is authorized by this audit.
+
+### Previous E6-DURABLE-SCOPE-001 Codex builder state
+
+Codex completed the **E6-DURABLE-SCOPE-001 Durable Behavior Promotion
+Boundary** design-only scope lock prior to this audit. Turn note:
+`.agent-handoff/turns/E6-DURABLE-SCOPE-001-codex-durable-behavior-promotion-boundary.md`.
+Entry-state caveat noted that the name-scrub preservation stack was
+still local and uncommitted; Codex treated that as pre-existing state
+and did not stage/commit/preserve/rewrite it.
+
+## Prior Current Owner (pre-E6-DURABLE-SCOPE-001; superseded)
+
+Claude Code has completed the **E6-NAME-SCRUB-SCOPE-001 audit** locally and
+is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-NAME-SCRUB-SCOPE-001-claude-audit-public-name-inventory.md`.
+
+Next actor: **Sami** (then GPT-5.5 Pro for next-track framing after
+preservation lands).
+
+### E6-NAME-SCRUB-SCOPE-001 audit result
+
+**PASS with 0 blockers, 0 nits, 5 soft observations.**
+
+Codex's E6-NAME-SCRUB-SCOPE-001 read-only inventory is comprehensive,
+honest, and operationally useful. All 17 audit foci pass. The 22
+substantive sections cover entry state, scope discipline, search method,
+inventory by artifact class, public-surface risk, kit portability risk,
+historical-trail risk, GitHub metadata reality, replacement vocabulary,
+artifact classification, public-proof strategy options, fresh public
+proof circles, credibility risk analysis, public-release recommendation,
+and verification.
+
+### All 17 audit foci PASS
+
+1. **Scope discipline** — only COLLAB.md + inventory turn note touched;
+   per-path `git diff` exit 0 for kit / README / AGENTS / CLAUDE / docs /
+   PROTOCOL / OPERATING-MODEL / STRATEGY / DASHBOARD / mockups /
+   `.gitignore` / alert-state.sh.
+2. **Stash preservation** — `stash@{0}: defer dashboard design concepts
+   gitignore workfolder` preserved (not popped, not dropped, not
+   inspected).
+3. **Entry state accuracy** — HEAD `0aafdfc` (PR #18 merge) + clean
+   `main...origin/main` + last 5 commits — all verified.
+4. **Search method completeness** — 15 search terms covering reusable
+   Sami authority wording, name variants, model-name labels, replacement
+   vocabulary. 198 repo-visible files scanned. Honest exclusion of
+   ignored `.claude/worktrees/**`.
+5. **Inventory count accuracy** — per-file kit Sami counts (29 total
+   across 7 files) independently verified line-by-line; PROTOCOL.md.template
+   `Sami=0` confirmed; Approver Labeling Convention preserved at L20/L18;
+   dashboard `Sami=2` confirmed; git remote URL / PR #18 metadata / 110+18=128
+   commit author split on main / 18 merge subjects with `samiserrag/`
+   branch prefix all verified. **Small soft observation:** Codex's
+   COLLAB.md count 332 vs my recheck 324 (~2.4% discrepancy; non-material).
+6. **Public-surface risk classification** — correctly distinguishes
+   README/AGENTS/CLAUDE Sami-clean-but-local-identity-exposing vs kit
+   highest-adopter-facing-risk vs dashboard local-assignment-exposing
+   vs PROTOCOL mostly-role-neutral-with-local-examples vs OPERATING/
+   STRATEGY local-prose. Sharp closing: "root README is relatively clean
+   but not enough."
+7. **Kit portability risk** — 29 Sami across 7 files (matches
+   E6-KIT-SCOPE-001 audit); PROTOCOL.md.template mirror tension preserved
+   from prior audit.
+8. **Historical-trail risk handling** — *"Do not silently rewrite
+   historical turn notes in this repo. That would damage provenance and
+   make the dogfood record look laundered."* Exactly the right
+   discipline.
+9. **GitHub metadata reality check** — honestly enumerates what file
+   edits cannot remove (repo owner URL, PR/commit author/SHA/timestamp/
+   URL, 128 commit author entries on main, 36 commit subjects with
+   Sami/samiserrag, merge subjects with `samiserrag/<branch>`,
+   historical local `/Users/samiserrag/...` paths). All independently
+   verified.
+10. **Replacement vocabulary completeness** — sharp distinction between
+    `configured human approver` (approval gates) vs `the human
+    approver` (generic) vs `project maintainer` / `project lead`
+    (ownership/roadmap, not approval). Plus model-name → portable role +
+    `{{PLACEHOLDER}}` convention.
+11. **Artifact classification** — 14-class table pairing Current
+    classification + Future action.
+12. **Public-proof strategy options** — 3 options (clean branch /
+    clean repo same account / new neutral-org) with pros/cons/
+    classification. **Soft observation:** the 3-option framing conflates
+    two decisions (history continuity vs fresh start × org/account
+    location); the actual decision tree is 2×2.
+13. **Fresh public proof circles framework** — 5-circle taxonomy with
+    Real-or-seeded + Must-never-include columns. **Soft observation:**
+    this framework is whitepaper-grade; should be amplified in future
+    public docs.
+14. **Credibility risk handling** — sharp safe-scrub vs risky-scrub
+    partition. *"Fresh public proof is stronger than retroactive
+    sanitization because it tests the actual portability claim: whether
+    a stranger-facing repo can run the protocol without inheriting
+    Sami, Claude Code, Codex, or GPT-5.5 Pro as permanent vocabulary."*
+15. **Public-release recommendation sequencing** — 5-step sequence
+    with critical closer: *"Do not do a kit-only scrub and then public-
+    release the current repo. Kit-only scrub is necessary but
+    insufficient."* Prevents lazy path.
+16. **No new Outcome Circle / no implementation work** — verified; no
+    E6-OC-006+, no kit/dashboard/protocol/strategy edits, no proof
+    run, no staging/commit/push/branch/PR/merge.
+17. **Overclaim / underclaim check** — inventory does NOT claim kit
+    is scrubbed, public proof has happened, metadata is scrubbable by
+    file edits, historical sanitization is safe, or any next step is
+    auto-authorized. Substantively honest about itself.
+
+### 5 soft observations (not nits)
+
+1. **COLLAB.md count precision** — Codex 332 vs my 324 (~2.4%
+   discrepancy); non-material; flag for transparency.
+2. **Public-proof strategy framing** — 3 options conflate org/account
+   location with history continuity decision; the actual decision tree
+   is 2×2 (keep-history × same-account / fresh-start × same-account /
+   fresh-start × new-org / keep-history-with-rewrite × new-org).
+   Codex's recommendation (option 3) is fine; future packet should pick
+   from the full 2×2 matrix explicitly.
+3. **Partial-stripping techniques not enumerated** — Codex briefly
+   mentions "orphan/squash strategy" but doesn't enumerate `git
+   filter-branch` / BFG / `.mailmap` / orphan-branch / archive-and-apply.
+   Codex's fresh-repo recommendation sidesteps the need; flag for
+   future public-proof packet if intermediate history-preservation is
+   desired.
+4. **Integration with Durable Behavior Boundary** — the just-discussed
+   pre-build convergence (prior chat turn) is parallel to this
+   inventory. If E6-DURABLE-SCOPE-001 lands before kit implementation,
+   the kit-implementation portability sweep will need to think about
+   both name-scrub *and* durable-behavior promotion. Codex's inventory
+   correctly doesn't reference it (different scope), but the future
+   kit-implementation packet should acknowledge both threads.
+5. **"Fresh Public Proof Circles" framework is whitepaper-grade** —
+   the Real-or-seeded + Must-never-include columns + 5-circle
+   taxonomy (objective / judgment / needs_revision / blocker / human-
+   decision-note example) is operationally usable beyond this turn.
+   Should be lifted into the future whitepaper section on "how to
+   prove portability honestly" and the kit implementation as an
+   example-set rubric.
+
+### Independent verifications (key cross-checks)
+
+- `git diff --check` exit 0.
+- HEAD `0aafdfcedf470bf492472c45e4dd8b2f282d5ab6` (PR #18 merge).
+- Only COLLAB.md modified + inventory turn note untracked + this audit
+  turn note untracked. No other diffs.
+- Per-path no-touch diff for all listed surfaces: exit 0.
+- `.design-concepts/` absent from working tree (still in stash).
+- advisor-notes / reflections / improvements / `.mcp.json` absent.
+- No `* 2.md` Finder duplicates.
+- No E6-OC-006 or later turn notes.
+- PROTOCOL.md / kit template `Sami` count: 0 (FIX-001 preserved).
+- `## Approver Labeling Convention` at PROTOCOL.md L20 / kit template
+  L18 (FIX-002 preserved).
+- Root README/AGENTS/CLAUDE `Sami` count: 0/0/0 (E6-README-001
+  preserved).
+- Kit Sami counts (per file, totals 29): independently verified
+  exact-match with Codex.
+- Git remote URL `samiserrag/Claude-Codex`: verified.
+- PR #18 metadata (author/SHA/timestamp/URL): all 4 exact-match.
+- Commit author counts on main (110 samiserrag / 18 Sami Serrag / 128
+  total): verified exact-match.
+- Merge subjects with `samiserrag/`: 18 verified.
+
+### Recommended preservation PR shape
+
+- **Branch:** `e6-name-scrub-scope-001-public-name-inventory`
+- **Files (3):**
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/turns/E6-NAME-SCRUB-SCOPE-001-codex-public-name-inventory.md`
+  - `.agent-handoff/turns/E6-NAME-SCRUB-SCOPE-001-claude-audit-public-name-inventory.md`
+- **Commit:** `E6-NAME-SCRUB-SCOPE-001: preserve public-name inventory`
+- **PR title:** `E6-NAME-SCRUB-SCOPE-001: preserve public-name inventory`
+
+COLLAB.md cleanly separable this time (PR #18 cleared the stack;
+only the name-scrub inventory handoff stack is on it now).
+
+### Next decisions (Sami-owned, NEEDS_GPT for next-track framing)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** per the
+bootstrap rule for public-facing strategic work. The post-preservation
+decision is multi-track and bootstrap-adjacent.
+
+Full GPT framing question pre-staged in audit turn note §"Coordinator
+Trigger For Next Handoff" — 5 packet-shape questions covering:
+1. Which strategic option (A: scrub current repo / B: clean
+   neutral-org public-proof repo / C: both, A then B)
+2. How does the just-discussed Durable Behavior Boundary scope-lock
+   sequence relative to this? (Claude's lean: E6-DURABLE-SCOPE-001
+   design-only BEFORE kit implementation)
+3. Dashboard-design stash: unstash + address in parallel, defer until
+   public-proof strategy decided, or drop entirely?
+4. If Option B/C: org/account naming — Sami's personal decision; GPT
+   to frame trade-offs but not name the org
+5. Kit implementation location: current repo first (cheap iterations,
+   mirror discipline in place) or directly in new public repo (proves
+   portability from first commit)
+
+Claude's lean: Option C (do A first, then B), with E6-DURABLE-SCOPE-001
+inserted between A and the kit implementation. Sequences as:
+preserve inventory → design durable-behavior boundary → adopter-facing
+scrub OC → kit implementation OC → then later switch to public-proof
+repo strategy. Slower but each step is auditable. Worth considering
+whether some tracks can run in parallel.
+
+Sami next steps:
+
+1. Confirm E6-NAME-SCRUB-SCOPE-001 audit accepted.
+2. Authorize the preservation PR (recommended shape above).
+3. After preservation merges, paste the GPT framing question to
+   GPT-5.5 Pro for next-track packet synthesis.
+4. After GPT synthesis, authorize the next track with explicit scope
+   (A / B / C / durable-behavior insertion / dashboard unstash
+   decision / kit-location decision).
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing (Medium / X / landing page) still NOT
+authorized.**
+**Whitepaper publication still NOT authorized.**
+**Public proof run still NOT authorized — Sami's call after
+preservation merges.**
+**Kit implementation still NOT authorized.**
+**Dashboard unstash still NOT authorized — stash preserved as-is.**
+**Durable Behavior Boundary scope-lock still NOT authorized — only
+discussed in pre-build convergence chat.**
+
+No staging, commit, push, branch, PR, merge, kit implementation,
+name-scrub implementation, dashboard work, public release, trust
+implementation, proof run, clean repo/branch creation, new Outcome
+Circle, OPERATING-MODEL.md / STRATEGY.md / PROTOCOL.md / kit /
+mockups / docs / runtime edits, COLLAB archival, pilot repo touch,
+or live Open Mic Colorado touch is authorized by this audit.
+
+### Previous E6-NAME-SCRUB-SCOPE-001 Codex builder state
+
+Codex completed the **E6-NAME-SCRUB-SCOPE-001 read-only public-name
+scrub inventory and public-proof strategy turn** prior to this audit.
+Inventory turn note:
+`.agent-handoff/turns/E6-NAME-SCRUB-SCOPE-001-codex-public-name-inventory.md`.
+Key result preserved as a substantive subsection beneath this audit
+result: 29 Sami across 7 non-PROTOCOL kit files; root docs clean of
+person names but expose local identity; historical trail should not be
+silently rewritten; GitHub metadata cannot be scrubbed by file edits;
+fresh public proof repo recommended over retroactive sanitization.
+
+## Prior Current Owner (pre-E6-NAME-SCRUB-SCOPE-001; superseded)
+
 Claude Code has completed the **E6-KIT-SCOPE-001 audit** locally and is
 hard-stopped for Sami review. Audit turn note:
 `.agent-handoff/turns/E6-KIT-SCOPE-001-claude-audit-adopter-path-expansion-scope-lock.md`.
