@@ -13,7 +13,8 @@ Review Packet status values.
 
 When local-only artifacts or duplicate/noise files are relevant, record their
 status in the turn note and keep known Finder duplicates such as `* 2.md`
-unstaged unless Sami explicitly authorizes the exact path.
+unstaged unless the configured human approver explicitly authorizes the exact
+path.
 
 For reflection/self-improvement work, reference the protocol's Reflection
 Safety And Approval rule: proposals are not approval, and mixed proposals must
@@ -22,7 +23,7 @@ be split before implementation.
 # {{TURN_ID}} - {{AGENT}} {{PHASE}}
 
 ## Agent
-{{Claude | Codex | Sami | Consultant}}
+{{Auditor | Builder | human approver | Consultant}}
 
 ## Phase
 {{architecture | critique | implementation | smoke | retrospective | fix | rescope}}
@@ -63,5 +64,5 @@ be split before implementation.
 - Any workaround used: {{workaround_or_none}}
 
 ## Handoff
-- Next agent: {{Claude | Codex | Sami}}
+- Next agent: {{Auditor | Builder | human approver}}
 - Specific ask: {{specific_ask}}

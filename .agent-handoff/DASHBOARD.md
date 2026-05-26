@@ -55,7 +55,7 @@ Auditor pass is not approval. Rubric satisfied is not approval. Model consensus 
 
 | Role | Current assignment |
 | --- | --- |
-| Human approver | Sami. Local assignment only; reusable role is human approver. |
+| Human approver | Configured human approver. Reusable role is human approver. |
 | Coordinator | GPT-5.5 Pro / OpenAI for packet framing when called. |
 | Builder | Codex / OpenAI completed this implementation turn. |
 | Auditor | Claude Code / Anthropic is the next requested actor. |

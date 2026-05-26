@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This protocol runs a practical Claude Code and Codex collaboration loop in
+This protocol runs a practical builder/auditor collaboration loop in
 `{{REPO_NAME}}`. The reliable baseline is repo-file coordination. The protocol
 is local-first, not local-only: it works with manual repo files by default, and
 separately approved bridges or adapters may be layered on later.
@@ -43,8 +43,9 @@ names must remain portable, for example `needs_human`, not
   `N/A` with a reason. Silent omission is not acceptable.
 - Automation budget is `N/A` unless polling, cron, webhook, or heartbeat
   automation is explicitly approved for the experiment.
-- Council, GPT, Claude, and Codex consultation is optional and file-based by
-  default through prompts, filed responses, digests, and turn notes.
+- Council, coordinator, builder, auditor, and consultant input is optional and
+  file-based by default through prompts, filed responses, digests, and turn
+  notes.
 - Prior art such as gstack, AgentBridge, tmux bridges, LLM Council, Zenith,
   CCB, and Claude Squad is prior art only unless a later approval explicitly
   scopes dependency use, vendoring, installation, or runtime setup.
@@ -118,7 +119,7 @@ delete them, ignore them, or fold cleanup into unrelated work.
 ## Artifact Visibility
 
 Use these artifact visibility states when visibility affects the next action:
-`local-only`, `pushed`, `visible to web-GPT`, and `action needed`.
+`local-only`, `pushed`, `visible to external reviewer`, and `action needed`.
 
 When visibility is `action needed`, the next safe action is the visibility
 action itself, such as sharing, pushing, or exporting. It is not further
@@ -149,8 +150,8 @@ before action.
 ## Review Routing
 
 The configured human approver reviews vision, priority, risk tolerance, and
-approval. Claude and Codex critique or build only within explicit scope.
-GPT-5.5 Pro or other third-model review may provide useful technical
+approval. Builder and auditor agents critique or build only within explicit
+scope. Coordinator or other third-model review may provide useful technical
 cross-checks, but it is not approval.
 
 ## Node Capability And Advisor Rules
@@ -183,29 +184,30 @@ structured summary, and what the configured human approver accepted, rejected,
 or left undecided. For non-text or unavailable transient artifacts, state the
 gap explicitly. Do not truncate advisor text to save storage or tokens.
 
-### GPT Coordinator / Outcome Architect
+### Coordinator / Outcome Architect
 
 Stable role model:
 
-- GPT-5.5 Pro: coordinator / outcome architect / external advisor.
-- Codex: builder / implementer / investigator.
-- Claude Code: auditor / critic / verifier.
+- `{{COORDINATOR_AGENT}}`: coordinator / outcome architect / external advisor.
+- `{{BUILDER_AGENT}}`: builder / implementer / investigator.
+- `{{AUDITOR_AGENT}}`: auditor / critic / verifier.
 - Human approver: approval / priority / risk / taste.
 - Repo: source of truth.
 
-GPT may recommend, synthesize, draft prompts, and define outcome/rubric
-proposals. GPT does not approve scope, pushes, or completion. Approval remains
-the configured human approver's sole authority.
+The Coordinator may recommend, synthesize, draft prompts, and define
+outcome/rubric proposals. Coordinator output does not approve scope, pushes, or
+completion. Approval remains the configured human approver's sole authority.
 
-Ask GPT when a milestone, pivot, architecture decision, repeated UX or
+Ask the Coordinator when a milestone, pivot, architecture decision, repeated UX or
 cognitive-load failure, "are we wasting time?" question, conflicting
-Claude/Codex recommendations, outcome/rubric definition, multi-turn loop
+builder/auditor recommendations, outcome/rubric definition, multi-turn loop
 approval consideration, high-stakes/noisy/ambiguous decision, or a request from
-the configured human approver for external synthesis appears. GPT is not
+the configured human approver for external synthesis appears. Coordinator input
+is not
 required for routine implementation, routine critique, straightforward push
 authorization, already-scoped no-choice handoffs, or low-risk verification
-where Claude/Codex agree and the configured human approver is not being asked
-for strategic judgment.
+where builder/auditor agents agree and the configured human approver is not
+being asked for strategic judgment.
 
 #### Coordinator Trigger Classification
 
@@ -213,60 +215,62 @@ Every turn note must include this section near the top:
 
 ```markdown
 ## Coordinator Trigger
-- State: ROUTINE | NEEDS_GPT | UNCLEAR
+- State: ROUTINE | NEEDS_COORDINATOR | UNCLEAR
 - Reason: <one sentence>
 ```
 
 The configured human approver is never responsible for determining routine
 status. The active repo-writing node must classify the Coordinator Trigger
 state. If the classification is missing, treat the turn as `UNCLEAR` and
-default to Ask GPT.
+default to Ask the Coordinator.
 
 `ROUTINE` is allowed only when the turn is already scoped, low-risk,
 non-strategic, and no architecture, pivot, UX-friction, cognitive-load,
 conflict, safety, automation, or tooling trigger is active.
 
-`NEEDS_GPT` applies when any GPT coordinator invocation trigger fires,
+`NEEDS_COORDINATOR` applies when any Coordinator invocation trigger fires,
 including milestone, pivot, architecture decision, repeated UX/cognitive-load
-failure, "are we wasting time?", conflicting Claude/Codex recommendations,
+failure, "are we wasting time?", conflicting builder/auditor recommendations,
 outcome/rubric definition, multi-turn loop approval consideration, high-stakes/
 noisy/ambiguous decision, or request from the configured human approver.
 
 `UNCLEAR` applies when the active repo-writing node cannot confidently classify
-the turn as `ROUTINE`. `UNCLEAR` defaults to Ask GPT.
+the turn as `ROUTINE`. `UNCLEAR` defaults to Ask the Coordinator.
 
-When state is `NEEDS_GPT` or `UNCLEAR`, the dashboard primary recommendation
-should become "Ask GPT-5.5 Pro," not a request for the human approver to decide
-whether GPT is needed. The handoff must include the exact question to paste to
-GPT. Respect the E5-T-FIX-004 single-recommendation principle.
+When state is `NEEDS_COORDINATOR` or `UNCLEAR`, the dashboard primary recommendation
+should become "Ask the Coordinator," not a request for the human approver to
+decide whether Coordinator input is needed. The handoff must include the exact
+question to paste to the Coordinator. Respect the E5-T-FIX-004
+single-recommendation principle.
 
 When critiquing an implementation or design, the auditor may upgrade the
 Coordinator Trigger classification with a one-sentence reason, such as when
 the auditor detects an unapproved architecture, UX, safety, automation, or
 scope decision. Turn notes and handoffs should include the Coordinator Trigger
-state and reason; if state is `NEEDS_GPT` or `UNCLEAR`, include the exact GPT
-paste question.
+state and reason; if state is `NEEDS_COORDINATOR` or `UNCLEAR`, include the exact
+Coordinator paste question.
 
-When invoked, GPT should produce concise synthesis, consensus recommendation,
-divergent opinions, risk/tradeoff summary, exact next prompts for Codex and/or
-Claude, outcome/rubric proposal when relevant, exact approval text if the
-configured human approver must approve, explicit uncertainty / unknowns, and no
-repo-authoritative claims unless scribed.
+When invoked, the Coordinator should produce concise synthesis, consensus
+recommendation, divergent opinions, risk/tradeoff summary, exact next prompts
+for the builder and/or auditor, outcome/rubric proposal when relevant, exact
+approval text if the configured human approver must approve, explicit
+uncertainty / unknowns, and no repo-authoritative claims unless scribed.
 
-Near term, the configured human approver pastes GPT output into Claude/Codex,
-and the active repo-writing node scribes it with attribution. Include a
+Near term, the configured human approver pastes Coordinator output into the
+builder/auditor loop, and the active repo-writing node scribes it with
+attribution. Include a
 verbatim quote in a code block when exact text is available, no length cap for
 text, a structured summary, and what the configured human approver accepted,
-rejected, or left undecided. Do not silently launder GPT advice into "the
+rejected, or left undecided. Do not silently launder Coordinator advice into "the
 system decided." If no turn is active, the next repo-writing turn that uses the
-GPT input scribes it. If GPT input applies to both Codex and Claude, the next
-repo-writing node records the shared source once and the other node references
-it.
+Coordinator input scribes it. If Coordinator input applies to both builder and
+auditor, the next repo-writing node records the shared source once and the
+other node references it.
 
-If a GPT invocation trigger fires, the dashboard primary recommendation may
-become "Ask GPT-5.5 Pro." Respect the E5-T-FIX-004 single-recommendation
-principle: Ask GPT becomes the one recommendation, not an extra competing
-surface.
+If a Coordinator invocation trigger fires, the dashboard primary recommendation
+may become "Ask the Coordinator." Respect the E5-T-FIX-004
+single-recommendation principle: Ask the Coordinator becomes the one
+recommendation, not an extra competing surface.
 
 #### Outcome Circles
 
@@ -279,12 +283,12 @@ Approved Outcome Circle: <packet name>
 
 Entry requires the full Outcome Packet inline with the approval. Verbal
 agreement, agent consensus, dashboard green status, prior approval of similar
-work, a GPT recommendation, a Claude/auditor pass, or a Codex/builder
+work, a Coordinator recommendation, an auditor pass, or a builder
 implementation plan is not Outcome Circle entry.
 
 Bootstrap rule for early circles: until at least two Outcome Circles have
 completed successfully and been reviewed in repo-visible turn notes, Outcome
-Circle entry and Outcome Circle exit are always `NEEDS_GPT`. During this
+Circle entry and Outcome Circle exit are always `NEEDS_COORDINATOR`. During this
 bootstrap period, an Outcome Packet may not self-classify entry or exit as
 `ROUTINE`. Mechanical builder/auditor work inside a valid approved Outcome
 Circle may still be `ROUTINE` when it remains within the packet. Entry includes
@@ -307,7 +311,7 @@ Minimum Outcome Packet fields:
 - pass evidence
 - stop conditions
 - when the human approver is called back
-- when GPT is called back
+- when the Coordinator is called back
 - commit/push rule
 - artifact visibility requirement
 - branch/PR policy if applicable
@@ -325,7 +329,7 @@ explicitly permits them. The adopting repo may configure a local label for the
 human approver.
 
 Builder cannot grade its own work. The auditor must search for failure modes.
-If scope or mode is unclear, stop and Ask GPT.
+If scope or mode is unclear, stop and Ask the Coordinator.
 
 No commits or pushes occur inside an Outcome Circle unless the packet
 explicitly allows them. If the packet allows commit/push, it must state
@@ -452,7 +456,7 @@ schema change:
 # NNN - <agent> <phase>
 
 ## Agent
-Claude | Codex
+Builder | Auditor
 
 ## Phase
 architecture | critique | implementation | smoke | retrospective | fix | rescope
@@ -473,14 +477,14 @@ architecture | critique | implementation | smoke | retrospective | fix | rescope
 - empty or bullets
 
 ## Browser verification
-- Tool used: Claude in Chrome MCP | Codex Chrome plugin | N/A
+- Tool used: {{BROWSER_RUNNER_CHOICE}} | N/A
 - URL or file path opened:
 - Action:
 - Visible outcome:
 - Console/network issues:
 
 ## Handoff
-- Next agent: Claude | Codex | human approver
+- Next agent: Builder | Auditor | human approver
 - Specific ask:
 ```
 
@@ -488,7 +492,7 @@ Use Blockers vs Nits strictly. A critique turn may list at most 3 blockers.
 Nits are optional and must not expand the required scope.
 
 Agent values may include:
-Claude | Codex | human approver | Consultant
+Builder | Auditor | human approver | Consultant
 
 ## Evidence Basis
 
@@ -539,8 +543,8 @@ If an unscheduled fix turn is required, the turn note must include:
 
 Use explicit ownership in `{{COLLAB_PATH}}` before editing:
 
-- Claude-owned files
-- Codex-owned files
+- Auditor-owned files
+- Builder-owned files
 - Shared files
 - No-touch files
 
@@ -551,7 +555,7 @@ Stop and ask the configured human approver before:
 - installing dependencies,
 - committing, pushing, merging, creating a branch, or creating a PR,
 - using dangerous sandbox or approval-bypass modes,
-- changing global Claude/Codex config,
+- changing global agent, model, or tool config,
 - running network-dependent setup,
 - registering MCP, setting up plugins, enabling bridges, or editing `.mcp.json`,
 - adding timers, cron, webhooks, automation, or autonomous model-calling loops,
@@ -566,7 +570,7 @@ draft architecture, and propose changes.
 
 A consultant, coordinator, or subagent may not treat a proposal as approved,
 authorize implementation, bypass approvals, delete files, change permissions,
-enable bridges, install dependencies, modify global Claude/Codex configuration,
+enable bridges, install dependencies, modify global agent, model, or tool configuration,
 commit, push, merge, create a PR, or instruct another agent to do any of those
 things unless the configured human approver has explicitly approved that exact
 action and scope.

@@ -38,8 +38,8 @@ Polaris shows the next action.
 ```
 
 Current local assignments are GPT-5.5 Pro as Coordinator, Codex as Builder,
-Claude Code as Auditor, Claude Design as Design specialist, and Sami as the
-configured human approver. Those assignments are instance metadata, not fixed
+Claude Code as Auditor, Claude Design as Design specialist, and a configured
+human approver for approval. Those assignments are instance metadata, not fixed
 protocol semantics.
 
 The strategy should be open-source-first unless evidence later says otherwise.
@@ -52,7 +52,7 @@ largest option set while the protocol is still being proven.
 What this is:
 
 - A governance protocol for human-supervised multi-agent work.
-- A human role cockpit showing what Sami should do next.
+- A human role cockpit showing what the human approver should do next.
 - A repo-visible evidence layer.
 - Exact approval discipline.
 - Cross-model role separation.
@@ -97,21 +97,21 @@ Current pattern:
 - GPT frames or synthesizes.
 - Codex reviews as builder / co-architect.
 - Claude audits as auditor / co-architect.
-- Sami decides.
+- The human approver decides.
 - Disagreements are named before implementation starts.
 
-This phase is active in the strategy work itself. Sami asks for a view; GPT,
-Codex, and Claude each inspect the framing; refinements are captured before
-scope is released. That is the pre-build method.
+This phase is active in the strategy work itself. The human approver asks for a
+view; GPT, Codex, and Claude each inspect the framing; refinements are captured
+before scope is released. That is the pre-build method.
 
 ### During-Build: Outcome Circle
 
-Purpose: let builder and auditor work inside exact scope without Sami routing
-every micro-step.
+Purpose: let builder and auditor work inside exact scope without the human
+approver routing every micro-step.
 
 Current pattern:
 
-- Sami approves an exact Outcome Packet.
+- The human approver approves an exact Outcome Packet.
 - Builder works inside allowed files and no-touch boundaries.
 - Auditor grades against explicit pass evidence.
 - Stop conditions call back the Coordinator or the human approver.
@@ -182,7 +182,7 @@ Current examples:
 - Codex as builder / implementer / investigator.
 - Claude Code as auditor / critic / verifier.
 - Claude Design as design specialist.
-- Sami as approver / priority / risk / taste.
+- Configured human approver for approval / priority / risk / taste.
 
 Future agents may:
 
@@ -309,7 +309,7 @@ scale.
 
 Borrow narrowly:
 
-- Interrupts become Sami/GPT callback conditions.
+- Interrupts become human-approver/Coordinator callback conditions.
 - Evaluators become auditor rubrics.
 - Traces become turn notes and evidence packets.
 - Checkpoints become Git commits, PRs, and turn-note snapshots.
@@ -586,8 +586,8 @@ Candidate sequence:
 
 1. Claude critiques E6-DOCS-ALIGN-001 for scope, mirror discipline, trust
    wording, decision-action clarity, and no-touch compliance.
-2. Preserve OC-005 artifacts and this docs alignment by whatever PR shape Sami
-   separately authorizes.
+2. Preserve OC-005 artifacts and this docs alignment by whatever PR shape the
+   configured human approver separately authorizes.
 3. Run the bootstrap retrospective before relaxing the bootstrap rule,
    implementing dashboard v1, or beginning public-alpha packaging.
 4. Lock Decision Cockpit v1 scope.
@@ -665,4 +665,4 @@ This document is alignment, not authorization. It does not approve new files,
 edits, commits, pushes, branches, PRs, integrations, model calls, automation,
 runtime work, or public release.
 
-Any implementation still requires exact Sami approval under `PROTOCOL.md`.
+Any implementation still requires exact human approval under `PROTOCOL.md`.
