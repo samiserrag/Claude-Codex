@@ -29,7 +29,7 @@ scope. Refresh again at handoff when any of these fields changed:
 - latest artifact
 - next safe action
 - dashboard-vs-COLLAB conflict status
-- What Sami Pastes Next
+- What The Human Approver Pastes Next
 - External Advisor Input
 - Current Operational Nodes
 - Subagent delegations
@@ -64,7 +64,7 @@ Diversity: `{{strong | moderate | weak | N/A}}`
 - Status: `{{not requested | local chat only | scribed | incorporated | not needed}}`
 - Attribution path or quote block: `{{advisor_note_path_or_quote_or_NA}}`
 
-## What Sami Pastes Next
+## What The Human Approver Pastes Next
 
 | Target | Prompt / action |
 | --- | --- |
@@ -79,9 +79,10 @@ If no paste is needed, say `No paste needed; hard stop until {{condition}}`.
 Current state: `{{NONE_FYI_DECISION_NEEDED_APPROVAL_REQUIRED_BLOCKER}}`
 
 Allowed states:
-- `none`: no Sami action needed.
+- `none`: no human approver action needed.
 - `FYI`: human awareness only.
-- `decision needed`: Sami must choose a direction, priority, or tradeoff.
+- `decision needed`: the human approver must choose a direction, priority, or
+  tradeoff.
 - `approval required`: exact approval is needed before the next action.
 - `blocker`: work cannot proceed until a missing artifact, decision, or access
   issue is resolved.
@@ -91,8 +92,8 @@ Allowed states:
 | Field | Current value |
 | --- | --- |
 | State | `{{HDP_STATE}}` |
-| Decision needed from Sami | `{{DECISION_NEEDED_OR_NONE}}` |
-| Why Sami is needed | `{{WHY_SAMI_IS_NEEDED_OR_NA}}` |
+| Decision needed from human approver | `{{DECISION_NEEDED_OR_NONE}}` |
+| Why human approver is needed | `{{WHY_HUMAN_APPROVER_IS_NEEDED_OR_NA}}` |
 | Consensus recommendation | `{{CONSENSUS_RECOMMENDATION_OR_NONE}}` |
 | Divergent opinions | `{{DIVERGENT_OPINIONS_OR_NONE}}` |
 | Options | `{{OPTIONS_OR_NA}}` |
@@ -117,12 +118,12 @@ Allowed statuses: `not prepared`, `prepared local-only`, `sent`, `responded`,
 
 ## Artifact Visibility
 
-Current visibility: `{{LOCAL_ONLY_PUSHED_VISIBLE_TO_WEB_GPT_ACTION_NEEDED}}`
+Current visibility: `{{LOCAL_ONLY_PUSHED_VISIBLE_TO_EXTERNAL_REVIEWER_ACTION_NEEDED}}`
 
 Allowed states:
 - `local-only`: artifact exists only in this working tree.
 - `pushed`: artifact is committed and pushed to the remote branch.
-- `visible to web-GPT`: non-local reviewers can access it.
+- `visible to external reviewer`: non-local reviewers can access it.
 - `action needed`: visibility is insufficient for the next reviewer or actor.
 
 When visibility is `action needed`, the next safe action is the sharing,

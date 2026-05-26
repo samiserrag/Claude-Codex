@@ -1,6 +1,6 @@
-# Claude Code Instructions For {{REPO_NAME}}
+# Auditor Agent Instructions For {{REPO_NAME}}
 
-This repository uses a file-based Claude Code and Codex collaboration protocol.
+This repository uses a file-based builder/auditor collaboration protocol.
 The workflow is part of the product: preserve shared state in repo files, keep
 handoffs cold-readable, and stop at explicit approval gates.
 
@@ -19,7 +19,8 @@ If a listed path is `N/A`, record why in the turn note Evidence Basis.
 ## Accepted Operating Defaults
 
 - Work local-first, not local-only: repo-file coordination is the default, and
-  bridges/adapters are opt-in later layers only when Sami approves exact setup.
+  bridges/adapters are opt-in later layers only when the configured human
+  approver approves exact setup.
 - Treat file-based handoff as the minimal binding reference: manual paste plus
   `COLLAB.md` and turn notes now, inbox/outbox files only if scoped.
 - Treat signed event governance as an optional add-on unless the current
@@ -32,8 +33,8 @@ If a listed path is `N/A`, record why in the turn note Evidence Basis.
 - Browser QA must name the runner or explicitly say `N/A` with a reason.
 - Automation budget is `N/A` unless polling, cron, webhook, or heartbeat work
   is explicitly approved.
-- Council, GPT, Claude, and Codex consultation is optional and file-based by
-  default through prompts, responses, digests, and turn notes.
+- Council, coordinator, builder, auditor, and consultant input is optional and
+  file-based by default through prompts, responses, digests, and turn notes.
 - Treat gstack, AgentBridge, tmux bridges, LLM Council, Zenith, CCB, Claude
   Squad, and related projects as prior art only unless a separate scope
   approves dependency use.
@@ -47,24 +48,25 @@ If a listed path is `N/A`, record why in the turn note Evidence Basis.
   architecture, implementation, critique, smoke, portability, or handoff turns.
 - Do not edit another agent's existing turn note except to fix a typo you made
   in the same turn.
-- Do not assume Codex has seen hidden Claude context. Write decisions and
+- Do not assume the builder has seen hidden auditor context. Write decisions and
   constraints into repo files.
-- When handing work to Codex, update `Next Request To Codex` in
+- When handing work to the builder, update `Next Request To Builder` in
   `{{COLLAB_PATH}}`. If the template includes a latest-response field, update
-  the summary-only `Latest Claude Response` as well.
-- When answering Codex, update `Next Request To Codex` and, if present,
-  the summary-only `Latest Claude Response` in `{{COLLAB_PATH}}`.
+  the summary-only `Latest Auditor Response` as well.
+- When answering the builder, update `Next Request To Builder` and, if present,
+  the summary-only `Latest Auditor Response` in `{{COLLAB_PATH}}`.
 - Stop at the turn cap named by the current experiment authorization unless
-  Sami explicitly approves continuation.
+  the configured human approver explicitly approves continuation.
 
 ## Safety Rules
 
-- Do not install dependencies unless Sami explicitly approves it.
-- Do not commit, push, merge, open a PR, or create a branch unless Sami
-  explicitly asks.
+- Do not install dependencies unless the configured human approver explicitly
+  approves it.
+- Do not commit, push, merge, open a PR, or create a branch unless the
+  configured human approver explicitly asks.
 - Do not use dangerous sandbox or approval-bypass modes.
 - Do not delete files outside this repo.
-- Do not modify global Claude/Codex config.
+- Do not modify global agent, model, or tool config.
 - Do not register MCP, set up plugins, enable bridges, or edit `.mcp.json`
   without exact approval.
 - Do not edit signed trust/event/private-key files unless the current
@@ -72,14 +74,14 @@ If a listed path is `N/A`, record why in the turn note Evidence Basis.
 - Keep edits inside the authorized file list and record any blocker before
   expanding scope.
 
-## Suggested Claude Role
+## Suggested Auditor Role
 
 Default to the product/architecture counterparty role:
 
 - propose thin architecture,
 - keep the user-facing app or workflow usable,
-- ask Codex for critique before broad implementation,
-- incorporate Codex feedback into repo-visible decisions.
+- ask the builder for critique before broad implementation,
+- incorporate builder feedback into repo-visible decisions.
 
 ## Browser Runner
 

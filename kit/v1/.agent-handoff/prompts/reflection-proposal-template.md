@@ -2,8 +2,8 @@
 
 Use this template for proposal-only reflection artifacts. Reflection may
 generate proposals, but it may not apply proposals. No proposal is approved by
-silence, model consensus, or "good idea" language; approval requires Sami's
-explicit approval of exact files and scope.
+silence, model consensus, or "good idea" language; approval requires the
+configured human approver's explicit approval of exact files and scope.
 
 ## Improvement Classification
 
@@ -27,7 +27,8 @@ classified before action.
 
 If advisor input is used, cite the advisor note path or include a quote block.
 Advisor input may inform this proposal, but it is not approval. Exact approval
-text still requires Sami's explicit approval of exact files and scope.
+text still requires the configured human approver's explicit approval of exact
+files and scope.
 
 ## Proposed Change
 
@@ -43,13 +44,13 @@ text still requires Sami's explicit approval of exact files and scope.
 
 ## Reviewer
 
-{{Claude | Codex | Sami | GPT-5.5 Pro / third model | other}}
+{{Auditor | Builder | human approver | Coordinator / third model | other}}
 
 ## Human Decision Packet
 
 - State: {{none | FYI | decision needed | approval required | blocker}}
-- Decision needed from Sami: {{decision_or_NA}}
-- Why Sami is needed: {{why_or_NA}}
+- Decision needed from human approver: {{decision_or_NA}}
+- Why human approver is needed: {{why_or_NA}}
 - Consensus recommendation: {{recommendation_or_NA}}
 - Divergent opinions: {{opinions_or_none}}
 - Options: {{options_or_NA}}
@@ -73,7 +74,7 @@ Technical packet.
 ## Exact Approval Text
 
 ```text
-{{Exact approval text Sami could use if this proposal should become scoped work.}}
+{{Exact approval text the human approver could use if this proposal should become scoped work.}}
 ```
 
 ## Out-of-Scope / No-Touch List
@@ -82,7 +83,7 @@ Technical packet.
 
 ## Artifact Visibility
 
-{{local-only | pushed | visible to web-GPT | action needed}}
+{{local-only | pushed | visible to external reviewer | action needed}}
 
 ## Next Safe Action
 

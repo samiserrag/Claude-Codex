@@ -40,12 +40,13 @@ Polaris shows the next action.
 ```
 
 Polaris is the cockpit, not the coordinator. GPT-5.5 Pro, or an equivalent
-head model selected by Sami, supplies coordinator / outcome-architect judgment
-for architecture, pivots, outcomes, repeated friction, and other strategic
-questions. Codex remains the default builder / implementer / investigator.
-Claude Code remains the default auditor / critic / verifier. Sami remains the
-sole approval authority for scope, pushes, completion, priority, risk, and
-taste. The repo remains the durable source of truth.
+head model selected by the configured human approver, supplies coordinator /
+outcome-architect judgment for architecture, pivots, outcomes, repeated
+friction, and other strategic questions. Codex remains the default builder /
+implementer / investigator. Claude Code remains the default auditor / critic /
+verifier. The configured human approver remains the sole approval authority for
+scope, pushes, completion, priority, risk, and taste. The repo remains the
+durable source of truth.
 
 Transport, notification, API-backed nodes, or NanoClaw-like runtimes may assist
 later, but they cannot become governance. They may move messages; they do not
@@ -64,16 +65,16 @@ E6-DOCS-ALIGN-001.
 | Role | Node | Stable responsibility | Boundaries |
 | --- | --- | --- | --- |
 | Coordinator / outcome architect / external advisor | GPT-5.5 Pro or equivalent head model | Synthesize, frame outcomes, draft prompts, identify strategic next steps, surface tradeoffs | Does not approve scope, pushes, or completion; output is not repo-authoritative until scribed |
-| Builder / implementer / investigator | Codex | Implement scoped changes, investigate repo state, produce turn notes and verification | Does not self-approve; does not expand scope without Sami approval |
+| Builder / implementer / investigator | Codex | Implement scoped changes, investigate repo state, produce turn notes and verification | Does not self-approve; does not expand scope without human approval |
 | Auditor / critic / verifier | Claude Code | Critique builder output, verify scope, detect missing risks, challenge classifications | Does not approve; may upgrade Coordinator Trigger classification |
 | Design specialist | Claude Design or equivalent | UX / visual / interaction design when routed | Does not become general coordinator unless explicitly assigned |
-| Approver / priority / risk / taste | Sami | Final approval, direction, risk tolerance, product taste | Not responsible for routine-vs-GPT classification |
+| Approver / priority / risk / taste | Configured human approver | Final approval, direction, risk tolerance, product taste | Not responsible for routine-vs-GPT classification |
 | Durable source of truth | Repo | `PROTOCOL.md`, `COLLAB.md`, Polaris, turn notes, commits | Chat alone is not durable operating state |
 | Human control surface | Polaris | Shows one primary next action and paste target | View only; cannot grant approval |
 
 GPT may recommend, synthesize, draft prompts, and define outcome/rubric
 proposals. GPT does not approve scope, pushes, or completion. Approval remains
-Sami's sole authority. Model consensus is not approval. Green status, silence,
+the configured human approver's sole authority. Model consensus is not approval. Green status, silence,
 "looks good", or lack of objection is not approval.
 
 Breadcrumbs: E5-S, E6-A, E6-B, E6-B-FIX-001, E6-DASH-001.
@@ -94,7 +95,7 @@ Breadcrumbs: E5-S, E6-A, E6-B, E6-B-FIX-001, E6-DASH-001.
 | E5-T-FIX-004 | Single-recommendation dashboard | Replaced decision-menu overload with one primary action above the fold. | `E5-T-FIX-004-*`; commit `9187c92` |
 | E6-A | GPT coordinator restoration | Restored GPT-5.5 Pro as coordinator/outcome architect while preserving repo-governed Claude <-> Codex loop. | `E6-A-*`; commit `5b53d27` |
 | E6-B | Coordinator/scribe protocol wording | Codified GPT role, output contract, scribing, dashboard Ask-GPT guidance, outcome-loop deferral, and transport caveat. | `E6-B-*`; commit `dbb9172` |
-| E6-B-FIX-001 | Coordinator Trigger Classification | Removed burden from Sami to decide routine status; active repo-writing node classifies `ROUTINE`, `NEEDS_GPT`, or `UNCLEAR`. | `E6-B-FIX-001-*`; commit `dbb9172` |
+| E6-B-FIX-001 | Coordinator Trigger Classification | Removed burden from the human approver to decide routine status; active repo-writing node classifies `ROUTINE`, `NEEDS_GPT`, or `UNCLEAR`. | `E6-B-FIX-001-*`; commit `dbb9172` |
 | E6-DASH-001 | Polaris redesign | Reframed dashboard as a human cockpit: paste-to-whom actions, role-flow strip, visible Ask-GPT path, and collapsed agent payloads. | `E6-DASH-001-*`; commit `0fe671c` |
 | E6-C | Operating model doc-lock | Locks the E5/E6 convergence into durable repo documentation and adds Project Mode / Outcome Circle concepts. | `E6-C-codex-operating-model-docs-lock.md`; commit pending |
 | E6-OC-002 / E6-OC-005 | Bootstrap observation milestone | Observed two fully compliant bootstrap circles: one objective smoke verification and one judgment-based public-positioning review. OC-003 and OC-004 remain useful process-stop evidence, not counting circles. | `E6-OC-002-*`, `E6-OC-005-*`; OC-005 preservation PR status not verified in E6-DOCS-ALIGN-001 |
@@ -118,13 +119,13 @@ conflict, safety, automation, or tooling trigger is active.
 architecture, pivot, repeated UX/cognitive-load failure, conflict,
 outcome/rubric definition, multi-turn loop approval consideration, milestone,
 "are we wasting time?", high-stakes/noisy/ambiguous decision, automation or
-tooling architecture, safety boundary, or Sami request.
+tooling architecture, safety boundary, or configured human approver request.
 
 `UNCLEAR` applies when the active repo-writing node cannot confidently classify
 the turn as `ROUTINE`. Missing classification is treated as `UNCLEAR`.
 `UNCLEAR` defaults to Ask GPT.
 
-Sami is never responsible for determining routine status. The active
+The configured human approver is never responsible for determining routine status. The active
 repo-writing node classifies. The auditor may upgrade classification with a
 one-sentence reason when critique detects an architecture, UX, safety,
 automation, scope, or other strategic trigger. If state is `NEEDS_GPT` or
@@ -138,20 +139,20 @@ E6-B-FIX-001.
 Project Mode is a higher-level estimate of the lane's operating state. It is
 not yet enforced protocol in E6-C; it is documented for future codification.
 
-| Mode | Meaning | Entry signals | Exit signals | Default Coordinator Trigger | What Sami should expect | What Polaris should show later |
+| Mode | Meaning | Entry signals | Exit signals | Default Coordinator Trigger | What the human approver should expect | What Polaris should show later |
 | --- | --- | --- | --- | --- | --- | --- |
-| Coordinator | The lane needs architecture, routing, outcome definition, synthesis, or roadmap work | No approved outcome circle; strategic backlog; repeated friction; scope unclear; transport/security/adoption decisions | An approved outcome circle starts, or only a Sami approval decision remains | `NEEDS_GPT` unless the active node can justify `ROUTINE` | GPT-led synthesis, exact next prompts, and decision framing | "Ask GPT" or coordinator-authored next action |
-| Execution | Builder/auditor are working inside an approved outcome circle or already-scoped implementation | Exact approved scope, allowed files, no-touch list, rubric/packet if applicable | Pass/blocker/iteration cap, new scope, ambiguity, or Sami call-back condition | `ROUTINE` unless a trigger fires | Less routing burden; agents proceed within bounds | Current worker/auditor step and stop condition |
-| Sami-decision-pending | The next step is Sami's explicit approval, priority, risk, or taste decision | Exact approval text present; options narrowed; no model decision remains | Sami approves, rejects, edits scope, or asks GPT | `ROUTINE` for mechanical presentation; `NEEDS_GPT` if decision is strategic/unclear | A compact decision card, not an architecture essay | Approval text / reject / ask GPT |
+| Coordinator | The lane needs architecture, routing, outcome definition, synthesis, or roadmap work | No approved outcome circle; strategic backlog; repeated friction; scope unclear; transport/security/adoption decisions | An approved outcome circle starts, or only a human approval decision remains | `NEEDS_GPT` unless the active node can justify `ROUTINE` | GPT-led synthesis, exact next prompts, and decision framing | "Ask GPT" or coordinator-authored next action |
+| Execution | Builder/auditor are working inside an approved outcome circle or already-scoped implementation | Exact approved scope, allowed files, no-touch list, rubric/packet if applicable | Pass/blocker/iteration cap, new scope, ambiguity, or human call-back condition | `ROUTINE` unless a trigger fires | Less routing burden; agents proceed within bounds | Current worker/auditor step and stop condition |
+| human-decision-pending | The next step is the human approver's explicit approval, priority, risk, or taste decision | Exact approval text present; options narrowed; no model decision remains | The human approver approves, rejects, edits scope, or asks GPT | `ROUTINE` for mechanical presentation; `NEEDS_GPT` if decision is strategic/unclear | A compact decision card, not an architecture essay | Approval text / reject / ask GPT |
 | Unknown | The active node cannot confidently determine mode | Conflicting state, stale dashboard, missing trigger, unclear scope, hidden advisor input, or mode confidence below threshold | Repo-writing node or auditor classifies, or GPT resolves | `UNCLEAR` -> Ask GPT | Do not infer safety; ask for coordinator synthesis | Ask GPT with exact question |
 
 Outside an approved outcome circle, the default mode is `Coordinator` unless
-the only pending item is a Sami approval decision. Inside an approved outcome
+the only pending item is a human approval decision. Inside an approved outcome
 circle, the default mode is `Execution`. If mode cannot be confidently
 determined, mode is `Unknown` and per-turn trigger defaults to `UNCLEAR` ->
 Ask GPT.
 
-Sami is not responsible for determining mode. The active repo-writing node
+The configured human approver is not responsible for determining mode. The active repo-writing node
 estimates mode. The auditor may challenge or upgrade the assessment with a
 one-sentence reason.
 
@@ -169,7 +170,7 @@ include both:
 - Reason: <one sentence>
 
 ## Project Mode (estimated)
-- Dominant mode: Coordinator | Execution | Sami-decision-pending | Unknown
+- Dominant mode: Coordinator | Execution | human-decision-pending | Unknown
 - Estimate: <rough percentages>
 - Reason: <one sentence>
 ```
@@ -192,7 +193,7 @@ coordination move rather than merely "advise." Available options:
 - Synthesize skill: convert repeated practice into reusable local guidance.
 - Reset strategy: stop the current loop and reframe the approach.
 - Move to next milestone: consolidate current arc and pick the next lane.
-- Stop: recommend no further work until Sami decides.
+- Stop: recommend no further work until the human approver decides.
 
 This menu prevents vague coordinator behavior, supports cost/stopping
 discipline, and maps cleanly to future Polaris displays and outcome-circle
@@ -204,7 +205,8 @@ authorization.
 ## 8. Outcome Circle Model
 
 An Outcome Circle is a pre-approved bounded loop where builder and auditor can
-work toward a shared outcome without Sami copy-pasting every micro-turn.
+work toward a shared outcome without the human approver copy-pasting every
+micro-turn.
 
 Entry requires the exact phrase:
 
@@ -249,7 +251,7 @@ Default commit/push policy:
 - if the packet allows commit/push, it must state branch/PR policy and whether
   direct push to `main` is forbidden
 - the default recommendation for CI-heavy or shared repos is PR over direct
-  push unless Sami explicitly approves direct push
+  push unless the configured human approver explicitly approves direct push
 
 Human decision actions are a separate layer from auditor result states. The
 portable action vocabulary is:
@@ -358,7 +360,7 @@ The scribe must include:
 - attribution
 - verbatim quote when available
 - structured summary
-- what Sami accepted, rejected, or left undecided
+- what the configured human approver accepted, rejected, or left undecided
 - explicit uncertainty or gaps
 
 Do not launder GPT advice into "the system decided." If GPT input applies to
@@ -487,17 +489,17 @@ discipline, E6-B.
 
 | Group | Classification | Next likely turn | Risk if skipped |
 | --- | --- | --- | --- |
-| Coordinator preservation | NEEDS_GPT + Sami approval for codification | E6-C now, then future protocol lock if needed | System drifts back to Claude <-> Codex with Sami as router |
+| Coordinator preservation | NEEDS_GPT + human approval for codification | E6-C now, then future protocol lock if needed | System drifts back to builder <-> auditor with the human approver as router |
 | Project Mode protocol/schema codification | NEEDS_GPT, deferred | After E6-C critique, maybe E6-DASH-002 or E6-PROTOCOL | Agents keep mode estimates informal |
-| Polaris mode panel | NEEDS_GPT design, routine implementation once scoped | E6-DASH-002 | Sami cannot see Coordinator/Execution/Sami-pending state quickly |
-| Advisor-notes / durable scribing | NEEDS_GPT + Sami approval | E6-E or similar | GPT input remains buried in long turn notes |
-| Notifications / wakeups | NEEDS_GPT + Sami approval | Later after cockpit/mode settles | Sami still must check manually |
-| Auto handoffs | NEEDS_GPT + Sami approval | After outcome-loop design | Relay burden remains high |
+| Polaris mode panel | NEEDS_GPT design, routine implementation once scoped | E6-DASH-002 | The human approver cannot see Coordinator/Execution/human-pending state quickly |
+| Advisor-notes / durable scribing | NEEDS_GPT + human approval | E6-E or similar | GPT input remains buried in long turn notes |
+| Notifications / wakeups | NEEDS_GPT + human approval | Later after cockpit/mode settles | The human approver still must check manually |
+| Auto handoffs | NEEDS_GPT + human approval | After outcome-loop design | Relay burden remains high |
 | Outcome/rubric loop design | NEEDS_GPT | E6-D | Work-until-done remains undefined and unsafe |
 | Cross-repo adoption | NEEDS_GPT | After core model stabilizes | New repos copy stale or partial rules |
 | Security / anti-sycophancy hardening | NEEDS_GPT | Parallel design when loops/transport approach | Consensus or grader pass may become soft approval |
 | Transport / NanoClaw / API-backed options | NEEDS_GPT, deferred | Later separate review | Premature runtime adds hidden state and authority confusion |
-| Kit propagation | ROUTINE after design accepted + Sami approval | After protocol/dashboard decisions | Adopter repos miss coordinator/mode rules |
+| Kit propagation | ROUTINE after design accepted + human approval | After protocol/dashboard decisions | Adopter repos miss coordinator/mode rules |
 | Multi-lane support | NEEDS_GPT | Later | Lanes may cross-contaminate state |
 | Decision Cockpit v1 | NEEDS_GPT design lock, Outcome Circle build after approval | After OC-005 preservation + bootstrap retrospective | Dashboard teaches the wrong default mental model |
 | Human Decision Notes | Partly codified; dashboard implementation deferred | Dashboard v1 build | Human decisions lose rationale and agents lose audit context |
@@ -511,7 +513,8 @@ Recommended minimal sequence after E6-DOCS-ALIGN-001:
    decision-action clarity, trust wording, no-touch compliance, and whether
    the dashboard scope stayed future-facing.
 2. Preserve the OC-005 artifacts and this docs alignment by whatever PR shape
-   Sami separately authorizes. E6-DOCS-ALIGN-001 did not verify that OC-005
+   the configured human approver separately authorizes. E6-DOCS-ALIGN-001 did
+   not verify that OC-005
    preservation has already landed.
 3. Run the bootstrap retrospective before dashboard build or public-alpha
    packaging. The retrospective should decide whether entry/exit `NEEDS_GPT`
@@ -569,7 +572,7 @@ Breadcrumbs: E6-DOCS-ALIGN-001, E6-C current authorization, E5-U, E5-N, E6-B.
 | `.agent-handoff/turns/E6-B-codex-gpt-coordinator-protocol-wording.md` | Protocol implementation of GPT coordinator/scribe wording | E6-B |
 | `.agent-handoff/turns/E6-B-claude-critique-gpt-coordinator-protocol-wording.md` | Audit of E6-B mirror discipline, outcome-loop deferral, and NanoClaw caveat | E6-B |
 | `.agent-handoff/turns/E6-B-FIX-001-codex-coordinator-trigger-classification.md` | Mandatory Coordinator Trigger classification, auditor upgrade, Ask-GPT default | E6-B-FIX-001 |
-| `.agent-handoff/turns/E6-B-FIX-001-claude-critique-coordinator-trigger-classification.md` | Audit confirming trigger taxonomy and Sami-is-not-classifier correction | E6-B-FIX-001 |
+| `.agent-handoff/turns/E6-B-FIX-001-claude-critique-coordinator-trigger-classification.md` | Audit confirming trigger taxonomy and human-approver-is-not-classifier correction | E6-B-FIX-001 |
 | `.agent-handoff/turns/E6-DASH-001-claude-design-human-control-tower-redesign.md` | Polaris cockpit redesign and GPT-routed design-specialist work | E6-DASH-001 |
 | `.agent-handoff/turns/E6-DASH-001-codex-verify-dashboard-redesign.md` | Scope/static verification of Polaris and no-touch/self-contained checks | E6-DASH-001 |
 | `.agent-handoff/turns/E6-C-codex-operating-model-docs-lock.md` | Current GPT coordinator framing, Project Mode, Outcome Circle, and roadmap doc-lock | E6-C |

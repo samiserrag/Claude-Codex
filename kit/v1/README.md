@@ -1,7 +1,7 @@
 # Portable Collaboration Kit v1
 
-This kit is a reviewable protocol scaffold for running a Claude Code and
-Codex collaboration inside an adopting repository. It gives both agents a
+This kit is a reviewable protocol scaffold for running a builder/auditor
+collaboration inside an adopting repository. It gives agents a
 shared source of truth, append-only turn notes, explicit approval stopgates,
 and a cold-readable handoff shape.
 
@@ -28,28 +28,28 @@ plain repository files that humans and agents can review before use.
 5. Write the first turn note under `.agent-handoff/turns/` using
    `.agent-handoff/prompts/starter-turn-note.md`.
 6. Stop at the turn cap named in the current experiment authorization until
-   Sami explicitly approves continuation.
+   the configured human approver explicitly approves continuation.
 
 ## Operating Defaults
 
 - Work local-first, not local-only. Repo-file coordination is the default;
-  bridges and adapters are opt-in later layers only when Sami approves exact
-  setup.
+  bridges and adapters are opt-in later layers only when the configured human
+  approver approves exact setup.
 - Treat file-based handoff as the minimal binding reference: manual paste plus
   `COLLAB.md` and append-only turn notes, with inbox/outbox files only if a
   later scope authorizes them.
 - Treat signed event governance as an optional add-on. It is not required for
   the v1 file-based kit.
-- Keep live bridges and adapters disabled until Sami separately approves the
-  exact MCP registration, plugin setup, bridge enablement, `.mcp.json`, or
-  global config change.
+- Keep live bridges and adapters disabled until the configured human approver
+  separately approves the exact MCP registration, plugin setup, bridge
+  enablement, `.mcp.json`, or global config change.
 - Treat turn caps as per-experiment authorization values, not repo-wide
   defaults.
 - Browser QA must name the runner or explicitly say `N/A` with a reason.
 - Automation budget is `N/A` unless polling, cron, webhook, or heartbeat work
   is explicitly approved.
-- Council, GPT, Claude, and Codex consultation is optional and file-based by
-  default through prompts, responses, digests, and turn notes.
+- Council, coordinator, builder, auditor, and consultant input is optional and
+  file-based by default through prompts, responses, digests, and turn notes.
 - Treat gstack, AgentBridge, tmux bridges, LLM Council, Zenith, CCB, Claude
   Squad, and related projects as prior art only unless a separate scope
   approves dependency use.
@@ -62,7 +62,7 @@ plain repository files that humans and agents can review before use.
 - Not an installer or bootstrap script.
 - Not a dependency package.
 - Not a live MCP bridge, plugin, wrapper, or adapter.
-- Not a global Claude or Codex configuration.
+- Not a global agent, model, or tool configuration.
 - Not a signed-event governance implementation.
 - Not an authorization to create keys, trust registries, event logs, or
   private-key files.
@@ -70,10 +70,26 @@ plain repository files that humans and agents can review before use.
 - Not permission to commit, push, merge, open a PR, install dependencies, or
   enable automation.
 
+## Trust Caveats
+
+- V1 records are Git-visible / audit-visible.
+- V1 records are not tamper-proof.
+- Blockchain is not MVP and is not required by this kit.
+- This kit makes no legal/compliance suitability claim.
+
+## Durable Behavior Boundary
+
+- Observed pattern is not durable behavior.
+- Memory is context, not authority.
+- Skill proposal is not approval.
+- Automation proposal is not approval.
+- Repeated workflow is not approval.
+- Only the human approver can authorize durable behavior.
+
 ## Included Files
 
-- `AGENTS.md.template`: Codex-facing instructions for the adopter repo.
-- `CLAUDE.md.template`: Claude-facing mirror instructions.
+- `AGENTS.md.template`: builder-facing instructions for the adopter repo.
+- `CLAUDE.md.template`: auditor-facing mirror instructions.
 - `.agent-handoff/PROTOCOL.md.template`: shared collaboration protocol.
 - `.agent-handoff/COLLAB.md.template`: current-state handoff template.
 - `.agent-handoff/DASHBOARD.md.template`: optional current-state dashboard.
