@@ -2,19 +2,377 @@
 
 ## Goal
 
-Prove a practical two-way Claude Code <-> Codex collaboration loop in this repo.
-The sample build is a small static Decision Ledger app.
+Prove a Git-native approval-boundary protocol and reference cockpit for
+cross-model agent work, while keeping human approval separate from builder
+output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
-Claude Code has completed the **E6-README-SCOPE-001 audit** locally and
-is hard-stopped for Sami review. Audit turn note:
-`.agent-handoff/turns/E6-README-SCOPE-001-claude-audit-repo-strangerprintability-scope-lock.md`.
+Claude Code has scribed the **E6-README-001 GPT exit synthesis** per
+Sami's exit-synthesis authorization. Hard-stopped pending explicit
+preservation-PR shape authorization. Exit-synthesis turn note:
+`.agent-handoff/turns/E6-README-001-gpt-exit-synthesis.md`.
 
-Next actor: **Sami** (then GPT-5.5 Pro for README implementation Outcome
-Packet framing after preservation lands).
+Next actor: **Sami** (then release-operator role for preservation PR).
 
-### E6-README-SCOPE-001 audit result
+### 🎯 E6-README-001 formally closed: `satisfied`
+
+Per GPT-5.5 Pro's exit synthesis (scribed verbatim in the turn note):
+
+- **Accept the auditor's `satisfied` result for E6-README-001.**
+- **E6-README-001 is satisfied at iteration 1.**
+- **No iteration 2 is needed.**
+- **Root README implementation passed audit.**
+- **The narrow public-docs scrub of AGENTS.md and CLAUDE.md passed
+  audit.**
+
+### Critical reminders (verbatim from GPT exit synthesis)
+
+- `satisfied` is not approval.
+- Auditor pass is not approval.
+- Model consensus is not approval.
+- No commit, push, branch, PR, merge, public release, README
+  publication, top-of-funnel work, trust-layer implementation,
+  dashboard work, protocol relaxation, new Outcome Circle, runtime
+  work, notification/wakeup work, automation work, or additional
+  public-docs scope is authorized by this result.
+
+### What E6-README-001 proved (per GPT)
+
+- Strangerprintable root README without hidden chat context.
+- 5-minute skim sufficient for problem / differentiator / status /
+  limitations / next reading path.
+- Narrow public claim preserved: "Git-native approval-boundary
+  protocol for cross-model agent work."
+- Agents produce evidence and judgment; humans authorize
+  consequences.
+- Core state separation preserved (built ≠ audited ≠ satisfied ≠
+  human-approved ≠ committed / pushed / merged / launched).
+- Decision Cockpit / Polaris as reference cockpit, not the whole
+  protocol.
+- Protocol portability preserved (adopters may use protocol without
+  dashboard).
+- All 5 adoption patterns included.
+- Honest proof status and honest limitations.
+- "Blockchain is not MVP" required trust caveat present.
+- No tamper-proof / legal-compliance / public-alpha / scale-proof /
+  runtime-replacement / first-agent-governance claims.
+- AGENTS.md and CLAUDE.md scrubbed narrowly (public framing aligned;
+  operational instructions preserved).
+
+### What E6-README-001 did NOT prove (per GPT)
+
+- Public adoption.
+- External installability.
+- `kit/v1` fully extractable by strangers.
+- Burden-reduction magnitude.
+- Severe model-disagreement handling.
+- Trust-layer tamper-evidence.
+- Legal or compliance suitability.
+- Autonomous wakeup / transport / notifier safety.
+- Scale across teams.
+- **Public-alpha release approval.**
+- Medium / X / landing page / whitepaper / launch / top-of-funnel /
+  trust-layer / dashboard expansion / protocol relaxation / new
+  Outcome Circle approval.
+
+### Milestone (per GPT, verbatim)
+
+> "The repo strangerprintability track now has a first audited
+> implementation. Tripwire condition #4 — repo strangerprintability
+> — is substantially achieved at the root README orientation layer.
+> External installability and kit extractability remain separate,
+> unproven work. The project now has **protocol proof, reference
+> cockpit proof, and root README proof**. The next step is artifact
+> preservation, not public release."
+
+### Tripwire status update
+
+| Condition | Status |
+| --- | --- |
+| #1: Bootstrap counter hits 2 of 2 | ✓ ACHIEVED (E6-OC-005) |
+| #2: Subjective rubric circle | ✓ ACHIEVED (E6-OC-005) |
+| #3: Documented honest failure resolved transparently | ✓ ACHIEVED (PR #9/#10/#11/#12) |
+| #4: Repo strangerprintable | **🎯 SUBSTANTIALLY ACHIEVED (this turn)** at root README orientation layer; external installability + kit extractability still pending |
+| #5: Top-of-funnel artifacts | **STILL PENDING** — explicitly not approved |
+| Bonus: reference cockpit proof | ✓ ACHIEVED (E6-DASH-003) |
+| **Bonus: root README proof** | **🎯 ACHIEVED (this turn)** |
+
+**4 of 5 original tripwires now substantially achieved.** Only
+condition #5 (top-of-funnel artifacts) remains pending and is
+explicitly not approved by this synthesis. The project has
+**protocol proof + reference cockpit proof + root README proof** —
+three independent evidence layers, each independently audited and
+preserved on main.
+
+### Recommended preservation-PR shape (per GPT, verbatim)
+
+Single PR with **7 files**:
+- `README.md`
+- `AGENTS.md`
+- `CLAUDE.md`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-README-001-codex-root-readme-implementation-iter-1.md`
+- `.agent-handoff/turns/E6-README-001-claude-audit-root-readme-implementation-iter-1.md`
+- `.agent-handoff/turns/E6-README-001-gpt-exit-synthesis.md`
+
+Suggested branch: `e6-readme-001-root-readme-implementation`
+Suggested commit: `E6-README-001: preserve root README implementation`
+
+COLLAB.md should be cleanly separable this time (PR #16 cleared the
+stack; only the README OC handoff stack is on it now).
+
+### Next decisions (Sami-owned)
+
+Coordinator Trigger for the next handoff: **ROUTINE** for the
+preservation-PR creation itself once Sami authorizes the exact files
+and branch name (GPT's exit synthesis is now in the repo, so the
+preservation step is mechanical). The *post-preservation* next-track-
+selection decision is **NEEDS_GPT** for framing any new Outcome Circle
+(kit expansion / trust-layer / whitepaper / public-docs scrub).
+
+Sami next steps:
+
+1. Confirm scribe accuracy (verbatim text faithfully captured;
+   summary + acceptance/rejection/undecided faithfully recorded).
+2. Issue the preservation-PR release-operator authorization with
+   exact files, branch, and commit message (recommended shape
+   above).
+3. Optionally authorize folding tripwire-status updates to
+   STRATEGY.md / OPERATING-MODEL.md acknowledging strangerprintability
+   milestone — into the preservation PR or a separate small docs PR
+   after merge.
+4. After preservation PR merges, paste the next-track framing to
+   GPT-5.5 Pro:
+   - (a) kit/v1 adopter-path expansion
+   - (b) trust-layer design-only turn
+   - (c) whitepaper outline
+   - (d) public-docs scrub follow-on, if needed
+   - (e) public-alpha packaging (with explicit later approval)
+   Retrospective sequence + E6-README-SCOPE-001 §10 lean toward
+   (a) → later (b)/(c). Public-alpha (e) is gated on bootstrap
+   tripwire #5 still pending.
+
+**Public-alpha packaging is still NOT authorized.**
+**Trust-layer implementation is still NOT authorized.**
+**Top-of-funnel publishing (Medium / X / landing page) is still
+NOT authorized.**
+**Whitepaper publication is still NOT authorized — only an outline
+turn is among the candidate next tracks.**
+**No bootstrap-rule relaxation is approved.**
+
+No staging, commit, push, branch, PR, merge, public release, README
+publication, top-of-funnel work, Medium/X/landing-page work, trust
+implementation, dashboard work, protocol relaxation, new Outcome
+Circle, OPERATING-MODEL.md / STRATEGY.md / PROTOCOL.md / kit /
+mockups / docs / runtime edits, COLLAB archival, pilot repo touch,
+or live Open Mic Colorado touch is authorized by this scribe.
+
+### Previous E6-README-001 iter-1 audit state
+
+Claude Code completed the **E6-README-001 iteration 1 audit** prior
+to this exit synthesis. Audit turn note:
+`.agent-handoff/turns/E6-README-001-claude-audit-root-readme-implementation-iter-1.md`.
+
+### E6-README-001 iter-1 audit result
+
+**`satisfied`** (0 blockers, 0 nits, 4 soft observations).
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. No commit, push, branch, PR, merge, public
+release, README publication, top-of-funnel work, trust implementation,
+dashboard work, protocol relaxation, or new Outcome Circle is
+authorized by this result. E6-README-001 iter-1 is ready for GPT/human
+exit synthesis.
+
+The implementation satisfies all 19 audit foci. Independent grep/diff
+confirms every required element is present in README + AGENTS.md +
+CLAUDE.md, every forbidden element is absent (except `tamper-proof` in
+required negative framing), every no-touch surface is unchanged, and
+the AGENTS / CLAUDE scrub is genuinely narrow.
+
+### All 19 foci PASS
+
+1. **Entry/packet discipline** — clean entry at HEAD `a1b2a1e...`
+   before any file write; full 14-section Outcome Packet scribed in
+   builder note L22-339 before implementation; zero `* 2.md`.
+2. **Allowed files / no-touch** — only README.md + AGENTS.md +
+   CLAUDE.md + COLLAB.md + builder turn note changed; per-path
+   `git diff` exit 0 for all listed no-touch surfaces; alert-state.sh
+   unchanged at 6519 bytes.
+3. **README structure** — all 12 required sections + 3
+   strangerprintability-enhancing bonus sections (Adoption Patterns,
+   Who This Is For, Human Decision Notes).
+4. **Strangerprintability** — all 8 strangerprintability questions
+   answerable in ~5-minute skim (L1-296); under-10-minute full read
+   plausible at 459 lines / 20059 bytes; explicit 5-minute path at
+   L51-53.
+5. **Public claim discipline** — 6 safe-wording phrases present;
+   forbidden phrases absent except `tamper-proof` in required negative
+   framing (L378). §"What This Is Not" has 9 proactive non-claims.
+6. **Core state separation** — 6-row state table (L125-132)
+   distinguishing Built / Audited / Satisfied / Human-approved /
+   Committed-pushed-merged / Launched-published; closing framing
+   "An agent can say 'I am satisfied against the rubric.' It cannot
+   say 'the consequence is approved.'"
+7. **Dashboard relationship** — Polaris/Decision-Cockpit is reference
+   cockpit; "dashboard is not the whole method" L14-16; protocol
+   adoptable without dashboard (L227 + §Adoption Patterns).
+8. **Adoption patterns** — all 5 patterns in clean table at L231-235
+   with Use-when + What-to-copy columns.
+9. **Proof status** — 9 proven items (5 required + 4 bonus); 10 not-
+   proven items (8 required + 2 bonus including smarter-agent gaming);
+   honest closing framing L293-295.
+10. **Trust caveats** — Git-visible not tamper-proof; tamper-evident
+    hardening is future work; **"Blockchain is not MVP" present at
+    L396** (addresses prior scope-lock audit soft observation); no
+    legal/compliance claim; no trust-layer implementation.
+11. **Naming discipline** — Polaris/Outcome-Circle/Outcome-Packet
+    preserved; "Outcome Circles Protocol" absent (grep exit 1); no
+    new public protocol name adopted; repo name "Claude-Codex"
+    explicitly acknowledged as historical dogfood pairing with
+    portable roles (L47-49).
+12. **Personal-name / model-name discipline** — **zero `Sami` and
+    zero `GPT-5.5` mentions** across README + AGENTS.md + CLAUDE.md
+    (grep exit 1). Reusable language uses Coordinator / Builder /
+    Auditor / human approver / configured human approver consistently.
+    Model names appear only as repo name, file-purpose descriptions,
+    or counterparty-instruction context within agent-instruction files.
+13. **AGENTS.md / CLAUDE.md scrub** — genuinely narrow. Stale
+    Decision Ledger framing removed; project identity updated; "Sami"
+    replaced with "configured human approver" in reusable rules
+    (L22/L58/L63/L65 in both files); operational instructions
+    preserved; no broad rewrite; no protocol semantics changed; no
+    new workflows added.
+14. **Length discipline** — README 20059 bytes (just below 20480-byte
+    lower bound of 25 KB ± 5 KB target, but appropriate for
+    strangerprintability lean orientation); plausibly under-10-minute
+    full read; links to `.agent-handoff/` artifacts rather than
+    reprinting.
+15. **Whitepaper separation** — README defers cognitive scalability /
+    smarter-agent / MAS-vs-centaurian theory to future work
+    (§"Contributing / Future Work" L431-447 lists "a whitepaper
+    section on cognitive scalability without approval laundering"
+    and "explicit discussion of smarter-agent limitations" as
+    future work).
+16. **Public-alpha / launch boundary** — "Public-alpha launch is not
+    approved by this README" (L433); §"What This Is Not" L68-70
+    "does not claim... readiness for public alpha launch"; proof
+    status lists "public adoption" as not proven.
+17. **Kit / adopter path** — references kit/v1 in 4 places with
+    honest framing: "should be treated as a template, not as proof
+    that your repo is governed merely because files were copied"
+    (L237-239); future work lists kit improvements.
+18. **Governance semantics** — core thesis fully protected (humans
+    authorize consequences; agents produce evidence; agents are not
+    fake approvers; exact approval boundaries; no adjacent-scope
+    authorization).
+19. **Result state** — `satisfied`.
+
+### 4 soft observations (not nits)
+
+1. README byte count at lean end of band (20059 vs 20480-byte lower
+   bound) — not a defect; lean orientation serves strangerprintability.
+2. §"Decision Cockpit / Reference Cockpit" header treats Decision
+   Cockpit and Polaris as roughly synonymous — true for v1, but
+   future cockpit views (Kanban) would require splitting "Polaris (the
+   dashboard) hosts Decision Cockpit v1 (the default decision-pending
+   view)."
+3. AGENTS.md / CLAUDE.md "Accepted E3 Operating Defaults" section
+   name retains historical E3 label — correct preservation per
+   narrow-scrub packet rule; kit extraction track later can
+   genericize to "Operating Defaults."
+4. §"How To Dogfood / Adopt" 10-step adopter path is strong
+   foundation for future kit/v1 README expansion (separate future
+   track per scope lock).
+
+### Independent verifications
+
+- `git diff --check` exit 0.
+- HEAD `a1b2a1e2a6248d64a91695a10ac01fbd764cfb37` (PR #16 merge).
+- Exactly 4 modified tracked + 1 builder turn note untracked + this
+  audit turn note untracked. No other diffs.
+- Per-path no-touch diff for PROTOCOL / OPERATING-MODEL / STRATEGY /
+  DASHBOARD / mockups / kit / docs / alert-state.sh: exit 0.
+- advisor-notes / reflections / improvements / `.mcp.json` absent.
+- No `* 2.md` Finder duplicates.
+- All required-copy grep matches.
+- Forbidden-copy grep returns single match (`tamper-proof` L378 in
+  required negative framing).
+- "Outcome Circles Protocol" / "Polaris.*protocol" / "Polaris.*whole"
+  absent (grep exit 1).
+- Zero `Sami` / zero `GPT-5.5` mentions in any of the 3 public docs
+  (grep exit 1).
+
+### Recommended preservation PR shape (single combined)
+
+- **Branch:** `e6-readme-001-root-readme-implementation`
+- **Files (6, plus optional 7th if GPT exit synthesis is scribed
+  first):**
+  - `README.md`
+  - `AGENTS.md`
+  - `CLAUDE.md`
+  - `.agent-handoff/COLLAB.md`
+  - `.agent-handoff/turns/E6-README-001-codex-root-readme-implementation-iter-1.md`
+  - `.agent-handoff/turns/E6-README-001-claude-audit-root-readme-implementation-iter-1.md`
+  - (optional) `.agent-handoff/turns/E6-README-001-gpt-exit-synthesis.md`
+- **Commit:** `E6-README-001: preserve root README implementation`
+- **PR title:** `E6-README-001: preserve root README implementation`
+
+Single combined PR (matching E6-DASH-003 PR #15 pattern) is Claude's
+lean. COLLAB.md should be cleanly separable this time (no intermixed
+prior layered handoffs since PR #16 cleared the stack).
+
+### Next decisions (Sami-owned, NEEDS_GPT for exit synthesis)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** per the
+bootstrap rule for public-facing strategic work (entry/exit
+`NEEDS_GPT`).
+
+Full GPT exit-synthesis paste question pre-staged in audit turn note
+§"Coordinator Trigger For Next Handoff" — 5 questions covering:
+1. Confirm satisfied vs request narrow iter-2 revision (none
+   recommended).
+2. Preservation-PR shape (Claude leans single combined PR with
+   6+1 files).
+3. Tripwire updates to STRATEGY / OPERATING-MODEL (strangerprintability
+   tripwire #4 now in better shape).
+4. Whether README implementation counts as a Decision-Cockpit-v1-
+   style milestone (strangerprintability achieved at protocol-only
+   depth; external installability still pending).
+5. Next track after preservation: (a) kit/v1 expansion, (b) trust-
+   layer design-only, (c) whitepaper outline, (d) public-docs
+   scrub follow-on, (e) something else. Retrospective + scope-lock
+   lean (a) → later (b)/(c).
+
+Sami next steps:
+
+1. Confirm `satisfied` accepted (none recommended for iter-2
+   revision by the auditor).
+2. Paste the GPT exit-synthesis framing question to GPT-5.5 Pro.
+3. After GPT synthesis, authorize preservation PR shape.
+4. Optionally authorize tripwire-update commit to STRATEGY /
+   OPERATING-MODEL acknowledging strangerprintability milestone.
+5. After preservation lands, GPT can frame the next track.
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing (Medium/X/landing page) still NOT
+authorized.**
+
+No staging, commit, push, branch, PR, merge, public release, README
+publication, top-of-funnel work, trust implementation, dashboard
+work, protocol relaxation, new Outcome Circle, OPERATING-MODEL.md /
+STRATEGY.md / PROTOCOL.md / kit edits, COLLAB archival, pilot repo
+touch, or live Open Mic Colorado touch is authorized by this audit.
+
+### Previous E6-README-001 builder state
+
+Codex completed the **E6-README-001 root README implementation**
+prior to this audit. Builder turn note:
+`.agent-handoff/turns/E6-README-001-codex-root-readme-implementation-iter-1.md`.
+
+### Previous E6-README-SCOPE-001 audit result
 
 **PASS with 0 blockers, 0 nits, 1 soft observation.**
 
