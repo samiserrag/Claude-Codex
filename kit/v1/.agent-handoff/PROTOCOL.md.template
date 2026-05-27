@@ -299,8 +299,8 @@ the turn as `ROUTINE`. `UNCLEAR` defaults to Ask the Coordinator.
 When state is `NEEDS_COORDINATOR` or `UNCLEAR`, the dashboard primary recommendation
 should become "Ask the Coordinator," not a request for the human approver to
 decide whether Coordinator input is needed. The handoff must include the exact
-question to paste to the Coordinator. Respect the E5-T-FIX-004
-single-recommendation principle.
+question to paste to the Coordinator. Respect the single-recommendation
+principle.
 
 When critiquing an implementation or design, the auditor may upgrade the
 Coordinator Trigger classification with a one-sentence reason, such as when
@@ -327,9 +327,9 @@ auditor, the next repo-writing node records the shared source once and the
 other node references it.
 
 If a Coordinator invocation trigger fires, the dashboard primary recommendation
-may become "Ask the Coordinator." Respect the E5-T-FIX-004
-single-recommendation principle: Ask the Coordinator becomes the one
-recommendation, not an extra competing surface.
+may become "Ask the Coordinator." Respect the single-recommendation principle:
+Ask the Coordinator becomes the one recommendation, not an extra competing
+surface.
 
 #### Outcome Circles
 
