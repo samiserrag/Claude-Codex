@@ -34,7 +34,7 @@ scope. Refresh again at handoff when any of these fields changed:
 - latest artifact
 - next safe action
 - dashboard-vs-COLLAB conflict status
-- What The Human Approver Pastes Next
+- What the Human Approver Pastes Next
 - External Advisor Input
 - Current Operational Nodes
 - Subagent delegations
@@ -69,7 +69,7 @@ Diversity: `{{strong | moderate | weak | N/A}}`
 - Status: `{{not requested | local chat only | scribed | incorporated | not needed}}`
 - Attribution path or quote block: `{{advisor_note_path_or_quote_or_NA}}`
 
-## What The Human Approver Pastes Next
+## What the Human Approver Pastes Next
 
 | Target | Prompt / action |
 | --- | --- |

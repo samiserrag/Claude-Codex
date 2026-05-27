@@ -8,6 +8,273 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
+Claude Code has completed the **E6-KIT-001-FIX-001 iteration 1 audit**
+locally and is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-KIT-001-FIX-001-claude-audit-kit-portability-cleanup-iter-1.md`.
+
+Next actor: **Sami** (then either GPT-5.5 Pro for exit synthesis OR
+direct Sami acceptance + fold the closure datapoint into the pending
+repo-strategy GPT consultation — auditor's lean is the latter, see
+audit turn note §"Coordinator Trigger For Next Handoff").
+
+### E6-KIT-001-FIX-001 iter-1 audit result
+
+**`satisfied`** (0 blockers, 0 nits, 1 soft observation).
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. No commit, push, branch, PR, merge, public
+release, public-proof run, trust-layer implementation, dashboard
+design work, memory/skill/automation/subagent/scheduled-check
+creation, new Outcome Circle, or new public scope expansion is
+authorized by this result. E6-KIT-001-FIX-001 iter-1 is ready for
+GPT/human exit synthesis OR direct Sami acceptance + fold into
+pending repo-strategy consultation.
+
+This is the tightest, cleanest OC audited in this repo to date.
+4-file delta (3 modified + 1 builder turn note + this audit note =
+5 in working tree). All audit foci pass. Independent grep/diff
+confirms every claim: `E5-T-FIX-004` removed from kit (preserved in
+live PROTOCOL.md L241+L267 as no-touch dogfood evidence), casing fix
+landed at DASHBOARD template L37+L72, substance of
+single-recommendation principle preserved at PROTOCOL template
+L302+L330, all kit invariants intact (23 files, 3 templates, 5
+examples, Durable Behavior Boundary, invocation breadcrumb, V1 trust
+caveats, Mirror Status Convention, DASHBOARD.html-not-added rule).
+
+### Key verifications
+
+| Surface | Before | After | Verified? |
+| --- | ---: | ---: | --- |
+| `kit/v1/**` `E5-T-FIX-004` | 2 | 0 | ✓ rg no matches |
+| Live `.agent-handoff/PROTOCOL.md` `E5-T-FIX-004` | 2 | 2 (no-touch preserved) | ✓ |
+| Kit old casing `What The Human...` | 2 | 0 | ✓ rg no matches |
+| Kit new casing `What the Human...` | 0 | 2 | ✓ at L37 + L72 |
+| Kit `single-recommendation` substance | 2 | 2 (preserved at L302 + L330) | ✓ |
+| `kit/v1/**` personal-name terms | 0 | 0 | ✓ rg no matches |
+| `kit/v1/**` strict model-role terms | 0 | 0 | ✓ rg no matches |
+| Kit file count | 23 | 23 (unchanged) | ✓ |
+| Templates / Examples | 3 / 5 | 3 / 5 (unchanged) | ✓ |
+| Root README/AGENTS/CLAUDE | 0/0/0 | 0/0/0 (not edited) | ✓ |
+| Live PROTOCOL/OPERATING-MODEL/STRATEGY | 0 | 0 (unchanged) | ✓ |
+| Live DASHBOARD.md/html | 0 | 0 (unchanged) | ✓ |
+| `.gitignore` / `.design-concepts/` | deferred | deferred (unchanged) | ✓ |
+
+### Pre-existing discipline preserved
+
+- ✅ No historical turn-note rewrite (`git diff -- turns/` exit 0)
+- ✅ Live PROTOCOL.md untouched (FIX-001 + FIX-002 invariants preserved; live E5-T-FIX-004 intentionally preserved as dogfood-history evidence)
+- ✅ Live OPERATING-MODEL.md / STRATEGY.md untouched
+- ✅ Live DASHBOARD.md / DASHBOARD.html untouched
+- ✅ Dashboard-design `stash@{0}` preserved (not popped, dropped, or inspected)
+- ✅ `.gitignore` / `.design-concepts/` deferred work intact
+- ✅ No memory/skill/automation/subagent/scheduled-check created
+- ✅ No commit, push, branch, PR, merge inside the circle
+- ✅ No `* 2.md` duplicates anywhere in repo
+- ✅ `.mcp.json` absent; `alert-state.sh` unchanged (6519 bytes)
+
+### 1 soft observation (not a nit, downstream-awareness)
+
+**Soft Obs 1: Codex-side `claude-codex-outcome-circle` skill declared
+in builder breadcrumb** — first time a side-skill has been explicitly
+declared as durable behavior shaping work in this repo. **Not a rule
+violation** (per Durable Behavior Boundary, consulting an existing
+skill and declaring it is correct; the rule covers *creating or
+changing* durable behavior). Positive signal that invocation
+breadcrumb discipline works.
+
+**Implications relevant to pending GPT repo-strategy consultation:**
+1. Asymmetry now visible: Codex has supporting skills; Claude-side
+   does not.
+2. Skill lives at `/Users/samiserrag/.codex/skills/...` outside this
+   repo and outside auditor read scope — for small surgical OCs like
+   this one, the impact is independently verifiable, but for larger
+   OCs the opacity matters.
+3. The "where do methodology skills live?" question now has a
+   real-world existing answer on the Codex side. The pending GPT
+   consultation should incorporate this datapoint.
+
+### Cycle-improvement observations
+
+- Cleanest OC scope to date (4-file delta, ~600-line builder turn
+  note → high evidence-to-edit ratio)
+- Builder pre-scribed full 14-section Outcome Packet before
+  implementation (continuing E6-KIT-001 discipline)
+- Builder ran the exact verification commands suggested by the
+  packet §8 and recorded before/after grep results inline — making
+  the audit faster and reducing ambiguity
+- Invocation breadcrumb correctly surfaced a Codex-side skill for the
+  first time in this repo's history — validates the
+  E6-DURABLE-SCOPE-001 breadcrumb rule
+- Soft observations from E6-KIT-001 audit (Soft Obs 1 + 2) were
+  converted into concrete surgical cleanup, not deferred indefinitely
+  or scope-creeped into a larger OC — the right way to honor "Soft
+  Observations: not nits, for downstream awareness"
+
+### Recommended preservation PR shape (if/when authorized)
+
+- **Branch:** `e6-kit-001-fix-001-kit-portability-cleanup`
+- **Files (5, or 6 with optional GPT exit synthesis turn note):**
+  COLLAB + 2 modified kit/v1 + Codex builder turn note + this audit
+  turn note (+ optional GPT exit synthesis note)
+- **Commit:** `E6-KIT-001-FIX-001: preserve kit portability cleanup iteration 1`
+- **PR title:** Same
+
+COLLAB.md is interleaved between builder + audit handoffs per OC-005
+/ PR #12 / PR #19 / PR #20 / PR #21 precedent, so single combined PR
+is the clean path.
+
+**Important sequencing question for Sami:**
+Should preservation happen now, or wait for the pending repo-strategy
+GPT consultation to resolve? If the consultation recommends Option A
+(fresh public-proof repo) or B (two-repo split), preserving here adds
+to the dogfood-pollution surface that's the subject of the
+consultation. Auditor lean: **wait for the consultation** if it
+returns within a reasonable timeframe; preserve immediately only if
+the consultation is going to be slow.
+
+### Next handoff (Sami-owned)
+
+Coordinator Trigger for the next handoff: **NEEDS_HUMAN** (with
+optional **NEEDS_GPT** branch for separate exit synthesis).
+
+Two paths (auditor's lean: (a)):
+
+(a) **Direct Sami acceptance + fold into pending repo-strategy GPT
+consultation.** Cleaner, less dogfood growth (addresses Sami's
+pollution concern), and the Soft Obs 1 skill-asymmetry datapoint is
+directly relevant to the pending consultation anyway.
+
+(b) **Separate GPT exit synthesis turn for E6-KIT-001-FIX-001.**
+Matches precedent (E6-DASH-003 / E6-README-001 / E6-NAME-SCRUB-001 /
+E6-KIT-001 all had GPT exit synthesis). Costs: one more turn note in
+the dogfood layer.
+
+Pre-staged 4-question GPT exit-synthesis framing in audit turn note
+§"Coordinator Trigger For Next Handoff" if Sami picks (b).
+
+Sami next steps:
+
+1. Confirm E6-KIT-001-FIX-001 audit accepted.
+2. Choose (a) direct acceptance + fold into pending consultation OR
+   (b) separate GPT exit synthesis.
+3. Decide whether to authorize preservation PR now OR wait for
+   pending repo-strategy GPT consultation to resolve first (auditor
+   lean: wait).
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing still NOT authorized.**
+**Whitepaper publication still NOT authorized.**
+**Public-proof run / clean repo creation still NOT authorized.**
+**Dashboard design work still NOT authorized (stash preserved).**
+**Memory/skill/automation/subagent/scheduled-check creation still NOT authorized.**
+**E6-KIT-DRY-RUN-001 still NOT authorized.**
+**Repo-strategy decision (A–E from pending GPT consultation) not yet made.**
+
+No staging, commit, push, branch, PR, merge, public release,
+public-proof run, trust implementation, dashboard design work,
+memory/skill/automation creation, subagent creation, scheduled-check
+creation, `.gitignore` edit, `.design-concepts/` restore, historical
+turn-note rewrite, new Outcome Circle, OPERATING-MODEL.md /
+STRATEGY.md / PROTOCOL.md (live) / kit edits beyond what's already
+in working tree, COLLAB archival, pilot repo touch, or live Open Mic
+Colorado touch is authorized by this audit.
+
+### Previous E6-KIT-001-FIX-001 builder state
+
+Codex performed the approved small kit-only portability cleanup and
+hard-stopped for Claude audit. Builder turn note:
+`.agent-handoff/turns/E6-KIT-001-FIX-001-codex-kit-portability-cleanup-iter-1.md`.
+
+Prior next-actor (now superseded by audit result above): **Claude
+Code** (auditor inside approved E6-KIT-001-FIX-001 Outcome Circle).
+
+### E6-KIT-001-FIX-001 builder handoff
+
+Codex performed the approved small kit-only portability cleanup and hard-stops
+for Claude audit. Builder cannot grade own work.
+
+Files changed:
+
+- `kit/v1/.agent-handoff/PROTOCOL.md.template`
+- `kit/v1/.agent-handoff/DASHBOARD.md.template`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-KIT-001-FIX-001-codex-kit-portability-cleanup-iter-1.md`
+
+Implementation summary:
+
+- Replaced the source-repo experiment residue
+  `E5-T-FIX-004 single-recommendation principle` in the kit protocol template
+  with neutral adopter-facing `single-recommendation principle` wording.
+- Replaced `What The Human Approver Pastes Next` with
+  `What the Human Approver Pastes Next` in the kit dashboard template index
+  item and heading.
+- Did not edit live `.agent-handoff/PROTOCOL.md`, live dashboard files, root
+  docs, strategy/operating docs, `.gitignore`, `.design-concepts/`, historical
+  turn notes other than this new builder note, memory files, skills,
+  automations, subagents, scheduled checks, trust-layer files, runtime files,
+  pilot repo, or live Open Mic Colorado files.
+
+Verification highlights:
+
+- Entry was clean at HEAD
+  `4732364df6f39455a990050f8345f18895a2d078`.
+- Dashboard-design stash remains present:
+  `stash@{0}: On main: defer dashboard design concepts gitignore workfolder`.
+- Duplicate `* 2.md` check printed nothing.
+- `rg -n "E5-T-FIX-004" kit/v1 || true` returned no matches after cleanup.
+- `rg -n "What The Human Approver Pastes Next" kit/v1 || true` returned no
+  matches after cleanup.
+- `kit/v1/**` personal-name grep returned no matches.
+- `kit/v1/**` strict permanent model-role grep returned no matches.
+- `find kit/v1 -type f | sort | wc -l` remains `23`.
+- Templates count remains `3`; examples count remains `5`; all examples remain
+  marked `Example only`.
+- Durable Behavior Boundary wording, invocation breadcrumb guidance, V1 trust
+  caveats, Mirror Status Convention, dashboard optionality, and
+  `DASHBOARD.html`-not-added invariant remain present.
+- `git diff --check` returned no output.
+- No commit, push, branch, PR, merge, public release, public-proof run,
+  external dry run, trust-layer implementation, dashboard design work,
+  memory/skill/automation/subagent/scheduled-check creation, or protocol
+  relaxation occurred.
+
+### Next request to Claude
+
+```text
+[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread:
+E6-KIT-001-FIX-001 small kit portability cleanup audit | Role: auditor inside
+approved Outcome Circle]
+
+Audit E6-KIT-001-FIX-001 iteration 1.
+
+Inspect:
+- .agent-handoff/turns/E6-KIT-001-FIX-001-codex-kit-portability-cleanup-iter-1.md
+- .agent-handoff/COLLAB.md
+- kit/v1/.agent-handoff/PROTOCOL.md.template
+- kit/v1/.agent-handoff/DASHBOARD.md.template
+
+Grade against the approved E6-KIT-001-FIX-001 rubric: clean entry and full
+packet before implementation; no duplicate * 2.md files; stash preserved;
+E5-T-FIX-004 source-repo residue removed from the kit protocol template with
+neutral adopter-facing single-recommendation wording; What The Human Approver
+Pastes Next casing fixed in the kit dashboard template; no live protocol,
+dashboard, root-doc, strategy, operating-model, .gitignore, .design-concepts,
+memory, skill, automation, subagent, scheduled-check, trust-layer, runtime,
+public-release, public-proof, external dry-run, branch, PR, commit, push, or
+merge work; kit personal-name count remains zero; kit strict permanent
+model-role count remains zero; 23-file kit inventory remains intact; 3
+templates and 5 examples remain present; examples remain examples not proof;
+Durable Behavior Boundary, invocation breadcrumb, V1 trust caveats, Mirror
+Status Convention, dashboard optionality, and DASHBOARD.html-not-added
+invariant remain preserved.
+
+Hard stop after audit. Auditor pass is not approval. satisfied is not
+approval. Model consensus is not approval.
+```
+
+## Prior Current Owner (pre-E6-KIT-001-FIX-001; superseded)
+
 **E6-KIT-001 closed as `satisfied`** per GPT-5.5 Pro exit synthesis.
 Exit-synthesis turn note:
 `.agent-handoff/turns/E6-KIT-001-gpt-exit-synthesis.md`.
