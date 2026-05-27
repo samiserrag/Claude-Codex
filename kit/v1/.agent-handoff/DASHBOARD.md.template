@@ -4,6 +4,11 @@ This optional dashboard is a human-readable operational view for the current
 collaboration state. It is not the durable source of truth and does not grant
 approval.
 
+Protocol-only adoption is valid. This dashboard is optional. An adopting team
+may instead present the same protocol state in an IDE, CI surface, compliance
+workflow, runtime, or its own dashboard, as long as approval boundaries remain
+repo-visible and human-only.
+
 ## Authority / COLLAB.md Wins
 
 - `DASHBOARD.md` summarizes current state for fast human and agent orientation.
@@ -143,3 +148,13 @@ cleanup separately.
 ## Next Safe Action
 
 `{{ONE_CONCRETE_NEXT_SAFE_ACTION_OR_HARD_STOP_WITH_NEEDED_APPROVAL}}`
+
+## Trust Caveats
+
+- Records are Git-visible / audit-visible.
+- Records are not tamper-proof.
+- Tamper-evident hardening is future work.
+- Blockchain is not MVP.
+- This dashboard makes no legal/compliance suitability claim.
+- Signing, manifests, and transparency logs are optional future hardening.
+- Cryptographic hardening does not prove good judgment or human intent.

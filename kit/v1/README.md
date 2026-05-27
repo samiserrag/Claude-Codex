@@ -9,6 +9,38 @@ The kit is deliberately small. It is not an installer, not a live bridge, not
 a framework, not an MCP registration, and not a plugin setup. It copies
 plain repository files that humans and agents can review before use.
 
+## Minimum Success Test
+
+The MVP success test is modest:
+
+```text
+An adopter copied the kit into {{REPO_NAME}}, assigned their own Coordinator,
+Builder, Auditor, and human approver, created one Outcome Packet, ran one
+manual Builder/Auditor loop, recorded evidence under .agent-handoff/, and did
+not treat satisfied, auditor pass, or model consensus as approval.
+```
+
+This kit does not prove external adoption, public proof, public-alpha readiness,
+or scale. The examples are examples, not proof.
+
+## Role Assignment Guide
+
+Assign roles before the first turn and write the assignment into the copied
+templates:
+
+| Role | Responsibility | Suggested placeholder |
+| --- | --- | --- |
+| Human approver | Authorizes exact consequences, scope, risk, priority, and release decisions. | `{{HUMAN_APPROVER_LABEL}}` |
+| Coordinator | Frames outcomes, synthesizes ambiguity, and drafts packet or exit recommendations. | `{{COORDINATOR_AGENT}}` |
+| Builder | Implements or investigates inside the approved scope. | `{{BUILDER_AGENT}}` |
+| Auditor | Independently verifies the Builder output and searches for failure modes. | `{{AUDITOR_AGENT}}` |
+| Scribe | Records external or human-provided text when the active agent is only preserving a source. | Optional |
+| Verifier | Runs a focused check when separate from the Auditor. | Optional |
+
+Role names are portable. Local agent names, vendor names, account names, and
+human labels are instance metadata. They should not become reusable state names,
+approval states, or template vocabulary.
+
 ## Quick Start
 
 1. Copy the files from this folder into the root of the adopting repository,
@@ -25,10 +57,30 @@ plain repository files that humans and agents can review before use.
      (optional current-state view)
 4. Fill every `{{PLACEHOLDER}}` before the first collaboration turn, or leave
    an explicit `N/A` with a reason where the template allows it.
-5. Write the first turn note under `.agent-handoff/turns/` using
+5. Record the local path as `{{LOCAL_REPO_PATH}}` only when a path is needed
+   for local reproduction. Do not hard-code machine-specific paths into
+   reusable examples.
+6. Create an Outcome Packet using
+   `.agent-handoff/templates/outcome-packet-template.md`.
+7. Write the first turn note under `.agent-handoff/turns/` using
    `.agent-handoff/prompts/starter-turn-note.md`.
-6. Stop at the turn cap named in the current experiment authorization until
+8. Stop at the turn cap named in the current experiment authorization until
    the configured human approver explicitly approves continuation.
+
+## Adoption Checklist
+
+- Copy the kit files into the adopting repo.
+- Fill role placeholders:
+  `{{COORDINATOR_AGENT}}`, `{{BUILDER_AGENT}}`, `{{AUDITOR_AGENT}}`,
+  `{{HUMAN_APPROVER_LABEL}}`, `{{REPO_NAME}}`, and `{{LOCAL_REPO_PATH}}`.
+- Define irreversible actions that always require exact human approval.
+- Define no-touch paths for the first experiment.
+- Choose whether the optional Markdown dashboard is in scope.
+- Create a minimal Outcome Packet before substantive work.
+- Run one manual Builder/Auditor loop.
+- Record Builder evidence and Auditor findings in append-only turn notes.
+- Use a Human Decision Record for any exact approval, rejection, ask, or pause.
+- Preserve via commit or PR only after exact human approval.
 
 ## Operating Defaults
 
@@ -69,22 +121,88 @@ plain repository files that humans and agents can review before use.
 - Not a CI system or test framework.
 - Not permission to commit, push, merge, open a PR, install dependencies, or
   enable automation.
+- Not a public-alpha release package.
+- Not proof that public-proof runs have happened.
+- Not a dashboard requirement.
+- Not a runtime replacement, agent safety solution, or AI alignment solution.
 
 ## Trust Caveats
 
 - V1 records are Git-visible / audit-visible.
 - V1 records are not tamper-proof.
+- Tamper-evident hardening is future work.
 - Blockchain is not MVP and is not required by this kit.
 - This kit makes no legal/compliance suitability claim.
+- Signing, manifests, and transparency logs are optional future hardening.
+- Cryptographic hardening does not prove good judgment, human intent, or
+  non-sycophantic agent behavior.
 
 ## Durable Behavior Boundary
 
-- Observed pattern is not durable behavior.
-- Memory is context, not authority.
-- Skill proposal is not approval.
-- Automation proposal is not approval.
-- Repeated workflow is not approval.
-- Only the human approver can authorize durable behavior.
+- observed pattern is not durable behavior.
+- memory is context, not authority.
+- skill proposal is not approval.
+- automation proposal is not approval.
+- repeated workflow is not approval.
+- only the human approver can authorize durable behavior.
+
+Use `.agent-handoff/templates/durable-behavior-proposal-template.md` before
+creating or changing memory, hosted memory, skills, subagents, automations,
+scheduled checks, standing prompts, rubric thresholds, dashboard defaults, kit
+templates, evidence thresholds, approval thresholds, or workflow checklists.
+
+Memory may be evidence, but memory is context, not authority. Memory,
+summaries, and repeated workflow patterns cannot override the Outcome Packet,
+rubric, no-touch list, or approval boundary.
+
+## Invocation Breadcrumb
+
+When durable behavior materially shapes a turn, name it in the turn note:
+
+```text
+Durable behavior active this turn:
+- skills:
+- subagents:
+- automations:
+- memory files consulted:
+- standing rules invoked:
+```
+
+If no durable behavior was active, write `none` rather than omitting the
+breadcrumb.
+
+## Approval-Boundary Snippets
+
+Reusable copy for packets, turn notes, audits, and human decision records:
+
+```text
+satisfied is not approval.
+Auditor pass is not approval.
+Model consensus is not approval.
+Human approval authorizes only the exact named consequence.
+This authorizes: {{EXACT_AUTHORIZED_ACTION}}.
+This does NOT authorize: {{EXCLUDED_ACTIONS}}.
+```
+
+## Templates And Examples
+
+Templates:
+
+- `.agent-handoff/templates/outcome-packet-template.md`
+- `.agent-handoff/templates/human-decision-record-template.md`
+- `.agent-handoff/templates/durable-behavior-proposal-template.md`
+
+Examples:
+
+- `.agent-handoff/examples/minimal-outcome-packet.md`
+- `.agent-handoff/examples/minimal-builder-turn-note.md`
+- `.agent-handoff/examples/minimal-auditor-turn-note.md`
+- `.agent-handoff/examples/human-decision-record-authorize.md`
+- `.agent-handoff/examples/satisfied-not-approved.md`
+
+All examples are illustrative only. They are not proof that the protocol is
+public-ready, legally suitable, tamper-proof, adopted by external teams, or
+validated at scale.
 
 ## Included Files
 
@@ -99,6 +217,10 @@ plain repository files that humans and agents can review before use.
 - `.agent-handoff/prompts/starter-turn-note.md`: first-turn note skeleton.
 - `.agent-handoff/prompts/reflection-proposal-template.md`: optional
   proposal-only reflection template.
+- `.agent-handoff/templates/`: reusable Outcome Packet, Human Decision Record,
+  and Durable Behavior Proposal templates.
+- `.agent-handoff/examples/`: minimal example artifacts, clearly marked as
+  examples and not proof.
 - `.agent-handoff/reflections/harness/.gitkeep`: tracks optional harness
   reflection proposals.
 - `.agent-handoff/reflections/project/.gitkeep`: tracks optional project
@@ -107,13 +229,43 @@ plain repository files that humans and agents can review before use.
   mixed or unclear proposals that must be split or classified before action.
 - `.gitignore.snippet`: ignore rules to append to the adopter repo.
 
-## Optional Dashboard
+## Dashboard Optionality
 
-Adopters may copy/render `.agent-handoff/DASHBOARD.md.template` to
-`.agent-handoff/DASHBOARD.md` when they want a human-readable current-state
-surface. `COLLAB.md` remains authoritative; the dashboard is operational only,
-does not grant approval, and should be refreshed when freshness-trigger fields
-change.
+Protocol-only adoption is valid. The optional Decision Cockpit / reference
+dashboard is a convenience surface, not the protocol. Some adopters may use
+`.agent-handoff/DASHBOARD.md.template`; others may implement the protocol
+inside their own dashboard, IDE, CI, compliance surface, or runtime.
+
+Do not add `DASHBOARD.html` to this kit yet. Do not force dashboard adoption.
+`COLLAB.md` remains authoritative; the dashboard is operational only, does not
+grant approval, and should be refreshed when freshness-trigger fields change.
+
+## Mirror Status Convention
+
+This kit intentionally diverges from this source repo in some places:
+
+- Live `.agent-handoff/PROTOCOL.md` in the source repo is the dogfood
+  instance.
+- `kit/v1/.agent-handoff/PROTOCOL.md.template` is adopter-facing.
+- Some kit template sections use role placeholders where the live dogfood
+  protocol may name current local assignments.
+- Future protocol/kit packets must explicitly decide whether each section is
+  byte-mirrored or intentionally diverged.
+
+Role-model and Coordinator sections currently use placeholders in the kit.
+Adopters should treat those placeholders as local configuration, not evidence
+that any specific model, vendor, dashboard, or human label is required.
+
+## What Not To Copy From This Source Repo
+
+Do not copy old dogfood turn-note history, local dashboard-design stashes,
+ignored design concepts, private advisor notes, trust-layer experiments,
+runtime files, account/org identity, local paths, or current source-repo branch
+metadata into an adopter repo unless a separate packet explicitly approves that
+artifact class.
+
+If public proof is needed, create fresh role-neutral proof artifacts from the
+start. Do not rewrite historical dogfood evidence to make it look clean.
 
 ## Optional Reflection Proposals
 
