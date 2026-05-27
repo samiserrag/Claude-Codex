@@ -21,6 +21,10 @@
 - Artifact visibility: {{ARTIFACT_VISIBILITY_STATE_AND_ACTION}}
 - Human attention state: {{HUMAN_ATTENTION_STATE}}
 - Technical packet: {{TECHNICAL_PACKET_OR_NA}}
+- Human approver label: {{HUMAN_APPROVER_LABEL}}
+- Coordinator: {{COORDINATOR_AGENT}}
+- Builder: {{BUILDER_AGENT}}
+- Auditor: {{AUDITOR_AGENT}}
 - Latest auditor response: {{LATEST_AUDITOR_RESPONSE}}
 - Latest builder response: {{LATEST_BUILDER_RESPONSE}}
 - Summary only — the durable record lives in append-only turn notes per the
@@ -41,6 +45,15 @@
 
 When no decision is needed, set fields to `N/A` with a brief reason. Do not
 treat this packet, model consensus, or lack of objection as approval.
+
+## Durable Behavior Boundary
+
+- observed pattern is not durable behavior.
+- memory is context, not authority.
+- skill proposal is not approval.
+- automation proposal is not approval.
+- repeated workflow is not approval.
+- only the human approver can authorize durable behavior.
 
 ## Questions Requiring Human Approval
 

@@ -8,12 +8,362 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
-**E6-NAME-SCRUB-001 closed as `satisfied`** per GPT-5.5 Pro exit
-synthesis. Exit-synthesis turn note:
-`.agent-handoff/turns/E6-NAME-SCRUB-001-gpt-exit-synthesis.md`.
+**E6-KIT-001 closed as `satisfied`** per GPT-5.5 Pro exit synthesis.
+Exit-synthesis turn note:
+`.agent-handoff/turns/E6-KIT-001-gpt-exit-synthesis.md`.
 
 Next actor: **Sami** (release-operator authorization for preservation
 PR).
+
+### E6-KIT-001 closure state
+
+- E6-KIT-001 closed as `satisfied`.
+- Kit implementation passed audit.
+- No iteration 2 needed.
+- No Outcome Circle currently active.
+- Next recommended step is preserving E6-KIT-001 artifacts in a PR.
+- After preservation, likely next candidates are E6-KIT-001-FIX-001
+  and/or E6-KIT-DRY-RUN-001, but neither is authorized.
+- Public release is not approved.
+- Public-proof runs are not approved.
+- Dashboard-design stash remains preserved and paused.
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. GPT exit synthesis is not approval. No
+commit, push, branch, PR, merge, public release, public-proof run,
+trust-layer implementation, dashboard design work, memory/skill/
+automation/subagent/scheduled-check creation, new Outcome Circle, or
+new public scope expansion is authorized by this closure. The
+preservation PR itself requires Sami's explicit release-operator
+authorization.
+
+### Recommended next step
+
+Sami release-operator authorization for the preservation PR (single
+combined, 20 files per audit + exit-synthesis recommendation): COLLAB
++ 8 modified kit/v1 + 8 new kit files + Codex builder turn note +
+Claude audit turn note + GPT exit-synthesis turn note.
+
+After preservation merges, GPT's lean per exit synthesis:
+1. E6-KIT-001-FIX-001 small portability cleanup (folds Soft Obs 1 +
+   Soft Obs 2)
+2. E6-KIT-DRY-RUN-001 manual external-repo dry-run BEFORE any
+   public-proof run or public-alpha packaging
+
+All three remain **NOT authorized** by this closure. Each requires
+its own scope-lock pass and its own release-operator authorization.
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing still NOT authorized.**
+**Whitepaper publication still NOT authorized.**
+**Public-proof run / clean repo creation still NOT authorized.**
+**Dashboard design work still NOT authorized (stash preserved).**
+**Memory/skill/automation/subagent/scheduled-check creation still NOT authorized.**
+**E6-KIT-001-FIX-001 small portability cleanup still NOT authorized.**
+**E6-KIT-DRY-RUN-001 manual external-repo dry-run still NOT authorized.**
+
+### Previous E6-KIT-001 iter-1 audit state
+
+Claude Code completed the **E6-KIT-001 iteration 1 audit** locally
+and hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-KIT-001-claude-audit-kit-implementation-iter-1.md`.
+
+Prior next-actor (now superseded by the closure above): **Sami**
+(then GPT-5.5 Pro for exit synthesis per the bootstrap rule for
+public-facing strategic work, matching the precedent set by
+E6-DASH-003, E6-README-001, and E6-NAME-SCRUB-001).
+
+### E6-KIT-001 iter-1 audit result
+
+**`satisfied`** (0 blockers, 0 nits, 3 soft observations).
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. No commit, push, branch, PR, merge, public
+release, public-proof run, trust-layer implementation, dashboard
+design work, memory/skill/automation/subagent/scheduled-check
+creation, new Outcome Circle, or new public scope expansion is
+authorized by this result. E6-KIT-001 iter-1 is ready for GPT/human
+exit synthesis.
+
+All 18 audit foci pass. Independent grep/diff confirms every personal-
+name count (0), every strict model-role count (0), placeholder
+distribution (6 placeholders across 1-7 files each), Outcome Packet
+14-field shape in PROTOCOL.md.template, all 6 Durable Behavior
+Boundary load-bearing rules, 5 portable human decision actions, 7 V1
+trust caveats, invocation breadcrumb in 9 file locations, Mirror Status
+Convention in README, all 5 MVP example artifacts marked "Example
+only", DASHBOARD.html-not-added rule, no-touch-surface cleanliness,
+stash preservation, historical turn-note preservation, and FIX-001 +
+FIX-002 invariant preservation.
+
+### Key verifications
+
+| Surface | Before | After | Verified? |
+| --- | ---: | ---: | --- |
+| `kit/v1/**` personal-name terms | 0 | 0 (unchanged) | ✓ rg no matches |
+| `kit/v1/**` strict model-role terms | 0 | 0 (unchanged) | ✓ rg no matches |
+| Root README/AGENTS/CLAUDE | 0/0/0 | 0/0/0 (not edited) | ✓ |
+| Live `.agent-handoff/PROTOCOL.md` | 0 (FIX-001) | 0 (unchanged) | ✓ |
+| Live `.agent-handoff/DASHBOARD.md`/.html | 0 | 0 (unchanged) | ✓ |
+| Live `.agent-handoff/OPERATING-MODEL.md` + STRATEGY.md | 0 | 0 (unchanged) | ✓ |
+| `.gitignore` / `.design-concepts/` | deferred | deferred (unchanged) | ✓ |
+| `kit/v1` file count | 15 | 23 (+3 templates, +5 examples) | ✓ |
+
+9 modified tracked files (all in packet allowed-write list) + 8 new
+kit files (3 templates + 5 examples) + 1 new builder turn note + this
+audit turn note = 19 files in current working tree (or 20 after the
+GPT exit-synthesis turn note is scribed per established pattern).
+
+### Templates and examples landed (kit inventory delta)
+
+**3 new templates** (under `kit/v1/.agent-handoff/templates/`):
+- `outcome-packet-template.md` (14 sections + required turn-note
+  breadcrumb)
+- `human-decision-record-template.md` (5-action enum, authorization
+  boundary, trust status, approval reminder)
+- `durable-behavior-proposal-template.md` (6 boundary rules, 12
+  proposal fields, 14 durable-behavior types, invocation breadcrumb
+  requirement)
+
+**5 new examples** (under `kit/v1/.agent-handoff/examples/`), all
+clearly marked "Example only":
+- `minimal-outcome-packet.md`
+- `minimal-builder-turn-note.md`
+- `minimal-auditor-turn-note.md`
+- `human-decision-record-authorize.md` (`authorize_exact_action` use)
+- `satisfied-not-approved.md`
+
+### Pre-existing discipline preserved
+
+- ✅ No historical turn-note rewrite (`git diff -- turns/` exit 0)
+- ✅ Live PROTOCOL.md untouched (FIX-001 + FIX-002 invariants preserved)
+- ✅ Live OPERATING-MODEL.md / STRATEGY.md untouched
+- ✅ Live DASHBOARD.md / DASHBOARD.html untouched
+- ✅ Dashboard-design `stash@{0}` preserved (not popped, not dropped,
+  not inspected — `defer dashboard design concepts gitignore workfolder`)
+- ✅ `.gitignore` / `.design-concepts/` deferred work intact
+- ✅ No memory/skill/automation/subagent/scheduled-check created
+- ✅ No commit, push, branch, PR, merge inside the circle
+- ✅ No `* 2.md` duplicates anywhere in repo
+- ✅ `.mcp.json` absent
+- ✅ `alert-state.sh` unchanged (still 6519 bytes)
+
+### 3 soft observations (not nits, for downstream awareness)
+
+1. **`E5-T-FIX-004` source-repo experiment-number residue in
+   `kit/v1/.agent-handoff/PROTOCOL.md.template`** at L302 and L330
+   ("Respect the E5-T-FIX-004 single-recommendation principle").
+   Adopters cannot resolve the ID. Not blocking because surrounding
+   text describes the principle and the second occurrence is
+   self-explanatory; mechanical copy-polish, not rubric failure.
+   **Recommend:** future small kit-portability OC (E6-KIT-001-FIX-001
+   candidate) replaces with neutral phrasing.
+
+2. **`DASHBOARD.md.template` L37 carries "What The Human Approver
+   Pastes Next" with capital "T"**, mirroring the source dashboard's
+   casing flagged in the E6-NAME-SCRUB-001 audit Soft Obs 2. Now
+   mirrored into the kit template. Non-blocking. A future copy-polish
+   OC could lowercase across both surfaces for consistency with the
+   "configured human approver" lowercase convention.
+
+3. **Codex builder note responds to prior OC's audit recommendation**
+   — positive-signal observation. The E6-NAME-SCRUB-001 audit's Soft
+   Obs 3 recommended placeholder-inventory metrics; Codex's E6-KIT-001
+   builder note L756-767 added a "Placeholder inventory" section. The
+   audit-feedback loop is working as intended. Calling out to
+   encourage continued explicit cycle-improvement responses.
+
+### Cycle-improvement observations
+
+- Outcome Packet scribing discipline tightened (most complete
+  pre-implementation packet in this repo's history, including suggested
+  verification commands at §8)
+- Builder shipped independent verification commands the auditor could
+  re-run, reducing the risk of "auditor verifies only what builder
+  framed"
+- Mirror Status Convention realized as a first-class kit README section
+  (L243-257) after threading through prior OCs (NAME-SCRUB-001 soft
+  obs → GPT exit synthesis → PR #20 body → now adopter-facing)
+- Adds the fourth independent evidence layer: protocol proof (PROTOCOL.md)
+  + reference cockpit proof (E6-DASH-003 / DASHBOARD) + root README
+  proof (E6-README-001) + name-scrub proof (E6-NAME-SCRUB-001 → PR #20)
+  + **kit-implementation proof (E6-KIT-001, pending preservation)**
+
+### Recommended preservation PR shape (single combined)
+
+- **Branch:** `e6-kit-001-kit-implementation-iter-1`
+- **Files (19, or 20 with GPT exit synthesis):** COLLAB + 8 modified
+  kit/v1 + 8 new kit files + Codex builder turn note + this audit turn
+  note (+ optional GPT exit synthesis if scribed first per
+  E6-DASH-003 / E6-README-001 / E6-NAME-SCRUB-001 precedent)
+- **Commit:** `E6-KIT-001: preserve kit implementation iteration 1`
+- **PR title:** `E6-KIT-001: preserve kit implementation iteration 1`
+
+COLLAB.md is interleaved between builder handoff and audit handoff,
+so per OC-005 / PR #12 / PR #19 / PR #20 precedent, single combined PR
+is the clean path (cannot hand-edit COLLAB.md to force a split).
+
+### Next handoff (NEEDS_GPT, Sami-owned)
+
+Coordinator Trigger for the next handoff: **NEEDS_GPT** per the
+bootstrap rule for public-facing strategic work. Exit requires GPT
+exit synthesis.
+
+Full 4-question GPT exit-synthesis framing pre-staged in audit turn
+note §"Coordinator Trigger For Next Handoff":
+
+1. Confirm satisfied / accept the audit result, or request iter-2
+   revision (none recommended)
+2. Preservation-PR shape (auditor leans single combined PR, 19-20
+   files)
+3. Whether to fold soft-observation 1 (E5-T-FIX-004 cleanup) into the
+   preservation PR (auditor lean: defer to future small portability OC
+   to keep preservation PR strictly in-scope)
+4. Next track after preservation: (a) E6-KIT-001-FIX-001 small
+   portability cleanup [auditor's lean #1], (b) E6-KIT-DRY-RUN-001
+   manual external-repo dry-run [auditor's lean #2 — tests kit
+   readability/usability], (c) dashboard-design stash disposition,
+   (d) E6-NAME-SCRUB-002 broader-scope, (e) trust-layer design-only OC,
+   (f) public-proof run scoping [still NOT recommended until kit is
+   dry-run tested], (g) something else
+
+Sami next steps:
+
+1. Confirm E6-KIT-001 audit accepted.
+2. Paste the 4-question GPT exit-synthesis framing to GPT-5.5 Pro.
+3. After GPT synthesis, authorize preservation PR shape.
+4. After preservation merges, GPT can frame next track.
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing still NOT authorized.**
+**Whitepaper publication still NOT authorized.**
+**Public-proof run / clean repo creation still NOT authorized.**
+**Dashboard design work still NOT authorized (stash preserved).**
+**Memory/skill/automation/subagent/scheduled-check creation still NOT authorized.**
+**E6-KIT-001-FIX-001 small portability cleanup still NOT authorized.**
+**E6-KIT-DRY-RUN-001 manual external-repo dry-run still NOT authorized.**
+
+No staging, commit, push, branch, PR, merge, public release,
+public-proof run, trust implementation, dashboard design work,
+memory/skill/automation creation, subagent creation, scheduled-check
+creation, `.gitignore` edit, `.design-concepts/` restore, historical
+turn-note rewrite, new Outcome Circle, OPERATING-MODEL.md /
+STRATEGY.md / PROTOCOL.md (live) / kit edits beyond what's already in
+working tree, COLLAB archival, pilot repo touch, or live Open Mic
+Colorado touch is authorized by this audit.
+
+### Previous E6-KIT-001 builder state
+
+Codex completed **E6-KIT-001 kit implementation iteration 1** prior to
+this audit. Builder turn note:
+`.agent-handoff/turns/E6-KIT-001-codex-kit-implementation-iter-1.md`.
+
+Prior next-actor (now superseded by audit result above): **Claude
+Code** (auditor inside approved E6-KIT-001 Outcome Circle).
+
+### E6-KIT-001 builder handoff
+
+Codex implemented the minimum adopter-facing `kit/v1` expansion for
+manual protocol trial by an external repo. Builder cannot grade own
+work.
+
+Files changed:
+
+- `kit/v1/README.md`
+- `kit/v1/AGENTS.md.template`
+- `kit/v1/CLAUDE.md.template`
+- `kit/v1/.agent-handoff/COLLAB.md.template`
+- `kit/v1/.agent-handoff/DASHBOARD.md.template`
+- `kit/v1/.agent-handoff/PROTOCOL.md.template`
+- `kit/v1/.agent-handoff/prompts/reflection-proposal-template.md`
+- `kit/v1/.agent-handoff/prompts/starter-turn-note.md`
+- `kit/v1/.agent-handoff/templates/outcome-packet-template.md`
+- `kit/v1/.agent-handoff/templates/human-decision-record-template.md`
+- `kit/v1/.agent-handoff/templates/durable-behavior-proposal-template.md`
+- `kit/v1/.agent-handoff/examples/minimal-outcome-packet.md`
+- `kit/v1/.agent-handoff/examples/minimal-builder-turn-note.md`
+- `kit/v1/.agent-handoff/examples/minimal-auditor-turn-note.md`
+- `kit/v1/.agent-handoff/examples/human-decision-record-authorize.md`
+- `kit/v1/.agent-handoff/examples/satisfied-not-approved.md`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-KIT-001-codex-kit-implementation-iter-1.md`
+
+Implementation summary:
+
+- Expanded `kit/v1/README.md` with a minimum success test, role
+  assignment guide, adoption checklist, approval-boundary snippets,
+  dashboard optionality, trust caveats, Durable Behavior Boundary,
+  invocation breadcrumb, mirror-status convention, templates/examples
+  inventory, and "what not to copy" guidance.
+- Added reusable templates for Outcome Packet, Human Decision Record,
+  and Durable Behavior Proposal.
+- Added five clearly marked example artifacts: minimal Outcome
+  Packet, minimal builder turn note, minimal auditor turn note, Human
+  Decision Record authorization example, and satisfied-not-approved
+  example.
+- Updated agent, protocol, COLLAB, dashboard, starter-turn-note, and
+  reflection templates to carry role placeholders, durable-boundary
+  copy, or invocation-breadcrumb guidance without forcing dashboard
+  adoption.
+
+Verification highlights:
+
+- Entry was clean at HEAD
+  `3945157a2ca38347d1d24499e5d4fa4863366c38`.
+- Dashboard-design stash remains present:
+  `stash@{0}: On main: defer dashboard design concepts gitignore
+  workfolder`.
+- `kit/v1/**` personal-name grep returned no matches.
+- `kit/v1/**` permanent model-role grep returned no matches.
+- No root README / AGENTS / CLAUDE edits.
+- No live PROTOCOL / OPERATING-MODEL / STRATEGY edits.
+- No live DASHBOARD.md/html edits.
+- No `.gitignore` edit.
+- `.design-concepts/` remains absent.
+- No commit, push, branch, PR, merge, public release, public-proof
+  run, trust-layer implementation, dashboard design work,
+  memory/skill/automation/subagent/scheduled-check creation, runtime
+  work, or clean repo/branch creation occurred.
+
+Next request to Claude:
+
+```text
+[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread:
+E6-KIT-001 kit implementation audit | Role: auditor inside approved
+Outcome Circle]
+
+Audit E6-KIT-001 iteration 1.
+
+Inspect:
+- .agent-handoff/turns/E6-KIT-001-codex-kit-implementation-iter-1.md
+- .agent-handoff/COLLAB.md
+- kit/v1/**
+
+Grade against the approved E6-KIT-001 rubric: clean entry and full
+packet before implementation; no duplicate * 2.md files; stash
+preserved; kit README expansion; Outcome Packet, Human Decision
+Record, and Durable Behavior Proposal templates or sections;
+approval-boundary snippets; adoption checklist; role-assignment
+guide; trust caveats; example artifact strategy; what not to copy;
+role portability; zero kit personal-name residue; zero permanent
+model-role residue; mirror-status convention; Durable Behavior
+Boundary; invocation breadcrumb; dashboard optionality; examples
+clearly marked examples not proof; public-claim discipline; and
+no-touch discipline.
+
+Auditor must independently verify exact files changed, no root-doc /
+live-protocol / dashboard / no-touch drift, kit personal-name counts,
+model-role counts, trust caveats, durable-boundary wording,
+invocation breadcrumb, examples inventory, stash preservation, and no
+public-alpha/public-proof/trust/runtime/dashboard work.
+
+Hard stop after audit. Auditor pass is not approval. satisfied is not
+approval. Model consensus is not approval.
+```
+
+### Previous E6-NAME-SCRUB-001 closure state
 
 ### E6-NAME-SCRUB-001 closure state
 

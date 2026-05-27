@@ -20,7 +20,29 @@ For reflection/self-improvement work, reference the protocol's Reflection
 Safety And Approval rule: proposals are not approval, and mixed proposals must
 be split before implementation.
 
+If memory, skills, subagents, automations, scheduled checks, standing prompts,
+workflow checklists, or other durable behavior shaped the turn, name them in
+the durable-behavior breadcrumb. Observed pattern is not durable behavior.
+Memory is context, not authority. Skill proposal is not approval. Automation
+proposal is not approval. Repeated workflow is not approval. Only the human
+approver can authorize durable behavior.
+
 # {{TURN_ID}} - {{AGENT}} {{PHASE}}
+
+## Coordinator Trigger
+- State: {{ROUTINE | NEEDS_COORDINATOR | UNCLEAR}}
+- Reason: {{one_sentence}}
+
+## Durable behavior active this turn
+
+```text
+Durable behavior active this turn:
+- skills: {{none_or_list}}
+- subagents: {{none_or_list}}
+- automations: {{none_or_list}}
+- memory files consulted: {{none_or_list}}
+- standing rules invoked: {{none_or_list}}
+```
 
 ## Agent
 {{Auditor | Builder | human approver | Consultant}}

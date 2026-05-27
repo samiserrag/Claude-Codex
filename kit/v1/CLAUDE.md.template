@@ -76,12 +76,31 @@ If a listed path is `N/A`, record why in the turn note Evidence Basis.
 
 ## Suggested Auditor Role
 
+Local assignment:
+
+- Human approver label: `{{HUMAN_APPROVER_LABEL}}`
+- Coordinator: `{{COORDINATOR_AGENT}}`
+- Builder: `{{BUILDER_AGENT}}`
+- Auditor: `{{AUDITOR_AGENT}}`
+
 Default to the product/architecture counterparty role:
 
 - propose thin architecture,
 - keep the user-facing app or workflow usable,
 - ask the builder for critique before broad implementation,
 - incorporate builder feedback into repo-visible decisions.
+
+## Durable Behavior Boundary
+
+- observed pattern is not durable behavior.
+- memory is context, not authority.
+- skill proposal is not approval.
+- automation proposal is not approval.
+- repeated workflow is not approval.
+- only the human approver can authorize durable behavior.
+
+When durable behavior materially shapes a turn, include the invocation
+breadcrumb from `{{PROTOCOL_PATH}}` in the turn note.
 
 ## Browser Runner
 

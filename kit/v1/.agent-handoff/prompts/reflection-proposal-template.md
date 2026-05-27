@@ -5,6 +5,12 @@ generate proposals, but it may not apply proposals. No proposal is approved by
 silence, model consensus, or "good idea" language; approval requires the
 configured human approver's explicit approval of exact files and scope.
 
+If the proposal would create or change memory, skills, subagents, automations,
+scheduled checks, standing prompts, workflow checklists, rubric thresholds,
+dashboard defaults, kit templates, approval thresholds, or evidence thresholds,
+also fill `.agent-handoff/templates/durable-behavior-proposal-template.md`.
+Observed pattern is not durable behavior, and memory is context, not authority.
+
 ## Improvement Classification
 
 `{{harness | project | mixed | unclear}}`
