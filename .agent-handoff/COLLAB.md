@@ -8,6 +8,278 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
+Claude Code has completed the **E6-REPO-STRATEGY-001 scope-lock audit**
+locally and is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-REPO-STRATEGY-001-claude-audit-repo-split-public-proof-scope-lock.md`.
+
+Next actor: **Sami** (then either GPT-5.5 Pro for exit synthesis OR
+direct Sami acceptance + go straight to preservation PR — auditor's
+lean is (a) direct acceptance, matching the FIX-001 pattern, since
+this scope-lock implements the prior GPT consultation verbatim and
+GPT exit synthesis would largely re-affirm).
+
+### E6-REPO-STRATEGY-001 scope-lock audit result
+
+**`satisfied`** (0 blockers, 0 nits, 1 soft observation).
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. No commit, push, branch, PR, merge, public
+release, public-proof run, scratch-repo creation, clean-repo creation,
+trust-layer implementation, dashboard design work, memory/skill/
+automation/subagent/scheduled-check creation, new Outcome Circle
+(including E6-KIT-DRY-RUN-001 itself), or new public scope expansion
+is authorized by this result. E6-REPO-STRATEGY-001 is ready for
+GPT/human exit synthesis OR direct Sami acceptance + preservation PR.
+
+All audit foci pass. Scope-lock substantively answers all 9 questions
+from GPT's pre-staged prompt (preserved in PR #22 at
+`E6-REPO-STRATEGY-CONSULTATION-001-...md`) plus adds 2 bonus sections
+(Dogfood Credibility vs Clean Proof, Preservation Recommendation).
+
+Every convergence point from the consultation (claude-codex stays
+dogfood/source; two-repo split as long-term architecture; dry-run
+BEFORE clean adopter repo; dry-run in scratch repo NOT in
+claude-codex; repo strategy BEFORE dry-run per Codex sharpening;
+clean adopter repo AFTER dry-run validates; 3–5 fresh role-neutral
+public-proof circles; skills verdict `iv`; never global
+`~/.claude/skills/`; first-impression category error as biggest
+risk; banner insufficient; metadata cannot be scrubbed by file edits)
+is represented with substance, not just acknowledgment.
+
+### Key verifications
+
+| Surface | Builder claim | Independent verification | Verified? |
+| --- | --- | --- | --- |
+| Entry HEAD | `51865946edf8e4701b6ad68c97c0155f8db2ef1a` | `git rev-parse HEAD` → same (PR #22 merge) | ✓ |
+| Working-tree shape | 1 modified (COLLAB) + 1 untracked (scope-lock note) | `git status --short` → exactly 2 files | ✓ |
+| `git diff --check` | clean | re-ran → exit 0 | ✓ |
+| Stash preserved | yes | message verbatim | ✓ |
+| `* 2.md` duplicates | 0 | empty find | ✓ |
+| Historical turn-note edits | 0 | empty diff | ✓ |
+| Kit `E5-T-FIX-004` (FIX-001 invariant) | preserved cleanup | rg no matches | ✓ |
+| Kit old casing (FIX-001 invariant) | preserved cleanup | rg no matches | ✓ |
+| Kit `single-recommendation` substance | preserved | rg L302 + L330 | ✓ |
+| All no-touch surfaces (kit, root docs, live PROTOCOL/OM/STRATEGY/DASHBOARD, .gitignore, docs, mockups, tools, advisor-notes, reflections, improvements) | no diff | empty `git diff --stat` per surface | ✓ |
+| `.design-concepts/` | absent | `test ! -d` confirms | ✓ |
+| `.mcp.json` | absent | `ls` confirms No such file | ✓ |
+| `.agent-handoff/tools/alert-state.sh` | unchanged (6519 bytes) | `wc -c` → 6519 | ✓ |
+
+### 9-section content audit
+
+All 9 GPT-required questions answered with substance:
+1. Repo role classification (§1) — all 5 sub-questions
+2. Strategy options A–E (§2) — 6-row comparison table with synthesized B/E row
+3. Recommended path (§3) — 6-step path matches convergence verbatim
+4. Dry-run placement (§4) — all 4 sub-questions + 9 success criteria + 8 failure criteria + 9 must-not-happen items
+5. Public-proof plan (§5) — exactly 5 circles per GPT's recommendation
+6. Skills placement (§6) — all 4 options evaluated + Codex-side skill handling sub-section
+7. First-impression risk (§7) — honest enumeration of GitHub-visitor view
+8. Metadata reality (§8) — 10-item enumeration (extends GPT's 6-item)
+9. Exact next track (§10) — `E6-KIT-DRY-RUN-001` recommended
+
+Bonus sections (good additions, not scope creep):
+- §9 Dogfood Credibility vs Clean Proof
+- §11 Preservation Recommendation
+
+### Pre-existing discipline preserved
+
+- ✅ No historical turn-note rewrite (`git diff -- turns/` exit 0)
+- ✅ Live PROTOCOL.md untouched (FIX-001 + FIX-002 invariants preserved)
+- ✅ Live OPERATING-MODEL.md / STRATEGY.md untouched
+- ✅ Live DASHBOARD.md / DASHBOARD.html untouched
+- ✅ kit/v1/** untouched (FIX-001 invariants preserved)
+- ✅ Dashboard-design `stash@{0}` preserved (not popped, dropped, or inspected)
+- ✅ `.gitignore` / `.design-concepts/` deferred work intact
+- ✅ No memory/skill/automation/subagent/scheduled-check created in repo
+- ✅ No commit, push, branch, PR, merge inside the circle
+- ✅ No `* 2.md` duplicates; `.mcp.json` absent; `alert-state.sh` unchanged
+
+### 1 soft observation (not a nit, downstream-awareness)
+
+**Soft Obs 1: Builder breadcrumb declares both Codex-side skill AND
+memory file consultation.** Builder note L46–57:
+- skills: `claude-codex-outcome-circle`
+- memory files consulted: `/Users/samiserrag/.codex/memories/MEMORY.md`
+  quick pass only ("memory is context, not authority" disclaimer)
+
+**Not a rule violation.** Consulting existing skills/memory and
+declaring them in the breadcrumb is the protocol-correct pattern per
+Durable Behavior Boundary (which covers *creating or changing* durable
+behavior, not consulting).
+
+**Two evolution datapoints relative to FIX-001 audit:**
+1. **First memory file declaration in this repo's breadcrumb
+   history.** FIX-001 declared only a skill. Breadcrumb discipline is
+   expanding to cover more durable-behavior types. Positive signal
+   that E6-DURABLE-SCOPE-001 generalizes beyond skills.
+2. **Opacity-risk profile for this OC is LOW.** Both the skill and
+   memory file are outside this repo and outside auditor read scope,
+   BUT this scope-lock is primarily synthesis of pre-existing
+   convergent evidence (PR #22 consultation). The substance is
+   independently verifiable against the preserved consultation. Skill/
+   memory role here is likely shape/structure assistance, not novel
+   content generation.
+
+Recommendation: fold this datapoint into `E6-KIT-DRY-RUN-001` packet
+design (the dry-run could explicitly test whether scratch-repo turns
+rely on hidden side-skills/memories that an adopter wouldn't have).
+
+### Cycle-improvement observations
+
+- Scope-lock applies prior convergence precisely (all 9 GPT-required
+  questions + 2 bonus sections; every convergence point represented
+  with substance, not just acknowledgment)
+- Pass/fail criteria explicit, not vague (§4 has 9 success criteria,
+  8 failure criteria, 9 must-not-happen items)
+- Public-proof plan concrete (§5 delivers exactly 5 circles per GPT's
+  recommendation with proof value, artifacts, seeded-vs-real
+  classification)
+- Breadcrumb discipline expanded to memory (first time in this repo)
+- Cross-references prior preserved work rather than re-litigating
+  from chat memory (Sources read cites consultation, both FIX-001
+  notes, both NAME-SCRUB-SCOPE notes, both DURABLE-SCOPE notes)
+
+### Recommended preservation PR shape (if/when authorized)
+
+- **Branch:** `e6-repo-strategy-001-scope-lock`
+- **Files (4, or 5 with optional GPT exit synthesis note):** COLLAB +
+  Codex scope-lock turn note + this audit turn note (+ optional GPT
+  exit synthesis note)
+- **Commit:** `E6-REPO-STRATEGY-001: preserve repo split and public-proof strategy scope lock`
+- **PR title:** Same
+
+COLLAB.md is interleaved between builder + audit handoffs per OC-005 /
+PR #12 / PR #19 / PR #20 / PR #21 / PR #22 precedent, so single
+combined PR is the clean path.
+
+### Next handoff (Sami-owned)
+
+Coordinator Trigger for the next handoff: **NEEDS_HUMAN** (with
+optional **NEEDS_GPT** branch for separate exit synthesis).
+
+Two paths (auditor's lean: (a)):
+
+(a) **Direct Sami acceptance + go straight to preservation PR.**
+Cleaner, less dogfood growth, matches FIX-001 pattern where GPT and
+Codex independently confirmed direct acceptance was sufficient for an
+OC implementing prior consultation guidance.
+
+(b) **Separate GPT exit synthesis turn for E6-REPO-STRATEGY-001.**
+Matches the bootstrap precedent for public-facing strategic work
+(E6-DASH-003 / E6-README-001 / E6-NAME-SCRUB-001 / E6-KIT-001 all had
+GPT exit synthesis). Costs: one more turn note in the dogfood layer
+for limited new content (GPT would mostly re-affirm what GPT already
+said in the PR #22 consultation).
+
+Pre-staged 4-question GPT exit-synthesis framing in audit turn note
+§"Coordinator Trigger For Next Handoff" if Sami picks (b).
+
+### Pre-staged: after preservation, next move is `E6-KIT-DRY-RUN-001`
+
+After this scope-lock is preserved, the next move per consultation
+convergence is drafting an `E6-KIT-DRY-RUN-001` scope-lock packet.
+That packet is **not yet drafted** and would be a separate
+coordinator action (Sami, GPT, or Codex). It will be a new Outcome
+Circle because it will mutate a disposable scratch repo, and will
+need exact: scratch path, allowed writes, no-touch surfaces, pass/
+fail criteria (already drafted in scope-lock §4 as a starting point),
+evidence requirements, cleanup/preservation rules, and explicit "not
+public proof / not public release" boundaries.
+
+Sami next steps:
+
+1. Confirm E6-REPO-STRATEGY-001 audit accepted.
+2. Choose (a) direct acceptance + preservation PR, OR (b) separate
+   GPT exit synthesis.
+3. After acceptance (and optional GPT synthesis), authorize
+   preservation PR (4–5 files, single combined PR).
+4. After preservation merges, draft `E6-KIT-DRY-RUN-001` scope-lock
+   (separate coordinator action; not authorized by this audit).
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing still NOT authorized.**
+**Whitepaper publication still NOT authorized.**
+**Public-proof run / clean repo creation still NOT authorized.**
+**Dashboard design work still NOT authorized (stash preserved).**
+**Memory/skill/automation/subagent/scheduled-check creation still NOT authorized.**
+**E6-KIT-DRY-RUN-001 still NOT authorized (recommended next track but requires its own scope-lock pass + Sami approval).**
+**Scratch repo creation for dry-run still NOT authorized.**
+**Clean adopter-facing repo creation still NOT authorized.**
+
+No staging, commit, push, branch, PR, merge, public release,
+public-proof run, trust implementation, dashboard design work,
+memory/skill/automation creation, subagent creation, scheduled-check
+creation, `.gitignore` edit, `.design-concepts/` restore, historical
+turn-note rewrite, new Outcome Circle, OPERATING-MODEL.md /
+STRATEGY.md / PROTOCOL.md (live) / kit edits beyond what's already
+in working tree, COLLAB archival, pilot repo touch, live Open Mic
+Colorado touch, scratch-repo creation, or clean-repo creation is
+authorized by this audit.
+
+### Previous E6-REPO-STRATEGY-001 builder state
+
+Codex completed **E6-REPO-STRATEGY-001 repo split and public-proof
+strategy scope lock** locally and hard-stopped for Claude audit. Turn
+note:
+`.agent-handoff/turns/E6-REPO-STRATEGY-001-codex-repo-split-public-proof-scope-lock.md`.
+
+Prior next-actor (now superseded by audit result above): **Claude
+Code** (auditor for E6-REPO-STRATEGY-001).
+
+### E6-REPO-STRATEGY-001 scope-lock result
+
+Codex recommends the synthesized B/E path:
+
+1. Treat `claude-codex` as the dogfood/source repo.
+2. Preserve historical dogfood evidence in place; do not launder old turn
+   notes or GitHub metadata.
+3. Keep a separate clean adopter-facing repo as the long-term public proof
+   surface, but create it only after dry-run validation.
+4. Run E6-KIT-DRY-RUN-001 next, after this scope lock is audited and
+   preserved, in a disposable scratch repo.
+5. Run fresh role-neutral public-proof circles later in the clean adopter repo,
+   not in `claude-codex`.
+6. Create no new methodology skills yet. Existing skill use must be declared
+   in invocation breadcrumbs; adopter-facing skills should wait for a clean
+   adopter repo and explicit Durable Behavior approval.
+
+This scope lock does not authorize the dry-run, clean repo creation,
+public-proof runs, public release, trust-layer implementation, dashboard work,
+skills, memory files, automations, subagents, scheduled checks, branch, PR,
+commit, push, merge, or staging.
+
+### E6-REPO-STRATEGY-001 audit request
+
+```text
+[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread:
+E6-REPO-STRATEGY-001 repo split and public-proof strategy scope-lock audit |
+Role: auditor]
+
+Audit E6-REPO-STRATEGY-001.
+
+Inspect:
+- .agent-handoff/turns/E6-REPO-STRATEGY-001-codex-repo-split-public-proof-scope-lock.md
+- .agent-handoff/COLLAB.md
+- .agent-handoff/turns/E6-REPO-STRATEGY-CONSULTATION-001-gpt-codex-claude-convergence.md
+- relevant prior kit/name-scrub/durable-boundary evidence as needed
+
+Grade against the approved E6-REPO-STRATEGY-001 scope-lock packet:
+clean entry; only allowed files changed; no kit/root/protocol/strategy/
+operating/dashboard/.gitignore/docs/mockups/trust/runtime/public-proof/
+clean-repo/skills/memory/automation/subagent drift; stash preserved; no
+duplicate * 2.md files; repo role classification; A-E strategy option
+evaluation; single recommended path; dry-run placement and pass/fail
+criteria; public-proof circle plan; skills placement with Durable Behavior
+Boundary; first-impression risk; metadata reality; dogfood credibility vs
+clean proof; exact next track; preservation recommendation.
+
+Hard stop after audit. Auditor pass is not approval. satisfied is not
+approval. Model consensus is not approval.
+```
+
+### Prior Current Owner (pre-E6-REPO-STRATEGY-001; superseded)
+
 Claude Code has completed the **E6-KIT-001-FIX-001 iteration 1 audit**
 locally and is hard-stopped for Sami review. Audit turn note:
 `.agent-handoff/turns/E6-KIT-001-FIX-001-claude-audit-kit-portability-cleanup-iter-1.md`.
