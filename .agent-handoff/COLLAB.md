@@ -8,6 +8,320 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
+Claude Code has completed the **E6-KIT-DRY-RUN-001 scope-lock audit**
+locally and is hard-stopped for Sami review. Audit turn note:
+`.agent-handoff/turns/E6-KIT-DRY-RUN-001-claude-audit-kit-dry-run-scope-lock.md`.
+
+Next actor: **Sami** (then either GPT-5.5 Pro for exit synthesis OR
+direct Sami acceptance + go straight to preservation PR — auditor's
+lean is (a) direct acceptance per the established pattern, since this
+scope-lock implements the GPT exit synthesis recommendation preserved
+in PR #25).
+
+### E6-KIT-DRY-RUN-001 scope-lock audit result
+
+**`satisfied`** (0 blockers, 0 nits, 1 soft observation).
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. No commit, push, branch, PR, merge, public
+release, public-proof run, scratch-repo creation at
+`/private/tmp/claude-codex-kit-dry-run-001` or anywhere else, kit copy
+into scratch, local git initialization in any scratch directory,
+clean-repo creation, trust-layer implementation, dashboard design
+work, memory/skill/automation/subagent/scheduled-check creation, or
+new Outcome Circle is authorized by this result.
+E6-KIT-DRY-RUN-001 scope-lock is ready for GPT/human exit synthesis
+OR direct Sami acceptance + preservation PR.
+
+All 18 audit foci pass. Independent verification confirms every
+builder claim: full 14-section Outcome Packet scribed before analysis;
+hidden skill/memory test treated as load-bearing first-class focus
+(implementing my own recommendation from 4 prior audits — meta-loop
+closing as positive cycle-improvement signal); scope-lock substance
+EXCEEDS packet minimums (14 success criteria vs 10; 17 failure
+criteria vs 10; 10/14 allowed/forbidden mutations vs 7/9; 17 evidence
+items vs ~13); first dry-run Outcome Circle recommendation
+("PROJECT_BRIEF.md mirror check") concretely justified with comparison
+table; all naming + claims + dogfood framing discipline preserved;
+scratch repo at recommended path confirmed absent; all no-touch
+surfaces clean.
+
+### Key verifications
+
+| Surface | Builder claim | Independent verification | Verified? |
+| --- | --- | --- | --- |
+| Entry HEAD | `8162a55c6f93f96afbc9b62507fe8e695d8e7fcc` | `git rev-parse HEAD` → same (PR #25 merge) | ✓ |
+| Working tree | 1 M COLLAB + 1 ?? scope-lock note | `git status --short` → exactly 2 files | ✓ |
+| `git diff --check` | clean | exit 0 | ✓ |
+| Stash preserved | yes | message verbatim | ✓ |
+| `* 2.md` duplicates | 0 | empty find | ✓ |
+| Scratch repo at `/private/tmp/claude-codex-kit-dry-run-001` | absent | `test ! -d` → "scratch repo absent" | ✓ |
+| Historical turn-note edits | 0 | empty diff | ✓ |
+| All no-touch surfaces (root docs incl. README/START_HERE, kit/v1/**, live PROTOCOL/OM/STRATEGY/DASHBOARD, .gitignore, mockups/tools/advisor/reflections/improvements/docs) | no diff | empty `git diff --stat` per surface | ✓ |
+| `.design-concepts/` | absent | `test ! -d` confirms | ✓ |
+| `.mcp.json` | absent | `ls` → No such file | ✓ |
+| `alert-state.sh` | unchanged (6519 bytes) | `wc -c` → 6519 | ✓ |
+| Kit FIX-001 invariants | preserved | independently confirmed | ✓ |
+
+### 18 audit foci — all pass + substance exceeds packet minimums
+
+| # | Focus | Verdict |
+|---|---|---|
+| 1 | Scope discipline (12/12) | exact 2-file set; no scratch repo; all no-touch clean |
+| 2 | Entry/packet discipline (4/4) | clean entry; full packet scribed; design-only; no self-grade |
+| 3 | Dry-run goal | precisely one testable question + 5 sub-items; 10 "must not claim" items |
+| 4 | Scratch repo placement (6/6) | local private at recommended path; matches Sami's lean |
+| 5 | Kit extraction plan (8/8) | full kit/v1/** copy + 4 rendered active files; DASHBOARD.html excluded |
+| 6 | Minimal adopter setup (8/8) | 8-item content list; no runtime required |
+| 7 | First dry-run Outcome Circle | `E6-KIT-DRY-RUN-SCRATCH-001: project brief mirror check` with comparison-table justification |
+| 8 | Hidden skills / memory test | **LOAD-BEARING** — declaration rules, avoidance rule, 4-step detection plan, 5-classification taxonomy, clean vs contaminated definitions |
+| 9 | Success criteria | 14 vs 10 required |
+| 10 | Failure criteria | 17 vs 10 required; honest "failure ≠ protocol worthless" framing |
+| 11 | Allowed/forbidden scratch mutations | 10 allowed (vs 7) + 14 forbidden (vs 9) |
+| 12 | Evidence to return | 17 items vs ~13; recommended report path with "recommendation only" disclaimer |
+| 13 | Public-position relationship | 4 distinctions + 7-item "still would NOT support" list |
+| 14 | Board Mode / workspace context | context only; explicit NOT-list (Board Mode, Kanban, workspace product, dashboard redesign, operations board) |
+| 15 | Naming discipline | all 5 distinctions preserved; no Polaris-as-protocol-name |
+| 16 | Overclaim/underclaim | does NOT claim dry-run happened, extractability proven, scratch repo created, etc. |
+| 17 | Next-step judgment | preserve first, then separate execution OC, scratch path appropriate, no GPT/Sami decision left open |
+| 18 | Result state | **`satisfied`** |
+
+### Convergence alignment (vs PR #25 GPT exit synthesis)
+
+All exit-synthesis recommendations represented with substance:
+- Preserve E6-PUBLIC-POSITION-IMPLEMENTATION-001 first ✓ (PR #25 merged)
+- Run E6-KIT-DRY-RUN-001 next ✓ (this scope-lock is its design basis)
+- Manual scratch-repo kit dry-run ✓ (local scratch at recommended path)
+- Portability proof, not production-readiness ✓ (explicit at §L)
+- Hidden skill/memory test as first-class ✓ (§G is largest single section)
+- Future implementation OCs need auditor visibility OR per-section attribution ✓ (detection plan implements per-section attribution with 5-classification taxonomy)
+- Public-alpha / clean repo / public-proof still unapproved ✓ (explicit everywhere)
+
+### Pre-existing discipline preserved
+
+- ✅ No historical turn-note rewrite
+- ✅ Live PROTOCOL.md untouched (FIX-001 + FIX-002 invariants preserved)
+- ✅ Live OPERATING-MODEL.md / STRATEGY.md / DASHBOARD.md/html untouched
+- ✅ kit/v1/** untouched (all 23 kit files intact)
+- ✅ Root README / START_HERE / AGENTS / CLAUDE untouched
+- ✅ Dashboard-design `stash@{0}` preserved
+- ✅ `.gitignore` / `.design-concepts/` deferred work intact
+- ✅ No memory/skill/automation/subagent/scheduled-check created
+- ✅ No commit, push, branch, PR, merge inside the circle
+- ✅ No `* 2.md` duplicates; `.mcp.json` absent; `alert-state.sh` unchanged
+- ✅ Scratch repo at `/private/tmp/claude-codex-kit-dry-run-001` ABSENT
+
+### 1 soft observation (continued pattern + meta-loop closing)
+
+**Soft Obs 1: 5th consecutive OC with Codex-side skill + memory
+breadcrumb — AND this scope-lock makes the soft observation itself a
+first-class packet requirement.** Builder declares same
+`claude-codex-outcome-circle` skill + `/Users/samiserrag/.codex/memories/MEMORY.md`
+quick pass pattern as prior 4 OCs.
+
+**Not a rule violation.** Consulting and declaring is protocol-correct.
+
+**Meta-loop closing — positive cycle-improvement signal.** In 4 prior
+audits I flagged this asymmetry as "will become more meaningful when
+implementation OCs generate novel content," and recommended the
+"future E6-KIT-DRY-RUN-001 packet must include the test." **This
+scope-lock IS that packet's design basis.** §G makes hidden
+skill/memory testing load-bearing with declaration rules, detection
+plan, 5-classification taxonomy (none used / used but non-essential /
+used and possibly essential / used and essential / undisclosed),
+clean-vs-contaminated definitions, and the exact required rule
+wording I've been recommending. The recurring soft observation has
+converted into a first-class packet requirement.
+
+**Opacity risk for this scope-lock is LOW** because the substance is
+independently verifiable against PR #25 + my own prior audit
+recommendations. Every element of §G matches forward recommendations
+from my prior audits.
+
+### Cycle-improvement observations
+
+- Strongest first-class treatment of hidden skill/memory test to date
+- Substance exceeds packet minimums (14/10, 17/10, 10/7+14/9, 17/13)
+- Builder note inlines verification command outputs (faster audit)
+- First dry-run Outcome Circle recommendation concrete and justified
+  with 5-row comparison table
+- Honest framing at boundaries ("failure ≠ protocol worthless";
+  narrow-possible-future-claim language not blanket extractability)
+- Naming carve-out is honest (historical files may still contain old
+  vocabulary; scratch repo should use role-neutral language)
+- Scratch path matches Sami's stated expectation (convergence between
+  Sami's framing and Codex's recommendation)
+
+### Recommended preservation PR shape (if/when authorized)
+
+- **Branch:** `e6-kit-dry-run-001-scope-lock`
+- **Files (3, or 4 with optional GPT exit synthesis note):** COLLAB +
+  Codex scope-lock turn note + this audit turn note (+ optional GPT
+  exit synthesis note)
+- **Commit:** `E6-KIT-DRY-RUN-001: preserve kit dry-run scope lock`
+- **PR title:** Same
+
+COLLAB.md is interleaved between builder + audit handoffs per
+established precedent (PR #12 / #19 / #20 / #21 / #22 / #23 / #24 /
+#25), so single combined PR is the clean path.
+
+### Next handoff (Sami-owned)
+
+Coordinator Trigger: **NEEDS_HUMAN** (with optional **NEEDS_GPT** branch).
+
+Two paths (auditor's lean: (a)):
+
+(a) **Direct Sami acceptance + go straight to preservation PR.**
+Matches established pattern. Cleaner. This scope-lock implements the
+GPT exit synthesis recommendation preserved in PR #25.
+
+(b) **Separate GPT exit synthesis turn.** Defensible because the
+dry-run is the empirical gate for any future "kit is extractable"
+claim, and GPT may want to weigh in on the load-bearing hidden
+skill/memory test design before execution.
+
+### Pre-staged: after preservation
+
+The next move per scope-lock §"Final Recommendation" is drafting an
+**E6-KIT-DRY-RUN-001 execution packet** (separate coordinator action
+— Sami / GPT / Codex). That packet will authorize:
+- Local scratch directory creation at recommended path
+- Local git initialization
+- Kit copy/rendering
+- One small manual Outcome Circle in scratch
+- Hidden skill/memory test as first-class pass/fail criterion
+
+The execution packet is **not yet drafted** and **not authorized by
+this audit**.
+
+Sami next steps:
+
+1. Confirm E6-KIT-DRY-RUN-001 scope-lock audit accepted.
+2. Choose (a) direct acceptance + preservation PR, OR (b) separate
+   GPT exit synthesis.
+3. After acceptance (and optional GPT synthesis), authorize
+   preservation PR (3-4 files single combined).
+4. After preservation merges, draft `E6-KIT-DRY-RUN-001` execution
+   packet (separate coordinator action; not authorized by this audit).
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing still NOT authorized.**
+**Whitepaper publication still NOT authorized.**
+**Public-proof run / clean repo creation still NOT authorized.**
+**Dashboard design work still NOT authorized (stash preserved).**
+**Memory/skill/automation/subagent/scheduled-check creation still NOT authorized.**
+**`E6-KIT-DRY-RUN-001` execution packet still NOT drafted, still NOT authorized.**
+**Scratch repo creation at `/private/tmp/claude-codex-kit-dry-run-001` (or anywhere) still NOT authorized.**
+**Kit copy into scratch repo still NOT authorized.**
+**Local git initialization in any scratch directory still NOT authorized.**
+
+No staging, commit, push, branch, PR, merge, public release,
+public-proof run, dry-run execution, scratch-repo creation, kit copy,
+local git initialization in any scratch directory, trust implementation,
+dashboard design work, memory/skill/automation creation, subagent
+creation, scheduled-check creation, `.gitignore` edit, `.design-concepts/`
+restore, historical turn-note rewrite, new Outcome Circle, kit/v1 edits,
+root README/START_HERE/AGENTS/CLAUDE edits, live PROTOCOL/OPERATING-MODEL/
+STRATEGY/DASHBOARD edits, COLLAB archival, pilot repo touch, or live
+Open Mic Colorado touch is authorized by this audit.
+
+### Previous E6-KIT-DRY-RUN-001 builder state
+
+Codex completed **E6-KIT-DRY-RUN-001 kit dry-run scope lock iter 1**
+locally and hard-stopped for Claude audit. Builder turn note:
+`.agent-handoff/turns/E6-KIT-DRY-RUN-001-codex-kit-dry-run-scope-lock.md`.
+
+Prior next-actor (now superseded by audit result above): **Claude
+Code** for independent audit.
+
+### E6-KIT-DRY-RUN-001 builder result
+
+Builder report: ready for Claude audit. Builder cannot grade own work.
+`satisfied` is not approval. Auditor pass is not approval. Model consensus
+is not approval.
+
+Recommended future dry-run path:
+
+- run the dry-run in a local private scratch repo, recommended path
+  `/private/tmp/claude-codex-kit-dry-run-001`
+- initialize git locally, but create no GitHub remote and make no public repo
+- copy all of `kit/v1/**` as the source kit payload
+- render only the minimal active adopter files needed for protocol-only
+  adoption (`AGENTS.md`, `CLAUDE.md`, `.agent-handoff/PROTOCOL.md`,
+  `.agent-handoff/COLLAB.md`)
+- keep `.agent-handoff/DASHBOARD.md.template` as optional source-kit material
+  and do not instantiate it in the first dry-run unless a future packet says so
+- do not include or generate `DASHBOARD.html`
+- run one small manual Outcome Circle: a one-doc `PROJECT_BRIEF.md` mirror
+  check with a Human Decision Record draft
+- require every scratch builder/auditor turn to declare hidden skills/memory
+  using the durable-behavior breadcrumb
+- classify hidden methodology-specific skill/memory use as absent,
+  non-essential, possibly essential, essential, or undisclosed/ambiguous
+- deny any pure kit-only extractability claim if hidden methodology-specific
+  artifacts are essential or undisclosed
+
+This scope-lock did not create a scratch repo, copy kit files, edit kit files,
+edit README/START_HERE/dashboard, start a public-proof run, create a clean repo,
+publish anything, create durable behavior artifacts, stage, commit, push,
+branch, PR, or merge.
+
+### Next request to Claude
+
+```text
+[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread:
+E6-KIT-DRY-RUN-001 kit dry-run scope lock audit | Role: auditor inside
+approved Outcome Circle]
+
+Audit E6-KIT-DRY-RUN-001 iteration 1.
+
+Inspect:
+- .agent-handoff/COLLAB.md
+- .agent-handoff/turns/E6-KIT-DRY-RUN-001-codex-kit-dry-run-scope-lock.md
+- README.md
+- START_HERE.md
+- kit/v1/README.md
+- kit/v1/**
+- .agent-handoff/PROTOCOL.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/DASHBOARD.html
+- read-only evidence cited by the builder note as needed
+
+Grade against the approved E6-KIT-DRY-RUN-001 rubric: clean entry and full
+packet before analysis; no duplicate * 2.md files; stash preserved; all dry-run
+scope questions answered; recommended dry-run goal is precise; local scratch
+repo placement is specified; kit extraction plan is exact; minimal adopter
+setup is defined; first dry-run Outcome Circle is low-risk and suitable; hidden
+skill/memory test is first-class and load-bearing; success and failure criteria
+are concrete; allowed future scratch mutations are bounded; evidence-return
+plan is clear; public-position relationship and Board Mode context are claim
+safe; naming discipline is preserved; no scratch repo was created; no kit,
+README, START_HERE, dashboard, protocol, strategy, operating-model, .gitignore,
+docs, trust-layer, runtime, public-release, public-proof, memory, skill,
+automation, subagent, scheduled-check, clean-repo, branch, PR, commit, push,
+merge, staging, pilot repo, or live Open Mic Colorado work occurred.
+
+Hard stop after audit. Auditor pass is not approval. satisfied is not approval.
+Model consensus is not approval.
+```
+
+## Prior Current Owner (pre-E6-KIT-DRY-RUN-001; superseded)
+
+E6-PUBLIC-POSITION-IMPLEMENTATION-001 completed and was preserved before this
+scope-lock. Current main is at PR #25 merge
+`8162a55c6f93f96afbc9b62507fe8e695d8e7fcc`.
+
+Key preserved artifacts:
+
+- `.agent-handoff/turns/E6-PUBLIC-POSITION-IMPLEMENTATION-001-codex-public-showcase-implementation-iter-1.md`
+- `.agent-handoff/turns/E6-PUBLIC-POSITION-IMPLEMENTATION-001-claude-audit-public-showcase-implementation-iter-1.md`
+- `.agent-handoff/turns/E6-PUBLIC-POSITION-IMPLEMENTATION-001-gpt-exit-synthesis.md`
+
+## Older Prior Current Owner (pre-E6-PUBLIC-POSITION-IMPLEMENTATION-001; superseded)
+
+### E6-PUBLIC-POSITION-IMPLEMENTATION-001 audit handoff
+
 Claude Code has completed the **E6-PUBLIC-POSITION-IMPLEMENTATION-001
 iter-1 audit** locally and is hard-stopped for Sami review. Audit turn
 note:
