@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Polaris - Decision Cockpit v1</title>
+  <title>Decision Cockpit v1</title>
   <style>
     :root {
       --bg: #101318;
@@ -434,15 +434,15 @@
   <main>
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true">P</div>
+        <div class="brand-mark" aria-hidden="true">D</div>
         <div>
-          <div class="brand-name">POLARIS</div>
+          <div class="brand-name">Decision Cockpit v1</div>
           <div class="brand-subtitle">Decision Cockpit v1 - static reference cockpit</div>
         </div>
       </div>
       <div class="snapshot">
         Source of truth: <strong>COLLAB.md</strong><br>
-        Snapshot: E6-DASH-003 builder handoff for audit
+        Snapshot: public showcase reference state
       </div>
     </header>
 
@@ -452,48 +452,40 @@
 
     <section class="grid two" aria-labelledby="current-state-title">
       <div class="card">
-        <div class="status-pill"><span class="dot"></span>Current live state: Courier only</div>
-        <h1 id="current-state-title" class="headline">Paste the E6-DASH-003 audit request to Auditor.</h1>
-        <p class="body-copy">Codex has implemented the static Decision Cockpit v1 files locally. The next handoff is Claude audit. This is not a human approval request, and no consequence is authorized by viewing or copying this prompt.</p>
+        <div class="status-pill"><span class="dot"></span>Current reference state: public showcase snapshot</div>
+        <h1 id="current-state-title" class="headline">Start with START_HERE.md, then use COLLAB.md for live state.</h1>
+        <p class="body-copy">The repo is positioned as a public showcase / build journal for the Git-native approval-boundary protocol. Decision Cockpit v1 is a reference cockpit snapshot: useful evidence and optional adoption surface, but not the copyable kit and not a live approval mechanism.</p>
 
         <div class="signals" aria-label="Simple Signals">
           <div class="signal">
             <span class="label">What is happening?</span>
-            <span class="value">Builder handoff is ready for independent audit.</span>
+            <span class="value">Public showcase positioning has moved from scope-lock into implementation.</span>
           </div>
           <div class="signal">
             <span class="label">Decision needed</span>
-            <span class="value">No approval decision. Courier action only.</span>
+            <span class="value">No approval decision from this dashboard. Use COLLAB.md for the active handoff.</span>
           </div>
           <div class="signal">
             <span class="label">Your role right now</span>
-            <span class="value">Courier only.</span>
+            <span class="value">Reader / reviewer. Human approval still requires exact text outside this dashboard.</span>
           </div>
           <div class="signal">
             <span class="label">Can this wait?</span>
-            <span class="value">Yes. No agent is authorized to proceed without audit.</span>
+            <span class="value">Yes. The dashboard grants no runtime or release consequence.</span>
           </div>
           <div class="signal">
             <span class="label">Current protocol state</span>
-            <span class="value">E6-DASH-003 builder complete; auditor pending.</span>
+            <span class="value">Build journal + adopter kit framing is being made public-facing; kit dry-run remains future proof.</span>
           </div>
           <div class="signal">
             <span class="label">Human approval required</span>
-            <span class="value">Not for courier handoff. Required later for any commit, push, PR, merge, launch, or new scope.</span>
+            <span class="value">Required later for any commit, push, PR, merge, launch, public release, trust-layer work, or new scope.</span>
           </div>
         </div>
 
         <div class="copy-row">
-          <pre id="copy-audit-prompt">[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread: E6-DASH-003 Decision Cockpit v1 implementation audit | Role: auditor inside approved Outcome Circle]
-
-Audit E6-DASH-003 Decision Cockpit v1 implementation.
-
-Inspect .agent-handoff/DASHBOARD.html, .agent-handoff/DASHBOARD.md, .agent-handoff/COLLAB.md, and .agent-handoff/turns/E6-DASH-003-codex-decision-cockpit-v1-implementation-iter-1.md.
-
-Grade against the approved E6-DASH-003 rubric: clean entry, full packet before implementation, HTML/MD parity, static self-contained dashboard, Human Decision Pending state, Agents Running / Execution Mode state, five decision actions, Human Decision Notes, approval boundary, Risk Context, Evidence Summary, Wait-risk signal, Trust footer, source-of-truth disclaimer, current assignments metadata, copy-visible-only behavior, no network/storage/backend/runtime behavior, and no-touch discipline.
-
-Auditor pass is not approval. Rubric satisfied is not approval. Model consensus is not approval. Hard stop after audit.</pre>
-          <button type="button" data-copy-target="copy-audit-prompt">Copy auditor handoff</button>
+          <pre id="copy-primary-note">Read START_HERE.md first. Use kit/v1/README.md if you want the copyable adopter kit. Use COLLAB.md for live repo state. This dashboard is a reference cockpit snapshot and does not grant approval.</pre>
+          <button type="button" data-copy-target="copy-primary-note">Copy orientation note</button>
         </div>
       </div>
 
@@ -501,9 +493,9 @@ Auditor pass is not approval. Rubric satisfied is not approval. Model consensus 
         <h2 id="assignments-title" class="section-title">Current assignments metadata</h2>
         <div class="facts">
           <div class="fact-row"><div class="fact-key">Human approver</div><div class="fact-value">Configured human approver. Reusable role is human approver.</div></div>
-          <div class="fact-row"><div class="fact-key">Coordinator</div><div class="fact-value">GPT-5.5 Pro / OpenAI for packet framing when called.</div></div>
-          <div class="fact-row"><div class="fact-key">Builder</div><div class="fact-value">Codex / OpenAI completed this implementation turn.</div></div>
-          <div class="fact-row"><div class="fact-key">Auditor</div><div class="fact-value">Claude Code / Anthropic is the next requested actor.</div></div>
+          <div class="fact-row"><div class="fact-key">Coordinator</div><div class="fact-value">Current local assignment is instance metadata. Reusable role is Coordinator.</div></div>
+          <div class="fact-row"><div class="fact-key">Builder</div><div class="fact-value">Current local assignment is instance metadata. Reusable role is Builder.</div></div>
+          <div class="fact-row"><div class="fact-key">Auditor</div><div class="fact-value">Current local assignment is instance metadata. Reusable role is Auditor.</div></div>
           <div class="fact-row"><div class="fact-key">Roles</div><div class="fact-value">Roles are model-agnostic and swappable. Model names are current assignments, not protocol vocabulary.</div></div>
         </div>
       </aside>
@@ -513,16 +505,17 @@ Auditor pass is not approval. Rubric satisfied is not approval. Model consensus 
       <div class="card compact">
         <h2 class="section-title">Evidence summary</h2>
         <ul class="clean">
-          <li>Clean entry captured at HEAD <code>8a2e0528ca6328707e3355238568498448db67cf</code>.</li>
-          <li>Full E6-DASH-003 packet was scribed before implementation.</li>
-          <li>Dashboard files were replaced with static Decision Cockpit v1 content.</li>
-          <li>Builder note records changed sections, copy targets, parity, and no-touch verification.</li>
+          <li>Decision Cockpit v1 was implemented and audited in E6-DASH-003.</li>
+          <li>Root README stranger-orientation was audited in E6-README-001.</li>
+          <li>Adopter-facing name scrub passed in E6-NAME-SCRUB-001.</li>
+          <li><code>kit/v1</code> first-pass implementation passed in E6-KIT-001.</li>
+          <li>Public showcase positioning was scoped and audited in E6-PUBLIC-POSITION-001.</li>
         </ul>
       </div>
 
       <div class="card compact">
         <h2 class="section-title">Wait-risk signal</h2>
-        <p class="body-copy">Waiting does not authorize anything. The only cost is delayed Claude audit and delayed preservation decision. No runtime, deploy, public release, or external action is pending from the dashboard.</p>
+        <p class="body-copy">Waiting does not authorize anything. The cost is delayed public-position implementation review and preservation. No runtime, deploy, public release, or external action is pending from the dashboard.</p>
       </div>
 
       <div class="card compact danger">
@@ -553,7 +546,7 @@ Auditor pass is not approval. Rubric satisfied is not approval. Model consensus 
     <section class="grid two" aria-label="Decision options and notes">
       <div class="card">
         <h2 class="section-title">Decision options</h2>
-        <p class="body-copy">These are the portable decision actions for a real Human Decision Pending state. They are shown as visible templates, not active approval for the current courier handoff.</p>
+        <p class="body-copy">These are the portable decision actions for a real Human Decision Pending state. They are shown as visible templates, not active approval for the current reference snapshot.</p>
 
         <div class="option-list">
           <div class="option">
@@ -673,12 +666,12 @@ This does NOT authorize approval, rejection, new scope, or irreversible action.<
         <h2 class="section-title">Risk context</h2>
         <p class="body-copy">This summarizes what the agents found. It does not decide for you.</p>
         <div class="facts" style="margin-top: 14px;">
-          <div class="fact-row"><div class="fact-key">Consequence</div><div class="fact-value">Claude audit begins for the static dashboard implementation. No merge, PR, public release, or protocol change follows from this dashboard.</div></div>
-          <div class="fact-row"><div class="fact-key">Evidence confidence</div><div class="fact-value">Builder evidence is repo-visible; auditor has not graded it yet.</div></div>
-          <div class="fact-row"><div class="fact-key">Reversibility</div><div class="fact-value">Local dashboard and handoff edits are reversible until a later exact human authorization preserves them.</div></div>
-          <div class="fact-row"><div class="fact-key">Open caveats</div><div class="fact-value">Visual judgment and governance semantics still need independent audit.</div></div>
-          <div class="fact-row"><div class="fact-key">Unknowns</div><div class="fact-value">No external user testing; no browser automation evidence unless separately recorded.</div></div>
-          <div class="fact-row"><div class="fact-key">If wrong</div><div class="fact-value">Claude should request iteration 2 for copy, parity, self-containment, or boundary defects.</div></div>
+          <div class="fact-row"><div class="fact-key">Consequence</div><div class="fact-value">Public readers can see the reference cockpit without stale dashboard handoff state. No merge, PR, public release, or protocol change follows from this dashboard.</div></div>
+          <div class="fact-row"><div class="fact-key">Evidence confidence</div><div class="fact-value">Proof layers are repo-visible; this copy refresh still needs independent audit.</div></div>
+          <div class="fact-row"><div class="fact-key">Reversibility</div><div class="fact-value">Local dashboard and public-position edits are reversible until a later exact human authorization preserves them.</div></div>
+          <div class="fact-row"><div class="fact-key">Open caveats</div><div class="fact-value">External adoption, kit dry-run, trust hardening, and scale remain unproven.</div></div>
+          <div class="fact-row"><div class="fact-key">Unknowns</div><div class="fact-value">No external user testing; no public-proof run; no kit dry-run yet.</div></div>
+          <div class="fact-row"><div class="fact-key">If wrong</div><div class="fact-value">Claude should request iteration 2 for copy, parity, self-containment, stale-state, or boundary defects.</div></div>
           <div class="fact-row"><div class="fact-key">Human approval required</div><div class="fact-value">Yes for any commit, push, PR, merge, launch, protocol change, or irreversible consequence.</div></div>
         </div>
       </div>
@@ -697,6 +690,7 @@ This does NOT authorize approval, rejection, new scope, or irreversible action.<
       <div class="split-list">
         <ul class="clean">
           <li>Kanban / Operations Board.</li>
+          <li>Board Mode / Outcome Board.</li>
           <li>Three-panel concurrent layout.</li>
           <li>Real-time agent status.</li>
           <li>Analytics, throughput, lead-time, leaderboard, or agent-online metrics.</li>
@@ -704,8 +698,10 @@ This does NOT authorize approval, rejection, new scope, or irreversible action.<
         </ul>
         <ul class="clean">
           <li>Notification, wakeup, webhook, cron, or auto-routing.</li>
-          <li>README / strangerprintability.</li>
+          <li>Public release / top-of-funnel launch.</li>
           <li>Public-alpha packaging.</li>
+          <li>Kit dry-run.</li>
+          <li>Public-proof runs.</li>
           <li>Protocol relaxation.</li>
           <li>Runtime/backend integration.</li>
         </ul>
