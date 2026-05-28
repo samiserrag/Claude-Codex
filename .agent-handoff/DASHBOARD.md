@@ -1,7 +1,7 @@
-# Polaris - Decision Cockpit v1
+# Decision Cockpit v1
 
-Static reference cockpit for the current handoff. This file is a view, not
-the source of truth.
+Static reference cockpit snapshot for the current handoff and public showcase.
+This file is a view, not the source of truth or the primary public entrypoint.
 
 ## Source Of Truth
 
@@ -12,43 +12,41 @@ the source of truth.
   auditor pass, model consensus, silence, or visual status.
 - Human approval authorizes only the exact named consequence.
 
-## Current Live State: Courier Only
+## Current Reference State: Public Showcase Snapshot
 
-**Paste the E6-DASH-003 audit request to Auditor.**
+**Start with `START_HERE.md`, then use `COLLAB.md` for live state.**
 
-Codex has implemented the static Decision Cockpit v1 files locally. The next
-handoff is Claude audit. This is not a human approval request, and no
-consequence is authorized by viewing or copying this prompt.
+The repo is now positioned as a public showcase / build journal for the
+Git-native approval-boundary protocol. Decision Cockpit v1 is a reference
+cockpit snapshot: useful evidence and optional adoption surface, but not the
+copyable kit and not a live approval mechanism.
+
+This is not a human approval request. No consequence is authorized by viewing
+or copying dashboard text.
 
 ## Simple Signals / Focus Panel
 
 | Field | Value |
 | --- | --- |
-| What is happening? | Builder handoff is ready for independent audit. |
-| Decision needed | No approval decision. Courier action only. |
-| Your role right now | Courier only. |
-| Can this wait? | Yes. No agent is authorized to proceed without audit. |
-| Current protocol state | E6-DASH-003 builder complete; auditor pending. |
-| Human approval required | Not for courier handoff. Required later for any commit, push, PR, merge, launch, or new scope. |
+| What is happening? | Public showcase positioning has moved from scope-lock into implementation. |
+| Decision needed | No approval decision from this dashboard. Use `COLLAB.md` for the active handoff. |
+| Your role right now | Reader / reviewer. Human approval still requires exact text outside this dashboard. |
+| Can this wait? | Yes. The dashboard grants no runtime or release consequence. |
+| Current protocol state | Build journal + adopter kit framing is being made public-facing; kit dry-run remains future proof. |
+| Human approval required | Required later for any commit, push, PR, merge, launch, public release, trust-layer work, or new scope. |
 
 ## Primary Action Surfaced
 
-Paste target: Auditor.
+Public entrypoint: `START_HERE.md`.
 
-Payload type: audit handoff prompt.
+Live source of truth: `.agent-handoff/COLLAB.md`.
 
-Visible copy target in `DASHBOARD.html`: `copy-audit-prompt`.
+Visible copy target in `DASHBOARD.html`: `copy-primary-note`.
 
 ```text
-[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread: E6-DASH-003 Decision Cockpit v1 implementation audit | Role: auditor inside approved Outcome Circle]
-
-Audit E6-DASH-003 Decision Cockpit v1 implementation.
-
-Inspect .agent-handoff/DASHBOARD.html, .agent-handoff/DASHBOARD.md, .agent-handoff/COLLAB.md, and .agent-handoff/turns/E6-DASH-003-codex-decision-cockpit-v1-implementation-iter-1.md.
-
-Grade against the approved E6-DASH-003 rubric: clean entry, full packet before implementation, HTML/MD parity, static self-contained dashboard, Human Decision Pending state, Agents Running / Execution Mode state, five decision actions, Human Decision Notes, approval boundary, Risk Context, Evidence Summary, Wait-risk signal, Trust footer, source-of-truth disclaimer, current assignments metadata, copy-visible-only behavior, no network/storage/backend/runtime behavior, and no-touch discipline.
-
-Auditor pass is not approval. Rubric satisfied is not approval. Model consensus is not approval. Hard stop after audit.
+Read START_HERE.md first. Use kit/v1/README.md if you want the copyable
+adopter kit. Use COLLAB.md for live repo state. This dashboard is a reference
+cockpit snapshot and does not grant approval.
 ```
 
 ## Current Assignments Metadata
@@ -56,24 +54,26 @@ Auditor pass is not approval. Rubric satisfied is not approval. Model consensus 
 | Role | Current assignment |
 | --- | --- |
 | Human approver | Configured human approver. Reusable role is human approver. |
-| Coordinator | GPT-5.5 Pro / OpenAI for packet framing when called. |
-| Builder | Codex / OpenAI completed this implementation turn. |
-| Auditor | Claude Code / Anthropic is the next requested actor. |
+| Coordinator | Current local assignment is instance metadata. Reusable role is Coordinator. |
+| Builder | Current local assignment is instance metadata. Reusable role is Builder. |
+| Auditor | Current local assignment is instance metadata. Reusable role is Auditor. |
 | Role rule | Roles are model-agnostic and swappable. Model names are current assignments, not protocol vocabulary. |
 
 ## Evidence Summary
 
-- Clean entry captured at HEAD `8a2e0528ca6328707e3355238568498448db67cf`.
-- Full E6-DASH-003 packet was scribed before implementation.
-- Dashboard files were replaced with static Decision Cockpit v1 content.
-- Builder note records changed sections, copy targets, parity, and no-touch
-  verification.
+- Decision Cockpit v1 was implemented and audited in E6-DASH-003.
+- Root README stranger-orientation was audited in E6-README-001.
+- Adopter-facing name scrub passed in E6-NAME-SCRUB-001.
+- `kit/v1` first-pass implementation passed in E6-KIT-001.
+- Public showcase positioning was scoped and audited in E6-PUBLIC-POSITION-001.
+- This dashboard refresh is copy/state-only and keeps the static reference
+  cockpit nature intact.
 
 ## Wait-Risk Signal
 
-Waiting does not authorize anything. The only cost is delayed Claude audit and
-delayed preservation decision. No runtime, deploy, public release, or external
-action is pending from the dashboard.
+Waiting does not authorize anything. The cost is delayed public-position
+implementation review and preservation. No runtime, deploy, public release, or
+external action is pending from the dashboard.
 
 ## Safety Language
 
@@ -107,7 +107,7 @@ status.
 
 These are the portable decision actions for a real Human Decision Pending
 state. They are shown as visible templates, not active approval for the
-current courier handoff.
+current reference snapshot.
 
 ### Authorize exact action
 
@@ -234,12 +234,12 @@ This summarizes what the agents found. It does not decide for you.
 
 | Field | Value |
 | --- | --- |
-| Consequence | Claude audit begins for the static dashboard implementation. No merge, PR, public release, or protocol change follows from this dashboard. |
-| Evidence confidence | Builder evidence is repo-visible; auditor has not graded it yet. |
-| Reversibility | Local dashboard and handoff edits are reversible until a later exact human authorization preserves them. |
-| Open caveats | Visual judgment and governance semantics still need independent audit. |
-| Unknowns | No external user testing; no browser automation evidence unless separately recorded. |
-| If wrong | Claude should request iteration 2 for copy, parity, self-containment, or boundary defects. |
+| Consequence | Public readers can see the reference cockpit without stale E6-DASH handoff state. No merge, PR, public release, or protocol change follows from this dashboard. |
+| Evidence confidence | Proof layers are repo-visible; this copy refresh still needs independent audit. |
+| Reversibility | Local dashboard and public-position edits are reversible until a later exact human authorization preserves them. |
+| Open caveats | External adoption, kit dry-run, trust hardening, and scale remain unproven. |
+| Unknowns | No external user testing; no public-proof run; no kit dry-run yet. |
+| If wrong | Claude should request iteration 2 for copy, parity, self-containment, stale-state, or boundary defects. |
 | Human approval required | Yes for any commit, push, PR, merge, launch, protocol change, or irreversible consequence. |
 
 ## Trust Footer
@@ -256,12 +256,15 @@ buttons copy only visible text from this page.
 ## Deferred By This Dashboard
 
 - Kanban / Operations Board.
+- Board Mode / Outcome Board.
 - Three-panel concurrent layout.
 - Real-time agent status.
 - Analytics, throughput, lead-time, leaderboard, or agent-online metrics.
 - Trust manifests, signing, hash manifests, transparency logs, and blockchain.
 - Notification, wakeup, webhook, cron, or auto-routing.
-- README / strangerprintability.
+- Public release / top-of-funnel launch.
 - Public-alpha packaging.
+- Kit dry-run.
+- Public-proof runs.
 - Protocol relaxation.
 - Runtime/backend integration.

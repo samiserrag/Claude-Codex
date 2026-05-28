@@ -8,16 +8,332 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
-Claude Code has completed the **E6-PUBLIC-POSITION-001 scope-lock audit**
-locally and is hard-stopped for Sami review. Audit turn note:
-`.agent-handoff/turns/E6-PUBLIC-POSITION-001-claude-audit-public-showcase-positioning-scope-lock.md`.
+Claude Code has completed the **E6-PUBLIC-POSITION-IMPLEMENTATION-001
+iter-1 audit** locally and is hard-stopped for Sami review. Audit turn
+note:
+`.agent-handoff/turns/E6-PUBLIC-POSITION-IMPLEMENTATION-001-claude-audit-public-showcase-implementation-iter-1.md`.
 
 Next actor: **Sami** (then either GPT-5.5 Pro for exit synthesis OR
 direct Sami acceptance + go straight to preservation PR — auditor's
-lean is (a) direct acceptance, matching the FIX-001 +
-E6-REPO-STRATEGY-001 pattern, since this scope-lock implements the
-CONSULTATION-002 revised public-position recommendation preserved in
-PR #23 and GPT exit synthesis would largely re-affirm).
+lean is (a) direct acceptance per the FIX-001 + E6-REPO-STRATEGY-001 +
+E6-PUBLIC-POSITION-001 pattern, BUT slightly stronger case for (b)
+this time because this is actual public-facing copy and a second GPT
+read on README + START_HERE wording before preservation is defensible).
+
+### E6-PUBLIC-POSITION-IMPLEMENTATION-001 iter-1 audit result
+
+**`satisfied`** (0 blockers, 0 nits, 1 soft observation).
+
+`satisfied` is not approval. Auditor pass is not approval. Model
+consensus is not approval. No commit, push, branch, PR, merge, public
+release, public-proof run, scratch-repo creation, clean-repo creation,
+trust-layer implementation, dashboard design work, memory/skill/
+automation/subagent/scheduled-check creation, root README rewrite
+beyond what's already in working tree, kit edits, kit dry-run, or
+new Outcome Circle is authorized by this result.
+E6-PUBLIC-POSITION-IMPLEMENTATION-001 iter-1 is ready for GPT/human
+exit synthesis OR direct Sami acceptance + preservation PR.
+
+All 18 audit foci pass. Independent verification confirms every
+builder claim: README rewrite covers all 8 packet B questions plus
+naming discipline + Board Mode contrast + 6 durable behavior rules +
+8 trust caveats; START_HERE.md is concise (93 lines, 7 sections,
+routes rather than duplicates); KIT.md correctly deferred with
+recorded reason; zero Polaris-as-protocol-name in any of the 4 new
+public-facing files; zero forbidden positive claims (tamper-proof
+appears only in negative caveat context); stale Courier/E6-DASH-003
+state removed from dashboard; dashboard self-containment preserved
+(no external CSS/JS/network/storage; copy buttons visible-text-only);
+all 12 no-touch surfaces clean; all kit FIX-001 invariants preserved.
+
+### Key verifications
+
+| Check | Builder claim | Independent verification | Verified? |
+| --- | --- | --- | --- |
+| Entry HEAD | `997fe6eb5591e3580f1614f2f07fb7547b092e5e` | `git rev-parse HEAD` → same (PR #24 merge) | ✓ |
+| Working tree | 4 M + 2 ?? = 6 files | `git status --short` → exactly 6 | ✓ |
+| `git diff --check` | clean | exit 0 | ✓ |
+| Stash preserved | yes | message verbatim | ✓ |
+| `* 2.md` duplicates | 0 | empty find | ✓ |
+| Polaris in new public copy | 0 | `rg` → no matches | ✓ |
+| Stale Courier/E6-DASH-003 | removed | `rg` → no matches | ✓ |
+| Forbidden positive claims | 0 | only `tamper-proof` in negative caveat context | ✓ |
+| Historical turn-note edits | 0 | empty diff | ✓ |
+| All no-touch surfaces (kit/v1, root AGENTS/CLAUDE, live PROTOCOL/OM/STRATEGY, .gitignore, mockups/tools/advisor/reflections/improvements/docs) | no diff | empty `git diff --stat` per surface | ✓ |
+| `.design-concepts/` | absent | `test ! -d` confirms | ✓ |
+| `.mcp.json` | absent | `ls` → No such file | ✓ |
+| `alert-state.sh` | unchanged (6519 bytes) | `wc -c` → 6519 | ✓ |
+| Kit FIX-001 invariants | preserved | rg confirms E5-T-FIX-004 absent, old casing absent | ✓ |
+
+### 18 audit foci — all pass
+
+1. Scope discipline (6/6) — exactly 6 files, all in allowed-write list
+2. Entry / packet discipline (4/4) — clean entry, full packet, no self-grade, no staging
+3. Root README public-positioning (10/10) — comprehensive rewrite; 8 required questions all answered; all required preservation language present
+4. START_HERE.md (8/8) — concise 93-line, 7 sections, routes not duplicates
+5. KIT.md decision (1/1) — not created; deferral recorded with reason
+6. Board Mode contrast (5/5) — required distinction present in README + START_HERE; framing only not product imitation
+7. Naming discipline (5/5) — all 5 distinctions present (protocol/kit/reference cockpit/Outcome Circle/Outcome Packet); zero Polaris-as-protocol-name
+8. Claims discipline — verified; only `tamper-proof` matches in negative caveat
+9. Dogfood history framing (6/6) — all sub-items covered
+10. Kit prominence (5/5) — all required orientations present; kit untouched
+11. Dashboard public-state refresh — minimal only; required done; forbidden NOT done
+12. Dashboard technical self-containment — no external CSS/JS/network/storage; visible-text-only copy preserved
+13. Root AGENTS / CLAUDE — untouched (empty diff)
+14. Historical record preservation — no rewrites; no laundering claims; no anonymization claim
+15. Durable Behavior Boundary — all 6 load-bearing rules verbatim in README L237-251
+16. Board Mode placement — small framing only; not justification for redesign
+17. Public visitor usability — yes, all 7 visitor questions answerable
+18. Result state — `satisfied`
+
+### Convergence-alignment (vs E6-PUBLIC-POSITION-001 scope-lock in PR #24)
+
+Every scope-lock recommendation implemented:
+- §1.1 (showcase/build journal) ✓
+- §1.2 (very prominent kit/v1) ✓
+- §1.3 (START_HERE.md created; KIT.md deferred) ✓
+- §1.4 (turn notes as proof artifacts with carve-outs) ✓
+- §1.5 (README 7-item hierarchy; 8 questions answered) ✓
+- §1.6 (dashboard not primary entrypoint; minimal copy refresh) ✓
+- §1.7 (allowed claims grounded in preserved evidence) ✓
+- §1.8 (unproven list explicit) ✓
+
+### Pre-existing discipline preserved
+
+- ✅ No historical turn-note rewrite
+- ✅ Live PROTOCOL.md untouched (FIX-001 + FIX-002 invariants preserved)
+- ✅ Live OPERATING-MODEL.md / STRATEGY.md untouched
+- ✅ kit/v1/** untouched (all 23 kit files intact; FIX-001 invariants preserved)
+- ✅ Root AGENTS / CLAUDE untouched
+- ✅ Dashboard-design `stash@{0}` preserved
+- ✅ `.gitignore` / `.design-concepts/` deferred work intact
+- ✅ No memory/skill/automation/subagent/scheduled-check created
+- ✅ No commit, push, branch, PR, merge inside the circle
+- ✅ No `* 2.md` duplicates; `.mcp.json` absent; `alert-state.sh` unchanged
+- ✅ Dashboard HTML/MD structural parity preserved from E6-DASH-003
+- ✅ Dashboard copy-button semantics preserved (visible-text-only)
+
+### 1 soft observation (continued pattern + first implementation OC)
+
+**Soft Obs 1: 4th consecutive OC with Codex-side skill + memory
+breadcrumb declaration — AND first IMPLEMENTATION OC (not a
+scope-lock).** Builder declares same `claude-codex-outcome-circle`
+skill + `/Users/samiserrag/.codex/memories/MEMORY.md` quick pass
+pattern as prior 3 OCs.
+
+**Not a rule violation.** Consulting and declaring is protocol-correct
+(Durable Behavior Boundary covers *creating or changing*, not
+consulting).
+
+**Opacity-risk profile changed this turn.** Prior 3 OCs were
+scope-locks (synthesis of preserved evidence). This OC generated novel
+public-facing content (README rewrite, new START_HERE.md, dashboard
+copy). My prior 3 audits flagged that the asymmetry would "become
+more meaningful when any future implementation OC generates novel
+content"; that is what just happened.
+
+**Mitigation that worked this turn:** the substance is independently
+verifiable against the audited scope-lock evidence (PR #24 + PR #23).
+Every load-bearing claim, naming distinction, claim-discipline
+phrase, dogfood-framing element, and Board Mode contrast wording was
+checkable against preserved evidence. The audit found all of it
+grounded.
+
+**Forward recommendations:**
+
+1. **`E6-KIT-DRY-RUN-001` packet must include the test**: "verify
+   scratch-repo turns don't rely on hidden side-skills/memories an
+   adopter wouldn't have." This is now the 4th OC where I'm surfacing
+   this point; it should land as a packet line.
+
+2. **Future implementation OCs**: when novel public-facing content is
+   being generated rather than synthesized from preserved evidence,
+   the packet should require either (a) read-only access to skill/
+   memory contents so the auditor can independently verify they
+   didn't shape forbidden content patterns, OR (b) explicit
+   declaration of which output sections drew on which durable
+   artifacts.
+
+3. **No action this OC.** Output is independently sound.
+
+### Cycle-improvement observations
+
+- First implementation OC after 4 scope-locks; substance still
+  independently verifiable against preserved evidence — pattern works
+- README rewrite comprehensive without overpadding (307 lines covers
+  all 8 packet questions plus naming + Board Mode + 6 DBB rules + 8
+  trust caveats + repo map + future work)
+- START_HERE.md genuinely concise (93 lines, routes rather than
+  duplicates; avoids becoming second README)
+- Dashboard "Deferred By This Dashboard" section is an honest 13-item
+  list of what's NOT being done — names rejected paths explicitly
+- Naming discipline implemented cleanly (single sentence at README
+  L39-42; zero Polaris-as-protocol-name)
+- Board Mode contrast wording reused verbatim across README + START_HERE
+  for coherent voice
+- Tamper-proof framing correct (negative caveat only, never positive claim)
+
+### Recommended preservation PR shape (if/when authorized)
+
+- **Branch:** `e6-public-position-implementation-001-iter-1`
+- **Files (6, or 7 with optional GPT exit synthesis note):** COLLAB +
+  README + START_HERE + DASHBOARD.md + DASHBOARD.html + Codex builder
+  turn note + this audit turn note (+ optional GPT exit synthesis note)
+- **Commit:** `E6-PUBLIC-POSITION-IMPLEMENTATION-001: preserve public showcase implementation iteration 1`
+- **PR title:** Same
+
+COLLAB.md is interleaved between builder + audit handoffs per
+established precedent (PR #12 / #19 / #20 / #21 / #22 / #23 / #24),
+so single combined PR is the clean path.
+
+### Next handoff (Sami-owned)
+
+Coordinator Trigger: **NEEDS_HUMAN** (with optional **NEEDS_GPT**
+branch).
+
+Two paths (auditor's lean: (a)):
+
+(a) **Direct Sami acceptance + go straight to preservation PR.**
+Matches FIX-001 + E6-REPO-STRATEGY-001 + E6-PUBLIC-POSITION-001
+pattern. Cleaner. This implementation follows the CONSULTATION-002
+(PR #23) + scope-lock (PR #24) decision chain; GPT exit synthesis
+would largely re-affirm.
+
+(b) **Separate GPT exit synthesis turn.** Slightly stronger case for
+(b) than in prior scope-lock audits because this is actual
+public-facing copy. GPT could give a second read on README + START_HERE
+wording before preservation. Defensible either way.
+
+### Pre-staged: after preservation
+
+The next move is `E6-KIT-DRY-RUN-001` (separate coordinator action;
+not authorized by this audit). It will be a new Outcome Circle because
+it will mutate a disposable scratch repo. The dry-run packet should
+include the Soft Obs 1 test ("verify scratch-repo turns don't rely on
+hidden side-skills/memories an adopter wouldn't have").
+
+Sami next steps:
+
+1. Confirm E6-PUBLIC-POSITION-IMPLEMENTATION-001 audit accepted.
+2. Choose (a) direct acceptance + preservation PR, OR (b) separate
+   GPT exit synthesis on the public-facing copy.
+3. After acceptance (and optional GPT synthesis), authorize
+   preservation PR (6-7 files, single combined PR).
+4. After preservation merges, draft `E6-KIT-DRY-RUN-001` scope-lock
+   (separate coordinator action; not authorized by this audit).
+
+**Public-alpha packaging still NOT authorized.**
+**Trust-layer implementation still NOT authorized.**
+**Top-of-funnel publishing still NOT authorized.**
+**Whitepaper publication still NOT authorized.**
+**Public-proof run / clean repo creation still NOT authorized.**
+**Dashboard design work still NOT authorized (stash preserved).**
+**Memory/skill/automation/subagent/scheduled-check creation still NOT authorized.**
+**`E6-KIT-DRY-RUN-001` still NOT authorized (recommended next track but requires its own scope-lock pass + Sami approval).**
+**Scratch repo creation still NOT authorized.**
+**Clean adopter-facing repo creation still NOT authorized.**
+
+No staging, commit, push, branch, PR, merge, public release,
+public-proof run, trust implementation, dashboard design work beyond
+the minimal copy/state refresh already in working tree, memory/skill/
+automation creation, subagent creation, scheduled-check creation,
+`.gitignore` edit, `.design-concepts/` restore, historical turn-note
+rewrite, new Outcome Circle, kit/v1 edits, root AGENTS/CLAUDE edits,
+live PROTOCOL/OPERATING-MODEL/STRATEGY edits, COLLAB archival, pilot
+repo touch, live Open Mic Colorado touch, scratch-repo creation, or
+clean-repo creation is authorized by this audit.
+
+### Previous E6-PUBLIC-POSITION-IMPLEMENTATION-001 builder state
+
+Codex completed **E6-PUBLIC-POSITION-IMPLEMENTATION-001 public
+showcase implementation iter 1** locally and hard-stopped for Claude
+audit. Builder turn note:
+`.agent-handoff/turns/E6-PUBLIC-POSITION-IMPLEMENTATION-001-codex-public-showcase-implementation-iter-1.md`.
+
+Prior next-actor (now superseded by audit result above): **Claude
+Code** for independent audit.
+
+### E6-PUBLIC-POSITION-IMPLEMENTATION-001 builder result
+
+Builder report: ready for Claude audit. Builder cannot grade own work.
+`satisfied` is not approval. Auditor pass is not approval. Model consensus
+is not approval.
+
+Implemented public-facing positioning changes:
+
+- Rewrote root `README.md` as public showcase / build journal orientation.
+- Created `START_HERE.md` as the short first-reader path.
+- Deferred `KIT.md`; `README.md` + `START_HERE.md` + `kit/v1/README.md` are
+  enough for iteration 1.
+- Kept `kit/v1/**` untouched.
+- Kept root `AGENTS.md` and `CLAUDE.md` untouched; no direct contradiction
+  required editing them.
+- Refreshed `.agent-handoff/DASHBOARD.md` and `.agent-handoff/DASHBOARD.html`
+  copy/state only so the stale "Courier Only" / E6-DASH-003 builder-auditor
+  state is no longer presented as current.
+- Kept dashboard structure, CSS, JS, copy-visible-only behavior, and static
+  self-contained nature intact.
+
+Public copy now says:
+
+- `claude-codex` is the public showcase / build journal and dogfood source.
+- `kit/v1` is the copyable adopter path.
+- historical turn notes are proof artifacts, not required adopter ceremony.
+- Decision Cockpit v1 is an optional reference cockpit, not the protocol and
+  not a required adoption surface.
+- structured AI workspaces / Board Mode help humans manage agent work; this
+  protocol helps humans authorize agent consequences.
+- task completion, auditor satisfaction, and model consensus are not human
+  authorization.
+- kit dry-run remains future portability proof before claiming extractability
+  or production readiness.
+- Git-visible / audit-visible is useful but not tamper-proof; Blockchain is
+  not MVP; no legal/compliance suitability claim is made.
+
+No implementation work occurred outside the allowed files. No public release,
+public-proof run, kit dry-run, scratch repo, clean repo, dashboard design lane,
+trust-layer work, runtime work, memory file, skill, automation, subagent,
+scheduled check, branch, commit, push, PR, merge, or staging occurred.
+
+### Next request to Claude
+
+```text
+[Lane 1: Claude-Codex Harness | Claude Code / Anthropic | Thread:
+E6-PUBLIC-POSITION-IMPLEMENTATION-001 public showcase implementation audit |
+Role: auditor inside approved Outcome Circle]
+
+Audit E6-PUBLIC-POSITION-IMPLEMENTATION-001 iteration 1.
+
+Inspect:
+- README.md
+- START_HERE.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/DASHBOARD.html
+- .agent-handoff/COLLAB.md
+- .agent-handoff/turns/E6-PUBLIC-POSITION-IMPLEMENTATION-001-codex-public-showcase-implementation-iter-1.md
+- read-only evidence cited by the builder note as needed
+
+Grade against the approved E6-PUBLIC-POSITION-IMPLEMENTATION-001 rubric:
+clean entry and full packet before implementation; no duplicate * 2.md files;
+stash preserved; README presents the repo as public showcase/build journal
+with kit/v1 prominent; START_HERE.md is concise and practical; KIT.md was not
+created and deferral is justified; Board Mode/structured-workspace contrast is
+framing only, not product imitation; protocol/kit/reference cockpit/Outcome
+Circle/Outcome Packet naming is distinct; no Polaris-as-protocol-name appears
+in new public copy; claims discipline is safe; dogfood history is framed
+honestly; kit/v1 is easy to find; adopters can use protocol-only adoption
+without dashboard; dashboard refresh is copy/state-only and no longer stale in
+the Courier/E6-DASH-003 builder-auditor way; root AGENTS.md / CLAUDE.md are
+untouched; kit/v1 is untouched; live PROTOCOL/OPERATING-MODEL/STRATEGY are
+untouched; no dashboard design lane reopened; no public release, public-proof
+run, trust-layer work, skill/memory/automation/subagent/scheduled-check work,
+scratch repo, clean repo, branch, PR, commit, push, merge, or staging occurred.
+
+Hard stop after audit. Auditor pass is not approval. satisfied is not
+approval. Model consensus is not approval.
+```
+
+## Prior Current Owner (pre-E6-PUBLIC-POSITION-IMPLEMENTATION-001; superseded)
 
 ### E6-PUBLIC-POSITION-001 scope-lock audit result
 
