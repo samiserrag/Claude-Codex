@@ -8,15 +8,104 @@ output, auditor satisfaction, and model consensus.
 
 ## Current Owner
 
-Claude Code has completed the **E6-KIT-DRY-RUN-001 scope-lock audit**
-locally and is hard-stopped for Sami review. Audit turn note:
-`.agent-handoff/turns/E6-KIT-DRY-RUN-001-claude-audit-kit-dry-run-scope-lock.md`.
+Claude Code regenerated the **standalone Stage A dry-run packet
+(v2-applied)** as a single uncommitted draft; Codex's confirm-audit
+then returned **3 drift findings** (not faithful), and Claude applied
+the **3 drift-only fixes** on Sami's authorization naming the path.
+File: `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-A-packet-v2.md`
+(1033 lines, untracked). Banner: **DRAFT PACKET — NOT YET APPROVED FOR
+EXECUTION**.
 
-Next actor: **Sami** (then either GPT-5.5 Pro for exit synthesis OR
-direct Sami acceptance + go straight to preservation PR — auditor's
-lean is (a) direct acceptance per the established pattern, since this
-scope-lock implements the GPT exit synthesis recommendation preserved
-in PR #25).
+**Codex confirm-audit found 3 drifts** (sections 1–15 and the other 14
+corrective blocks faithful); Claude applied drift-only fixes:
+- #1 (line 586) freshness-attestation: replaced "(skills and memories
+  listed empty/absent)" with the frozen "absent or present-and-listed /
+  demonstrably unavailable to the execution thread" wording.
+- #2 (line 429) deleted the leftover rejected-v1 `invalid_proof` bullet
+  ("self-reported breadcrumb is contradicted by the structural
+  listing"); the correct Block 7 rule already lives at lines 164–168.
+- #3 (§16) restored the base's `16. Commit/push rule` section (the
+  corrective Block-16 content had overwritten it, losing "Any
+  preservation PR requires separate Sami approval"); re-established the
+  base's exact 16–21 order — pre-approval check folded into §20 `Final
+  packet-format and approval-safety check`, canonical-state lines into
+  §21 `Safety lines`.
+
+**Claude verified post-fix:** all 3 drift targets gone (grep = 0);
+restored content present; top-level sections a clean 1–21; only
+COLLAB.md + the packet dirty (no other file touched).
+
+**Codex drift-only re-confirm returned "confirm — faithful, no
+re-open"** (2026-05-28) — the faithfulness gate is cleared. **GPT exit
+synthesis: in progress** (design-level; synthesis is not approval).
+
+**Sami APPROVED** the packet (2026-05-28) as the final
+E6-KIT-DRY-RUN-001-EXEC-A Stage A execution packet / approval-target
+specification. **Scope now = preservation only:** no execution, no
+fresh `CODEX_HOME`, no scratch repo, no kit copy, no Stage A commands,
+no Stage B, no public-proof run, no clean adopter repo, and no edits to
+protocol / kit / README / START_HERE / dashboard / strategy /
+operating-model / .gitignore / trust-layer / runtime / memory / skill /
+automation / subagent / scheduled-check / global config.
+
+Approval-as-spec ≠ approval-for-execution: the packet banner correctly
+remains "DRAFT PACKET — NOT YET APPROVED FOR EXECUTION" because
+execution is a separate authorization.
+
+Pre-PR state report (Claude, 2026-05-28): `git rev-parse HEAD` =
+`84639b288dafb58413ff4c0fcb51f07c159cc212` (PR #26 merge = Block 11
+containment SHA); on `main`, up to date with `origin/main`. Working
+tree (`--untracked-files=all`) = exactly the recommended 3-file
+preservation set and nothing more: ` M COLLAB.md`,
+`?? E6-KIT-DRY-RUN-001-EXEC-A-packet-v2.md`,
+`?? E6-KIT-DRY-RUN-001-claude-drift-repair-and-reconfirm.md`. No
+`.claude/settings.local.json` or other local-only / global config
+present.
+
+Next actor: **Sami** — a preservation PR requires a SEPARATE exact Sami
+authorization naming the branch name, commit message, file list, and PR
+creation. This approval does NOT itself authorize branch, commit, push,
+PR, merge, or execution. After preservation, a further SEPARATE explicit
+Sami execution authorization is still required before any Stage A run
+(per Block 9: packet existence ≠ execution trigger). Claude has staged
+nothing and is holding.
+
+This packet is the single approval target; it builds on the
+E6-KIT-DRY-RUN-001 scope-lock audit (`satisfied`) recorded below as
+the foundation. `satisfied` is not approval. Auditor pass is not
+approval. Model consensus is not approval. Codex confirm is not
+approval. Sami is the only approver.
+
+#### Codex re-confirm request (drift-only repair) — ANSWERED 2026-05-28: "confirm — faithful, no re-open"
+
+Re-read `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-A-packet-v2.md`.
+This is a re-confirm after three drift-only repairs from your prior
+audit:
+1. Block 3 freshness-attestation wording (was "(skills and memories
+   listed empty/absent)"; now the frozen "absent or present-and-listed
+   / methodology-specific skills / repo-specific memories absent or
+   demonstrably unavailable to the execution thread" wording).
+2. Block 7 removal of the extra `invalid_proof` bullet ("self-reported
+   breadcrumb is contradicted by the structural listing"); Block 7's
+   agreed rule already lives at lines 164–168.
+3. Base-structure restoration of `16. Commit/push rule` as its own
+   section, with the pre-approval check retained later as §20 `Final
+   packet-format and approval-safety check` (not replacing the base
+   section), and the base's 21-section order intact.
+
+Confirm only whether those three drift findings are now resolved and
+whether the packet still faithfully applies the frozen 17-block spec to
+the verbatim 21-section base. Do not execute. Do not propose new
+design. Packet existence is not execution authorization. Codex confirm
+is not Sami approval.
+
+Reply exactly one of:
+- "confirm — faithful, no re-open"
+- `block N / base-structure: line L — found X, expected Y`
+
+---
+
+### Foundation: E6-KIT-DRY-RUN-001 scope-lock audit (accepted into work)
 
 ### E6-KIT-DRY-RUN-001 scope-lock audit result
 
