@@ -13,8 +13,8 @@ Claude Code regenerated the **standalone Stage A dry-run packet
 then returned **3 drift findings** (not faithful), and Claude applied
 the **3 drift-only fixes** on Sami's authorization naming the path.
 File: `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-A-packet-v2.md`
-(1033 lines, untracked). Banner: **DRAFT PACKET — NOT YET APPROVED FOR
-EXECUTION**.
+(1033 lines; now preserved on `main`). Banner: **DRAFT PACKET — NOT YET
+APPROVED FOR EXECUTION**.
 
 **Codex confirm-audit found 3 drifts** (sections 1–15 and the other 14
 corrective blocks faithful); Claude applied drift-only fixes:
@@ -62,13 +62,19 @@ preservation set and nothing more: ` M COLLAB.md`,
 `.claude/settings.local.json` or other local-only / global config
 present.
 
-Next actor: **Sami** — a preservation PR requires a SEPARATE exact Sami
-authorization naming the branch name, commit message, file list, and PR
-creation. This approval does NOT itself authorize branch, commit, push,
-PR, merge, or execution. After preservation, a further SEPARATE explicit
-Sami execution authorization is still required before any Stage A run
-(per Block 9: packet existence ≠ execution trigger). Claude has staged
-nothing and is holding.
+**PR #27 merged into `main`** (2026-05-29) at merge commit
+`a133e87c19a2f878a47a2ba668ebfea02361f34a`. The approved
+E6-KIT-DRY-RUN-001-EXEC-A Stage A packet, the drift-repair/re-confirm
+turn note, and this COLLAB state are now **preserved on `main`**.
+Claude verified post-merge: local `main` is clean and up to date with
+`origin/main` (fast-forward `84639b2 → a133e87`); no execution occurred.
+
+Next actor: **Sami** — either (1) a SEPARATE explicit Stage A execution
+authorization, or (2) a fresh-thread rehydration / setup decision before
+execution. **Packet existence (now preserved) is not execution
+authorization.** No fresh `CODEX_HOME`, no scratch repo, no kit copy, no
+Stage A, no Stage B, and no execution until a separate explicit Sami
+authorization. Claude has staged nothing and is holding.
 
 This packet is the single approval target; it builds on the
 E6-KIT-DRY-RUN-001 scope-lock audit (`satisfied`) recorded below as
