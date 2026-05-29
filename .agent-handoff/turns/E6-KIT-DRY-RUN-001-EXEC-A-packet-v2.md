@@ -2,18 +2,19 @@
 
 [Lane 1: Claude-Codex Harness | Builder: fresh-profile / fresh-home Codex (OpenAI) | Auditor: Claude (Anthropic) | Thread: E6-KIT-DRY-RUN-001-EXEC-A guided clean-room dry-run]
 
-DRAFT PACKET — NOT YET APPROVED FOR EXECUTION
+APPROVED PACKET SPEC — NOT AN EXECUTION TRIGGER
 
-This file is a DRAFT regenerated for a final format-only / block-by-block confirm-audit. It is not an execution trigger and it is not approved. It awaits Codex confirm-audit and Sami approval. Existence of this file does not authorize execution (see section 6, separate-execution-authorization rule).
+This file was regenerated for final format-only / block-by-block confirm-audit, then approved by Sami as the final E6-KIT-DRY-RUN-001-EXEC-A Stage A execution packet / approval-target specification and preserved on main. It is not itself an execution trigger. Existence of this file does not authorize execution (see section 6, separate-execution-authorization rule). Execution requires a separate explicit Sami execution authorization.
 
 Packet status:
-- Standalone Stage A draft for audit.
-- Do not execute.
-- Do not create a fresh Codex profile/home yet.
-- Do not create a scratch repo yet.
-- Do not copy kit files yet.
-- Do not run commands yet.
-- This standalone packet supersedes prior Stage A drafts and patch addenda for audit purposes.
+- Final approved Stage A execution packet / approval-target specification.
+- Not an execution trigger by itself.
+- Do not execute unless a separate explicit Sami execution authorization is present.
+- Do not create or use a fresh Codex profile/home unless authorized by the separate execution authorization or by a bounded setup-prep authorization.
+- Do not create a scratch repo unless authorized by the separate execution authorization.
+- Do not copy kit files unless authorized by the separate execution authorization.
+- Do not run Stage A commands unless authorized by the separate execution authorization.
+- This standalone packet supersedes prior Stage A drafts and patch addenda for execution-spec purposes.
 
 Packet lineage (metadata, non-operative):
 - Standalone Stage A packet operating WITHIN the preserved E6-KIT-DRY-RUN-001 scope-lock turn note (PR #26, merge commit 84639b2). It does not reopen or reclassify that scope-lock.
@@ -1030,4 +1031,4 @@ Dry-run proof classifications (the only valid proof classifications):
 
 Hard stop after builder report for Claude audit.
 
-END OF STANDALONE STAGE A PACKET (v2-applied draft — not approved for execution).
+END OF STANDALONE STAGE A PACKET (v2-applied approved packet spec — execution requires separate explicit Sami authorization).

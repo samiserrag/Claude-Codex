@@ -13,8 +13,9 @@ Claude Code regenerated the **standalone Stage A dry-run packet
 then returned **3 drift findings** (not faithful), and Claude applied
 the **3 drift-only fixes** on Sami's authorization naming the path.
 File: `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-A-packet-v2.md`
-(1033 lines; now preserved on `main`). Banner: **DRAFT PACKET — NOT YET
-APPROVED FOR EXECUTION**.
+(1034 lines after the status-wording fix; approved spec preserved on
+`main` via PR #27). Banner: **APPROVED PACKET SPEC — NOT AN EXECUTION
+TRIGGER**.
 
 **Codex confirm-audit found 3 drifts** (sections 1–15 and the other 14
 corrective blocks faithful); Claude applied drift-only fixes:
@@ -48,9 +49,9 @@ protocol / kit / README / START_HERE / dashboard / strategy /
 operating-model / .gitignore / trust-layer / runtime / memory / skill /
 automation / subagent / scheduled-check / global config.
 
-Approval-as-spec ≠ approval-for-execution: the packet banner correctly
-remains "DRAFT PACKET — NOT YET APPROVED FOR EXECUTION" because
-execution is a separate authorization.
+Approval-as-spec ≠ approval-for-execution: the packet banner now reads
+"APPROVED PACKET SPEC — NOT AN EXECUTION TRIGGER" — approved as the
+Stage A spec, with execution still requiring a separate authorization.
 
 Pre-PR state report (Claude, 2026-05-28): `git rev-parse HEAD` =
 `84639b288dafb58413ff4c0fcb51f07c159cc212` (PR #26 merge = Block 11
@@ -68,6 +69,21 @@ E6-KIT-DRY-RUN-001-EXEC-A Stage A packet, the drift-repair/re-confirm
 turn note, and this COLLAB state are now **preserved on `main`**.
 Claude verified post-merge: local `main` is clean and up to date with
 `origin/main` (fast-forward `84639b2 → a133e87`); no execution occurred.
+
+**Post-approval status fix (2026-05-29):** the first fresh Codex
+execution attempt stopped safely — it surfaced that the approved packet
+still carried stale post-approval lifecycle language (the
+`DRAFT PACKET — NOT YET APPROVED FOR EXECUTION` banner and the
+`v2-applied draft — not approved for execution` end marker). No scratch
+work occurred and no source-repo writes occurred from Codex. On Sami's
+authorization naming the target file, Claude corrected the packet status
+wording — banner → **APPROVED PACKET SPEC — NOT AN EXECUTION TRIGGER**,
+end marker → approved-packet-spec wording — **without changing execution
+scope, allowed files, the no-touch list, scratch rules, clean-room
+requirements, result-state vocabulary, proof-classification vocabulary,
+or the separate-execution-authorization requirement.** Packet existence
+is still not execution authorization; no Stage A execution until a
+separate explicit Sami authorization.
 
 Next actor: **Sami** — either (1) a SEPARATE explicit Stage A execution
 authorization, or (2) a fresh-thread rehydration / setup decision before
