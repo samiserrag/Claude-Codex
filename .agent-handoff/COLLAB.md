@@ -67,6 +67,26 @@ GPT exit synthesis optional). No preservation/commit/PR/merge, scratch
 cleanup, Stage B, or execution until a separate explicit Sami
 authorization.
 
+## Stage B proposal — E6-KIT-DRY-RUN-001-EXEC-B (drafted, not approved)
+
+- **Stage A passed and was preserved** in PR #30 (`satisfied`, `guided_clean`).
+- **Stage B proposal has been drafted** at
+  `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-B-stage-b-proposal.md` —
+  a kit-led self-sufficiency dry-run (test whether the copied kit can guide
+  a minimally-instructed fresh agent through one Builder/Auditor Outcome
+  Circle with much less external scaffolding than Stage A; new scratch path
+  `/private/tmp/claude-codex-kit-dry-run-002`).
+- **Stage B is NOT approved and NOT executed.** No scratch created; Stage A
+  scratch untouched.
+- **Next actor: Sami / GPT** — decide whether to approve the proposal and
+  later execution (GPT exit synthesis optional; this would be the 2nd
+  dry-run OC, so exit may be NEEDS_GPT under the bootstrap rule).
+- **Dynamic workflows / subagents remain FORBIDDEN for Stage B execution**
+  unless separately scoped in a later Stage C / tooling experiment.
+- **Stage B execution requires a separate explicit Sami execution
+  authorization** (fresh profile + fresh thread), exactly like Stage A.
+  Proposal existence is not approval and not an execution trigger.
+
 ## Current Owner
 
 Claude Code regenerated the **standalone Stage A dry-run packet
