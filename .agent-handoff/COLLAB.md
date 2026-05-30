@@ -6,6 +6,67 @@ Prove a Git-native approval-boundary protocol and reference cockpit for
 cross-model agent work, while keeping human approval separate from builder
 output, auditor satisfaction, and model consensus.
 
+## Latest State - E6-KIT-DRY-RUN-001-EXEC-A
+
+Codex completed the Stage A guided clean-room kit dry-run under Sami's separate
+execution authorization on 2026-05-30.
+
+- Scratch repo: `/private/tmp/claude-codex-kit-dry-run-001`
+- Source kit commit copied: `0ef5acccd175a7a3576fd445033d6463d826c28f`
+- Builder report: `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-A-codex-guided-clean-room-execution-iter-1.md`
+- Builder-reported OC result state: `satisfied`
+- Builder proof classification: `guided_clean`
+- Approval state: not approved; Sami remains the only approver
+- Independent audit: Claude, later, in `claude-codex`
+
+Scratch Phase A artifacts and the source-citation table were frozen before this
+source-report phase. Source-report side context loaded in Phase B: this
+`COLLAB.md` file only, read to update the allowed source-report state. It did
+not shape scratch procedure, scratch artifacts, source citations, or claim
+classification.
+
+## Claude audit — E6-KIT-DRY-RUN-001-EXEC-A Stage A (iter 1)
+
+**Independent audit complete (2026-05-30).** Claude audited the Stage A
+builder report, the scratch repo at
+`/private/tmp/claude-codex-kit-dry-run-001`, and the approved packet.
+Audit note:
+`.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-A-claude-audit-guided-clean-room-execution-iter-1.md`.
+
+- **OC result state (auditor): `satisfied`** — 0 blockers, 4 soft
+  observations.
+- **Proof classification: `guided_clean` — builder classification
+  ACCEPTED** on independent structural verification.
+- **Load-bearing check:** the methodology skill is structurally
+  **absent** in the fresh `CODEX_HOME` (skills/ holds only `.system`
+  generic skills; no `claude-codex-outcome-circle`; memories/ empty) —
+  verified by Claude, not relied on from the breadcrumb. `PROJECT_BRIEF.md`
+  is byte-identical to packet §2E (385 B). Scratch: `.git` local only, no
+  remote, 0 commits, no `DASHBOARD.html`, all required artifacts present,
+  HDR labeled `DRY-RUN SAMPLE — no approver authority exercised`, citations
+  frozen before Phase B, no no-touch surface changed, `alert-state.sh`
+  6519 B, dashboard stash preserved.
+- **Soft observations (non-blocking):** (1) Sami attestation said skills
+  "absent" but it was present-and-listed generic-only — handled correctly;
+  (2) citations stated-freeze 08:08 vs file mtime 08:19 — ordering still
+  holds; (3) fresh-thread isolation is self-attested by nature, corroborated
+  by zero artifact contamination; (4) rendered role labels use model names
+  while kit templates stay role-neutral.
+
+**`satisfied` and `guided_clean` are NOT approval.** Auditor pass ≠
+approval; model consensus ≠ approval; Codex confirm ≠ approval. Nothing
+is preserved, committed, or approved by this audit. Scratch should
+REMAIN in place as evidence (do not delete/clean up) pending Sami
+disposition.
+
+**Next actor: Sami** (sole approver) — decide: (a) authorize preservation
+of the builder report + this audit note + COLLAB state in a PR; (b)
+scratch-repo disposition; (c) whether to scope a future Stage B kit-led
+clean-room dry-run (separate scope-lock + execution packet + approval;
+GPT exit synthesis optional). No preservation/commit/PR/merge, scratch
+cleanup, Stage B, or execution until a separate explicit Sami
+authorization.
+
 ## Current Owner
 
 Claude Code regenerated the **standalone Stage A dry-run packet
