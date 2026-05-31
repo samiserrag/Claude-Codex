@@ -164,28 +164,76 @@ until a separate explicit Sami authorization.
 
 ## Current Owner
 
-Codex drafted the design-only scope-lock for
-`E6-ROUTING-COCKPIT-001 - deterministic handoff routing + exact-action
+Codex drafted the implementation Outcome Packet only for
+`E6-ROUTING-COCKPIT-001-IMPL-A - deterministic handoff routing + exact-action
 surfacing in Decision Cockpit`.
 
-Scope-lock note:
-`.agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-routing-cockpit-scope-lock.md`.
+Packet draft:
+`.agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-implementation-packet-draft.md`.
 
-Result: local design-only draft created for Claude audit. No dashboard
+Result: draft packet created for independent Claude audit. No cockpit
 implementation occurred; no `DASHBOARD.md`, `DASHBOARD.html`, `PROTOCOL.md`,
-`OPERATING-MODEL.md`, `STRATEGY.md`, `kit/v1/**`, README, START_HERE,
-scratch dirs, trust-layer files, memory, skills, automations, subagents,
-scheduled checks, global config, branch, commit, push, PR, merge, or execution
-work occurred.
+`OPERATING-MODEL.md`, `STRATEGY.md`, `kit/v1/**`, README, START_HERE, AGENTS,
+CLAUDE, `.gitignore`, scratch dirs, trust-layer files, memory, skills,
+automations, subagents, scheduled checks, global config, branch, commit, push,
+PR, merge, or execution work occurred.
 
-Next actor: **Claude** — audit whether the scope-lock reduces Sami's routing
-burden without adding hidden authority, whether deterministic human-required
-triggers are non-overridable, whether the standard gate/risk/reviewer mapping is
-accurate, and whether the future Decision Cockpit implementation outline stays
-narrow and implementation-free.
+The draft folds in Claude's four scope-lock audit observations: GPT synthesis
+escalation recorded, the anti-collapse invariant stated, lifecycle stage
+separated from routing state, and burden baseline capture required before any
+burden-reduction claim.
+
+Next actor: **Claude** — audit whether the implementation packet uses the full
+14-field Outcome Packet schema, stays packet-only, preserves deterministic
+human-required triggers, uses standard routing/reviewer/escalation patterns plus
+the approval-boundary layer, and avoids any wording that authorizes dashboard
+implementation, git action, scratch work, automation, public claim, or broader
+scope.
 
 `satisfied` is not approval. Auditor pass is not approval. Model consensus is
 not approval. Sami remains the only approver.
+
+## Claude audit — E6-ROUTING-COCKPIT-001 implementation packet draft
+
+**Independent audit complete (2026-05-30).** Audit note:
+`.agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-implementation-packet-draft.md`.
+
+- **Result: `satisfied`** — 0 blockers, 3 soft observations.
+- Scope discipline clean: only COLLAB + the packet draft dirty (plus 7
+  pre-existing `* 2.md` / `README 2.md` Finder-duplicate noise files, all
+  predating this turn, not created/modified by Codex — left untouched, not
+  deleted/staged). `git diff --check` clean; no no-touch surface changed; both
+  scratch dirs untouched; no cockpit implementation.
+- All 14 audit criteria PASS: full 14-field Outcome Packet schema; packet-only
+  (no implementation); scope-lock fidelity (routing spine + cockpit display, no
+  automation/hidden state/script); all four prior soft observations folded in
+  (`done ≠ audited ≠ satisfied ≠ approved ≠ merged ≠ released` invariant;
+  lifecycle stage distinct from route state; burden baseline before any
+  reduction claim; standard-pattern mapping); deterministic non-overridable
+  human-required triggers (§10); coordinator triggers (§11); minimal allowed
+  files (DASHBOARD.md/.html, COLLAB.md, one impl note, one audit note);
+  13 minimum cockpit fields; no overclaiming; static/self-contained safety.
+- Failure-mode sweep clear: no bespoke routing theory, no classifier waiving
+  approval, no draft-text-as-approval, no implementation, no no-touch edits, no
+  automation/hidden state, Sami preserved as sole approver.
+- **3 soft observations (implementation-time guardrails, non-blocking):**
+  (1) close the browser-QA `N/A` branch once DASHBOARD.html is in the changeset
+  — QA effectively mandatory at impl; (2) hold iter-2 to the enumerated
+  correction classes so a parity fix can't smuggle scope; (3) expect a partial
+  burden baseline (many fields legitimately `unknown`) on first impl — the
+  packet already forbids a reduction claim from a partial baseline.
+
+`satisfied` is not approval. Auditor pass is not approval. Model consensus is
+not approval. GPT synthesis is not approval. Sami remains the only approver.
+Nothing is preserved, approved, or built by this audit.
+
+**Next actor: Sami** — accept the audit; decide whether to authorize a
+preservation PR for the packet draft + this audit + COLLAB; separately and
+later, decide whether to approve the packet *for implementation* (a distinct
+Sami execution authorization; GPT input optional). Optionally authorize cleanup
+of the 7 pre-existing `* 2.md` noise files. No preservation/commit/PR/merge,
+dashboard implementation, scratch work, or build until a separate explicit Sami
+authorization.
 
 ## Claude audit — E6-ROUTING-COCKPIT-001 scope-lock
 
