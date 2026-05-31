@@ -67,25 +67,100 @@ GPT exit synthesis optional). No preservation/commit/PR/merge, scratch
 cleanup, Stage B, or execution until a separate explicit Sami
 authorization.
 
-## Stage B proposal — E6-KIT-DRY-RUN-001-EXEC-B (drafted, not approved)
+## Stage B execution — E6-KIT-DRY-RUN-001-EXEC-B (builder report filed)
 
-- **Stage A passed and was preserved** in PR #30 (`satisfied`, `guided_clean`).
-- **Stage B proposal has been drafted** at
-  `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-B-stage-b-proposal.md` —
-  a kit-led self-sufficiency dry-run (test whether the copied kit can guide
-  a minimally-instructed fresh agent through one Builder/Auditor Outcome
-  Circle with much less external scaffolding than Stage A; new scratch path
-  `/private/tmp/claude-codex-kit-dry-run-002`).
-- **Stage B is NOT approved and NOT executed.** No scratch created; Stage A
-  scratch untouched.
-- **Next actor: Sami / GPT** — decide whether to approve the proposal and
-  later execution (GPT exit synthesis optional; this would be the 2nd
-  dry-run OC, so exit may be NEEDS_GPT under the bootstrap rule).
-- **Dynamic workflows / subagents remain FORBIDDEN for Stage B execution**
-  unless separately scoped in a later Stage C / tooling experiment.
-- **Stage B execution requires a separate explicit Sami execution
-  authorization** (fresh profile + fresh thread), exactly like Stage A.
-  Proposal existence is not approval and not an execution trigger.
+Codex completed the Stage B kit-led self-sufficiency scratch run under Sami's
+separate explicit execution authorization on 2026-05-30.
+
+- Scratch repo: `/private/tmp/claude-codex-kit-dry-run-002`
+- Source HEAD verified before scratch work:
+  `ee6186374a988db46299adabaf0db92a693b4b9f`
+- Builder report:
+  `.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-B-codex-kit-led-self-sufficiency-iter-1.md`
+- Builder-reported OC result state: `satisfied`
+- Builder proof classification: `kit_led_clean_enough`
+- Approval state: not approved; Sami remains the only approver
+- Independent audit: Claude, later, in `claude-codex`
+
+Corrected structural freshness evidence recorded before scratch work:
+skills directory present-and-listed with generic `.system` skills only;
+`claude-codex-outcome-circle` absent; methodology-specific Claude-Codex Harness
+skill absent; memories directory present-and-listed, empty; no repo-specific
+memory present or consulted; no memory file consulted.
+
+Stage B scratch evidence includes copied kit files, rendered `AGENTS.md`,
+`CLAUDE.md`, `.agent-handoff/PROTOCOL.md`, `.agent-handoff/COLLAB.md`, optional
+`.agent-handoff/DASHBOARD.md`, `PROJECT_BRIEF.md`, one Outcome Packet, one
+Builder note, one explicitly NON-INDEPENDENT Auditor note, one Human Decision
+Record dry-run sample, and one kit-reliance log.
+
+Scratch verification reported by Codex: `.git` local only, no remote, 0 commits,
+no `DASHBOARD.html`, active/run artifacts have no leftover placeholders, Stage A
+scratch top-level metadata unchanged (`1780149497 352` before and after), and no
+commits/remotes/pushes/branches/PRs/merges/network/installs/dynamic
+orchestration/subagents/sub-sessions/automation/memory/skill creation occurred.
+
+Kit assessment: the copied kit guided the core loop without Stage A scaffolding,
+but the proof is `kit_led_clean_enough` rather than `kit_led_clean` because the
+run relied on the Stage B authorization/proposal for proof boundaries, the
+placeholder scope was ambiguous, the non-independent Auditor label came from
+Stage B rather than the kit, the exact Outcome Circle entry phrase was not in the
+execution prompt, and the kit has no kit-reliance-log template.
+
+**`satisfied` and `kit_led_clean_enough` are NOT approval.** Auditor pass ≠
+approval; model consensus ≠ approval; proof classification ≠ approval. Nothing
+is committed, pushed, released, publicly claimed, or approved by this builder
+report. Scratch should remain in place as evidence pending independent Claude
+audit and later Sami disposition.
+
+**Next actor: Claude** — independently audit Stage B scratch evidence, the
+kit-reliance log, structural freshness, no-touch surfaces, source writeback, and
+proof classification. Hard stop after builder report for independent Claude
+audit. No preservation/commit/PR/merge, scratch cleanup, public claim, Stage C,
+or release until separate exact Sami authorization.
+
+## Claude audit — E6-KIT-DRY-RUN-001-EXEC-B Stage B (iter 1)
+
+**Independent audit complete (2026-05-30).** Audit note:
+`.agent-handoff/turns/E6-KIT-DRY-RUN-001-EXEC-B-claude-audit-kit-led-self-sufficiency-iter-1.md`.
+
+- **OC result state (auditor): `satisfied`** — 0 blockers, 6 soft observations /
+  kit-fix findings.
+- **Proof classification: `kit_led_clean_enough` — builder classification
+  ACCEPTED** on independent verification (not `kit_led_clean`; not
+  `kit_led_contaminated_but_useful`).
+- **Load-bearing freshness:** the builder report omitted the exact `CODEX_HOME`
+  path; Claude independently located `~/.codex-e6-kit-dry-run-exec-b` (skills
+  `.system` only, no `claude-codex-outcome-circle`, memories empty — clean) and
+  confirmed the contaminated main `~/.codex` profile (which DOES carry the
+  methodology skill + dogfood memory) was NOT used.
+- **Verified:** scratch-002 `.git` local-only, no remote, 0 commits, no
+  `DASHBOARD.html`, all 5 active files rendered (no placeholders), all required
+  artifacts present, in-scratch auditor explicitly NON-INDEPENDENT, HDR exercises
+  no real authority, kit-reliance log traces every step; Stage A scratch
+  untouched (pre/post `stat` matched); source writeback after scratch freeze; no
+  installs/subagents/dynamic mode; no-touch surfaces clean (`alert-state.sh`
+  6519 B, dashboard stash preserved).
+- **Why `_clean_enough`:** the kit led the core adoption loop, but the dry-run
+  proof harness + boundaries came from the proposal/authorization, and the
+  execution prompt was more detailed than the ideal minimal instruction (and is
+  not preserved for independent minimality verification). The 5 builder-disclosed
+  kit gaps (placeholder scope; no kit-reliance-log template; non-independent
+  auditor vs kit default; proof checks from proposal; OC entry phrase absent) are
+  all real and honest.
+
+**`satisfied` and `kit_led_clean_enough` are NOT approval.** Nothing is
+preserved, committed, or approved by this audit. **Both scratch repos should
+REMAIN** as evidence (do not delete/clean up).
+
+**Next actor: Sami** (sole approver) — decide: (a) preserve the Stage B builder
+report + this audit + COLLAB state in a PR; (b) scratch-001 / scratch-002
+disposition; (c) whether to act on the kit-fix findings via a separate authorized
+kit turn; (d) a cleaner Stage B retry (preserve the exact minimal prompt + record
+the `CODEX_HOME` path) or a later Stage C; GPT exit synthesis optional (2nd
+dry-run OC → exit may be NEEDS_GPT under the bootstrap rule). No
+preservation/commit/PR/merge, scratch cleanup, kit edit, Stage C, or execution
+until a separate explicit Sami authorization.
 
 ## Current Owner
 
