@@ -6,26 +6,25 @@
   <title>Decision Cockpit v1</title>
   <style>
     :root {
-      --bg: #101318;
-      --surface: #171c23;
-      --surface-strong: #1e2630;
-      --surface-soft: #121820;
-      --line: #2b333e;
-      --line-strong: #3b4654;
-      --text: #eef2f7;
-      --text-soft: #b6c0cd;
-      --text-muted: #7f8b99;
-      --teal: #45c4b0;
-      --teal-soft: #15332f;
-      --amber: #d8a64a;
-      --amber-soft: #342717;
-      --violet: #9a7ce0;
-      --violet-soft: #261f3d;
-      --danger: #ef806f;
-      --danger-soft: #3b1f1d;
-      --blue: #6aa5d8;
-      --blue-soft: #172a3b;
-      --code-bg: #0c1015;
+      --bg: #f6f7f4;
+      --surface: #ffffff;
+      --surface-soft: #eef3ef;
+      --surface-strong: #e3ece7;
+      --ink: #141915;
+      --text: #26312b;
+      --muted: #5f6f67;
+      --line: #c9d5cf;
+      --line-strong: #9caea5;
+      --focus: #236a58;
+      --focus-soft: #dceee8;
+      --relay: #244f7a;
+      --relay-soft: #e3eff8;
+      --warn: #825a13;
+      --warn-soft: #fff2d4;
+      --danger: #893127;
+      --danger-soft: #fae8e5;
+      --code: #111816;
+      --code-text: #e9f5ed;
     }
 
     * { box-sizing: border-box; }
@@ -40,718 +39,577 @@
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 15px;
-      line-height: 1.55;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
     main {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 28px 0 40px;
+      padding: 22px 0 44px;
     }
-
-    a {
-      color: var(--teal);
-      text-decoration: none;
-    }
-
-    a:hover { text-decoration: underline; }
 
     .topbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 18px;
-      margin-bottom: 18px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+      margin-bottom: 14px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
+    .brand-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
     }
 
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      border: 1px solid rgba(69, 196, 176, 0.45);
+    .brand-subtitle, .snapshot {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .snapshot { max-width: 360px; text-align: right; }
+
+    .banner {
+      border: 1px solid var(--line-strong);
       border-radius: 8px;
-      display: grid;
-      place-items: center;
-      color: var(--teal);
-      font-weight: 800;
-      background: var(--teal-soft);
+      background: var(--surface);
+      padding: 12px 14px;
+      margin-bottom: 14px;
     }
 
-    .brand-name {
-      font-size: 14px;
-      font-weight: 800;
-    }
+    .banner strong { color: var(--ink); }
 
-    .brand-subtitle {
-      color: var(--text-muted);
-      font-size: 12px;
-      margin-top: 2px;
-    }
-
-    .snapshot {
-      color: var(--text-muted);
-      font-size: 12px;
-      text-align: right;
-    }
-
-    .snapshot strong { color: var(--text-soft); }
-
-    .notice {
-      border: 1px solid var(--line);
-      border-left: 4px solid var(--teal);
-      background: var(--surface-soft);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin-bottom: 18px;
-      color: var(--text-soft);
-    }
-
-    .notice strong { color: var(--text); }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .grid.two {
-      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-      align-items: start;
-    }
-
-    .grid.three {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+    .grid { display: grid; gap: 14px; }
+    .hero { grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr); align-items: stretch; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     .card {
-      background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 8px;
+      background: var(--surface);
       padding: 18px;
     }
 
-    .card.compact { padding: 14px; }
-
-    .section-title {
-      margin: 0 0 10px;
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 700;
-      text-transform: uppercase;
+    .card.role {
+      border-color: var(--focus);
+      background: linear-gradient(0deg, var(--focus-soft), var(--surface));
     }
 
-    .headline {
-      margin: 0 0 8px;
-      font-size: clamp(24px, 4vw, 40px);
-      line-height: 1.12;
-      font-weight: 780;
+    .card.relay {
+      border-color: #96b7d1;
+      background: var(--relay-soft);
     }
 
-    .body-copy {
-      margin: 0;
-      color: var(--text-soft);
-      max-width: 74ch;
+    .card.warn {
+      border-color: #d7b875;
+      background: var(--warn-soft);
     }
 
-    .signals {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .signal {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
-      background: var(--surface-soft);
-      min-height: 92px;
-    }
-
-    .signal .label {
-      color: var(--text-muted);
-      display: block;
-      font-size: 12px;
-      margin-bottom: 6px;
-      font-weight: 700;
-    }
-
-    .signal .value {
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 680;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      padding: 7px 10px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-soft);
-      background: var(--surface-soft);
-      margin-bottom: 12px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--teal);
-      flex: 0 0 auto;
-    }
-
-    .dot.amber { background: var(--amber); }
-    .dot.violet { background: var(--violet); }
-
-    .boundary {
-      border-color: rgba(216, 166, 74, 0.55);
-      background: var(--amber-soft);
-    }
-
-    .boundary .section-title { color: #f0c66d; }
-
-    .danger {
-      border-color: rgba(239, 128, 111, 0.5);
+    .card.danger {
+      border-color: #dfa9a1;
       background: var(--danger-soft);
     }
 
-    .danger .section-title { color: #ffb0a5; }
-
-    .running {
-      border-color: rgba(106, 165, 216, 0.48);
-      background: var(--blue-soft);
-    }
-
-    .running .section-title { color: #9cc8ee; }
-
-    .pending {
-      border-color: rgba(154, 124, 224, 0.48);
-      background: var(--violet-soft);
-    }
-
-    .pending .section-title { color: #c5b4f2; }
-
-    ul.clean {
-      margin: 0;
-      padding-left: 19px;
-      color: var(--text-soft);
-    }
-
-    ul.clean li { margin: 5px 0; }
-
-    .option-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .option {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
-      background: var(--surface-soft);
-    }
-
-    .option-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: baseline;
-      margin-bottom: 6px;
-    }
-
-    .option-name {
-      color: var(--text);
-      font-weight: 750;
-    }
-
-    .action-id {
-      color: var(--text-muted);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
       font-size: 12px;
-      white-space: nowrap;
+      font-weight: 850;
+      letter-spacing: 0;
+      text-transform: uppercase;
     }
 
-    .option p {
+    h1 {
       margin: 0 0 10px;
-      color: var(--text-soft);
-      font-size: 13px;
+      color: var(--ink);
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 0.98;
+      letter-spacing: 0;
     }
 
-    .copy-row {
+    h2 {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--ink); }
+
+    .lead {
+      max-width: 760px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.32;
+    }
+
+    .status-line {
       display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin-top: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0;
     }
 
-    .copy-row pre {
-      flex: 1;
-      min-width: 0;
-      margin: 0;
-    }
-
-    button {
+    .pill {
       border: 1px solid var(--line-strong);
-      border-radius: 8px;
-      background: var(--surface-strong);
-      color: var(--text);
-      padding: 9px 11px;
-      font: inherit;
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      padding: 7px 10px;
       font-size: 13px;
-      font-weight: 720;
-      cursor: pointer;
-      min-height: 38px;
+      font-weight: 780;
     }
 
-    button:hover { border-color: var(--teal); }
-    button:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    .pill.low { border-color: #85a99d; background: var(--focus-soft); }
+    .pill.stop { border-color: #dfa9a1; background: var(--danger-soft); color: var(--danger); }
 
-    pre {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      background: var(--code-bg);
+    .route {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .route span {
       border: 1px solid var(--line);
       border-radius: 8px;
-      color: #dce7f5;
-      padding: 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 104px;
-      resize: vertical;
-      border: 1px solid var(--line-strong);
-      border-radius: 8px;
-      background: var(--code-bg);
-      color: var(--text);
-      padding: 12px;
-      font: inherit;
-      line-height: 1.45;
-    }
-
-    textarea:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-
-    .helper {
-      color: var(--text-muted);
-      font-size: 12px;
-      margin: 8px 0 0;
-    }
-
-    .warning {
-      color: #f6c4bb;
-      background: rgba(239, 128, 111, 0.12);
-      border: 1px solid rgba(239, 128, 111, 0.45);
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin: 10px 0 0;
-      font-size: 13px;
+      background: var(--surface);
+      padding: 10px;
+      color: var(--ink);
+      font-weight: 800;
+      text-align: center;
     }
 
     .facts {
       display: grid;
-      gap: 8px;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface);
     }
 
-    .fact-row {
+    .fact {
       display: grid;
-      grid-template-columns: 170px minmax(0, 1fr);
+      grid-template-columns: 155px minmax(0, 1fr);
       gap: 12px;
-      padding-bottom: 8px;
+      padding: 10px 12px;
       border-bottom: 1px solid var(--line);
     }
 
-    .fact-row:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
+    .fact:last-child { border-bottom: 0; }
+    .key { color: var(--muted); font-weight: 850; }
+    .value { color: var(--text); }
+
+    .checklist {
+      counter-reset: quick;
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .fact-key {
-      color: var(--text-muted);
-      font-weight: 700;
+    .checklist li {
+      position: relative;
+      padding: 11px 12px 11px 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
     }
 
-    .fact-value { color: var(--text-soft); }
-
-    .footer {
-      margin-top: 18px;
-      border-top: 1px solid var(--line);
-      padding-top: 16px;
-      color: var(--text-muted);
+    .checklist li::before {
+      counter-increment: quick;
+      content: counter(quick);
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--relay);
+      color: white;
       font-size: 12px;
+      font-weight: 850;
     }
 
-    .state-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+    .section { margin-top: 14px; }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      border: 1px solid #27332e;
+      border-radius: 8px;
+      background: var(--code);
+      color: var(--code-text);
+      padding: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.55;
     }
 
-    .split-list {
+    code {
+      color: #684c09;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li { margin: 5px 0; }
+
+    .basis-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 14px;
+    }
+
+    .basis-stack {
+      display: grid;
       gap: 12px;
     }
 
-    .small-note {
-      color: var(--text-muted);
-      font-size: 12px;
-      margin-top: 10px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface);
     }
 
-    @media (max-width: 860px) {
-      main { width: min(100% - 22px, 1120px); padding-top: 18px; }
-      .grid.two,
-      .grid.three,
-      .signals,
-      .state-grid,
-      .split-list {
-        grid-template-columns: 1fr;
-      }
-      .copy-row { flex-direction: column; }
-      .copy-row button { width: 100%; }
-      .fact-row { grid-template-columns: 1fr; gap: 2px; }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 11px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--ink);
+      background: var(--surface-strong);
+      font-weight: 850;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .invariant {
+      border: 1px solid var(--focus);
+      border-radius: 8px;
+      background: var(--focus-soft);
+      color: var(--ink);
+      padding: 14px;
+      text-align: center;
+      font-size: 21px;
+      font-weight: 880;
+    }
+
+    details {
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    summary {
+      cursor: default;
+      padding: 14px 16px;
+      color: var(--ink);
+      font-weight: 840;
+    }
+
+    .details-body {
+      border-top: 1px solid var(--line);
+      padding: 14px 16px 16px;
+    }
+
+    .footer {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      main { width: min(100% - 22px, 1180px); padding-top: 16px; }
+      .topbar { flex-direction: column; }
       .snapshot { text-align: left; }
-      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero, .two, .basis-grid, .route { grid-template-columns: 1fr; }
+      .fact { grid-template-columns: 1fr; gap: 2px; }
+      .lead { font-size: 20px; }
+      table { display: block; overflow-x: auto; }
     }
   </style>
 </head>
 <body>
   <main>
     <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true">D</div>
-        <div>
-          <div class="brand-name">Decision Cockpit v1</div>
-          <div class="brand-subtitle">Decision Cockpit v1 - static reference cockpit</div>
-        </div>
+      <div>
+        <p class="brand-title">Decision Cockpit v1</p>
+        <p class="brand-subtitle">Static handoff view. COLLAB.md remains authoritative.</p>
       </div>
-      <div class="snapshot">
-        Source of truth: <strong>COLLAB.md</strong><br>
-        Snapshot: public showcase reference state
-      </div>
+      <p class="snapshot"><strong>Snapshot:</strong> 2026-05-31, Iteration 3 convergence pass. Refresh from COLLAB.md before relying on this view.</p>
     </header>
 
-    <section class="notice">
-      <strong>COLLAB.md is authoritative.</strong> This dashboard is view-only and cannot grant approval. Do not infer approval from UI state, copy buttons, agent satisfaction, auditor pass, model consensus, silence, or visual status.
-    </section>
+    <div class="banner">
+      <strong>Do not trust polished prose by itself.</strong> Load-bearing claims reduce to replayable checks, visible artifacts, or explicit human judgment.
+    </div>
 
-    <section class="grid two" aria-labelledby="current-state-title">
-      <div class="card">
-        <div class="status-pill"><span class="dot"></span>Current reference state: public showcase snapshot</div>
-        <h1 id="current-state-title" class="headline">Start with START_HERE.md, then use COLLAB.md for live state.</h1>
-        <p class="body-copy">The repo is positioned as a public showcase / build journal for the Git-native approval-boundary protocol. Decision Cockpit v1 is a reference cockpit snapshot: useful evidence and optional adoption surface, but not the copyable kit and not a live approval mechanism.</p>
+    <section class="grid hero" aria-labelledby="role-heading">
+      <article class="card role">
+        <p class="eyebrow">Human role right now</p>
+        <h1 id="role-heading">No decision needed.</h1>
+        <p class="lead">Manual relay only. You are forwarding an agent-to-agent audit request because automatic handoff is not built yet.</p>
 
-        <div class="signals" aria-label="Simple Signals">
-          <div class="signal">
-            <span class="label">What is happening?</span>
-            <span class="value">Public showcase positioning has moved from scope-lock into implementation.</span>
-          </div>
-          <div class="signal">
-            <span class="label">Decision needed</span>
-            <span class="value">No approval decision from this dashboard. Use COLLAB.md for the active handoff.</span>
-          </div>
-          <div class="signal">
-            <span class="label">Your role right now</span>
-            <span class="value">Reader / reviewer. Human approval still requires exact text outside this dashboard.</span>
-          </div>
-          <div class="signal">
-            <span class="label">Can this wait?</span>
-            <span class="value">Yes. The dashboard grants no runtime or release consequence.</span>
-          </div>
-          <div class="signal">
-            <span class="label">Current protocol state</span>
-            <span class="value">Build journal + adopter kit framing is being made public-facing; kit dry-run remains future proof.</span>
-          </div>
-          <div class="signal">
-            <span class="label">Human approval required</span>
-            <span class="value">Required later for any commit, push, PR, merge, launch, public release, trust-layer work, or new scope.</span>
-          </div>
+        <div class="status-line" aria-label="Attention and review depth">
+          <span class="pill low">Attention: Low</span>
+          <span class="pill">Quick scan only</span>
+          <span class="pill">Routine relay</span>
+          <span class="pill stop">Not a request to approve work</span>
         </div>
 
-        <div class="copy-row">
-          <pre id="copy-primary-note">Read START_HERE.md first. Use kit/v1/README.md if you want the copyable adopter kit. Use COLLAB.md for live repo state. This dashboard is a reference cockpit snapshot and does not grant approval.</pre>
-          <button type="button" data-copy-target="copy-primary-note">Copy orientation note</button>
-        </div>
-      </div>
-
-      <aside class="card compact" aria-labelledby="assignments-title">
-        <h2 id="assignments-title" class="section-title">Current assignments metadata</h2>
         <div class="facts">
-          <div class="fact-row"><div class="fact-key">Human approver</div><div class="fact-value">Configured human approver. Reusable role is human approver.</div></div>
-          <div class="fact-row"><div class="fact-key">Coordinator</div><div class="fact-value">Current local assignment is instance metadata. Reusable role is Coordinator.</div></div>
-          <div class="fact-row"><div class="fact-key">Builder</div><div class="fact-value">Current local assignment is instance metadata. Reusable role is Builder.</div></div>
-          <div class="fact-row"><div class="fact-key">Auditor</div><div class="fact-value">Current local assignment is instance metadata. Reusable role is Auditor.</div></div>
-          <div class="fact-row"><div class="fact-key">Roles</div><div class="fact-value">Roles are model-agnostic and swappable. Model names are current assignments, not protocol vocabulary.</div></div>
+          <div class="fact"><div class="key">Next action</div><div class="value"><strong>Send the audit request to Claude Code.</strong></div></div>
+          <div class="fact"><div class="key">Paste target</div><div class="value">Claude audit thread</div></div>
+          <div class="fact"><div class="key">Review depth</div><div class="value">Quick scan for obvious wrong direction.</div></div>
+          <div class="fact"><div class="key">Lifecycle</div><div class="value">implemented locally / audit pending / not approved / not merged / not released</div></div>
+          <div class="fact"><div class="key">Approval rule</div><div class="value">Human approval is only needed when an exact named consequence is requested.</div></div>
         </div>
+
+        <div class="route" aria-label="Route strip">
+          <span>Codex implemented</span>
+          <span>Claude audits</span>
+          <span>Sami decides</span>
+        </div>
+      </article>
+
+      <aside class="card relay" aria-labelledby="quick-scan-heading">
+        <p class="eyebrow">Quick scan</p>
+        <h2 id="quick-scan-heading">Look for obvious wrong direction</h2>
+        <ol class="checklist">
+          <li>Does the next actor and paste target match what you expect?</li>
+          <li>Does the named action touch anything irreversible: commit, PR, merge, release, public claim, credential, global config, or scratch cleanup? If yes, this is not a relay. Slow down and route as a human decision.</li>
+        </ol>
+        <p style="margin-top: 12px;"><strong>Do not approve, merge, preserve, publish, clean up, or expand scope from this screen.</strong></p>
+        <p>Pausing is valid. Not acting immediately is allowed.</p>
       </aside>
     </section>
 
-    <section class="grid three" aria-label="Evidence, wait risk, and safety language">
-      <div class="card compact">
-        <h2 class="section-title">Evidence summary</h2>
-        <ul class="clean">
-          <li>Decision Cockpit v1 was implemented and audited in E6-DASH-003.</li>
-          <li>Root README stranger-orientation was audited in E6-README-001.</li>
-          <li>Adopter-facing name scrub passed in E6-NAME-SCRUB-001.</li>
-          <li><code>kit/v1</code> first-pass implementation passed in E6-KIT-001.</li>
-          <li>Public showcase positioning was scoped and audited in E6-PUBLIC-POSITION-001.</li>
-        </ul>
-      </div>
+    <section class="section card" aria-labelledby="next-action-heading">
+      <p class="eyebrow">Exact next action</p>
+      <h2 id="next-action-heading">Paste this to Claude Code</h2>
+      <pre>CLAUDE - AUDIT E6-ROUTING-COCKPIT-001 IMPLEMENTATION ITER 3
 
-      <div class="card compact">
-        <h2 class="section-title">Wait-risk signal</h2>
-        <p class="body-copy">Waiting does not authorize anything. The cost is delayed public-position implementation review and preservation. No runtime, deploy, public release, or external action is pending from the dashboard.</p>
-      </div>
+Audit the Codex Iteration 3 implementation against Sami's Iteration 3 authorization and the preserved implementation packet.
 
-      <div class="card compact danger">
-        <h2 class="section-title">Safety language</h2>
-        <ul class="clean">
-          <li><code>satisfied</code> is not approval.</li>
-          <li>Auditor pass is not approval.</li>
-          <li>Model consensus is not approval.</li>
-          <li>Human approval authorizes only the exact named consequence.</li>
-        </ul>
-      </div>
+Read:
+- .agent-handoff/COLLAB.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/DASHBOARD.html
+- .agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-implementation-iter-2.md
+- .agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-routing-cockpit-implementation-iter-3.md
+
+Verify:
+- top of page distinguishes routine manual relay from a real human decision
+- human role, attention level, review depth, exact next action, and paste target are visible
+- quick-scan checklist is visible
+- verification basis separates replayable checks, environment-dependent checks, visible artifacts, agent judgment, and human judgment
+- replayable factual claims cite a command/result or tell the reader exactly what to rerun
+- non-checkable claims are marked as agent judgment, not fact
+- route strip and lifecycle stage are present
+- done ≠ audited ≠ satisfied ≠ approved ≠ merged ≠ released remains visible
+- Ask Coordinator and Pause remain visible as valid options
+- slow-down triggers remain visible
+- static dashboard only: no executable page code, inline event handlers, browser storage, external assets, hidden state, automation, notification layer, approval control, public claim, protocol edit, kit edit, global config, or scratch change
+- localhost rendered browser QA evidence is real, or any gap is recorded honestly
+- no no-touch files changed
+- seven pre-existing duplicate-noise files remain untouched
+- scratch dirs remain untouched
+
+Do not implement, edit, stage, commit, branch, push, PR, merge, clean scratch, clean noise files, preserve, or broaden scope.
+
+Return blockers, nits, missing controls, rendered-QA result, result state, and exact fixes if needed.</pre>
     </section>
 
-    <section class="state-grid" aria-label="Required cockpit states">
-      <div class="card pending">
-        <h2 class="section-title">Human Decision Pending</h2>
-        <p class="body-copy">Agents may be satisfied. Human approval is still pending. The human must choose an exact decision action. No consequence is authorized until exact human approval.</p>
-        <div class="small-note">This state is not the current live handoff. It is the required cockpit behavior when approval or rejection is genuinely pending.</div>
-      </div>
+    <section class="section card" aria-labelledby="basis-heading">
+      <p class="eyebrow">Verification basis</p>
+      <h2 id="basis-heading">What is checkable, what is judgment?</h2>
+      <p>Polished audit prose is not self-validating. Facts should point to a cheap replay path; judgment should be labeled as judgment.</p>
 
-      <div class="card running">
-        <h2 class="section-title">Agents Running / Execution Mode</h2>
-        <p class="body-copy">Agents are working inside approved reversible scope. No human approval is needed for every reversible micro-turn. The human may interrupt, pause, reject/redo, reject/close, ask Coordinator, or steer anytime. Irreversible actions still require exact human approval.</p>
-        <div class="small-note">Execution Mode must show packet, iteration, builder/auditor status, allowed files, no-touch list, stop conditions, latest evidence, and reversibility status.</div>
-      </div>
-    </section>
+      <div class="basis-grid">
+        <div>
+          <h3>Anyone-replayable deterministic checks</h3>
+          <table>
+            <thead>
+              <tr><th>Claim type</th><th>Replay path</th><th>Current interpretation</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Working tree shape</td><td><code>git status --short --branch --untracked-files=all</code></td><td>Run before relying; status changes as audit and preservation files are added.</td></tr>
+              <tr><td>Patch hygiene</td><td><code>git diff --check</code></td><td>Latest builder note records the actual result.</td></tr>
+              <tr><td>Static self-containment</td><td>Search the dashboard source for executable page code, inline event handlers, browser storage, external asset refs, timers, approval controls, and forbidden approval-framing text.</td><td>Latest builder note records exact searches and outputs.</td></tr>
+              <tr><td>Artifact size / identity</td><td><code>wc -l .agent-handoff/DASHBOARD.html</code> plus a local hash command.</td><td>Run before relying; identity checks do not prove correctness.</td></tr>
+              <tr><td>No-touch boundary</td><td>Diff the no-touch paths named in the implementation authorization.</td><td>Latest builder note records the actual check.</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-    <section class="grid two" aria-label="Decision options and notes">
-      <div class="card">
-        <h2 class="section-title">Decision options</h2>
-        <p class="body-copy">These are the portable decision actions for a real Human Decision Pending state. They are shown as visible templates, not active approval for the current reference snapshot.</p>
-
-        <div class="option-list">
-          <div class="option">
-            <div class="option-header">
-              <span class="option-name">Authorize exact action</span>
-              <span class="action-id">authorize_exact_action</span>
-            </div>
-            <p>Authorizes only the named consequence and scope.</p>
-            <div class="copy-row">
-              <pre id="copy-authorize">Action: authorize_exact_action
-I authorize only: [exact named consequence or scope].
-This does NOT authorize: [excluded scope, launch, merge, protocol change, public release, or other excluded consequence].
-Evidence refs: [repo-visible turn notes or audit paths].
-Decision rationale: optional for routine authorization.</pre>
-              <button type="button" data-copy-target="copy-authorize">Copy visible template</button>
-            </div>
+        <div class="basis-stack">
+          <div class="card relay">
+            <h3>Environment-dependent checks</h3>
+            <ul>
+              <li>Local render QA requires serving the handoff folder locally and opening the dashboard in Chrome.</li>
+              <li>Console and network observations must say whether they were actually captured after tooling was attached.</li>
+              <li>If rendered QA did not happen, the audit must say so.</li>
+            </ul>
           </div>
-
-          <div class="option">
-            <div class="option-header">
-              <span class="option-name">Reject / Redo</span>
-              <span class="action-id">reject_redo</span>
-            </div>
-            <p>Returns work for revision inside the approved packet when possible.</p>
-            <div class="copy-row">
-              <pre id="copy-redo">Action: reject_redo
-Requested state: needs_revision
-Redo because: [specific evidence, copy, parity, scope, or safety defect].
-Scope boundary: stay inside the approved packet unless a new packet is authorized.
-Decision rationale: required.</pre>
-              <button type="button" data-copy-target="copy-redo">Copy visible template</button>
-            </div>
-          </div>
-
-          <div class="option">
-            <div class="option-header">
-              <span class="option-name">Reject / Close</span>
-              <span class="action-id">reject_close</span>
-            </div>
-            <p>Closes the request without approval.</p>
-            <div class="copy-row">
-              <pre id="copy-close">Action: reject_close
-Requested state: closed_rejected
-Close because: [why this outcome should not continue].
-This does NOT authorize alternate scope or replacement work.
-Decision rationale: required.</pre>
-              <button type="button" data-copy-target="copy-close">Copy visible template</button>
-            </div>
-          </div>
-
-          <div class="option">
-            <div class="option-header">
-              <span class="option-name">Ask Coordinator</span>
-              <span class="action-id">ask_coordinator</span>
-            </div>
-            <p>Asks for synthesis or clarification before the human decides.</p>
-            <div class="copy-row">
-              <pre id="copy-coordinator">Action: ask_coordinator
-Question for Coordinator: [scope, strategy, risk, or judgment question].
-Current uncertainty: [what prevents a human decision].
-Decision rationale: required.
-No implementation, approval, or new scope is authorized by this question.</pre>
-              <button type="button" data-copy-target="copy-coordinator">Copy visible template</button>
-            </div>
-          </div>
-
-          <div class="option">
-            <div class="option-header">
-              <span class="option-name">Pause</span>
-              <span class="action-id">pause_pending</span>
-            </div>
-            <p>Keeps state pending without approval or rejection.</p>
-            <div class="copy-row">
-              <pre id="copy-pause">Action: pause_pending
-Pause until: [time, event, or condition].
-Reason: [optional for short non-blocking pause; required if blocking or long-running].
-This does NOT authorize approval, rejection, new scope, or irreversible action.</pre>
-              <button type="button" data-copy-target="copy-pause">Copy visible template</button>
-            </div>
+          <div class="card">
+            <h3>Visible artifacts</h3>
+            <ul>
+              <li><code>DASHBOARD.md</code></li>
+              <li><code>DASHBOARD.html</code></li>
+              <li><code>COLLAB.md</code></li>
+              <li><code>Codex Iteration 3 builder note</code></li>
+              <li><code>Claude Iteration 2 audit note</code></li>
+              <li>PR metadata, only when a PR exists</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div class="grid">
-        <section class="card">
-          <h2 class="section-title">Human Decision Notes</h2>
-          <label for="decision-rationale" class="option-name">Decision rationale</label>
-          <textarea id="decision-rationale" placeholder="Example: Approving preservation PR only because artifacts are historical and reversible; not approving public release or protocol relaxation."></textarea>
-          <p class="helper">Visible to future agents and preserved in the audit trail. Keep to ~2-4 sentences. Avoid private reasoning, secrets, or content you would not include in a PR review.</p>
-          <p class="warning">A decision rationale is required for reject, ask, override, or long pause. Notes are descriptive, not normative. Agents may cite notes as context but may not adapt thresholds based on them.</p>
-        </section>
-
-        <section class="card boundary">
-          <h2 class="section-title">Approval boundary</h2>
-          <div class="split-list">
-            <div>
-              <strong>This authorizes</strong>
-              <ul class="clean">
-                <li>Only the exact named consequence in the visible human text.</li>
-                <li>Only the files, scope, and action explicitly listed.</li>
-              </ul>
-            </div>
-            <div>
-              <strong>This does NOT authorize</strong>
-              <ul class="clean">
-                <li>Public release, protocol relaxation, merge, push, deploy, trust-layer work, or new scope unless named.</li>
-                <li>Turning auditor satisfaction into approval.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+      <div class="grid two section">
+        <article class="card warn">
+          <h3>Agent judgment</h3>
+          <p>Useful but not self-validating: layout is clearer, risk framing is appropriate, human cognitive load is reduced, the quick-scan model is more humane, and this handoff is low attention.</p>
+        </article>
+        <article class="card danger">
+          <h3>Human judgment</h3>
+          <p>Only Sami can authorize exact named consequences such as commit, PR, merge, release, cleanup, public claim, scope expansion, protocol change, kit change, credential/global config change, or durable behavior change.</p>
+        </article>
       </div>
     </section>
 
-    <section class="grid two" aria-label="Risk context and trust posture">
-      <div class="card">
-        <h2 class="section-title">Risk context</h2>
-        <p class="body-copy">This summarizes what the agents found. It does not decide for you.</p>
-        <div class="facts" style="margin-top: 14px;">
-          <div class="fact-row"><div class="fact-key">Consequence</div><div class="fact-value">Public readers can see the reference cockpit without stale dashboard handoff state. No merge, PR, public release, or protocol change follows from this dashboard.</div></div>
-          <div class="fact-row"><div class="fact-key">Evidence confidence</div><div class="fact-value">Proof layers are repo-visible; this copy refresh still needs independent audit.</div></div>
-          <div class="fact-row"><div class="fact-key">Reversibility</div><div class="fact-value">Local dashboard and public-position edits are reversible until a later exact human authorization preserves them.</div></div>
-          <div class="fact-row"><div class="fact-key">Open caveats</div><div class="fact-value">External adoption, kit dry-run, trust hardening, and scale remain unproven.</div></div>
-          <div class="fact-row"><div class="fact-key">Unknowns</div><div class="fact-value">No external user testing; no public-proof run; no kit dry-run yet.</div></div>
-          <div class="fact-row"><div class="fact-key">If wrong</div><div class="fact-value">Claude should request iteration 2 for copy, parity, self-containment, stale-state, or boundary defects.</div></div>
-          <div class="fact-row"><div class="fact-key">Human approval required</div><div class="fact-value">Yes for any commit, push, PR, merge, launch, protocol change, or irreversible consequence.</div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 class="section-title">Trust footer</h2>
-        <p class="body-copy">Audit trail: Git-visible. Verifiable through PR and commit history. Tamper-evident when protected branches, signing, manifests, or external witnesses are configured. Not tamper-proof. No blockchain or legal compliance claim is made by this dashboard.</p>
-        <div class="footer">
-          Static self-contained file. No external CSS or JavaScript. No network, storage, backend, notification, webhook, model, or runtime behavior. Copy buttons copy only visible text from this page.
-        </div>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="deferred-title">
-      <h2 id="deferred-title" class="section-title">Deferred by this dashboard</h2>
-      <div class="split-list">
-        <ul class="clean">
-          <li>Kanban / Operations Board.</li>
-          <li>Board Mode / Outcome Board.</li>
-          <li>Three-panel concurrent layout.</li>
-          <li>Real-time agent status.</li>
-          <li>Analytics, throughput, lead-time, leaderboard, or agent-online metrics.</li>
-          <li>Trust manifests, signing, hash manifests, transparency logs, and blockchain.</li>
+    <section class="section card warn" aria-labelledby="slow-heading">
+      <p class="eyebrow">Slow down if...</p>
+      <h2 id="slow-heading">The relay turns into a decision</h2>
+      <div class="grid two">
+        <ul>
+          <li>The named action is irreversible.</li>
+          <li>The named action includes approval, merge, PR creation, preservation, publication, release, public claim, credential, global config, or scratch cleanup.</li>
+          <li>The scope expands beyond this bounded dashboard convergence pass.</li>
+          <li>Evidence is unclear, missing, stale, or conflicts across agents.</li>
+          <li>Agent outputs disagree about whether the work passed.</li>
         </ul>
-        <ul class="clean">
-          <li>Notification, wakeup, webhook, cron, or auto-routing.</li>
-          <li>Public release / top-of-funnel launch.</li>
-          <li>Public-alpha packaging.</li>
-          <li>Kit dry-run.</li>
-          <li>Public-proof runs.</li>
-          <li>Protocol relaxation.</li>
-          <li>Runtime/backend integration.</li>
+        <ul>
+          <li>There is pressure to approve quickly.</li>
+          <li>The exact action text is missing.</li>
+          <li>The human approver is uncertain.</li>
+          <li>The request would create hidden state, automation, memory, skills, subagents, scheduled checks, global config, network services, or runtime behavior.</li>
         </ul>
       </div>
+      <p><strong>Valid options:</strong> Ask Coordinator, Pause Pending, Reject / Redo, Reject / Close, or Authorize Exact Action only when Sami names the exact consequence.</p>
     </section>
+
+    <section class="section card" aria-labelledby="boundary-heading">
+      <p class="eyebrow">Approval boundary</p>
+      <h2 id="boundary-heading">Do not collapse these states</h2>
+      <div class="invariant">done ≠ audited ≠ satisfied ≠ approved ≠ merged ≠ released</div>
+      <p style="margin-top: 12px;">Drafted text is not approval. <code>satisfied</code> is not approval. Auditor pass is not approval. Model consensus is not approval. Sami is the only approver.</p>
+      <p>Irreversible, approval, scope-expanding, permission-changing, public, or durable behavior actions route to Sami. A classifier, dashboard, auditor, coordinator, or model consensus cannot waive human approval.</p>
+    </section>
+
+    <section class="section grid two">
+      <article class="card" aria-labelledby="authorized-heading">
+        <p class="eyebrow">This screen authorizes</p>
+        <h2 id="authorized-heading">Audit relay only</h2>
+        <ul>
+          <li>Claude may audit the Iteration 3 local static dashboard implementation.</li>
+          <li>Claude may read the listed evidence files.</li>
+          <li>Claude may report blockers, nits, missing controls, rendered-QA result, and result state.</li>
+          <li>Codex stops after the builder report and waits for audit.</li>
+        </ul>
+      </article>
+
+      <article class="card danger" aria-labelledby="not-authorized-heading">
+        <p class="eyebrow">This screen does not authorize</p>
+        <h2 id="not-authorized-heading">No durable consequence</h2>
+        <ul>
+          <li>No commit, push, branch, PR, merge, preservation, or release.</li>
+          <li>No public claim, launch, protocol edit, kit edit, trust-layer work, credentials, global config, memory creation, skill creation, automation, or subagents.</li>
+          <li>No scratch cleanup or duplicate-noise cleanup.</li>
+          <li>No approval without exact named consequence.</li>
+        </ul>
+      </article>
+    </section>
+
+    <details class="section">
+      <summary>Standard pattern mapping</summary>
+      <div class="details-body">
+        <p>These are routing metaphors and evidence inputs, not implemented subsystems.</p>
+        <table>
+          <thead>
+            <tr><th>Standard pattern</th><th>Harness use</th><th>Boundary</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Reviewer gates</td><td>Claude audits Codex output and may upgrade route risk.</td><td>Auditor pass is evidence, not approval.</td></tr>
+            <tr><td>Policy checks</td><td>Allowed files, no-touch lists, stale/as-of state, verification commands.</td><td>Checks can block or inform; they do not approve.</td></tr>
+            <tr><td>Risk tiers</td><td>Routine manual relay is low attention; irreversible/public/config work is high attention.</td><td>Higher attention routes to Sami; tier labels do not authorize action.</td></tr>
+            <tr><td>CODEOWNERS / branch protection</td><td>Human owns consequences; auditor owns critique; builder owns scoped implementation.</td><td>Role ownership is not approval unless the role is the human approver.</td></tr>
+            <tr><td>CI/status checks</td><td>Diff hygiene, static searches, browser QA, and changed-file lists.</td><td>Passing checks are evidence inputs, not approval.</td></tr>
+            <tr><td>Escalation on ambiguity</td><td><code>UNCLEAR</code> routes to Coordinator unless a human-required trigger is primary.</td><td>Ambiguity is not permission to proceed.</td></tr>
+            <tr><td>Human-in-the-loop review</td><td>Human decision actions use exact text.</td><td>Drafted text is not approval.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details>
+      <summary>Burden baseline and deferred work</summary>
+      <div class="details-body">
+        <p>No burden-reduction claim is made by this implementation. This captures a baseline so later cockpit work can be measured instead of asserted.</p>
+        <table>
+          <thead>
+            <tr><th>Metric</th><th>Baseline capture</th><th>Claim status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Manual routing prompts / exact authorizations</td><td>Multiple exact Sami authorization prompts were required across Stage A packet preservation, Stage A execution, Stage A result preservation, Stage B proposal/result preservation, routing scope-lock preservation, implementation packet preservation, Iteration 1 implementation, Iteration 2 authorization, and Iteration 3 convergence. Exact count should be audited before use as a metric.</td><td>Baseline only; no reduction claim.</td></tr>
+            <tr><td>Ambiguous handoff moments</td><td>The routing scope-lock, implementation packet, and Iteration 3 convergence pass exist because the Stage A/B to preservation arc exposed repeated actor-routing friction and audit-trust friction. Exact count is unknown from repo-visible evidence alone.</td><td>Unknown fields cannot support a reduction claim.</td></tr>
+            <tr><td>Handoffs by actor class</td><td>Codex builder, Claude auditor, GPT coordinator synthesis, and Sami approval all appeared in the arc. Exact copy/paste count remains unknown without manual transcript counting.</td><td>Baseline only.</td></tr>
+          </tbody>
+        </table>
+        <h3 style="margin-top: 14px;">Deferred</h3>
+        <ul>
+          <li>No automatic handoff; this is still manual relay.</li>
+          <li>No dashboard runtime, live routing engine, notification, or wakeup layer.</li>
+          <li>No automation, scheduled checks, subagents, memory, or skills.</li>
+          <li>No trust-layer implementation, public-proof run, release, kit cleanup, Stage B retry, or duplicate-noise cleanup.</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="footer">
+      Audit trail is Git-visible when preserved. Verifiable through PR and commit history. Tamper-evident only when protected branches, signing, manifests, or external witnesses are configured. Not tamper-proof. No blockchain, legal, compliance, production-readiness, or public-release claim is made by this dashboard. Static self-contained file. No external CSS or JavaScript. No network, storage, automation, hidden state, or approval action exists in this dashboard.
+    </div>
   </main>
-
-  <script>
-    (function () {
-      function copyVisibleText(targetId, button) {
-        var target = document.getElementById(targetId);
-        if (!target) return;
-        var text = target.innerText;
-        function markCopied() {
-          var original = button.innerText;
-          button.innerText = "Copied visible text";
-          window.setTimeout(function () {
-            button.innerText = original;
-          }, 1400);
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(markCopied).catch(function () {
-            fallbackCopy(text);
-            markCopied();
-          });
-        } else {
-          fallbackCopy(text);
-          markCopied();
-        }
-      }
-
-      function fallbackCopy(text) {
-        var area = document.createElement("textarea");
-        area.value = text;
-        area.setAttribute("readonly", "readonly");
-        area.style.position = "fixed";
-        area.style.left = "-9999px";
-        document.body.appendChild(area);
-        area.select();
-        document.execCommand("copy");
-        document.body.removeChild(area);
-      }
-
-      var buttons = document.querySelectorAll("[data-copy-target]");
-      for (var i = 0; i < buttons.length; i += 1) {
-        buttons[i].addEventListener("click", function () {
-          copyVisibleText(this.getAttribute("data-copy-target"), this);
-        });
-      }
-    }());
-  </script>
 </body>
 </html>
