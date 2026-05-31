@@ -1,270 +1,247 @@
 # Decision Cockpit v1
 
-Static reference cockpit snapshot for the current handoff and public showcase.
-This file is a view, not the source of truth or the primary public entrypoint.
+Static reference cockpit snapshot for the current handoff. This file is a view,
+not the source of truth, not an approval mechanism, and not a routing runtime.
 
-## Source Of Truth
+Snapshot as-of: 2026-05-31, Iteration 3 convergence pass.
 
-- `.agent-handoff/COLLAB.md` is authoritative.
-- On conflict, `COLLAB.md` wins.
-- `DASHBOARD.md` and `DASHBOARD.html` do not grant approval.
-- Do not infer approval from UI state, copy buttons, agent satisfaction,
-  auditor pass, model consensus, silence, or visual status.
-- Human approval authorizes only the exact named consequence.
+## Human Role Right Now
 
-## Current Reference State: Public Showcase Snapshot
+No decision needed.
 
-**Start with `START_HERE.md`, then use `COLLAB.md` for live state.**
+Manual relay only. You are forwarding an agent-to-agent audit request because
+automatic handoff is not built yet.
 
-The repo is now positioned as a public showcase / build journal for the
-Git-native approval-boundary protocol. Decision Cockpit v1 is a reference
-cockpit snapshot: useful evidence and optional adoption surface, but not the
-copyable kit and not a live approval mechanism.
+Human attention needed: Low — quick scan only.
 
-This is not a human approval request. No consequence is authorized by viewing
-or copying dashboard text.
+Review depth: quick scan for obvious wrong direction.
 
-## Simple Signals / Focus Panel
+Next action: send the audit request to Claude Code.
 
-| Field | Value |
-| --- | --- |
-| What is happening? | Public showcase positioning has moved from scope-lock into implementation. |
-| Decision needed | No approval decision from this dashboard. Use `COLLAB.md` for the active handoff. |
-| Your role right now | Reader / reviewer. Human approval still requires exact text outside this dashboard. |
-| Can this wait? | Yes. The dashboard grants no runtime or release consequence. |
-| Current protocol state | Build journal + adopter kit framing is being made public-facing; kit dry-run remains future proof. |
-| Human approval required | Required later for any commit, push, PR, merge, launch, public release, trust-layer work, or new scope. |
+Do not approve, merge, preserve, publish, clean up, or expand scope from this
+screen. Human approval is only needed when an exact named consequence is
+requested.
 
-## Primary Action Surfaced
+Quick scan:
 
-Public entrypoint: `START_HERE.md`.
+1. Does the next actor + paste target match what you expect?
+2. Does the named action touch anything irreversible: commit, PR, merge,
+   release, public claim, credential, global config, or scratch cleanup?
+   If yes, this is not a relay. Slow down and route as a human decision.
 
-Live source of truth: `.agent-handoff/COLLAB.md`.
+Route strip:
 
-Visible copy target in `DASHBOARD.html`: `copy-primary-note`.
+`Codex implemented -> Claude audits -> Sami decides`
+
+Lifecycle stage:
+
+`implemented locally / audit pending / not approved / not merged / not released`
+
+## Exact Next Action
+
+Recipient / paste target: Claude Code audit thread.
 
 ```text
-Read START_HERE.md first. Use kit/v1/README.md if you want the copyable
-adopter kit. Use COLLAB.md for live repo state. This dashboard is a reference
-cockpit snapshot and does not grant approval.
+CLAUDE — AUDIT E6-ROUTING-COCKPIT-001 IMPLEMENTATION ITER 3
+
+Audit the Codex Iteration 3 implementation against Sami's Iteration 3
+authorization and the preserved implementation packet.
+
+Read:
+- .agent-handoff/COLLAB.md
+- .agent-handoff/DASHBOARD.md
+- .agent-handoff/DASHBOARD.html
+- .agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-implementation-iter-2.md
+- .agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-routing-cockpit-implementation-iter-3.md
+
+Verify:
+- top of page distinguishes routine manual relay from a real human decision
+- human role, attention level, review depth, exact next action, and paste target are visible
+- quick-scan checklist is visible
+- verification basis separates replayable checks, environment-dependent checks, visible artifacts, agent judgment, and human judgment
+- replayable factual claims cite a command/result or tell the reader exactly what to rerun
+- non-checkable claims are marked as agent judgment, not fact
+- route strip and lifecycle stage are present
+- done ≠ audited ≠ satisfied ≠ approved ≠ merged ≠ released remains visible
+- Ask Coordinator and Pause remain visible as valid options
+- slow-down triggers remain visible
+- static dashboard only: no executable page code, inline event handlers, browser storage, external assets, hidden state, automation, notification layer, approval control, public claim, protocol edit, kit edit, global config, or scratch change
+- localhost rendered browser QA evidence is real, or any gap is recorded honestly
+- no no-touch files changed
+- seven pre-existing duplicate-noise files remain untouched
+- scratch dirs remain untouched
+
+Do not implement, edit, stage, commit, branch, push, PR, merge, clean scratch,
+clean noise files, preserve, or broaden scope.
+
+Return blockers, nits, missing controls, rendered-QA result, result state, and
+exact fixes if needed.
 ```
 
-## Current Assignments Metadata
+## Verification Basis
 
-| Role | Current assignment |
-| --- | --- |
-| Human approver | Configured human approver. Reusable role is human approver. |
-| Coordinator | Current local assignment is instance metadata. Reusable role is Coordinator. |
-| Builder | Current local assignment is instance metadata. Reusable role is Builder. |
-| Auditor | Current local assignment is instance metadata. Reusable role is Auditor. |
-| Role rule | Roles are model-agnostic and swappable. Model names are current assignments, not protocol vocabulary. |
+Do not trust polished prose by itself. Load-bearing claims must reduce to
+replayable checks, visible artifacts, or explicit human judgment.
 
-## Evidence Summary
+### Anyone-Replayable Deterministic Checks
 
-- Decision Cockpit v1 was implemented and audited in E6-DASH-003.
-- Root README stranger-orientation was audited in E6-README-001.
-- Adopter-facing name scrub passed in E6-NAME-SCRUB-001.
-- `kit/v1` first-pass implementation passed in E6-KIT-001.
-- Public showcase positioning was scoped and audited in E6-PUBLIC-POSITION-001.
-- This dashboard refresh is copy/state-only and keeps the static reference
-  cockpit nature intact.
+These checks are cheap to replay. Run them before relying on this snapshot, or
+read the latest builder note for the actual output captured during this turn.
 
-## Wait-Risk Signal
+| Claim type | Command or replay pointer | Current interpretation |
+| --- | --- | --- |
+| Working tree shape | `git status --short --branch --untracked-files=all` | Run before relying; status changes as audit and preservation files are added. |
+| Whitespace / patch hygiene | `git diff --check` | Latest builder note records the actual result. |
+| Static self-containment | Search `DASHBOARD.html` for executable page code, inline event handlers, browser storage, external asset refs, timers, approval controls, and forbidden approval-framing text. | Latest builder note records the exact searches and outputs. |
+| Artifact size / identity | `wc -l .agent-handoff/DASHBOARD.html` and `md5 .agent-handoff/DASHBOARD.html` | Run before relying; these identify the local artifact but do not prove correctness. |
+| No-touch boundary | Diff the no-touch paths named in the implementation authorization. | Latest builder note records the actual no-touch check. |
 
-Waiting does not authorize anything. The cost is delayed public-position
-implementation review and preservation. No runtime, deploy, public release, or
-external action is pending from the dashboard.
+### Environment-Dependent Checks
 
-## Safety Language
+These are reproducible, but the result depends on local browser/tooling state.
 
-- `satisfied` is not approval.
-- Auditor pass is not approval.
-- Model consensus is not approval.
-- Human approval authorizes only the exact named consequence.
-- `COLLAB.md` is authoritative; dashboard is view-only.
+- Localhost render QA requires serving `.agent-handoff/` locally, opening the
+  dashboard in Chrome, and verifying visible text plus browser-tool evidence.
+- Console and network observations must say whether they were actually captured
+  after the browser tooling was attached.
+- If rendered QA is not actually performed, the audit must say so. Do not infer
+  rendered evidence from static prose.
 
-## Required Cockpit State: Human Decision Pending
+### Visible Artifacts
 
-Agents may be satisfied. Human approval is still pending. The human must
-choose an exact decision action. No consequence is authorized until exact
-human approval.
+- `.agent-handoff/DASHBOARD.md`
+- `.agent-handoff/DASHBOARD.html`
+- `.agent-handoff/COLLAB.md`
+- `.agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-routing-cockpit-implementation-iter-3.md`
+- `.agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-implementation-iter-2.md`
+- PR metadata, only when a PR exists
 
-This state is not the current live handoff. It is the required cockpit
-behavior when approval or rejection is genuinely pending.
+### Agent Judgment
 
-## Required Cockpit State: Agents Running / Execution Mode
+These are useful judgments, not self-validating facts:
 
-Agents are working inside approved reversible scope. No human approval is
-needed for every reversible micro-turn. The human may interrupt, pause,
-reject/redo, reject/close, ask Coordinator, or steer anytime. Irreversible
-actions still require exact human approval.
+- layout is clearer
+- risk framing is appropriate
+- human cognitive load is reduced
+- the quick-scan model is more humane
+- the current handoff is low attention
 
-Execution Mode must show packet, iteration, builder/auditor status, allowed
-files, no-touch list, stop conditions, latest evidence, and reversibility
-status.
+Treat these as claims for the auditor or human to inspect, not as proof.
 
-## Decision Options
+### Human Judgment
 
-These are the portable decision actions for a real Human Decision Pending
-state. They are shown as visible templates, not active approval for the
-current reference snapshot.
+Only Sami can authorize exact named consequences such as commit, PR, merge,
+release, cleanup, public claim, scope expansion, protocol change, kit change,
+dashboard implementation, credential/global config change, or durable behavior
+change.
 
-### Authorize exact action
+## Slow Down If...
 
-Action id: `authorize_exact_action`
+- The named action is irreversible.
+- The named action includes approval, merge, PR creation, preservation,
+  publication, release, public claim, credential, global config, or scratch
+  cleanup.
+- The scope expands beyond this bounded dashboard convergence pass.
+- Evidence is unclear, missing, stale, or conflicts across agents.
+- Agent outputs disagree about whether the work passed.
+- There is pressure to approve quickly.
+- The exact action text is missing.
+- The human approver is uncertain.
+- The request would create hidden state, automation, memory, skills, subagents,
+  scheduled checks, global config, network services, or runtime behavior.
 
-Meaning: authorizes only the named consequence and scope.
+Valid options include:
 
-Visible copy target in `DASHBOARD.html`: `copy-authorize`.
+- `ask_coordinator`
+- `pause_pending`
+- `reject_redo`
+- `reject_close`
+- `authorize_exact_action` only when the exact consequence is named by Sami
 
-```text
-Action: authorize_exact_action
-I authorize only: [exact named consequence or scope].
-This does NOT authorize: [excluded scope, launch, merge, protocol change, public release, or other excluded consequence].
-Evidence refs: [repo-visible turn notes or audit paths].
-Decision rationale: optional for routine authorization.
-```
-
-### Reject / Redo
-
-Action id: `reject_redo`
-
-Meaning: returns work for revision inside the approved packet when possible.
-
-Visible copy target in `DASHBOARD.html`: `copy-redo`.
-
-```text
-Action: reject_redo
-Requested state: needs_revision
-Redo because: [specific evidence, copy, parity, scope, or safety defect].
-Scope boundary: stay inside the approved packet unless a new packet is authorized.
-Decision rationale: required.
-```
-
-### Reject / Close
-
-Action id: `reject_close`
-
-Meaning: closes the request without approval.
-
-Visible copy target in `DASHBOARD.html`: `copy-close`.
-
-```text
-Action: reject_close
-Requested state: closed_rejected
-Close because: [why this outcome should not continue].
-This does NOT authorize alternate scope or replacement work.
-Decision rationale: required.
-```
-
-### Ask Coordinator
-
-Action id: `ask_coordinator`
-
-Meaning: asks for synthesis or clarification before the human decides.
-
-Visible copy target in `DASHBOARD.html`: `copy-coordinator`.
-
-```text
-Action: ask_coordinator
-Question for Coordinator: [scope, strategy, risk, or judgment question].
-Current uncertainty: [what prevents a human decision].
-Decision rationale: required.
-No implementation, approval, or new scope is authorized by this question.
-```
-
-### Pause
-
-Action id: `pause_pending`
-
-Meaning: keeps state pending without approval or rejection.
-
-Visible copy target in `DASHBOARD.html`: `copy-pause`.
-
-```text
-Action: pause_pending
-Pause until: [time, event, or condition].
-Reason: [optional for short non-blocking pause; required if blocking or long-running].
-This does NOT authorize approval, rejection, new scope, or irreversible action.
-```
-
-## Human Decision Notes
-
-Field label:
-
-```text
-Decision rationale
-```
-
-Helper copy:
-
-```text
-Visible to future agents and preserved in the audit trail. Keep to ~2-4 sentences. Avoid private reasoning, secrets, or content you would not include in a PR review.
-```
-
-Required-note warning:
-
-```text
-A decision rationale is required for reject, ask, override, or long pause.
-```
-
-Rules:
-
-- Notes are descriptive, not normative.
-- Agents may cite notes as context but may not adapt thresholds based on them.
-- Notes must not include private reasoning, secrets, or content unsuitable for
-  a PR review.
+Not acting immediately is allowed.
 
 ## Approval Boundary
 
-### This authorizes
+`done ≠ audited ≠ satisfied ≠ approved ≠ merged ≠ released`
 
-- Only the exact named consequence in the visible human text.
-- Only the files, scope, and action explicitly listed.
+Drafted text is not approval. `satisfied` is not approval. Auditor pass is not
+approval. Model consensus is not approval. Sami is the only approver.
 
-### This does NOT authorize
+Irreversible, approval, scope-expanding, permission-changing, public, or durable
+behavior actions route to Sami. A classifier, dashboard, auditor, coordinator,
+or model consensus cannot waive human approval.
 
-- Public release, protocol relaxation, merge, push, deploy, trust-layer work,
-  or new scope unless named.
-- Turning auditor satisfaction into approval.
+## What This Screen Authorizes
 
-## Risk Context
+- Claude may audit the Iteration 3 local static dashboard implementation.
+- Claude may read the listed evidence files.
+- Claude may report blockers, nits, missing controls, rendered-QA result, and
+  result state.
+- Codex stops after the builder report and waits for audit.
 
-This summarizes what the agents found. It does not decide for you.
+## What This Screen Does Not Authorize
 
-| Field | Value |
-| --- | --- |
-| Consequence | Public readers can see the reference cockpit without stale E6-DASH handoff state. No merge, PR, public release, or protocol change follows from this dashboard. |
-| Evidence confidence | Proof layers are repo-visible; this copy refresh still needs independent audit. |
-| Reversibility | Local dashboard and public-position edits are reversible until a later exact human authorization preserves them. |
-| Open caveats | External adoption, kit dry-run, trust hardening, and scale remain unproven. |
-| Unknowns | No external user testing; no public-proof run; no kit dry-run yet. |
-| If wrong | Claude should request iteration 2 for copy, parity, self-containment, stale-state, or boundary defects. |
-| Human approval required | Yes for any commit, push, PR, merge, launch, protocol change, or irreversible consequence. |
+- Commit, push, branch, PR, merge, preservation, or release.
+- Public-proof run, public claim, launch, or top-of-funnel action.
+- Protocol, kit, README, START_HERE, strategy, operating-model, `.gitignore`,
+  trust-layer, runtime, memory creation, skill creation/modification,
+  automation, subagent, scheduled-check, MCP/plugin/global-config, or credential
+  changes.
+- Scratch cleanup or changes to `/private/tmp/claude-codex-kit-dry-run-001` or
+  `/private/tmp/claude-codex-kit-dry-run-002`.
+- Cleanup, staging, deletion, or modification of the seven duplicate-noise
+  files.
+- A generic approval action or any approval without exact named consequence.
 
-## Trust Footer
+## Standard Pattern Mapping
 
-Audit trail: Git-visible. Verifiable through PR and commit history.
-Tamper-evident when protected branches, signing, manifests, or external
-witnesses are configured. Not tamper-proof. No blockchain or legal compliance
-claim is made by this dashboard.
+These are routing metaphors and evidence inputs, not implemented subsystems.
 
-Static self-contained file. No external CSS or JavaScript. No network,
-storage, backend, notification, webhook, model, or runtime behavior. Copy
-buttons copy only visible text from this page.
+| Standard pattern | Harness use | Boundary |
+| --- | --- | --- |
+| Reviewer gates | Claude audits Codex output and may upgrade route risk. | Auditor pass is evidence, not approval. |
+| Policy checks | Allowed files, no-touch lists, stale/as-of state, verification commands. | Checks can block or inform; they do not approve. |
+| Risk tiers | Routine manual relay is low attention; irreversible/public/config work is high attention. | Higher attention routes to Sami; tier labels do not authorize action. |
+| CODEOWNERS / branch protection | Human owns consequences; auditor owns critique; builder owns scoped implementation. | Role ownership is not approval unless the role is the human approver. |
+| CI/status checks | Diff hygiene, static searches, browser QA, and changed-file lists. | Passing checks are evidence inputs, not approval. |
+| Escalation on ambiguity | `UNCLEAR` routes to Coordinator unless a human-required trigger is primary. | Ambiguity is not permission to proceed. |
+| Human-in-the-loop review | Human decision actions use exact text. | Drafted text is not approval. |
+
+## Burden Baseline Capture
+
+No burden-reduction claim is made by this implementation. This section captures
+a baseline so later cockpit work can be measured instead of asserted.
+
+Baseline window: Stage A / Stage B kit dry-run arc through preservation of the
+E6-ROUTING-COCKPIT-001 implementation packet draft and the Iteration 1 / 2 QA
+and audit-integrity events.
+
+| Metric | Baseline capture | Claim status |
+| --- | --- | --- |
+| Manual routing prompts / exact authorizations | Multiple exact Sami authorization prompts were required across Stage A packet preservation, Stage A execution, Stage A result preservation, Stage B proposal/result preservation, routing scope-lock preservation, implementation packet preservation, Iteration 1 implementation, Iteration 2 authorization, and Iteration 3 convergence. Exact count should be audited before use as a metric. | Baseline only; no reduction claim. |
+| Ambiguous handoff moments | The routing scope-lock, implementation packet, and Iteration 3 convergence pass exist because the Stage A/B to preservation arc exposed repeated actor-routing friction and audit-trust friction. Exact count is `unknown` from repo-visible evidence alone. | Unknown fields cannot support a reduction claim. |
+| Handoffs by actor class | Codex builder, Claude auditor, GPT coordinator synthesis, and Sami approval all appeared in the arc. Exact copy/paste count remains `unknown` without manual transcript counting. | Baseline only. |
+| Coordinator/auditor correction count | Known examples include packet drift repair / reconfirm, Claude packet-draft soft observations, the Iteration 1 rendered-QA blocker, and the Iteration 2 audit-integrity event. Exact count remains `unknown` until audited. | Baseline only. |
 
 ## Deferred By This Dashboard
 
-- Kanban / Operations Board.
-- Board Mode / Outcome Board.
-- Three-panel concurrent layout.
-- Real-time agent status.
-- Analytics, throughput, lead-time, leaderboard, or agent-online metrics.
-- Trust manifests, signing, hash manifests, transparency logs, and blockchain.
-- Notification, wakeup, webhook, cron, or auto-routing.
-- Public release / top-of-funnel launch.
-- Public-alpha packaging.
-- Kit dry-run.
-- Public-proof runs.
-- Protocol relaxation.
-- Runtime/backend integration.
+- No automatic handoff; this is still manual relay.
+- No dashboard runtime.
+- No live routing engine.
+- No notification or wakeup layer.
+- No automation, scheduled checks, subagents, memory, or skills.
+- No trust-layer implementation.
+- No public-proof run or release.
+- No kit cleanup or Stage B retry.
+- No cleanup of duplicate-noise files.
+
+## Trust Footer
+
+Audit trail: Git-visible when preserved. Verifiable through PR and commit
+history. Tamper-evident only when protected branches, signing, manifests, or
+external witnesses are configured. Not tamper-proof. No blockchain, legal,
+compliance, production-readiness, or public-release claim is made by this
+dashboard.
+
+Static self-contained file. No external CSS or JavaScript. No network, storage,
+automation, hidden state, or approval action exists in this dashboard.
