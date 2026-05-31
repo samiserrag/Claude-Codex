@@ -164,6 +164,69 @@ until a separate explicit Sami authorization.
 
 ## Current Owner
 
+Codex drafted the design-only scope-lock for
+`E6-ROUTING-COCKPIT-001 - deterministic handoff routing + exact-action
+surfacing in Decision Cockpit`.
+
+Scope-lock note:
+`.agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-routing-cockpit-scope-lock.md`.
+
+Result: local design-only draft created for Claude audit. No dashboard
+implementation occurred; no `DASHBOARD.md`, `DASHBOARD.html`, `PROTOCOL.md`,
+`OPERATING-MODEL.md`, `STRATEGY.md`, `kit/v1/**`, README, START_HERE,
+scratch dirs, trust-layer files, memory, skills, automations, subagents,
+scheduled checks, global config, branch, commit, push, PR, merge, or execution
+work occurred.
+
+Next actor: **Claude** — audit whether the scope-lock reduces Sami's routing
+burden without adding hidden authority, whether deterministic human-required
+triggers are non-overridable, whether the standard gate/risk/reviewer mapping is
+accurate, and whether the future Decision Cockpit implementation outline stays
+narrow and implementation-free.
+
+`satisfied` is not approval. Auditor pass is not approval. Model consensus is
+not approval. Sami remains the only approver.
+
+## Claude audit — E6-ROUTING-COCKPIT-001 scope-lock
+
+**Independent audit complete (2026-05-30).** Audit note:
+`.agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-scope-lock.md`.
+
+- **Result: `satisfied`** — 0 blockers, 4 soft observations.
+- Scope discipline clean: only COLLAB + the Codex scope-lock note dirty before
+  audit; no no-touch surface changed; `git diff --check` clean; both scratch
+  dirs untouched. Codex's COLLAB edit was additive (no history deleted).
+- All 14 audit criteria PASS: milestone alignment; routing states reuse
+  existing vocabulary (ROUTINE/NEEDS_GPT/NEEDS_HUMAN/UNCLEAR + blocked/paused);
+  deterministic non-overridable human-required triggers (§3); coordinator
+  triggers (§4); ROUTINE-is-not-mutation (§1,§5); standard-pattern mapping with
+  "none implemented here" (§6); 11 minimum cockpit fields (§7); 4+1 burden
+  metrics (§8); no-automation boundary (§9); narrow future build outline (§10).
+- Failure-mode sweep all clear: no invented routing theory, no classifier
+  waiving approval, no draft-text-as-approval, no dashboard impl, no no-touch
+  edits, no automation/hidden state, Sami preserved as sole approver.
+- **4 soft observations (forward fixes for the implementation packet / adoption
+  decision, non-blocking):** (1) auditor upgrade — the routing-architecture
+  *adoption* decision is a NEEDS_GPT trigger; recommend GPT exit synthesis
+  before approving implementation; (2) state the `done ≠ audited ≠ satisfied ≠
+  approved ≠ merged ≠ released` anti-collapse ladder as one explicit invariant;
+  (3) add a distinct lifecycle-stage indicator to the cockpit, not just routing
+  state; (4) capture a burden baseline from the Stage A/B arc so "reduces
+  burden" is measurable.
+
+`satisfied` is not approval. Auditor pass is not approval. Model consensus is
+not approval. Sami remains the only approver. Nothing is preserved, committed,
+or approved by this audit.
+
+**Next actor: Sami** — accept the audit; decide whether to route the routing
+architecture through GPT exit synthesis before approving implementation
+(auditor lean: yes); decide whether to authorize a preservation PR for the
+scope-lock + this audit + COLLAB. No preservation/commit/PR/merge, dashboard
+implementation, scratch work, or Stage C until a separate explicit Sami
+authorization.
+
+### Previous preserved packet context
+
 Claude Code regenerated the **standalone Stage A dry-run packet
 (v2-applied)** as a single uncommitted draft; Codex's confirm-audit
 then returned **3 drift findings** (not faithful), and Claude applied
