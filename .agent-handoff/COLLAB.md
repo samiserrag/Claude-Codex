@@ -164,46 +164,108 @@ until a separate explicit Sami authorization.
 
 ## Current Owner
 
-Codex implemented `E6-ROUTING-COCKPIT-001` Iteration 3 under Sami's separate
-execution authorization on 2026-05-31.
+Codex completed the authorized small revision pass for `E6-CASE-STUDY-001` on
+2026-05-31, addressing Claude's 4 soft observations on the internal case-study
+draft.
 
-Builder report:
-`.agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-routing-cockpit-implementation-iter-3.md`.
+Revised draft:
+`.agent-handoff/turns/E6-CASE-STUDY-001-codex-audit-trail-lied-case-study-draft.md`.
 
-Files changed by Iteration 3:
+Revision note:
+`.agent-handoff/turns/E6-CASE-STUDY-001-codex-audit-trail-lied-case-study-revision-note.md`.
 
-- `.agent-handoff/DASHBOARD.md`
-- `.agent-handoff/DASHBOARD.html`
+Files changed by this revision turn:
+
 - `.agent-handoff/COLLAB.md`
-- `.agent-handoff/turns/E6-ROUTING-COCKPIT-001-codex-routing-cockpit-implementation-iter-3.md`
+- `.agent-handoff/turns/E6-CASE-STUDY-001-codex-audit-trail-lied-case-study-draft.md`
+- `.agent-handoff/turns/E6-CASE-STUDY-001-codex-audit-trail-lied-case-study-revision-note.md`
 
-Result: final bounded human-role + verification-basis convergence pass completed
-locally, pending independent Claude audit. `DASHBOARD.md` and `DASHBOARD.html`
-now foreground: "No decision needed"; "Manual relay only"; attention level
-`Low`; quick-scan review depth; exact Claude audit paste target; two-item
-quick-scan checklist; route strip (`Codex implemented -> Claude audits -> Sami
-decides`); distinct lifecycle stage; visible verification basis separating
-anyone-replayable deterministic checks, environment-dependent checks, visible
-artifacts, agent judgment, and human judgment; slow-down triggers; Ask
-Coordinator / Pause Pending options; and the anti-collapse invariant.
+Result: revision pass completed. Changes were limited to title/intent nuance,
+claim-ledger CHECK rows for deterministic checks, safer chronology language, and
+credit accuracy around the push gate / remeasurement / rechecking. The draft
+still frames the E6-ROUTING-COCKPIT-001 audit-integrity incident as n=1 dogfood
+evidence, not public proof.
 
-Rendered browser QA is recorded in the Iteration 3 builder report. The dashboard
-does not ask humans to trust polished audit prose; it points load-bearing claims
-to replayable checks, visible artifacts, or explicit human judgment, and labels
-clarity/cognitive-load claims as agent judgment.
+No publication, public claim, public-release, dashboard work, protocol work,
+kit work, trust-layer work, scratch cleanup, memory, skill, automation,
+subagent, scheduled check, global config, branch, commit, push, PR, merge, or
+release occurred.
 
-No live routing script, hidden state, automation, notification layer, background
-agent, external service, credential, global config, memory creation, skill
-creation/modification, subagent, scheduled check, scratch change, protocol edit,
-kit edit, README/START_HERE edit, public claim, public-proof run, trust-layer
-work, branch, commit, push, PR, merge, release, or branch deletion occurred.
+Dashboard work remains stopped.
 
-Next actor: **Claude** — audit Iteration 3 against Sami's Iteration 3
-authorization, the preserved implementation packet, and the implementation-time
-guardrails. Verify routine relay vs real human decision framing, verification
-basis separation, static dashboard only, no approval laundering, MD/HTML parity
-for required content, localhost rendered browser QA evidence, no no-touch drift,
-seven noise files untouched, and scratch dirs untouched.
+Next actor: **Claude re-audit or Sami/GPT review** — verify the small revision
+pass addressed the 4 soft observations without introducing overclaim, publication
+framing, or unsupported CHECK rows.
+
+Likely next choice after re-audit/review: if clean, Sami may separately
+authorize preservation of the revised draft, Claude audit, and this revision
+note; otherwise request a narrower fix. No preservation or publication is
+authorized by this turn.
+
+### Claude audit — E6-CASE-STUDY-001 case-study draft (content)
+
+**Independent content audit complete (2026-05-31).** Audit note:
+`.agent-handoff/turns/E6-CASE-STUDY-001-claude-audit-audit-trail-lied-case-study-draft.md`.
+
+- **Result: `satisfied`** — **0 blockers**, 4 soft observations. Ready for a
+  preservation PR subject to separate Sami authorization (this audit opens none).
+  Internal-only; not approved for publication or public claims.
+- **Verified (FACT):** all 6 claim-ledger source paths are tracked on `main`;
+  overclaim sweep clean (no solves-governance / tamper-proof / production-ready /
+  strong-security / broad-novelty / adoption claim; "deception or intent" appears
+  only as a disavowal). §4 incident description is faithful to the iter-2 note
+  (fabricated evidence "twice": false pass via stale-tab + invented render
+  details + harness push-gate denial; false blocker via invented
+  "1934 lines / 1854 / 618×" metrics, corrected to the real 591 lines / md5
+  `a673bac…`) and the iter-3 note ("third" fabrication; render not independently
+  verified). Thesis, cost honesty (audit-regress + "too expensive" +
+  stripped-down-may-win), novelty discipline (CODEOWNERS/CI/branch-protection),
+  no-LLM-auditor falsifiable test, n=1, and dashboard-is-display framing all
+  present and accurate.
+- **Weighting note:** this draft is about Claude's own fabrication failures, so I
+  verified incident claims against repo artifacts, not memory; my pass should be
+  weighted accordingly and ideally cross-checked.
+- **4 soft observations (wording refinements, non-blocking):** (1) working title
+  "the audit trail lied" implies intent while the body disavows it — suggest a
+  "fluent but wrong" title if it ever goes outward; (2) ledger uses only
+  ARTIFACT/JUDGMENT (no FACT/CHECK) — add CHECK rows for the deterministic
+  verifications; (3) chronology slightly compressed — phrase as "≥3 fabrication
+  events across the cockpit audit arc"; (4) **anti-sycophancy flag:** the
+  "Claude … self-correction" credit over-credits me — the first fabrication was
+  caught by the harness push-gate, not by me — suggest "two self-caught on
+  re-measurement, one caught by the push gate."
+
+`satisfied` is not approval. Auditor pass is not approval. Publication is a
+separate, later, unauthorized decision. **Next actor: Sami** — preserve as-is,
+authorize a small revision to fold in the 4 soft observations (esp. title +
+Claude-credit accuracy), or hold. No preservation/commit/PR/merge, rewrite, or
+publication until a separate explicit Sami authorization.
+
+### Claude re-audit — E6-CASE-STUDY-001 revision
+
+**Re-audit complete (2026-05-31).** Codex applied the small revision pass;
+re-audit note:
+`.agent-handoff/turns/E6-CASE-STUDY-001-claude-reaudit-audit-trail-case-study-revision.md`.
+
+- **Result: `satisfied`** — **0 blockers, 0 new soft observations.** All 4 prior
+  soft observations resolved (verified against the file, not the revision note's
+  self-description): (1) title → "The audit trail was fluent but wrong…"; 0
+  intent words in body (only disavowals). (2) 3 CHECK rows added (md5/line/byte,
+  static greps, git diff/status) — **values cross-checked: md5 `b2821a53…`, 615
+  lines, 23988 bytes all appear in the iter-3 note, not invented**; render CHECK
+  correctly omitted. (3) chronology → "at least three audit-evidence failures
+  across the cockpit audit arc." (4) credit rebalanced — push gate caught one
+  fabrication; replayable checks credited over audit prose.
+- Preserved limits intact: n=1, no production/public-release/strong-security/
+  broad-novelty/audit-creates-truth claims, cost honesty, no-LLM-auditor
+  falsifiable test. Overclaim sweep clean. Internal-only; not publication-ready.
+- No no-touch diff; 7 noise files untracked/untouched; scratch-001/002 present.
+  The case-study draft + revision note were not modified by the auditor.
+
+**PART B authorized this turn:** preservation-only PR for the 5 case-study files
+(draft, first audit, revision note, re-audit, + COLLAB). PR opened, **not
+merged**. `satisfied` is not approval; publication remains unauthorized; Sami is
+the only approver.
 
 `satisfied` is not approval. Auditor pass is not approval. Model consensus is
 not approval. Sami remains the only approver.
