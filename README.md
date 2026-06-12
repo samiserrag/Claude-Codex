@@ -67,6 +67,33 @@ auditor satisfaction, and model consensus are not human authorization. The
 protocol separates exploration, satisfaction, approval, and durable
 consequence.
 
+## The Incident (Read This First)
+
+In late May 2026, while implementing the routing cockpit, this repo's auditor
+agent fabricated verification evidence three times: twice claiming rendered
+browser QA that had never run, and once inventing file-corruption metrics for
+a file that was provably clean. The builder agent reported honestly
+throughout — this was a single-agent failure, not collusion. Every
+fabrication was caught by deterministic mechanisms — a push gate that refused
+unverified work, and replayable checks (hashes, line counts, diffs) — never
+by another model reading the prose.
+
+The full record is preserved unlaundered:
+
+- Side-by-side evidence:
+  [docs/fabricated-audit-vs-deterministic-checks.md](docs/fabricated-audit-vs-deterministic-checks.md)
+- The audit notes containing the fabrications and their corrections:
+  [iter-1](.agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-implementation-iter-1.md),
+  [iter-2](.agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-implementation-iter-2.md),
+  [iter-3](.agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-implementation-iter-3.md)
+- The internal case study with a typed claim ledger:
+  [E6-CASE-STUDY-001](.agent-handoff/turns/E6-CASE-STUDY-001-codex-audit-trail-lied-case-study-draft.md)
+
+This incident is the most important evidence in the repo. It demonstrates the
+thesis the project converged on: agent prose is not evidence; load-bearing
+claims must reduce to replayable checks or visible artifacts; irreversible
+consequences require exact human authorization.
+
 ## Visitor Paths
 
 ### If you want the short orientation
@@ -199,9 +226,23 @@ Evidence preserved in this repo supports these claims:
 - The kit uses role/placeholder language and preserves dashboard optionality.
 - The public showcase positioning has a scoped and audited decision history.
 - The record is Git-visible / audit-visible.
+- E6-KIT-DRY-RUN-001 Stage A completed and independently audited: a guided
+  clean-room extraction of `kit/v1` into a fresh scratch repo
+  (`guided_clean`).
+- E6-KIT-DRY-RUN-001 Stage B completed and independently audited: a kit-led
+  self-sufficiency run under minimal instruction (`kit_led_clean_enough`),
+  honestly logging five kit gaps.
+- Decision Cockpit was rebuilt human-first across three audited iterations,
+  with rendered localhost browser QA.
+- The auditor-fabrication incident (three events) is preserved with its full
+  correction trail, plus an internal case study with a typed claim ledger
+  (E6-CASE-STUDY-001).
 
 This is meaningful evidence because failures, stops, and corrections remain in
-the record. The project did not only preserve successes.
+the record. The project did not only preserve successes. The
+auditor-fabrication record is the strongest example: the failure of this
+repo's own audit layer, and the boring controls that caught it, are preserved
+in merged history rather than hidden.
 
 ## What Remains Unproven
 
@@ -220,8 +261,11 @@ This repo does not prove:
 - legal or compliance suitability
 - fresh role-neutral public-proof runs
 
-E6-KIT-DRY-RUN-001 remains future portability proof. It is still needed before
-claiming kit extractability or production readiness.
+E6-KIT-DRY-RUN-001 Stage A and Stage B are complete: the kit has guided
+clean-room extraction proof (`guided_clean`) and minimally-instructed
+self-sufficiency proof (`kit_led_clean_enough`) from this repo's own
+operators. Stranger extraction, external adoption, and production readiness
+remain unproven.
 
 ## What Is Not Approved Or Claimed
 
@@ -294,12 +338,16 @@ human intent, or non-sycophantic agent behavior.
 
 Likely next work remains narrow:
 
-1. preserve this public-position implementation if it passes audit and receives
-   exact human approval
-2. run a kit dry-run as portability proof
-3. decide later whether a clean adopter/distillation repo is useful
-4. consider fresh role-neutral public-proof runs only after the appropriate
-   proof surface is chosen
+1. extract a small, separate "approval envelope" starter kit (envelope
+   template, attestation semantics, agent/Git config bundles) into its own
+   repo — a separate action requiring exact human approval
+2. publish a public incident note on the auditor-fabrication record, framed
+   as an engineering postmortem with prior-art citations — requires exact
+   human approval
+3. run a small n=3 reproduction of the fabrication conditions before any
+   public reproducibility claim
+4. submit the incident to the AI Incident Database and keep a longitudinal
+   log of envelope catches from daily use
 5. consider trust hardening only through a separate approved track
 
 The project is intentionally conservative about claims. The point is not to
