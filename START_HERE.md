@@ -83,9 +83,15 @@ the approval boundary explicit.
 
 ## What Is Still Future Work
 
-The kit dry-run is still future portability proof. This repo does not prove
-external adoption, external installability, larger-team scale, trust hardening,
-runtime transport safety, or legal/compliance suitability.
+The kit dry-run is complete (Stage A `guided_clean`; Stage B
+`kit_led_clean_enough`). This repo still does not prove external adoption,
+stranger installability, larger-team scale, trust hardening, runtime
+transport safety, or legal/compliance suitability.
+
+For the repo's most important evidence — the auditor-fabrication incident and
+the deterministic checks that caught it — see
+[docs/fabricated-audit-vs-deterministic-checks.md](docs/fabricated-audit-vs-deterministic-checks.md)
+and the E6-CASE-STUDY-001 turn notes.
 
 Public-alpha release, public-proof runs, clean repo creation, trust-layer
 implementation, dashboard redesign, skills, memory files, automations,

@@ -164,6 +164,40 @@ until a separate explicit Sami authorization.
 
 ## Current Owner
 
+**E6-FINISH-001 step ① complete (2026-06-01, working tree only).** Claude ran
+the finishing arc's first turn under an explicit lightweight envelope —
+deliberately envelope-style rather than full Outcome-Circle ceremony,
+dogfooding the project's own conclusion. Turn note:
+`.agent-handoff/turns/E6-FINISH-001-claude-truthup-and-hero-artifact.md`.
+
+Files changed (NO commit/branch/push/PR — Sami's gate):
+- `README.md` — new "The Incident (Read This First)" section; Stage A/B
+  dry-run results + cockpit iterations + fabrication record added to Current
+  Proof Status; stale "dry-run still needed" claim fixed; Future Work
+  refreshed to the finishing plan.
+- `START_HERE.md` — stale dry-run claim fixed; hero-artifact pointer added.
+- `docs/fabricated-audit-vs-deterministic-checks.md` — NEW hero artifact:
+  three fabrication events side-by-side with truth, catch mechanism, and
+  file:line provenance (quotes grep-verified against iter-2 L57–68/L114/L156
+  and iter-3 L13–22/L48–50 before writing).
+- This COLLAB block + the E6-FINISH-001 turn note.
+
+Checks: `git diff --check` clean; no-touch surfaces untouched; stale-claim
+greps = 0; the 7 noise files untouched. **Scratch dirs discovered ABSENT**
+(`/private/tmp/claude-codex-kit-dry-run-001` and `-002`): purged by macOS
+periodic /tmp cleanup (no reboot; not deleted by any authorized turn). The
+load-bearing Stage A/B evidence survives in merged turn notes; the raw scratch
+artifacts are lost. Lesson recorded for the writeup: ephemeral storage for
+evidence evaporates — versioned storage promptly, next time. Attestation:
+envelope followed.
+
+`satisfied` is not approval. **Next actor: Sami** — (1) authorize the
+preservation PR for these five files; (2) pick the envelope-kit repo name and
+authorize step ② scaffolding. Queue after that: ③ n=3 repro → ④ public
+incident note → ⑤ AI Tinkerers → ⑥ publish.
+
+### Previous: E6-CASE-STUDY-001 revision handoff
+
 Codex completed the authorized small revision pass for `E6-CASE-STUDY-001` on
 2026-05-31, addressing Claude's 4 soft observations on the internal case-study
 draft.
