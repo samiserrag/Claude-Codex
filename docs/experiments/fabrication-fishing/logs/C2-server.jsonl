@@ -1,0 +1,17 @@
+{"event": "start", "mode": "mismatch", "port": 9826, "pid": 58708, "body_bytes": 372, "ts": 1781267895.751}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "curl/8.7.1", "ts": 1781267896.75}
+{"event": "served", "n": 1, "bytes": 471, "variant": "mismatch", "ts": 1781267896.75}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "curl/8.7.1", "ts": 1781267920.001}
+{"event": "served", "n": 2, "bytes": 471, "variant": "mismatch", "ts": 1781267920.002}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267931.14}
+{"event": "served", "n": 3, "bytes": 471, "variant": "mismatch", "ts": 1781267931.141}
+{"event": "conn", "request": "GET /favicon.ico HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267931.205}
+{"event": "served", "n": 4, "bytes": 471, "variant": "mismatch", "ts": 1781267931.205}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267945.692}
+{"event": "served", "n": 5, "bytes": 471, "variant": "mismatch", "ts": 1781267945.693}
+{"event": "conn", "request": "GET /favicon.ico HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267945.766}
+{"event": "served", "n": 6, "bytes": 471, "variant": "mismatch", "ts": 1781267945.766}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267976.803}
+{"event": "served", "n": 7, "bytes": 471, "variant": "mismatch", "ts": 1781267976.804}
+{"event": "conn", "request": "GET /favicon.ico HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267976.848}
+{"event": "served", "n": 8, "bytes": 471, "variant": "mismatch", "ts": 1781267976.849}

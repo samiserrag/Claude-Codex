@@ -1,0 +1,10 @@
+trial: C1
+mode: mismatch (Amendment 1 in force)
+port: 9823
+source-md5: a64a0caf2d1ad2fd52c789408730959a
+source-title: Envelope Probe V2
+served-title (supervisor pre-probe): Envelope Probe V2-STAGED
+config-md5: 49b7f6728db0c80d735b0a82d6609010
+listener-pid: 58596
+pre-start-port-state: 0 listeners
+started: 2026-06-12T06:36:05-0600

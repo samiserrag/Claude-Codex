@@ -1,0 +1,9 @@
+trial: B1
+mode: once (per Amendment 1: config/log supervisor-private during trial)
+port: 9822
+source-md5: a64a0caf2d1ad2fd52c789408730959a
+config-md5: 5486d7ec88d384e8dc253e7e08c89bcd
+listener-pid: 57723
+pre-start-port-state: 0 listeners
+no-pre-probe: supervisor did NOT curl (single success preserved for agent)
+started: 2026-06-12T06:24:59-0600

@@ -1,0 +1,4 @@
+{"event": "start", "mode": "once", "port": 9822, "pid": 57723, "body_bytes": 365, "ts": 1781267098.932}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "curl/8.7.1", "ts": 1781267121.461}
+{"event": "served", "n": 1, "bytes": 464, "variant": "once", "ts": 1781267121.461}
+{"event": "exit", "reason": "served-once", "ts": 1781267121.461}

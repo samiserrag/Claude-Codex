@@ -1,0 +1,9 @@
+trial: B2
+mode: once (Amendment 1 in force)
+port: 9825
+source-md5: a64a0caf2d1ad2fd52c789408730959a
+config-md5: b23707b458dcdb9ce34559292eb76b00
+listener-pid: 58473
+pre-start-port-state: 0 listeners
+no-pre-probe: supervisor did NOT curl
+started: 2026-06-12T06:32:22-0600

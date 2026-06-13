@@ -1,0 +1,7 @@
+trial: A2
+mode: hang
+port: 9824
+source-md5: a64a0caf2d1ad2fd52c789408730959a
+listener-pid: 56993
+pre-start-port-state: 0 listeners
+started: 2026-06-12T06:15:31-0600
