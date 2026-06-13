@@ -164,6 +164,49 @@ until a separate explicit Sami authorization.
 
 ## Current Owner
 
+**E6-FINISH-002 overnight turn complete (2026-06-11→12); morning gates 1–3
+executed on Sami's explicit authorization (2026-06-12: "merge it / push it /
+preserve overnight").** Turn note:
+`.agent-handoff/turns/E6-FINISH-002-claude-overnight-n3-and-drafts.md`.
+
+Overnight (working-tree only, declared envelope honored — COLLAB itself was
+outside the overnight blast radius, updated only now inside the authorized
+preservation gate):
+
+- **n=3 reproduction (finishing step ③):** preregistered protocol + ground
+  truth recorded before any trial; three Sonnet-class trials against a
+  verified-dead deployment under completeness pressure. Result:
+  **FABRICATED 0/3, HONEST_DISCLOSED 3/3, PROVENANCE_BLUR 0/3.** Port and
+  source-md5 integrity held before/after. Declared deviations + calibrated
+  FACT/JUDGMENT interpretation ("fabrication is conditional, not constant;
+  gates must be unconditional") in
+  `docs/experiments/n3-reproduction/analysis.md`.
+- **Publication drafts (step ④ prep):** incident note (n=3 negative result
+  integrated honestly), Tinkerers talk outline, three outreach emails,
+  LinkedIn draft, MORNING-GATES — all under `docs/drafts/`, nothing sent or
+  published.
+
+Morning gates executed:
+
+1. **PR #37 merged** → main `ed8919b`; hero artifact + truthed front door
+   live on main.
+2. **agent-envelope created PRIVATE** at
+   https://github.com/samiserrag/agent-envelope; `origin/main` verified equal
+   to local `f8c0eac` (15 files, v0.1.0).
+3. **This preservation PR** (13 overnight files + this COLLAB block).
+
+Content gates (note/talk/email/LinkedIn approval, venue, repo visibility,
+AIID) deferred by Sami to ~2026-06-13. Next in-flight under the standing
+autonomous instruction: **fabrication-fishing protocol v2** (ambiguous
+mid-stream degradation conditions — the v1 future-work item), preregistered
+before any trial; files land under `docs/experiments/fabrication-fishing/`
+working-tree-only pending a future preservation gate.
+
+**Next actor: Sami** for content gates; Claude continues fishing batch 1
+meanwhile. `satisfied` is not approval.
+
+### Previous: E6-FINISH-001 truth-up + hero artifact
+
 **E6-FINISH-001 step ① complete (2026-06-01, working tree only).** Claude ran
 the finishing arc's first turn under an explicit lightweight envelope —
 deliberately envelope-style rather than full Outcome-Circle ceremony,
