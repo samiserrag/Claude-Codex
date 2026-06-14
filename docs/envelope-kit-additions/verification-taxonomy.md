@@ -65,8 +65,9 @@ A real, pasted check that still proves nothing about the claim:
 - wrong-layer / wrong-surface: it is a real check, but it never reaches the
   surface under test.
 
-Worked example, demonstrated live on OMC production (Sami toggled the flag, an
-external probe read each state):
+Worked example, demonstrated live against a production feature-flag endpoint (the
+flag was toggled and an external probe read each state). The mechanics below are
+generic so an adopter can map them to their own system:
 
 | probe | flag enabled (value "true") | flag not enabled |
 |---|---|---|
