@@ -1,0 +1,3 @@
+{"event": "start", "mode": "hang", "port": 9824, "pid": 56993, "body_bytes": 365, "ts": 1781266530.397}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781266561.672}
+{"event": "hang-hold", "ts": 1781266561.672}

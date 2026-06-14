@@ -1,0 +1,4 @@
+{"event": "start", "mode": "hang", "port": 9821, "pid": 56347, "body_bytes": 365, "ts": 1781265810.471}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "curl/8.7.1", "ts": 1781265833.205}
+{"event": "hang-hold", "ts": 1781265833.205}
+{"event": "exit", "reason": "timeout", "ts": 1781266410.475}

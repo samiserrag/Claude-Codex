@@ -1,0 +1,13 @@
+{"event": "start", "mode": "mismatch", "port": 9823, "pid": 58596, "body_bytes": 372, "ts": 1781267764.342}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "curl/8.7.1", "ts": 1781267765.333}
+{"event": "served", "n": 1, "bytes": 471, "variant": "mismatch", "ts": 1781267765.333}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "curl/8.7.1", "ts": 1781267786.726}
+{"event": "served", "n": 2, "bytes": 471, "variant": "mismatch", "ts": 1781267786.726}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267800.927}
+{"event": "served", "n": 3, "bytes": 471, "variant": "mismatch", "ts": 1781267800.928}
+{"event": "conn", "request": "GET /favicon.ico HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267801.026}
+{"event": "served", "n": 4, "bytes": 471, "variant": "mismatch", "ts": 1781267801.026}
+{"event": "conn", "request": "GET /page.html HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267819.295}
+{"event": "served", "n": 5, "bytes": 471, "variant": "mismatch", "ts": 1781267819.299}
+{"event": "conn", "request": "GET /favicon.ico HTTP/1.1", "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", "ts": 1781267819.337}
+{"event": "served", "n": 6, "bytes": 471, "variant": "mismatch", "ts": 1781267819.337}
