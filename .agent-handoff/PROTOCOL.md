@@ -601,6 +601,72 @@ Approval must be explicit, scoped, and recorded in `COLLAB.md`, a turn note, or
 a protocol file. Absence of objection, prior delegation, or model consensus is
 not approval.
 
+## Proportionality (Verification Weight By Blast Radius)
+
+Verification weight must match blast radius. The default classifier is BINARY, asked
+of every action:
+
+> Is this action irreversible, high-blast, or outward/public? Yes, gate it. No, keep it
+> light.
+
+`light` means: scoped diff, the cheap always-on floor (a replayable check on any
+load-bearing claim, exact human approval on irreversible consequences, 1-in-10
+sampling), and stop on anomaly. No multi-agent relay, no cross-vendor review, no
+convergence loop.
+
+`gate` means: the configured human approver's exact approval for the named
+consequence, plus checks sized to the trigger.
+
+### Objective high-blast triggers
+
+An action is high-blast only if it has an objective trigger:
+
+- irreversible or hard-to-reverse external consequence;
+- production data or service mutation beyond normal approved product flow;
+- credentials, secrets, auth, permissions, RLS, branch protection, CI, CODEOWNERS,
+  hooks, `.claude/settings`, MCP/plugins, automation, or other governance/runtime
+  config;
+- money or spend;
+- external sends, publishing, repo visibility, or public/adopter-facing claims;
+- trust infrastructure: seeded probes, arbiter, enforcement wiring, public kit claims.
+
+Complexity alone is not a trigger. Model disagreement alone is not a trigger unless the
+disputed action also hits an objective trigger above. "This feels important" is not a
+trigger. This is the anti-gaming rule in both directions: an agent cannot self-classify
+out of scrutiny, and no one may over-escalate a merely tangled task.
+
+### Exact approval is not heavy ceremony
+
+A commit, push, PR, or merge may still require the human approver's exact approval. That
+is NOT the same as requiring Codex, GPT, cross-vendor review, or a full packet.
+Conflating the two was the documented 2026-06 drift; do not repeat it.
+
+### Lanes are elaboration, not a per-task checklist
+
+The lane model (Lane 0 normal product work; Lane 1 internal/preservation docs; Lane 2
+public/whitepaper/kit; Lane 3 high-blast/trust-infra) elaborates the `gate` branch. Do
+not run a four-lane classification on every task. Run the binary; reach for lanes only
+when the answer is `gate`.
+
+### Lane 2 re-review trigger
+
+Cross-vendor review of public/adopter-facing claims fires once before a claim set goes
+public, and re-fires ONLY when a new load-bearing factual claim or number is added. It
+does not fire on wording or editing passes.
+
+### Substrate terminates doubt
+
+The cure for uncertainty about a load-bearing claim is to find the substrate (one
+replayable check) and stop. Do not audit the audit. Stacking reviewers is infinite
+regress, not rigor. Ground once and terminate.
+
+### Cooldown semantics
+
+A governance cooldown pauses the expensive ceremony (multi-agent relay, cross-vendor
+review on low-blast work, convergence loops). It does not turn off the cheap always-on
+floor. The failure is bidirectional: too little verification lets a fluent lie through;
+too much grinds the work to a halt. Hold the middle.
+
 ## Success Criteria
 
 The test is successful when:
