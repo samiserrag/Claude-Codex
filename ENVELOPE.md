@@ -14,7 +14,7 @@ boundary in the kit's vocabulary and points to them for detail.
 
 ```
 ENVELOPE:       claude-codex (Git-native approval-boundary governance dogfood) v1
-Owner:          Sami Serrag <sami.serrag@gmail.com>         
+Owner:          Sami Serrag <sami.serrag@gmail.com>
 Blast radius:   This repo's working tree only. No writes to sibling repos
                 (agent-envelope, colorado-songwriters-collective). No production,
                 no external sends or publishing, no spend. Read-only external
@@ -40,7 +40,7 @@ Attestation:    Per meaningful turn, Claude attests "the envelope was followed" 
                 the turn note. This attests PROCESS, not that the work product is
                 correct. Correctness is established by the Required checks and by
                 Sampling, not by the attestation.
-Sampling:       Sami deep-reads 1 in 10 turns / PRs.               
+Sampling:       Sami deep-reads 1 in 10 turns / PRs.
 Evolution:      This file changes only via a PR that references a postmortem.
 ```
 
