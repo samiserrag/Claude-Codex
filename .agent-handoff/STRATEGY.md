@@ -631,6 +631,44 @@ Near-term restraint:
 - How do we detect sycophantic adaptation without creating a new gameable
   checklist?
 
+## 15. Proportionality And The Bidirectional Failure Mode
+
+The governance method has two failure modes, not one:
+
+- Under-verification: a fluent but false claim slips through. Examples: the origin
+  auditor-fabrication incident; the live MCP flag-state miss-latency that only an
+  external probe caught.
+- Over-verification: audits stack on audits, every agent doubts every other, and the
+  process grinds real work to a halt. Example: a self-experienced 2026-06 episode
+  across claude-codex and OMC. This is the meta-form of the project's own
+  evidence-theater.
+
+The product is the calibrated middle, not maximal doubt. The goal is to minimize where
+trust is needed, not to maximize suspicion:
+
+```text
+Agents may say what they want.
+Load-bearing claims terminate at substrate.
+Irreversible consequences terminate at exact human approval.
+Everything else moves.
+```
+
+Operating consequences (codified in `PROTOCOL.md`, Proportionality):
+
+- Verification weight matches blast radius. The default classifier is the binary
+  "irreversible / high-blast / outward-public?" Heavy process fires only on objective
+  high-blast triggers, never on complexity or model disagreement alone.
+- Substrate terminates doubt; do not audit audits.
+- A governance cooldown pauses expensive ceremony, not the cheap always-on floor.
+- OMC raises `n` for the whitepaper via a passive organic catch-ledger (small entries
+  when a verification/fabrication/evidence-theater case arises in normal work), with an
+  immediate tripwire only when prod, users, or adopters could be misled. It does not
+  become a research harness that blocks product.
+
+For the whitepaper, the bidirectional framing is itself a finding: most writeups warn
+only about under-verification. Reporting the over-verification collapse, lived rather
+than hypothesized, is part of the honesty.
+
 ## Source Breadcrumbs
 
 Primary repo artifacts:
