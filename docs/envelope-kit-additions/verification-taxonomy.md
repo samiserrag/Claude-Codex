@@ -48,7 +48,7 @@ state-sensitive) | invalid basis | tag.
 | absence | zero matches / none | the search command + its empty output | asserting absence from memory | [substrate] |
 | data-mutation | a row/table/policy is in state X after a write | a SELECT or readback after the write, pasted, with a read credential that cannot rewrite the row | "the migration ran"; the write call's own return value | [substrate] |
 | task-completion | done / a PR exists / a (sub)agent finished | gh pr view / git log / CI, plus the harness completion signal, in the main transcript | the (sub)agent's own "done"; a subagent report that a check passed | [substrate] |
-| historical-state / miss-latency | X has been true since time T | an agent-immutable, append-only, timestamped history held outside the claimant's write reach | a present-state probe (verifies now, not history); a management-token-writable log | [provisional] (design; no built instance yet) |
+| historical-state / miss-latency | X has been true since time T | an agent-immutable, append-only, timestamped history held outside the claimant's write reach | a present-state probe (verifies now, not history); a log writable by a high-privilege credential the claimant holds | [provisional] (design; no built instance yet) |
 | authorization/approval | a human authorized X (approved, merge-allowed, release-allowed) | an explicit, recorded human-authorization artifact | agent memory; "looks approved"; treating satisfied/audited as approved | [rule] |
 | credential/permission-boundary | an agent cannot write X / a token is read-only | a failed-write probe in a safe sandbox, or a permission inspection | policy prose; "it is configured read-only" | [rule] |
 | provenance/capture | this output came from command X at time Y | a terminal transcript, a PostToolUse hook log, or signed append-only capture | the agent's narration of what it ran | [rule] |
@@ -69,16 +69,16 @@ Worked example, demonstrated live against a production feature-flag endpoint (th
 flag was toggled and an external probe read each state). The mechanics below are
 generic so an adopter can map them to their own system:
 
-| probe | flag enabled (value "true") | flag not enabled |
+| probe | flag enabled (flag at its exact expected value) | flag not enabled |
 |---|---|---|
-| proper (dual Accept header) | 200 + real tools/list | 503 "disabled" |
-| broken (no Accept header) | 406 | 503 |
+| proper (correct headers) | 200 + real response | a disabled-state 503 |
+| broken (missing a required header) | 406 | 503 |
 
 - The proper probe is state-sensitive (200 vs 503): a VALID flag-state check.
 - The broken probe is a WRONG-LAYER trap: its enabled-signal is 406, a
   content-negotiation error a naive operator misreads as failure; it never
   reaches the flag logic when enabled. It is NOT state-insensitive (406 differs
-  from 503). The earlier claim "the broken curl returns 406 regardless of flag
+  from 503). The earlier claim "the broken probe returns 406 regardless of flag
   state" was itself an unverified assertion, repeated by three agents from
   one-state observation, that substrate refuted. Meta-lesson: observe BOTH
   states before claiming a check distinguishes them. [substrate]

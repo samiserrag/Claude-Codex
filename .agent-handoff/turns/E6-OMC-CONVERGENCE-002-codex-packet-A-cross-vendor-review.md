@@ -65,9 +65,10 @@ discredits your review):
 SAFETY (hard constraints):
 - Read-only on all three repos. Do NOT edit, stage, commit, push, branch, or
   open PRs in claude-codex, colorado-songwriters-collective, or agent-envelope.
-- The ONLY network calls you may make are the two read-only curls in Task 1a (an
-  MCP tools/list, which does not write). Make no other network request. POST
-  nothing that mutates; no database, no deploy, no feature-flag change.
+- The ONLY network calls you may make are the two read-only probes in Task 1a (a
+  read-only MCP listing call, which does not write). Make no other network
+  request. POST nothing that mutates; no database, no deploy, no feature-flag
+  change.
 - Do NOT read or output any secrets, credentials, .env files, or tokens, and do
   not read anything outside the three named repos.
 - Write your review ONLY to `~/GitHub/codex-arbiter/cross-vendor-review-2026-06-13.md`
@@ -79,10 +80,14 @@ provide as judgment).
 1a. Run both; report exact HTTP codes. If your sandbox blocks network, say so
     explicitly, do not invent values, and instead review the recorded values in
     claude-codex/.agent-handoff/turns/E6-OMC-CONVERGENCE-002-claude-dispatch-reply.md.
-    proper (expect 200):
-      curl -s -o /dev/null -w "%{http_code}\n" -X POST https://openmiccolorado.org/api/mcp/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
-    broken (expect 406, state-insensitive = evidence theater):
-      curl -s -o /dev/null -w "%{http_code}\n" -X POST https://openmiccolorado.org/api/mcp/mcp -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
+    proper (expect 200): a read-only probe of the production MCP endpoint with
+      the correct headers.
+      [redacted for public release: exact endpoint URL and the copy-pasteable
+      probe command]
+    broken (expect 406, state-insensitive = evidence theater): the same probe
+      missing a required header.
+      [redacted for public release: exact endpoint URL and the copy-pasteable
+      probe command]
     State whether each reproduces the claim. Note a 200 confirms CURRENT state
     only and says nothing about history; comment on whether the two agents state
     that limitation correctly.
@@ -104,7 +109,7 @@ TASK 2 - Adversarial review of the synthesis, taxonomy, and the seed proposal.
 Read:
    - claude-codex/.agent-handoff/turns/E6-OMC-CONVERGENCE-001-claude-verification-taxonomy-synthesis.md
    - claude-codex/.agent-handoff/turns/E6-OMC-CONVERGENCE-002-claude-dispatch-reply.md
-   - colorado-songwriters-collective/docs/audit/seeded-probe-design.md
+   - OMC's seeded-probe design doc [redacted for public release: internal path]
 Attack specifically:
    - Is anything labeled SETTLED that is actually only PROVISIONAL (converged
      opinion, not substrate)?
@@ -117,9 +122,9 @@ Attack specifically:
      grounding check itself evidence-theater (state-insensitive or wrong surface)?
 
 TASK 3 - Review the proposed n=2 whitepaper spine and OMC's evidence. Read:
-   - colorado-songwriters-collective/docs/audit/postmortem-2026-06-12-mcp-flag-false-verification.md   (OMC "Case D")
-   - colorado-songwriters-collective/docs/audit/verification-catch-ledger.md
-   - colorado-songwriters-collective/docs/audit/verification-claims-audit.md                            (Cases A-D evidence ledger)
+   - OMC's Case D postmortem [redacted for public release: internal path]
+   - OMC's verification catch-ledger [redacted for public release: internal path]
+   - OMC's Cases A-D evidence ledger / claims audit [redacted for public release: internal path]
    - claude-codex/docs/fabricated-audit-vs-deterministic-checks.md                                      (claude-codex origin incident, 3 events)
 Assess:
    - The proposed spine is "two independent incidents, two failure modes." Are
@@ -143,8 +148,8 @@ evidence. Then:
 
 Optional background (read-only) if useful: claude-codex/README.md,
 claude-codex/.agent-handoff/PROTOCOL.md, agent-envelope/README.md,
-agent-envelope/postmortem-template.md,
-colorado-songwriters-collective/docs/audit/ENVELOPE.md.
+agent-envelope/postmortem-template.md, and OMC's project ENVELOPE
+[redacted for public release: internal path].
 
 ------------------------------------------------------------------------
 ## END PASTE
@@ -163,12 +168,10 @@ claude-codex (~/GitHub/claude-codex):
 - docs/experiments/fabrication-fishing/trials/B2-report.md (3515)
 - docs/fabricated-audit-vs-deterministic-checks.md (6311)
 
-colorado-songwriters-collective (~/GitHub/colorado-songwriters-collective/docs/audit):
-- postmortem-2026-06-12-mcp-flag-false-verification.md (7663)
-- verification-catch-ledger.md (5605)
-- verification-claims-audit.md (11392)
-- ENVELOPE.md (8770)
-- seeded-probe-design.md (8121)
+colorado-songwriters-collective: OMC's internal audit docs (the Case D
+postmortem, the catch-ledger, the Cases A-D claims audit, the project ENVELOPE,
+and the seeded-probe design).
+[redacted for public release: OMC internal audit file paths and byte-size manifest]
 
 agent-envelope (~/GitHub/agent-envelope): README.md, postmortem-template.md,
 ENVELOPE.md, metrics.md
