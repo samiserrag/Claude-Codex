@@ -21,10 +21,10 @@ confirming the seed will be Codex-held; that one comes later.)
 - Codex needs: read access to those three repos; permission to make two
   read-only `curl` calls (network); write access only to a new
   `~/GitHub/codex-arbiter/` for its output.
-- SECURITY: there is a loose Google OAuth client-secret JSON in `~/GitHub`
-  (`client_secret_*.json`). Move it out of `~/GitHub` before pointing any agent
-  at that root. The packet forbids Codex from reading secrets, but removing the
-  file is the real control.
+- SECURITY: remove any loose credential files from the agent's working-directory
+  root before pointing any agent at it. The packet forbids Codex from reading
+  secrets, but removing such files is the real control. [REDACTED for public
+  release: a specific loose-credential pointer was removed here.]
 - Codex starts cold (no memory of either project). The packet is self-contained.
 
 ## PASTE TO CODEX BELOW THIS LINE
