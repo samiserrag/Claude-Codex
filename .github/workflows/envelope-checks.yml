@@ -1,0 +1,79 @@
+# PROPOSAL (Phase 2 envelope enforcement).
+#
+# Activation: this workflow becomes ACTIVE the moment it is merged to the default
+# branch — GitHub then runs it on every pull_request. It does NOT become a *required*
+# (merge-blocking) check until the owner adds "envelope-checks" as a required status
+# check in branch protection (a GitHub-UI / API action — see
+# docs/envelope-kit-additions/enforcement-plan.md). Until then it runs and reports
+# pass/fail but cannot block a merge.
+#
+# Scope: minimal, deterministic, fast. Two checks only:
+#   (a) git diff --check  — trailing whitespace + leftover conflict markers
+#   (b) a basic secret-pattern scan that FAILS on obvious committed secrets
+# Deliberately NOT included: any em/en dash style check (that is an OMC style rule,
+# not claude-codex's), and any LLM-judgment gate (only deterministic checks may block;
+# see agent-envelope github/required-checks.md). Proportionality: this is a few cheap
+# checks, not a heavy pipeline.
+
+name: envelope-checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  envelope-checks:
+    name: envelope-checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # (a) Whitespace errors and leftover merge-conflict markers.
+      # git diff --check exits non-zero if it finds either. Compare the PR's
+      # changes against the merge base so only this PR's diff is checked.
+      - name: Whitespace and conflict-marker check
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          echo "Checking diff ${base}..${head} for whitespace errors and conflict markers."
+          git diff --check "${base}" "${head}"
+          echo "OK: no whitespace errors or conflict markers."
+
+      # (b) Basic secret-pattern scan. Deterministic grep over the PR's added lines.
+      # Fails the build on obvious secrets. This is a coarse safety net, not a
+      # complete secret scanner — high-blast credential handling still requires the
+      # owner's judgment (ENVELOPE.md: no credentials are held in this repo).
+      - name: Secret-pattern scan
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+
+          # Only inspect ADDED lines in this PR's diff (lines starting with '+',
+          # excluding the '+++' file headers).
+          added="$(git diff "${base}" "${head}" -- . ':(exclude).github/workflows/envelope-checks.yml' \
+            | grep -E '^\+' | grep -Ev '^\+\+\+' || true)"
+
+          if [ -z "${added}" ]; then
+            echo "OK: no added lines to scan."
+            exit 0
+          fi
+
+          # Patterns for obvious secrets. Extended-regex, case-insensitive.
+          patterns='-----BEGIN ([A-Z ]+ )?PRIVATE KEY-----|client_secret|eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}|[A-Fa-f0-9]{40,}'
+
+          # Pass the pattern with -e so a leading '-----' is never parsed as a flag.
+          if printf '%s\n' "${added}" | grep -nEi -e "${patterns}"; then
+            echo "FAIL: possible secret detected in added lines (see matches above)." >&2
+            echo "Patterns checked: BEGIN PRIVATE KEY, client_secret, JWT-like token, long hex token." >&2
+            echo "If this is a false positive, route to the owner to adjust the scan." >&2
+            exit 1
+          fi
+
+          echo "OK: no obvious secret patterns in added lines."

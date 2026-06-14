@@ -1,0 +1,29 @@
+# CODEOWNERS — PROPOSAL (Phase 2 envelope enforcement).
+#
+# This file is INERT until the owner enables branch protection with
+# "Require review from Code Owners" on the main branch (a GitHub-UI / API action
+# only the owner can take — see docs/envelope-kit-additions/enforcement-plan.md).
+# Merging this file alone does NOT gate anything.
+#
+# Purpose: require the human envelope owner (@samiserrag) to review changes to the
+# high-blast / no-touch and governance/runtime-config paths named in ENVELOPE.md
+# (Blast radius + Escalation) and PROTOCOL.md (high-blast triggers). These are the
+# paths where an agent must never be the final approver.
+#
+# Last matching pattern wins in CODEOWNERS, so order is least- to most-specific.
+
+# The human-owned policy file. Agents may propose edits as PRs; only Sami merges.
+/ENVELOPE.md                       @samiserrag
+
+# The detailed dogfood protocol and strategy — governance text.
+/.agent-handoff/PROTOCOL.md        @samiserrag
+/.agent-handoff/STRATEGY.md        @samiserrag
+
+# Enforcement wiring: PR template, CODEOWNERS itself, CI workflows.
+/.github/                          @samiserrag
+
+# Claude Code runtime config: settings, hooks, permissions.
+/.claude/                          @samiserrag
+
+# Kit-addition docs that become public/adopter-facing claims when upstreamed.
+/docs/envelope-kit-additions/      @samiserrag
