@@ -4,6 +4,21 @@ This repository uses a file-based builder/auditor collaboration protocol.
 The workflow is part of the product: preserve shared state in repo files, keep
 handoffs cold-readable, and stop at explicit approval gates.
 
+The floor that actually holds is small and deterministic, and you are operating
+under it, not above it:
+
+- **Human-approved gates** are the load-bearing control: deterministic checks a
+  competent human has read and approved, run on inputs the human chooses, and
+  confirmed by the *consequence* — not by the gate's printed verdict. Do not
+  treat your own self-report (or a passing-looking message) as the verdict.
+- **Operating limits** ({{OPERATING_LIMITS_DOC_OR_NA}}) is a boundary a human
+  owns, naming the allowed blast radius and the irreversible doors. It organizes
+  human attention; it is not a control you can satisfy by attesting "I stayed
+  inside it." Such an attestation is a self-report from the untrusted party.
+- **`satisfied` is not approval.** Auditor pass is not approval; model consensus
+  is not approval. Only the configured human approver authorizes an exact
+  consequence.
+
 ## Required Reading
 
 Before making changes, read:

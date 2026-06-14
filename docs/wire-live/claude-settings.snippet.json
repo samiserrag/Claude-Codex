@@ -1,5 +1,4 @@
 {
-  "model": "claude-opus-4-5-20251101",
   "permissions": {
     "allow": [
       "Read",
@@ -15,7 +14,8 @@
       "Bash(git merge:*)",
       "Bash(git rebase:*)",
       "Bash(git reset --hard:*)",
-      "Bash(rm -rf:*)"
+      "Bash(rm -rf:*)",
+      "WebFetch"
     ],
     "ask": [
       "Bash(git commit:*)"

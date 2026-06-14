@@ -1,8 +1,28 @@
 # Codex Instructions
 
 This repo is a Git-native approval-boundary protocol dogfood harness for
-cross-model agent work. The workflow is the product proof. Polaris / Decision
-Cockpit v1 is the current static reference cockpit.
+cross-model agent work, and it is now a preserved postmortem: most of the
+governance machinery built here turned out to be theatre, and that result is
+reported honestly in `README.md` and `docs/verification-theater-in-ai-agent-work.md`. The
+workflow is the product proof.
+
+What survived — and what you are operating under — is small and deterministic:
+
+- **Human-approved gates** (`gates/`) are the load-bearing floor: deterministic
+  checks a competent human has read and approved, run on inputs the human
+  chooses, and confirmed by the *consequence* — not by the gate's printed
+  verdict, and not by your self-report.
+- **Operating limits** (`ENVELOPE.md`, kept and reframed from the project's
+  original "approval envelope") is a boundary a human owns. It organizes human
+  attention and names the irreversible doors; it is not a control you can
+  satisfy by attesting "I stayed inside it."
+- **`satisfied` is not approval.** Auditor pass is not approval; model consensus
+  is not approval. Only the configured human approver authorizes an exact
+  consequence.
+
+Polaris / Decision Cockpit v1 is the static reference cockpit, preserved as
+graveyard (demoted to theatre, see the whitepaper): a convenience surface for
+navigating the substrate, never the thing approval is granted from.
 
 ## Required Reading
 

@@ -5,14 +5,49 @@ _Status: E6-STRATEGY-001 local strategy alignment artifact._
 _This is not enforced protocol. `PROTOCOL.md` governs. `OPERATING-MODEL.md`
 explains current architecture. `COLLAB.md` carries current handoff state._
 
+> **Read this first (the postmortem reframe).** This document was written while
+> the project still believed its governance scaffolding was the product. It was
+> dogfooded for ~1 month, and the honest result is that **most of the machinery
+> below turned out to be theatre** — see the front-door
+> [`README.md`](../README.md) and the canonical statement in
+> [the whitepaper](../docs/verification-theater-in-ai-agent-work.md). What
+> survived is small: (a) a handful of deterministic, **human-approved gates** a
+> human can read in full, run on inputs they choose, and confirm by the
+> *consequence* (not the printed verdict) — see [`gates/`](../gates/); and (b) a
+> human who refuses to trust the agent's self-report. The **Decision Cockpit**
+> (Polaris), the boundary doc (renamed from "envelope" to **operating limits**),
+> the verification taxonomy, and the cross-vendor convergence ritual are
+> preserved here as **graveyard** — tried, documented, and reported as
+> tried-and-found-theatre, not as a working solution. The positioning prose below
+> is kept for the historical record; weight it against this reframe and §15.
+>
+> **Two renames apply throughout (a logical pivot from what the dogfood taught,
+> not a rewrite of history):** the boundary doc "envelope" is now **operating
+> limits**; the small mechanical checks are **human-approved gates**
+> ("human-approved" = a competent human *read and approved* the check, not merely
+> ran it; a gate can fail two ways, too tight or too loose). The one rule that
+> survived: **`satisfied` is not approval.**
+
 ## 1. Current Thesis
 
-Polaris is the dashboard / reference cockpit. The broader thing is the
-governance protocol / harness. Formal naming for that broader thing remains
-deferred.
+> **Reframed by the postmortem.** This section originally read "the protocol is
+> the product thesis." After dogfooding, the honest product thesis is narrower:
+> **the deterministic floor survived; the broader protocol is largely graveyard.**
+> The surviving claim is that load-bearing claims must terminate at a substrate a
+> human can check, and irreversible consequences must terminate at exact human
+> approval — and that the impressive scaffolding (cockpit, operating-limits
+> doc-as-control, convergence ritual) did not hold. Polaris is preserved as a
+> demonstration of *what laundered agent decisions into a human-signable form*,
+> not as a working oversight surface. The positioning below is kept for the
+> record.
 
-The protocol is the product thesis. Polaris demonstrates it. `kit/v1` is the
-adoption path for trying the protocol in other repos.
+Polaris is the dashboard / reference cockpit, preserved as graveyard evidence
+(see the reframe above and §8). The broader thing is the governance
+protocol / harness. Formal naming for that broader thing remains deferred.
+
+The protocol was the original product thesis; the dogfood result is that only the
+deterministic floor survived (see [`gates/`](../gates/) and the whitepaper). `kit/v1`
+is the adoption path — for the surviving floor, not the abandoned system.
 
 The strategic thesis:
 
@@ -49,17 +84,32 @@ largest option set while the protocol is still being proven.
 
 ## 2. What This Is / Is Not
 
-What this is:
+What survived the dogfood (the floor):
 
-- A governance protocol for human-supervised multi-agent work.
-- A human role cockpit showing what the human approver should do next.
-- A repo-visible evidence layer.
-- Exact approval discipline.
-- Cross-model role separation.
-- An Outcome Circle boundary protocol.
+- Exact approval discipline — irreversible consequences terminate at exact human
+  approval; `satisfied` is not approval.
+- A repo-visible evidence layer where load-bearing claims reduce to a substrate a
+  human can re-check.
+- Human-approved gates: deterministic checks small enough to read in full
+  (see [`gates/`](../gates/)).
+- A human posture of refusing to trust the agent's self-report.
+
+What this also was, now preserved as graveyard (tried-and-found-theatre, see §8
+and the whitepaper):
+
+- A governance protocol for human-supervised multi-agent work (most of the
+  machinery did not hold).
+- A human role cockpit (Polaris) showing what the human approver should do next —
+  demoted: a dashboard that summarizes agent work for human approval, when the
+  human cannot independently check the summary, launders agent decisions into a
+  human-signable form.
+- Cross-model role separation (useful for review, not a grounding control;
+  cross-vendor diversity did not stop the fabrication incident).
+- An operating-limits boundary protocol (formerly "envelope"; a boundary a human
+  owns, not a control that holds on its own when enforced by agent attestation).
 - Anti-sycophancy critique discipline.
 - A reference implementation in one repo.
-- A kit path for adoption experiments.
+- A kit path for adoption experiments (the floor, not the abandoned system).
 
 What this is not:
 
@@ -165,11 +215,17 @@ Breakdown:
   clearance.
 - Git remains the source-of-truth layer until a later explicit change.
 
-This combination is the part to protect. Runtime platforms can execute agents.
-IDEs can host coding sessions. Observability products can trace model calls.
-Workspace platforms can organize tasks. The governance contract says what the
-agents are allowed to do, what evidence they must leave behind, when the human
-is needed, and what never counts as approval.
+Of this combination, the parts that survived the dogfood are the approval
+invariants — exact approval text, "model consensus / auditor pass / rubric
+satisfied is not approval," and human-owned consequences — plus repo-visible
+evidence that reduces to a re-checkable substrate. The role-separation and
+consensus-as-review pieces are useful for organizing work but are *not* grounding
+controls (cross-vendor pairing did not prevent the fabrication incident; see
+the whitepaper). Runtime platforms can execute agents. IDEs can host coding
+sessions. Observability products can trace model calls. Workspace platforms can
+organize tasks. The surviving governance contract says what counts as a
+load-bearing claim, what substrate it must terminate at, when exact human
+approval is required, and what never counts as approval.
 
 ## 5. Build For Smarter Future Agents
 
@@ -336,6 +392,18 @@ runtime instead of a governance protocol.
 
 ## 8. Minimal Dashboard, Serious Governance
 
+> **Graveyard reframe.** The Decision Cockpit (Polaris) is preserved as
+> tried-and-found-theatre, not as working oversight. A dashboard that summarizes
+> agent work for a human to approve — when the human cannot independently check
+> the summary, and the summary is written by the untrusted agent — does not
+> produce oversight; it launders agent decisions into a human-signable form
+> (the whitepaper). The design discipline below (no fake "approve," `satisfied`
+> never looks like approval, surface the boundary) is the *least-harmful* way to
+> build such a surface and is retained for the record — but the surviving control
+> is the deterministic floor in [`gates/`](../gates/), not the cockpit. The
+> preserved snapshot lives at [`DASHBOARD.md`](DASHBOARD.md) /
+> [`DASHBOARD.html`](DASHBOARD.html).
+
 Polaris should remain minimal, directional, and human-role-aware.
 
 It should show:
@@ -366,8 +434,12 @@ It should not show by default:
 - Everything an IDE already shows better.
 
 The dashboard is a reference cockpit for the governance protocol, not the
-product by itself. It proves that the human can be placed in the right role at
-the right time without reading a wall of terminal or turn-note text.
+product by itself. It was intended to place the human in the right role at the
+right time without reading a wall of terminal or turn-note text — but the
+dogfood showed the limit: placing the human "in the right role" still depends on
+a summary the human cannot independently check, which is exactly the laundering
+failure. It does not prove oversight; it is preserved as the demonstration of why
+a readable, runnable floor (not a prettier summary) is what survived.
 
 The line between cockpit and IDE:
 
@@ -659,7 +731,9 @@ Operating consequences (codified in `PROTOCOL.md`, Proportionality):
   "irreversible / high-blast / outward-public?" Heavy process fires only on objective
   high-blast triggers, never on complexity or model disagreement alone.
 - Substrate terminates doubt; do not audit audits.
-- A governance cooldown pauses expensive ceremony, not the cheap always-on floor.
+- A governance cooldown pauses expensive ceremony, not the cheap always-on floor —
+  the human-approved gates in [`gates/`](../gates/), small enough to read and
+  confirm by consequence.
 - OMC raises `n` for the whitepaper via a passive organic catch-ledger (small entries
   when a verification/fabrication/evidence-theater case arises in normal work), with an
   immediate tripwire only when prod, users, or adopters could be misled. It does not

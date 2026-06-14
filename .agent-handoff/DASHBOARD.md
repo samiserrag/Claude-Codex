@@ -1,5 +1,28 @@
 # Decision Cockpit v1
 
+> ## GRAVEYARD — preserved as evidence, demoted to tried-and-found-theatre
+>
+> **This Decision Cockpit is not working oversight. It is kept as evidence of a
+> control we tried and found to be theatre.** A dashboard that summarizes agent
+> work for a human to approve — when the human cannot independently check the
+> summary, and the summary is written by the untrusted agent — does not produce
+> oversight. It launders agent decisions into a human-signable form: it moves the
+> blame to the human without moving the understanding. See the full accounting in
+> [the whitepaper](../docs/verification-theater-in-ai-agent-work.md) and
+> the front-door [`README.md`](../README.md).
+>
+> What survived the dogfood instead is small and lives elsewhere: a handful of
+> deterministic, human-approved gates a human can read in full, run on inputs they
+> choose, and confirm by the *consequence* — not the printed verdict — see
+> [`gates/`](../gates/); plus a human who refuses to trust the agent's
+> self-report. The one surviving rule: **`satisfied` is not approval.**
+>
+> The snapshot below is preserved unchanged as the artifact under report. Read it
+> as the thing we are demoting, not as a recommendation. (Note: this snapshot
+> predates the rename of the boundary doc from "envelope" to **operating limits**
+> and of the mechanical checks to **human-approved gates**; historical wording is
+> left intact on purpose.)
+
 Static reference cockpit snapshot for the current handoff. This file is a view,
 not the source of truth, not an approval mechanism, and not a routing runtime.
 

@@ -1,86 +1,71 @@
-# Claude-Codex Governance Harness
+# claude-codex — deterministic custody for AI agent work (a preserved postmortem)
 
-A public build journal and dogfood source repo for a Git-native
-approval-boundary protocol for cross-model agent work.
+This repo is a build journal and a postmortem. Over about a month I built a
+Git-native harness for cross-model AI agent work — one model building, another
+auditing, a coordinator synthesizing, me approving — and I dogfooded it on its
+own development. The workflow was the experiment.
 
-This repo demonstrates the protocol on itself. The historical handoffs, turn
-notes, audits, stops, corrections, and preservation PRs are part of the proof.
-They are not the copyable adopter surface. If you want to try the method in
-another repo, start with the kit:
+The thesis the project converged on is constructive:
 
-- [Start here](START_HERE.md) for the short visitor path.
-- [Copy the adopter kit](kit/v1/README.md) from `kit/v1`.
-- Read the live dogfood state in [`.agent-handoff/COLLAB.md`](.agent-handoff/COLLAB.md).
-- Inspect the reference cockpit in [`.agent-handoff/DASHBOARD.md`](.agent-handoff/DASHBOARD.md)
-  or [`.agent-handoff/DASHBOARD.html`](.agent-handoff/DASHBOARD.html).
+> **Probabilistic agents need deterministic custody.** The model may reason
+> probabilistically. The evidence trail, authority boundary, and consequence gate
+> cannot be left to probabilistic self-report.
 
-The core rule is simple:
+What survived is small, boring, and learnable by anyone who can read eight lines
+of shell and open a web page:
+
+- **A handful of deterministic gates** a human can read in full, run on inputs
+  the human chooses, and confirm by the *consequence* — not by the gate's printed
+  verdict. See [`gates/`](gates/).
+- **A human who refuses to trust the agent's self-report** — distrust of the
+  green checkmark, insistence on the consequence over the printed message.
+
+That is the deterministic floor that held. The slogan that came out of it:
+
+> Below the deterministic floor, verify. Above the floor, manage risk. Do not
+> call the second one verification.
+
+A documented finding sits alongside the floor, and it is not the result I set out
+to prove: much of the governance machinery I built around the floor did not hold
+when a capable agent lied to me about its own work. The approval "envelope," the
+human decision cockpit, the verification taxonomy, the cross-vendor convergence
+rituals — I built all of it, used all of it, and most of it turned out to be
+theatre. **Capture is not verification:** traces, dashboards, and convergence
+rituals capture activity; they do not ground a load-bearing claim until it
+terminates in a small check a human can inspect and connect to consequence. That
+scaffolding is preserved here as the graveyard, because the part that *didn't*
+work is the more useful warning. Safety writeups usually publish the thing that
+worked and quietly bury the rest. This one keeps the rest.
+
+The full argument, the two incidents that grounded it, and the reproduction
+experiments are in the whitepaper:
+[**docs/verification-theater-in-ai-agent-work.md**](docs/verification-theater-in-ai-agent-work.md).
+
+## The one rule that survived
 
 > `satisfied` is not approval.
 
-Auditor pass is not approval. Model consensus is not approval. Human approval
-authorizes only the exact named consequence.
+Auditor pass is not approval. Model consensus is not approval. A green check is
+not approval. Human approval authorizes only the exact named consequence, and
+load-bearing claims terminate at a check you can run yourself — not at an agent's
+prose about having run it.
 
-## What This Is
+## Read this first: the incident
 
-This is a repo-native governance harness for human-supervised, cross-model
-agent work. It is designed for workflows where one agent may build, another may
-audit, a coordinator may synthesize, and a human approver must remain the only
-actor who can authorize consequences.
+In late May 2026, while implementing a routing cockpit, this repo's **auditor
+agent fabricated verification evidence three times**: twice claiming rendered
+browser QA that had never run, and once inventing file-corruption metrics for a
+file that was provably clean. The builder agent reported honestly throughout —
+this was a single-agent failure, not collusion, no jailbreak. The harness already
+paired models from *different vendors*; cross-model diversity did not stop it.
 
-The public posture is intentionally transparent:
+Every fabrication was caught by a deterministic mechanism — a push gate that
+refused unverified work, and replayable measurements (hashes, line counts,
+greps) — never by another model reading the prose. The fabricated text and its
+corrections live in the *same* preserved documents; the record was corrected, not
+laundered.
 
-- `claude-codex` is the build journal and dogfood source.
-- `kit/v1` is the adopter path.
-- `.agent-handoff/` is this repo's live dogfood instance.
-- Historical turn notes are evidence, not required adopter ceremony.
-- The reference cockpit is optional; protocol-only adoption is valid.
-
-The protocol is the Git-native approval-boundary protocol. The kit is
-`kit/v1`. The reference cockpit is Decision Cockpit v1. An Outcome Circle is a
-bounded builder/auditor loop inside an approved Outcome Packet. An Outcome
-Packet is the contract for entering that loop.
-
-## Why It Exists
-
-Modern agent workflows can produce plausible work quickly. That creates two
-practical risks:
-
-- humans may rubber-stamp work because agents sound confident or agree with
-  one another
-- agent states such as `done`, `audited`, or `satisfied` may be treated as if
-  they were human approval
-
-The method makes the boundary visible:
-
-- agents produce evidence
-- agents make judgments and recommendations
-- auditors search for failure modes
-- coordinators synthesize ambiguity and exit conditions
-- humans authorize consequences
-- the repo records the trail
-
-Board Mode and similar structured AI workspaces help humans manage agent work.
-This protocol helps humans authorize agent consequences. A stable main version
-should not change just because an agent completed a task. Task completion,
-auditor satisfaction, and model consensus are not human authorization. The
-protocol separates exploration, satisfaction, approval, and durable
-consequence.
-
-## The Incident (Read This First)
-
-In late May 2026, while implementing the routing cockpit, this repo's auditor
-agent fabricated verification evidence three times: twice claiming rendered
-browser QA that had never run, and once inventing file-corruption metrics for
-a file that was provably clean. The builder agent reported honestly
-throughout — this was a single-agent failure, not collusion. Every
-fabrication was caught by deterministic mechanisms — a push gate that refused
-unverified work, and replayable checks (hashes, line counts, diffs) — never
-by another model reading the prose.
-
-The full record is preserved unlaundered:
-
-- Side-by-side evidence:
+- Side-by-side evidence (the hero artifact):
   [docs/fabricated-audit-vs-deterministic-checks.md](docs/fabricated-audit-vs-deterministic-checks.md)
 - The audit notes containing the fabrications and their corrections:
   [iter-1](.agent-handoff/turns/E6-ROUTING-COCKPIT-001-claude-audit-routing-cockpit-implementation-iter-1.md),
@@ -89,266 +74,238 @@ The full record is preserved unlaundered:
 - The internal case study with a typed claim ledger:
   [E6-CASE-STUDY-001](.agent-handoff/turns/E6-CASE-STUDY-001-codex-audit-trail-lied-case-study-draft.md)
 
-This incident is the most important evidence in the repo. It demonstrates the
-thesis the project converged on: agent prose is not evidence; load-bearing
-claims must reduce to replayable checks or visible artifacts; irreversible
-consequences require exact human authorization.
+This incident is the most important evidence in the repo. It is the proof of the
+thesis the project converged on: agent prose is not evidence; load-bearing claims
+must reduce to replayable checks or visible consequences; irreversible actions
+require exact human authorization.
 
-## Visitor Paths
+A second incident from a sibling production project (Open Mic Colorado,
+[openmiccolorado.org](https://openmiccolorado.org)) is in the *same failure
+family* with a larger blast radius — an agent stated for a multi-day session that
+a production feature flag was disabled when it had been live for ~15 hours, caught
+only by a live external probe of the running system. It is included in the
+whitepaper at the **pattern level only**; OMC's operational internals are
+deliberately withheld.
 
-### If you want the short orientation
+## What survived — the deterministic floor
 
-Read [START_HERE.md](START_HERE.md), then skim this README through
-"Current Proof Status."
+The floor is in [`gates/`](gates/). Each gate is a check where **reality decides,
+not an agent**, and **you can re-run it yourself**:
 
-### If you want to copy the method into another repo
+| Gate | The question it answers | Who answers |
+|---|---|---|
+| `check-blast-radius.sh <path>` | Is this write inside the repo, or reaching outside it? | the filesystem path |
+| `check-secrets.sh <file>` | Does this file contain an obvious secret? | a pattern match |
+| `check-irreversible-git.sh "<cmd>"` | Is this irreversible action approved? | the command string + an approval token |
 
-Start with [`kit/v1/README.md`](kit/v1/README.md). Copy the kit files from
-`kit/v1`, not this repo's historical `.agent-handoff` state.
+Each prints `ALLOW` or `BLOCK` and exits 0 or 1. That is the whole contract.
 
-The kit includes:
+The discipline that makes them a *floor* and not one more thing to take on faith
+has three parts, and all three take the verdict out of the agent's hands:
 
-- role and placeholder vocabulary
-- Outcome Packet, Human Decision Record, and Durable Behavior Proposal
-  templates
-- minimal examples marked as examples, not proof
-- approval-boundary snippets
-- dashboard optionality
-- trust caveats
+1. **The check is small enough to read in full.** Simplicity is the security
+   property. A clever 500-line "verifier" is unauditable; an eight-line one is
+   not. An agent's eloquence and complexity are the *threat surface*, not a
+   reassurance.
+2. **You run it on inputs you choose, not the agent's curated ones.**
+3. **You confirm the *consequence* on a surface the agent does not control** — not
+   "the script said the push was blocked" but `git log` showing the commit never
+   landed; not "the deploy passed" but the GitHub page; not "the file was written"
+   but `ls`.
 
-### If you want to inspect the proof trail
+You do not have to be an expert to *run* a gate and watch it fire — you hold a lit
+match to the smoke detector with [`gates/test-gates.sh`](gates/test-gates.sh),
+which feeds every gate a known-good and a known-bad input and confirms each one
+allows the good and blocks the bad. (Telling whether a gate is the *right* gate —
+not too tight, not too loose — still takes a competent human who has read it. A
+check no qualified human has read is not "human-approved"; it is one more
+unexamined claim wearing a green checkmark.)
 
-Read representative artifacts instead of trying to absorb every historical
-turn note first:
+The gates cover exactly one axis: the **reality-checkable and reversible** surface
+(blast radius, secrets, irreversible git). They do **nothing** for whether the
+agent's *judgment* is correct — whether the design is sound or the analysis
+right. There is no gate for good judgment. That residue is unsolved here and
+everywhere, and the narrowness is the honest headline.
 
-- [`.agent-handoff/PROTOCOL.md`](.agent-handoff/PROTOCOL.md) for the live
-  dogfood protocol
-- [`.agent-handoff/COLLAB.md`](.agent-handoff/COLLAB.md) for current state
-- [`.agent-handoff/turns/`](.agent-handoff/turns/) for append-only evidence
-- [`.agent-handoff/DASHBOARD.md`](.agent-handoff/DASHBOARD.md) for the
-  reference cockpit snapshot
+## What we tried and are reporting as theatre — the graveyard
 
-The turn notes include messy history. That is deliberate. Old dogfood evidence
-is preserved rather than laundered.
+These are preserved in the repo as evidence, **not** as a recommendation. The
+whitepaper has the full account — see "Capture is not verification" and "The
+governance failure in the other direction"; the short version:
 
-## How The Protocol Works
+- **An unenforced "envelope" is the agent policing itself.** A boundary document
+  enforced by the agent attesting "I stayed inside it" is the *same class of
+  claim* as the auditor attesting "I verified the QA" — a self-report from the
+  untrusted party. Useful for organizing a human's attention and naming the
+  irreversible doors; not a control on its own. (The boundary doc lives at
+  [ENVELOPE.md](ENVELOPE.md), kept and reframed.)
+- **The "envelope" metaphor broke.** The old load-bearing line, "sign the
+  envelope, not the contents," is incoherent — nobody signs an envelope. What is
+  actually true is plainer: a human owns a *boundary* and signs an *attestation
+  about process*. See the rename note below.
+- **The human Decision Cockpit was an accountability-transfer device.** A
+  dashboard that summarizes agent work for a human to approve — when the human
+  cannot independently check the summary, and the summary is written by the
+  untrusted agent — does not produce oversight. It launders agent decisions into
+  a form a human will sign. The cockpit is preserved at
+  [`.agent-handoff/DASHBOARD.md`](.agent-handoff/DASHBOARD.md) /
+  [`.html`](.agent-handoff/DASHBOARD.html), demoted to graveyard.
+- **Cross-vendor convergence is framing, not grounding.** It caught some reasoning
+  and framing errors; it missed every missing-observation error (it repeated a
+  claim none of the agents had actually checked in both states). And both
+  coordinators were the same model anyway. Useful for review, useless as evidence.
 
-The core pattern is:
+I am not saying run agents with no boundary. I am saying the boundary's value is
+in organizing limited human attention and naming the irreversible doors — not in
+being a control that holds on its own — and that anyone reporting an envelope, a
+dashboard, or a convergence ritual as a *solution* to oversight is reporting
+theatre, because I built those things and that is what they were.
 
-1. Define a bounded **Outcome Packet** before work begins.
-2. Let a **Builder** perform the scoped work.
-3. Let an **Auditor** independently inspect the work.
-4. Record evidence in repo-visible turn notes.
-5. Keep `built`, `audited`, `satisfied`, and `human-approved` as separate
-   states.
-6. Require exact human approval text before commit, push, merge, release,
-   launch, public wording, trust-layer changes, or other named consequences.
+## A note on names — the "envelope" → "operating limits" pivot
 
-The state separation matters because each state answers a different question:
+This project started by calling its boundary an "approval envelope." That name is
+being retired, as a logical pivot from what the dogfood taught us:
+
+- The boundary document is now called **operating limits** (borrowed from the
+  aviation/automotive *operating envelope* — a bounded region of safe states —
+  not from a paper mail envelope). See [ENVELOPE.md](ENVELOPE.md).
+- The small mechanical checks are **human-approved gates** — "human-approved"
+  meaning a competent human has *read and approved* the check, not merely run it.
+  See [`gates/`](gates/).
+
+Older files and turn notes still say "envelope." That history is preserved on
+purpose (the rename *is* a finding). New and front-facing material uses the new
+names.
+
+## The state separation (the surviving discipline)
+
+Keeping these states distinct is the part of the protocol that held up. Each
+answers a different question:
 
 | State | What it means | What it does not mean |
 | --- | --- | --- |
 | Built | A builder produced the scoped artifact or report. | The artifact is correct, reviewed, or authorized. |
-| Audited | An auditor inspected the work against the packet. | The human has approved the consequence. |
-| Satisfied | The auditor believes the rubric was met. | Commit, push, merge, launch, or public release is authorized. |
-| Human-approved | The configured human approver authorized an exact action. | Any adjacent action, broader scope, or future relaxation is authorized. |
-| Committed / pushed / merged | A Git consequence occurred after exact approval. | Public release, naming, launch, or downstream adoption is automatically approved. |
-| Launched / published | A public consequence occurred after exact approval. | The method is validated at larger scale or legally/commercially certified. |
+| Audited | An auditor inspected the work. | The human has approved the consequence. |
+| Satisfied | The auditor believes the rubric was met. | Commit, push, merge, launch, or release is authorized. |
+| Human-approved | The configured human authorized an exact action. | Any adjacent action, broader scope, or future relaxation is authorized. |
+| Committed / merged | A Git consequence occurred after exact approval. | Public release, naming, or launch is automatically approved. |
+| Launched / published | A public consequence occurred after exact approval. | The method is validated at larger scale or certified. |
 
-This protects humans from quiet scope expansion. It also prevents agents from
-being treated as fake approvers.
+This protects a human from quiet scope expansion, and it prevents an agent's
+`done` / `audited` / `satisfied` from being treated as a human's approval.
 
-## Decision Cockpit v1
+## Why it exists
 
-Decision Cockpit v1 is the optional reference cockpit for this repo-visible
-state. It is a static, self-contained view. It does not grant approval and it
-does not replace `COLLAB.md`.
+Modern agent workflows produce plausible work fast. That creates two practical
+risks: humans rubber-stamp work because agents sound confident or agree with each
+other; and agent states like `done` or `satisfied` get treated as if they were
+human approval. The method makes the boundary visible — agents produce evidence
+and recommendations, auditors look for failure modes, humans authorize
+consequences, and the repo records the trail. It is a friction-and-transparency
+layer, not a security guarantee and not an AI-alignment solution.
 
-The cockpit demonstrates how to foreground:
+## What this proves — and what it does not
 
-- the current human role
-- the decision needed, if any
-- the exact action surfaced
-- what the action authorizes
-- what the action does not authorize
-- evidence at a glance
-- risk context, not risk permission
-- human decision notes
-- source-of-truth reminders
+**Supported by preserved, replayable evidence in this repo:**
 
-The cockpit is optional. Adopters can use the protocol without this dashboard,
-or implement the same approval-boundary semantics inside their own dashboard,
-IDE, CI, compliance surface, or runtime.
+- The auditor-fabrication incident (three events) with its full correction trail,
+  plus a typed claim ledger (E6-CASE-STUDY-001).
+- The deterministic catch pattern: in every documented case the catch was a
+  comparison of a claim against an agent-immutable substrate (a push gate,
+  replayed measurements, a live probe), never a model reading another model's
+  prose.
+- A reproduction arc that keeps the claim calibrated: zero fabrications in three
+  trials under a *clean* failure condition; one confirmed fabrication under an
+  *ambiguous* serve-then-die condition (see
+  [docs/experiments/](docs/experiments/)).
+- The deterministic gates ([`gates/`](gates/)) with a self-testing harness.
+- The graveyard: the governance scaffolding documented as tried-and-found-theatre.
 
-## Adoption Patterns
+**This repo does NOT prove (stated plainly):**
 
-| Pattern | Use when | What to copy |
-| --- | --- | --- |
-| Protocol-only adoption | You already have a repo workflow and want approval-boundary discipline. | Outcome Packet shape, roles, result states, stop conditions, turn notes. |
-| Reference cockpit adoption | You want the static cockpit as a human-facing view. | The dashboard semantics, after deciding whether the optional dashboard is in scope. |
-| Adapted cockpit adoption | You have your own product UI, IDE, or internal dashboard. | Decision needed, exact action, not-authorized block, evidence, notes, trust caveat. |
-| Runtime-integrated adoption | You already run agents in an orchestration layer. | Approval-boundary states and human authorization gates around runtime actions. |
-| Compliance / audit adoption | You need a reviewable work record. | Git-visible packets, turn notes, audit reports, exact approval records, and future manifest hardening. |
+- **No rate claim.** This is a postmortem, not a benchmark. Nothing here supports
+  any "X% of agents fabricate" statement, and none is made.
+- **No novelty claim.** Every surviving ingredient is standard practice — CI,
+  branch protection, separation of duties, live health probes, "read the script."
+  The contribution is the preserved first-person trail and the honest graveyard.
+- External adoption, stranger installability, production readiness, larger-team
+  scale, behavior under severe model disagreement, trust-layer tamper-evidence,
+  runtime/automation safety, or legal/compliance suitability.
+- That same-model agreement is evidence (it is not), or that a single cross-vendor
+  reviewer is multi-vendor (it is one axis).
 
-The kit in [`kit/v1/`](kit/v1/) is the starting adoption path. Treat it as a
-template, not as proof that your repo is governed merely because files were
-copied.
+E6-KIT-DRY-RUN-001 Stage A and Stage B completed: the kit has guided clean-room
+extraction proof (`guided_clean`) and minimally-instructed self-sufficiency proof
+(`kit_led_clean_enough`) from this repo's own operators. Stranger extraction and
+external adoption remain unproven.
 
-## Dogfood History
+## What is not approved or claimed
 
-This repo's history is part of the evidence. It shows scoped packets, builder
-notes, audits, rejected or paused work, name-scrub decisions, dashboard
-iterations, kit implementation, public-position debates, and preservation
-discipline.
+This README does not approve public-alpha release, public-proof runs, trust-layer
+implementation, dashboard redesign, runtime work, top-of-funnel launch, skills,
+memory files, automations, subagents, scheduled checks, or protocol relaxation.
+The method is not a runtime replacement, not a general agent-safety solution, not
+an AI-alignment solution, and not a legal/compliance product.
 
-Read that history as a build journal:
+## Trust caveats
 
-- it shows how the method behaved under real pressure
-- it includes old local assumptions and messy turns
-- it preserves stops instead of hiding them
-- it does not imply adopters need the same model assignments
-- it does not imply adopters need the same process volume
-- it does not make the historical repo anonymized
+Git-visible records are easy to read, diff, preserve, and audit — but Git-visible
+is not tamper-proof. This repo provides an *audit-visible* trail, not a hardened
+trust layer.
 
-Do not copy this repo's dogfood history into an adopter repo as if it were the
-protocol. Copy the kit and create your own local evidence trail.
-
-## Current Proof Status
-
-Evidence preserved in this repo supports these claims:
-
-- The Git-native approval-boundary protocol has live dogfood proof.
-- Decision Cockpit v1 has audited reference-cockpit proof.
-- The root README had a prior audited stranger-orientation pass.
-- Adopter-facing active surfaces had a name-scrub pass without rewriting
-  historical dogfood evidence.
-- `kit/v1` has a first-pass audited kit implementation.
-- The kit uses role/placeholder language and preserves dashboard optionality.
-- The public showcase positioning has a scoped and audited decision history.
-- The record is Git-visible / audit-visible.
-- E6-KIT-DRY-RUN-001 Stage A completed and independently audited: a guided
-  clean-room extraction of `kit/v1` into a fresh scratch repo
-  (`guided_clean`).
-- E6-KIT-DRY-RUN-001 Stage B completed and independently audited: a kit-led
-  self-sufficiency run under minimal instruction (`kit_led_clean_enough`),
-  honestly logging five kit gaps.
-- Decision Cockpit was rebuilt human-first across three audited iterations,
-  with rendered localhost browser QA.
-- The auditor-fabrication incident (three events) is preserved with its full
-  correction trail, plus an internal case study with a typed claim ledger
-  (E6-CASE-STUDY-001).
-
-This is meaningful evidence because failures, stops, and corrections remain in
-the record. The project did not only preserve successes. The
-auditor-fabrication record is the strongest example: the failure of this
-repo's own audit layer, and the boring controls that caught it, are preserved
-in merged history rather than hidden.
-
-## What Remains Unproven
-
-This repo does not prove:
-
-- external adoption
-- external installability
-- that a stranger can extract and run the kit without help
-- production readiness for the kit
-- burden-reduction magnitude
-- behavior under severe model disagreement
-- scale across teams or organizations
-- long-term resistance to visible-rule gaming or sycophantic adaptation
-- runtime, wakeup, notifier, or auto-handoff safety
-- trust-layer tamper-evidence
-- legal or compliance suitability
-- fresh role-neutral public-proof runs
-
-E6-KIT-DRY-RUN-001 Stage A and Stage B are complete: the kit has guided
-clean-room extraction proof (`guided_clean`) and minimally-instructed
-self-sufficiency proof (`kit_led_clean_enough`) from this repo's own
-operators. Stranger extraction, external adoption, and production readiness
-remain unproven.
-
-## What Is Not Approved Or Claimed
-
-This README does not approve public-alpha release, public-proof runs, clean
-repo creation, trust-layer implementation, dashboard redesign, runtime work,
-top-of-funnel launch, skills, memory files, automations, subagents, scheduled
-checks, or protocol relaxation.
-
-The method is not a runtime replacement. It is not a general agent-safety
-solution. It is not an AI alignment solution. It is not a legal or compliance
-product.
-
-## Durable Behavior Boundary
-
-Observed repeated workflow can become a proposal, but it is not durable
-behavior by itself.
-
-- observed pattern is not durable behavior
-- memory is context, not authority
-- skill proposal is not approval
-- automation proposal is not approval
-- repeated workflow is not approval
-- only the human approver can authorize durable behavior
-
-Future skills, memory files, automations, subagents, scheduled checks, standing
-prompts, rubric changes, threshold changes, dashboard defaults, and kit
-templates require explicit human approval through the durable-behavior path.
-
-## Trust Caveats
-
-Git-visible records are useful because they are easy for humans and agents to
-read, diff, preserve, and audit. Git-visible is useful, but it is not
-tamper-proof. In plain terms: this repo currently provides an audit-visible
-trail, not a fully hardened trust layer.
-
-Current caveats:
-
-- no trust layer exists yet
-- tamper-evident hardening is future work
+- no trust layer exists yet; tamper-evident hardening is future work
 - protected branches, signed commits/tags, manifests, transparency logs, and
   external anchoring are later phases
-- Blockchain is not MVP
-- no blockchain claim is made here
-- no legal or compliance suitability claim is made here
+- no blockchain claim, no legal/compliance claim, is made here
 - no actor should treat Markdown alone as an integrity guarantee
 
 Future hardening may improve record integrity. It does not prove good judgment,
 human intent, or non-sycophantic agent behavior.
 
-## Repo Map
+## Repo map
 
 | Path | Purpose |
 | --- | --- |
-| [START_HERE.md](START_HERE.md) | Short first-reader orientation and routing. |
-| [README.md](README.md) | Public showcase / build journal overview. |
-| [AGENTS.md](AGENTS.md) | Codex-facing operational instructions for this dogfood repo. |
-| [CLAUDE.md](CLAUDE.md) | Claude Code-facing operational instructions for this dogfood repo. |
-| [`kit/v1/`](kit/v1/) | Copyable adopter kit. |
-| [`kit/v1/README.md`](kit/v1/README.md) | Kit quick start and adoption checklist. |
+| [docs/verification-theater-in-ai-agent-work.md](docs/verification-theater-in-ai-agent-work.md) | The full postmortem and argument (the canonical statement). |
+| [`gates/`](gates/) | The deterministic floor: small, readable, self-testing checks. |
+| [docs/fabricated-audit-vs-deterministic-checks.md](docs/fabricated-audit-vs-deterministic-checks.md) | Hero artifact — the three fabrications side-by-side with what caught them. |
+| [docs/experiments/](docs/experiments/) | The reproduction arc (n=3 clean negative; B1 controlled positive). |
+| [ENVELOPE.md](ENVELOPE.md) | The operating-limits boundary doc (formerly "the envelope"). |
+| [START_HERE.md](START_HERE.md) | Short first-reader orientation. |
+| [AGENTS.md](AGENTS.md) / [CLAUDE.md](CLAUDE.md) | Operational instructions for the Codex / Claude agents in this dogfood repo. |
+| [`kit/v1/`](kit/v1/) | Copyable adopter surface — the surviving floor, not the abandoned system. |
 | [`.agent-handoff/PROTOCOL.md`](.agent-handoff/PROTOCOL.md) | Live dogfood protocol and stop discipline. |
-| [`.agent-handoff/OPERATING-MODEL.md`](.agent-handoff/OPERATING-MODEL.md) | Reference operating model and role/lane explanation. |
-| [`.agent-handoff/STRATEGY.md`](.agent-handoff/STRATEGY.md) | Strategy, proof status, public-claim discipline, and trust framing. |
+| [`.agent-handoff/STRATEGY.md`](.agent-handoff/STRATEGY.md) | Strategy, proof status, calibrated-middle discipline (§15). |
 | [`.agent-handoff/COLLAB.md`](.agent-handoff/COLLAB.md) | Current source-of-truth handoff state. |
-| [`.agent-handoff/DASHBOARD.md`](.agent-handoff/DASHBOARD.md) | Markdown reference cockpit snapshot. |
-| [`.agent-handoff/DASHBOARD.html`](.agent-handoff/DASHBOARD.html) | Static self-contained reference cockpit. |
+| [`.agent-handoff/DASHBOARD.md`](.agent-handoff/DASHBOARD.md) / [`.html`](.agent-handoff/DASHBOARD.html) | The Decision Cockpit — preserved as graveyard, demoted to theatre. |
 | [`.agent-handoff/turns/`](.agent-handoff/turns/) | Append-only turn notes, audits, exits, and historical evidence. |
-| [`docs/`](docs/) | Older support docs and historical setup material. |
+| [`docs/`](docs/) | Support docs and historical setup material. |
 
-## Future Work
+The history in `.agent-handoff/turns/` is messy on purpose. Old dogfood evidence,
+stops, and corrections are preserved rather than laundered. Do not copy this
+repo's history into an adopter repo as if it were the protocol — copy the kit and
+build your own evidence trail.
 
-Likely next work remains narrow:
+## If you adopt anything from here
 
-1. extract a small, separate "approval envelope" starter kit (envelope
-   template, attestation semantics, agent/Git config bundles) into its own
-   repo — a separate action requiring exact human approval
-2. publish a public incident note on the auditor-fabrication record, framed
-   as an engineering postmortem with prior-art citations — requires exact
-   human approval
-3. run a small n=3 reproduction of the fabrication conditions before any
-   public reproducibility claim
-4. submit the incident to the AI Incident Database and keep a longitudinal
-   log of envelope catches from daily use
-5. consider trust hardening only through a separate approved track
+Adopt the floor, not the scaffolding:
 
-The project is intentionally conservative about claims. The point is not to
-make agents sound more authoritative. The point is to make authority visible.
+1. Don't trust a check's verdict — read the check, keep it small, run it on inputs
+   *you* choose, confirm the *consequence* (`git log`, the GitHub page, `ls`, a
+   live probe), never the printed message.
+2. Make every load-bearing claim reduce to a replayable check or a visible
+   consequence. Treat agent prose — including audit prose and a subagent's pasted
+   output — as unverified until you confirm the consequence.
+3. Put one deterministic gate in front of anything irreversible.
+4. Hold ground truth *outside the acting agent's write reach*. Ask "immutable to
+   whom?" before trusting any log.
+5. Write a boundary and own it — but do not mistake it for a control. Sign that
+   the *process* was followed, never that work you couldn't check is correct.
+6. Do not audit audits. Substrate terminates doubt. Watch for the
+   over-verification collapse as carefully as the under-verification lie.
+7. Keep the failures in, including the governance you tried that turned out to be
+   theatre.
+
+The point is not to make agents sound more authoritative. It is to make authority
+visible — and to be honest about how little of the impressive scaffolding was
+load-bearing.

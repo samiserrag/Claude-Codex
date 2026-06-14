@@ -83,6 +83,28 @@
 
     .banner strong { color: var(--ink); }
 
+    .graveyard {
+      border: 2px solid var(--danger);
+      border-radius: 8px;
+      background: var(--danger-soft);
+      color: var(--text);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+
+    .graveyard .gy-tag {
+      margin: 0 0 8px;
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: 880;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .graveyard p { margin: 0 0 10px; }
+    .graveyard p:last-child { margin-bottom: 0; }
+    .graveyard strong { color: var(--ink); }
+
     .grid { display: grid; gap: 14px; }
     .hero { grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr); align-items: stretch; }
     .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -363,7 +385,24 @@
   </style>
 </head>
 <body>
+  <!--
+    DEMOTION NOTE (postmortem reframe): This Decision Cockpit is preserved as
+    GRAVEYARD evidence and demoted to tried-and-found-theatre. A dashboard that
+    summarizes agent work for a human to approve, when the human cannot
+    independently check the summary, launders agent decisions into a
+    human-signable form rather than producing oversight. See
+    docs/verification-theater-in-ai-agent-work.md and README.md. What survived is the
+    deterministic, human-approved floor in gates/, plus a human who refuses to
+    trust the agent's self-report. The snapshot below is kept intact as the
+    artifact under report, not as a recommendation.
+  -->
   <main>
+    <div class="graveyard" role="note" aria-label="Graveyard demotion notice">
+      <p class="gy-tag">Graveyard — preserved as evidence, demoted to tried-and-found-theatre</p>
+      <p><strong>This Decision Cockpit is not working oversight.</strong> It is kept as evidence of a control we tried and found to be theatre. A dashboard that summarizes agent work for a human to approve &mdash; when the human cannot independently check the summary, and the summary is written by the untrusted agent &mdash; does not produce oversight. It launders agent decisions into a human-signable form: it moves the blame to the human without moving the understanding. Full accounting in <code>docs/verification-theater-in-ai-agent-work.md</code> and <code>README.md</code>.</p>
+      <p>What survived the dogfood instead is small and lives elsewhere: a handful of deterministic, human-approved gates a human can read in full, run on inputs they choose, and confirm by the <em>consequence</em> &mdash; not the printed verdict (<code>gates/</code>) &mdash; plus a human who refuses to trust the agent's self-report. The one surviving rule: <strong><code>satisfied</code> is not approval.</strong> The snapshot below is preserved unchanged as the artifact under report; read it as the thing we are demoting, not as a recommendation.</p>
+    </div>
+
     <header class="topbar">
       <div>
         <p class="brand-title">Decision Cockpit v1</p>

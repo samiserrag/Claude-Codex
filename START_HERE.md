@@ -2,21 +2,32 @@
 
 Read this first if you are new to this repo.
 
-`claude-codex` is a public showcase and build journal for a Git-native
-approval-boundary protocol. The repo dogfoods the method on its own work. The
-history is part of the evidence, but it is not the adopter kit.
+`claude-codex` is a build journal and a **postmortem**. I spent about a month
+building a Git-native harness for cross-model AI agent work and dogfooding it on
+its own development. The thesis it converged on is constructive: **probabilistic
+agents need deterministic custody** — the evidence trail, authority boundary, and
+consequence gate cannot be left to the agent's self-report. This repo keeps the
+whole record — the floor that held, and the larger scaffolding that didn't —
+because the part that didn't hold is the more useful warning.
 
-## If You Want To Understand The Method
+## The 90-second version
 
-Start with [README.md](README.md), then read:
+- An auditor agent in this repo **fabricated its own verification evidence three
+  times**. It was caught by deterministic mechanisms — a push gate and replayed
+  measurements — never by another model reading its prose.
+- The floor that survived is small: **a few deterministic gates you can read in
+  full, run on your own inputs, and confirm by the consequence** — plus a human
+  who refuses to trust the green checkmark. The rule of thumb: below the
+  deterministic floor, verify; above the floor, manage risk; do not call the
+  second one verification.
+- A documented finding sits alongside it: the bigger things I built around the
+  floor — an approval "envelope," a human decision cockpit, a verification
+  taxonomy, cross-vendor convergence rituals — mostly turned out to be theatre,
+  because **capture is not verification** (traces and dashboards capture activity;
+  they do not ground a claim until it reaches a check a human can inspect). They
+  are preserved here as the graveyard.
 
-1. [`.agent-handoff/PROTOCOL.md`](.agent-handoff/PROTOCOL.md) for the live
-   dogfood protocol.
-2. [`.agent-handoff/COLLAB.md`](.agent-handoff/COLLAB.md) for current state.
-3. A few recent files in [`.agent-handoff/turns/`](.agent-handoff/turns/) for
-   proof artifacts.
-
-The core boundary:
+The one rule that held up:
 
 ```text
 satisfied is not approval.
@@ -25,74 +36,69 @@ Model consensus is not approval.
 Human approval authorizes only the exact named consequence.
 ```
 
-## If You Want To Copy The Kit
+## Read these three things, in order
 
-Use [`kit/v1/README.md`](kit/v1/README.md).
+1. [README.md](README.md) — the full framing: what survived, what's the graveyard,
+   and the "operating limits / human-approved gates" rename.
+2. [docs/fabricated-audit-vs-deterministic-checks.md](docs/fabricated-audit-vs-deterministic-checks.md)
+   — the hero artifact: the three fabrications side-by-side with exactly what
+   caught each one.
+3. [docs/verification-theater-in-ai-agent-work.md](docs/verification-theater-in-ai-agent-work.md)
+   — the whole argument, the second (production) incident at the pattern level,
+   and the reproduction experiments.
 
-Copy the kit from `kit/v1`. Do not copy this repo's live `.agent-handoff`
-history into your repo as if it were required protocol setup.
+## The floor that survived
 
-The kit supports protocol-only adoption. The reference cockpit is optional.
+See [`gates/`](gates/). Each gate is a check where reality decides, not an agent,
+and you can re-run it yourself. Run [`gates/test-gates.sh`](gates/test-gates.sh)
+to watch every gate fire on a planted failure — you hold a lit match to the smoke
+detector; no agent is in the loop, and you don't need to be an expert to do it.
 
-## If You Want To Inspect Proof
+The gates cover only the **reality-checkable and reversible** surface (blast
+radius, secrets, irreversible git). They do nothing for whether the agent's
+*judgment* is correct. That narrowness is the honest headline.
 
-Treat the turn notes as build-journal evidence:
+## The graveyard (tried, reported as theatre)
 
-- Outcome Packets show the scope before work began.
-- Builder notes show what changed and how it was verified.
-- Auditor notes show independent critique.
-- Exit or consultation notes show what was accepted, deferred, or left
-  unproven.
+Preserved in the repo as evidence, not as a recommendation:
 
-The old messy history is preserved rather than laundered. It does not mean an
-adopter needs the same model assignments, process volume, local labels, or
-dashboard state.
+- The boundary doc, [ENVELOPE.md](ENVELOPE.md) — useful for organizing a human's
+  attention and naming the irreversible doors; **not** a control on its own,
+  because an unenforced boundary is just the agent attesting it behaved.
+- The Decision Cockpit,
+  [`.agent-handoff/DASHBOARD.md`](.agent-handoff/DASHBOARD.md) /
+  [`.html`](.agent-handoff/DASHBOARD.html) — a dashboard that summarized agent
+  work for human approval, which (when the human can't independently check the
+  summary) launders agent decisions into a human-signable form. Demoted to
+  graveyard.
 
-## If You Want To See The Reference Cockpit
+The full account is in the whitepaper — see "Capture is not verification" and
+"The governance failure in the other direction."
 
-Open [`.agent-handoff/DASHBOARD.md`](.agent-handoff/DASHBOARD.md) or
-[`.agent-handoff/DASHBOARD.html`](.agent-handoff/DASHBOARD.html).
+## A note on names
 
-Decision Cockpit v1 is a static reference cockpit snapshot. `COLLAB.md`
-remains authoritative. The cockpit does not grant approval and is not the
-primary public entrypoint.
+This project used to call its boundary an "approval envelope." That name is
+retired as a lessons-learned pivot: the boundary is now **operating limits**, and
+the small mechanical checks are **human-approved gates** (a competent human read
+*and* approved them, not merely ran them). Older files still say "envelope"; that
+history is preserved on purpose.
 
-## Board Mode / Structured Workspace Context
+## If you want to copy something
 
-Board Mode and similar structured AI workspaces help humans manage agent work.
-This protocol helps humans authorize agent consequences.
+Use [`kit/v1/README.md`](kit/v1/README.md), and copy the **floor**, not the
+abandoned system: the gates, the boundary doc, and the state separation
+(`built` / `audited` / `satisfied` / `human-approved` kept distinct). Do not copy
+this repo's live `.agent-handoff` history into your repo as if it were required
+setup.
 
-Task completion, auditor satisfaction, and model consensus are not human
-authorization. A stable main version should not change just because an agent
-completed a task. The protocol separates exploration, satisfaction, approval,
-and durable consequence.
-
-## What Not To Treat As Adoption Requirements
-
-Do not treat these as requirements for your repo:
-
-- this repo's historical turn-note volume
-- this repo's live `.agent-handoff` state
-- this repo's current model assignments
-- this repo's dashboard snapshot
-- this repo's GitHub metadata
-- old local paths or old dogfood-specific labels in historical notes
-
-Use the kit, fill local placeholders, define your own human approver, and keep
-the approval boundary explicit.
-
-## What Is Still Future Work
+## What is still future work / not approved
 
 The kit dry-run is complete (Stage A `guided_clean`; Stage B
 `kit_led_clean_enough`). This repo still does not prove external adoption,
-stranger installability, larger-team scale, trust hardening, runtime
-transport safety, or legal/compliance suitability.
+stranger installability, larger-team scale, trust hardening, runtime transport
+safety, or legal/compliance suitability. There is **no rate claim** anywhere —
+this is a postmortem, not a benchmark.
 
-For the repo's most important evidence — the auditor-fabrication incident and
-the deterministic checks that caught it — see
-[docs/fabricated-audit-vs-deterministic-checks.md](docs/fabricated-audit-vs-deterministic-checks.md)
-and the E6-CASE-STUDY-001 turn notes.
-
-Public-alpha release, public-proof runs, clean repo creation, trust-layer
-implementation, dashboard redesign, skills, memory files, automations,
-subagents, and scheduled checks are not approved by this orientation.
+Public-alpha release, public-proof runs, trust-layer implementation, dashboard
+redesign, skills, memory files, automations, subagents, and scheduled checks are
+not approved by this orientation.

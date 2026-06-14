@@ -1,13 +1,78 @@
 # Portable Collaboration Kit v1
 
-This kit is a reviewable protocol scaffold for running a builder/auditor
-collaboration inside an adopting repository. It gives agents a
-shared source of truth, append-only turn notes, explicit approval stopgates,
-and a cold-readable handoff shape.
+This kit is the copyable adopter surface for a build-journal postmortem on AI
+verification theatre. Read [`README.md`](../../README.md) and the whitepaper
+([`docs/verification-theater-in-ai-agent-work.md`](../../docs/verification-theater-in-ai-agent-work.md))
+first for the full result. The short version: over about a month the author
+built a Git-native governance harness and dogfooded it, and **most of the
+governance machinery turned out to be theatre.** This kit gives you the part
+that survived — and is honest about the part that did not.
 
-The kit is deliberately small. It is not an installer, not a live bridge, not
-a framework, not an MCP registration, and not a plugin setup. It copies
-plain repository files that humans and agents can review before use.
+## Copy the floor, not the scaffolding
+
+What survived is small, boring, and learnable by anyone who can read eight
+lines of shell and open a web page. It is the only thing worth copying:
+
+1. **Human-approved gates** — a handful of deterministic checks a competent
+   human has *read and approved* (not merely run), small enough to read in
+   full, run on inputs the human chooses, and confirm by the *consequence* —
+   not by the gate's printed verdict. These live in the source repo's
+   [`gates/`](../../gates/). Copy them, read them, run the smoke-detector
+   self-check, and keep them small. See **[How To Copy And Run The
+   Gates](#how-to-copy-and-run-the-gates)** below.
+2. **The operating-limits boundary doc** — a short document a human owns that
+   names the allowed blast radius and the irreversible doors. Useful for
+   organizing a human's attention; *not* a control on its own. See
+   [`ENVELOPE.md`](../../ENVELOPE.md) (kept and reframed) and **[The Operating-
+   Limits Boundary Doc](#the-operating-limits-boundary-doc)** below.
+3. **The state separation** — keeping `built` / `audited` / `satisfied` /
+   `human-approved` distinct, and the one rule that survived: **`satisfied` is
+   not approval.** The protocol files this kit ships exist to hold that
+   separation. See **[The State Separation](#the-state-separation-the-surviving-discipline)**
+   below.
+
+That is the surviving toolkit. It is much smaller than what was built, and
+**none of it is novel** — it is CI, branch protection, separation of duties,
+live probes, and "read the script," assembled with a human who refuses to
+trust the agent's self-report.
+
+## Do not copy the graveyard
+
+The elaborate scaffolding around these incidents was tried, documented, and is
+reported as theatre — preserved as a warning, **not** as a recommendation. The
+[whitepaper](../../docs/verification-theater-in-ai-agent-work.md) has the
+item-by-item accounting. The short list of what **not** to treat as a control:
+
+- **The "envelope" / operating-limits doc as a *solution*.** A boundary
+  enforced only by the agent attesting "I stayed inside it" is the *same class
+  of claim* as the auditor attesting "I verified the QA" — a self-report from
+  the untrusted party. Keep the doc to organize attention; do not mistake it
+  for a control.
+- **The Decision Cockpit / dashboard as oversight.** A dashboard that
+  summarizes agent work for a human to approve — when the human cannot
+  independently check the summary, and the summary is written by the untrusted
+  agent — launders agent decisions into a form a human will sign. The optional
+  dashboard template in this kit is a convenience surface only (see [Dashboard
+  Optionality](#dashboard-optionality)); it is not the floor and grants no
+  approval.
+- **Cross-vendor convergence as grounding.** Pairing different vendors' models
+  caught some reasoning errors and missed every missing-observation error. It
+  is useful for review, useless as evidence — and the strongest claim this work
+  supports is only: *we found nothing — our own attempts included — that closes
+  the comprehension gap; demand the deterministic floor and run it yourself.*
+
+## What this kit ships, and what it does not
+
+This kit is deliberately small. It is not an installer, not a live bridge, not
+a framework, not an MCP registration, and not a plugin setup. It copies plain
+repository files that humans and agents can review before use. The files it
+ships are the **scaffolding for the state separation and the operating-limits
+boundary** — the protocol, the handoff template, the append-only turn-note
+shape, and the approval-boundary snippets. The **human-approved gates
+themselves are the load-bearing floor and are not yet shipped inside this kit**;
+copy them from the source repo's [`gates/`](../../gates/) and read them before
+you rely on them. (Gate files in this kit are future work; see [What This Kit
+Is Not](#what-this-kit-is-not).)
 
 ## Minimum Success Test
 
@@ -22,6 +87,85 @@ not treat satisfied, auditor pass, or model consensus as approval.
 
 This kit does not prove external adoption, public proof, public-alpha readiness,
 or scale. The examples are examples, not proof.
+
+## How To Copy And Run The Gates
+
+The gates are the part where **reality decides, not an agent**, and **you can
+re-run them yourself**. Copy them from the source repo's [`gates/`](../../gates/).
+Each one answers a single yes/no question, prints `ALLOW` or `BLOCK`, and exits
+`0` or `1`. That is the whole contract.
+
+| Gate | The question it answers | Who answers |
+| --- | --- | --- |
+| `check-blast-radius.sh <path>` | Is this write inside the repo, or reaching outside it? | the filesystem path |
+| `check-secrets.sh <file>` | Does this file contain an obvious secret? | a pattern match |
+| `check-irreversible-git.sh "<cmd>"` | Is this irreversible action approved? | the command string + an approval token |
+
+The discipline that makes them a *floor* and not one more thing to take on
+faith has three parts, and all three take the verdict out of the agent's hands:
+
+1. **The check is small enough to read in full.** Simplicity is the security
+   property. A clever 500-line "verifier" is unauditable; an eight-line one is
+   not. An agent's eloquence and complexity are the *threat surface*, not a
+   reassurance.
+2. **You run it on inputs you choose, not the agent's curated ones.**
+3. **You confirm the *consequence* on a surface the agent does not control** —
+   not "the script said the push was blocked" but `git log` showing the commit
+   never landed; not "the deploy passed" but the GitHub page; not "the file was
+   written" but `ls`.
+
+You do not have to be an expert to *run* a gate and watch it fire. Hold a lit
+match to the smoke detector with `gates/test-gates.sh`, which feeds every gate a
+known-good and a known-bad input and confirms each one allows the good and
+blocks the bad — no agent in the loop. Telling whether a gate is the *right*
+gate — not too tight, not too loose — is where human competence still has to
+live. A gate can be miscalibrated in either direction: too tight, it blocks
+legitimate work while the green elsewhere gives false comfort; too loose, it
+waves through exactly what it was meant to catch. A check no qualified human has
+read is not "human-approved" — it is one more unexamined claim wearing a green
+checkmark.
+
+The gates cover exactly one axis: the **reality-checkable and reversible**
+surface (blast radius, secrets, irreversible git). They do **nothing** for
+whether the agent's *judgment* is correct. There is no gate for good judgment,
+and that narrowness is the honest headline, not a gap to paper over.
+
+## The Operating-Limits Boundary Doc
+
+Write a short boundary document a human owns. It names the allowed blast radius,
+what is reversible, and which irreversible doors always require exact human
+approval. The reference is [`ENVELOPE.md`](../../ENVELOPE.md) in the source
+repo — kept and reframed from the project's original "approval envelope."
+
+Use it to organize a human's limited attention and to write down what counts as
+irreversible. Do **not** mistake it for a control: a boundary enforced only by
+the agent attesting "I stayed inside it" is a self-report from the untrusted
+party, the same class of claim as a fabricated audit. Sign that the *process*
+was followed; never sign that work you could not check is correct. (This is the
+"envelope → operating limits" rename — borrowed from the aviation/automotive
+*operating envelope*, a bounded region of safe states, not from a paper mail
+envelope. Older files and turn notes still say "envelope"; that history is
+preserved on purpose because the rename *is* a finding.)
+
+## The State Separation (the surviving discipline)
+
+Keeping these states distinct is the part of the protocol that held up. Each
+answers a different question, and the protocol files this kit ships exist to
+keep them from collapsing into one another:
+
+| State | What it means | What it does not mean |
+| --- | --- | --- |
+| Built | A builder produced the scoped artifact or report. | The artifact is correct, reviewed, or authorized. |
+| Audited | An auditor inspected the work. | The human has approved the consequence. |
+| Satisfied | The auditor believes the rubric was met. | Commit, push, merge, launch, or release is authorized. |
+| Human-approved | The configured human authorized an exact action. | Any adjacent action, broader scope, or future relaxation is authorized. |
+| Committed / merged | A Git consequence occurred after exact approval. | Public release, naming, or launch is automatically approved. |
+
+This protects a human from quiet scope expansion, and it prevents an agent's
+`done` / `audited` / `satisfied` from being treated as a human's approval. The
+one rule that survived: **`satisfied` is not approval.** Auditor pass is not
+approval. Model consensus is not approval. A green check is not approval. Human
+approval authorizes only the exact named consequence.
 
 ## Role Assignment Guide
 
@@ -70,6 +214,12 @@ approval states, or template vocabulary.
 ## Adoption Checklist
 
 - Copy the kit files into the adopting repo.
+- Copy the human-approved gates from the source repo's [`gates/`](../../gates/),
+  read each one in full, and run `gates/test-gates.sh` (the smoke-detector
+  self-check) before relying on them.
+- Write an operating-limits boundary doc a human owns, and record its path as
+  `{{OPERATING_LIMITS_DOC_OR_NA}}` in the agent templates (or `N/A` with a
+  reason if you are deferring it).
 - Fill role placeholders:
   `{{COORDINATOR_AGENT}}`, `{{BUILDER_AGENT}}`, `{{AUDITOR_AGENT}}`,
   `{{HUMAN_APPROVER_LABEL}}`, `{{REPO_NAME}}`, and `{{LOCAL_REPO_PATH}}`.
@@ -125,6 +275,9 @@ approval states, or template vocabulary.
 - Not proof that public-proof runs have happened.
 - Not a dashboard requirement.
 - Not a runtime replacement, agent safety solution, or AI alignment solution.
+- Not yet a carrier for the human-approved gates themselves: the deterministic
+  floor lives in the source repo's [`gates/`](../../gates/) and must be copied
+  and read from there. Bundling the gate files into this kit is future work.
 
 ## Trust Caveats
 
@@ -231,10 +384,20 @@ validated at scale.
 
 ## Dashboard Optionality
 
-Protocol-only adoption is valid. The optional Decision Cockpit / reference
-dashboard is a convenience surface, not the protocol. Some adopters may use
+Protocol-only adoption is valid, and it is the recommended path. The optional
+Decision Cockpit / reference dashboard is a convenience surface, not the
+protocol, and **not the floor.** Some adopters may use
 `.agent-handoff/DASHBOARD.md.template`; others may implement the protocol
 inside their own dashboard, IDE, CI, compliance surface, or runtime.
+
+Be honest about what a dashboard is and is not. In the source project the
+Decision Cockpit was reported as theatre: a dashboard that summarizes agent work
+for a human to approve does not produce oversight when the human cannot
+independently check the summary and the summary is written by the untrusted
+agent. It launders agent decisions into a form a human will sign. Use the
+dashboard, if at all, to *navigate* the substrate — never as the thing you
+approve from. The approval still terminates at a consequence you confirmed
+yourself.
 
 Do not add `DASHBOARD.html` to this kit yet. Do not force dashboard adoption.
 `COLLAB.md` remains authoritative; the dashboard is operational only, does not

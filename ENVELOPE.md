@@ -1,19 +1,33 @@
-# ENVELOPE.md
+# Operating Limits
+
+> **Naming note (lessons-learned pivot).** This document used to be called "the
+> approval envelope." That name is retired: "envelope" collided two ideas (an
+> aviation/automotive *operating envelope* — a bounded region of safe states — and
+> a paper mail envelope you'd metaphorically sign the flap of) and the collision
+> obscured what is actually true. What is true is plainer: **a human owns a
+> boundary and signs an attestation about *process*.** The boundary is now called
+> **operating limits**; the small mechanical checks are **human-approved gates**
+> ([`gates/`](gates/)). The file is still named `ENVELOPE.md` for link stability;
+> renaming it to `OPERATING-LIMITS.md` (and sweeping the references) is a discrete
+> follow-up. See [the whitepaper](docs/verification-theater-in-ai-agent-work.md)
+> for why the envelope-as-solution framing is reported as theatre.
 
 This file is owned by a named human. Agents may propose edits as pull requests;
 they may never author authority over this file. The human who merges a change to
 this file is the human who owns the consequences of that change.
 
-This is `claude-codex` dogfooding the [agent-envelope](https://github.com/samiserrag/agent-envelope)
-kit on itself. It is the compact, kit-shaped statement of how agents may work in
-this repo. It does not replace `.agent-handoff/PROTOCOL.md` (the detailed dogfood
-protocol) or `CLAUDE.md` (Claude Code operating instructions); it summarizes their
-boundary in the kit's vocabulary and points to them for detail.
+It is the compact statement of how agents may work in this repo. It does not
+replace `.agent-handoff/PROTOCOL.md` (the detailed dogfood protocol) or
+`CLAUDE.md` (Claude Code operating instructions); it summarizes their boundary and
+points to them for detail. Read it as **the policy the human owns and the limits
+the gates enforce**, not as a guarantee — an unenforced boundary is just the agent
+attesting it behaved, which is the exact self-report this project learned not to
+trust.
 
-## Envelope (v1)
+## Operating limits (v1)
 
 ```
-ENVELOPE:       claude-codex (Git-native approval-boundary governance dogfood) v1
+OPERATING LIMITS: claude-codex (Git-native approval-boundary governance dogfood) v1
 Owner:          Sami Serrag <sami.serrag@gmail.com>
 Blast radius:   This repo's working tree only. No writes to sibling repos
                 (agent-envelope, colorado-songwriters-collective). No production,
@@ -46,28 +60,47 @@ Evolution:      This file changes only via a PR that references a postmortem.
 
 ## Enforcement status (honest, v1)
 
-As of v1 these lines are enforced by **human attestation, convention, and
-sampling**, not yet by mechanical gates. That is a deliberate, disclosed
-limitation, not a claim of hardening. Mechanical enforcement is a separate,
-explicitly-gated phase (Phase 2): Claude Code permissions/hooks for blast radius
-and escalation, CODEOWNERS for no-touch paths, branch protection so no push
-reaches `main` without a PR, a PR-template attestation checkbox, and a sampling
-script. None of those are wired today. Do not read this envelope as a guarantee;
-read it as the policy the human owns and the controls we intend to wire.
+There are two separable things here: the **checks** and the **wiring**.
 
-The harness itself has already demonstrated why the mechanical layer matters: the
-push gate and replayable checks caught fabricated audit evidence three times when
-prose review did not (see `docs/fabricated-audit-vs-deterministic-checks.md`).
+- **The checks now exist.** [`gates/`](gates/) holds small, readable, self-testing
+  deterministic gates for the reality-checkable and reversible surface (blast
+  radius, secrets, irreversible git). They are runnable on demand by a human today
+  (`bash gates/test-gates.sh` proves each fires on a planted failure), and any
+  human can read each one in full. This is the part that survived the cull.
+- **The wiring is still Phase 2.** Until wired, the gates *ask* the agent to stop
+  rather than *make* it stop, so the operative enforcement of the limits below is
+  still **human attestation, convention, sampling, and on-demand gate runs** — not
+  automatic mechanical refusal. That is a deliberate, disclosed limitation, not a
+  claim of hardening. Wiring (a separate, explicitly-gated step the human applies)
+  means: a Claude Code PreToolUse hook calling the gates before a tool runs;
+  CODEOWNERS on no-touch paths; a git pre-push hook + CI (`.github/workflows/
+  envelope-checks.yml`); branch protection so no push reaches `main` without a PR;
+  and a PR-template attestation checkbox. See
+  `docs/envelope-kit-additions/enforcement-plan.md`.
 
-## Per-line enforcement map (target state, Phase 2)
+Do not read this as a guarantee; read it as the policy the human owns plus the
+gates that exist and the wiring still to apply.
 
-| Field           | Intended mechanism (not yet wired)                                 |
-|-----------------|--------------------------------------------------------------------|
-| Blast radius    | `.claude/settings` allow/deny; CODEOWNERS on no-touch paths        |
-| Reversibility   | Branch protection (no direct push to `main`); PR required          |
-| Required checks | PreToolUse hook blocks commit absent a checks-passed marker; CI    |
-| Caps            | Turn cap stated in the experiment authorization                    |
-| Escalation      | PreToolUse hook blocks irreversible commands and out-of-repo writes |
-| Attestation     | PR-template checkbox                                                |
-| Sampling        | `scripts/sample-review.sh` (from the kit) on a schedule            |
-| Evolution       | Postmortem reference required in the change's PR                    |
+The harness itself demonstrated why the mechanical layer matters: a push gate and
+replayable checks caught fabricated audit evidence three times when prose review
+did not (see `docs/fabricated-audit-vs-deterministic-checks.md`). And it cuts both
+ways — a gate can be miscalibrated too tight (blocking legitimate work) or too
+loose (waving through what it should catch), so a gate only counts as
+"human-approved" once a competent human has read and approved it, not merely run
+it.
+
+## Per-line enforcement map
+
+The gate scripts exist (`gates/`); the wiring that makes them fire automatically
+is the Phase-2 step the human applies.
+
+| Field           | Gate that exists                         | Wiring still to apply                              |
+|-----------------|------------------------------------------|---------------------------------------------------|
+| Blast radius    | `gates/check-blast-radius.sh`            | PreToolUse hook; CODEOWNERS on no-touch paths     |
+| Reversibility   | `gates/check-irreversible-git.sh`        | Branch protection (no direct push to `main`); PR  |
+| Required checks | `gates/check-secrets.sh`, `test-gates.sh`| git pre-push hook + CI                             |
+| Caps            | (none — convention)                      | Turn cap stated in the experiment authorization   |
+| Escalation      | `gates/check-irreversible-git.sh`        | PreToolUse hook blocks irreversible cmds / writes |
+| Attestation     | (none — human-authored)                  | PR-template checkbox                               |
+| Sampling        | (none — human-run)                       | `scripts/sample-review.sh` on a schedule          |
+| Evolution       | (none — convention)                      | Postmortem reference required in the change's PR   |

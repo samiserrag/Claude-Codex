@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# pre-push — before the one-way door of a push:
+#   (1) prove the floor still fires (gates/test-gates.sh), and
+#   (2) require an explicit human-approval token for the irreversible push.
+# Install: copy to .git/hooks/pre-push and `chmod +x`.
+# Do NOT trust this hook's message — confirm the consequence in `git log` / the
+# GitHub page: a blocked push is genuinely absent there.
+set -uo pipefail
+
+repo="$(git rev-parse --show-toplevel)"
+
+# (1) The floor must still be real. If a gate stops firing, it is theatre.
+if [ -x "$repo/gates/test-gates.sh" ]; then
+  if ! bash "$repo/gates/test-gates.sh" >/dev/null 2>&1; then
+    echo "pre-push BLOCK: gates/test-gates.sh failed — a gate is not firing on a" >&2
+    echo "planted failure. Fix the floor before pushing. Run it yourself:" >&2
+    echo "  bash gates/test-gates.sh" >&2
+    exit 1
+  fi
+fi
+
+# (2) The push is irreversible — require the human-approval token.
+# (If you prefer to control pushes with GitHub branch protection instead, delete
+#  this block and keep only the test-gates check above.)
+if [ "${ENVELOPE_HUMAN_APPROVAL:-}" != "approved" ]; then
+  echo "pre-push BLOCK: a push is irreversible and ENVELOPE_HUMAN_APPROVAL is not" >&2
+  echo "'approved'. A human approves this exact action by re-running it as:" >&2
+  echo "  ENVELOPE_HUMAN_APPROVAL=approved git push <remote> <branch>" >&2
+  exit 1
+fi
+
+exit 0
