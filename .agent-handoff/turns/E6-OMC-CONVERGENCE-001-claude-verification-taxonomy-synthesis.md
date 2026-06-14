@@ -44,9 +44,10 @@ binds the whole digest.
      the fishing log was trustworthy because trial agents couldn't write it).
    - **High-blast-radius corollary (OMC field finding):** the credential that
      can rewrite the audit substrate must be a separate, more-restricted grant
-     than routine write access. OMC's `event_audit_log` is NOT ground truth
-     today because the coordinator holds a Supabase management token that
-     bypasses RLS and can rewrite it. A high-privilege agent must be
+     than routine write access. OMC's audit log is NOT ground truth today because
+     the coordinator holds a high-privilege credential that can rewrite it
+     [redacted for public release: OMC audit-table name and the specific
+     credential/access-control mechanism]. A high-privilege agent must be
      *structurally unable* to mutate the record it's judged against.
    - **Present vs historical state (claude-codex addition):** a live external
      probe verifies *current* state only — it cannot reconstruct history.
