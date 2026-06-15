@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verification Theater in AI Agent Work — the whitepaper</title>
+<meta name="description" content="The full postmortem: two field incidents, a controlled reproduction, deterministic custody, and the small checks that ground human approval." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0b0c0e; --bg2:#121418; --bg3:#08090b;
+    --ink:#ECEAE3; --ink2:#a6a49b; --ink3:#6d6c66;
+    --line:rgba(236,234,227,.12); --line2:rgba(236,234,227,.22);
+    --allow:#6fe0a0; --block:#ff7d6b;
+    --disp:"Fraunces",Georgia,serif; --body:"Newsreader",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:var(--allow);text-decoration:none} a:hover{text-decoration:underline;text-underline-offset:3px}
+  header.bar{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(11,12,14,.72);border-bottom:1px solid var(--line)}
+  .bar-in{max-width:980px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-size:13px;color:var(--ink)} .brand b{color:var(--allow);font-weight:700}
+  .bar nav a{font-family:var(--mono);font-size:13px;color:var(--ink2);margin-left:24px}
+  .bar nav a:hover{color:var(--ink);text-decoration:none}
+  @media(max-width:680px){.bar nav a:not(.home){display:none}}
+
+  main{max-width:760px;margin:0 auto;padding:64px 28px 40px}
+  .back{font-family:var(--mono);font-size:12.5px;color:var(--ink3);display:inline-block;margin-bottom:30px}
+  #paper h1{font-family:var(--disp);font-weight:900;font-size:clamp(34px,5.5vw,56px);line-height:1.06;letter-spacing:-.02em;margin:0 0 .2em}
+  #paper h2{font-family:var(--disp);font-weight:500;font-size:clamp(25px,3.4vw,33px);line-height:1.15;letter-spacing:-.01em;margin:2.4em 0 .5em;padding-top:1.4em;border-top:1px solid var(--line)}
+  #paper h3{font-family:var(--disp);font-weight:500;font-size:21px;margin:1.8em 0 .4em;color:var(--ink)}
+  #paper p{margin:1.05em 0;color:var(--ink)}
+  #paper em{font-style:italic;color:var(--ink2)}
+  #paper strong{font-weight:500;color:var(--ink)}
+  #paper a{border-bottom:1px solid rgba(111,224,160,.3)} #paper a:hover{border-bottom-color:var(--allow);text-decoration:none}
+  #paper ul,#paper ol{padding-left:1.3em;margin:1.05em 0} #paper li{margin:.4em 0}
+  #paper blockquote{margin:1.5em 0;padding:14px 22px;border-left:2px solid var(--allow);background:var(--bg2);border-radius:0 8px 8px 0}
+  #paper blockquote p{margin:.3em 0;font-family:var(--disp);font-size:1.06em;color:var(--ink)}
+  #paper code{font-family:var(--mono);font-size:.82em;background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--allow)}
+  #paper pre{background:var(--bg3);border:1px solid var(--line);border-radius:10px;padding:18px;overflow-x:auto;margin:1.4em 0}
+  #paper pre code{background:none;border:0;padding:0;color:var(--ink);font-size:13px;line-height:1.7}
+  #paper hr{border:0;border-top:1px solid var(--line);margin:2.6em 0}
+  #paper table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:15px}
+  #paper th,#paper td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  #paper th{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink2);font-weight:500;background:var(--bg2)}
+  .loading{font-family:var(--mono);font-size:13px;color:var(--ink3)}
+  footer{border-top:1px solid var(--line);margin-top:60px}
+  .foot-in{max-width:760px;margin:0 auto;padding:40px 28px 80px;font-family:var(--mono);font-size:12px;color:var(--ink3);line-height:2}
+  .foot-in a{color:var(--ink2)}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand home" href="index.html"><b>‹</b> verification-theater</a>
+    <nav>
+      <a href="index.html#floor">the floor</a>
+      <a href="index.html#contact">contact</a>
+      <a href="https://github.com/samiserrag/Claude-Codex">repo ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <a class="back" href="index.html">‹ back to overview</a>
+  <article id="paper"><p class="loading">Rendering the whitepaper…</p></article>
+  <noscript><p>This page renders the whitepaper with JavaScript. Read it directly: <a href="https://github.com/samiserrag/Claude-Codex/blob/whitepaper-v1/docs/verification-theater-in-ai-agent-work.md">on GitHub</a> or <a href="whitepaper.md">the raw markdown</a>.</p></noscript>
+</main>
+
+<footer>
+  <div class="foot-in">
+    Sami Serrag &middot; <a href="https://openmiccolorado.org">openmiccolorado.org</a><br/>
+    source &middot; <a href="https://github.com/samiserrag/Claude-Codex/blob/whitepaper-v1/docs/verification-theater-in-ai-agent-work.md">samiserrag/Claude-Codex @ whitepaper-v1</a><br/>
+    preserved in git — nothing laundered.
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+  (function(){
+    var el=document.getElementById('paper');
+    function render(md){ marked.setOptions({gfm:true,breaks:false}); el.innerHTML=marked.parse(md); }
+    fetch('whitepaper.md').then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+      .then(render)
+      .catch(function(){
+        el.innerHTML='<p>Couldn’t load the markdown from this context (local <code>file://</code> blocks it). It renders once the site is served. In the meantime, read it <a href="https://github.com/samiserrag/Claude-Codex/blob/whitepaper-v1/docs/verification-theater-in-ai-agent-work.md">on GitHub</a>.</p>';
+      });
+  })();
+</script>
+</body>
+</html>

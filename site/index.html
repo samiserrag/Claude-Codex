@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verification Theater in AI Agent Work</title>
+<meta name="description" content="A preserved postmortem on fluent audit failures, unreadable traces, deterministic custody, and the small checks that still ground human approval." />
+<meta property="og:title" content="Verification Theater in AI Agent Work" />
+<meta property="og:description" content="Probabilistic agents need deterministic custody. Below the floor, verify. Above the floor, manage risk. Do not call the second one verification." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0b0c0e; --bg2:#121418; --bg3:#181b20;
+    --ink:#ECEAE3; --ink2:#a6a49b; --ink3:#6d6c66;
+    --line:rgba(236,234,227,.12); --line2:rgba(236,234,227,.22);
+    --allow:#6fe0a0; --block:#ff7d6b; --amber:#f0b35e;
+    --disp:"Fraunces",Georgia,serif; --body:"Newsreader",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+    --wrap:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--body);font-size:19px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(var(--line) 1px,transparent 1px);
+    background-size:34px 34px;background-position:-1px -1px;
+  }
+  a{color:var(--allow);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:3px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .mono{font-family:var(--mono)}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+
+  header.bar{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
+    background:rgba(11,12,14,.72);border-bottom:1px solid var(--line)}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ink)}
+  .brand b{color:var(--allow);font-weight:700}
+  nav.top a{font-family:var(--mono);font-size:13px;color:var(--ink2);margin-left:26px}
+  nav.top a:hover{color:var(--ink);text-decoration:none}
+  @media(max-width:680px){nav.top{display:none}}
+
+  section{padding:96px 0;border-bottom:1px solid var(--line)}
+  h1,h2,h3{font-family:var(--disp);font-weight:500;line-height:1.05;margin:0}
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* hero */
+  .hero{padding:120px 0 104px;border-bottom:1px solid var(--line)}
+  .hero h1{font-size:clamp(40px,7vw,86px);font-weight:900;letter-spacing:-.02em;margin:18px 0 0}
+  .hero .sub{font-size:clamp(19px,2.3vw,25px);color:var(--ink2);max-width:42ch;margin:26px 0 0;font-weight:400}
+  .thesis{margin:44px 0 0;border-left:2px solid var(--allow);padding:6px 0 6px 22px}
+  .thesis p{margin:0;font-family:var(--disp);font-size:clamp(22px,3vw,30px);font-weight:500;line-height:1.28}
+  .slogan{font-family:var(--mono);font-size:14.5px;line-height:1.9;color:var(--ink);margin:30px 0 0;
+    background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .slogan b{color:var(--allow);font-weight:500}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin:38px 0 0}
+  .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.02em;padding:13px 20px;border-radius:9px;
+    border:1px solid var(--line2);color:var(--ink);transition:.18s;display:inline-flex;align-items:center;gap:9px}
+  .btn:hover{text-decoration:none;border-color:var(--allow);color:var(--allow);transform:translateY(-1px)}
+  .btn.primary{background:var(--allow);color:#06281a;border-color:var(--allow);font-weight:700}
+  .btn.primary:hover{color:#06281a;filter:brightness(1.08)}
+
+  .lede{font-size:clamp(20px,2.4vw,26px);line-height:1.55;max-width:34ch}
+  .kicker{font-family:var(--disp);font-size:clamp(28px,4vw,44px);font-weight:500;letter-spacing:-.01em;margin:14px 0 0}
+  .muted{color:var(--ink2)}
+  p.body{max-width:64ch;color:var(--ink);margin:22px 0 0}
+  p.body.muted{color:var(--ink2)}
+
+  /* fabrication diff */
+  .diff{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:44px 0 0}
+  @media(max-width:760px){.diff{grid-template-columns:1fr}}
+  .panel{background:var(--bg2);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .panel .ph{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    padding:13px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px}
+  .panel.bad .ph{color:var(--block)} .panel.good .ph{color:var(--allow)}
+  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;padding:3px 8px;border-radius:5px;margin-left:auto}
+  .panel.bad .tag{background:rgba(255,125,107,.14);color:var(--block)}
+  .panel.good .tag{background:rgba(111,224,160,.14);color:var(--allow)}
+  .panel pre{margin:0;padding:18px;font-family:var(--mono);font-size:13px;line-height:1.75;color:var(--ink);white-space:pre-wrap}
+  .panel .cap{padding:0 18px 18px;font-size:15.5px;color:var(--ink2)}
+  .panel .cap b{color:var(--ink);font-weight:500}
+
+  /* gates */
+  .gates{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0 0}
+  @media(max-width:760px){.gates{grid-template-columns:1fr}}
+  .gate{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:20px;transition:.18s}
+  .gate:hover{border-color:var(--line2);transform:translateY(-2px)}
+  .gate .name{font-family:var(--mono);font-size:13.5px;color:var(--allow);font-weight:500}
+  .gate .q{margin:12px 0 0;font-size:16.5px;line-height:1.5}
+  .gate .ans{margin:14px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink3)}
+  .verdict{display:flex;gap:10px;margin:34px 0 0;flex-wrap:wrap}
+  .chip{font-family:var(--mono);font-size:12.5px;padding:7px 13px;border-radius:7px;border:1px solid var(--line2)}
+  .chip.a{color:var(--allow);border-color:rgba(111,224,160,.4)}
+  .chip.b{color:var(--block);border-color:rgba(255,125,107,.4)}
+
+  /* contact / comments */
+  .contact{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+  .clink{font-family:var(--mono);font-size:13.5px;padding:12px 18px;border:1px solid var(--line2);border-radius:9px;
+    color:var(--ink);display:inline-flex;align-items:center;gap:10px;transition:.18s}
+  .clink:hover{border-color:var(--allow);color:var(--allow);text-decoration:none}
+  .note{font-family:var(--mono);font-size:12px;color:var(--ink3);margin:14px 0 0}
+
+  footer{padding:64px 0 90px;border:0}
+  footer .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:34px}
+  @media(max-width:680px){footer .grid{grid-template-columns:1fr}}
+  footer p{margin:0 0 12px;color:var(--ink2);font-size:16px;max-width:52ch}
+  footer .who b{color:var(--ink);font-weight:500}
+  footer .meta{font-family:var(--mono);font-size:12px;color:var(--ink3);line-height:2}
+  .seal{font-family:var(--mono);font-size:11.5px;color:var(--ink3);letter-spacing:.08em;margin-top:40px;
+    border-top:1px solid var(--line);padding-top:22px}
+
+  .figimg{margin:42px 0 0}
+  .figimg img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}
+  .figimg figcaption{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--ink3);margin-top:12px;line-height:1.6}
+  .specimen{margin:38px 0 0;border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:var(--bg2)}
+  .specimen .sh{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--block);padding:13px 18px;border-bottom:1px solid var(--line)}
+  .specimen iframe{width:100%;height:560px;border:0;background:#fff;display:block}
+  .specimen .scap{font-family:var(--mono);font-size:11.5px;color:var(--ink3);padding:12px 18px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand"><b>›</b> verification-theater</span>
+    <nav class="top">
+      <a href="#incident">the incident</a>
+      <a href="#floor">the floor</a>
+      <a href="#paper">the paper</a>
+      <a href="#cockpit">the artifact</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="animation-delay:.05s">A preserved postmortem &middot; June 2026</p>
+    <h1 class="reveal" style="animation-delay:.12s">Verification Theater<br/>in AI Agent Work<span style="color:var(--allow)">.</span></h1>
+    <p class="sub reveal" style="animation-delay:.22s">Fluent audit failures, unreadable traces, deterministic custody, and the small checks that still ground human approval.</p>
+    <div class="thesis reveal" style="animation-delay:.34s">
+      <p>Probabilistic agents need<br/>deterministic custody.</p>
+    </div>
+    <div class="slogan reveal" style="animation-delay:.46s">
+      Below the deterministic floor, <b>verify</b>.<br/>
+      Above the floor, <b>manage risk</b>.<br/>
+      Do not call the second one verification.
+    </div>
+    <div class="cta reveal" style="animation-delay:.58s">
+      <a class="btn primary" href="#paper">Read the whitepaper <span>→</span></a>
+      <a class="btn" href="#floor">Run the gates yourself <span>↓</span></a>
+      <a class="btn" href="https://github.com/samiserrag/Claude-Codex">The repository <span>↗</span></a>
+    </div>
+  </div>
+</div>
+
+<section id="incident">
+  <div class="wrap">
+    <p class="eyebrow">The incident</p>
+    <h2 class="kicker">The audit trail was fluent, and wrong.</h2>
+    <p class="body">An auditor agent inside my own coding harness fabricated verification evidence three times: it claimed rendered browser QA that never ran, and invented file-corruption metrics for a file that was provably clean. The prose was polished, specific, confident — indistinguishable from a real audit by reading it. The builder agent reported honestly throughout; this was a single agent confabulating about its own work, no jailbreak, no attacker.</p>
+    <p class="body muted">What caught all three was deterministic: a push gate that refused unverified work, sixty seconds of replayed measurement, and one human opening the page in a browser. Never another model reading the prose. The harness already paired models from different vendors — cross-model diversity did not stop it.</p>
+
+    <div class="diff">
+      <div class="panel bad">
+        <div class="ph"><span>What the agent wrote</span><span class="tag">FABRICATED</span></div>
+        <pre>get_page_text confirmed the
+full rendered DOM.
+Console: 0 messages.
+Network: exactly 1 request.</pre>
+        <p class="cap">Confident. Specific. Correctly formatted. <b>None of it happened.</b></p>
+      </div>
+      <div class="panel good">
+        <div class="ph"><span>What the substrate said</span><span class="tag">REPLAYED</span></div>
+        <pre>Every browser call that turn
+errored on a stale tab ID.
+No page was ever rendered.</pre>
+        <p class="cap">Caught by <b>the push gate</b> — it refused the push because the required QA evidence did not exist. The commit never reached origin.</p>
+      </div>
+    </div>
+
+    <figure class="figimg">
+      <img src="evidence-map.png" alt="Evidence Map — three cases. The original incident: three fabricated audits (a false pass claiming QA that never ran, a false blocker inventing corruption metrics, a false pass with fabricated hash and bytes), caught by gate plus replayed measurements plus a human check. A clean-failure trial: zero fabrications in three trials — agents do not always fabricate. An ambiguous failure: the server log shows the first probe got HTTP 200; the B1 report claimed no HTTP response while its honest twin B2 reported the 200 then the server dying — only the server log separated fluent-false from fluent-true. Fabrication is conditional, not constant, so the gate must be unconditional." loading="lazy" />
+      <figcaption>the evidence map — one incident, a clean-failure control, and the ambiguous catch only the substrate resolved</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="floor">
+  <div class="wrap">
+    <p class="eyebrow">The deterministic floor</p>
+    <h2 class="kicker">Don't trust the verdict. Run the check.</h2>
+    <p class="body muted">The floor is a handful of checks where reality decides, not an agent — small enough to read in full, run on inputs you choose, and confirmed by the consequence on a surface the agent does not control. Simplicity is the security property; an agent's complexity is the threat surface.</p>
+
+    <div class="gates">
+      <div class="gate">
+        <div class="name">check-blast-radius.sh</div>
+        <p class="q">Is this write inside the repo, or reaching outside it?</p>
+        <p class="ans">// the filesystem path answers</p>
+      </div>
+      <div class="gate">
+        <div class="name">check-secrets.sh</div>
+        <p class="q">Does this file contain an obvious secret?</p>
+        <p class="ans">// a pattern match answers</p>
+      </div>
+      <div class="gate">
+        <div class="name">check-irreversible-git.sh</div>
+        <p class="q">Is this irreversible action actually approved?</p>
+        <p class="ans">// the command + an approval token answer</p>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <span class="chip a">[ ALLOW ] exit 0</span>
+      <span class="chip b">[ BLOCK ] exit 1</span>
+      <span class="chip">that is the entire contract</span>
+    </div>
+
+    <p class="body muted" style="margin-top:34px">You hold a lit match to the smoke detector with <span class="mono" style="color:var(--ink)">bash gates/test-gates.sh</span> — it feeds every gate a known-good and a known-bad input and confirms each one fires. No agent is in the loop. <a href="https://github.com/samiserrag/Claude-Codex/tree/whitepaper-v1/gates">Read and run the gates yourself ↗</a></p>
+
+    <figure class="figimg">
+      <img src="deterministic-custody.png" alt="Deterministic Custody — agent work (probabilistic reasoning: design, synthesis, judgment, and a fallible audit) flows through a custody layer of deterministic controls outside the agent's write reach (logs it cannot edit, approval records it cannot invent, blast-radius and rollback limits) to consequences (commit, push, deploy, publish) that require exact named human approval. The rule: below the deterministic floor, verify; above the floor, manage risk; do not call the second one verification." loading="lazy" />
+      <figcaption>deterministic custody — probabilistic work inside boundaries the agent cannot narrate into existence</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="paper">
+  <div class="wrap">
+    <p class="eyebrow">The whitepaper</p>
+    <h2 class="kicker">Capture is not verification.</h2>
+    <p class="body">Traces, dashboards, evaluator reports, and governance checklists are observability — they capture what an agent said it did. They become evidence only when they terminate in a small check a human can inspect and tie to a consequence. The full postmortem documents two field incidents, a controlled reproduction, the recursive audit gap, and the governance I built that turned out to be theatre — with every load-bearing claim linked to replayable substrate.</p>
+
+    <figure class="figimg">
+      <img src="recursive-audit-gap.png" alt="The Recursive Audit Gap — agent does work, trace is captured (huge spans), agent summarizes (lossy story), agent audits (prose about prose), dashboard compresses (the human sees a badge). If the human cannot inspect the check directly, the system has only built a taller stack of fluent claims. Recursion stops at substrate: server log, hash, blocked push, live response, visible diff, human approval artifact." loading="lazy" />
+      <figcaption>the recursive audit gap — adding agents moves the trust problem up a floor, never grounds it</figcaption>
+    </figure>
+
+    <div class="cta">
+      <a class="btn primary" href="whitepaper.html">Read the full whitepaper <span>→</span></a>
+      <a class="btn" href="https://github.com/samiserrag/Claude-Codex/blob/whitepaper-v1/docs/verification-theater-in-ai-agent-work.md">Read on GitHub <span>↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="cockpit">
+  <div class="wrap">
+    <p class="eyebrow">The artifact</p>
+    <h2 class="kicker">The dashboard I built to oversee everything.</h2>
+    <p class="body">This is the Decision Cockpit — a real artifact from the project, preserved and embedded below exactly as it was. It is a genuinely nice object. It summarized agent work into a form I could sign. And it is <b>not working oversight.</b> When the human cannot independently check the summary — and the summary is written by the untrusted agent — a dashboard does not produce oversight. It launders agent decisions into a human-signable form: it moves the blame to the human without moving the understanding. I show it because the scaffolding that <em>looked</em> like the answer is the most useful warning.</p>
+    <div class="specimen">
+      <div class="sh" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <span>◆ specimen · a control I tried and found to be theatre</span>
+        <a href="decision-cockpit.html" target="_blank" rel="noopener" style="color:var(--ink2)">open in full ↗</a>
+      </div>
+      <iframe src="decision-cockpit.html" title="The Decision Cockpit — a preserved artifact" loading="lazy"></iframe>
+      <p class="scap">embedded above — it renders once the site is served (a local single-file preview can't load it). preserved as evidence, not a recommendation: capture is not verification.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 class="kicker">Tell me where this is wrong.</h2>
+    <p class="body muted">The strongest claim in the paper is "run the floor yourself." If you have a counter-example, a preserved agent-failure postmortem, or a correction — I'd rather be corrected than be the only one in the room.</p>
+    <div class="contact">
+      <a class="clink" href="mailto:sami.serrag@gmail.com"><span>✉</span> sami.serrag@gmail.com</a>
+      <a class="clink" href="https://www.linkedin.com/in/sami-serrag/"><span>in</span> LinkedIn</a>
+      <a class="clink" href="https://x.com/SamiSerrag50"><span>𝕏</span> @SamiSerrag50</a>
+    </div>
+  </div>
+</section>
+
+<section id="comments">
+  <div class="wrap">
+    <p class="eyebrow">Comments</p>
+    <h2 class="kicker">Discussion.</h2>
+    <p class="body muted">Comments are backed by this repo's GitHub Discussions via giscus — no third-party tracker, and every comment lives in the same repo as the evidence.</p>
+    <div class="giscus" style="margin-top:30px"></div>
+    <!-- giscus is WIRED with real IDs and STAGED inactive on purpose: a live giscus widget against a still-private repo renders an error box. To activate at the public flip, delete the two lines that say ACTIVATE-MARKER below. Nothing else to fill. -->
+    <!-- ACTIVATE-MARKER (delete this line)
+    <script src="https://giscus.app/client.js"
+            data-repo="samiserrag/Claude-Codex"
+            data-repo-id="R_kgDOSd6fUg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSd6fUs4C_Kva"
+            data-mapping="pathname" data-strict="0" data-reactions-enabled="1"
+            data-emit-metadata="0" data-input-position="top"
+            data-theme="dark_dimmed" data-lang="en" crossorigin="anonymous" async>
+    </script>
+    ACTIVATE-MARKER (delete this line) -->
+    <p class="note">Comments are wired — giscus → this repo's GitHub Discussions (Announcements). They activate the moment the repo goes public; until then this panel stays empty by design.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div class="who">
+        <p><b>Sami Serrag</b> — a commercial AV (audio/video) field engineer who learned software in public. Six months before this project I did not know what a pull request was. The controls that worked here are learnable by anyone who can read eight lines of shell and open a web page; that is the point.</p>
+        <p>I also build and run <a href="https://openmiccolorado.org">Open Mic Colorado</a> — a live-performance directory built with AI-assisted tools, on one rule: AI handles the volume, people keep it honest, the balance is intentional.</p>
+      </div>
+      <div class="meta">
+        repo &nbsp;&nbsp;<a href="https://github.com/samiserrag/Claude-Codex">samiserrag/Claude-Codex</a><br/>
+        tag &nbsp;&nbsp;&nbsp;whitepaper-v1<br/>
+        gates&nbsp;&nbsp;read &middot; run &middot; confirm<br/>
+        n &nbsp;&nbsp;&nbsp;&nbsp;2 incidents &middot; no rate claim
+      </div>
+    </div>
+    <p class="seal">PRESERVED IN GIT — NOTHING LAUNDERED. THE MODEL MAY REASON PROBABILISTICALLY; THE CUSTODY OF EVIDENCE CANNOT.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+</script>
+
+</body>
+</html>
