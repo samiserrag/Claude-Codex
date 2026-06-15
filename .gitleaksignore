@@ -1,0 +1,8 @@
+# gitleaks allowlist for Claude-Codex (agentverificationtheater.com).
+# Both entries are confirmed FALSE POSITIVES, verified during the 2026-06 public-release audit:
+#   1) E3-B-claude-critique.md:43   a self-test result line ("...vector pass, duplicate_key_rejection pass"); not a key.
+#   2) E3-A-codex-envelope-schema.md:399   a deterministic TEST FIXTURE label ("fixture-sami-root-2026-05-15"),
+#      explicitly non-runtime per the surrounding doc; not a secret.
+# No real secrets exist in this history. Run `gitleaks detect` yourself to confirm.
+6fdf0addedd2f4a1a2fdb1fc447681bdc076ab8f:.agent-handoff/turns/E3-B-claude-critique.md:generic-api-key:43
+d97ab482b5155534861cc4129d8a2da9a503e31d:.agent-handoff/turns/E3-A-codex-envelope-schema.md:generic-api-key:399
